@@ -66,7 +66,7 @@ import 'resource_location_data_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'resource_location_data_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_gateway" "gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "my gateway 1"
 ///   gateway_id  = "gw1"
 ///   location_data = {

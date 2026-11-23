@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///     {
 ///         Description = "uz",
 ///         FileName = "wresexxulcdsdd",
-///         FileSize = 17,
+///         FileSize = 17.0,
 ///         FirmwareId = "umrkdttp",
 ///         Model = "f",
 ///         ResourceGroupName = "rgworkspaces-firmwares",
@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,6 +93,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotfirmwaredefense_firmware" "firmware" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "uz"
 ///   file_name           = "wresexxulcdsdd"
 ///   file_size           = 17
@@ -264,7 +267,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -273,6 +276,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotfirmwaredefense_firmware" "firmware" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firmware_id         = "umrkdttp"
 ///   resource_group_name = "rgworkspaces-firmwares"
 ///   workspace_name      = "A7"

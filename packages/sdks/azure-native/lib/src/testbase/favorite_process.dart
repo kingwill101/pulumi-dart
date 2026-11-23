@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_testbase_favoriteprocess" "favoriteProcess" {
+/// resource "azure-native_testbase_favorite_process" "favoriteProcess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actual_process_name            = "testApp&.exe"
 ///   favorite_process_resource_name = "testAppProcess"
 ///   package_name                   = "contoso-package2"

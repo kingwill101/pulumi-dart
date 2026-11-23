@@ -63,7 +63,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_productapi" "productApi" {
+/// resource "azure-native_apimanagement_product_api" "productApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "echo-api"
 ///   product_id          = "testproduct"
 ///   resource_group_name = "rg1"

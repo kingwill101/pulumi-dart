@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicebus_migrationconfig" "migrationConfig" {
+/// resource "azure-native_servicebus_migration_config" "migrationConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_name         = "$default"
 ///   namespace_name      = "sdk-Namespace-41"
 ///   post_migration_name = "sdk-PostMigration-5919"

@@ -27,7 +27,7 @@ import 'user_assigned_service_identity_response.dart';
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
 ///         SourceResourceId = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.Workloads/sapVirtualInstances/X00",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -62,7 +62,7 @@ import 'user_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,6 +71,9 @@ import 'user_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_workloads_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connector_name      = "C1"
 ///   location            = "westcentralus"
 ///   resource_group_name = "test-rg"

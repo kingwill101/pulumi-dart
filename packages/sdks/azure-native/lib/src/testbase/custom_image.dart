@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_testbase_customimage" "customImage" {
+/// resource "azure-native_testbase_custom_image" "customImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_image_name      = "image-2cfb2edc-13bc-4d54-8d6e-38b2a233b003"
 ///   definition_name        = "contoso-image-def"
 ///   resource_group_name    = "contoso-rg1"

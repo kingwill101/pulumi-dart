@@ -23,7 +23,7 @@ import 'database_account_mongo_dbdatabase_args.dart';
 ///     {
 ///         AccountName = "ddb1",
 ///         DatabaseName = "databaseName",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.MongoDBDatabaseResourceArgs
 ///         {
 ///             Id = "updatedDatabaseName",
@@ -65,7 +65,7 @@ import 'database_account_mongo_dbdatabase_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'database_account_mongo_dbdatabase_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccountmongodbdatabase" "databaseAccountMongoDBDatabase" {
+/// resource "azure-native_cosmosdb_database_account_mongo_d_b_database" "databaseAccountMongoDBDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   database_name = "databaseName"
 ///   options       = {}

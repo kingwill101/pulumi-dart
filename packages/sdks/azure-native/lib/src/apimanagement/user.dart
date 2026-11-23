@@ -66,7 +66,7 @@ import 'user_identity_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'user_identity_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   confirmation        = "signup"
 ///   email               = "foobar@outlook.com"
 ///   first_name          = "foo"

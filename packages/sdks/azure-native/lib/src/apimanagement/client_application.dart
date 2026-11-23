@@ -62,7 +62,7 @@ import 'client_application_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'client_application_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_clientapplication" "clientApplication" {
+/// resource "azure-native_apimanagement_client_application" "clientApplication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_application_id = "testAppId"
 ///   description           = "This is just an example application"
 ///   display_name          = "Test Application"

@@ -67,7 +67,7 @@ import 'private_link_service_connection_state_property_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'private_link_service_connection_state_property_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_privateendpointconnection" "privateEndpointConnection" {
+/// resource "azure-native_sql_private_endpoint_connection" "privateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint_connection_name = "private-endpoint-connection-name"
 ///   private_link_service_connection_state = {
 ///     description = "Approved by johndoe@contoso.com"

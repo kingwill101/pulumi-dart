@@ -33,7 +33,7 @@ import 'workload_network_dns_service_args.dart';
 ///         LogLevel = AzureNative.AVS.DnsServiceLogLevelEnum.INFO,
 ///         PrivateCloudName = "cloud1",
 ///         ResourceGroupName = "group1",
-///         Revision = 1,
+///         Revision = 1.0,
 ///     });
 ///
 /// });
@@ -74,7 +74,7 @@ import 'workload_network_dns_service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'workload_network_dns_service_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworkdnsservice" "workloadNetworkDnsService" {
+/// resource "azure-native_avs_workload_network_dns_service" "workloadNetworkDnsService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_dns_zone    = "defaultDnsZone1"
 ///   display_name        = "dnsService1"
 ///   dns_service_id      = "dnsService1"

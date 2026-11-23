@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mysqldiscovery_mysqlsite" "mySQLSite" {
+/// resource "azure-native_mysqldiscovery_my_s_q_l_site" "mySQLSite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso"
 ///     type = "customLocation"

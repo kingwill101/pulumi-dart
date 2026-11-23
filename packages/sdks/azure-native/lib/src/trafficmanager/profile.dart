@@ -27,14 +27,14 @@ import 'profile_args.dart';
 ///         DnsConfig = new AzureNative.TrafficManager.Inputs.DnsConfigArgs
 ///         {
 ///             RelativeName = "azsmnet6386",
-///             Ttl = 35,
+///             Ttl = 35.0,
 ///         },
 ///         Location = "global",
-///         MaxReturn = 2,
+///         MaxReturn = 2.0,
 ///         MonitorConfig = new AzureNative.TrafficManager.Inputs.MonitorConfigArgs
 ///         {
 ///             Path = "/testpath.aspx",
-///             Port = 80,
+///             Port = 80.0,
 ///             Protocol = AzureNative.TrafficManager.MonitorProtocol.HTTP,
 ///         },
 ///         ProfileName = "azsmnet6386",
@@ -87,7 +87,7 @@ import 'profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,6 +96,9 @@ import 'profile_args.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     relative_name = "azsmnet6386"
 ///     ttl           = 35
@@ -250,13 +253,13 @@ import 'profile_args.dart';
 ///         DnsConfig = new AzureNative.TrafficManager.Inputs.DnsConfigArgs
 ///         {
 ///             RelativeName = "azsmnet6386",
-///             Ttl = 35,
+///             Ttl = 35.0,
 ///         },
 ///         Location = "global",
 ///         MonitorConfig = new AzureNative.TrafficManager.Inputs.MonitorConfigArgs
 ///         {
 ///             Path = "/testpath.aspx",
-///             Port = 80,
+///             Port = 80.0,
 ///             Protocol = AzureNative.TrafficManager.MonitorProtocol.HTTP,
 ///         },
 ///         ProfileName = "azsmnet6386",
@@ -306,7 +309,7 @@ import 'profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -315,6 +318,9 @@ import 'profile_args.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     relative_name = "azsmnet6386"
 ///     ttl           = 35
@@ -456,14 +462,14 @@ import 'profile_args.dart';
 /// {
 ///     var profile = new AzureNative.TrafficManager.Profile("profile", new()
 ///     {
-///         AllowedEndpointRecordTypes = new[]
+///         AllowedEndpointRecordTypes =
 ///         {
 ///             AzureNative.TrafficManager.AllowedEndpointRecordType.DomainName,
 ///         },
 ///         DnsConfig = new AzureNative.TrafficManager.Inputs.DnsConfigArgs
 ///         {
 ///             RelativeName = "azuresdkfornetautoresttrafficmanager6192",
-///             Ttl = 35,
+///             Ttl = 35.0,
 ///         },
 ///         Endpoints = new[]
 ///         {
@@ -479,12 +485,12 @@ import 'profile_args.dart';
 ///         Location = "global",
 ///         MonitorConfig = new AzureNative.TrafficManager.Inputs.MonitorConfigArgs
 ///         {
-///             IntervalInSeconds = 10,
+///             IntervalInSeconds = 10.0,
 ///             Path = "/testpath.aspx",
-///             Port = 80,
+///             Port = 80.0,
 ///             Protocol = AzureNative.TrafficManager.MonitorProtocol.HTTP,
-///             TimeoutInSeconds = 5,
-///             ToleratedNumberOfFailures = 2,
+///             TimeoutInSeconds = 5.0,
+///             ToleratedNumberOfFailures = 2.0,
 ///         },
 ///         ProfileName = "azuresdkfornetautoresttrafficmanager6192",
 ///         ProfileStatus = AzureNative.TrafficManager.ProfileStatus.Enabled,
@@ -548,7 +554,7 @@ import 'profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -557,6 +563,9 @@ import 'profile_args.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allowed_endpoint_record_types = ["DomainName"]
 ///   dns_config = {
 ///     relative_name = "azuresdkfornetautoresttrafficmanager6192"
@@ -757,7 +766,7 @@ import 'profile_args.dart';
 ///         DnsConfig = new AzureNative.TrafficManager.Inputs.DnsConfigArgs
 ///         {
 ///             RelativeName = "azuresdkfornetautoresttrafficmanager6192",
-///             Ttl = 35,
+///             Ttl = 35.0,
 ///         },
 ///         Endpoints = new[]
 ///         {
@@ -807,12 +816,12 @@ import 'profile_args.dart';
 ///                     Min = 400,
 ///                 },
 ///             },
-///             IntervalInSeconds = 10,
+///             IntervalInSeconds = 10.0,
 ///             Path = "/testpath.aspx",
-///             Port = 80,
+///             Port = 80.0,
 ///             Protocol = AzureNative.TrafficManager.MonitorProtocol.HTTP,
-///             TimeoutInSeconds = 5,
-///             ToleratedNumberOfFailures = 2,
+///             TimeoutInSeconds = 5.0,
+///             ToleratedNumberOfFailures = 2.0,
 ///         },
 ///         ProfileName = "azuresdkfornetautoresttrafficmanager6192",
 ///         ProfileStatus = AzureNative.TrafficManager.ProfileStatus.Enabled,
@@ -901,7 +910,7 @@ import 'profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -910,6 +919,9 @@ import 'profile_args.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     relative_name = "azuresdkfornetautoresttrafficmanager6192"
 ///     ttl           = 35
@@ -928,18 +940,18 @@ import 'profile_args.dart';
 ///   location = "global"
 ///   monitor_config = {
 ///     custom_headers = [{
-///       "name"  = "header-1"
-///       "value" = "value-1"
+///       name  = "header-1"
+///       value = "value-1"
 ///       }, {
-///       "name"  = "header-2"
-///       "value" = "value-2"
+///       name  = "header-2"
+///       value = "value-2"
 ///     }]
 ///     expected_status_code_ranges = [{
-///       "max" = 205
-///       "min" = 200
+///       max = 205
+///       min = 200
 ///       }, {
-///       "max" = 410
-///       "min" = 400
+///       max = 410
+///       min = 400
 ///     }]
 ///     interval_in_seconds          = 10
 ///     path                         = "/testpath.aspx"
@@ -967,7 +979,10 @@ import 'profile_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.ProfileArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.DnsConfigArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointArgs;
+/// import com.pulumi.azurenative.trafficmanager.inputs.EndpointPropertiesCustomHeadersItemArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigArgs;
+/// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigCustomHeadersItemArgs;
+/// import com.pulumi.azurenative.trafficmanager.inputs.MonitorConfigExpectedStatusCodeRangesItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1210,7 +1225,7 @@ import 'profile_args.dart';
 ///         DnsConfig = new AzureNative.TrafficManager.Inputs.DnsConfigArgs
 ///         {
 ///             RelativeName = "azuresdkfornetautoresttrafficmanager6192",
-///             Ttl = 35,
+///             Ttl = 35.0,
 ///         },
 ///         Endpoints = new[]
 ///         {
@@ -1226,12 +1241,12 @@ import 'profile_args.dart';
 ///         Location = "global",
 ///         MonitorConfig = new AzureNative.TrafficManager.Inputs.MonitorConfigArgs
 ///         {
-///             IntervalInSeconds = 10,
+///             IntervalInSeconds = 10.0,
 ///             Path = "/testpath.aspx",
-///             Port = 80,
+///             Port = 80.0,
 ///             Protocol = AzureNative.TrafficManager.MonitorProtocol.HTTP,
-///             TimeoutInSeconds = 5,
-///             ToleratedNumberOfFailures = 2,
+///             TimeoutInSeconds = 5.0,
+///             ToleratedNumberOfFailures = 2.0,
 ///         },
 ///         ProfileName = "azuresdkfornetautoresttrafficmanager6192",
 ///         ProfileStatus = AzureNative.TrafficManager.ProfileStatus.Enabled,
@@ -1292,7 +1307,7 @@ import 'profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1301,6 +1316,9 @@ import 'profile_args.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     relative_name = "azuresdkfornetautoresttrafficmanager6192"
 ///     ttl           = 35
@@ -1495,44 +1513,44 @@ import 'profile_args.dart';
 ///         DnsConfig = new AzureNative.TrafficManager.Inputs.DnsConfigArgs
 ///         {
 ///             RelativeName = "parentprofile",
-///             Ttl = 35,
+///             Ttl = 35.0,
 ///         },
 ///         Endpoints = new[]
 ///         {
 ///             new AzureNative.TrafficManager.Inputs.EndpointArgs
 ///             {
 ///                 EndpointStatus = AzureNative.TrafficManager.EndpointStatus.Enabled,
-///                 MinChildEndpoints = 2,
-///                 MinChildEndpointsIPv4 = 1,
-///                 MinChildEndpointsIPv6 = 2,
+///                 MinChildEndpoints = 2.0,
+///                 MinChildEndpointsIPv4 = 1.0,
+///                 MinChildEndpointsIPv6 = 2.0,
 ///                 Name = "MyFirstNestedEndpoint",
-///                 Priority = 1,
+///                 Priority = 1.0,
 ///                 Target = "firstnestedprofile.tmpreview.watmtest.azure-test.net",
 ///                 Type = "Microsoft.Network/trafficManagerProfiles/nestedEndpoints",
-///                 Weight = 1,
+///                 Weight = 1.0,
 ///             },
 ///             new AzureNative.TrafficManager.Inputs.EndpointArgs
 ///             {
 ///                 EndpointStatus = AzureNative.TrafficManager.EndpointStatus.Enabled,
-///                 MinChildEndpoints = 2,
-///                 MinChildEndpointsIPv4 = 2,
-///                 MinChildEndpointsIPv6 = 1,
+///                 MinChildEndpoints = 2.0,
+///                 MinChildEndpointsIPv4 = 2.0,
+///                 MinChildEndpointsIPv6 = 1.0,
 ///                 Name = "MySecondNestedEndpoint",
-///                 Priority = 2,
+///                 Priority = 2.0,
 ///                 Target = "secondnestedprofile.tmpreview.watmtest.azure-test.net",
 ///                 Type = "Microsoft.Network/trafficManagerProfiles/nestedEndpoints",
-///                 Weight = 1,
+///                 Weight = 1.0,
 ///             },
 ///         },
 ///         Location = "global",
 ///         MonitorConfig = new AzureNative.TrafficManager.Inputs.MonitorConfigArgs
 ///         {
-///             IntervalInSeconds = 10,
+///             IntervalInSeconds = 10.0,
 ///             Path = "/testpath.aspx",
-///             Port = 80,
+///             Port = 80.0,
 ///             Protocol = AzureNative.TrafficManager.MonitorProtocol.HTTP,
-///             TimeoutInSeconds = 5,
-///             ToleratedNumberOfFailures = 2,
+///             TimeoutInSeconds = 5.0,
+///             ToleratedNumberOfFailures = 2.0,
 ///         },
 ///         ProfileName = "parentprofile",
 ///         ProfileStatus = AzureNative.TrafficManager.ProfileStatus.Enabled,
@@ -1608,7 +1626,7 @@ import 'profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1617,6 +1635,9 @@ import 'profile_args.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     relative_name = "parentprofile"
 ///     ttl           = 35

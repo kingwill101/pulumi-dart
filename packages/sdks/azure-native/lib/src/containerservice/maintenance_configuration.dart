@@ -112,7 +112,7 @@ import 'time_span_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -120,16 +120,19 @@ import 'time_span_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_maintenanceconfiguration" "maintenanceConfiguration" {
+/// resource "azure-native_containerservice_maintenance_configuration" "maintenanceConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_name = "aksManagedAutoUpgradeSchedule"
 ///   maintenance_window = {
 ///     duration_hours = 10
 ///     not_allowed_dates = [{
-///       "end"   = "2023-02-25"
-///       "start" = "2023-02-18"
+///       end   = "2023-02-25"
+///       start = "2023-02-18"
 ///       }, {
-///       "end"   = "2024-01-05"
-///       "start" = "2023-12-23"
+///       end   = "2024-01-05"
+///       start = "2023-12-23"
 ///     }]
 ///     schedule = {
 ///       relative_monthly = {
@@ -157,6 +160,7 @@ import 'time_span_response.dart';
 /// import com.pulumi.azurenative.containerservice.MaintenanceConfiguration;
 /// import com.pulumi.azurenative.containerservice.MaintenanceConfigurationArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.MaintenanceWindowArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.DateSpanArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ScheduleArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.RelativeMonthlyScheduleArgs;
 /// import java.util.ArrayList;

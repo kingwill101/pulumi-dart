@@ -95,7 +95,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
@@ -306,7 +309,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -314,7 +317,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
@@ -486,7 +492,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -494,7 +500,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
@@ -686,7 +695,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -694,7 +703,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
@@ -899,7 +911,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -907,7 +919,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
@@ -1090,7 +1105,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1098,7 +1113,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
@@ -1291,7 +1309,7 @@ import 'virtual_network_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1299,7 +1317,10 @@ import 'virtual_network_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkpeering" "virtualNetworkPeering" {
+/// resource "azure-native_network_virtual_network_peering" "virtualNetworkPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true

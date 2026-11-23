@@ -73,7 +73,7 @@ import 'subnet_interface_endpoint_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'subnet_interface_endpoint_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_interfaceendpoint" "interfaceEndpoint" {
+/// resource "azure-native_network_interface_endpoint" "interfaceEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_service = {
 ///     id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Provider/resourceType/resourceName"
 ///   }

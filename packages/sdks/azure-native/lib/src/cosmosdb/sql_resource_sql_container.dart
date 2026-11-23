@@ -27,7 +27,7 @@ import 'sql_resource_sql_container_args.dart';
 ///         ContainerName = "containerName",
 ///         DatabaseName = "databaseName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.SqlContainerResourceArgs
 ///         {
 ///             ClientEncryptionPolicy = new AzureNative.CosmosDB.Inputs.ClientEncryptionPolicyArgs
@@ -192,7 +192,7 @@ import 'sql_resource_sql_container_args.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -355,7 +355,7 @@ import 'sql_resource_sql_container_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -363,7 +363,10 @@ import 'sql_resource_sql_container_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_sqlresourcesqlcontainer" "sqlResourceSqlContainer" {
+/// resource "azure-native_cosmosdb_sql_resource_sql_container" "sqlResourceSqlContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name   = "ddb1"
 ///   container_name = "containerName"
 ///   database_name  = "databaseName"
@@ -372,16 +375,16 @@ import 'sql_resource_sql_container_args.dart';
 ///   resource = {
 ///     client_encryption_policy = {
 ///       included_paths = [{
-///         "clientEncryptionKeyId" = "keyId"
-///         "encryptionAlgorithm"   = "AEAD_AES_256_CBC_HMAC_SHA256"
-///         "encryptionType"        = "Deterministic"
-///         "path"                  = "/path"
+///         client_encryption_key_id = "keyId"
+///         encryption_algorithm     = "AEAD_AES_256_CBC_HMAC_SHA256"
+///         encryption_type          = "Deterministic"
+///         path                     = "/path"
 ///       }]
 ///       policy_format_version = 2
 ///     }
 ///     computed_properties = [{
-///       "name"  = "cp_lowerName"
-///       "query" = "SELECT VALUE LOWER(c.name) FROM c"
+///       name  = "cp_lowerName"
+///       query = "SELECT VALUE LOWER(c.name) FROM c"
 ///     }]
 ///     conflict_resolution_policy = {
 ///       conflict_resolution_path = "/path"
@@ -391,14 +394,14 @@ import 'sql_resource_sql_container_args.dart';
 ///     full_text_policy = {
 ///       default_language = "1033"
 ///       full_text_paths = [{
-///         "language" = "en-US"
-///         "path"     = "/ftPath1"
+///         language = "en-US"
+///         path     = "/ftPath1"
 ///         }, {
-///         "language" = "fr-FR"
-///         "path"     = "/ftPath2"
+///         language = "fr-FR"
+///         path     = "/ftPath2"
 ///         }, {
-///         "language" = "de-DE"
-///         "path"     = "/ftPath3"
+///         language = "de-DE"
+///         path     = "/ftPath3"
 ///       }]
 ///     }
 ///     id = "containerName"
@@ -406,34 +409,34 @@ import 'sql_resource_sql_container_args.dart';
 ///       automatic      = true
 ///       excluded_paths = []
 ///       full_text_indexes = [{
-///         "path" = "/ftPath1"
+///         path = "/ftPath1"
 ///         }, {
-///         "path" = "/ftPath2"
+///         path = "/ftPath2"
 ///         }, {
-///         "path" = "/ftPath3"
+///         path = "/ftPath3"
 ///       }]
 ///       included_paths = [{
-///         "indexes" = [{
-///           "dataType"  = "String"
-///           "kind"      = "Range"
-///           "precision" = -1
+///         indexes = [{
+///           data_type = "String"
+///           kind      = "Range"
+///           precision = -1
 ///           }, {
-///           "dataType"  = "Number"
-///           "kind"      = "Range"
-///           "precision" = -1
+///           data_type = "Number"
+///           kind      = "Range"
+///           precision = -1
 ///         }]
-///         "path" = "/*"
+///         path = "/*"
 ///       }]
 ///       indexing_mode = "consistent"
 ///       vector_indexes = [{
-///         "path" = "/vectorPath1"
-///         "type" = "flat"
+///         path = "/vectorPath1"
+///         type = "flat"
 ///         }, {
-///         "path" = "/vectorPath2"
-///         "type" = "quantizedFlat"
+///         path = "/vectorPath2"
+///         type = "quantizedFlat"
 ///         }, {
-///         "path" = "/vectorPath3"
-///         "type" = "diskANN"
+///         path = "/vectorPath3"
+///         type = "diskANN"
 ///       }]
 ///     }
 ///     partition_key = {
@@ -442,25 +445,25 @@ import 'sql_resource_sql_container_args.dart';
 ///     }
 ///     unique_key_policy = {
 ///       unique_keys = [{
-///         "paths" = ["/testPath"]
+///         paths = ["/testPath"]
 ///       }]
 ///     }
 ///     vector_embedding_policy = {
 ///       vector_embeddings = [{
-///         "dataType"         = "float32"
-///         "dimensions"       = 400
-///         "distanceFunction" = "euclidean"
-///         "path"             = "/vectorPath1"
+///         data_type         = "float32"
+///         dimensions        = 400
+///         distance_function = "euclidean"
+///         path              = "/vectorPath1"
 ///         }, {
-///         "dataType"         = "uint8"
-///         "dimensions"       = 512
-///         "distanceFunction" = "cosine"
-///         "path"             = "/vectorPath2"
+///         data_type         = "uint8"
+///         dimensions        = 512
+///         distance_function = "cosine"
+///         path              = "/vectorPath2"
 ///         }, {
-///         "dataType"         = "int8"
-///         "dimensions"       = 512
-///         "distanceFunction" = "dotproduct"
-///         "path"             = "/vectorPath3"
+///         data_type         = "int8"
+///         dimensions        = 512
+///         distance_function = "dotproduct"
+///         path              = "/vectorPath3"
 ///       }]
 ///     }
 ///   }
@@ -481,12 +484,21 @@ import 'sql_resource_sql_container_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.inputs.CreateUpdateOptionsArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.SqlContainerResourceArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ClientEncryptionPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.ClientEncryptionIncludedPathArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.ComputedPropertyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ConflictResolutionPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.FullTextPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.FullTextPathArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.IndexingPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.FullTextIndexPathArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.IncludedPathArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.IndexesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.VectorIndexArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ContainerPartitionKeyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.UniqueKeyPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.UniqueKeyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.VectorEmbeddingPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.VectorEmbeddingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

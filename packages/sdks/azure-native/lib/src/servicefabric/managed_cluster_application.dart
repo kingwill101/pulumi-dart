@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             ForceRestart = false,
-///             InstanceCloseDelayDuration = 600,
+///             InstanceCloseDelayDuration = 600.0,
 ///             RecreateApplication = false,
 ///             RollingUpgradeMonitoringPolicy = new AzureNative.ServiceFabric.Inputs.RollingUpgradeMonitoringPolicyArgs
 ///             {
@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 ///                 UpgradeTimeout = "01:00:00",
 ///             },
 ///             UpgradeMode = AzureNative.ServiceFabric.RollingUpgradeMode.UnmonitoredAuto,
-///             UpgradeReplicaSetCheckTimeout = 3600,
+///             UpgradeReplicaSetCheckTimeout = 3600.0,
 ///         },
 ///         Version = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applicationTypes/myAppType/versions/1.0",
 ///     });
@@ -146,7 +146,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -154,7 +154,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedclusterapplication" "managedClusterApplication" {
+/// resource "azure-native_servicefabric_managed_cluster_application" "managedClusterApplication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = "myApp"
 ///   cluster_name     = "myCluster"
 ///   location         = "eastus"
@@ -465,7 +468,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -473,7 +476,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedclusterapplication" "managedClusterApplication" {
+/// resource "azure-native_servicefabric_managed_cluster_application" "managedClusterApplication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name    = "myApp"
 ///   cluster_name        = "myCluster"
 ///   location            = "eastus"

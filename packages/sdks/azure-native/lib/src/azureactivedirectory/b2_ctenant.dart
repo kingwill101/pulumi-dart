@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureactivedirectory_b2ctenant" "b2cTenant" {
+/// resource "azure-native_azureactivedirectory_b2_c_tenant" "b2cTenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   country_code        = "US"
 ///   display_name        = "Contoso"
 ///   is_go_local_tenant  = true

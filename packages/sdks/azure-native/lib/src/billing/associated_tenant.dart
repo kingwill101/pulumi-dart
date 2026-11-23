@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billing_associatedtenant" "associatedTenant" {
+/// resource "azure-native_billing_associated_tenant" "associatedTenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   associated_tenant_name = "11111111-1111-1111-1111-111111111111"
 ///   billing_account_name   = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31"
 ///   properties = {

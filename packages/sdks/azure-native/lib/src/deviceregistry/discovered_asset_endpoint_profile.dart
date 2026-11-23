@@ -32,7 +32,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Location = "West Europe",
 ///         ResourceGroupName = "myResourceGroup",
-///         SupportedAuthenticationMethods = new[]
+///         SupportedAuthenticationMethods =
 ///         {
 ///             AzureNative.DeviceRegistry.AuthenticationMethod.Anonymous,
 ///             AzureNative.DeviceRegistry.AuthenticationMethod.Certificate,
@@ -43,7 +43,7 @@ import 'system_data_response.dart';
 ///             { "site", "building-1" },
 ///         },
 ///         TargetAddress = "https://www.example.com/myTargetAddress",
-///         Version = 73766,
+///         Version = 73766.0,
 ///     });
 ///
 /// });
@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_discoveredassetendpointprofile" "discoveredAssetEndpointProfile" {
+/// resource "azure-native_deviceregistry_discovered_asset_endpoint_profile" "discoveredAssetEndpointProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_configuration               = "{\"foo\": \"bar\"}"
 ///   discovered_asset_endpoint_profile_name = "my-discoveredassetendpointprofile"
 ///   discovery_id                           = "11111111-1111-1111-1111-111111111111"

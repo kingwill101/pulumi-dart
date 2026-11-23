@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_dnsresolverpolicyvirtualnetworklink" "dnsResolverPolicyVirtualNetworkLink" {
+/// resource "azure-native_dnsresolver_dns_resolver_policy_virtual_network_link" "dnsResolverPolicyVirtualNetworkLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_resolver_policy_name                      = "sampleDnsResolverPolicy"
 ///   dns_resolver_policy_virtual_network_link_name = "sampleVirtualNetworkLink"
 ///   location                                      = "westus2"

@@ -1482,7 +1482,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1490,7 +1490,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_changedatacapture" "changeDataCapture" {
+/// resource "azure-native_datafactory_change_data_capture" "changeDataCapture" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_v_net_override     = false
 ///   change_data_capture_name = "exampleChangeDataCapture"
 ///   description              = "Sample demo change data capture to transfer data from delimited (csv) to Azure SQL Database with automapped and non-automapped mappings."
@@ -1506,38 +1509,38 @@ import 'system_data_response.dart';
 ///   source_connections_info {
 ///     connection = {
 ///       common_dsl_connector_properties = [{
-///         "name"  = "allowSchemaDrift"
-///         "value" = true
+///         name  = "allowSchemaDrift"
+///         value = true
 ///         }, {
-///         "name"  = "inferDriftedColumnTypes"
-///         "value" = true
+///         name  = "inferDriftedColumnTypes"
+///         value = true
 ///         }, {
-///         "name"  = "format"
-///         "value" = "delimited"
+///         name  = "format"
+///         value = "delimited"
 ///         }, {
-///         "name"  = "dateFormats"
-///         "value" = ["MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         name  = "dateFormats"
+///         value = ["MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
 ///         }, {
-///         "name"  = "timestampFormats"
-///         "value" = ["yyyyMMddHHmm", "yyyyMMdd HHmm", "yyyyMMddHHmmss", "yyyyMMdd HHmmss", "dd-MM-yyyy HH:mm:ss", "dd-MM-yyyy HH:mm", "yyyy-M-d H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy.MM.dd HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "M/d/yyyy H:m:s", "yyyy/MM/dd HH:mm:ss", "yyyy/M/d H:m:s", "dd MMM yyyy HH:mm:ss", "dd MMMM yyyy HH:mm:ss", "d MMM yyyy H:m:s", "d MMMM yyyy H:m:s", "d-M-yyyy H:m:s", "d-M-yyyy H:m", "yyyy-M-d H:m", "MM/dd/yyyy HH:mm", "M/d/yyyy H:m", "yyyy/MM/dd HH:mm", "yyyy/M/d H:m", "dd MMMM yyyy HH:mm", "dd MMM yyyy HH:mm", "d MMMM yyyy H:m", "d MMM yyyy H:m", "MM-dd-yyyy hh:mm:ss a", "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy hh:mm:ss a", "yyyy.MM.dd hh:mm:ss a", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         name  = "timestampFormats"
+///         value = ["yyyyMMddHHmm", "yyyyMMdd HHmm", "yyyyMMddHHmmss", "yyyyMMdd HHmmss", "dd-MM-yyyy HH:mm:ss", "dd-MM-yyyy HH:mm", "yyyy-M-d H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy.MM.dd HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "M/d/yyyy H:m:s", "yyyy/MM/dd HH:mm:ss", "yyyy/M/d H:m:s", "dd MMM yyyy HH:mm:ss", "dd MMMM yyyy HH:mm:ss", "d MMM yyyy H:m:s", "d MMMM yyyy H:m:s", "d-M-yyyy H:m:s", "d-M-yyyy H:m", "yyyy-M-d H:m", "MM/dd/yyyy HH:mm", "M/d/yyyy H:m", "yyyy/MM/dd HH:mm", "yyyy/M/d H:m", "dd MMMM yyyy HH:mm", "dd MMM yyyy HH:mm", "d MMMM yyyy H:m", "d MMM yyyy H:m", "MM-dd-yyyy hh:mm:ss a", "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy hh:mm:ss a", "yyyy.MM.dd hh:mm:ss a", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
 ///         }, {
-///         "name"  = "enableCdc"
-///         "value" = true
+///         name  = "enableCdc"
+///         value = true
 ///         }, {
-///         "name"  = "skipInitialLoad"
-///         "value" = true
+///         name  = "skipInitialLoad"
+///         value = true
 ///         }, {
-///         "name"  = "columnNamesAsHeader"
-///         "value" = true
+///         name  = "columnNamesAsHeader"
+///         value = true
 ///         }, {
-///         "name"  = "columnDelimiter"
-///         "value" = ","
+///         name  = "columnDelimiter"
+///         value = ","
 ///         }, {
-///         "name"  = "escapeChar"
-///         "value" = "\\\\"
+///         name  = "escapeChar"
+///         value = "\\\\"
 ///         }, {
-///         "name"  = "quoteChar"
-///         "value" = "\\\""
+///         name  = "quoteChar"
+///         value = "\\\""
 ///       }]
 ///       is_inline_dataset = true
 ///       linked_service = {
@@ -1703,41 +1706,41 @@ import 'system_data_response.dart';
 ///   target_connections_info {
 ///     connection = {
 ///       common_dsl_connector_properties = [{
-///         "name"  = "allowSchemaDrift"
-///         "value" = true
+///         name  = "allowSchemaDrift"
+///         value = true
 ///         }, {
-///         "name"  = "inferDriftedColumnTypes"
-///         "value" = true
+///         name  = "inferDriftedColumnTypes"
+///         value = true
 ///         }, {
-///         "name"  = "format"
-///         "value" = "table"
+///         name  = "format"
+///         value = "table"
 ///         }, {
-///         "name"  = "store"
-///         "value" = "sqlserver"
+///         name  = "store"
+///         value = "sqlserver"
 ///         }, {
-///         "name"  = "databaseType"
-///         "value" = "databaseType"
+///         name  = "databaseType"
+///         value = "databaseType"
 ///         }, {
-///         "name"  = "database"
-///         "value" = "database"
+///         name  = "database"
+///         value = "database"
 ///         }, {
-///         "name"  = "deletable"
-///         "value" = false
+///         name  = "deletable"
+///         value = false
 ///         }, {
-///         "name"  = "insertable"
-///         "value" = true
+///         name  = "insertable"
+///         value = true
 ///         }, {
-///         "name"  = "updateable"
-///         "value" = false
+///         name  = "updateable"
+///         value = false
 ///         }, {
-///         "name"  = "upsertable"
-///         "value" = false
+///         name  = "upsertable"
+///         value = false
 ///         }, {
-///         "name"  = "skipDuplicateMapInputs"
-///         "value" = true
+///         name  = "skipDuplicateMapInputs"
+///         value = true
 ///         }, {
-///         "name"  = "skipDuplicateMapOutputs"
-///         "value" = true
+///         name  = "skipDuplicateMapOutputs"
+///         value = true
 ///       }]
 ///       is_inline_dataset = true
 ///       linked_service = {
@@ -1761,30 +1764,30 @@ import 'system_data_response.dart';
 ///     data_mapper_mappings {
 ///       attribute_mapping_info = {
 ///         attribute_mappings = [{
-///           "attributeReferences" = [{
-///             "entity" = "lookup"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "lookup"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "EmpName"
+///             name = "EmpName"
 ///           }]
-///           "expression"   = "upper(EmpName)"
-///           "functionName" = "upper"
-///           "name"         = "Name"
-///           "type"         = "Derived"
+///           expression    = "upper(EmpName)"
+///           function_name = "upper"
+///           name          = "Name"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "lookup"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "lookup"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "EmpId"
+///             name = "EmpId"
 ///           }
-///           "functionName" = ""
-///           "name"         = "PersonID"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "PersonID"
+///           type          = "Direct"
 ///         }]
 ///       }
 ///       source_connection_reference = {
@@ -1808,72 +1811,72 @@ import 'system_data_response.dart';
 ///     data_mapper_mappings {
 ///       attribute_mapping_info = {
 ///         attribute_mappings = [{
-///           "attributeReferences" = [{
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustAddres"
+///             name = "CustAddres"
 ///           }]
-///           "expression"   = "trim(CustAddres)"
-///           "functionName" = "trim"
-///           "name"         = "CustAddres"
-///           "type"         = "Derived"
+///           expression    = "trim(CustAddres)"
+///           function_name = "trim"
+///           name          = "CustAddres"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustDepLoc"
+///             name = "CustDepLoc"
 ///           }
-///           "name" = "CustDepLoc"
-///           "type" = "Direct"
+///           name = "CustDepLoc"
+///           type = "Direct"
 ///           }, {
-///           "attributeReferences" = [{
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustName"
+///             name = "CustName"
 ///             }, {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustDepName"
+///             name = "CustDepName"
 ///           }]
-///           "expression"   = "concat(CustName, \" -> \", CustDepName)"
-///           "functionName" = ""
-///           "name"         = "CustDepName"
-///           "type"         = "Derived"
+///           expression    = "concat(CustName, \" -> \", CustDepName)"
+///           function_name = ""
+///           name          = "CustDepName"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustId"
+///             name = "CustId"
 ///           }
-///           "functionName" = ""
-///           "name"         = "CustId"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "CustId"
+///           type          = "Direct"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustName"
+///             name = "CustName"
 ///           }
-///           "name" = "CustName"
-///           "type" = "Direct"
+///           name = "CustName"
+///           type = "Direct"
 ///         }]
 ///       }
 ///       source_connection_reference = {
@@ -2005,8 +2008,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datafactory.inputs.MapperPolicyRecurrenceArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperSourceConnectionsInfoArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperConnectionArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperDslConnectorPropertiesArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.LinkedServiceReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperTableArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperTableSchemaArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperTargetConnectionsInfoArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataMapperMappingArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperAttributeMappingsArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperConnectionReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperAttributeMappingArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperAttributeReferenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -5909,7 +5920,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5917,7 +5928,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_changedatacapture" "changeDataCapture" {
+/// resource "azure-native_datafactory_change_data_capture" "changeDataCapture" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_v_net_override     = false
 ///   change_data_capture_name = "exampleChangeDataCapture"
 ///   description              = "Sample demo change data capture to transfer data from delimited (csv) to Azure SQL Database. Updating table mappings."
@@ -5933,38 +5947,38 @@ import 'system_data_response.dart';
 ///   source_connections_info {
 ///     connection = {
 ///       common_dsl_connector_properties = [{
-///         "name"  = "allowSchemaDrift"
-///         "value" = true
+///         name  = "allowSchemaDrift"
+///         value = true
 ///         }, {
-///         "name"  = "inferDriftedColumnTypes"
-///         "value" = true
+///         name  = "inferDriftedColumnTypes"
+///         value = true
 ///         }, {
-///         "name"  = "format"
-///         "value" = "delimited"
+///         name  = "format"
+///         value = "delimited"
 ///         }, {
-///         "name"  = "dateFormats"
-///         "value" = ["MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         name  = "dateFormats"
+///         value = ["MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
 ///         }, {
-///         "name"  = "timestampFormats"
-///         "value" = ["yyyyMMddHHmm", "yyyyMMdd HHmm", "yyyyMMddHHmmss", "yyyyMMdd HHmmss", "dd-MM-yyyy HH:mm:ss", "dd-MM-yyyy HH:mm", "yyyy-M-d H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy.MM.dd HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "M/d/yyyy H:m:s", "yyyy/MM/dd HH:mm:ss", "yyyy/M/d H:m:s", "dd MMM yyyy HH:mm:ss", "dd MMMM yyyy HH:mm:ss", "d MMM yyyy H:m:s", "d MMMM yyyy H:m:s", "d-M-yyyy H:m:s", "d-M-yyyy H:m", "yyyy-M-d H:m", "MM/dd/yyyy HH:mm", "M/d/yyyy H:m", "yyyy/MM/dd HH:mm", "yyyy/M/d H:m", "dd MMMM yyyy HH:mm", "dd MMM yyyy HH:mm", "d MMMM yyyy H:m", "d MMM yyyy H:m", "MM-dd-yyyy hh:mm:ss a", "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy hh:mm:ss a", "yyyy.MM.dd hh:mm:ss a", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         name  = "timestampFormats"
+///         value = ["yyyyMMddHHmm", "yyyyMMdd HHmm", "yyyyMMddHHmmss", "yyyyMMdd HHmmss", "dd-MM-yyyy HH:mm:ss", "dd-MM-yyyy HH:mm", "yyyy-M-d H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy.MM.dd HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "M/d/yyyy H:m:s", "yyyy/MM/dd HH:mm:ss", "yyyy/M/d H:m:s", "dd MMM yyyy HH:mm:ss", "dd MMMM yyyy HH:mm:ss", "d MMM yyyy H:m:s", "d MMMM yyyy H:m:s", "d-M-yyyy H:m:s", "d-M-yyyy H:m", "yyyy-M-d H:m", "MM/dd/yyyy HH:mm", "M/d/yyyy H:m", "yyyy/MM/dd HH:mm", "yyyy/M/d H:m", "dd MMMM yyyy HH:mm", "dd MMM yyyy HH:mm", "d MMMM yyyy H:m", "d MMM yyyy H:m", "MM-dd-yyyy hh:mm:ss a", "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy hh:mm:ss a", "yyyy.MM.dd hh:mm:ss a", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
 ///         }, {
-///         "name"  = "enableCdc"
-///         "value" = true
+///         name  = "enableCdc"
+///         value = true
 ///         }, {
-///         "name"  = "skipInitialLoad"
-///         "value" = true
+///         name  = "skipInitialLoad"
+///         value = true
 ///         }, {
-///         "name"  = "columnNamesAsHeader"
-///         "value" = true
+///         name  = "columnNamesAsHeader"
+///         value = true
 ///         }, {
-///         "name"  = "columnDelimiter"
-///         "value" = ","
+///         name  = "columnDelimiter"
+///         value = ","
 ///         }, {
-///         "name"  = "escapeChar"
-///         "value" = "\\\\"
+///         name  = "escapeChar"
+///         value = "\\\\"
 ///         }, {
-///         "name"  = "quoteChar"
-///         "value" = "\\\""
+///         name  = "quoteChar"
+///         value = "\\\""
 ///       }]
 ///       is_inline_dataset = true
 ///       linked_service = {
@@ -6131,41 +6145,41 @@ import 'system_data_response.dart';
 ///   target_connections_info {
 ///     connection = {
 ///       common_dsl_connector_properties = [{
-///         "name"  = "allowSchemaDrift"
-///         "value" = true
+///         name  = "allowSchemaDrift"
+///         value = true
 ///         }, {
-///         "name"  = "inferDriftedColumnTypes"
-///         "value" = true
+///         name  = "inferDriftedColumnTypes"
+///         value = true
 ///         }, {
-///         "name"  = "format"
-///         "value" = "table"
+///         name  = "format"
+///         value = "table"
 ///         }, {
-///         "name"  = "store"
-///         "value" = "sqlserver"
+///         name  = "store"
+///         value = "sqlserver"
 ///         }, {
-///         "name"  = "databaseType"
-///         "value" = "databaseType"
+///         name  = "databaseType"
+///         value = "databaseType"
 ///         }, {
-///         "name"  = "database"
-///         "value" = "database"
+///         name  = "database"
+///         value = "database"
 ///         }, {
-///         "name"  = "deletable"
-///         "value" = false
+///         name  = "deletable"
+///         value = false
 ///         }, {
-///         "name"  = "insertable"
-///         "value" = true
+///         name  = "insertable"
+///         value = true
 ///         }, {
-///         "name"  = "updateable"
-///         "value" = false
+///         name  = "updateable"
+///         value = false
 ///         }, {
-///         "name"  = "upsertable"
-///         "value" = false
+///         name  = "upsertable"
+///         value = false
 ///         }, {
-///         "name"  = "skipDuplicateMapInputs"
-///         "value" = true
+///         name  = "skipDuplicateMapInputs"
+///         value = true
 ///         }, {
-///         "name"  = "skipDuplicateMapOutputs"
-///         "value" = true
+///         name  = "skipDuplicateMapOutputs"
+///         value = true
 ///       }]
 ///       is_inline_dataset = true
 ///       linked_service = {
@@ -6178,66 +6192,66 @@ import 'system_data_response.dart';
 ///     data_mapper_mappings {
 ///       attribute_mapping_info = {
 ///         attribute_mappings = [{
-///           "attributeReferences" = [{
-///             "entity" = "source/customer"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "source/customer"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustAddres"
+///             name = "CustAddres"
 ///           }]
-///           "expression"   = "trim(CustAddres)"
-///           "functionName" = "trim"
-///           "name"         = "CustAddres"
-///           "type"         = "Derived"
+///           expression    = "trim(CustAddres)"
+///           function_name = "trim"
+///           name          = "CustAddres"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/customer"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/customer"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustDepName"
+///             name = "CustDepName"
 ///           }
-///           "functionName" = ""
-///           "name"         = "CustDeptName"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "CustDeptName"
+///           type          = "Direct"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/customer"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/customer"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustName"
+///             name = "CustName"
 ///           }
-///           "functionName" = ""
-///           "name"         = "CustEmail"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "CustEmail"
+///           type          = "Direct"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/customer"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/customer"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustId"
+///             name = "CustId"
 ///           }
-///           "functionName" = ""
-///           "name"         = "CustId"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "CustId"
+///           type          = "Direct"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/customer"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/customer"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustName"
+///             name = "CustName"
 ///           }
-///           "functionName" = ""
-///           "name"         = "CustName"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "CustName"
+///           type          = "Direct"
 ///         }]
 ///       }
 ///       source_connection_reference = {
@@ -6250,30 +6264,30 @@ import 'system_data_response.dart';
 ///     data_mapper_mappings {
 ///       attribute_mapping_info = {
 ///         attribute_mappings = [{
-///           "attributeReferences" = [{
-///             "entity" = "lookup"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "lookup"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "EmpName"
+///             name = "EmpName"
 ///           }]
-///           "expression"   = "upper(EmpName)"
-///           "functionName" = "upper"
-///           "name"         = "Name"
-///           "type"         = "Derived"
+///           expression    = "upper(EmpName)"
+///           function_name = "upper"
+///           name          = "Name"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "lookup"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "lookup"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "EmpId"
+///             name = "EmpId"
 ///           }
-///           "functionName" = ""
-///           "name"         = "PersonID"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "PersonID"
+///           type          = "Direct"
 ///         }]
 ///       }
 ///       source_connection_reference = {
@@ -6297,72 +6311,72 @@ import 'system_data_response.dart';
 ///     data_mapper_mappings {
 ///       attribute_mapping_info = {
 ///         attribute_mappings = [{
-///           "attributeReferences" = [{
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustAddres"
+///             name = "CustAddres"
 ///           }]
-///           "expression"   = "trim(CustAddres)"
-///           "functionName" = "trim"
-///           "name"         = "CustAddres"
-///           "type"         = "Derived"
+///           expression    = "trim(CustAddres)"
+///           function_name = "trim"
+///           name          = "CustAddres"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustDepLoc"
+///             name = "CustDepLoc"
 ///           }
-///           "name" = "CustDepLoc"
-///           "type" = "Direct"
+///           name = "CustDepLoc"
+///           type = "Direct"
 ///           }, {
-///           "attributeReferences" = [{
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_references = [{
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustName"
+///             name = "CustName"
 ///             }, {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustDepName"
+///             name = "CustDepName"
 ///           }]
-///           "expression"   = "concat(CustName, \" -> \", CustDepName)"
-///           "functionName" = ""
-///           "name"         = "CustDepName"
-///           "type"         = "Derived"
+///           expression    = "concat(CustName, \" -> \", CustDepName)"
+///           function_name = ""
+///           name          = "CustDepName"
+///           type          = "Derived"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustId"
+///             name = "CustId"
 ///           }
-///           "functionName" = ""
-///           "name"         = "CustId"
-///           "type"         = "Direct"
+///           function_name = ""
+///           name          = "CustId"
+///           type          = "Direct"
 ///           }, {
-///           "attributeReference" = {
-///             "entity" = "source/justSchema"
-///             "entityConnectionReference" = {
-///               "connectionName" = "amjaAdls03"
-///               "type"           = "linkedservicetype"
+///           attribute_reference = {
+///             entity = "source/justSchema"
+///             entity_connection_reference = {
+///               connection_name = "amjaAdls03"
+///               type            = "linkedservicetype"
 ///             }
-///             "name" = "CustName"
+///             name = "CustName"
 ///           }
-///           "name" = "CustName"
-///           "type" = "Direct"
+///           name = "CustName"
+///           type = "Direct"
 ///         }]
 ///       }
 ///       source_connection_reference = {
@@ -6494,8 +6508,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datafactory.inputs.MapperPolicyRecurrenceArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperSourceConnectionsInfoArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperConnectionArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperDslConnectorPropertiesArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.LinkedServiceReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperTableArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperTableSchemaArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperTargetConnectionsInfoArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataMapperMappingArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperAttributeMappingsArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperAttributeMappingArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperAttributeReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MapperConnectionReferenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

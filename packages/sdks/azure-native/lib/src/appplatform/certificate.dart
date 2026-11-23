@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,13 +81,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name = "mycertificate"
 ///   properties = {
-///     "autoSync"         = "Enabled"
-///     "certVersion"      = "08a219d06d874795a96db47e06fbb01e"
-///     "keyVaultCertName" = "mycert"
-///     "type"             = "KeyVaultCertificate"
-///     "vaultUri"         = "https://myvault.vault.azure.net"
+///     auto_sync           = "Enabled"
+///     cert_version        = "08a219d06d874795a96db47e06fbb01e"
+///     key_vault_cert_name = "mycert"
+///     type                = "KeyVaultCertificate"
+///     vault_uri           = "https://myvault.vault.azure.net"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 ///   service_name        = "myservice"
@@ -103,6 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.appplatform.Certificate;
 /// import com.pulumi.azurenative.appplatform.CertificateArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ContentCertificatePropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.KeyVaultCertificatePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -122,7 +127,6 @@ import 'system_data_response.dart';
 ///                 .autoSync("Enabled")
 ///                 .certVersion("08a219d06d874795a96db47e06fbb01e")
 ///                 .keyVaultCertName("mycert")
-///                 .type("KeyVaultCertificate")
 ///                 .vaultUri("https://myvault.vault.azure.net")
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")

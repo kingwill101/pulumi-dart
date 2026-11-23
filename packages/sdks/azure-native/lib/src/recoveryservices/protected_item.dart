@@ -71,7 +71,7 @@ import 'protected_item_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,13 +79,16 @@ import 'protected_item_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_protecteditem" "protectedItem" {
+/// resource "azure-native_recoveryservices_protected_item" "protectedItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_name = "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1"
 ///   fabric_name    = "Azure"
 ///   properties = {
-///     "policyId"          = "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/NetSDKTestRsVault/backupPolicies/DefaultPolicy"
-///     "protectedItemType" = "Microsoft.Compute/virtualMachines"
-///     "sourceResourceId"  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1"
+///     policy_id           = "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/NetSDKTestRsVault/backupPolicies/DefaultPolicy"
+///     protected_item_type = "Microsoft.Compute/virtualMachines"
+///     source_resource_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1"
 ///   }
 ///   protected_item_name = "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1"
 ///   resource_group_name = "SwaggerTestRg"
@@ -102,6 +105,19 @@ import 'protected_item_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectedItem;
 /// import com.pulumi.azurenative.recoveryservices.ProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureFileshareProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSClassicComputeVMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSComputeVMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSVMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureSqlProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSAPAseDatabaseProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSQLDatabaseProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.DPMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.GenericProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.MabFileFolderProtectedItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -120,7 +136,6 @@ import 'protected_item_args.dart';
 ///             .fabricName("Azure")
 ///             .properties(AzureIaaSComputeVMProtectedItemArgs.builder()
 ///                 .policyId("/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/NetSDKTestRsVault/backupPolicies/DefaultPolicy")
-///                 .protectedItemType("Microsoft.Compute/virtualMachines")
 ///                 .sourceResourceId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1")
 ///                 .build())
 ///             .protectedItemName("VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1")
@@ -250,7 +265,7 @@ import 'protected_item_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -258,13 +273,16 @@ import 'protected_item_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_protecteditem" "protectedItem" {
+/// resource "azure-native_recoveryservices_protected_item" "protectedItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_name = "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1"
 ///   fabric_name    = "Azure"
 ///   properties = {
-///     "protectedItemType" = "Microsoft.Compute/virtualMachines"
-///     "protectionState"   = "ProtectionStopped"
-///     "sourceResourceId"  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1"
+///     protected_item_type = "Microsoft.Compute/virtualMachines"
+///     protection_state    = "ProtectionStopped"
+///     source_resource_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1"
 ///   }
 ///   protected_item_name = "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1"
 ///   resource_group_name = "SwaggerTestRg"
@@ -281,6 +299,19 @@ import 'protected_item_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectedItem;
 /// import com.pulumi.azurenative.recoveryservices.ProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureFileshareProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSClassicComputeVMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSComputeVMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSVMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureSqlProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSAPAseDatabaseProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVmWorkloadSQLDatabaseProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.DPMProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.GenericProtectedItemArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.MabFileFolderProtectedItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -298,7 +329,6 @@ import 'protected_item_args.dart';
 ///             .containerName("IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1")
 ///             .fabricName("Azure")
 ///             .properties(AzureIaaSComputeVMProtectedItemArgs.builder()
-///                 .protectedItemType("Microsoft.Compute/virtualMachines")
 ///                 .protectionState("ProtectionStopped")
 ///                 .sourceResourceId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1")
 ///                 .build())

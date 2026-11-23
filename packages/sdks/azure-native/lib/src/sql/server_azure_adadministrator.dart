@@ -64,7 +64,7 @@ import 'server_azure_adadministrator_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'server_azure_adadministrator_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serverazureadadministrator" "serverAzureADAdministrator" {
+/// resource "azure-native_sql_server_azure_a_d_administrator" "serverAzureADAdministrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_name  = "ActiveDirectory"
 ///   administrator_type  = "ActiveDirectory"
 ///   login               = "bob@contoso.com"

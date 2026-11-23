@@ -115,7 +115,7 @@ import 'virtual_nic_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -123,7 +123,10 @@ import 'virtual_nic_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_vmwarecloudsimple_virtualmachine" "virtualMachine" {
+/// resource "azure-native_vmwarecloudsimple_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amount_of_ram = 4096
 ///   disks {
 ///     controller_id     = "1000"

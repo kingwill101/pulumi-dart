@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_ruleset" "ruleSet" {
+/// resource "azure-native_cdn_rule_set" "ruleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   profile_name        = "profile1"
 ///   resource_group_name = "RG"
 ///   rule_set_name       = "ruleSet1"

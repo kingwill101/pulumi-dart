@@ -109,7 +109,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -117,7 +117,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+/// resource "azure-native_azurestackhci_virtual_machine_instance" "virtualMachineInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_from_local = true
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
@@ -125,13 +128,13 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
 ///     }]
 ///   }
 ///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "id" = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.AzureStackHCI/virtualHardDisks/test-vhd"
+///       id = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.AzureStackHCI/virtualHardDisks/test-vhd"
 ///     }]
 ///   }
 /// }
@@ -148,7 +151,9 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.VirtualMachineInstanceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkInterfaceArmReferenceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualHardDiskArmReferenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -370,7 +375,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -378,7 +383,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+/// resource "azure-native_azurestackhci_virtual_machine_instance" "virtualMachineInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -388,7 +396,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -424,6 +432,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkInterfaceArmReferenceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesOsProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
@@ -611,7 +620,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///                 new AzureNative.AzureStackHCI.Inputs.VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUArgs
 ///                 {
 ///                     AssignmentType = AzureNative.AzureStackHCI.GpuAssignmentTypeEnum.GpuDDA,
-///                     PartitionSizeMB = 0,
+///                     PartitionSizeMB = 0.0,
 ///                 },
 ///             },
 ///             VmSize = AzureNative.AzureStackHCI.VmSizeEnum.Default,
@@ -716,7 +725,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -724,21 +733,24 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+/// resource "azure-native_azurestackhci_virtual_machine_instance" "virtualMachineInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
 ///   }
 ///   hardware_profile = {
 ///     virtual_machine_gp_us = [{
-///       "assignmentType"  = "GpuDDA"
-///       "partitionSizeMB" = 0
+///       assignment_type   = "GpuDDA"
+///       partition_size_mb = 0
 ///     }]
 ///     vm_size = "Default"
 ///   }
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -773,7 +785,9 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.VirtualMachineInstanceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkInterfaceArmReferenceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesOsProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
@@ -1067,7 +1081,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1075,7 +1089,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+/// resource "azure-native_azurestackhci_virtual_machine_instance" "virtualMachineInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -1085,7 +1102,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -1121,6 +1138,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkInterfaceArmReferenceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesOsProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
@@ -1388,7 +1406,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1396,7 +1414,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+/// resource "azure-native_azurestackhci_virtual_machine_instance" "virtualMachineInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -1406,7 +1427,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
 ///     }]
 ///   }
 ///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
@@ -1437,6 +1458,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkInterfaceArmReferenceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesStorageProfileArgs;
@@ -1702,7 +1724,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1710,7 +1732,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachineinstance" "virtualMachineInstance" {
+/// resource "azure-native_azurestackhci_virtual_machine_instance" "virtualMachineInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -1720,7 +1745,7 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
+///       id = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/networkInterfaces/test-nic"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -1759,6 +1784,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkInterfaceArmReferenceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesOsProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesOsProfileWindowsConfigurationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs;

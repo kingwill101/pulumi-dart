@@ -89,7 +89,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,6 +98,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_azurestackhci_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"

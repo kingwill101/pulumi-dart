@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_storageaccountcredential" "storageAccountCredential" {
+/// resource "azure-native_databoxedge_storage_account_credential" "storageAccountCredential" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_key = {
 ///     encryption_algorithm       = "AES256"
 ///     encryption_cert_thumbprint = "2A9D8D6BE51574B5461230AEF02F162C5F01AD31"

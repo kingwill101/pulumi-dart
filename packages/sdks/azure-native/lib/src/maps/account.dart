@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -128,18 +128,21 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_maps_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "myMapsAccount"
 ///   kind         = "Gen2"
 ///   location     = "eastus"
 ///   properties = {
 ///     cors = {
 ///       cors_rules = [{
-///         "allowedOrigins" = ["http://www.contoso.com", "http://www.fabrikam.com"]
+///         allowed_origins = ["http://www.contoso.com", "http://www.fabrikam.com"]
 ///       }]
 ///     }
 ///     disable_local_auth = true
 ///     locations = [{
-///       "locationName" = "northeurope"
+///       location_name = "northeurope"
 ///     }]
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -163,6 +166,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.maps.AccountArgs;
 /// import com.pulumi.azurenative.maps.inputs.MapsAccountPropertiesArgs;
 /// import com.pulumi.azurenative.maps.inputs.CorsRulesArgs;
+/// import com.pulumi.azurenative.maps.inputs.CorsRuleArgs;
+/// import com.pulumi.azurenative.maps.inputs.MapsAccountPropertiesLocationsArgs;
 /// import com.pulumi.azurenative.maps.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

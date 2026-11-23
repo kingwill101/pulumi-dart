@@ -71,7 +71,7 @@ import 'private_endpoint_connection_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'private_endpoint_connection_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_privateendpointconnection" "privateEndpointConnection" {
+/// resource "azure-native_migrate_private_endpoint_connection" "privateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag                            = "\"00009300-0000-0300-0000-602b967b0000\""
 ///   private_endpoint_connection_name = "custestpece80project3980pe.7e35576b-3df4-478e-9759-f64351cf4f43"
 ///   project_name                     = "abgoyalWEselfhostb72bproject"

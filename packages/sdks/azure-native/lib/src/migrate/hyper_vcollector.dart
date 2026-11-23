@@ -82,7 +82,7 @@ import 'hyper_vcollector_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'hyper_vcollector_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_hypervcollector" "hyperVCollector" {
+/// resource "azure-native_migrate_hyper_v_collector" "hyperVCollector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag                  = "\"00000981-0000-0300-0000-5d74cd5f0000\""
 ///   hyper_v_collector_name = "migrateprojectce73collector"
 ///   project_name           = "migrateprojectce73project"

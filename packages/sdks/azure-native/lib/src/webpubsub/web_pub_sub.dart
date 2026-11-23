@@ -58,7 +58,7 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///             {
 ///                 new AzureNative.WebPubSub.Inputs.PrivateEndpointACLArgs
 ///                 {
-///                     Allow = new[]
+///                     Allow =
 ///                     {
 ///                         AzureNative.WebPubSub.WebPubSubRequestType.ServerConnection,
 ///                     },
@@ -67,7 +67,7 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///             },
 ///             PublicNetwork = new AzureNative.WebPubSub.Inputs.NetworkACLArgs
 ///             {
-///                 Allow = new[]
+///                 Allow =
 ///                 {
 ///                     AzureNative.WebPubSub.WebPubSubRequestType.ClientConnection,
 ///                 },
@@ -172,7 +172,7 @@ import 'web_pub_sub_tls_settings_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -180,7 +180,10 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_webpubsub_webpubsub" "webPubSub" {
+/// resource "azure-native_webpubsub_web_pub_sub" "webPubSub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disable_aad_auth   = false
 ///   disable_local_auth = false
 ///   identity = {
@@ -189,8 +192,8 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///   kind = "WebPubSub"
 ///   live_trace_configuration = {
 ///     categories = [{
-///       "enabled" = "true"
-///       "name"    = "ConnectivityLogs"
+///       enabled = "true"
+///       name    = "ConnectivityLogs"
 ///     }]
 ///     enabled = "false"
 ///   }
@@ -198,8 +201,8 @@ import 'web_pub_sub_tls_settings_response.dart';
 ///   network_ac_ls = {
 ///     default_action = "Deny"
 ///     private_endpoints = [{
-///       "allow" = ["ServerConnection"]
-///       "name"  = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
+///       allow = ["ServerConnection"]
+///       name  = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
 ///     }]
 ///     public_network = {
 ///       allow = ["ClientConnection"]
@@ -236,7 +239,9 @@ import 'web_pub_sub_tls_settings_response.dart';
 /// import com.pulumi.azurenative.webpubsub.WebPubSubArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.ManagedIdentityArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.LiveTraceConfigurationArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.LiveTraceCategoryArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.WebPubSubNetworkACLsArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.PrivateEndpointACLArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.NetworkACLArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.ResourceSkuArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.WebPubSubSocketIOSettingsArgs;

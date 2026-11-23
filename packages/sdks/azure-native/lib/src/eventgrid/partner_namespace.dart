@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_partnernamespace" "partnerNamespace" {
+/// resource "azure-native_eventgrid_partner_namespace" "partnerNamespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                = "westus"
 ///   partner_namespace_name                  = "examplePartnerNamespaceName1"
 ///   partner_registration_fully_qualified_id = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/partnerRegistrations/ContosoCorpAccount1"

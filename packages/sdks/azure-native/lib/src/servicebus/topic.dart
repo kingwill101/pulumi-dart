@@ -60,7 +60,7 @@ import 'topic_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,6 +69,9 @@ import 'topic_args.dart';
 /// }
 ///
 /// resource "azure-native_servicebus_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable_express      = true
 ///   namespace_name      = "sdk-Namespace-1617"
 ///   resource_group_name = "ArunMonocle"

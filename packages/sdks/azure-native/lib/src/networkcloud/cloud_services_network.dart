@@ -37,7 +37,7 @@ import 'system_data_response.dart';
 ///                     new AzureNative.NetworkCloud.Inputs.EndpointDependencyArgs
 ///                     {
 ///                         DomainName = "storageaccountex.blob.core.windows.net",
-///                         Port = 443,
+///                         Port = 443.0,
 ///                     },
 ///                 },
 ///             },
@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,7 +116,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_cloudservicesnetwork" "cloudServicesNetwork" {
+/// resource "azure-native_networkcloud_cloud_services_network" "cloudServicesNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_egress_endpoints {
 ///     category = "azure-resource-management"
 ///     endpoints {
@@ -149,6 +152,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.CloudServicesNetwork;
 /// import com.pulumi.azurenative.networkcloud.CloudServicesNetworkArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.EgressEndpointArgs;
+/// import com.pulumi.azurenative.networkcloud.inputs.EndpointDependencyArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.ExtendedLocationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

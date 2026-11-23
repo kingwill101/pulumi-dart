@@ -25,9 +25,9 @@ import 'user_defined_resources_properties_response.dart';
 /// {
 ///     var iotSecuritySolution = new AzureNative.Security.IotSecuritySolution("iotSecuritySolution", new()
 ///     {
-///         DisabledDataSources = new[] {},
+///         DisabledDataSources =  {},
 ///         DisplayName = "Solution Default",
-///         Export = new[] {},
+///         Export =  {},
 ///         IotHubs = new[]
 ///         {
 ///             "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub",
@@ -49,7 +49,7 @@ import 'user_defined_resources_properties_response.dart';
 ///         ResourceGroupName = "MyGroup",
 ///         SolutionName = "default",
 ///         Status = AzureNative.Security.SecuritySolutionStatus.Enabled,
-///         Tags = null,
+///         Tags = new() { },
 ///         UnmaskedIpLoggingStatus = AzureNative.Security.UnmaskedIpLoggingStatus.Enabled,
 ///         UserDefinedResources = new AzureNative.Security.Inputs.UserDefinedResourcesPropertiesArgs
 ///         {
@@ -118,7 +118,7 @@ import 'user_defined_resources_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -126,7 +126,10 @@ import 'user_defined_resources_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_iotsecuritysolution" "iotSecuritySolution" {
+/// resource "azure-native_security_iot_security_solution" "iotSecuritySolution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disabled_data_sources = []
 ///   display_name          = "Solution Default"
 ///   export                = []

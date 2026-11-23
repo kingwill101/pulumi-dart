@@ -80,7 +80,7 @@ import 'web_pub_sub_replica_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'web_pub_sub_replica_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_webpubsub_webpubsubreplica" "webPubSubReplica" {
+/// resource "azure-native_webpubsub_web_pub_sub_replica" "webPubSubReplica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   replica_name        = "myWebPubSubService-eastus"
 ///   resource_group_name = "myResourceGroup"

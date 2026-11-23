@@ -60,7 +60,7 @@ import 'job_private_endpoint_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'job_private_endpoint_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobprivateendpoint" "jobPrivateEndpoint" {
+/// resource "azure-native_sql_job_private_endpoint" "jobPrivateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_agent_name                  = "agent1"
 ///   private_endpoint_name           = "endpoint1"
 ///   resource_group_name             = "group1"

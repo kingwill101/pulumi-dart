@@ -65,7 +65,7 @@ import 'view_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,6 +74,9 @@ import 'view_args.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_view" "view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = "{\\\"isProfileType\\\":false,\\\"profileTypes\\\":[],\\\"widgets\\\":[],\\\"style\\\":[]}"
 ///   display_name = {
 ///     "en" = "some name"

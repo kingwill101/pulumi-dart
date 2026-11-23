@@ -30,7 +30,7 @@ import 'system_data_response.dart';
 ///             Type = AzureNative.ContainerRegistry.ResourceIdentityType.SystemAssigned,
 ///         },
 ///         Location = "westus",
-///         Options = new[]
+///         Options =
 ///         {
 ///             AzureNative.ContainerRegistry.PipelineOptions.OverwriteBlobs,
 ///         },
@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_exportpipeline" "exportPipeline" {
+/// resource "azure-native_containerregistry_export_pipeline" "exportPipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   export_pipeline_name = "myExportPipeline"
 ///   identity = {
 ///     type = "SystemAssigned"

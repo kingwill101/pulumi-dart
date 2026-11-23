@@ -75,7 +75,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobserviceproperties" "blobServiceProperties" {
+/// resource "azure-native_storage_blob_service_properties" "blobServiceProperties" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name       = "sto8607"
 ///   blob_services_name = "default"
 ///   delete_retention_policy = {
@@ -253,7 +256,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -261,7 +264,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobserviceproperties" "blobServiceProperties" {
+/// resource "azure-native_storage_blob_service_properties" "blobServiceProperties" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name       = "sto8607"
 ///   blob_services_name = "default"
 ///   last_access_time_tracking_policy = {
@@ -398,7 +404,7 @@ import 'sku_response.dart';
 ///                         "x-ms-meta-data*",
 ///                         "x-ms-meta-target*",
 ///                     },
-///                     AllowedMethods = new[]
+///                     AllowedMethods =
 ///                     {
 ///                         AzureNative.Storage.AllowedMethods.GET,
 ///                         AzureNative.Storage.AllowedMethods.HEAD,
@@ -424,7 +430,7 @@ import 'sku_response.dart';
 ///                     {
 ///                         "*",
 ///                     },
-///                     AllowedMethods = new[]
+///                     AllowedMethods =
 ///                     {
 ///                         AzureNative.Storage.AllowedMethods.GET,
 ///                     },
@@ -444,7 +450,7 @@ import 'sku_response.dart';
 ///                     {
 ///                         "x-ms-meta-12345675754564*",
 ///                     },
-///                     AllowedMethods = new[]
+///                     AllowedMethods =
 ///                     {
 ///                         AzureNative.Storage.AllowedMethods.GET,
 ///                         AzureNative.Storage.AllowedMethods.PUT,
@@ -575,7 +581,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -583,7 +589,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobserviceproperties" "blobServiceProperties" {
+/// resource "azure-native_storage_blob_service_properties" "blobServiceProperties" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name       = "sto8607"
 ///   blob_services_name = "default"
 ///   change_feed = {
@@ -592,23 +601,23 @@ import 'sku_response.dart';
 ///   }
 ///   cors = {
 ///     cors_rules = [{
-///       "allowedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
-///       "allowedMethods"  = ["GET", "HEAD", "POST", "OPTIONS", "MERGE", "PUT"]
-///       "allowedOrigins"  = ["http://www.contoso.com", "http://www.fabrikam.com"]
-///       "exposedHeaders"  = ["x-ms-meta-*"]
-///       "maxAgeInSeconds" = 100
+///       allowed_headers    = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
+///       allowed_methods    = ["GET", "HEAD", "POST", "OPTIONS", "MERGE", "PUT"]
+///       allowed_origins    = ["http://www.contoso.com", "http://www.fabrikam.com"]
+///       exposed_headers    = ["x-ms-meta-*"]
+///       max_age_in_seconds = 100
 ///       }, {
-///       "allowedHeaders"  = ["*"]
-///       "allowedMethods"  = ["GET"]
-///       "allowedOrigins"  = ["*"]
-///       "exposedHeaders"  = ["*"]
-///       "maxAgeInSeconds" = 2
+///       allowed_headers    = ["*"]
+///       allowed_methods    = ["GET"]
+///       allowed_origins    = ["*"]
+///       exposed_headers    = ["*"]
+///       max_age_in_seconds = 2
 ///       }, {
-///       "allowedHeaders"  = ["x-ms-meta-12345675754564*"]
-///       "allowedMethods"  = ["GET", "PUT"]
-///       "allowedOrigins"  = ["http://www.abc23.com", "https://www.fabrikam.com/*"]
-///       "exposedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x -ms-meta-target*"]
-///       "maxAgeInSeconds" = 2000
+///       allowed_headers    = ["x-ms-meta-12345675754564*"]
+///       allowed_methods    = ["GET", "PUT"]
+///       allowed_origins    = ["http://www.abc23.com", "https://www.fabrikam.com/*"]
+///       exposed_headers    = ["x-ms-meta-abc", "x-ms-meta-data*", "x -ms-meta-target*"]
+///       max_age_in_seconds = 2000
 ///     }]
 ///   }
 ///   default_service_version = "2017-07-29"
@@ -632,6 +641,7 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.BlobServicePropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.ChangeFeedArgs;
 /// import com.pulumi.azurenative.storage.inputs.CorsRulesArgs;
+/// import com.pulumi.azurenative.storage.inputs.CorsRuleArgs;
 /// import com.pulumi.azurenative.storage.inputs.DeleteRetentionPolicyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

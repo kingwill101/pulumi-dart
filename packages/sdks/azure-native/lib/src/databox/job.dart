@@ -38,7 +38,7 @@ import 'system_data_response.dart';
 ///                 Phone = "0000000000",
 ///                 PhoneExtension = "",
 ///             },
-///             DataImportDetails = new[]
+///             DataImportDetails =
 ///             {
 ///                 new AzureNative.DataBox.Inputs.DataImportDetailsArgs
 ///                 {
@@ -99,9 +99,9 @@ import 'system_data_response.dart';
 /// 				},
 /// 				DataImportDetails: databox.DataImportDetailsArray{
 /// 					&databox.DataImportDetailsArgs{
-/// 						AccountDetails: databox.StorageAccountDetails{
-/// 							DataAccountType:  "StorageAccount",
-/// 							StorageAccountId: "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName",
+/// 						AccountDetails: &databox.StorageAccountDetailsArgs{
+/// 							DataAccountType:  pulumi.String("StorageAccount"),
+/// 							StorageAccountId: pulumi.String("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"),
 /// 						},
 /// 					},
 /// 				},
@@ -135,7 +135,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -144,29 +144,32 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databox_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   details = {
-///     "contactDetails" = {
-///       "contactName"    = "XXXX XXXX"
-///       "emailList"      = ["xxxx@xxxx.xxx"]
-///       "phone"          = "0000000000"
-///       "phoneExtension" = ""
+///     contact_details = {
+///       contact_name    = "XXXX XXXX"
+///       email_list      = ["xxxx@xxxx.xxx"]
+///       phone           = "0000000000"
+///       phone_extension = ""
 ///     }
-///     "dataImportDetails" = [{
-///       "accountDetails" = {
-///         "dataAccountType"  = "StorageAccount"
-///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///     data_import_details = [{
+///       account_details = {
+///         data_account_type  = "StorageAccount"
+///         storage_account_id = "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
 ///       }
 ///     }]
-///     "jobDetailsType" = "DataBox"
-///     "shippingAddress" = {
-///       "addressType"     = "Commercial"
-///       "city"            = "XXXX XXXX"
-///       "companyName"     = "XXXX XXXX"
-///       "country"         = "XX"
-///       "postalCode"      = "00000"
-///       "stateOrProvince" = "XX"
-///       "streetAddress1"  = "XXXX XXXX"
-///       "streetAddress2"  = "XXXX XXXX"
+///     job_details_type = "DataBox"
+///     shipping_address = {
+///       address_type      = "Commercial"
+///       city              = "XXXX XXXX"
+///       company_name      = "XXXX XXXX"
+///       country           = "XX"
+///       postal_code       = "00000"
+///       state_or_province = "XX"
+///       street_address1   = "XXXX XXXX"
+///       street_address2   = "XXXX XXXX"
 ///     }
 ///   }
 ///   job_name            = "TestJobName1"
@@ -188,6 +191,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxCustomerDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ContactDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataImportDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ManagedDiskDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.StorageAccountDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ShippingAddressArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxHeavyJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxJobDetailsArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -212,11 +224,9 @@ import 'system_data_response.dart';
 ///                     .build())
 ///                 .dataImportDetails(DataImportDetailsArgs.builder()
 ///                     .accountDetails(StorageAccountDetailsArgs.builder()
-///                         .dataAccountType("StorageAccount")
 ///                         .storageAccountId("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")
 ///                         .build())
 ///                     .build())
-///                 .jobDetailsType("DataBox")
 ///                 .shippingAddress(ShippingAddressArgs.builder()
 ///                     .addressType("Commercial")
 ///                     .city("XXXX XXXX")
@@ -383,7 +393,7 @@ import 'system_data_response.dart';
 ///                 Phone = "0000000000",
 ///                 PhoneExtension = "",
 ///             },
-///             DataImportDetails = new[]
+///             DataImportDetails =
 ///             {
 ///                 new AzureNative.DataBox.Inputs.DataImportDetailsArgs
 ///                 {
@@ -446,10 +456,10 @@ import 'system_data_response.dart';
 /// 				},
 /// 				DataImportDetails: databox.DataImportDetailsArray{
 /// 					&databox.DataImportDetailsArgs{
-/// 						AccountDetails: databox.StorageAccountDetails{
-/// 							DataAccountType:  "StorageAccount",
-/// 							SharePassword:    "<sharePassword>",
-/// 							StorageAccountId: "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName",
+/// 						AccountDetails: &databox.StorageAccountDetailsArgs{
+/// 							DataAccountType:  pulumi.String("StorageAccount"),
+/// 							SharePassword:    pulumi.String("<sharePassword>"),
+/// 							StorageAccountId: pulumi.String("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"),
 /// 						},
 /// 					},
 /// 				},
@@ -484,7 +494,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -493,31 +503,34 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databox_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   details = {
-///     "contactDetails" = {
-///       "contactName"    = "XXXX XXXX"
-///       "emailList"      = ["xxxx@xxxx.xxx"]
-///       "phone"          = "0000000000"
-///       "phoneExtension" = ""
+///     contact_details = {
+///       contact_name    = "XXXX XXXX"
+///       email_list      = ["xxxx@xxxx.xxx"]
+///       phone           = "0000000000"
+///       phone_extension = ""
 ///     }
-///     "dataImportDetails" = [{
-///       "accountDetails" = {
-///         "dataAccountType"  = "StorageAccount"
-///         "sharePassword"    = "<sharePassword>"
-///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///     data_import_details = [{
+///       account_details = {
+///         data_account_type  = "StorageAccount"
+///         share_password     = "<sharePassword>"
+///         storage_account_id = "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
 ///       }
 ///     }]
-///     "devicePassword" = "<devicePassword>"
-///     "jobDetailsType" = "DataBox"
-///     "shippingAddress" = {
-///       "addressType"     = "Commercial"
-///       "city"            = "XXXX XXXX"
-///       "companyName"     = "XXXX XXXX"
-///       "country"         = "XX"
-///       "postalCode"      = "00000"
-///       "stateOrProvince" = "XX"
-///       "streetAddress1"  = "XXXX XXXX"
-///       "streetAddress2"  = "XXXX XXXX"
+///     device_password  = "<devicePassword>"
+///     job_details_type = "DataBox"
+///     shipping_address = {
+///       address_type      = "Commercial"
+///       city              = "XXXX XXXX"
+///       company_name      = "XXXX XXXX"
+///       country           = "XX"
+///       postal_code       = "00000"
+///       state_or_province = "XX"
+///       street_address1   = "XXXX XXXX"
+///       street_address2   = "XXXX XXXX"
 ///     }
 ///   }
 ///   job_name            = "TestJobName1"
@@ -539,6 +552,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxCustomerDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ContactDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataImportDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ManagedDiskDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.StorageAccountDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ShippingAddressArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxHeavyJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxJobDetailsArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -563,13 +585,11 @@ import 'system_data_response.dart';
 ///                     .build())
 ///                 .dataImportDetails(DataImportDetailsArgs.builder()
 ///                     .accountDetails(StorageAccountDetailsArgs.builder()
-///                         .dataAccountType("StorageAccount")
 ///                         .sharePassword("<sharePassword>")
 ///                         .storageAccountId("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")
 ///                         .build())
 ///                     .build())
 ///                 .devicePassword("<devicePassword>")
-///                 .jobDetailsType("DataBox")
 ///                 .shippingAddress(ShippingAddressArgs.builder()
 ///                     .addressType("Commercial")
 ///                     .city("XXXX XXXX")
@@ -742,7 +762,7 @@ import 'system_data_response.dart';
 ///                 Phone = "0000000000",
 ///                 PhoneExtension = "",
 ///             },
-///             DataImportDetails = new[]
+///             DataImportDetails =
 ///             {
 ///                 new AzureNative.DataBox.Inputs.DataImportDetailsArgs
 ///                 {
@@ -810,9 +830,9 @@ import 'system_data_response.dart';
 /// 				},
 /// 				DataImportDetails: databox.DataImportDetailsArray{
 /// 					&databox.DataImportDetailsArgs{
-/// 						AccountDetails: databox.StorageAccountDetails{
-/// 							DataAccountType:  "StorageAccount",
-/// 							StorageAccountId: "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName",
+/// 						AccountDetails: &databox.StorageAccountDetailsArgs{
+/// 							DataAccountType:  pulumi.String("StorageAccount"),
+/// 							StorageAccountId: pulumi.String("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"),
 /// 						},
 /// 					},
 /// 				},
@@ -851,7 +871,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -860,34 +880,37 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databox_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   details = {
-///     "contactDetails" = {
-///       "contactName"    = "XXXX XXXX"
-///       "emailList"      = ["xxxx@xxxx.xxx"]
-///       "phone"          = "0000000000"
-///       "phoneExtension" = ""
+///     contact_details = {
+///       contact_name    = "XXXX XXXX"
+///       email_list      = ["xxxx@xxxx.xxx"]
+///       phone           = "0000000000"
+///       phone_extension = ""
 ///     }
-///     "dataImportDetails" = [{
-///       "accountDetails" = {
-///         "dataAccountType"  = "StorageAccount"
-///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///     data_import_details = [{
+///       account_details = {
+///         data_account_type  = "StorageAccount"
+///         storage_account_id = "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
 ///       }
 ///     }]
-///     "jobDetailsType" = "DataBox"
-///     "preferences" = {
-///       "encryptionPreferences" = {
-///         "doubleEncryption" = "Enabled"
+///     job_details_type = "DataBox"
+///     preferences = {
+///       encryption_preferences = {
+///         double_encryption = "Enabled"
 ///       }
 ///     }
-///     "shippingAddress" = {
-///       "addressType"     = "Commercial"
-///       "city"            = "XXXX XXXX"
-///       "companyName"     = "XXXX XXXX"
-///       "country"         = "XX"
-///       "postalCode"      = "00000"
-///       "stateOrProvince" = "XX"
-///       "streetAddress1"  = "XXXX XXXX"
-///       "streetAddress2"  = "XXXX XXXX"
+///     shipping_address = {
+///       address_type      = "Commercial"
+///       city              = "XXXX XXXX"
+///       company_name      = "XXXX XXXX"
+///       country           = "XX"
+///       postal_code       = "00000"
+///       state_or_province = "XX"
+///       street_address1   = "XXXX XXXX"
+///       street_address2   = "XXXX XXXX"
 ///     }
 ///   }
 ///   job_name            = "TestJobName1"
@@ -909,6 +932,17 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxCustomerDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ContactDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataImportDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ManagedDiskDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.StorageAccountDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.PreferencesArgs;
+/// import com.pulumi.azurenative.databox.inputs.EncryptionPreferencesArgs;
+/// import com.pulumi.azurenative.databox.inputs.ShippingAddressArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxHeavyJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxJobDetailsArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -933,11 +967,9 @@ import 'system_data_response.dart';
 ///                     .build())
 ///                 .dataImportDetails(DataImportDetailsArgs.builder()
 ///                     .accountDetails(StorageAccountDetailsArgs.builder()
-///                         .dataAccountType("StorageAccount")
 ///                         .storageAccountId("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")
 ///                         .build())
 ///                     .build())
-///                 .jobDetailsType("DataBox")
 ///                 .preferences(PreferencesArgs.builder()
 ///                     .encryptionPreferences(EncryptionPreferencesArgs.builder()
 ///                         .doubleEncryption("Enabled")
@@ -1122,7 +1154,7 @@ import 'system_data_response.dart';
 ///                 Phone = "0000000000",
 ///                 PhoneExtension = "",
 ///             },
-///             DataExportDetails = new[]
+///             DataExportDetails =
 ///             {
 ///                 new AzureNative.DataBox.Inputs.DataExportDetailsArgs
 ///                 {
@@ -1196,9 +1228,9 @@ import 'system_data_response.dart';
 /// 				},
 /// 				DataExportDetails: databox.DataExportDetailsArray{
 /// 					&databox.DataExportDetailsArgs{
-/// 						AccountDetails: databox.StorageAccountDetails{
-/// 							DataAccountType:  "StorageAccount",
-/// 							StorageAccountId: "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName",
+/// 						AccountDetails: &databox.StorageAccountDetailsArgs{
+/// 							DataAccountType:  pulumi.String("StorageAccount"),
+/// 							StorageAccountId: pulumi.String("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"),
 /// 						},
 /// 						TransferConfiguration: &databox.TransferConfigurationArgs{
 /// 							TransferAllDetails: &databox.TransferConfigurationTransferAllDetailsArgs{
@@ -1242,7 +1274,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1251,39 +1283,42 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databox_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   details = {
-///     "contactDetails" = {
-///       "contactName"    = "XXXX XXXX"
-///       "emailList"      = ["xxxx@xxxx.xxx"]
-///       "phone"          = "0000000000"
-///       "phoneExtension" = ""
+///     contact_details = {
+///       contact_name    = "XXXX XXXX"
+///       email_list      = ["xxxx@xxxx.xxx"]
+///       phone           = "0000000000"
+///       phone_extension = ""
 ///     }
-///     "dataExportDetails" = [{
-///       "accountDetails" = {
-///         "dataAccountType"  = "StorageAccount"
-///         "storageAccountId" = "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
+///     data_export_details = [{
+///       account_details = {
+///         data_account_type  = "StorageAccount"
+///         storage_account_id = "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"
 ///       }
-///       "transferConfiguration" = {
-///         "transferAllDetails" = {
-///           "include" = {
-///             "dataAccountType"  = "StorageAccount"
-///             "transferAllBlobs" = true
-///             "transferAllFiles" = true
+///       transfer_configuration = {
+///         transfer_all_details = {
+///           include = {
+///             data_account_type  = "StorageAccount"
+///             transfer_all_blobs = true
+///             transfer_all_files = true
 ///           }
 ///         }
-///         "transferConfigurationType" = "TransferAll"
+///         transfer_configuration_type = "TransferAll"
 ///       }
 ///     }]
-///     "jobDetailsType" = "DataBox"
-///     "shippingAddress" = {
-///       "addressType"     = "Commercial"
-///       "city"            = "XXXX XXXX"
-///       "companyName"     = "XXXX XXXX"
-///       "country"         = "XX"
-///       "postalCode"      = "00000"
-///       "stateOrProvince" = "XX"
-///       "streetAddress1"  = "XXXX XXXX"
-///       "streetAddress2"  = "XXXX XXXX"
+///     job_details_type = "DataBox"
+///     shipping_address = {
+///       address_type      = "Commercial"
+///       city              = "XXXX XXXX"
+///       company_name      = "XXXX XXXX"
+///       country           = "XX"
+///       postal_code       = "00000"
+///       state_or_province = "XX"
+///       street_address1   = "XXXX XXXX"
+///       street_address2   = "XXXX XXXX"
 ///     }
 ///   }
 ///   job_name            = "TestJobName1"
@@ -1305,6 +1340,18 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databox.Job;
 /// import com.pulumi.azurenative.databox.JobArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxCustomerDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ContactDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataExportDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ManagedDiskDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.StorageAccountDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.TransferConfigurationArgs;
+/// import com.pulumi.azurenative.databox.inputs.TransferConfigurationTransferAllDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.TransferAllDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.ShippingAddressArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxDiskJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxHeavyJobDetailsArgs;
+/// import com.pulumi.azurenative.databox.inputs.DataBoxJobDetailsArgs;
 /// import com.pulumi.azurenative.databox.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1329,7 +1376,6 @@ import 'system_data_response.dart';
 ///                     .build())
 ///                 .dataExportDetails(DataExportDetailsArgs.builder()
 ///                     .accountDetails(StorageAccountDetailsArgs.builder()
-///                         .dataAccountType("StorageAccount")
 ///                         .storageAccountId("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")
 ///                         .build())
 ///                     .transferConfiguration(TransferConfigurationArgs.builder()
@@ -1343,7 +1389,6 @@ import 'system_data_response.dart';
 ///                         .transferConfigurationType("TransferAll")
 ///                         .build())
 ///                     .build())
-///                 .jobDetailsType("DataBox")
 ///                 .shippingAddress(ShippingAddressArgs.builder()
 ///                     .addressType("Commercial")
 ///                     .city("XXXX XXXX")

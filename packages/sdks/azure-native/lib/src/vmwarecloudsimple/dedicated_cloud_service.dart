@@ -56,7 +56,7 @@ import 'dedicated_cloud_service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'dedicated_cloud_service_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_vmwarecloudsimple_dedicatedcloudservice" "dedicatedCloudService" {
+/// resource "azure-native_vmwarecloudsimple_dedicated_cloud_service" "dedicatedCloudService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dedicated_cloud_service_name = "myService"
 ///   gateway_subnet               = "10.0.0.0"
 ///   location                     = "westus"

@@ -86,7 +86,7 @@ import 'virtual_appliance_sku_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'virtual_appliance_sku_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkvirtualappliance" "networkVirtualAppliance" {
+/// resource "azure-native_network_network_virtual_appliance" "networkVirtualAppliance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   delegation = {
 ///     service_name = "PaloAltoNetworks.Cloudngfw/firewalls"
 ///   }

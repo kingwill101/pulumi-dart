@@ -136,7 +136,7 @@ import 'system_data_response.dart';
 ///         Location = "vtxegvaeqwyupplnm",
 ///         MqName = "2S-A2-D9kC946K",
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -255,7 +255,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -263,7 +263,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_brokerauthentication" "brokerAuthentication" {
+/// resource "azure-native_iotoperationsmq_broker_authentication" "brokerAuthentication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_methods {
 ///     custom = {
 ///       auth = {

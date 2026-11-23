@@ -22,7 +22,7 @@ import 'sku_response.dart';
 ///     var enterpriseKnowledgeGraph = new AzureNative.EnterpriseKnowledgeGraph.EnterpriseKnowledgeGraph("enterpriseKnowledgeGraph", new()
 ///     {
 ///         Location = "West US",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "OneResourceGroupName",
 ///         ResourceName = "sampleekgname",
 ///         Tags =
@@ -67,7 +67,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_enterpriseknowledgegraph_enterpriseknowledgegraph" "enterpriseKnowledgeGraph" {
+/// resource "azure-native_enterpriseknowledgegraph_enterprise_knowledge_graph" "enterpriseKnowledgeGraph" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "West US"
 ///   properties          = {}
 ///   resource_group_name = "OneResourceGroupName"

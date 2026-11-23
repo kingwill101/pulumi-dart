@@ -45,7 +45,7 @@ import 'system_data_response.dart';
 ///         OpenTelemetryTracesCollectorAddr = "ggqmprmjlmmkfdpb",
 ///         ResourceGroupName = "rgiotoperationsmq",
 ///         StaleDataTimeoutSeconds = 51616,
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -97,7 +97,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,7 +105,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_diagnosticservice" "diagnosticService" {
+/// resource "azure-native_iotoperationsmq_diagnostic_service" "diagnosticService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_export_frequency_seconds = 26084
 ///   diagnostic_service_name       = "73-1El3-1"
 ///   extended_location = {

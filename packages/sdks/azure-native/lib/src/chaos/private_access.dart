@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_chaos_privateaccess" "privateAccess" {
+/// resource "azure-native_chaos_private_access" "privateAccess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "centraluseuap"
 ///   private_access_name = "myPrivateAccess"
 ///   resource_group_name = "myResourceGroup"
@@ -190,7 +193,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -198,7 +201,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_chaos_privateaccess" "privateAccess" {
+/// resource "azure-native_chaos_private_access" "privateAccess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "centraluseuap"
 ///   private_access_name   = "myPrivateAccess"
 ///   public_network_access = "Enabled"

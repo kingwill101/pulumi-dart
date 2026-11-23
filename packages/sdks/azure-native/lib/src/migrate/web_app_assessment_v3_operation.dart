@@ -50,7 +50,7 @@ import 'web_app_assessment_v3_properties_response.dart';
 ///                     SubscriptionId = "lakvxkjeqpajer",
 ///                 },
 ///                 Currency = AzureNative.Migrate.AzureCurrency.Unknown,
-///                 DiscountPercentage = 12,
+///                 DiscountPercentage = 12.0,
 ///                 EnvironmentType = AzureNative.Migrate.EnvironmentType.Production,
 ///                 PerformanceData = new AzureNative.Migrate.Inputs.PerformanceDataArgs
 ///                 {
@@ -64,7 +64,7 @@ import 'web_app_assessment_v3_properties_response.dart';
 ///                     AzureOfferCode = AzureNative.Migrate.AzureOffer.Unknown,
 ///                     SavingsOptions = AzureNative.Migrate.SavingsOptions.None,
 ///                 },
-///                 ScalingFactor = 6,
+///                 ScalingFactor = 6.0,
 ///                 SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///             },
 ///         },
@@ -138,7 +138,7 @@ import 'web_app_assessment_v3_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -146,7 +146,10 @@ import 'web_app_assessment_v3_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_webappassessmentv3operation" "webAppAssessmentV3Operation" {
+/// resource "azure-native_migrate_web_app_assessment_v3_operation" "webAppAssessmentV3Operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name = "assessmentName"
 ///   project_name    = "contosoProject"
 ///   properties = {

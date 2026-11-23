@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         SchemaRegistryName = "my-schema-registry",
 ///         StorageAccountContainerUrl = "my-blob-storage.blob.core.windows.net/my-container",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_schemaregistry" "schemaRegistry" {
+/// resource "azure-native_deviceregistry_schema_registry" "schemaRegistry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "This is a sample Schema Registry"
 ///   display_name = "Schema Registry namespace 001"
 ///   identity = {

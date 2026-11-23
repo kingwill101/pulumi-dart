@@ -31,7 +31,7 @@ import 'system_data_response.dart';
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
 ///         SapVirtualInstanceName = "X00",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_sapcentralserverinstance" "sapCentralServerInstance" {
+/// resource "azure-native_workloads_sap_central_server_instance" "sapCentralServerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   central_instance_name     = "centralServer"
 ///   location                  = "westcentralus"
 ///   resource_group_name       = "test-rg"
@@ -176,7 +179,7 @@ import 'system_data_response.dart';
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
 ///         SapVirtualInstanceName = "X00",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -211,7 +214,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -219,7 +222,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_sapcentralserverinstance" "sapCentralServerInstance" {
+/// resource "azure-native_workloads_sap_central_server_instance" "sapCentralServerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   central_instance_name     = "centralServer"
 ///   location                  = "westcentralus"
 ///   resource_group_name       = "test-rg"

@@ -183,7 +183,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -191,7 +191,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ecscluster" "ecsCluster" {
+/// resource "azure-native_awsconnector_ecs_cluster" "ecsCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "jvggofkffzhlultqukgoqtb"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -202,8 +205,8 @@ import 'system_data_response.dart';
 ///       capacity_providers = ["rqrmclul"]
 ///       cluster_name       = "eavbe"
 ///       cluster_settings = [{
-///         "name"  = "elsikbbzpkzaghwtqd"
-///         "value" = "gbnpceuced"
+///         name  = "elsikbbzpkzaghwtqd"
+///         value = "gbnpceuced"
 ///       }]
 ///       configuration = {
 ///         execute_command_configuration = {
@@ -219,16 +222,16 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       default_capacity_provider_strategy = [{
-///         "base"             = 16
-///         "capacityProvider" = "kttxptzsaauhguaygucxzzvrbriev"
-///         "weight"           = 1
+///         base              = 16
+///         capacity_provider = "kttxptzsaauhguaygucxzzvrbriev"
+///         weight            = 1
 ///       }]
 ///       service_connect_defaults = {
 ///         namespace = "mwpjrqkazpcetkgyfplp"
 ///       }
 ///       tags = [{
-///         "key"   = "pmgixnftvmfbxgjyulnrh"
-///         "value" = "dsvfiamfdrnwqretfcu"
+///         key   = "pmgixnftvmfbxgjyulnrh"
+///         value = "dsvfiamfdrnwqretfcu"
 ///       }]
 ///     }
 ///     aws_region        = "qwurftmiaqdjvlbsxtmdosiauw"
@@ -257,10 +260,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.EcsClusterArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EcsClusterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEcsClusterPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ClusterSettingsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ClusterConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ExecuteCommandConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ExecuteCommandLogConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CapacityProviderStrategyItemArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectDefaultsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_communication_domain" "domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_management   = "CustomerManaged"
 ///   domain_name         = "mydomain.com"
 ///   email_service_name  = "MyEmailServiceResource"

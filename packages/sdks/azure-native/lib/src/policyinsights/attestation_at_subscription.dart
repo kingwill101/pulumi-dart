@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_attestationatsubscription" "attestationAtSubscription" {
+/// resource "azure-native_policyinsights_attestation_at_subscription" "attestationAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attestation_name     = "790996e6-9871-4b1f-9cd9-ec42cd6ced1e"
 ///   compliance_state     = "Compliant"
 ///   policy_assignment_id = "/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"
@@ -219,7 +222,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -227,7 +230,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_attestationatsubscription" "attestationAtSubscription" {
+/// resource "azure-native_policyinsights_attestation_at_subscription" "attestationAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_date  = "2021-06-10T00:00:00Z"
 ///   attestation_name = "790996e6-9871-4b1f-9cd9-ec42cd6ced1e"
 ///   comments         = "This subscription has passed a security audit."

@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_l2network" "l2Network" {
+/// resource "azure-native_networkcloud_l2_network" "l2Network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
 ///     type = "CustomLocation"

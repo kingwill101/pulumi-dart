@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appconfiguration_configurationstore" "configurationStore" {
+/// resource "azure-native_appconfiguration_configuration_store" "configurationStore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_store_name   = "contoso"
 ///   location            = "westus"
 ///   resource_group_name = "myResourceGroup"
@@ -249,7 +252,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -257,7 +260,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appconfiguration_configurationstore" "configurationStore" {
+/// resource "azure-native_appconfiguration_configuration_store" "configurationStore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_store_name = "contoso"
 ///   data_plane_proxy = {
 ///     authentication_mode     = "Pass-through"
@@ -423,7 +429,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -431,7 +437,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appconfiguration_configurationstore" "configurationStore" {
+/// resource "azure-native_appconfiguration_configuration_store" "configurationStore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_store_name   = "contoso"
 ///   disable_local_auth  = true
 ///   location            = "westus"

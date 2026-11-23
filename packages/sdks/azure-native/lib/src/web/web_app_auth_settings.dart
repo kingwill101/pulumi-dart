@@ -32,7 +32,7 @@ import 'web_app_auth_settings_args.dart';
 ///         Name = "sitef6141",
 ///         ResourceGroupName = "testrg123",
 ///         RuntimeVersion = "~1",
-///         TokenRefreshExtensionHours = 120,
+///         TokenRefreshExtensionHours = 120.0,
 ///         TokenStoreEnabled = true,
 ///         UnauthenticatedClientAction = AzureNative.Web.UnauthenticatedClientAction.RedirectToLoginPage,
 ///     });
@@ -77,7 +77,7 @@ import 'web_app_auth_settings_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'web_app_auth_settings_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappauthsettings" "webAppAuthSettings" {
+/// resource "azure-native_web_web_app_auth_settings" "webAppAuthSettings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allowed_external_redirect_urls = ["sitef6141.customdomain.net", "sitef6141.customdomain.info"]
 ///   client_id                      = "42d795a9-8abb-4d06-8534-39528af40f8e.apps.googleusercontent.com"
 ///   default_provider               = "Google"

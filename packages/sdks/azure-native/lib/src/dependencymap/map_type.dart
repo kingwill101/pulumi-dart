@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///         Location = "wjtzelgfcmswfeflfltwxqveo",
 ///         MapName = "mapsTest1",
 ///         ResourceGroupName = "rgdependencyMap",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dependencymap_map" "map" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "wjtzelgfcmswfeflfltwxqveo"
 ///   map_name            = "mapsTest1"
 ///   resource_group_name = "rgdependencyMap"

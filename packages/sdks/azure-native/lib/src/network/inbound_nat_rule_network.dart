@@ -77,7 +77,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_inboundnatrule" "inboundNatRule" {
+/// resource "azure-native_network_inbound_nat_rule" "inboundNatRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_port       = 3389
 ///   enable_floating_ip = false
 ///   enable_tcp_reset   = false

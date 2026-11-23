@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,20 +92,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbName"            = "dbName"
-///     "dbPassword"        = "password"
-///     "dbPasswordUri"     = ""
-///     "dbPort"            = "dbPort"
-///     "dbUsername"        = "username"
-///     "hostname"          = "hostname"
-///     "providerType"      = "Db2"
-///     "sapSid"            = "SID"
-///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslPreference"     = "ServerCertificate"
+///     db_name             = "dbName"
+///     db_password         = "password"
+///     db_password_uri     = ""
+///     db_port             = "dbPort"
+///     db_username         = "username"
+///     hostname            = "hostname"
+///     provider_type       = "Db2"
+///     sap_sid             = "SID"
+///     ssl_certificate_uri = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_preference      = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -120,6 +123,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -143,7 +153,6 @@ import 'system_data_response.dart';
 ///                 .dbPort("dbPort")
 ///                 .dbUsername("username")
 ///                 .hostname("hostname")
-///                 .providerType("Db2")
 ///                 .sapSid("SID")
 ///                 .sslCertificateUri("https://storageaccount.blob.core.windows.net/containername/filename")
 ///                 .sslPreference("ServerCertificate")
@@ -296,7 +305,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -304,19 +313,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbName"        = "dbName"
-///     "dbPassword"    = "password"
-///     "dbPasswordUri" = ""
-///     "dbPort"        = "dbPort"
-///     "dbUsername"    = "username"
-///     "hostname"      = "hostname"
-///     "providerType"  = "Db2"
-///     "sapSid"        = "SID"
-///     "sslPreference" = "RootCertificate"
+///     db_name         = "dbName"
+///     db_password     = "password"
+///     db_password_uri = ""
+///     db_port         = "dbPort"
+///     db_username     = "username"
+///     hostname        = "hostname"
+///     provider_type   = "Db2"
+///     sap_sid         = "SID"
+///     ssl_preference  = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -331,6 +343,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -354,7 +373,6 @@ import 'system_data_response.dart';
 ///                 .dbPort("dbPort")
 ///                 .dbUsername("username")
 ///                 .hostname("hostname")
-///                 .providerType("Db2")
 ///                 .sapSid("SID")
 ///                 .sslPreference("RootCertificate")
 ///                 .build())
@@ -503,7 +521,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -511,19 +529,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbPassword"        = "****"
-///     "dbPasswordUri"     = ""
-///     "dbPort"            = "5912"
-///     "dbUsername"        = "user"
-///     "hostname"          = "hostname"
-///     "providerType"      = "MsSqlServer"
-///     "sapSid"            = "sid"
-///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslPreference"     = "ServerCertificate"
+///     db_password         = "****"
+///     db_password_uri     = ""
+///     db_port             = "5912"
+///     db_username         = "user"
+///     hostname            = "hostname"
+///     provider_type       = "MsSqlServer"
+///     sap_sid             = "sid"
+///     ssl_certificate_uri = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_preference      = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -538,6 +559,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -560,7 +588,6 @@ import 'system_data_response.dart';
 ///                 .dbPort("5912")
 ///                 .dbUsername("user")
 ///                 .hostname("hostname")
-///                 .providerType("MsSqlServer")
 ///                 .sapSid("sid")
 ///                 .sslCertificateUri("https://storageaccount.blob.core.windows.net/containername/filename")
 ///                 .sslPreference("ServerCertificate")
@@ -708,7 +735,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -716,18 +743,21 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbPassword"    = "****"
-///     "dbPasswordUri" = ""
-///     "dbPort"        = "5912"
-///     "dbUsername"    = "user"
-///     "hostname"      = "hostname"
-///     "providerType"  = "MsSqlServer"
-///     "sapSid"        = "sid"
-///     "sslPreference" = "RootCertificate"
+///     db_password     = "****"
+///     db_password_uri = ""
+///     db_port         = "5912"
+///     db_username     = "user"
+///     hostname        = "hostname"
+///     provider_type   = "MsSqlServer"
+///     sap_sid         = "sid"
+///     ssl_preference  = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -742,6 +772,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -764,7 +801,6 @@ import 'system_data_response.dart';
 ///                 .dbPort("5912")
 ///                 .dbUsername("user")
 ///                 .hostname("hostname")
-///                 .providerType("MsSqlServer")
 ///                 .sapSid("sid")
 ///                 .sslPreference("RootCertificate")
 ///                 .build())
@@ -902,7 +938,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -910,15 +946,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "prometheusUrl"     = "http://192.168.0.0:9090/metrics"
-///     "providerType"      = "PrometheusOS"
-///     "sapSid"            = "SID"
-///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslPreference"     = "ServerCertificate"
+///     prometheus_url      = "http://192.168.0.0:9090/metrics"
+///     provider_type       = "PrometheusOS"
+///     sap_sid             = "SID"
+///     ssl_certificate_uri = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_preference      = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -933,6 +972,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -951,7 +997,6 @@ import 'system_data_response.dart';
 ///             .providerInstanceName("myProviderInstance")
 ///             .providerSettings(PrometheusOsProviderInstancePropertiesArgs.builder()
 ///                 .prometheusUrl("http://192.168.0.0:9090/metrics")
-///                 .providerType("PrometheusOS")
 ///                 .sapSid("SID")
 ///                 .sslCertificateUri("https://storageaccount.blob.core.windows.net/containername/filename")
 ///                 .sslPreference("ServerCertificate")
@@ -1079,7 +1124,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1087,14 +1132,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "prometheusUrl" = "http://192.168.0.0:9090/metrics"
-///     "providerType"  = "PrometheusOS"
-///     "sapSid"        = "SID"
-///     "sslPreference" = "RootCertificate"
+///     prometheus_url = "http://192.168.0.0:9090/metrics"
+///     provider_type  = "PrometheusOS"
+///     sap_sid        = "SID"
+///     ssl_preference = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -1109,6 +1157,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1127,7 +1182,6 @@ import 'system_data_response.dart';
 ///             .providerInstanceName("myProviderInstance")
 ///             .providerSettings(PrometheusOsProviderInstancePropertiesArgs.builder()
 ///                 .prometheusUrl("http://192.168.0.0:9090/metrics")
-///                 .providerType("PrometheusOS")
 ///                 .sapSid("SID")
 ///                 .sslPreference("RootCertificate")
 ///                 .build())
@@ -1263,7 +1317,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1271,20 +1325,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbName"            = "dbName"
-///     "dbPassword"        = "password"
-///     "dbPasswordUri"     = ""
-///     "dbPort"            = "dbPort"
-///     "dbUsername"        = "username"
-///     "hostname"          = "hostname"
-///     "providerType"      = "Oracle"
-///     "sapSid"            = "SID"
-///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslPreference"     = "ServerCertificate"
+///     db_name             = "dbName"
+///     db_password         = "password"
+///     db_password_uri     = ""
+///     db_port             = "dbPort"
+///     db_username         = "username"
+///     hostname            = "hostname"
+///     provider_type       = "Oracle"
+///     sap_sid             = "SID"
+///     ssl_certificate_uri = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_preference      = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -1299,6 +1356,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1322,7 +1386,6 @@ import 'system_data_response.dart';
 ///                 .dbPort("dbPort")
 ///                 .dbUsername("username")
 ///                 .hostname("hostname")
-///                 .providerType("Oracle")
 ///                 .sapSid("SID")
 ///                 .sslCertificateUri("https://storageaccount.blob.core.windows.net/containername/filename")
 ///                 .sslPreference("ServerCertificate")
@@ -1471,7 +1534,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1479,17 +1542,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "clusterName"       = "clusterName"
-///     "hostname"          = "hostname"
-///     "prometheusUrl"     = "http://192.168.0.0:9090/metrics"
-///     "providerType"      = "PrometheusHaCluster"
-///     "sid"               = "sid"
-///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslPreference"     = "ServerCertificate"
+///     cluster_name        = "clusterName"
+///     hostname            = "hostname"
+///     prometheus_url      = "http://192.168.0.0:9090/metrics"
+///     provider_type       = "PrometheusHaCluster"
+///     sid                 = "sid"
+///     ssl_certificate_uri = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_preference      = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -1504,6 +1570,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1524,7 +1597,6 @@ import 'system_data_response.dart';
 ///                 .clusterName("clusterName")
 ///                 .hostname("hostname")
 ///                 .prometheusUrl("http://192.168.0.0:9090/metrics")
-///                 .providerType("PrometheusHaCluster")
 ///                 .sid("sid")
 ///                 .sslCertificateUri("https://storageaccount.blob.core.windows.net/containername/filename")
 ///                 .sslPreference("ServerCertificate")
@@ -1662,7 +1734,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1670,16 +1742,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "clusterName"   = "clusterName"
-///     "hostname"      = "hostname"
-///     "prometheusUrl" = "http://192.168.0.0:9090/metrics"
-///     "providerType"  = "PrometheusHaCluster"
-///     "sid"           = "sid"
-///     "sslPreference" = "RootCertificate"
+///     cluster_name   = "clusterName"
+///     hostname       = "hostname"
+///     prometheus_url = "http://192.168.0.0:9090/metrics"
+///     provider_type  = "PrometheusHaCluster"
+///     sid            = "sid"
+///     ssl_preference = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -1694,6 +1769,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1714,7 +1796,6 @@ import 'system_data_response.dart';
 ///                 .clusterName("clusterName")
 ///                 .hostname("hostname")
 ///                 .prometheusUrl("http://192.168.0.0:9090/metrics")
-///                 .providerType("PrometheusHaCluster")
 ///                 .sid("sid")
 ///                 .sslPreference("RootCertificate")
 ///                 .build())
@@ -1860,7 +1941,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1868,22 +1949,25 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbName"                   = "db"
-///     "dbPassword"               = "****"
-///     "dbPasswordUri"            = ""
-///     "dbUsername"               = "user"
-///     "hostname"                 = "name"
-///     "instanceNumber"           = "00"
-///     "providerType"             = "SapHana"
-///     "sapSid"                   = "SID"
-///     "sqlPort"                  = "0000"
-///     "sslCertificateUri"        = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslHostNameInCertificate" = "xyz.domain.com"
-///     "sslPreference"            = "ServerCertificate"
+///     db_name                      = "db"
+///     db_password                  = "****"
+///     db_password_uri              = ""
+///     db_username                  = "user"
+///     hostname                     = "name"
+///     instance_number              = "00"
+///     provider_type                = "SapHana"
+///     sap_sid                      = "SID"
+///     sql_port                     = "0000"
+///     ssl_certificate_uri          = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_host_name_in_certificate = "xyz.domain.com"
+///     ssl_preference               = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -1898,6 +1982,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1921,7 +2012,6 @@ import 'system_data_response.dart';
 ///                 .dbUsername("user")
 ///                 .hostname("name")
 ///                 .instanceNumber("00")
-///                 .providerType("SapHana")
 ///                 .sapSid("SID")
 ///                 .sqlPort("0000")
 ///                 .sslCertificateUri("https://storageaccount.blob.core.windows.net/containername/filename")
@@ -2086,7 +2176,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2094,21 +2184,24 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbName"                   = "db"
-///     "dbPassword"               = "****"
-///     "dbPasswordUri"            = ""
-///     "dbUsername"               = "user"
-///     "hostname"                 = "name"
-///     "instanceNumber"           = "00"
-///     "providerType"             = "SapHana"
-///     "sapSid"                   = "SID"
-///     "sqlPort"                  = "0000"
-///     "sslHostNameInCertificate" = "xyz.domain.com"
-///     "sslPreference"            = "RootCertificate"
+///     db_name                      = "db"
+///     db_password                  = "****"
+///     db_password_uri              = ""
+///     db_username                  = "user"
+///     hostname                     = "name"
+///     instance_number              = "00"
+///     provider_type                = "SapHana"
+///     sap_sid                      = "SID"
+///     sql_port                     = "0000"
+///     ssl_host_name_in_certificate = "xyz.domain.com"
+///     ssl_preference               = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -2123,6 +2216,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2146,7 +2246,6 @@ import 'system_data_response.dart';
 ///                 .dbUsername("user")
 ///                 .hostname("name")
 ///                 .instanceNumber("00")
-///                 .providerType("SapHana")
 ///                 .sapSid("SID")
 ///                 .sqlPort("0000")
 ///                 .sslHostNameInCertificate("xyz.domain.com")
@@ -2314,7 +2413,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2322,22 +2421,25 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "providerType"       = "SapNetWeaver"
-///     "sapClientId"        = "111"
-///     "sapHostFileEntries" = ["127.0.0.1 name fqdn"]
-///     "sapHostname"        = "name"
-///     "sapInstanceNr"      = "00"
-///     "sapPassword"        = "****"
-///     "sapPasswordUri"     = ""
-///     "sapPortNumber"      = "1234"
-///     "sapSid"             = "SID"
-///     "sapUsername"        = "username"
-///     "sslCertificateUri"  = "https://storageaccount.blob.core.windows.net/containername/filename"
-///     "sslPreference"      = "ServerCertificate"
+///     provider_type         = "SapNetWeaver"
+///     sap_client_id         = "111"
+///     sap_host_file_entries = ["127.0.0.1 name fqdn"]
+///     sap_hostname          = "name"
+///     sap_instance_nr       = "00"
+///     sap_password          = "****"
+///     sap_password_uri      = ""
+///     sap_port_number       = "1234"
+///     sap_sid               = "SID"
+///     sap_username          = "username"
+///     ssl_certificate_uri   = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     ssl_preference        = "ServerCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -2352,6 +2454,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2369,7 +2478,6 @@ import 'system_data_response.dart';
 ///             .monitorName("mySapMonitor")
 ///             .providerInstanceName("myProviderInstance")
 ///             .providerSettings(SapNetWeaverProviderInstancePropertiesArgs.builder()
-///                 .providerType("SapNetWeaver")
 ///                 .sapClientId("111")
 ///                 .sapHostFileEntries("127.0.0.1 name fqdn")
 ///                 .sapHostname("name")
@@ -2546,7 +2654,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2554,21 +2662,24 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "providerType"       = "SapNetWeaver"
-///     "sapClientId"        = "111"
-///     "sapHostFileEntries" = ["127.0.0.1 name fqdn"]
-///     "sapHostname"        = "name"
-///     "sapInstanceNr"      = "00"
-///     "sapPassword"        = "****"
-///     "sapPasswordUri"     = ""
-///     "sapPortNumber"      = "1234"
-///     "sapSid"             = "SID"
-///     "sapUsername"        = "username"
-///     "sslPreference"      = "RootCertificate"
+///     provider_type         = "SapNetWeaver"
+///     sap_client_id         = "111"
+///     sap_host_file_entries = ["127.0.0.1 name fqdn"]
+///     sap_hostname          = "name"
+///     sap_instance_nr       = "00"
+///     sap_password          = "****"
+///     sap_password_uri      = ""
+///     sap_port_number       = "1234"
+///     sap_sid               = "SID"
+///     sap_username          = "username"
+///     ssl_preference        = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -2583,6 +2694,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2600,7 +2718,6 @@ import 'system_data_response.dart';
 ///             .monitorName("mySapMonitor")
 ///             .providerInstanceName("myProviderInstance")
 ///             .providerSettings(SapNetWeaverProviderInstancePropertiesArgs.builder()
-///                 .providerType("SapNetWeaver")
 ///                 .sapClientId("111")
 ///                 .sapHostFileEntries("127.0.0.1 name fqdn")
 ///                 .sapHostname("name")
@@ -2764,7 +2881,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2772,19 +2889,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+/// resource "azure-native_workloads_provider_instance" "providerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name           = "mySapMonitor"
 ///   provider_instance_name = "myProviderInstance"
 ///   provider_settings = {
-///     "dbName"        = "dbName"
-///     "dbPassword"    = "password"
-///     "dbPasswordUri" = ""
-///     "dbPort"        = "dbPort"
-///     "dbUsername"    = "username"
-///     "hostname"      = "hostname"
-///     "providerType"  = "Oracle"
-///     "sapSid"        = "SID"
-///     "sslPreference" = "RootCertificate"
+///     db_name         = "dbName"
+///     db_password     = "password"
+///     db_password_uri = ""
+///     db_port         = "dbPort"
+///     db_username     = "username"
+///     hostname        = "hostname"
+///     provider_type   = "Oracle"
+///     sap_sid         = "SID"
+///     ssl_preference  = "RootCertificate"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -2799,6 +2919,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
+/// import com.pulumi.azurenative.workloads.inputs.Db2ProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaDbProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MsSqlServerProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.OracleProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusHaClusterProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.PrometheusOsProviderInstancePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapNetWeaverProviderInstancePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2822,7 +2949,6 @@ import 'system_data_response.dart';
 ///                 .dbPort("dbPort")
 ///                 .dbUsername("username")
 ///                 .hostname("hostname")
-///                 .providerType("Oracle")
 ///                 .sapSid("SID")
 ///                 .sslPreference("RootCertificate")
 ///                 .build())

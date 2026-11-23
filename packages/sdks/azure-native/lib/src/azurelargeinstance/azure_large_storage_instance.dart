@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurelargeinstance_azurelargestorageinstance" "azureLargeStorageInstance" {
+/// resource "azure-native_azurelargeinstance_azure_large_storage_instance" "azureLargeStorageInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_large_storage_instance_name              = "myAzureLargeStorageInstance"
 ///   azure_large_storage_instance_unique_identifier = "23415635-4d7e-41dc-9598-8194f22c24e9"
 ///   location                                       = "westus2"

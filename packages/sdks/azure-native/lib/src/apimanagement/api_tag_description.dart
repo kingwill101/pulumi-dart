@@ -64,7 +64,7 @@ import 'api_tag_description_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'api_tag_description_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apitagdescription" "apiTagDescription" {
+/// resource "azure-native_apimanagement_api_tag_description" "apiTagDescription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                    = "5931a75ae4bbd512a88c680b"
 ///   description               = "Some description that will be displayed for operation's tag if the tag is assigned to operation of the API"
 ///   external_docs_description = "Description of the external docs resource"

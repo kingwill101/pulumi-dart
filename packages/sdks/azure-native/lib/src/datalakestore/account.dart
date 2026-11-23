@@ -133,7 +133,7 @@ import 'virtual_network_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -142,6 +142,9 @@ import 'virtual_network_rule_response.dart';
 /// }
 ///
 /// resource "azure-native_datalakestore_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "contosoadla"
 ///   default_group = "test_default_group"
 ///   encryption_config = {

@@ -72,7 +72,7 @@ import 'web_app_private_endpoint_connection_slot_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'web_app_private_endpoint_connection_slot_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappprivateendpointconnectionslot" "webAppPrivateEndpointConnectionSlot" {
+/// resource "azure-native_web_web_app_private_endpoint_connection_slot" "webAppPrivateEndpointConnectionSlot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "testSite"
 ///   private_endpoint_connection_name = "connection"
 ///   private_link_service_connection_state = {

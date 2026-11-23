@@ -101,7 +101,7 @@ import 'topic_response.dart';
 ///         {
 ///             { "site", "building-1" },
 ///         },
-///         Version = 73766,
+///         Version = 73766.0,
 ///     });
 ///
 /// });
@@ -196,7 +196,7 @@ import 'topic_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -204,7 +204,10 @@ import 'topic_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_discoveredasset" "discoveredAsset" {
+/// resource "azure-native_deviceregistry_discovered_asset" "discoveredAsset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
 ///   datasets {
 ///     data_points {
@@ -277,6 +280,7 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.DiscoveredAsset;
 /// import com.pulumi.azurenative.deviceregistry.DiscoveredAssetArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DiscoveredDatasetArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DiscoveredDataPointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DiscoveredEventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;

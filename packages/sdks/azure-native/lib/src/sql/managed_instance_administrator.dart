@@ -64,7 +64,7 @@ import 'managed_instance_administrator_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'managed_instance_administrator_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstanceadministrator" "managedInstanceAdministrator" {
+/// resource "azure-native_sql_managed_instance_administrator" "managedInstanceAdministrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_name    = "ActiveDirectory"
 ///   administrator_type    = "ActiveDirectory"
 ///   login                 = "bob@contoso.com"
@@ -222,7 +225,7 @@ import 'managed_instance_administrator_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -230,7 +233,10 @@ import 'managed_instance_administrator_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstanceadministrator" "managedInstanceAdministrator" {
+/// resource "azure-native_sql_managed_instance_administrator" "managedInstanceAdministrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_name    = "ActiveDirectory"
 ///   administrator_type    = "ActiveDirectory"
 ///   login                 = "bob@contoso.com"

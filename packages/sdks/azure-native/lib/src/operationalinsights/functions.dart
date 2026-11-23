@@ -34,7 +34,7 @@ import 'get_workspace_shared_keys_result.dart';
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2022-10-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClusterResult> getCluster(
@@ -65,7 +65,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_data_export_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataExportResult> getDataExport(
@@ -96,7 +96,7 @@ pulumi.Output<GetDataExportResult> getDataExportOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_data_source_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataSourceResult> getDataSource(
@@ -127,7 +127,7 @@ pulumi.Output<GetDataSourceResult> getDataSourceOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2015-11-01-preview, 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-11-01-preview, 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_linked_service_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLinkedServiceResult> getLinkedService(
@@ -158,7 +158,7 @@ pulumi.Output<GetLinkedServiceResult> getLinkedServiceOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_linked_storage_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLinkedStorageAccountResult> getLinkedStorageAccount(
@@ -218,7 +218,7 @@ pulumi.Output<GetMachineGroupResult> getMachineGroupOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_query_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetQueryResult> getQuery(
@@ -249,7 +249,7 @@ pulumi.Output<GetQueryResult> getQueryOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_query_pack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetQueryPackResult> getQueryPack(
@@ -280,7 +280,7 @@ pulumi.Output<GetQueryPackResult> getQueryPackOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_saved_search_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSavedSearchResult> getSavedSearch(
@@ -311,7 +311,7 @@ pulumi.Output<GetSavedSearchResult> getSavedSearchOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_shared_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSharedKeysResult> getSharedKeys(
@@ -342,7 +342,7 @@ pulumi.Output<GetSharedKeysResult> getSharedKeysOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_storage_insight_config_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageInsightConfigResult> getStorageInsightConfig(
@@ -372,6 +372,8 @@ pulumi.Output<GetStorageInsightConfigResult> getStorageInsightConfigOutput(
 /// Gets Log Analytics workspace Summary rules.
 ///
 /// Uses Azure REST API version 2025-07-01.
+///
+/// Other available API versions: 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_summary_log_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSummaryLogResult> getSummaryLog(
@@ -400,9 +402,9 @@ pulumi.Output<GetSummaryLogResult> getSummaryLogOutput(
 
 /// Gets a Log Analytics workspace table.
 ///
-/// Uses Azure REST API version 2023-09-01.
+/// Uses Azure REST API version 2026-03-01.
 ///
-/// Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-12-01-preview, 2022-10-01, 2023-09-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_table_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTableResult> getTable(
@@ -433,7 +435,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 ///
 /// Uses Azure REST API version 2023-09-01.
 ///
-/// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_operationalinsights_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceResult> getWorkspace(

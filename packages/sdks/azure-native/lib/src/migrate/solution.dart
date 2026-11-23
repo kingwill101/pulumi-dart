@@ -66,7 +66,7 @@ import 'solution_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'solution_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_migrate_solution" "solution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   migrate_project_name = "project01"
 ///   properties = {
 ///     goal    = "Databases"

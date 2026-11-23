@@ -22,7 +22,7 @@ import 'volume_type_response.dart';
 /// {
 ///     var volume = new AzureNative.ContainerStorage.Volume("volume", new()
 ///     {
-///         CapacityGiB = 25838,
+///         CapacityGiB = 25838.0,
 ///         Labels =
 ///         {
 ///             { "key2039", "value2039" },
@@ -66,7 +66,7 @@ import 'volume_type_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'volume_type_response.dart';
 /// }
 ///
 /// resource "azure-native_containerstorage_volume" "volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_gi_b = 25838
 ///   labels = {
 ///     "key2039" = "value2039"

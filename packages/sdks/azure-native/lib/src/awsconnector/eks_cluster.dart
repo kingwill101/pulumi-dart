@@ -107,7 +107,7 @@ import 'system_data_response.dart';
 ///                         new AzureNative.AwsConnector.Inputs.LogSetupArgs
 ///                         {
 ///                             Enabled = true,
-///                             Types = new[]
+///                             Types =
 ///                             {
 ///                                 AzureNative.AwsConnector.LogType.Api,
 ///                             },
@@ -311,7 +311,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -319,7 +319,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ekscluster" "eksCluster" {
+/// resource "azure-native_awsconnector_eks_cluster" "eksCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     arn            = "xhoylvamhuqnvruh"
 ///     aws_account_id = "sebsvgbgzb"
@@ -344,19 +347,19 @@ import 'system_data_response.dart';
 ///       }
 ///       created_at = "2024-10-08T03:50:52.460Z"
 ///       encryption_config = [{
-///         "provider" = {
-///           "keyArn" = "ynvyktdadcoepkg"
+///         provider = {
+///           key_arn = "ynvyktdadcoepkg"
 ///         }
-///         "resources" = ["luiywwdjzfsrozikidayeump"]
+///         resources = ["luiywwdjzfsrozikidayeump"]
 ///       }]
 ///       endpoint = "bvdvtunxiggcpmncdeflirifck"
 ///       health = {
 ///         issues = [{
-///           "code" = {
-///             "value" = "AccessDenied"
+///           code = {
+///             value = "AccessDenied"
 ///           }
-///           "message"     = "mwtvogjihbqys"
-///           "resourceIds" = ["gnfkewljeibgooftzbraahnxysx"]
+///           message      = "mwtvogjihbqys"
+///           resource_ids = ["gnfkewljeibgooftzbraahnxysx"]
 ///         }]
 ///       }
 ///       id = "zmnyjrmqynglvrhpkkqkpazfyv"
@@ -374,8 +377,8 @@ import 'system_data_response.dart';
 ///       }
 ///       logging = {
 ///         cluster_logging = [{
-///           "enabled" = true
-///           "types"   = ["api"]
+///           enabled = true
+///           types   = ["api"]
 ///         }]
 ///       }
 ///       name = "fjvxhqvmvbshnltkuozc"
@@ -432,12 +435,17 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AuthenticationModeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CertificateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ConnectorConfigResponseArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EncryptionConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProviderArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ClusterHealthArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ClusterIssueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ClusterIssueCodeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OIDCArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.KubernetesNetworkConfigResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IpFamilyEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LoggingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LogSetupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OutpostConfigResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ControlPlanePlacementResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VpcConfigResponseArgs;

@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redis_patchschedule" "patchSchedule" {
+/// resource "azure-native_redis_patch_schedule" "patchSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default             = "default"
 ///   name                = "cache1"
 ///   resource_group_name = "rg1"

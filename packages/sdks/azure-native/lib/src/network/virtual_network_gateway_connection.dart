@@ -60,7 +60,7 @@ import 'virtual_network_gateway_response.dart';
 ///                 Id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1",
 ///             },
 ///         },
-///         IpsecPolicies = new[] {},
+///         IpsecPolicies = new() {},
 ///         LocalNetworkGateway2 = new AzureNative.Network.Inputs.LocalNetworkGatewayArgs
 ///         {
 ///             GatewayIpAddress = "x.x.x.x",
@@ -79,14 +79,14 @@ import 'virtual_network_gateway_response.dart';
 ///         ResourceGroupName = "rg1",
 ///         RoutingWeight = 0,
 ///         SharedKey = "Abc123",
-///         TrafficSelectorPolicies = new[] {},
+///         TrafficSelectorPolicies = new() {},
 ///         UsePolicyBasedTrafficSelectors = false,
 ///         VirtualNetworkGateway1 = new AzureNative.Network.Inputs.VirtualNetworkGatewayArgs
 ///         {
 ///             ActiveActive = false,
 ///             BgpSettings = new AzureNative.Network.Inputs.BgpSettingsArgs
 ///             {
-///                 Asn = 65514,
+///                 Asn = 65514.0,
 ///                 BgpPeeringAddress = "10.0.1.30",
 ///                 PeerWeight = 0,
 ///             },
@@ -224,7 +224,7 @@ import 'virtual_network_gateway_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -232,7 +232,10 @@ import 'virtual_network_gateway_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkgatewayconnection" "virtualNetworkGatewayConnection" {
+/// resource "azure-native_network_virtual_network_gateway_connection" "virtualNetworkGatewayConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_mode     = "Default"
 ///   connection_protocol = "IKEv2"
 ///   connection_type     = "IPsec"
@@ -277,14 +280,14 @@ import 'virtual_network_gateway_response.dart';
 ///     gateway_type = "Vpn"
 ///     id           = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw"
 ///     ip_configurations = [{
-///       "id"                        = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/gwipconfig1"
-///       "name"                      = "gwipconfig1"
-///       "privateIPAllocationMethod" = "Dynamic"
-///       "publicIPAddress" = {
-///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"
+///       id                           = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/gwipconfig1"
+///       name                         = "gwipconfig1"
+///       private_ip_allocation_method = "Dynamic"
+///       public_ip_address = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"
 ///       }
-///       "subnet" = {
-///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"
+///       subnet = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"
 ///       }
 ///     }]
 ///     location = "centralus"
@@ -314,6 +317,7 @@ import 'virtual_network_gateway_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayArgs;
 /// import com.pulumi.azurenative.network.inputs.BgpSettingsArgs;
+/// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewaySkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

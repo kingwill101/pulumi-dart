@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_privatelinkscopedresource" "privateLinkScopedResource" {
+/// resource "azure-native_monitor_private_link_scoped_resource" "privateLinkScopedResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                  = "PlatformMetrics"
 ///   linked_resource_id    = "/subscriptions/00000000-1111-2222-3333-444444444444"
 ///   name                  = "scoped-resource-name"
@@ -212,7 +215,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -220,7 +223,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_privatelinkscopedresource" "privateLinkScopedResource" {
+/// resource "azure-native_monitor_private_link_scoped_resource" "privateLinkScopedResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                = "Resource"
 ///   linked_resource_id  = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/components/my-component"
 ///   name                = "scoped-resource-name"

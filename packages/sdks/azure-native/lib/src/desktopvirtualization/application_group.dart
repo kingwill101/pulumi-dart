@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_applicationgroup" "applicationGroup" {
+/// resource "azure-native_desktopvirtualization_application_group" "applicationGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_group_name = "applicationGroup1"
 ///   application_group_type = "RemoteApp"
 ///   description            = "des1"

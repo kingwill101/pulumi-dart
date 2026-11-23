@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,7 +116,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_connectedregistry" "connectedRegistry" {
+/// resource "azure-native_containerregistry_connected_registry" "connectedRegistry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_token_ids        = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/tokens/client1Token"]
 ///   connected_registry_name = "myConnectedRegistry"
 ///   garbage_collection = {

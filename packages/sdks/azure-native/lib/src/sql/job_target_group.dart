@@ -120,7 +120,7 @@ import 'job_target_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -128,7 +128,10 @@ import 'job_target_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobtargetgroup" "jobTargetGroup" {
+/// resource "azure-native_sql_job_target_group" "jobTargetGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_agent_name = "agent1"
 ///   members {
 ///     database_name   = "database1"
@@ -350,7 +353,7 @@ import 'job_target_response.dart';
 ///     var jobTargetGroup = new AzureNative.Sql.JobTargetGroup("jobTargetGroup", new()
 ///     {
 ///         JobAgentName = "agent1",
-///         Members = new[] {},
+///         Members = new() {},
 ///         ResourceGroupName = "group1",
 ///         ServerName = "server1",
 ///         TargetGroupName = "targetGroup1",
@@ -388,7 +391,7 @@ import 'job_target_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -396,7 +399,10 @@ import 'job_target_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobtargetgroup" "jobTargetGroup" {
+/// resource "azure-native_sql_job_target_group" "jobTargetGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_agent_name      = "agent1"
 ///   resource_group_name = "group1"
 ///   server_name         = "server1"

@@ -82,7 +82,7 @@ import 'user_settings_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'user_settings_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_portal_usersettings" "userSettings" {
+/// resource "azure-native_portal_user_settings" "userSettings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     preferred_location   = "eastus"
 ///     preferred_os_type    = "Linux"

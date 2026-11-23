@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appcomplianceautomation_scopingconfiguration" "scopingConfiguration" {
+/// resource "azure-native_appcomplianceautomation_scoping_configuration" "scopingConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   answers {
 ///     answers     = ["Azure"]
 ///     question_id = "GEN20_hostingEnvironment"

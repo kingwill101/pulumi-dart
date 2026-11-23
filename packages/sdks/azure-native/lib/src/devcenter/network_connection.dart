@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_networkconnection" "networkConnection" {
+/// resource "azure-native_devcenter_network_connection" "networkConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_join_type               = "HybridAzureADJoin"
 ///   domain_name                    = "mydomaincontroller.local"
 ///   domain_password                = "Password value for user"

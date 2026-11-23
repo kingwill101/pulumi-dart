@@ -89,7 +89,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,6 +98,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_eventgrid_client" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attributes = {
 ///     "deviceTypes" = ["Fan", "Light", "AC"]
 ///     "floor"       = 3

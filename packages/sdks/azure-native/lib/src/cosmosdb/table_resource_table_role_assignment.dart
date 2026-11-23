@@ -63,7 +63,7 @@ import 'table_resource_table_role_assignment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'table_resource_table_role_assignment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_tableresourcetableroleassignment" "tableResourceTableRoleAssignment" {
+/// resource "azure-native_cosmosdb_table_resource_table_role_assignment" "tableResourceTableRoleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "myAccountName"
 ///   principal_id        = "myPrincipalId"
 ///   resource_group_name = "myResourceGroupName"

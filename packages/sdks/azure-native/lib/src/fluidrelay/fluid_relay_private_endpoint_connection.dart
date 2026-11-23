@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_fluidrelay_fluidrelayprivateendpointconnection" "fluidRelayPrivateEndpointConnection" {
+/// resource "azure-native_fluidrelay_fluid_relay_private_endpoint_connection" "fluidRelayPrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fluid_relay_server_name          = "myFluidRelayServer"
 ///   private_endpoint_connection_name = "myPrivateEndpointConnection"
 ///   private_link_service_connection_state = {

@@ -100,7 +100,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,15 +108,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_capacityreservationgroup" "capacityReservationGroup" {
+/// resource "azure-native_compute_capacity_reservation_group" "capacityReservationGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_reservation_group_name = "myCapacityReservationGroup"
 ///   location                        = "westus"
 ///   resource_group_name             = "myResourceGroup"
 ///   sharing_profile = {
 ///     subscription_ids = [{
-///       "id" = "/subscriptions/{subscription-id1}"
+///       id = "/subscriptions/{subscription-id1}"
 ///       }, {
-///       "id" = "/subscriptions/{subscription-id2}"
+///       id = "/subscriptions/{subscription-id2}"
 ///     }]
 ///   }
 ///   tags = {
@@ -136,6 +139,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.CapacityReservationGroup;
 /// import com.pulumi.azurenative.compute.CapacityReservationGroupArgs;
 /// import com.pulumi.azurenative.compute.inputs.ResourceSharingProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

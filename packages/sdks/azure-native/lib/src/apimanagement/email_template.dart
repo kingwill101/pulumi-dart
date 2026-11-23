@@ -59,7 +59,7 @@ import 'email_template_parameters_contract_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'email_template_parameters_contract_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_emailtemplate" "emailTemplate" {
+/// resource "azure-native_apimanagement_email_template" "emailTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "rg1"
 ///   service_name        = "apimService1"
 ///   subject             = "Your request for $IssueName was successfully received."

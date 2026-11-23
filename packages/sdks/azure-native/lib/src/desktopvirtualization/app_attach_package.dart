@@ -140,7 +140,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -148,7 +148,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_appattachpackage" "appAttachPackage" {
+/// resource "azure-native_desktopvirtualization_app_attach_package" "appAttachPackage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_attach_package_name = "msixpackagefullname"
 ///   location                = "southcentralus"
 ///   properties = {
@@ -164,18 +167,18 @@ import 'system_data_response.dart';
 ///       last_updated            = "2008-09-22T14:01:54.9571247Z"
 ///       package_alias           = "msixpackagealias"
 ///       package_applications = [{
-///         "appId"          = "AppId"
-///         "appUserModelID" = "AppUserModelId"
-///         "description"    = "PackageApplicationDescription"
-///         "friendlyName"   = "FriendlyName"
-///         "iconImageName"  = "Iconimagename"
-///         "rawIcon"        = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
-///         "rawPng"         = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
+///         app_id            = "AppId"
+///         app_user_model_id = "AppUserModelId"
+///         description       = "PackageApplicationDescription"
+///         friendly_name     = "FriendlyName"
+///         icon_image_name   = "Iconimagename"
+///         raw_icon          = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
+///         raw_png           = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
 ///       }]
 ///       package_dependencies = [{
-///         "dependencyName" = "MsixPackage_Dependency_Name"
-///         "minVersion"     = "packageDep_version"
-///         "publisher"      = "MsixPackage_Dependency_Publisher"
+///         dependency_name = "MsixPackage_Dependency_Name"
+///         min_version     = "packageDep_version"
+///         publisher       = "MsixPackage_Dependency_Publisher"
 ///       }]
 ///       package_family_name   = "MsixPackage_FamilyName"
 ///       package_full_name     = "MsixPackage_FullName"
@@ -200,6 +203,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.desktopvirtualization.AppAttachPackageArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.AppAttachPackagePropertiesArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.AppAttachPackageInfoPropertiesArgs;
+/// import com.pulumi.azurenative.desktopvirtualization.inputs.MsixPackageApplicationsArgs;
+/// import com.pulumi.azurenative.desktopvirtualization.inputs.MsixPackageDependenciesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

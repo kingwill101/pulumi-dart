@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_permissionbinding" "permissionBinding" {
+/// resource "azure-native_eventgrid_permission_binding" "permissionBinding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_group_name       = "exampleClientGroupName1"
 ///   namespace_name          = "exampleNamespaceName1"
 ///   permission              = "Publisher"

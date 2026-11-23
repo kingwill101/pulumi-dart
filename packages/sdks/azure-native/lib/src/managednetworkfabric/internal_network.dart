@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 ///                     Address = "2fff::",
 ///                 },
 ///             },
-///             PeerASN = 61234,
+///             PeerASN = 61234.0,
 ///         },
 ///         ConnectedIPv4Subnets = new[]
 ///         {
@@ -242,7 +242,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -250,7 +250,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_internalnetwork" "internalNetwork" {
+/// resource "azure-native_managednetworkfabric_internal_network" "internalNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation = "annotation"
 ///   bgp_configuration = {
 ///     allow_as          = 10
@@ -263,11 +266,11 @@ import 'system_data_response.dart';
 ///     default_route_originate    = "True"
 ///     ipv4_listen_range_prefixes = ["10.1.0.0/25"]
 ///     ipv4_neighbor_address = [{
-///       "address" = "10.1.0.0"
+///       address = "10.1.0.0"
 ///     }]
 ///     ipv6_listen_range_prefixes = ["2fff::/66"]
 ///     ipv6_neighbor_address = [{
-///       "address" = "2fff::"
+///       address = "2fff::"
 ///     }]
 ///     peer_asn = 61234
 ///   }
@@ -304,12 +307,12 @@ import 'system_data_response.dart';
 ///     }
 ///     extension = "NoExtension"
 ///     ipv4_routes = [{
-///       "nextHop" = ["10.0.0.1"]
-///       "prefix"  = "jffgck"
+///       next_hop = ["10.0.0.1"]
+///       prefix   = "jffgck"
 ///     }]
 ///     ipv6_routes = [{
-///       "nextHop" = ["3ffe::1"]
-///       "prefix"  = "2fff::/64"
+///       next_hop = ["3ffe::1"]
+///       prefix   = "2fff::/64"
 ///     }]
 ///   }
 ///   vlan_id = 755
@@ -327,10 +330,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.InternalNetworkArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.InternalNetworkPropertiesBgpConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.BfdConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.NeighborAddressArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ConnectedSubnetArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ExportRoutePolicyArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ImportRoutePolicyArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.InternalNetworkPropertiesStaticRouteConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.StaticRoutePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

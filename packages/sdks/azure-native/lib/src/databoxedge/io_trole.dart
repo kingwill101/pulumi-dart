@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 ///         Name = "IoTRole1",
 ///         ResourceGroupName = "GroupForEdgeAutomation",
 ///         RoleStatus = AzureNative.DataBoxEdge.RoleStatus.Enabled,
-///         ShareMappings = new[] {},
+///         ShareMappings = new() {},
 ///     });
 ///
 /// });
@@ -127,7 +127,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,7 +135,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_iotrole" "ioTRole" {
+/// resource "azure-native_databoxedge_io_t_role" "ioTRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name   = "testedgedevice"
 ///   host_platform = "Linux"
 ///   io_t_device_details = {
@@ -226,7 +229,6 @@ import 'system_data_response.dart';
 ///                 .deviceId("iotEdge")
 ///                 .ioTHostHub("iothub.azure-devices.net")
 ///                 .build())
-///             .kind("IOT")
 ///             .name("IoTRole1")
 ///             .resourceGroupName("GroupForEdgeAutomation")
 ///             .roleStatus("Enabled")

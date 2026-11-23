@@ -66,7 +66,7 @@ import 'peering_service_sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'peering_service_sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_peering_peeringservice" "peeringService" {
+/// resource "azure-native_peering_peering_service" "peeringService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                          = "eastus"
 ///   peering_service_location          = "state1"
 ///   peering_service_name              = "peeringServiceName"

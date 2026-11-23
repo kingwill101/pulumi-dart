@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,11 +75,14 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_addon" "addon" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_name         = "arc"
 ///   private_cloud_name = "cloud1"
 ///   properties = {
-///     "addonType" = "Arc"
-///     "vCenter"   = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg_test/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vcenter"
+///     addon_type = "Arc"
+///     v_center   = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg_test/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vcenter"
 ///   }
 ///   resource_group_name = "group1"
 /// }
@@ -94,6 +97,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.Addon;
 /// import com.pulumi.azurenative.avs.AddonArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonArcPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonHcxPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonSrmPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonVrPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -111,7 +118,6 @@ import 'system_data_response.dart';
 ///             .addonName("arc")
 ///             .privateCloudName("cloud1")
 ///             .properties(AddonArcPropertiesArgs.builder()
-///                 .addonType("Arc")
 ///                 .vCenter("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg_test/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vcenter")
 ///                 .build())
 ///             .resourceGroupName("group1")
@@ -224,7 +230,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -233,11 +239,14 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_addon" "addon" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_name         = "hcx"
 ///   private_cloud_name = "cloud1"
 ///   properties = {
-///     "addonType" = "HCX"
-///     "offer"     = "VMware MaaS Cloud Provider (Enterprise)"
+///     addon_type = "HCX"
+///     offer      = "VMware MaaS Cloud Provider (Enterprise)"
 ///   }
 ///   resource_group_name = "group1"
 /// }
@@ -252,6 +261,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.Addon;
 /// import com.pulumi.azurenative.avs.AddonArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonArcPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonHcxPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonSrmPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonVrPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -269,7 +282,6 @@ import 'system_data_response.dart';
 ///             .addonName("hcx")
 ///             .privateCloudName("cloud1")
 ///             .properties(AddonHcxPropertiesArgs.builder()
-///                 .addonType("HCX")
 ///                 .offer("VMware MaaS Cloud Provider (Enterprise)")
 ///                 .build())
 ///             .resourceGroupName("group1")
@@ -382,7 +394,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -391,11 +403,14 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_addon" "addon" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_name         = "srm"
 ///   private_cloud_name = "cloud1"
 ///   properties = {
-///     "addonType"  = "SRM"
-///     "licenseKey" = "41915178-A8FF-4A4D-B683-6D735AF5E3F5"
+///     addon_type  = "SRM"
+///     license_key = "41915178-A8FF-4A4D-B683-6D735AF5E3F5"
 ///   }
 ///   resource_group_name = "group1"
 /// }
@@ -410,6 +425,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.Addon;
 /// import com.pulumi.azurenative.avs.AddonArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonArcPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonHcxPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonSrmPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonVrPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -427,7 +446,6 @@ import 'system_data_response.dart';
 ///             .addonName("srm")
 ///             .privateCloudName("cloud1")
 ///             .properties(AddonSrmPropertiesArgs.builder()
-///                 .addonType("SRM")
 ///                 .licenseKey("41915178-A8FF-4A4D-B683-6D735AF5E3F5")
 ///                 .build())
 ///             .resourceGroupName("group1")
@@ -540,7 +558,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -549,11 +567,14 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_addon" "addon" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_name         = "vr"
 ///   private_cloud_name = "cloud1"
 ///   properties = {
-///     "addonType" = "VR"
-///     "vrsCount"  = 1
+///     addon_type = "VR"
+///     vrs_count  = 1
 ///   }
 ///   resource_group_name = "group1"
 /// }
@@ -568,6 +589,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.Addon;
 /// import com.pulumi.azurenative.avs.AddonArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonArcPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonHcxPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonSrmPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.AddonVrPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -585,7 +610,6 @@ import 'system_data_response.dart';
 ///             .addonName("vr")
 ///             .privateCloudName("cloud1")
 ///             .properties(AddonVrPropertiesArgs.builder()
-///                 .addonType("VR")
 ///                 .vrsCount(1)
 ///                 .build())
 ///             .resourceGroupName("group1")

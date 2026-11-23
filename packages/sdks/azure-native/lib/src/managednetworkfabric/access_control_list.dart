@@ -159,7 +159,7 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 MatchConfigurationName = "example-match",
-///                 SequenceNumber = 123,
+///                 SequenceNumber = 123.0,
 ///             },
 ///         },
 ///         ResourceGroupName = "example-rg",
@@ -304,7 +304,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -312,7 +312,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_accesscontrollist" "accessControlList" {
+/// resource "azure-native_managednetworkfabric_access_control_list" "accessControlList" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_control_list_name = "example-acl"
 ///   acls_url                 = "https://ACL-Storage-URL"
 ///   annotation               = "annotation"
@@ -386,7 +389,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.AccessControlList;
 /// import com.pulumi.azurenative.managednetworkfabric.AccessControlListArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.CommonDynamicMatchConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.IpGroupPropertiesArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.PortGroupPropertiesArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.VlanGroupPropertiesArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.AccessControlListMatchConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.AccessControlListActionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.AccessControlListMatchConditionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.IpMatchConditionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.AccessControlListPortConditionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.VlanMatchConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

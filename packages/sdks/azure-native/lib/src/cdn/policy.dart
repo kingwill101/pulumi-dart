@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 ///                             NegateCondition = false,
 ///                             Operator = AzureNative.Cdn.Operator.Contains,
 ///                             Selector = "search",
-///                             Transforms = new[]
+///                             Transforms =
 ///                             {
 ///                                 AzureNative.Cdn.TransformType.UrlDecode,
 ///                                 AzureNative.Cdn.TransformType.Lowercase,
@@ -121,7 +121,7 @@ import 'system_data_response.dart';
 ///         PolicySettings = new AzureNative.Cdn.Inputs.PolicySettingsArgs
 ///         {
 ///             DefaultCustomBlockResponseBody = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==",
-///             DefaultCustomBlockResponseStatusCode = 200,
+///             DefaultCustomBlockResponseStatusCode = 200.0,
 ///             DefaultRedirectUrl = "http://www.bing.com",
 ///         },
 ///         RateLimitRules = new AzureNative.Cdn.Inputs.RateLimitRuleListArgs
@@ -292,7 +292,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -301,51 +301,54 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_rules = {
 ///     rules = [{
-///       "action"       = "Block"
-///       "enabledState" = "Enabled"
-///       "matchConditions" = [{
-///         "matchValue"      = ["CH"]
-///         "matchVariable"   = "RemoteAddr"
-///         "negateCondition" = false
-///         "operator"        = "GeoMatch"
-///         "transforms"      = []
+///       action        = "Block"
+///       enabled_state = "Enabled"
+///       match_conditions = [{
+///         match_value      = ["CH"]
+///         match_variable   = "RemoteAddr"
+///         negate_condition = false
+///         operator         = "GeoMatch"
+///         transforms       = []
 ///         }, {
-///         "matchValue"      = ["windows"]
-///         "matchVariable"   = "RequestHeader"
-///         "negateCondition" = false
-///         "operator"        = "Contains"
-///         "selector"        = "UserAgent"
-///         "transforms"      = []
+///         match_value      = ["windows"]
+///         match_variable   = "RequestHeader"
+///         negate_condition = false
+///         operator         = "Contains"
+///         selector         = "UserAgent"
+///         transforms       = []
 ///         }, {
-///         "matchValue"      = ["<?php", "?>"]
-///         "matchVariable"   = "QueryString"
-///         "negateCondition" = false
-///         "operator"        = "Contains"
-///         "selector"        = "search"
-///         "transforms"      = ["UrlDecode", "Lowercase"]
+///         match_value      = ["<?php", "?>"]
+///         match_variable   = "QueryString"
+///         negate_condition = false
+///         operator         = "Contains"
+///         selector         = "search"
+///         transforms       = ["UrlDecode", "Lowercase"]
 ///       }]
-///       "name"     = "CustomRule1"
-///       "priority" = 2
+///       name     = "CustomRule1"
+///       priority = 2
 ///     }]
 ///   }
 ///   location = "WestUs"
 ///   managed_rules = {
 ///     managed_rule_sets = [{
-///       "ruleGroupOverrides" = [{
-///         "ruleGroupName" = "Group1"
-///         "rules" = [{
-///           "action"       = "Redirect"
-///           "enabledState" = "Enabled"
-///           "ruleId"       = "GROUP1-0001"
+///       rule_group_overrides = [{
+///         rule_group_name = "Group1"
+///         rules = [{
+///           action        = "Redirect"
+///           enabled_state = "Enabled"
+///           rule_id       = "GROUP1-0001"
 ///           }, {
-///           "enabledState" = "Disabled"
-///           "ruleId"       = "GROUP1-0002"
+///           enabled_state = "Disabled"
+///           rule_id       = "GROUP1-0002"
 ///         }]
 ///       }]
-///       "ruleSetType"    = "DefaultRuleSet"
-///       "ruleSetVersion" = "preview-1.0"
+///       rule_set_type    = "DefaultRuleSet"
+///       rule_set_version = "preview-1.0"
 ///     }]
 ///   }
 ///   policy_name = "MicrosoftCdnWafPolicy"
@@ -356,19 +359,19 @@ import 'system_data_response.dart';
 ///   }
 ///   rate_limit_rules = {
 ///     rules = [{
-///       "action"       = "Block"
-///       "enabledState" = "Enabled"
-///       "matchConditions" = [{
-///         "matchValue"      = ["192.168.1.0/24", "10.0.0.0/24"]
-///         "matchVariable"   = "RemoteAddr"
-///         "negateCondition" = false
-///         "operator"        = "IPMatch"
-///         "transforms"      = []
+///       action        = "Block"
+///       enabled_state = "Enabled"
+///       match_conditions = [{
+///         match_value      = ["192.168.1.0/24", "10.0.0.0/24"]
+///         match_variable   = "RemoteAddr"
+///         negate_condition = false
+///         operator         = "IPMatch"
+///         transforms       = []
 ///       }]
-///       "name"                       = "RateLimitRule1"
-///       "priority"                   = 1
-///       "rateLimitDurationInMinutes" = 0
-///       "rateLimitThreshold"         = 1000
+///       name                           = "RateLimitRule1"
+///       priority                       = 1
+///       rate_limit_duration_in_minutes = 0
+///       rate_limit_threshold           = 1000
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -388,9 +391,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.Policy;
 /// import com.pulumi.azurenative.cdn.PolicyArgs;
 /// import com.pulumi.azurenative.cdn.inputs.CustomRuleListArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CustomRuleArgs;
+/// import com.pulumi.azurenative.cdn.inputs.MatchConditionArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ManagedRuleSetListArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ManagedRuleSetArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ManagedRuleGroupOverrideArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ManagedRuleOverrideArgs;
 /// import com.pulumi.azurenative.cdn.inputs.PolicySettingsArgs;
 /// import com.pulumi.azurenative.cdn.inputs.RateLimitRuleListArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RateLimitRuleArgs;
 /// import com.pulumi.azurenative.cdn.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

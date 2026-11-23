@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_aigateway" "aiGateway" {
+/// resource "azure-native_web_ai_gateway" "aiGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "CentralUS"
 ///   name                = "aigateway1"
 ///   resource_group_name = "testrg"

@@ -442,7 +442,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -450,137 +450,140 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_deploymentsetting" "deploymentSetting" {
+/// resource "azure-native_azurestackhci_deployment_setting" "deploymentSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arc_node_resource_ids = ["/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1", "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-2"]
 ///   cluster_name          = "myCluster"
 ///   deployment_configuration = {
 ///     scale_units = [{
-///       "deploymentData" = {
-///         "adouPath" = "OU=ms169,DC=ASZ1PLab8,DC=nttest,DC=microsoft,DC=com"
-///         "cluster" = {
-///           "azureServiceEndpoint" = "core.windows.net"
-///           "cloudAccountName"     = "myasestoragacct"
-///           "name"                 = "testHCICluster"
-///           "witnessPath"          = "Cloud"
-///           "witnessType"          = "Cloud"
+///       deployment_data = {
+///         adou_path = "OU=ms169,DC=ASZ1PLab8,DC=nttest,DC=microsoft,DC=com"
+///         cluster = {
+///           azure_service_endpoint = "core.windows.net"
+///           cloud_account_name     = "myasestoragacct"
+///           name                   = "testHCICluster"
+///           witness_path           = "Cloud"
+///           witness_type           = "Cloud"
 ///         }
-///         "domainFqdn" = "ASZ1PLab8.nttest.microsoft.com"
-///         "hostNetwork" = {
-///           "enableStorageAutoIp" = false
-///           "intents" = [{
-///             "adapter" = ["Port2"]
-///             "adapterPropertyOverrides" = {
-///               "jumboPacket"             = "1514"
-///               "networkDirect"           = "Enabled"
-///               "networkDirectTechnology" = "iWARP"
+///         domain_fqdn = "ASZ1PLab8.nttest.microsoft.com"
+///         host_network = {
+///           enable_storage_auto_ip = false
+///           intents = [{
+///             adapter = ["Port2"]
+///             adapter_property_overrides = {
+///               jumbo_packet              = "1514"
+///               network_direct            = "Enabled"
+///               network_direct_technology = "iWARP"
 ///             }
-///             "name"                               = "Compute_Management"
-///             "overrideAdapterProperty"            = false
-///             "overrideQosPolicy"                  = false
-///             "overrideVirtualSwitchConfiguration" = false
-///             "qosPolicyOverrides" = {
-///               "bandwidthPercentageSMB"         = "50"
-///               "priorityValue8021ActionCluster" = "7"
-///               "priorityValue8021ActionSMB"     = "3"
+///             name                                  = "Compute_Management"
+///             override_adapter_property             = false
+///             override_qos_policy                   = false
+///             override_virtual_switch_configuration = false
+///             qos_policy_overrides = {
+///               bandwidth_percentage_smb          = "50"
+///               priority_value8021_action_cluster = "7"
+///               priority_value8021_action_smb     = "3"
 ///             }
-///             "trafficType" = ["Compute", "Management"]
-///             "virtualSwitchConfigurationOverrides" = {
-///               "enableIov"              = "True"
-///               "loadBalancingAlgorithm" = "HyperVPort"
+///             traffic_type = ["Compute", "Management"]
+///             virtual_switch_configuration_overrides = {
+///               enable_iov               = "True"
+///               load_balancing_algorithm = "HyperVPort"
 ///             }
 ///           }]
-///           "storageConnectivitySwitchless" = true
-///           "storageNetworks" = [{
-///             "name"               = "Storage1Network"
-///             "networkAdapterName" = "Port3"
-///             "storageAdapterIPInfo" = [{
-///               "ipv4Address"  = "10.57.48.60"
-///               "physicalNode" = "string"
-///               "subnetMask"   = "255.255.248.0"
+///           storage_connectivity_switchless = true
+///           storage_networks = [{
+///             name                 = "Storage1Network"
+///             network_adapter_name = "Port3"
+///             storage_adapter_ip_info = [{
+///               ipv4_address  = "10.57.48.60"
+///               physical_node = "string"
+///               subnet_mask   = "255.255.248.0"
 ///             }]
-///             "vlanId" = "5"
+///             vlan_id = "5"
 ///           }]
 ///         }
-///         "infrastructureNetwork" = [{
-///           "dnsServers" = ["10.57.50.90"]
-///           "gateway"    = "255.255.248.0"
-///           "ipPools" = [{
-///             "endingAddress"   = "10.57.48.66"
-///             "startingAddress" = "10.57.48.60"
+///         infrastructure_network = [{
+///           dns_servers = ["10.57.50.90"]
+///           gateway     = "255.255.248.0"
+///           ip_pools = [{
+///             ending_address   = "10.57.48.66"
+///             starting_address = "10.57.48.60"
 ///           }]
-///           "subnetMask" = "255.255.248.0"
+///           subnet_mask = "255.255.248.0"
 ///         }]
-///         "namingPrefix" = "ms169"
-///         "observability" = {
-///           "episodicDataUpload"  = true
-///           "euLocation"          = false
-///           "streamingDataClient" = true
+///         naming_prefix = "ms169"
+///         observability = {
+///           episodic_data_upload  = true
+///           eu_location           = false
+///           streaming_data_client = true
 ///         }
-///         "optionalServices" = {
-///           "customLocation" = "customLocationName"
+///         optional_services = {
+///           custom_location = "customLocationName"
 ///         }
-///         "physicalNodes" = [{
-///           "ipv4Address" = "10.57.51.224"
-///           "name"        = "ms169host"
+///         physical_nodes = [{
+///           ipv4_address = "10.57.51.224"
+///           name         = "ms169host"
 ///           }, {
-///           "ipv4Address" = "10.57.53.236"
-///           "name"        = "ms154host"
+///           ipv4_address = "10.57.53.236"
+///           name         = "ms154host"
 ///         }]
-///         "sdnIntegration" = {
-///           "networkController" = {
-///             "macAddressPoolStart"          = "00-0D-3A-1B-C7-21"
-///             "macAddressPoolStop"           = "00-0D-3A-1B-C7-29"
-///             "networkVirtualizationEnabled" = true
+///         sdn_integration = {
+///           network_controller = {
+///             mac_address_pool_start         = "00-0D-3A-1B-C7-21"
+///             mac_address_pool_stop          = "00-0D-3A-1B-C7-29"
+///             network_virtualization_enabled = true
 ///           }
 ///         }
-///         "secrets" = [{
-///           "eceSecretName"  = "BMCAdminUserCred"
-///           "secretLocation" = "https://sclusterkvnirhci35.vault.azure.net/secrets/cluster-34232342-BmcAdminUser-f5bcc1d9-23af-4ae9-aca1-041d0f593a63/9276354aabfc492fa9b2cdbefb54ae4b"
-///           "secretName"     = "cluster1-BmcAdminUser-f5bcc1d9-23af-4ae9-aca1-041d0f593a63"
+///         secrets = [{
+///           ece_secret_name = "BMCAdminUserCred"
+///           secret_location = "https://sclusterkvnirhci35.vault.azure.net/secrets/cluster-34232342-BmcAdminUser-f5bcc1d9-23af-4ae9-aca1-041d0f593a63/9276354aabfc492fa9b2cdbefb54ae4b"
+///           secret_name     = "cluster1-BmcAdminUser-f5bcc1d9-23af-4ae9-aca1-041d0f593a63"
 ///           }, {
-///           "eceSecretName"  = "AzureStackLCMUserCredential"
-///           "secretLocation" = "https://sclusterkvnirhci35.vault.azure.net/secrets/cluster-34232342-AzureStackLCMUserCredential-f5bcc1d9-23af-4ae9-aca1-041d0f593a63/9276354aabfc492fa9b2cdbefb54ae4c"
-///           "secretName"     = "cluster2-AzureStackLCMUserCredential-f5bcc1d9-23af-4ae9-aca1-041d0f593a63"
+///           ece_secret_name = "AzureStackLCMUserCredential"
+///           secret_location = "https://sclusterkvnirhci35.vault.azure.net/secrets/cluster-34232342-AzureStackLCMUserCredential-f5bcc1d9-23af-4ae9-aca1-041d0f593a63/9276354aabfc492fa9b2cdbefb54ae4c"
+///           secret_name     = "cluster2-AzureStackLCMUserCredential-f5bcc1d9-23af-4ae9-aca1-041d0f593a63"
 ///         }]
-///         "secretsLocation" = "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-xxxxxxx/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/abcd123"
-///         "securitySettings" = {
-///           "bitlockerBootVolume"           = true
-///           "bitlockerDataVolumes"          = true
-///           "credentialGuardEnforced"       = false
-///           "driftControlEnforced"          = true
-///           "drtmProtection"                = true
-///           "hvciProtection"                = true
-///           "sideChannelMitigationEnforced" = true
-///           "smbClusterEncryption"          = false
-///           "smbSigningEnforced"            = true
-///           "wdacEnforced"                  = true
+///         secrets_location = "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-xxxxxxx/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/abcd123"
+///         security_settings = {
+///           bitlocker_boot_volume            = true
+///           bitlocker_data_volumes           = true
+///           credential_guard_enforced        = false
+///           drift_control_enforced           = true
+///           drtm_protection                  = true
+///           hvci_protection                  = true
+///           side_channel_mitigation_enforced = true
+///           smb_cluster_encryption           = false
+///           smb_signing_enforced             = true
+///           wdac_enforced                    = true
 ///         }
-///         "storage" = {
-///           "configurationMode" = "Express"
+///         storage = {
+///           configuration_mode = "Express"
 ///         }
 ///       }
-///       "sbePartnerInfo" = {
-///         "credentialList" = [{
-///           "eceSecretName"  = "DownloadConnectorCred"
-///           "secretLocation" = "https://sclusterkvnirhci35.vault.azure.net/secrets/cluster-34232342-DownloadConnectorCred-f5bcc1d9-23af-4ae9-aca1-041d0f593a63/9276354aabfc492fa9b2cdbefb54ae4b"
-///           "secretName"     = "cluster1-DownloadConnectorCred-f5bcc1d9-23af-4ae9-aca1-041d0f593a63"
+///       sbe_partner_info = {
+///         credential_list = [{
+///           ece_secret_name = "DownloadConnectorCred"
+///           secret_location = "https://sclusterkvnirhci35.vault.azure.net/secrets/cluster-34232342-DownloadConnectorCred-f5bcc1d9-23af-4ae9-aca1-041d0f593a63/9276354aabfc492fa9b2cdbefb54ae4b"
+///           secret_name     = "cluster1-DownloadConnectorCred-f5bcc1d9-23af-4ae9-aca1-041d0f593a63"
 ///         }]
-///         "partnerProperties" = [{
-///           "name"  = "EnableBMCIpV6"
-///           "value" = "false"
+///         partner_properties = [{
+///           name  = "EnableBMCIpV6"
+///           value = "false"
 ///           }, {
-///           "name"  = "PhoneHomePort"
-///           "value" = "1653"
+///           name  = "PhoneHomePort"
+///           value = "1653"
 ///           }, {
-///           "name"  = "BMCSecurityState"
-///           "value" = "HighSecurity"
+///           name  = "BMCSecurityState"
+///           value = "HighSecurity"
 ///         }]
-///         "sbeDeploymentInfo" = {
-///           "family"                  = "Gen5"
-///           "publisher"               = "Contoso"
-///           "sbeManifestCreationDate" = "2023-07-25T02:40:33Z"
-///           "sbeManifestSource"       = "default"
-///           "version"                 = "4.0.2309.13"
+///         sbe_deployment_info = {
+///           family                     = "Gen5"
+///           publisher                  = "Contoso"
+///           sbe_manifest_creation_date = "2023-07-25T02:40:33Z"
+///           sbe_manifest_source        = "default"
+///           version                    = "4.0.2309.13"
 ///         }
 ///       }
 ///     }]
@@ -603,6 +606,30 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.DeploymentSetting;
 /// import com.pulumi.azurenative.azurestackhci.DeploymentSettingArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.DeploymentConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ScaleUnitsArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DeploymentDataArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DeploymentClusterArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HostNetworkArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.IntentsArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.AdapterPropertyOverridesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.QosPolicyOverridesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualSwitchConfigurationOverridesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.StorageNetworksArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.StorageAdapterIPInfoArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.InfrastructureNetworkArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.IpPoolsArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ObservabilityArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.OptionalServicesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.PhysicalNodesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.SdnIntegrationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkControllerArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EceDeploymentSecretsArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DeploymentSecuritySettingsArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.StorageArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.SbePartnerInfoArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.SbeCredentialsArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.SbePartnerPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.SbeDeploymentInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

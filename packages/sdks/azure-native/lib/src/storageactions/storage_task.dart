@@ -126,7 +126,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -134,22 +134,25 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storageactions_storagetask" "storageTask" {
+/// resource "azure-native_storageactions_storage_task" "storageTask" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action = {
 ///     else = {
 ///       operations = [{
-///         "name"      = "DeleteBlob"
-///         "onFailure" = "break"
-///         "onSuccess" = "continue"
+///         name       = "DeleteBlob"
+///         on_failure = "break"
+///         on_success = "continue"
 ///       }]
 ///     }
 ///     if = {
 ///       condition = "[[equals(AccessTier, 'Cool')]]"
 ///       operations = [{
-///         "name"      = "SetBlobTier"
-///         "onFailure" = "break"
-///         "onSuccess" = "continue"
-///         "parameters" = {
+///         name       = "SetBlobTier"
+///         on_failure = "break"
+///         on_success = "continue"
+///         parameters = {
 ///           "tier" = "Hot"
 ///         }
 ///       }]
@@ -177,6 +180,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storageactions.StorageTaskArgs;
 /// import com.pulumi.azurenative.storageactions.inputs.StorageTaskActionArgs;
 /// import com.pulumi.azurenative.storageactions.inputs.ElseConditionArgs;
+/// import com.pulumi.azurenative.storageactions.inputs.StorageTaskOperationArgs;
 /// import com.pulumi.azurenative.storageactions.inputs.IfConditionArgs;
 /// import com.pulumi.azurenative.storageactions.inputs.ManagedServiceIdentityArgs;
 /// import java.util.ArrayList;

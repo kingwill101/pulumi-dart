@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_scvmm_machineextension" "machineExtension" {
+/// resource "azure-native_scvmm_machine_extension" "machineExtension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extension_name      = "CustomScriptExtension"
 ///   location            = "eastus2euap"
 ///   publisher           = "Microsoft.Compute"

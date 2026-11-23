@@ -116,7 +116,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,7 +124,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_deploymentstackswhatifresultsatsubscription" "deploymentStacksWhatIfResultsAtSubscription" {
+/// resource "azure-native_resources_deployment_stacks_what_if_results_at_subscription" "deploymentStacksWhatIfResultsAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_stacks_what_if_result_name = "simpleDeploymentStackWhatIfResult"
 ///   location                              = "eastus"
 ///   properties = {
@@ -169,6 +172,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.resources.inputs.DeploymentStacksWhatIfResultPropertiesArgs;
 /// import com.pulumi.azurenative.resources.inputs.ActionOnUnmanageArgs;
 /// import com.pulumi.azurenative.resources.inputs.DenySettingsArgs;
+/// import com.pulumi.azurenative.resources.inputs.DeploymentExtensionConfigItemArgs;
 /// import com.pulumi.azurenative.resources.inputs.DeploymentStacksTemplateLinkArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

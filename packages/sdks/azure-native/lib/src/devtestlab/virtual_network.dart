@@ -83,7 +83,7 @@ import 'virtual_network_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'virtual_network_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_devtestlab_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allowed_subnets {
 ///     allow_public_ip = "Allow"
 ///     lab_subnet_name = "{virtualNetworkName}Subnet"

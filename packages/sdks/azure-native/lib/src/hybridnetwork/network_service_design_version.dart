@@ -92,23 +92,23 @@ import 'system_data_response.dart';
 /// 					},
 /// 				},
 /// 				ResourceElementTemplates: pulumi.Array{
-/// 					hybridnetwork.ArmResourceDefinitionResourceElementTemplateDetails{
-/// 						Configuration: hybridnetwork.ArmResourceDefinitionResourceElementTemplate{
-/// 							ArtifactProfile: hybridnetwork.NSDArtifactProfile{
-/// 								ArtifactName: "MyVMArmTemplate",
-/// 								ArtifactStoreReference: hybridnetwork.ReferencedResource{
-/// 									Id: "/subscriptions/subid/providers/Microsoft.HybridNetwork/publishers/contosoGroup/artifactStoreReference/store1",
+/// 					&hybridnetwork.ArmResourceDefinitionResourceElementTemplateDetailsArgs{
+/// 						Configuration: &hybridnetwork.ArmResourceDefinitionResourceElementTemplateArgs{
+/// 							ArtifactProfile: &hybridnetwork.NSDArtifactProfileArgs{
+/// 								ArtifactName: pulumi.String("MyVMArmTemplate"),
+/// 								ArtifactStoreReference: &hybridnetwork.ReferencedResourceArgs{
+/// 									Id: pulumi.String("/subscriptions/subid/providers/Microsoft.HybridNetwork/publishers/contosoGroup/artifactStoreReference/store1"),
 /// 								},
-/// 								ArtifactVersion: "1.0.0",
+/// 								ArtifactVersion: pulumi.String("1.0.0"),
 /// 							},
-/// 							ParameterValues: "{\"publisherName\":\"{configurationparameters('MyVM_Configuration').publisherName}\",\"skuGroupName\":\"{configurationparameters('MyVM_Configuration').skuGroupName}\",\"skuVersion\":\"{configurationparameters('MyVM_Configuration').skuVersion}\",\"skuOfferingLocation\":\"{configurationparameters('MyVM_Configuration').skuOfferingLocation}\",\"nfviType\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviType}\",\"nfviId\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviId}\",\"allowSoftwareUpdates\":\"{configurationparameters('MyVM_Configuration').allowSoftwareUpdates}\",\"virtualNetworkName\":\"{configurationparameters('MyVM_Configuration').vnetName}\",\"subnetName\":\"{configurationparameters('MyVM_Configuration').subnetName}\",\"subnetAddressPrefix\":\"{configurationparameters('MyVM_Configuration').subnetAddressPrefix}\",\"managedResourceGroup\":\"{configurationparameters('SNSSelf').managedResourceGroupName}\",\"adminPassword\":\"{secretparameters('MyVM_Configuration').adminPassword}\"}",
-/// 							TemplateType:    hybridnetwork.TemplateTypeArmTemplate,
+/// 							ParameterValues: pulumi.String("{\"publisherName\":\"{configurationparameters('MyVM_Configuration').publisherName}\",\"skuGroupName\":\"{configurationparameters('MyVM_Configuration').skuGroupName}\",\"skuVersion\":\"{configurationparameters('MyVM_Configuration').skuVersion}\",\"skuOfferingLocation\":\"{configurationparameters('MyVM_Configuration').skuOfferingLocation}\",\"nfviType\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviType}\",\"nfviId\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviId}\",\"allowSoftwareUpdates\":\"{configurationparameters('MyVM_Configuration').allowSoftwareUpdates}\",\"virtualNetworkName\":\"{configurationparameters('MyVM_Configuration').vnetName}\",\"subnetName\":\"{configurationparameters('MyVM_Configuration').subnetName}\",\"subnetAddressPrefix\":\"{configurationparameters('MyVM_Configuration').subnetAddressPrefix}\",\"managedResourceGroup\":\"{configurationparameters('SNSSelf').managedResourceGroupName}\",\"adminPassword\":\"{secretparameters('MyVM_Configuration').adminPassword}\"}"),
+/// 							TemplateType:    pulumi.String(hybridnetwork.TemplateTypeArmTemplate),
 /// 						},
-/// 						DependsOnProfile: hybridnetwork.DependsOnProfile{
-/// 							InstallDependsOn: []interface{}{},
+/// 						DependsOnProfile: &hybridnetwork.DependsOnProfileArgs{
+/// 							InstallDependsOn: pulumi.StringArray{},
 /// 						},
-/// 						Name:                "MyVM",
-/// 						ResourceElementType: "ArmResourceDefinition",
+/// 						Name:                pulumi.String("MyVM"),
+/// 						ResourceElementType: pulumi.String("ArmResourceDefinition"),
 /// 					},
 /// 				},
 /// 			},
@@ -125,7 +125,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -133,7 +133,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkservicedesignversion" "networkServiceDesignVersion" {
+/// resource "azure-native_hybridnetwork_network_service_design_version" "networkServiceDesignVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "eastus"
 ///   network_service_design_group_name   = "TestNetworkServiceDesignGroupName"
 ///   network_service_design_version_name = "1.0.0"
@@ -144,22 +147,22 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     resource_element_templates = [{
-///       "configuration" = {
-///         "artifactProfile" = {
-///           "artifactName" = "MyVMArmTemplate"
-///           "artifactStoreReference" = {
-///             "id" = "/subscriptions/subid/providers/Microsoft.HybridNetwork/publishers/contosoGroup/artifactStoreReference/store1"
+///       configuration = {
+///         artifact_profile = {
+///           artifact_name = "MyVMArmTemplate"
+///           artifact_store_reference = {
+///             id = "/subscriptions/subid/providers/Microsoft.HybridNetwork/publishers/contosoGroup/artifactStoreReference/store1"
 ///           }
-///           "artifactVersion" = "1.0.0"
+///           artifact_version = "1.0.0"
 ///         }
-///         "parameterValues" = "{\"publisherName\":\"{configurationparameters('MyVM_Configuration').publisherName}\",\"skuGroupName\":\"{configurationparameters('MyVM_Configuration').skuGroupName}\",\"skuVersion\":\"{configurationparameters('MyVM_Configuration').skuVersion}\",\"skuOfferingLocation\":\"{configurationparameters('MyVM_Configuration').skuOfferingLocation}\",\"nfviType\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviType}\",\"nfviId\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviId}\",\"allowSoftwareUpdates\":\"{configurationparameters('MyVM_Configuration').allowSoftwareUpdates}\",\"virtualNetworkName\":\"{configurationparameters('MyVM_Configuration').vnetName}\",\"subnetName\":\"{configurationparameters('MyVM_Configuration').subnetName}\",\"subnetAddressPrefix\":\"{configurationparameters('MyVM_Configuration').subnetAddressPrefix}\",\"managedResourceGroup\":\"{configurationparameters('SNSSelf').managedResourceGroupName}\",\"adminPassword\":\"{secretparameters('MyVM_Configuration').adminPassword}\"}"
-///         "templateType"    = "ArmTemplate"
+///         parameter_values = "{\"publisherName\":\"{configurationparameters('MyVM_Configuration').publisherName}\",\"skuGroupName\":\"{configurationparameters('MyVM_Configuration').skuGroupName}\",\"skuVersion\":\"{configurationparameters('MyVM_Configuration').skuVersion}\",\"skuOfferingLocation\":\"{configurationparameters('MyVM_Configuration').skuOfferingLocation}\",\"nfviType\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviType}\",\"nfviId\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviId}\",\"allowSoftwareUpdates\":\"{configurationparameters('MyVM_Configuration').allowSoftwareUpdates}\",\"virtualNetworkName\":\"{configurationparameters('MyVM_Configuration').vnetName}\",\"subnetName\":\"{configurationparameters('MyVM_Configuration').subnetName}\",\"subnetAddressPrefix\":\"{configurationparameters('MyVM_Configuration').subnetAddressPrefix}\",\"managedResourceGroup\":\"{configurationparameters('SNSSelf').managedResourceGroupName}\",\"adminPassword\":\"{secretparameters('MyVM_Configuration').adminPassword}\"}"
+///         template_type    = "ArmTemplate"
 ///       }
-///       "dependsOnProfile" = {
-///         "installDependsOn" = []
+///       depends_on_profile = {
+///         install_depends_on = []
 ///       }
-///       "name"                = "MyVM"
-///       "resourceElementType" = "ArmResourceDefinition"
+///       name                  = "MyVM"
+///       resource_element_type = "ArmResourceDefinition"
 ///     }]
 ///   }
 ///   publisher_name      = "TestPublisher"
@@ -177,6 +180,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.NetworkServiceDesignVersion;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkServiceDesignVersionArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkServiceDesignVersionPropertiesFormatArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ArmResourceDefinitionResourceElementTemplateDetailsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ArmResourceDefinitionResourceElementTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NSDArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.DependsOnProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionDefinitionResourceElementTemplateDetailsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -214,7 +223,6 @@ import 'system_data_response.dart';
 ///                         .installDependsOn()
 ///                         .build())
 ///                     .name("MyVM")
-///                     .resourceElementType("ArmResourceDefinition")
 ///                     .build())
 ///                 .build())
 ///             .publisherName("TestPublisher")

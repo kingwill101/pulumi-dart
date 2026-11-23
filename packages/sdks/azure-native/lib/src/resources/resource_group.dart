@@ -55,7 +55,7 @@ import 'resource_group_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'resource_group_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_resourcegroup" "resourceGroup" {
+/// resource "azure-native_resources_resource_group" "resourceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   resource_group_name = "my-resource-group"
 /// }

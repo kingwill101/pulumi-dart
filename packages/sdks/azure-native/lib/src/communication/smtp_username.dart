@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_smtpusername" "smtpUsername" {
+/// resource "azure-native_communication_smtp_username" "smtpUsername" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_service_name = "contosoACSService"
 ///   entra_application_id       = "aaaa1111-bbbb-2222-3333-aaaa111122bb"
 ///   resource_group_name        = "contosoResourceGroup"

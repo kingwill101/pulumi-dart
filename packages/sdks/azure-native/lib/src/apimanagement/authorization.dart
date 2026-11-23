@@ -63,7 +63,7 @@ import 'authorization_error_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,6 +72,9 @@ import 'authorization_error_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_authorization" "authorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_id          = "authz2"
 ///   authorization_provider_id = "aadwithauthcode"
 ///   authorization_type        = "OAuth2"
@@ -223,7 +226,7 @@ import 'authorization_error_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -232,6 +235,9 @@ import 'authorization_error_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_authorization" "authorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_id          = "authz1"
 ///   authorization_provider_id = "aadwithclientcred"
 ///   authorization_type        = "OAuth2"

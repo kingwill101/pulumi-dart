@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudhealth_discoveryrule" "discoveryRule" {
+/// resource "azure-native_cloudhealth_discovery_rule" "discoveryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discovery_rule_name = "myDiscoveryRule"
 ///   health_model_name   = "myHealthModel"
 ///   properties = {

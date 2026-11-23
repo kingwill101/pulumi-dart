@@ -58,9 +58,9 @@ import 'system_data_response.dart';
 /// 		_, err := discovery.NewStorageContainer(ctx, "storageContainer", &discovery.StorageContainerArgs{
 /// 			Location: pulumi.String("uksouth"),
 /// 			Properties: &discovery.StorageContainerPropertiesArgs{
-/// 				StorageStore: discovery.AzureStorageBlobStore{
-/// 					Kind:             "AzureStorageBlob",
-/// 					StorageAccountId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storageaccount",
+/// 				StorageStore: &discovery.AzureStorageBlobStoreArgs{
+/// 					Kind:             pulumi.String("AzureStorageBlob"),
+/// 					StorageAccountId: pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storageaccount"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName:    pulumi.String("rgdiscovery"),
@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,12 +87,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_discovery_storagecontainer" "storageContainer" {
+/// resource "azure-native_discovery_storage_container" "storageContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "uksouth"
 ///   properties = {
 ///     storage_store = {
-///       "kind"             = "AzureStorageBlob"
-///       "storageAccountId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storageaccount"
+///       kind               = "AzureStorageBlob"
+///       storage_account_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storageaccount"
 ///     }
 ///   }
 ///   resource_group_name    = "rgdiscovery"
@@ -113,6 +116,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.discovery.StorageContainer;
 /// import com.pulumi.azurenative.discovery.StorageContainerArgs;
 /// import com.pulumi.azurenative.discovery.inputs.StorageContainerPropertiesArgs;
+/// import com.pulumi.azurenative.discovery.inputs.AzureNetAppFilesStoreArgs;
+/// import com.pulumi.azurenative.discovery.inputs.AzureStorageBlobStoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -130,7 +135,6 @@ import 'system_data_response.dart';
 ///             .location("uksouth")
 ///             .properties(StorageContainerPropertiesArgs.builder()
 ///                 .storageStore(AzureStorageBlobStoreArgs.builder()
-///                     .kind("AzureStorageBlob")
 ///                     .storageAccountId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storageaccount")
 ///                     .build())
 ///                 .build())

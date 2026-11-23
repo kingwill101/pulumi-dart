@@ -64,7 +64,7 @@ import 'cache_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,6 +73,9 @@ import 'cache_args.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_cache" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_id            = "c1"
 ///   connection_string   = "apim.redis.cache.windows.net:6380,password=xc,ssl=True,abortConnect=False"
 ///   description         = "Redis cache instances in West India"

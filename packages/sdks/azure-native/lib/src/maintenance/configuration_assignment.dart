@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_maintenance_configurationassignment" "configurationAssignment" {
+/// resource "azure-native_maintenance_configuration_assignment" "configurationAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_assignment_name = "workervmConfiguration"
 ///   maintenance_configuration_id  = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/examplerg/providers/Microsoft.Maintenance/maintenanceConfigurations/configuration1"
 ///   provider_name                 = "Microsoft.Compute"

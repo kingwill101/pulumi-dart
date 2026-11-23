@@ -90,7 +90,7 @@ import 'user_secret_store_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,6 +99,9 @@ import 'user_secret_store_response.dart';
 /// }
 ///
 /// resource "azure-native_devtestlab_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     app_id         = "{appId}"
 ///     object_id      = "{objectId}"

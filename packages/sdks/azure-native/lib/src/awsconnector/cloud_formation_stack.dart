@@ -29,7 +29,7 @@ import 'system_data_response.dart';
 ///             AwsAccountId = "yuzdhawgkrzzmppqjebmyzrqzsxbgh",
 ///             AwsProperties = new AzureNative.AwsConnector.Inputs.AwsCloudFormationStackPropertiesArgs
 ///             {
-///                 Capabilities = new[]
+///                 Capabilities =
 ///                 {
 ///                     AzureNative.AwsConnector.Capabilities.CAPABILITY_AUTO_EXPAND,
 ///                 },
@@ -177,7 +177,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -185,7 +185,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_cloudformationstack" "cloudFormationStack" {
+/// resource "azure-native_awsconnector_cloud_formation_stack" "cloudFormationStack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "igidmxpchpipflxgxqkge"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -201,10 +204,10 @@ import 'system_data_response.dart';
 ///       last_update_time              = "ziwluvridlkgt"
 ///       notification_ar_ns            = ["hiumjcobumu"]
 ///       outputs = [{
-///         "description" = "yr"
-///         "exportName"  = "inzgbtgxtlkmbsthsiqyaownydl"
-///         "outputKey"   = "oxvigtrakftzifxp"
-///         "outputValue" = "xrkebm"
+///         description  = "yr"
+///         export_name  = "inzgbtgxtlkmbsthsiqyaownydl"
+///         output_key   = "oxvigtrakftzifxp"
+///         output_value = "xrkebm"
 ///       }]
 ///       parameters = {
 ///         "key3924" = "g"
@@ -218,8 +221,8 @@ import 'system_data_response.dart';
 ///       stack_status        = "CREATE_COMPLETE"
 ///       stack_status_reason = "oashauqgm"
 ///       tags = [{
-///         "key"   = "xjabhkryhrdgshmztidyvkbzqw"
-///         "value" = "xapmapwprakmhlboq"
+///         key   = "xjabhkryhrdgshmztidyvkbzqw"
+///         value = "xapmapwprakmhlboq"
 ///       }]
 ///       template_url       = "prpgfhggbaglqposmnlkc"
 ///       timeout_in_minutes = 21
@@ -250,6 +253,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.CloudFormationStackArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudFormationStackPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCloudFormationStackPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.OutputArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

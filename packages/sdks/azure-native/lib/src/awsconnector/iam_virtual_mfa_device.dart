@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,7 +127,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_iamvirtualmfadevice" "iamVirtualMfaDevice" {
+/// resource "azure-native_awsconnector_iam_virtual_mfa_device" "iamVirtualMfaDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ixkqwzfnsthfshdlvsvh"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -137,8 +140,8 @@ import 'system_data_response.dart';
 ///       path          = "iuiajbhehzagt"
 ///       serial_number = "zbsulwrnmmhdwuelwbybavq"
 ///       tags = [{
-///         "key"   = "imskkztsfijhjvvp"
-///         "value" = "kpmtbersaovhycdipca"
+///         key   = "imskkztsfijhjvvp"
+///         value = "kpmtbersaovhycdipca"
 ///       }]
 ///       users                   = ["pzktvxysprnhhivbnuuutllcomxp"]
 ///       virtual_mfa_device_name = "m"
@@ -169,6 +172,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamVirtualMfaDeviceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamVirtualMFADevicePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamVirtualMFADevicePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

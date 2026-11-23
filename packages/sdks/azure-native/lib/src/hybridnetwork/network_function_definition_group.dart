@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunctiondefinitiongroup" "networkFunctionDefinitionGroup" {
+/// resource "azure-native_hybridnetwork_network_function_definition_group" "networkFunctionDefinitionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                               = "eastus"
 ///   network_function_definition_group_name = "TestNetworkFunctionDefinitionGroupName"
 ///   publisher_name                         = "TestPublisher"

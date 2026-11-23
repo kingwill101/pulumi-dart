@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicebus_queueauthorizationrule" "queueAuthorizationRule" {
+/// resource "azure-native_servicebus_queue_authorization_rule" "queueAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "sdk-AuthRules-5800"
 ///   namespace_name          = "sdk-Namespace-7982"
 ///   queue_name              = "sdk-Queues-2317"

@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_scheduledalertrule" "scheduledAlertRule" {
+/// resource "azure-native_securityinsights_scheduled_alert_rule" "scheduledAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   rule_id             = "myFirstFusionRule"
 ///   workspace_name      = "myWorkspace"
@@ -189,7 +192,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -197,7 +200,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_scheduledalertrule" "scheduledAlertRule" {
+/// resource "azure-native_securityinsights_scheduled_alert_rule" "scheduledAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   rule_id             = "microsoftSecurityIncidentCreationRuleExample"
 ///   workspace_name      = "myWorkspace"
@@ -352,7 +358,7 @@ import 'system_data_response.dart';
 ///             GroupingConfiguration = new AzureNative.SecurityInsights.Inputs.GroupingConfigurationArgs
 ///             {
 ///                 Enabled = true,
-///                 GroupByAlertDetails = new[]
+///                 GroupByAlertDetails =
 ///                 {
 ///                     AzureNative.SecurityInsights.AlertDetail.DisplayName,
 ///                 },
@@ -361,7 +367,7 @@ import 'system_data_response.dart';
 ///                     "OperatingSystemType",
 ///                     "OperatingSystemName",
 ///                 },
-///                 GroupByEntities = new[]
+///                 GroupByEntities =
 ///                 {
 ///                     AzureNative.SecurityInsights.EntityMappingType.Host,
 ///                 },
@@ -379,7 +385,7 @@ import 'system_data_response.dart';
 ///         Severity = AzureNative.SecurityInsights.AlertSeverity.High,
 ///         SuppressionDuration = "PT1H",
 ///         SuppressionEnabled = false,
-///         Tactics = new[]
+///         Tactics =
 ///         {
 ///             AzureNative.SecurityInsights.AttackTactic.Persistence,
 ///             AzureNative.SecurityInsights.AttackTactic.LateralMovement,
@@ -499,7 +505,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -507,19 +513,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_scheduledalertrule" "scheduledAlertRule" {
+/// resource "azure-native_securityinsights_scheduled_alert_rule" "scheduledAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_details_override = {
 ///     alert_description_format  = "Suspicious activity was made by {{ComputerIP}}"
 ///     alert_display_name_format = "Alert from {{Computer}}"
 ///     alert_dynamic_properties = [{
-///       "alertProperty" = "ProductComponentName"
-///       "value"         = "ProductComponentNameCustomColumn"
+///       alert_property = "ProductComponentName"
+///       value          = "ProductComponentNameCustomColumn"
 ///       }, {
-///       "alertProperty" = "ProductName"
-///       "value"         = "ProductNameCustomColumn"
+///       alert_property = "ProductName"
+///       value          = "ProductNameCustomColumn"
 ///       }, {
-///       "alertProperty" = "AlertLink"
-///       "value"         = "Link"
+///       alert_property = "AlertLink"
+///       value          = "Link"
 ///     }]
 ///   }
 ///   custom_details = {
@@ -584,7 +593,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.ScheduledAlertRule;
 /// import com.pulumi.azurenative.securityinsights.ScheduledAlertRuleArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.AlertDetailsOverrideArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.AlertPropertyMappingArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.EntityMappingArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.FieldMappingArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.EventGroupingSettingsArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.IncidentConfigurationArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.GroupingConfigurationArgs;
@@ -658,7 +669,6 @@ import 'system_data_response.dart';
 ///                     .reopenClosedIncident(false)
 ///                     .build())
 ///                 .build())
-///             .kind("Scheduled")
 ///             .query("Heartbeat")
 ///             .queryFrequency("PT1H")
 ///             .queryPeriod("P2DT1H30M")

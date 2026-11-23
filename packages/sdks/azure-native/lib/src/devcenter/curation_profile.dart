@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_curationprofile" "curationProfile" {
+/// resource "azure-native_devcenter_curation_profile" "curationProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   curation_profile_name = "DevOnlyResources"
 ///   dev_center_name       = "Contoso"
 ///   resource_group_name   = "rg1"

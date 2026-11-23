@@ -69,7 +69,7 @@ import 'private_dns_zone_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'private_dns_zone_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_privatednszonegroup" "privateDnsZoneGroup" {
+/// resource "azure-native_network_private_dns_zone_group" "privateDnsZoneGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_dns_zone_configs {
 ///     private_dns_zone_id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com"
 ///   }

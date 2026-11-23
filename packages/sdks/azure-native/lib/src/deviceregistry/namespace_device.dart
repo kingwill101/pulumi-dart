@@ -123,7 +123,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -131,7 +131,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+/// resource "azure-native_deviceregistry_namespace_device" "namespaceDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attributes = {
 ///     "deviceCategory" = 16
 ///     "deviceOwner"    = "IT"
@@ -176,6 +179,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDevice;
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.InboundEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.HostAuthenticationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.UsernamePasswordCredentialsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -440,7 +446,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -448,7 +454,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+/// resource "azure-native_deviceregistry_namespace_device" "namespaceDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attributes = {
 ///     "deviceCategory" = 16
 ///     "deviceOwner"    = "OT"
@@ -489,6 +498,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDevice;
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.InboundEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.HostAuthenticationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -777,7 +788,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -785,7 +796,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+/// resource "azure-native_deviceregistry_namespace_device" "namespaceDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attributes = {
 ///     "deviceCategory" = 16
 ///     "deviceOwner"    = "OT"
@@ -843,6 +857,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDevice;
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.InboundEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.HostAuthenticationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.X509CredentialsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.TrustSettingsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1144,7 +1162,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1152,7 +1170,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+/// resource "azure-native_deviceregistry_namespace_device" "namespaceDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attributes = {
 ///     "deviceCategory" = 16
 ///     "deviceOwner"    = "IT"
@@ -1188,6 +1209,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.OutboundEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DeviceMessagingEndpointArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -178,7 +178,7 @@ import 'vpn_client_connection_health_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -186,7 +186,10 @@ import 'vpn_client_connection_health_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_p2svpngateway" "p2sVpnGateway" {
+/// resource "azure-native_network_p2s_vpn_gateway" "p2sVpnGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_dns_servers             = ["1.1.1.1", "2.2.2.2"]
 ///   gateway_name                   = "p2sVpnGateway1"
 ///   is_routing_preference_internet = false
@@ -200,11 +203,11 @@ import 'vpn_client_connection_health_response.dart';
 ///       }
 ///       propagated_route_tables = {
 ///         ids = [{
-///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///           id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
 ///           }, {
-///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
+///           id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
 ///           }, {
-///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
+///           id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
 ///         }]
 ///         labels = ["label1", "label2"]
 ///       }

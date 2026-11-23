@@ -70,7 +70,7 @@ import 'target_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,11 +79,14 @@ import 'target_args.dart';
 /// }
 ///
 /// resource "azure-native_databasewatcher_target" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
-///     "connectionServerName"     = "sqlServero1ihe2"
-///     "sqlDbResourceId"          = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.Sql/servers/m1/databases/m2"
-///     "targetAuthenticationType" = "Aad"
-///     "targetType"               = "SqlDb"
+///     connection_server_name     = "sqlServero1ihe2"
+///     sql_db_resource_id         = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.Sql/servers/m1/databases/m2"
+///     target_authentication_type = "Aad"
+///     target_type                = "SqlDb"
 ///   }
 ///   resource_group_name = "apiTest-ddat4p"
 ///   target_name         = "monitoringh22eed"
@@ -100,6 +103,10 @@ import 'target_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databasewatcher.Target;
 /// import com.pulumi.azurenative.databasewatcher.TargetArgs;
+/// import com.pulumi.azurenative.databasewatcher.inputs.SqlDbElasticPoolTargetPropertiesArgs;
+/// import com.pulumi.azurenative.databasewatcher.inputs.SqlDbSingleDatabaseTargetPropertiesArgs;
+/// import com.pulumi.azurenative.databasewatcher.inputs.SqlMiTargetPropertiesArgs;
+/// import com.pulumi.azurenative.databasewatcher.inputs.SqlVmTargetPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -118,7 +125,6 @@ import 'target_args.dart';
 ///                 .connectionServerName("sqlServero1ihe2")
 ///                 .sqlDbResourceId("/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.Sql/servers/m1/databases/m2")
 ///                 .targetAuthenticationType("Aad")
-///                 .targetType("SqlDb")
 ///                 .build())
 ///             .resourceGroupName("apiTest-ddat4p")
 ///             .targetName("monitoringh22eed")

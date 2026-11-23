@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_groupsoperation" "groupsOperation" {
+/// resource "azure-native_migrate_groups_operation" "groupsOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name          = "kuchatur-test"
 ///   group_type          = "Default"
 ///   project_name        = "app18700project"

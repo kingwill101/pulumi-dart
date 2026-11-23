@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_advisor_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name = "assessment1"
 ///   locale          = "en-us"
 ///   type_id         = "23513bdb-e8a2-4f0b-8b6b-191ee1f52d34"

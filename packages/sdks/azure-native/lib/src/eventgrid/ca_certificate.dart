@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_cacertificate" "caCertificate" {
+/// resource "azure-native_eventgrid_ca_certificate" "caCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ca_certificate_name = "exampleCACertificateName1"
 ///   description         = "This is a test certificate"
 ///   encoded_certificate = "base64EncodePemFormattedCertificateString"

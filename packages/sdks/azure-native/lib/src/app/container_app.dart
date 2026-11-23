@@ -53,7 +53,7 @@ import 'template_response.dart';
 ///                     Name = "logicapps-container",
 ///                     Resources = new AzureNative.App.Inputs.ContainerResourcesArgs
 ///                     {
-///                         Cpu = 1,
+///                         Cpu = 1.0,
 ///                         Memory = "2.0Gi",
 ///                     },
 ///                 },
@@ -127,7 +127,7 @@ import 'template_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,7 +135,10 @@ import 'template_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerapp" "containerApp" {
+/// resource "azure-native_app_container_app" "containerApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     active_revisions_mode = "Single"
 ///     ingress = {
@@ -152,11 +155,11 @@ import 'template_response.dart';
 ///   resource_group_name    = "rg"
 ///   template = {
 ///     containers = [{
-///       "image" = "default/logicapps-base:latest"
-///       "name"  = "logicapps-container"
-///       "resources" = {
-///         "cpu"    = 1
-///         "memory" = "2.0Gi"
+///       image = "default/logicapps-base:latest"
+///       name  = "logicapps-container"
+///       resources = {
+///         cpu    = 1
+///         memory = "2.0Gi"
 ///       }
 ///     }]
 ///     scale = {
@@ -181,6 +184,8 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerResourcesArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -772,7 +777,7 @@ import 'template_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -780,7 +785,10 @@ import 'template_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerapp" "containerApp" {
+/// resource "azure-native_app_container_app" "containerApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     dapr = {
 ///       app_port              = 3000
@@ -793,12 +801,12 @@ import 'template_response.dart';
 ///     }
 ///     ingress = {
 ///       additional_port_mappings = [{
-///         "external"   = true
-///         "targetPort" = 1234
+///         external    = true
+///         target_port = 1234
 ///         }, {
-///         "exposedPort" = 3456
-///         "external"    = false
-///         "targetPort"  = 2345
+///         exposed_port = 3456
+///         external     = false
+///         target_port  = 2345
 ///       }]
 ///       client_certificate_mode = "accept"
 ///       cors_policy = {
@@ -810,34 +818,34 @@ import 'template_response.dart';
 ///         max_age           = 1234
 ///       }
 ///       custom_domains = [{
-///         "bindingType"   = "SniEnabled"
-///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com"
-///         "name"          = "www.my-name.com"
+///         binding_type   = "SniEnabled"
+///         certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com"
+///         name           = "www.my-name.com"
 ///         }, {
-///         "bindingType"   = "SniEnabled"
-///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
-///         "name"          = "www.my-other-name.com"
+///         binding_type   = "SniEnabled"
+///         certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
+///         name           = "www.my-other-name.com"
 ///       }]
 ///       external = true
 ///       ip_security_restrictions = [{
-///         "action"         = "Allow"
-///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
-///         "ipAddressRange" = "192.168.1.1/32"
-///         "name"           = "Allow work IP A subnet"
+///         action           = "Allow"
+///         description      = "Allowing all IP's within the subnet below to access containerapp"
+///         ip_address_range = "192.168.1.1/32"
+///         name             = "Allow work IP A subnet"
 ///         }, {
-///         "action"         = "Allow"
-///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
-///         "ipAddressRange" = "192.168.1.1/8"
-///         "name"           = "Allow work IP B subnet"
+///         action           = "Allow"
+///         description      = "Allowing all IP's within the subnet below to access containerapp"
+///         ip_address_range = "192.168.1.1/8"
+///         name             = "Allow work IP B subnet"
 ///       }]
 ///       sticky_sessions = {
 ///         affinity = "sticky"
 ///       }
 ///       target_port = 3000
 ///       traffic = [{
-///         "label"        = "production"
-///         "revisionName" = "testcontainerApp0-ab1234"
-///         "weight"       = 100
+///         label         = "production"
+///         revision_name = "testcontainerApp0-ab1234"
+///         weight        = 100
 ///       }]
 ///     }
 ///     max_inactive_revisions        = 10
@@ -852,8 +860,8 @@ import 'template_response.dart';
 ///           enabled = true
 ///           logging = {
 ///             logger_settings = [{
-///               "level"  = "debug"
-///               "logger" = "org.springframework.boot"
+///               level  = "debug"
+///               logger = "org.springframework.boot"
 ///             }]
 ///           }
 ///         }
@@ -870,30 +878,30 @@ import 'template_response.dart';
 ///   resource_group_name = "rg"
 ///   template = {
 ///     containers = [{
-///       "image" = "repo/testcontainerApp0:v1"
-///       "name"  = "testcontainerApp0"
-///       "probes" = [{
-///         "httpGet" = {
-///           "httpHeaders" = [{
-///             "name"  = "Custom-Header"
-///             "value" = "Awesome"
+///       image = "repo/testcontainerApp0:v1"
+///       name  = "testcontainerApp0"
+///       probes = [{
+///         http_get = {
+///           http_headers = [{
+///             name  = "Custom-Header"
+///             value = "Awesome"
 ///           }]
-///           "path" = "/health"
-///           "port" = 8080
+///           path = "/health"
+///           port = 8080
 ///         }
-///         "initialDelaySeconds" = 3
-///         "periodSeconds"       = 3
-///         "type"                = "Liveness"
+///         initial_delay_seconds = 3
+///         period_seconds        = 3
+///         type                  = "Liveness"
 ///       }]
 ///     }]
 ///     init_containers = [{
-///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
-///       "command" = ["/bin/sh"]
-///       "image"   = "repo/testcontainerApp0:v4"
-///       "name"    = "testinitcontainerApp0"
-///       "resources" = {
-///         "cpu"    = 0.2
-///         "memory" = "100Mi"
+///       args    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       command = ["/bin/sh"]
+///       image   = "repo/testcontainerApp0:v4"
+///       name    = "testinitcontainerApp0"
+///       resources = {
+///         cpu    = 0.2
+///         memory = "100Mi"
 ///       }
 ///     }]
 ///     scale = {
@@ -902,13 +910,13 @@ import 'template_response.dart';
 ///       min_replicas     = 1
 ///       polling_interval = 35
 ///       rules = [{
-///         "custom" = {
-///           "metadata" = {
+///         custom = {
+///           metadata = {
 ///             "concurrentRequests" = "50"
 ///           }
-///           "type" = "http"
+///           type = "http"
 ///         }
-///         "name" = "httpscalingrule"
+///         name = "httpscalingrule"
 ///       }]
 ///     }
 ///   }
@@ -927,16 +935,29 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
+/// import com.pulumi.azurenative.app.inputs.IngressPortMappingArgs;
 /// import com.pulumi.azurenative.app.inputs.CorsPolicyArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomDomainArgs;
+/// import com.pulumi.azurenative.app.inputs.IpSecurityRestrictionRuleArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressStickySessionsArgs;
+/// import com.pulumi.azurenative.app.inputs.TrafficWeightArgs;
 /// import com.pulumi.azurenative.app.inputs.RuntimeArgs;
 /// import com.pulumi.azurenative.app.inputs.RuntimeDotnetArgs;
 /// import com.pulumi.azurenative.app.inputs.RuntimeJavaArgs;
 /// import com.pulumi.azurenative.app.inputs.RuntimeJavaAgentArgs;
 /// import com.pulumi.azurenative.app.inputs.RuntimeLoggingArgs;
+/// import com.pulumi.azurenative.app.inputs.LoggerSettingArgs;
 /// import com.pulumi.azurenative.app.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeHttpGetArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeHttpHeadersArgs;
+/// import com.pulumi.azurenative.app.inputs.InitContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerResourcesArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
+/// import com.pulumi.azurenative.app.inputs.ScaleRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomScaleRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1713,7 +1734,7 @@ import 'template_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1721,15 +1742,18 @@ import 'template_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerapp" "containerApp" {
+/// resource "azure-native_app_container_app" "containerApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     ingress = {
 ///       exposed_port = 4000
 ///       external     = true
 ///       target_port  = 3000
 ///       traffic = [{
-///         "revisionName" = "testcontainerAppManagedBy-ab1234"
-///         "weight"       = 100
+///         revision_name = "testcontainerAppManagedBy-ab1234"
+///         weight        = 100
 ///       }]
 ///       transport = "tcp"
 ///     }
@@ -1741,15 +1765,15 @@ import 'template_response.dart';
 ///   resource_group_name = "rg"
 ///   template = {
 ///     containers = [{
-///       "image" = "repo/testcontainerAppManagedBy:v1"
-///       "name"  = "testcontainerAppManagedBy"
-///       "probes" = [{
-///         "initialDelaySeconds" = 3
-///         "periodSeconds"       = 3
-///         "tcpSocket" = {
-///           "port" = 8080
+///       image = "repo/testcontainerAppManagedBy:v1"
+///       name  = "testcontainerAppManagedBy"
+///       probes = [{
+///         initial_delay_seconds = 3
+///         period_seconds        = 3
+///         tcp_socket = {
+///           port = 8080
 ///         }
-///         "type" = "Liveness"
+///         type = "Liveness"
 ///       }]
 ///     }]
 ///     scale = {
@@ -1758,9 +1782,9 @@ import 'template_response.dart';
 ///       min_replicas     = 1
 ///       polling_interval = 35
 ///       rules = [{
-///         "name" = "tcpscalingrule"
-///         "tcp" = {
-///           "metadata" = {
+///         name = "tcpscalingrule"
+///         tcp = {
+///           metadata = {
 ///             "concurrentConnections" = "50"
 ///           }
 ///         }
@@ -1781,8 +1805,14 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.ContainerAppArgs;
 /// import com.pulumi.azurenative.app.inputs.ConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
+/// import com.pulumi.azurenative.app.inputs.TrafficWeightArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeTcpSocketArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
+/// import com.pulumi.azurenative.app.inputs.ScaleRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.TcpScaleRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2467,7 +2497,7 @@ import 'template_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2475,7 +2505,10 @@ import 'template_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerapp" "containerApp" {
+/// resource "azure-native_app_container_app" "containerApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     dapr = {
 ///       app_port              = 3000
@@ -2488,12 +2521,12 @@ import 'template_response.dart';
 ///     }
 ///     ingress = {
 ///       additional_port_mappings = [{
-///         "external"   = true
-///         "targetPort" = 1234
+///         external    = true
+///         target_port = 1234
 ///         }, {
-///         "exposedPort" = 3456
-///         "external"    = false
-///         "targetPort"  = 2345
+///         exposed_port = 3456
+///         external     = false
+///         target_port  = 2345
 ///       }]
 ///       client_certificate_mode = "accept"
 ///       cors_policy = {
@@ -2505,34 +2538,34 @@ import 'template_response.dart';
 ///         max_age           = 1234
 ///       }
 ///       custom_domains = [{
-///         "bindingType"   = "SniEnabled"
-///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com"
-///         "name"          = "www.my-name.com"
+///         binding_type   = "SniEnabled"
+///         certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com"
+///         name           = "www.my-name.com"
 ///         }, {
-///         "bindingType"   = "SniEnabled"
-///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
-///         "name"          = "www.my-other-name.com"
+///         binding_type   = "SniEnabled"
+///         certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
+///         name           = "www.my-other-name.com"
 ///       }]
 ///       external = true
 ///       ip_security_restrictions = [{
-///         "action"         = "Allow"
-///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
-///         "ipAddressRange" = "192.168.1.1/32"
-///         "name"           = "Allow work IP A subnet"
+///         action           = "Allow"
+///         description      = "Allowing all IP's within the subnet below to access containerapp"
+///         ip_address_range = "192.168.1.1/32"
+///         name             = "Allow work IP A subnet"
 ///         }, {
-///         "action"         = "Allow"
-///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
-///         "ipAddressRange" = "192.168.1.1/8"
-///         "name"           = "Allow work IP B subnet"
+///         action           = "Allow"
+///         description      = "Allowing all IP's within the subnet below to access containerapp"
+///         ip_address_range = "192.168.1.1/8"
+///         name             = "Allow work IP B subnet"
 ///       }]
 ///       sticky_sessions = {
 ///         affinity = "sticky"
 ///       }
 ///       target_port = 3000
 ///       traffic = [{
-///         "label"        = "production"
-///         "revisionName" = "testcontainerApp0-ab1234"
-///         "weight"       = 100
+///         label         = "production"
+///         revision_name = "testcontainerApp0-ab1234"
+///         weight        = 100
 ///       }]
 ///     }
 ///     max_inactive_revisions        = 10
@@ -2550,40 +2583,40 @@ import 'template_response.dart';
 ///   resource_group_name = "rg"
 ///   template = {
 ///     containers = [{
-///       "image"     = ""
-///       "imageType" = "CloudBuild"
-///       "name"      = "testcontainerApp0"
-///       "probes" = [{
-///         "httpGet" = {
-///           "httpHeaders" = [{
-///             "name"  = "Custom-Header"
-///             "value" = "Awesome"
+///       image      = ""
+///       image_type = "CloudBuild"
+///       name       = "testcontainerApp0"
+///       probes = [{
+///         http_get = {
+///           http_headers = [{
+///             name  = "Custom-Header"
+///             value = "Awesome"
 ///           }]
-///           "path" = "/health"
-///           "port" = 8080
+///           path = "/health"
+///           port = 8080
 ///         }
-///         "initialDelaySeconds" = 3
-///         "periodSeconds"       = 3
-///         "type"                = "Liveness"
+///         initial_delay_seconds = 3
+///         period_seconds        = 3
+///         type                  = "Liveness"
 ///       }]
-///       "volumeMounts" = [{
-///         "mountPath"  = "/mnt/path1"
-///         "subPath"    = "subPath1"
-///         "volumeName" = "azurefile"
+///       volume_mounts = [{
+///         mount_path  = "/mnt/path1"
+///         sub_path    = "subPath1"
+///         volume_name = "azurefile"
 ///         }, {
-///         "mountPath"  = "/mnt/path2"
-///         "subPath"    = "subPath2"
-///         "volumeName" = "nfsazurefile"
+///         mount_path  = "/mnt/path2"
+///         sub_path    = "subPath2"
+///         volume_name = "nfsazurefile"
 ///       }]
 ///     }]
 ///     init_containers = [{
-///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
-///       "command" = ["/bin/sh"]
-///       "image"   = "repo/testcontainerApp0:v4"
-///       "name"    = "testinitcontainerApp0"
-///       "resources" = {
-///         "cpu"    = 0.2
-///         "memory" = "100Mi"
+///       args    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       command = ["/bin/sh"]
+///       image   = "repo/testcontainerApp0:v4"
+///       name    = "testinitcontainerApp0"
+///       resources = {
+///         cpu    = 0.2
+///         memory = "100Mi"
 ///       }
 ///     }]
 ///     scale = {
@@ -2592,31 +2625,31 @@ import 'template_response.dart';
 ///       min_replicas     = 1
 ///       polling_interval = 35
 ///       rules = [{
-///         "custom" = {
-///           "metadata" = {
+///         custom = {
+///           metadata = {
 ///             "concurrentRequests" = "50"
 ///           }
-///           "type" = "http"
+///           type = "http"
 ///         }
-///         "name" = "httpscalingrule"
+///         name = "httpscalingrule"
 ///       }]
 ///     }
 ///     service_binds = [{
-///       "clientType" = "dotnet"
-///       "customizedKeys" = {
+///       client_type = "dotnet"
+///       customized_keys = {
 ///         "DesiredKey" = "defaultKey"
 ///       }
-///       "name"      = "redisService"
-///       "serviceId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/containerApps/redisService"
+///       name       = "redisService"
+///       service_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/containerApps/redisService"
 ///     }]
 ///     volumes = [{
-///       "name"        = "azurefile"
-///       "storageName" = "storage"
-///       "storageType" = "AzureFile"
+///       name         = "azurefile"
+///       storage_name = "storage"
+///       storage_type = "AzureFile"
 ///       }, {
-///       "name"        = "nfsazurefile"
-///       "storageName" = "nfsStorage"
-///       "storageType" = "NfsAzureFile"
+///       name         = "nfsazurefile"
+///       storage_name = "nfsStorage"
+///       storage_type = "NfsAzureFile"
 ///     }]
 ///   }
 ///   workload_profile_name = "My-GP-01"
@@ -2635,12 +2668,27 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
+/// import com.pulumi.azurenative.app.inputs.IngressPortMappingArgs;
 /// import com.pulumi.azurenative.app.inputs.CorsPolicyArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomDomainArgs;
+/// import com.pulumi.azurenative.app.inputs.IpSecurityRestrictionRuleArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressStickySessionsArgs;
+/// import com.pulumi.azurenative.app.inputs.TrafficWeightArgs;
 /// import com.pulumi.azurenative.app.inputs.ServiceArgs;
 /// import com.pulumi.azurenative.app.inputs.ContainerAppPatchingConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeHttpGetArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeHttpHeadersArgs;
+/// import com.pulumi.azurenative.app.inputs.VolumeMountArgs;
+/// import com.pulumi.azurenative.app.inputs.InitContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerResourcesArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
+/// import com.pulumi.azurenative.app.inputs.ScaleRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomScaleRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.ServiceBindArgs;
+/// import com.pulumi.azurenative.app.inputs.VolumeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3480,7 +3528,7 @@ import 'template_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3488,15 +3536,18 @@ import 'template_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerapp" "containerApp" {
+/// resource "azure-native_app_container_app" "containerApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     ingress = {
 ///       exposed_port = 4000
 ///       external     = true
 ///       target_port  = 3000
 ///       traffic = [{
-///         "revisionName" = "testcontainerAppTcp-ab1234"
-///         "weight"       = 100
+///         revision_name = "testcontainerAppTcp-ab1234"
+///         weight        = 100
 ///       }]
 ///       transport = "tcp"
 ///     }
@@ -3507,15 +3558,15 @@ import 'template_response.dart';
 ///   resource_group_name = "rg"
 ///   template = {
 ///     containers = [{
-///       "image" = "repo/testcontainerAppTcp:v1"
-///       "name"  = "testcontainerAppTcp"
-///       "probes" = [{
-///         "initialDelaySeconds" = 3
-///         "periodSeconds"       = 3
-///         "tcpSocket" = {
-///           "port" = 8080
+///       image = "repo/testcontainerAppTcp:v1"
+///       name  = "testcontainerAppTcp"
+///       probes = [{
+///         initial_delay_seconds = 3
+///         period_seconds        = 3
+///         tcp_socket = {
+///           port = 8080
 ///         }
-///         "type" = "Liveness"
+///         type = "Liveness"
 ///       }]
 ///     }]
 ///     scale = {
@@ -3524,9 +3575,9 @@ import 'template_response.dart';
 ///       min_replicas     = 1
 ///       polling_interval = 35
 ///       rules = [{
-///         "name" = "tcpscalingrule"
-///         "tcp" = {
-///           "metadata" = {
+///         name = "tcpscalingrule"
+///         tcp = {
+///           metadata = {
 ///             "concurrentConnections" = "50"
 ///           }
 ///         }
@@ -3547,8 +3598,14 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.ContainerAppArgs;
 /// import com.pulumi.azurenative.app.inputs.ConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
+/// import com.pulumi.azurenative.app.inputs.TrafficWeightArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeTcpSocketArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
+/// import com.pulumi.azurenative.app.inputs.ScaleRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.TcpScaleRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

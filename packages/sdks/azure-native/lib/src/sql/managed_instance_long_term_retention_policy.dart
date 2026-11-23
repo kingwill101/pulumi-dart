@@ -68,7 +68,7 @@ import 'managed_instance_long_term_retention_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'managed_instance_long_term_retention_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstancelongtermretentionpolicy" "managedInstanceLongTermRetentionPolicy" {
+/// resource "azure-native_sql_managed_instance_long_term_retention_policy" "managedInstanceLongTermRetentionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_storage_access_tier = "Hot"
 ///   database_name              = "testDatabase"
 ///   managed_instance_name      = "testInstance"

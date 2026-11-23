@@ -23,7 +23,7 @@ import 'system_data_response.dart';
 /// {
 ///     var hunt = new AzureNative.SecurityInsights.Hunt("hunt", new()
 ///     {
-///         AttackTactics = new[]
+///         AttackTactics =
 ///         {
 ///             AzureNative.SecurityInsights.AttackTactic.Reconnaissance,
 ///         },
@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,6 +105,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_hunt" "hunt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attack_tactics    = ["Reconnaissance"]
 ///   attack_techniques = ["T1595"]
 ///   description       = "Log4J Hunt Description"

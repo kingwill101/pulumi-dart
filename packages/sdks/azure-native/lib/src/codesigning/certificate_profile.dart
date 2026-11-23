@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_codesigning_certificateprofile" "certificateProfile" {
+/// resource "azure-native_codesigning_certificate_profile" "certificateProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name           = "MyAccount"
 ///   identity_validation_id = "00000000-1234-5678-3333-444444444444"
 ///   include_postal_code    = true

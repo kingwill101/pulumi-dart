@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_fleetmember" "fleetMember" {
+/// resource "azure-native_containerservice_fleet_member" "fleetMember" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_resource_id = "/subscriptions/subid1/resourcegroups/rg1/providers/Microsoft.ContainerService/managedClusters/cluster-1"
 ///   fleet_member_name   = "member-1"
 ///   fleet_name          = "fleet1"

@@ -96,7 +96,7 @@ import 'waf_web_aclsummary_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'waf_web_aclsummary_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_wafwebaclsummary" "wafWebAclSummary" {
+/// resource "azure-native_awsconnector_waf_web_acl_summary" "wafWebAclSummary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "bpposymcoxqcolyqmtfpvoh"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {

@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_dnsresolverdomainlist" "dnsResolverDomainList" {
+/// resource "azure-native_dnsresolver_dns_resolver_domain_list" "dnsResolverDomainList" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_resolver_domain_list_name = "sampleDnsResolverDomainList"
 ///   domains                       = ["contoso.com"]
 ///   location                      = "westus2"

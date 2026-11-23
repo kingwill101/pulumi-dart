@@ -116,7 +116,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,7 +124,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_logsloggroup" "logsLogGroup" {
+/// resource "azure-native_awsconnector_logs_log_group" "logsLogGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "phnyiqu"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -137,8 +140,8 @@ import 'system_data_response.dart';
 ///       log_group_name    = "ekbugjqparpxebzmfaykh"
 ///       retention_in_days = 17
 ///       tags = [{
-///         "key"   = "nxdfvdzxuh"
-///         "value" = "x"
+///         key   = "nxdfvdzxuh"
+///         value = "x"
 ///       }]
 ///     }
 ///     aws_region        = "vejderqihcaeihktrpgsuizcp"
@@ -167,6 +170,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LogsLogGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsLogGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLogsLogGroupPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

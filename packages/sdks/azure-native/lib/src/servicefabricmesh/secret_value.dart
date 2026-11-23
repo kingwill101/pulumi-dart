@@ -58,7 +58,7 @@ import 'secret_value_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'secret_value_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabricmesh_secretvalue" "secretValue" {
+/// resource "azure-native_servicefabricmesh_secret_value" "secretValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                   = "West US"
 ///   resource_group_name        = "sbz_demo"
 ///   secret_resource_name       = "dbConnectionString"

@@ -37,7 +37,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -48,7 +48,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         InboundNatRules = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.InboundNatRuleArgs
@@ -200,7 +200,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -208,7 +208,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb"
 ///   }
@@ -548,7 +551,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -563,7 +566,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         InboundNatRules = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.InboundNatRuleArgs
@@ -607,7 +610,7 @@ import 'probe_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
+///         OutboundRules = new() {},
 ///         Probes = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.ProbeArgs
@@ -723,7 +726,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -731,7 +734,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb"
 ///   }
@@ -1086,7 +1092,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -1101,7 +1107,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         InboundNatRules = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.InboundNatRuleArgs
@@ -1145,7 +1151,7 @@ import 'probe_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
+///         OutboundRules = new() {},
 ///         Probes = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.ProbeArgs
@@ -1261,7 +1267,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1269,7 +1275,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb"
 ///   }
@@ -1649,7 +1658,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -1660,7 +1669,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         LoadBalancerName = "lb",
 ///         LoadBalancingRules = new[]
 ///         {
@@ -1691,7 +1700,7 @@ import 'probe_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
+///         OutboundRules = new() {},
 ///         Probes = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.ProbeArgs
@@ -1807,7 +1816,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1815,7 +1824,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb"
 ///     tunnel_interfaces {
@@ -1883,6 +1895,7 @@ import 'probe_response.dart';
 /// import com.pulumi.azurenative.network.LoadBalancer;
 /// import com.pulumi.azurenative.network.LoadBalancerArgs;
 /// import com.pulumi.azurenative.network.inputs.BackendAddressPoolArgs;
+/// import com.pulumi.azurenative.network.inputs.GatewayLoadBalancerTunnelInterfaceArgs;
 /// import com.pulumi.azurenative.network.inputs.FrontendIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
@@ -2176,7 +2189,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb2",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -2187,7 +2200,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         LoadBalancerName = "lb",
 ///         LoadBalancingRules = new[]
 ///         {
@@ -2223,7 +2236,7 @@ import 'probe_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
+///         OutboundRules = new() {},
 ///         Probes = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.ProbeArgs
@@ -2332,7 +2345,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2340,7 +2353,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb1"
 ///   }
@@ -2688,7 +2704,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -2833,7 +2849,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2841,7 +2857,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     load_balancer_backend_addresses {
 ///       load_balancer_frontend_ip_configuration = {
@@ -2904,10 +2923,11 @@ import 'probe_response.dart';
 /// import com.pulumi.azurenative.network.LoadBalancer;
 /// import com.pulumi.azurenative.network.LoadBalancerArgs;
 /// import com.pulumi.azurenative.network.inputs.BackendAddressPoolArgs;
+/// import com.pulumi.azurenative.network.inputs.LoadBalancerBackendAddressArgs;
+/// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.FrontendIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancingRuleArgs;
-/// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.ProbeArgs;
 /// import com.pulumi.azurenative.network.inputs.LoadBalancerSkuArgs;
 /// import java.util.ArrayList;
@@ -3161,7 +3181,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -3172,7 +3192,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         InboundNatRules = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.InboundNatRuleArgs
@@ -3216,7 +3236,7 @@ import 'probe_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
+///         OutboundRules = new() {},
 ///         Probes = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.ProbeArgs
@@ -3329,7 +3349,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3337,7 +3357,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb"
 ///   }
@@ -3691,7 +3714,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -3702,7 +3725,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         InboundNatRules = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.InboundNatRuleArgs
@@ -3746,7 +3769,7 @@ import 'probe_response.dart';
 ///             },
 ///         },
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
+///         OutboundRules = new() {},
 ///         Probes = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.ProbeArgs
@@ -3863,7 +3886,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3871,7 +3894,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name      = "be-lb"
 ///     sync_mode = "Automatic"
@@ -4232,8 +4258,8 @@ import 'probe_response.dart';
 /// {
 ///     var loadBalancer = new AzureNative.Network.LoadBalancer("loadBalancer", new()
 ///     {
-///         BackendAddressPools = new[] {},
-///         FrontendIPConfigurations = new[]
+///         BackendAddressPools = new() {},
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -4266,12 +4292,12 @@ import 'probe_response.dart';
 ///                 Protocol = AzureNative.Network.TransportProtocol.Tcp,
 ///             },
 ///         },
-///         InboundNatRules = new[] {},
+///         InboundNatRules = new() {},
 ///         LoadBalancerName = "lb",
-///         LoadBalancingRules = new[] {},
+///         LoadBalancingRules = new() {},
 ///         Location = "eastus",
-///         OutboundRules = new[] {},
-///         Probes = new[] {},
+///         OutboundRules = new() {},
+///         Probes = new() {},
 ///         ResourceGroupName = "rg1",
 ///         Sku = new AzureNative.Network.Inputs.LoadBalancerSkuArgs
 ///         {
@@ -4344,7 +4370,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4352,7 +4378,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   frontend_ip_configurations {
 ///     id                           = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test"
 ///     name                         = "test"
@@ -4596,7 +4625,7 @@ import 'probe_response.dart';
 ///                 Name = "be-lb",
 ///             },
 ///         },
-///         FrontendIPConfigurations = new[]
+///         FrontendIPConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -4607,7 +4636,7 @@ import 'probe_response.dart';
 ///                 },
 ///             },
 ///         },
-///         InboundNatPools = new[] {},
+///         InboundNatPools = new() {},
 ///         InboundNatRules = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.InboundNatRuleArgs
@@ -4797,7 +4826,7 @@ import 'probe_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4805,7 +4834,10 @@ import 'probe_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancer" "loadBalancer" {
+/// resource "azure-native_network_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pools {
 ///     name = "be-lb"
 ///   }

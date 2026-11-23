@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_solutions_applicationdefinition" "applicationDefinition" {
+/// resource "azure-native_solutions_application_definition" "applicationDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_definition_name = "myManagedApplicationDef"
 ///   authorizations {
 ///     principal_id       = "validprincipalguid"

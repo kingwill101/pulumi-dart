@@ -64,7 +64,7 @@ import 'sql_server_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'sql_server_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azuredata_sqlserver" "sqlServer" {
+/// resource "azure-native_azuredata_sql_server" "sqlServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cores                        = 8
 ///   edition                      = "Latin"
 ///   property_bag                 = ""

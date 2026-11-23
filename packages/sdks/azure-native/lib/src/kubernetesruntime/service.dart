@@ -53,7 +53,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,6 +62,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_kubernetesruntime_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_uri = "subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1"
 ///   service_name = "storageclass"
 /// }

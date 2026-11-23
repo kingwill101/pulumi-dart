@@ -28,7 +28,7 @@ import 'system_data_response.dart';
 ///         BmpConfiguration = new AzureNative.ManagedNetworkFabric.Inputs.BmpConfigurationPropertiesArgs
 ///         {
 ///             ExportPolicy = AzureNative.ManagedNetworkFabric.BmpExportPolicy.PrePolicy,
-///             MonitoredAddressFamilies = new[]
+///             MonitoredAddressFamilies =
 ///             {
 ///                 AzureNative.ManagedNetworkFabric.BmpMonitoredAddressFamily.Ipv4Unicast,
 ///             },
@@ -114,7 +114,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networkmonitor" "networkMonitor" {
+/// resource "azure-native_managednetworkfabric_network_monitor" "networkMonitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation = "annotation"
 ///   bmp_configuration = {
 ///     export_policy               = "Pre-Policy"

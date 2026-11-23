@@ -60,7 +60,7 @@ import 'signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'signed_identifier_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_fileshare" "fileShare" {
+/// resource "azure-native_storage_file_share" "fileShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto666"
 ///   enabled_protocols   = "NFS"
 ///   resource_group_name = "res346"
@@ -195,7 +198,7 @@ import 'signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -203,7 +206,10 @@ import 'signed_identifier_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_fileshare" "fileShare" {
+/// resource "azure-native_storage_file_share" "fileShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto328"
 ///   resource_group_name = "res3376"
 ///   share_name          = "share6185"
@@ -327,7 +333,7 @@ import 'signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -335,7 +341,10 @@ import 'signed_identifier_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_fileshare" "fileShare" {
+/// resource "azure-native_storage_file_share" "fileShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_tier         = "Hot"
 ///   account_name        = "sto666"
 ///   resource_group_name = "res346"
@@ -473,7 +482,7 @@ import 'signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -481,7 +490,10 @@ import 'signed_identifier_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_fileshare" "fileShare" {
+/// resource "azure-native_storage_file_share" "fileShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sto666"
 ///   file_share_paid_bursting = {
 ///     paid_bursting_enabled             = true
@@ -634,7 +646,7 @@ import 'signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -642,7 +654,10 @@ import 'signed_identifier_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_fileshare" "fileShare" {
+/// resource "azure-native_storage_file_share" "fileShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                = "sto666"
 ///   provisioned_bandwidth_mibps = 200
 ///   provisioned_iops            = 5000

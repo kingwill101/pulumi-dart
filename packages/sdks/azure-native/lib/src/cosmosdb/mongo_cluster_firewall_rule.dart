@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongoclusterfirewallrule" "mongoClusterFirewallRule" {
+/// resource "azure-native_cosmosdb_mongo_cluster_firewall_rule" "mongoClusterFirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_ip_address      = "255.255.255.255"
 ///   firewall_rule_name  = "rule1"
 ///   mongo_cluster_name  = "myMongoCluster"

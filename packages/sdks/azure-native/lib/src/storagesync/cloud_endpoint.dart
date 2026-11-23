@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagesync_cloudendpoint" "cloudEndpoint" {
+/// resource "azure-native_storagesync_cloud_endpoint" "cloudEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_file_share_name       = "cvcloud-afscv-0719-058-a94a1354-a1fd-4e9a-9a50-919fad8c4ba4"
 ///   cloud_endpoint_name         = "SampleCloudEndpoint_1"
 ///   friendly_name               = "ankushbsubscriptionmgmtmab"

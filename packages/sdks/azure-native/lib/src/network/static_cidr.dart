@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_staticcidr" "staticCidr" {
+/// resource "azure-native_network_static_cidr" "staticCidr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_manager_name = "TestNetworkManager"
 ///   pool_name            = "TestPool"
 ///   resource_group_name  = "rg1"

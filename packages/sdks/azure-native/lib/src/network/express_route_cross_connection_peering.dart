@@ -29,7 +29,7 @@ import 'ipv6_express_route_circuit_peering_config_response.dart';
 ///             PrimaryPeerAddressPrefix = "3FFE:FFFF:0:CD30::/126",
 ///             SecondaryPeerAddressPrefix = "3FFE:FFFF:0:CD30::4/126",
 ///         },
-///         PeerASN = 200,
+///         PeerASN = 200.0,
 ///         PeeringName = "AzurePrivatePeering",
 ///         PrimaryPeerAddressPrefix = "192.168.16.252/30",
 ///         ResourceGroupName = "CrossConnection-SiliconValley",
@@ -75,7 +75,7 @@ import 'ipv6_express_route_circuit_peering_config_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'ipv6_express_route_circuit_peering_config_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressroutecrossconnectionpeering" "expressRouteCrossConnectionPeering" {
+/// resource "azure-native_network_express_route_cross_connection_peering" "expressRouteCrossConnectionPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cross_connection_name = "<circuitServiceKey>"
 ///   ipv6_peering_config = {
 ///     primary_peer_address_prefix   = "3FFE:FFFF:0:CD30::/126"

@@ -102,7 +102,7 @@ import 'throttling_information_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,7 +110,10 @@ import 'throttling_information_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_smartdetectoralertrule" "smartDetectorAlertRule" {
+/// resource "azure-native_alertsmanagement_smart_detector_alert_rule" "smartDetectorAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_groups = {
 ///     custom_email_subject   = "My custom email subject"
 ///     custom_webhook_payload = "{\"AlertRuleName\":\"#alertrulename\"}"

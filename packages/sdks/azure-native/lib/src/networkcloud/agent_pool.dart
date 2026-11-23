@@ -39,7 +39,7 @@ import 'system_data_response.dart';
 ///         },
 ///         AgentOptions = new AzureNative.NetworkCloud.Inputs.AgentOptionsArgs
 ///         {
-///             HugepagesCount = 96,
+///             HugepagesCount = 96.0,
 ///             HugepagesSize = AzureNative.NetworkCloud.HugepagesSize.HugepagesSize_1G,
 ///         },
 ///         AgentPoolName = "agentPoolName",
@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 ///             "2",
 ///             "3",
 ///         },
-///         Count = 3,
+///         Count = 3.0,
 ///         ExtendedLocation = new AzureNative.NetworkCloud.Inputs.ExtendedLocationArgs
 ///         {
 ///             Name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName",
@@ -210,7 +210,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,11 +218,14 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_agentpool" "agentPool" {
+/// resource "azure-native_networkcloud_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_configuration = {
 ///     admin_username = "azure"
 ///     ssh_public_keys = [{
-///       "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///       key_data = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
 ///     }]
 ///   }
 ///   agent_options = {
@@ -232,21 +235,23 @@ import 'system_data_response.dart';
 ///   agent_pool_name = "agentPoolName"
 ///   attached_network_configuration = {
 ///     l2_networks = [{
-///       "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l2Networks/l2NetworkName"
-///       "pluginType" = "DPDK"
+///       network_id  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l2Networks/l2NetworkName"
+///       plugin_type = "DPDK"
 ///     }]
 ///     l3_networks = [{
-///       "ipamEnabled" = "False"
-///       "networkId"   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
-///       "pluginType"  = "SRIOV"
+///       ipam_enabled = "False"
+///       network_id   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///       plugin_type  = "SRIOV"
 ///     }]
 ///     trunked_networks = [{
-///       "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetworkName"
-///       "pluginType" = "MACVLAN"
+///       network_id  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetworkName"
+///       plugin_type = "MACVLAN"
 ///     }]
 ///   }
 ///   availability_zones = ["1", "2", "3"]
-///   count              = 3
+///   _ {
+///     count = 3
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
 ///     type = "CustomLocation"
@@ -284,8 +289,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.AgentPool;
 /// import com.pulumi.azurenative.networkcloud.AgentPoolArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.AdministratorConfigurationArgs;
+/// import com.pulumi.azurenative.networkcloud.inputs.SshPublicKeyArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.AgentOptionsArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.AttachedNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.networkcloud.inputs.L2NetworkAttachmentConfigurationArgs;
+/// import com.pulumi.azurenative.networkcloud.inputs.L3NetworkAttachmentConfigurationArgs;
+/// import com.pulumi.azurenative.networkcloud.inputs.TrunkedNetworkAttachmentConfigurationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.KubernetesLabelArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.AgentPoolUpgradeSettingsArgs;

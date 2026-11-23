@@ -26,13 +26,13 @@ import 'mongo_dbresource_mongo_dbdatabase_args.dart';
 ///         AccountName = "ddb1",
 ///         DatabaseName = "databaseName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.MongoDBDatabaseResourceArgs
 ///         {
 ///             Id = "databaseName",
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'mongo_dbresource_mongo_dbdatabase_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'mongo_dbresource_mongo_dbdatabase_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongodbresourcemongodbdatabase" "mongoDBResourceMongoDBDatabase" {
+/// resource "azure-native_cosmosdb_mongo_d_b_resource_mongo_d_b_database" "mongoDBResourceMongoDBDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   database_name = "databaseName"
 ///   location      = "West US"

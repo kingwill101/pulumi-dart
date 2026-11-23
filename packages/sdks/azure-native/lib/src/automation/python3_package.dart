@@ -37,7 +37,7 @@ import 'system_data_response.dart';
 ///         },
 ///         PackageName = "OmsCompositeResources",
 ///         ResourceGroupName = "rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_python3package" "python3Package" {
+/// resource "azure-native_automation_python3_package" "python3Package" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount33"
 ///   content_link = {
 ///     content_hash = {

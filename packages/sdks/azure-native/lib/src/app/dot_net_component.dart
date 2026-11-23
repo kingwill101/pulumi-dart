@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_dotnetcomponent" "dotNetComponent" {
+/// resource "azure-native_app_dot_net_component" "dotNetComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_type = "AspireDashboard"
 ///   configurations {
 ///     property_name = "dashboard-theme"
@@ -260,7 +263,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -268,7 +271,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_dotnetcomponent" "dotNetComponent" {
+/// resource "azure-native_app_dot_net_component" "dotNetComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_type = "AspireDashboard"
 ///   configurations {
 ///     property_name = "dashboard-theme"

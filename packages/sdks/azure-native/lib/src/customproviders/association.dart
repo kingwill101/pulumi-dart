@@ -54,7 +54,7 @@ import 'association_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,6 +63,9 @@ import 'association_args.dart';
 /// }
 ///
 /// resource "azure-native_customproviders_association" "association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   association_name   = "associationName"
 ///   scope              = "scope"
 ///   target_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appRG/providers/Microsoft.Solutions/applications/applicationName"

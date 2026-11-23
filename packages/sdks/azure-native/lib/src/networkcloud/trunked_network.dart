@@ -42,8 +42,8 @@ import 'trunked_network_args.dart';
 ///         TrunkedNetworkName = "trunkedNetworkName",
 ///         Vlans = new[]
 ///         {
-///             12,
-///             14,
+///             12.0,
+///             14.0,
 ///         },
 ///     });
 ///
@@ -94,7 +94,7 @@ import 'trunked_network_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,7 +102,10 @@ import 'trunked_network_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_trunkednetwork" "trunkedNetwork" {
+/// resource "azure-native_networkcloud_trunked_network" "trunkedNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
 ///     type = "CustomLocation"

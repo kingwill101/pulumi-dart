@@ -56,7 +56,7 @@ import 'application_security_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'application_security_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_applicationsecuritygroup" "applicationSecurityGroup" {
+/// resource "azure-native_network_application_security_group" "applicationSecurityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_security_group_name = "test-asg"
 ///   location                        = "westus"
 ///   resource_group_name             = "rg1"

@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_incidentrelation" "incidentRelation" {
+/// resource "azure-native_securityinsights_incident_relation" "incidentRelation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   incident_id         = "afbd324f-6c48-459c-8710-8d1e1cd03812"
 ///   related_resource_id = "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096"
 ///   relation_name       = "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"

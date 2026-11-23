@@ -38,8 +38,8 @@ import 'system_data_response.dart';
 ///             {
 ///                 Branch = "master",
 ///             },
-///             SyncIntervalInSeconds = 600,
-///             TimeoutInSeconds = 600,
+///             SyncIntervalInSeconds = 600.0,
+///             TimeoutInSeconds = 600.0,
 ///             Url = "https://github.com/Azure/arc-k8s-demo",
 ///         },
 ///         Kustomizations =
@@ -65,8 +65,8 @@ import 'system_data_response.dart';
 ///                         },
 ///                     },
 ///                 },
-///                 SyncIntervalInSeconds = 600,
-///                 TimeoutInSeconds = 600,
+///                 SyncIntervalInSeconds = 600.0,
+///                 TimeoutInSeconds = 600.0,
 ///                 Wait = true,
 ///             } },
 ///             { "srs-kustomization2", new AzureNative.KubernetesConfiguration.Inputs.KustomizationDefinitionArgs
@@ -95,9 +95,9 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 Prune = false,
-///                 RetryIntervalInSeconds = 600,
-///                 SyncIntervalInSeconds = 600,
-///                 TimeoutInSeconds = 600,
+///                 RetryIntervalInSeconds = 600.0,
+///                 SyncIntervalInSeconds = 600.0,
+///                 TimeoutInSeconds = 600.0,
 ///                 Wait = false,
 ///             } },
 ///         },
@@ -204,7 +204,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -212,7 +212,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesconfiguration_fluxconfiguration" "fluxConfiguration" {
+/// resource "azure-native_kubernetesconfiguration_flux_configuration" "fluxConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name            = "clusterName1"
 ///   cluster_resource_name   = "connectedClusters"
 ///   cluster_rp              = "Microsoft.Kubernetes"
@@ -236,9 +239,9 @@ import 'system_data_response.dart';
 ///           "replica_count" = "2"
 ///         }
 ///         substitute_from = [{
-///           "kind"     = "ConfigMap"
-///           "name"     = "cluster-test"
-///           "optional" = true
+///           kind     = "ConfigMap"
+///           name     = "cluster-test"
+///           optional = true
 ///         }]
 ///       }
 ///       sync_interval_in_seconds = 600
@@ -250,13 +253,13 @@ import 'system_data_response.dart';
 ///       path       = "./other/test/path"
 ///       post_build = {
 ///         substitute_from = [{
-///           "kind"     = "ConfigMap"
-///           "name"     = "cluster-values"
-///           "optional" = true
+///           kind     = "ConfigMap"
+///           name     = "cluster-values"
+///           optional = true
 ///           }, {
-///           "kind"     = "Secret"
-///           "name"     = "secret-name"
-///           "optional" = false
+///           kind     = "Secret"
+///           name     = "secret-name"
+///           optional = false
 ///         }]
 ///       }
 ///       prune                     = false
@@ -287,6 +290,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.kubernetesconfiguration.FluxConfigurationArgs;
 /// import com.pulumi.azurenative.kubernetesconfiguration.inputs.GitRepositoryDefinitionArgs;
 /// import com.pulumi.azurenative.kubernetesconfiguration.inputs.RepositoryRefDefinitionArgs;
+/// import com.pulumi.azurenative.kubernetesconfiguration.inputs.KustomizationDefinitionArgs;
+/// import com.pulumi.azurenative.kubernetesconfiguration.inputs.PostBuildDefinitionArgs;
+/// import com.pulumi.azurenative.kubernetesconfiguration.inputs.SubstituteFromDefinitionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -588,8 +594,8 @@ import 'system_data_response.dart';
 ///         {
 ///             AccessKey = "fluxminiotest",
 ///             BucketName = "flux",
-///             SyncIntervalInSeconds = 1000,
-///             TimeoutInSeconds = 1000,
+///             SyncIntervalInSeconds = 1000.0,
+///             TimeoutInSeconds = 1000.0,
 ///             Url = "https://fluxminiotest.az.minio.io",
 ///         },
 ///         ClusterName = "clusterName1",
@@ -602,8 +608,8 @@ import 'system_data_response.dart';
 ///             {
 ///                 DependsOn = new() { },
 ///                 Path = "./test/path",
-///                 SyncIntervalInSeconds = 600,
-///                 TimeoutInSeconds = 600,
+///                 SyncIntervalInSeconds = 600.0,
+///                 TimeoutInSeconds = 600.0,
 ///             } },
 ///             { "srs-kustomization2", new AzureNative.KubernetesConfiguration.Inputs.KustomizationDefinitionArgs
 ///             {
@@ -613,9 +619,9 @@ import 'system_data_response.dart';
 ///                 },
 ///                 Path = "./other/test/path",
 ///                 Prune = false,
-///                 RetryIntervalInSeconds = 600,
-///                 SyncIntervalInSeconds = 600,
-///                 TimeoutInSeconds = 600,
+///                 RetryIntervalInSeconds = 600.0,
+///                 SyncIntervalInSeconds = 600.0,
+///                 TimeoutInSeconds = 600.0,
 ///             } },
 ///         },
 ///         Namespace = "srs-namespace",
@@ -686,7 +692,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -694,7 +700,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesconfiguration_fluxconfiguration" "fluxConfiguration" {
+/// resource "azure-native_kubernetesconfiguration_flux_configuration" "fluxConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = {
 ///     access_key               = "fluxminiotest"
 ///     bucket_name              = "flux"
@@ -740,6 +749,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.kubernetesconfiguration.FluxConfiguration;
 /// import com.pulumi.azurenative.kubernetesconfiguration.FluxConfigurationArgs;
 /// import com.pulumi.azurenative.kubernetesconfiguration.inputs.BucketDefinitionArgs;
+/// import com.pulumi.azurenative.kubernetesconfiguration.inputs.KustomizationDefinitionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

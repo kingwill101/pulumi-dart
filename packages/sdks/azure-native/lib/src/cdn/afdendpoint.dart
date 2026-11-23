@@ -28,7 +28,7 @@ import 'system_data_response.dart';
 ///         Location = "global",
 ///         ProfileName = "profile1",
 ///         ResourceGroupName = "RG",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_afdendpoint" "afdEndpoint" {
+/// resource "azure-native_cdn_a_f_d_endpoint" "afdEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_generated_domain_name_label_scope = "TenantReuse"
 ///   enabled_state                          = "Enabled"
 ///   endpoint_name                          = "endpoint1"

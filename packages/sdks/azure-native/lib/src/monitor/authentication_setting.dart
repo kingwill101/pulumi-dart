@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_authenticationsetting" "authenticationSetting" {
+/// resource "azure-native_monitor_authentication_setting" "authenticationSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_setting_name  = "myAuthSetting"
 ///   azure_monitor_workspace_name = "myWorkspace"
 ///   health_model_name            = "myHealthModel"
@@ -118,7 +121,6 @@ import 'system_data_response.dart';
 ///             .azureMonitorWorkspaceName("myWorkspace")
 ///             .healthModelName("myHealthModel")
 ///             .properties(ManagedIdentityAuthenticationSettingPropertiesArgs.builder()
-///                 .authenticationKind("ManagedIdentity")
 ///                 .displayName("myDisplayName")
 ///                 .managedIdentityName("SystemAssigned")
 ///                 .build())

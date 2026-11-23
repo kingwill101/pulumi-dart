@@ -143,7 +143,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,7 +151,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprcomponent" "daprComponent" {
+/// resource "azure-native_app_dapr_component" "daprComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_name   = "reddog"
 ///   component_type   = "state.azure.cosmosdb"
 ///   environment_name = "myenvironment"
@@ -527,7 +530,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -535,7 +538,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprcomponent" "daprComponent" {
+/// resource "azure-native_app_dapr_component" "daprComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_name   = "reddog"
 ///   component_type   = "state.azure.cosmosdb"
 ///   environment_name = "myenvironment"

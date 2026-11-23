@@ -67,7 +67,7 @@ import 'service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,11 +76,14 @@ import 'service_args.dart';
 /// }
 ///
 /// resource "azure-native_cosmosdb_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   properties = {
-///     "instanceCount" = 1
-///     "instanceSize"  = "Cosmos.D4s"
-///     "serviceType"   = "DataTransfer"
+///     instance_count = 1
+///     instance_size  = "Cosmos.D4s"
+///     service_type   = "DataTransfer"
 ///   }
 ///   resource_group_name = "rg1"
 ///   service_name        = "DataTransfer"
@@ -96,6 +99,10 @@ import 'service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.Service;
 /// import com.pulumi.azurenative.cosmosdb.ServiceArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.DataTransferServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -114,7 +121,6 @@ import 'service_args.dart';
 ///             .properties(DataTransferServiceResourceCreateUpdatePropertiesArgs.builder()
 ///                 .instanceCount(1)
 ///                 .instanceSize("Cosmos.D4s")
-///                 .serviceType("DataTransfer")
 ///                 .build())
 ///             .resourceGroupName("rg1")
 ///             .serviceName("DataTransfer")
@@ -232,7 +238,7 @@ import 'service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -241,11 +247,14 @@ import 'service_args.dart';
 /// }
 ///
 /// resource "azure-native_cosmosdb_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   properties = {
-///     "instanceCount" = 1
-///     "instanceSize"  = "Cosmos.D4s"
-///     "serviceType"   = "GraphAPICompute"
+///     instance_count = 1
+///     instance_size  = "Cosmos.D4s"
+///     service_type   = "GraphAPICompute"
 ///   }
 ///   resource_group_name = "rg1"
 ///   service_name        = "GraphAPICompute"
@@ -261,6 +270,10 @@ import 'service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.Service;
 /// import com.pulumi.azurenative.cosmosdb.ServiceArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.DataTransferServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -279,7 +292,6 @@ import 'service_args.dart';
 ///             .properties(GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs.builder()
 ///                 .instanceCount(1)
 ///                 .instanceSize("Cosmos.D4s")
-///                 .serviceType("GraphAPICompute")
 ///                 .build())
 ///             .resourceGroupName("rg1")
 ///             .serviceName("GraphAPICompute")
@@ -397,7 +409,7 @@ import 'service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -406,11 +418,14 @@ import 'service_args.dart';
 /// }
 ///
 /// resource "azure-native_cosmosdb_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   properties = {
-///     "instanceCount" = 1
-///     "instanceSize"  = "Cosmos.D4s"
-///     "serviceType"   = "MaterializedViewsBuilder"
+///     instance_count = 1
+///     instance_size  = "Cosmos.D4s"
+///     service_type   = "MaterializedViewsBuilder"
 ///   }
 ///   resource_group_name = "rg1"
 ///   service_name        = "MaterializedViewsBuilder"
@@ -426,6 +441,10 @@ import 'service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.Service;
 /// import com.pulumi.azurenative.cosmosdb.ServiceArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.DataTransferServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -444,7 +463,6 @@ import 'service_args.dart';
 ///             .properties(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs.builder()
 ///                 .instanceCount(1)
 ///                 .instanceSize("Cosmos.D4s")
-///                 .serviceType("MaterializedViewsBuilder")
 ///                 .build())
 ///             .resourceGroupName("rg1")
 ///             .serviceName("MaterializedViewsBuilder")
@@ -564,7 +582,7 @@ import 'service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -573,12 +591,15 @@ import 'service_args.dart';
 /// }
 ///
 /// resource "azure-native_cosmosdb_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   properties = {
-///     "dedicatedGatewayType" = "IntegratedCache"
-///     "instanceCount"        = 1
-///     "instanceSize"         = "Cosmos.D4s"
-///     "serviceType"          = "SqlDedicatedGateway"
+///     dedicated_gateway_type = "IntegratedCache"
+///     instance_count         = 1
+///     instance_size          = "Cosmos.D4s"
+///     service_type           = "SqlDedicatedGateway"
 ///   }
 ///   resource_group_name = "rg1"
 ///   service_name        = "SqlDedicatedGateway"
@@ -594,6 +615,10 @@ import 'service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.Service;
 /// import com.pulumi.azurenative.cosmosdb.ServiceArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.DataTransferServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -613,7 +638,6 @@ import 'service_args.dart';
 ///                 .dedicatedGatewayType("IntegratedCache")
 ///                 .instanceCount(1)
 ///                 .instanceSize("Cosmos.D4s")
-///                 .serviceType("SqlDedicatedGateway")
 ///                 .build())
 ///             .resourceGroupName("rg1")
 ///             .serviceName("SqlDedicatedGateway")

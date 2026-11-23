@@ -58,7 +58,7 @@ import 'configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'configuration_args.dart';
 /// }
 ///
 /// resource "azure-native_dbformariadb_configuration" "configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name  = "event_scheduler"
 ///   resource_group_name = "TestGroup"
 ///   server_name         = "testserver"

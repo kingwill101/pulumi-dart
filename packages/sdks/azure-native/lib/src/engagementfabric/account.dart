@@ -62,7 +62,7 @@ import 'skuresponse.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,6 +71,9 @@ import 'skuresponse.dart';
 /// }
 ///
 /// resource "azure-native_engagementfabric_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "ExampleAccount"
 ///   location            = "WestUS"
 ///   resource_group_name = "ExampleRg"

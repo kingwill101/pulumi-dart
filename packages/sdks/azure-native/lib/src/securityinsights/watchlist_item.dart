@@ -77,7 +77,7 @@ import 'watchlist_user_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'watchlist_user_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_watchlistitem" "watchlistItem" {
+/// resource "azure-native_securityinsights_watchlist_item" "watchlistItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   items_key_value = {
 ///     "Business tier"  = "10.0.2.0/24"
 ///     "Data tier"      = "10.0.2.0/24"

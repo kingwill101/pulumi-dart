@@ -68,7 +68,7 @@ import 'virtual_wan_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'virtual_wan_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualwan" "virtualWan" {
+/// resource "azure-native_network_virtual_wan" "virtualWan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disable_vpn_encryption = false
 ///   location               = "West US"
 ///   resource_group_name    = "rg1"

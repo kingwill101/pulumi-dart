@@ -62,7 +62,7 @@ import 'blob_container_immutability_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'blob_container_immutability_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobcontainerimmutabilitypolicy" "blobContainerImmutabilityPolicy" {
+/// resource "azure-native_storage_blob_container_immutability_policy" "blobContainerImmutabilityPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                               = "sto7069"
 ///   allow_protected_append_writes              = true
 ///   container_name                             = "container6397"
@@ -213,7 +216,7 @@ import 'blob_container_immutability_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -221,7 +224,10 @@ import 'blob_container_immutability_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobcontainerimmutabilitypolicy" "blobContainerImmutabilityPolicy" {
+/// resource "azure-native_storage_blob_container_immutability_policy" "blobContainerImmutabilityPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                               = "sto7069"
 ///   allow_protected_append_writes_all          = true
 ///   container_name                             = "container6397"

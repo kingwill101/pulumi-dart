@@ -46,7 +46,7 @@ import 'system_data_response.dart';
 ///         {
 ///             Name = "AV36",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_privatecloud" "privateCloud" {
+/// resource "azure-native_avs_private_cloud" "privateCloud" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -259,7 +262,7 @@ import 'system_data_response.dart';
 ///         {
 ///             Name = "AV36",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -305,7 +308,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -313,7 +316,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_privatecloud" "privateCloud" {
+/// resource "azure-native_avs_private_cloud" "privateCloud" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability = {
 ///     secondary_zone = 2
 ///     strategy       = "DualZone"

@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_purview_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "account1"
 ///   location            = "West US 2"
 ///   resource_group_name = "SampleResourceGroup"

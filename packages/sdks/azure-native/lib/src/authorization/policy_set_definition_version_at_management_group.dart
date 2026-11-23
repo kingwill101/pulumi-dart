@@ -134,7 +134,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -142,7 +142,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policysetdefinitionversionatmanagementgroup" "policySetDefinitionVersionAtManagementGroup" {
+/// resource "azure-native_authorization_policy_set_definition_version_at_management_group" "policySetDefinitionVersionAtManagementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description           = "Policies to enforce low cost storage SKUs"
 ///   display_name          = "Cost Management"
 ///   management_group_name = "MyManagementGroup"
@@ -186,6 +189,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionVersionAtManagementGroup;
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionVersionAtManagementGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionReferenceArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

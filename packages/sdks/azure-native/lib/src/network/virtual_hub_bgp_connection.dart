@@ -27,7 +27,7 @@ import 'virtual_hub_bgp_connection_args.dart';
 ///         {
 ///             Id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubVirtualNetworkConnections/hubVnetConn1",
 ///         },
-///         PeerAsn = 20000,
+///         PeerAsn = 20000.0,
 ///         PeerIp = "192.168.1.5",
 ///         ResourceGroupName = "rg1",
 ///         VirtualHubName = "hub1",
@@ -68,7 +68,7 @@ import 'virtual_hub_bgp_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'virtual_hub_bgp_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualhubbgpconnection" "virtualHubBgpConnection" {
+/// resource "azure-native_network_virtual_hub_bgp_connection" "virtualHubBgpConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "conn1"
 ///   hub_virtual_network_connection = {
 ///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubVirtualNetworkConnections/hubVnetConn1"

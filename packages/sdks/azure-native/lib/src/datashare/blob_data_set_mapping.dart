@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+/// resource "azure-native_datashare_blob_data_set_mapping" "blobDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   container_name          = "C1"
 ///   data_set_id             = "a08f184b-0567-4b11-ba22-a1199336d226"
@@ -122,7 +125,6 @@ import 'system_data_response.dart';
 ///             .dataSetId("a08f184b-0567-4b11-ba22-a1199336d226")
 ///             .dataSetMappingName("DatasetMapping1")
 ///             .filePath("file21")
-///             .kind("Blob")
 ///             .resourceGroup("SampleResourceGroup")
 ///             .resourceGroupName("SampleResourceGroup")
 ///             .shareSubscriptionName("ShareSubscription1")
@@ -243,7 +245,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -251,7 +253,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+/// resource "azure-native_datashare_blob_data_set_mapping" "blobDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -380,7 +385,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -388,7 +393,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+/// resource "azure-native_datashare_blob_data_set_mapping" "blobDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -517,7 +525,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -525,7 +533,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+/// resource "azure-native_datashare_blob_data_set_mapping" "blobDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -654,7 +665,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -662,7 +673,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+/// resource "azure-native_datashare_blob_data_set_mapping" "blobDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "consumerAccount"
 ///   data_set_mapping_name   = "datasetMappingName1"
 ///   resource_group_name     = "SampleResourceGroup"

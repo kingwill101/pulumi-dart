@@ -109,13 +109,13 @@ import 'system_data_response.dart';
 /// 			},
 /// 			PolicyDefinitionName: pulumi.String("ResourceNaming"),
 /// 			PolicyRule: pulumi.Any(map[string]interface{}{
-/// 				"if": map[string]interface{}{
-/// 					"not": map[string]interface{}{
+/// 				"if": map[string]map[string]string{
+/// 					"not": map[string]string{
 /// 						"field": "name",
 /// 						"like":  "[concat(parameters('prefix'), '*', parameters('suffix'))]",
 /// 					},
 /// 				},
-/// 				"then": map[string]interface{}{
+/// 				"then": map[string]string{
 /// 					"effect": "deny",
 /// 				},
 /// 			}),
@@ -130,7 +130,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,7 +138,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policydefinition" "policyDefinition" {
+/// resource "azure-native_authorization_policy_definition" "policyDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Force resource names to begin with given 'prefix' and/or end with given 'suffix'"
 ///   display_name = "Enforce resource naming convention"
 ///   metadata = {
@@ -185,6 +188,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyDefinition;
 /// import com.pulumi.azurenative.authorization.PolicyDefinitionArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueMetadataArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -468,19 +473,19 @@ import 'system_data_response.dart';
 /// 			},
 /// 			PolicyDefinitionName: pulumi.String("EventHubDiagnosticLogs"),
 /// 			PolicyRule: pulumi.Any(map[string]interface{}{
-/// 				"if": map[string]interface{}{
+/// 				"if": map[string]string{
 /// 					"equals": "Microsoft.EventHub/namespaces",
 /// 					"field":  "type",
 /// 				},
 /// 				"then": map[string]interface{}{
 /// 					"details": map[string]interface{}{
-/// 						"existenceCondition": map[string]interface{}{
-/// 							"allOf": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 						"existenceCondition": map[string][]interface{}{
+/// 							"allOf": []interface{}{
+/// 								map[string]string{
 /// 									"equals": "true",
 /// 									"field":  "Microsoft.Insights/diagnosticSettings/logs[*].retentionPolicy.enabled",
 /// 								},
-/// 								map[string]interface{}{
+/// 								map[string]string{
 /// 									"equals": "[parameters('requiredRetentionDays')]",
 /// 									"field":  "Microsoft.Insights/diagnosticSettings/logs[*].retentionPolicy.days",
 /// 								},
@@ -502,7 +507,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -510,7 +515,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policydefinition" "policyDefinition" {
+/// resource "azure-native_authorization_policy_definition" "policyDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Audit enabling of logs and retain them up to a year. This enables recreation of activity trails for investigation purposes when a security incident occurs or your network is compromised"
 ///   display_name = "Event Hubs should have diagnostic logging enabled"
 ///   metadata = {
@@ -562,6 +570,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyDefinition;
 /// import com.pulumi.azurenative.authorization.PolicyDefinitionArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueMetadataArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

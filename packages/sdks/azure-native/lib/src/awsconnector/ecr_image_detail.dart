@@ -50,7 +50,7 @@ import 'system_data_response.dart';
 ///                         Value = AzureNative.AwsConnector.ScanStatus.ACTIVE,
 ///                     },
 ///                 },
-///                 ImageSizeInBytes = 18,
+///                 ImageSizeInBytes = 18.0,
 ///                 ImageTags = new[]
 ///                 {
 ///                     "bwikpoljnmaoewepiunoltcxlyxd",
@@ -145,7 +145,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,7 +153,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ecrimagedetail" "ecrImageDetail" {
+/// resource "azure-native_awsconnector_ecr_image_detail" "ecrImageDetail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "mpxszpyclsniahaoqerqewrzxyzcdt"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {

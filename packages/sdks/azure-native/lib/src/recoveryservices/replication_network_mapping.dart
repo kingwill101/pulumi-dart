@@ -58,8 +58,8 @@ import 'replication_network_mapping_args.dart';
 /// 			NetworkMappingName: pulumi.String("corpe2amap"),
 /// 			NetworkName:        pulumi.String("e2267b5c-2650-49bd-ab3f-d66aae694c06"),
 /// 			Properties: &recoveryservices.CreateNetworkMappingInputPropertiesArgs{
-/// 				FabricSpecificDetails: recoveryservices.VmmToAzureCreateNetworkMappingInput{
-/// 					InstanceType: "VmmToAzure",
+/// 				FabricSpecificDetails: &recoveryservices.VmmToAzureCreateNetworkMappingInputArgs{
+/// 					InstanceType: pulumi.String("VmmToAzure"),
 /// 				},
 /// 				RecoveryFabricName: pulumi.String("Microsoft Azure"),
 /// 				RecoveryNetworkId:  pulumi.String("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai"),
@@ -77,7 +77,7 @@ import 'replication_network_mapping_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,13 +85,16 @@ import 'replication_network_mapping_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationnetworkmapping" "replicationNetworkMapping" {
+/// resource "azure-native_recoveryservices_replication_network_mapping" "replicationNetworkMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name          = "b0cef6e9a4437b81803d0b55ada4f700ab66caae59c35d62723a1589c0cd13ac"
 ///   network_mapping_name = "corpe2amap"
 ///   network_name         = "e2267b5c-2650-49bd-ab3f-d66aae694c06"
 ///   properties = {
 ///     fabric_specific_details = {
-///       "instanceType" = "VmmToAzure"
+///       instance_type = "VmmToAzure"
 ///     }
 ///     recovery_fabric_name = "Microsoft Azure"
 ///     recovery_network_id  = "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai"
@@ -111,6 +114,9 @@ import 'replication_network_mapping_args.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationNetworkMapping;
 /// import com.pulumi.azurenative.recoveryservices.ReplicationNetworkMappingArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.CreateNetworkMappingInputPropertiesArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureToAzureCreateNetworkMappingInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.VmmToAzureCreateNetworkMappingInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.VmmToVmmCreateNetworkMappingInputArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -130,7 +136,6 @@ import 'replication_network_mapping_args.dart';
 ///             .networkName("e2267b5c-2650-49bd-ab3f-d66aae694c06")
 ///             .properties(CreateNetworkMappingInputPropertiesArgs.builder()
 ///                 .fabricSpecificDetails(VmmToAzureCreateNetworkMappingInputArgs.builder()
-///                     .instanceType("VmmToAzure")
 ///                     .build())
 ///                 .recoveryFabricName("Microsoft Azure")
 ///                 .recoveryNetworkId("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai")

@@ -62,7 +62,7 @@ import 'workspace_group_user_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'workspace_group_user_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacegroupuser" "workspaceGroupUser" {
+/// resource "azure-native_apimanagement_workspace_group_user" "workspaceGroupUser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id            = "tempgroup"
 ///   resource_group_name = "rg1"
 ///   service_name        = "apimService1"

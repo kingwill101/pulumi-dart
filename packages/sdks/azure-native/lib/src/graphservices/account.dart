@@ -61,7 +61,7 @@ import 'account_resource_response_system_data.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,6 +70,9 @@ import 'account_resource_response_system_data.dart';
 /// }
 ///
 /// resource "azure-native_graphservices_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     app_id = "11111111-aaaa-1111-bbbb-111111111111"
 ///   }

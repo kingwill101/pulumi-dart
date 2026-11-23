@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,21 +116,24 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_horizondb_horizondbparametergroup" "horizonDbParameterGroup" {
+/// resource "azure-native_horizondb_horizon_db_parameter_group" "horizonDbParameterGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "westus2"
 ///   parameter_group_name = "exampleparametergroup"
 ///   properties = {
 ///     apply_immediately = true
 ///     description       = "Parameter group for high-throughput workloads"
 ///     parameters = [{
-///       "name"  = "max_connections"
-///       "value" = "200"
+///       name  = "max_connections"
+///       value = "200"
 ///       }, {
-///       "name"  = "log_min_error_statement"
-///       "value" = "error"
+///       name  = "log_min_error_statement"
+///       value = "error"
 ///       }, {
-///       "name"  = "shared_buffers"
-///       "value" = "2000"
+///       name  = "shared_buffers"
+///       value = "2000"
 ///     }]
 ///     pg_version = 17
 ///   }
@@ -152,6 +155,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.horizondb.HorizonDbParameterGroup;
 /// import com.pulumi.azurenative.horizondb.HorizonDbParameterGroupArgs;
 /// import com.pulumi.azurenative.horizondb.inputs.HorizonDbParameterGroupPropertiesArgs;
+/// import com.pulumi.azurenative.horizondb.inputs.ParameterPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

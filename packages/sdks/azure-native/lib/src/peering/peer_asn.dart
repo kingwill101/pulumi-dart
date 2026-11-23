@@ -95,7 +95,7 @@ import 'peer_asn_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'peer_asn_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_peering_peerasn" "peerAsn" {
+/// resource "azure-native_peering_peer_asn" "peerAsn" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peer_asn      = 65000
 ///   peer_asn_name = "peerAsnName"
 ///   peer_contact_detail {

@@ -46,7 +46,7 @@ import 'system_data_response.dart';
 ///                 { "events", new AzureNative.IoTHub.Inputs.EventHubPropertiesArgs
 ///                 {
 ///                     PartitionCount = 2,
-///                     RetentionTimeInDays = 1,
+///                     RetentionTimeInDays = 1.0,
 ///                 } },
 ///             },
 ///             Features = AzureNative.IoTHub.Capabilities.None,
@@ -134,10 +134,10 @@ import 'system_data_response.dart';
 ///         ResourceName = "testHub",
 ///         Sku = new AzureNative.IoTHub.Inputs.IotHubSkuInfoArgs
 ///         {
-///             Capacity = 1,
+///             Capacity = 1.0,
 ///             Name = AzureNative.IoTHub.IotHubSku.S1,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -260,7 +260,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -268,7 +268,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iothub_iothubresource" "iotHubResource" {
+/// resource "azure-native_iothub_iot_hub_resource" "iotHubResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "centraluseuap"
 ///   properties = {
 ///     cloud_to_device = {
@@ -302,29 +305,29 @@ import 'system_data_response.dart';
 ///       apply_to_built_in_event_hub_endpoint = true
 ///       default_action                       = "Deny"
 ///       ip_rules = [{
-///         "action"     = "Allow"
-///         "filterName" = "rule1"
-///         "ipMask"     = "131.117.159.53"
+///         action      = "Allow"
+///         filter_name = "rule1"
+///         ip_mask     = "131.117.159.53"
 ///         }, {
-///         "action"     = "Allow"
-///         "filterName" = "rule2"
-///         "ipMask"     = "157.55.59.128/25"
+///         action      = "Allow"
+///         filter_name = "rule2"
+///         ip_mask     = "157.55.59.128/25"
 ///       }]
 ///     }
 ///     routing = {
 ///       endpoints = {
 ///         cosmos_db_sql_containers = [{
-///           "authenticationType"   = "keyBased"
-///           "containerName"        = "test"
-///           "databaseName"         = "systemstore"
-///           "endpointUri"          = "https://test-systemstore-test2.documents.azure.com"
-///           "name"                 = "endpointcosmos"
-///           "partitionKeyName"     = "keystamped"
-///           "partitionKeyTemplate" = "{deviceid}-{YYYY}-{MM}"
-///           "primaryKey"           = "<primary-key>"
-///           "resourceGroup"        = "rg-test"
-///           "secondaryKey"         = "<secondary-key>"
-///           "subscriptionId"       = "<subscription-id>"
+///           authentication_type    = "keyBased"
+///           container_name         = "test"
+///           database_name          = "systemstore"
+///           endpoint_uri           = "https://test-systemstore-test2.documents.azure.com"
+///           name                   = "endpointcosmos"
+///           partition_key_name     = "keystamped"
+///           partition_key_template = "{deviceid}-{YYYY}-{MM}"
+///           primary_key            = "<primary-key>"
+///           resource_group         = "rg-test"
+///           secondary_key          = "<secondary-key>"
+///           subscription_id        = "<subscription-id>"
 ///         }]
 ///         event_hubs         = []
 ///         service_bus_queues = []
@@ -370,10 +373,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iothub.inputs.IotHubPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.CloudToDevicePropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.FeedbackPropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.EventHubPropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.MessagingEndpointPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.NetworkRuleSetPropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.NetworkRuleSetIpRuleArgs;
 /// import com.pulumi.azurenative.iothub.inputs.RoutingPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.RoutingEndpointsArgs;
+/// import com.pulumi.azurenative.iothub.inputs.RoutingCosmosDBSqlApiPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.FallbackRoutePropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.StorageEndpointPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.IotHubSkuInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -786,7 +794,7 @@ import 'system_data_response.dart';
 ///                 { "events", new AzureNative.IoTHub.Inputs.EventHubPropertiesArgs
 ///                 {
 ///                     PartitionCount = 2,
-///                     RetentionTimeInDays = 1,
+///                     RetentionTimeInDays = 1.0,
 ///                 } },
 ///             },
 ///             Features = AzureNative.IoTHub.Capabilities.None,
@@ -857,10 +865,10 @@ import 'system_data_response.dart';
 ///         ResourceName = "testHub",
 ///         Sku = new AzureNative.IoTHub.Inputs.IotHubSkuInfoArgs
 ///         {
-///             Capacity = 1,
+///             Capacity = 1.0,
 ///             Name = AzureNative.IoTHub.IotHubSku.S1,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -968,7 +976,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -976,7 +984,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iothub_iothubresource" "iotHubResource" {
+/// resource "azure-native_iothub_iot_hub_resource" "iotHubResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "centraluseuap"
 ///   properties = {
 ///     cloud_to_device = {
@@ -1010,13 +1021,13 @@ import 'system_data_response.dart';
 ///       apply_to_built_in_event_hub_endpoint = true
 ///       default_action                       = "Deny"
 ///       ip_rules = [{
-///         "action"     = "Allow"
-///         "filterName" = "rule1"
-///         "ipMask"     = "131.117.159.53"
+///         action      = "Allow"
+///         filter_name = "rule1"
+///         ip_mask     = "131.117.159.53"
 ///         }, {
-///         "action"     = "Allow"
-///         "filterName" = "rule2"
-///         "ipMask"     = "157.55.59.128/25"
+///         action      = "Allow"
+///         filter_name = "rule2"
+///         ip_mask     = "157.55.59.128/25"
 ///       }]
 ///     }
 ///     routing = {
@@ -1065,10 +1076,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iothub.inputs.IotHubPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.CloudToDevicePropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.FeedbackPropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.EventHubPropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.MessagingEndpointPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.NetworkRuleSetPropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.NetworkRuleSetIpRuleArgs;
 /// import com.pulumi.azurenative.iothub.inputs.RoutingPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.RoutingEndpointsArgs;
 /// import com.pulumi.azurenative.iothub.inputs.FallbackRoutePropertiesArgs;
+/// import com.pulumi.azurenative.iothub.inputs.StorageEndpointPropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.IotHubSkuInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

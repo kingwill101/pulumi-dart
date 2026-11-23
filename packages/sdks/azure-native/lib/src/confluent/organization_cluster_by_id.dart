@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_confluent_organizationclusterbyid" "organizationClusterById" {
+/// resource "azure-native_confluent_organization_cluster_by_id" "organizationClusterById" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id          = "cluster-1"
 ///   environment_id      = "env-1"
 ///   organization_name   = "myOrganization"

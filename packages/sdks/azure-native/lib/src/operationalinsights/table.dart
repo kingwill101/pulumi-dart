@@ -8,9 +8,9 @@ import 'table_args.dart';
 
 /// Workspace data table definition.
 ///
-/// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+/// Uses Azure REST API version 2026-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 ///
-/// Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-12-01-preview, 2022-10-01, 2023-09-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,7 +86,7 @@ import 'table_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,12 +95,15 @@ import 'table_args.dart';
 /// }
 ///
 /// resource "azure-native_operationalinsights_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "oiautorest6685"
 ///   retention_in_days   = 45
 ///   schema = {
 ///     columns = [{
-///       "name" = "MyNewColumn"
-///       "type" = "guid"
+///       name = "MyNewColumn"
+///       type = "guid"
 ///     }]
 ///     name = "AzureNetworkFlow"
 ///   }
@@ -120,6 +123,7 @@ import 'table_args.dart';
 /// import com.pulumi.azurenative.operationalinsights.Table;
 /// import com.pulumi.azurenative.operationalinsights.TableArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.SchemaArgs;
+/// import com.pulumi.azurenative.operationalinsights.inputs.ColumnArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -223,7 +227,7 @@ import 'table_args.dart';
 /// $ pulumi import azure-native:operationalinsights:Table AzureNetworkFlow /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}
 /// ```
 class Table extends pulumi.CustomResource {
-  /// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
+  /// The tables long-term retention in days. Calculated as (totalRetentionInDays-retentionInDays).
   late final pulumi.Output<int> archiveRetentionInDays;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
@@ -233,13 +237,15 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Instruct the system how to handle and charge the logs ingested to this table.
   late final pulumi.Output<String?> plan;
+  /// The protection level of the table. Determines the default data access isolation behavior.
+  late final pulumi.Output<String?> protectionLevel;
   /// Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
   late final pulumi.Output<String> provisioningState;
   /// Parameters of the restore operation that initiated this table.
   late final pulumi.Output<RestoredLogsResponse?> restoredLogs;
   /// Search job execution statistics.
   late final pulumi.Output<ResultStatisticsResponse> resultStatistics;
-  /// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+  /// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
   late final pulumi.Output<int?> retentionInDays;
   /// True - Value originates from workspace retention in days, False - Customer specific.
   late final pulumi.Output<bool> retentionInDaysAsDefault;
@@ -247,9 +253,9 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<SchemaResponse?> schema;
   /// Parameters of the search job that initiated this table.
   late final pulumi.Output<SearchResultsResponse?> searchResults;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+  /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
   late final pulumi.Output<int?> totalRetentionInDays;
   /// True - Value originates from retention in days, False - Customer specific.
   late final pulumi.Output<bool> totalRetentionInDaysAsDefault;
@@ -275,6 +281,7 @@ class Table extends pulumi.CustomResource {
     lastPlanModifiedDate = registerOutput<String>('lastPlanModifiedDate');
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');
+    protectionLevel = registerOutput<String?>('protectionLevel');
     provisioningState = registerOutput<String>('provisioningState');
     restoredLogs = registerOutput<RestoredLogsResponse?>('restoredLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoredLogsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resultStatistics = registerOutput<ResultStatisticsResponse>('resultStatistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -302,6 +309,7 @@ class Table extends pulumi.CustomResource {
     lastPlanModifiedDate = registerOutput<String>('lastPlanModifiedDate');
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');
+    protectionLevel = registerOutput<String?>('protectionLevel');
     provisioningState = registerOutput<String>('provisioningState');
     restoredLogs = registerOutput<RestoredLogsResponse?>('restoredLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoredLogsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resultStatistics = registerOutput<ResultStatisticsResponse>('resultStatistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

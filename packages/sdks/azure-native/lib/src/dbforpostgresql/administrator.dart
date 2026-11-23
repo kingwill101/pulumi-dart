@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,6 +72,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_administrator" "administrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   object_id           = "oooooooo-oooo-oooo-oooo-oooooooooooo"
 ///   principal_name      = "exampleuser@contoso.com"
 ///   principal_type      = "User"

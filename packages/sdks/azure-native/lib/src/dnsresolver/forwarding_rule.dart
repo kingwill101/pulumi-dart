@@ -92,7 +92,7 @@ import 'target_dns_server_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'target_dns_server_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_forwardingrule" "forwardingRule" {
+/// resource "azure-native_dnsresolver_forwarding_rule" "forwardingRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_forwarding_ruleset_name = "sampleDnsForwardingRuleset"
 ///   domain_name                 = "contoso.com."
 ///   forwarding_rule_name        = "sampleForwardingRule"

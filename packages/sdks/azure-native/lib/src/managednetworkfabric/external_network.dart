@@ -52,7 +52,7 @@ import 'system_data_response.dart';
 ///             EgressAclId = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl",
 ///             IngressAclId = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl",
 ///             Mtu = 1500,
-///             PeerASN = 65047,
+///             PeerASN = 65047.0,
 ///             PrimaryIpv4Prefix = "10.1.1.0/30",
 ///             PrimaryIpv6Prefix = "3FFE:FFFF:0:CD30::a0/126",
 ///             SecondaryIpv4Prefix = "10.1.1.4/30",
@@ -173,7 +173,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -181,7 +181,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_externalnetwork" "externalNetwork" {
+/// resource "azure-native_managednetworkfabric_external_network" "externalNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation = "annotation"
 ///   export_route_policy = {
 ///     export_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"

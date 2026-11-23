@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routingrule" "routingRule" {
+/// resource "azure-native_network_routing_rule" "routingRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name = "myTestRoutingConfig"
 ///   description        = "This is Sample Routing Rule"
 ///   destination = {

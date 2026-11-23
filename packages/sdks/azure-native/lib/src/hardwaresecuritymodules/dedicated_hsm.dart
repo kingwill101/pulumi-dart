@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -109,12 +109,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hardwaresecuritymodules_dedicatedhsm" "dedicatedHsm" {
+/// resource "azure-native_hardwaresecuritymodules_dedicated_hsm" "dedicatedHsm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   name     = "hsm1"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "privateIpAddress" = "1.0.0.1"
+///       private_ip_address = "1.0.0.1"
 ///     }]
 ///     subnet = {
 ///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
@@ -142,6 +145,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.DedicatedHsm;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.DedicatedHsmArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkInterfaceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.SkuArgs;
 /// import java.util.ArrayList;
@@ -351,7 +355,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -359,12 +363,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hardwaresecuritymodules_dedicatedhsm" "dedicatedHsm" {
+/// resource "azure-native_hardwaresecuritymodules_dedicated_hsm" "dedicatedHsm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   name     = "hsm1"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "privateIpAddress" = "1.0.0.1"
+///       private_ip_address = "1.0.0.1"
 ///     }]
 ///     subnet = {
 ///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
@@ -392,6 +399,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.DedicatedHsm;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.DedicatedHsmArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkInterfaceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.SkuArgs;
 /// import java.util.ArrayList;
@@ -625,7 +633,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -633,11 +641,14 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hardwaresecuritymodules_dedicatedhsm" "dedicatedHsm" {
+/// resource "azure-native_hardwaresecuritymodules_dedicated_hsm" "dedicatedHsm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   management_network_profile = {
 ///     network_interfaces = [{
-///       "privateIpAddress" = "1.0.0.2"
+///       private_ip_address = "1.0.0.2"
 ///     }]
 ///     subnet = {
 ///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
@@ -646,7 +657,7 @@ import 'system_data_response.dart';
 ///   name = "hsm1"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "privateIpAddress" = "1.0.0.1"
+///       private_ip_address = "1.0.0.1"
 ///     }]
 ///     subnet = {
 ///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
@@ -674,6 +685,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.DedicatedHsm;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.DedicatedHsmArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkInterfaceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.SkuArgs;
 /// import java.util.ArrayList;

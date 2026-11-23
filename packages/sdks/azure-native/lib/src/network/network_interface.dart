@@ -31,7 +31,7 @@ import 'sub_resource_response.dart';
 ///     {
 ///         DisableTcpStateTracking = true,
 ///         EnableAcceleratedNetworking = true,
-///         IpConfigurations = new[]
+///         IpConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.NetworkInterfaceIPConfigurationArgs
 ///             {
@@ -103,7 +103,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkinterface" "networkInterface" {
+/// resource "azure-native_network_network_interface" "networkInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disable_tcp_state_tracking    = true
 ///   enable_accelerated_networking = true
 ///   ip_configurations {
@@ -277,7 +280,7 @@ import 'sub_resource_response.dart';
 ///     var networkInterface = new AzureNative.Network.NetworkInterface("networkInterface", new()
 ///     {
 ///         EnableAcceleratedNetworking = true,
-///         IpConfigurations = new[]
+///         IpConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.NetworkInterfaceIPConfigurationArgs
 ///             {
@@ -346,7 +349,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -354,7 +357,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkinterface" "networkInterface" {
+/// resource "azure-native_network_network_interface" "networkInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable_accelerated_networking = true
 ///   ip_configurations {
 ///     gateway_load_balancer = {

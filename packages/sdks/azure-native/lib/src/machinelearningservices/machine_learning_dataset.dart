@@ -89,7 +89,7 @@ import 'sku_machine_learning_dataset_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'sku_machine_learning_dataset_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdataset" "machineLearningDataset" {
+/// resource "azure-native_machinelearningservices_machine_learning_dataset" "machineLearningDataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_name = "datasetName123"
 ///   dataset_type = "file"
 ///   parameters = {

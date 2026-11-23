@@ -81,7 +81,7 @@ import 'distributed_availability_group_database_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'distributed_availability_group_database_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_distributedavailabilitygroup" "distributedAvailabilityGroup" {
+/// resource "azure-native_sql_distributed_availability_group" "distributedAvailabilityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   databases {
 ///     database_name = "testdb"
 ///   }
@@ -274,7 +277,7 @@ import 'distributed_availability_group_database_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -282,7 +285,10 @@ import 'distributed_availability_group_database_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_distributedavailabilitygroup" "distributedAvailabilityGroup" {
+/// resource "azure-native_sql_distributed_availability_group" "distributedAvailabilityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   databases {
 ///     database_name = "testdb"
 ///   }

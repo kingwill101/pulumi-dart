@@ -34,8 +34,8 @@ import 'system_data_response.dart';
 ///                 {
 ///                     new AzureNative.Orbital.Inputs.ContactProfileLinkChannelArgs
 ///                     {
-///                         BandwidthMHz = 2,
-///                         CenterFrequencyMHz = 2250,
+///                         BandwidthMHz = 2.0,
+///                         CenterFrequencyMHz = 2250.0,
 ///                         EndPoint = new AzureNative.Orbital.Inputs.EndPointArgs
 ///                         {
 ///                             EndPointName = "ContosoTest_Uplink",
@@ -47,8 +47,8 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 Direction = AzureNative.Orbital.Direction.Uplink,
-///                 EirpdBW = 45,
-///                 GainOverTemperature = 0,
+///                 EirpdBW = 45.0,
+///                 GainOverTemperature = 0.0,
 ///                 Name = "contoso-uplink",
 ///                 Polarization = AzureNative.Orbital.Polarization.LHCP,
 ///             },
@@ -58,8 +58,8 @@ import 'system_data_response.dart';
 ///                 {
 ///                     new AzureNative.Orbital.Inputs.ContactProfileLinkChannelArgs
 ///                     {
-///                         BandwidthMHz = 15,
-///                         CenterFrequencyMHz = 8160,
+///                         BandwidthMHz = 15.0,
+///                         CenterFrequencyMHz = 8160.0,
 ///                         EndPoint = new AzureNative.Orbital.Inputs.EndPointArgs
 ///                         {
 ///                             EndPointName = "ContosoTest_Downlink",
@@ -71,14 +71,14 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 Direction = AzureNative.Orbital.Direction.Downlink,
-///                 EirpdBW = 0,
-///                 GainOverTemperature = 25,
+///                 EirpdBW = 0.0,
+///                 GainOverTemperature = 25.0,
 ///                 Name = "contoso-downlink",
 ///                 Polarization = AzureNative.Orbital.Polarization.RHCP,
 ///             },
 ///         },
 ///         Location = "eastus2",
-///         MinimumElevationDegrees = 5,
+///         MinimumElevationDegrees = 5.0,
 ///         MinimumViableContactDuration = "PT1M",
 ///         NetworkConfiguration = new AzureNative.Orbital.Inputs.ContactProfilesPropertiesNetworkConfigurationArgs
 ///         {
@@ -189,7 +189,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -197,7 +197,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_orbital_contactprofile" "contactProfile" {
+/// resource "azure-native_orbital_contact_profile" "contactProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_tracking_configuration = "disabled"
 ///   contact_profile_name        = "CONTOSO-CP"
 ///   event_hub_uri               = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.EventHub/namespaces/contosoHub/eventhubs/contosoHub"
@@ -265,6 +268,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.ContactProfile;
 /// import com.pulumi.azurenative.orbital.ContactProfileArgs;
 /// import com.pulumi.azurenative.orbital.inputs.ContactProfileLinkArgs;
+/// import com.pulumi.azurenative.orbital.inputs.ContactProfileLinkChannelArgs;
+/// import com.pulumi.azurenative.orbital.inputs.EndPointArgs;
 /// import com.pulumi.azurenative.orbital.inputs.ContactProfilesPropertiesNetworkConfigurationArgs;
 /// import com.pulumi.azurenative.orbital.inputs.ContactProfileThirdPartyConfigurationArgs;
 /// import java.util.ArrayList;

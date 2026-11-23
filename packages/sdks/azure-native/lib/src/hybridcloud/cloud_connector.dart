@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcloud_cloudconnector" "cloudConnector" {
+/// resource "azure-native_hybridcloud_cloud_connector" "cloudConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id           = "123456789012"
 ///   cloud_connector_name = "123456789012"
 ///   cloud_type           = "AWS"

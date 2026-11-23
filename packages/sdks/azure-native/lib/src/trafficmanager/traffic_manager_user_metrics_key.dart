@@ -46,7 +46,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -54,7 +54,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 ///   }
 /// }
 ///
-/// resource "azure-native_trafficmanager_trafficmanagerusermetricskey" "trafficManagerUserMetricsKey" {
+/// resource "azure-native_trafficmanager_traffic_manager_user_metrics_key" "trafficManagerUserMetricsKey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 ///
 /// ```

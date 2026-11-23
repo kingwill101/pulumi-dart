@@ -22,7 +22,7 @@ import 'system_data_response.dart';
 /// {
 ///     var rule = new AzureNative.Cdn.Rule("rule", new()
 ///     {
-///         Actions = new[]
+///         Actions =
 ///         {
 ///             new AzureNative.Cdn.Inputs.DeliveryRuleResponseHeaderActionArgs
 ///             {
@@ -36,14 +36,14 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///         },
-///         Conditions = new[]
+///         Conditions =
 ///         {
 ///             new AzureNative.Cdn.Inputs.DeliveryRuleRequestMethodConditionArgs
 ///             {
 ///                 Name = "RequestMethod",
 ///                 Parameters = new AzureNative.Cdn.Inputs.RequestMethodMatchConditionParametersArgs
 ///                 {
-///                     MatchValues = new[]
+///                     MatchValues =
 ///                     {
 ///                         AzureNative.Cdn.RequestMethodMatchValue.GET,
 ///                     },
@@ -77,26 +77,26 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cdn.NewRule(ctx, "rule", &cdn.RuleArgs{
 /// 			Actions: pulumi.Array{
-/// 				cdn.DeliveryRuleResponseHeaderAction{
-/// 					Name: "ModifyResponseHeader",
-/// 					Parameters: cdn.HeaderActionParameters{
-/// 						HeaderAction: cdn.HeaderActionOverwrite,
-/// 						HeaderName:   "X-CDN",
-/// 						TypeName:     "DeliveryRuleHeaderActionParameters",
-/// 						Value:        "MSFT",
+/// 				&cdn.DeliveryRuleResponseHeaderActionArgs{
+/// 					Name: pulumi.String("ModifyResponseHeader"),
+/// 					Parameters: &cdn.HeaderActionParametersArgs{
+/// 						HeaderAction: pulumi.String(cdn.HeaderActionOverwrite),
+/// 						HeaderName:   pulumi.String("X-CDN"),
+/// 						TypeName:     pulumi.String("DeliveryRuleHeaderActionParameters"),
+/// 						Value:        pulumi.String("MSFT"),
 /// 					},
 /// 				},
 /// 			},
 /// 			Conditions: pulumi.Array{
-/// 				cdn.DeliveryRuleRequestMethodCondition{
-/// 					Name: "RequestMethod",
-/// 					Parameters: cdn.RequestMethodMatchConditionParameters{
-/// 						MatchValues: []cdn.RequestMethodMatchValue{
-/// 							cdn.RequestMethodMatchValueGET,
+/// 				&cdn.DeliveryRuleRequestMethodConditionArgs{
+/// 					Name: pulumi.String("RequestMethod"),
+/// 					Parameters: &cdn.RequestMethodMatchConditionParametersArgs{
+/// 						MatchValues: pulumi.StringArray{
+/// 							pulumi.String(cdn.RequestMethodMatchValueGET),
 /// 						},
-/// 						NegateCondition: false,
-/// 						Operator:        cdn.RequestMethodOperatorEqual,
-/// 						TypeName:        "DeliveryRuleRequestMethodConditionParameters",
+/// 						NegateCondition: pulumi.Bool(false),
+/// 						Operator:        pulumi.String(cdn.RequestMethodOperatorEqual),
+/// 						TypeName:        pulumi.String("DeliveryRuleRequestMethodConditionParameters"),
 /// 					},
 /// 				},
 /// 			},
@@ -116,7 +116,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -125,22 +125,25 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_rule" "rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = [{
-///     "name" = "ModifyResponseHeader"
-///     "parameters" = {
-///       "headerAction" = "Overwrite"
-///       "headerName"   = "X-CDN"
-///       "typeName"     = "DeliveryRuleHeaderActionParameters"
-///       "value"        = "MSFT"
+///     name = "ModifyResponseHeader"
+///     parameters = {
+///       header_action = "Overwrite"
+///       header_name   = "X-CDN"
+///       type_name     = "DeliveryRuleHeaderActionParameters"
+///       value         = "MSFT"
 ///     }
 ///   }]
 ///   conditions = [{
-///     "name" = "RequestMethod"
-///     "parameters" = {
-///       "matchValues"     = ["GET"]
-///       "negateCondition" = false
-///       "operator"        = "Equal"
-///       "typeName"        = "DeliveryRuleRequestMethodConditionParameters"
+///     name = "RequestMethod"
+///     parameters = {
+///       match_values     = ["GET"]
+///       negate_condition = false
+///       operator         = "Equal"
+///       type_name        = "DeliveryRuleRequestMethodConditionParameters"
 ///     }
 ///   }]
 ///   order               = 1
@@ -160,6 +163,61 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cdn.Rule;
 /// import com.pulumi.azurenative.cdn.RuleArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleCacheExpirationActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CacheExpirationActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleCacheKeyQueryStringActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CacheKeyQueryStringActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestHeaderActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.HeaderActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleResponseHeaderActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRouteConfigurationOverrideActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RouteConfigurationOverrideActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.OriginGroupOverrideActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.OriginGroupOverrideActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRedirectActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRedirectActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRewriteActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRewriteActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlSigningActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlSigningActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleClientPortConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ClientPortMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleCookiesConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CookiesMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleHostNameConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.HostNameMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleHttpVersionConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.HttpVersionMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleIsDeviceConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.IsDeviceMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRulePostArgsConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.PostArgsMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleQueryStringConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.QueryStringMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRemoteAddressConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RemoteAddressMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestBodyConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestBodyMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestHeaderConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestHeaderMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestMethodConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestMethodMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestSchemeConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestSchemeMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestUriConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestUriMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleServerPortConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ServerPortMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleSocketAddrConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.SocketAddrMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleSslProtocolConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.SslProtocolMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleUrlFileExtensionConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlFileExtensionMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleUrlFileNameConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlFileNameMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleUrlPathConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlPathMatchConditionParametersArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -175,21 +233,17 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var rule = new Rule("rule", RuleArgs.builder()
 ///             .actions(DeliveryRuleResponseHeaderActionArgs.builder()
-///                 .name("ModifyResponseHeader")
 ///                 .parameters(HeaderActionParametersArgs.builder()
 ///                     .headerAction("Overwrite")
 ///                     .headerName("X-CDN")
-///                     .typeName("DeliveryRuleHeaderActionParameters")
 ///                     .value("MSFT")
 ///                     .build())
 ///                 .build())
 ///             .conditions(DeliveryRuleRequestMethodConditionArgs.builder()
-///                 .name("RequestMethod")
 ///                 .parameters(RequestMethodMatchConditionParametersArgs.builder()
 ///                     .matchValues("GET")
 ///                     .negateCondition(false)
 ///                     .operator("Equal")
-///                     .typeName("DeliveryRuleRequestMethodConditionParameters")
 ///                     .build())
 ///                 .build())
 ///             .order(1)

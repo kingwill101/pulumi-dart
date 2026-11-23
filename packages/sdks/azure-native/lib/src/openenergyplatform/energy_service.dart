@@ -52,7 +52,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -60,7 +60,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_openenergyplatform_energyservice" "energyService" {
+/// resource "azure-native_openenergyplatform_energy_service" "energyService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "DummyResourceGroupName"
 ///   resource_name       = "DummyResourceName"
 /// }

@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///                     "1:1",
 ///                 },
 ///                 SequenceNumber = 4155123341,
-///                 WellKnownCommunities = new[]
+///                 WellKnownCommunities =
 ///                 {
 ///                     AzureNative.ManagedNetworkFabric.WellKnownCommunities.Internet,
 ///                 },
@@ -95,7 +95,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_ipcommunity" "ipCommunity" {
+/// resource "azure-native_managednetworkfabric_ip_community" "ipCommunity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation        = "annotation"
 ///   ip_community_name = "example-ipcommunity"
 ///   ip_community_rules {

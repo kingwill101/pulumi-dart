@@ -88,7 +88,7 @@ import 'vmware_collectors_operation_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'vmware_collectors_operation_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_vmwarecollectorsoperation" "vmwareCollectorsOperation" {
+/// resource "azure-native_migrate_vmware_collectors_operation" "vmwareCollectorsOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_properties = {
 ///     id                 = "fe243486-3318-41fa-aaba-c48b5df75308"
 ///     last_heartbeat_utc = "2022-03-29T12:10:08.9167289Z"

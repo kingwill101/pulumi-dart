@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 ///         Location = "bvgohixie",
 ///         MqName = "Zz22-b2VC-9",
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -141,7 +141,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -149,19 +149,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_brokerauthorization" "brokerAuthorization" {
+/// resource "azure-native_iotoperationsmq_broker_authorization" "brokerAuthorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_name = "C15G"
 ///   authorization_policies = {
 ///     enable_cache = true
 ///     rules = [{
-///       "brokerResources" = [{
-///         "method" = "Connect"
-///         "topics" = ["v"]
+///       broker_resources = [{
+///         method = "Connect"
+///         topics = ["v"]
 ///       }]
-///       "principals" = {
-///         "attributes" = [{}]
-///         "clientids"  = ["smrfzvniq"]
-///         "usernames"  = ["jtwwmsrzriat"]
+///       principals = {
+///         attributes = [{}]
+///         clientids  = ["smrfzvniq"]
+///         usernames  = ["jtwwmsrzriat"]
 ///       }
 ///     }]
 ///   }
@@ -188,6 +191,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.BrokerAuthorization;
 /// import com.pulumi.azurenative.iotoperationsmq.BrokerAuthorizationArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.AuthorizationConfigArgs;
+/// import com.pulumi.azurenative.iotoperationsmq.inputs.AuthorizationBasicRuleArgs;
+/// import com.pulumi.azurenative.iotoperationsmq.inputs.ResourceInfoDefinitionArgs;
+/// import com.pulumi.azurenative.iotoperationsmq.inputs.PrincipalDefinitionArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

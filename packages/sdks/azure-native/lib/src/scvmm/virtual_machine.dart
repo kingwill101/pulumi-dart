@@ -90,7 +90,7 @@ import 'virtual_machine_properties_response_availability_sets.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'virtual_machine_properties_response_availability_sets.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_scvmm_virtualmachine" "virtualMachine" {
+/// resource "azure-native_scvmm_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_id = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/Clouds/HRCloud"
 ///   extended_location = {
 ///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso"

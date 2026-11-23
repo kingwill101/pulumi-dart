@@ -89,7 +89,7 @@ import 'custom_rpvalidations_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'custom_rpvalidations_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_customproviders_customresourceprovider" "customResourceProvider" {
+/// resource "azure-native_customproviders_custom_resource_provider" "customResourceProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     endpoint     = "https://mytestendpoint/"
 ///     name         = "TestAction"

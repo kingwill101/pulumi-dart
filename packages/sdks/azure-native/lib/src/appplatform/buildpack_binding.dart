@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_buildpackbinding" "buildpackBinding" {
+/// resource "azure-native_appplatform_buildpack_binding" "buildpackBinding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   build_service_name     = "default"
 ///   builder_name           = "default"
 ///   buildpack_binding_name = "myBuildpackBinding"

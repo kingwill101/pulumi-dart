@@ -65,7 +65,7 @@ import 'integration_runtime_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,11 +73,14 @@ import 'integration_runtime_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_integrationruntime" "integrationRuntime" {
+/// resource "azure-native_synapse_integration_runtime" "integrationRuntime" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_runtime_name = "exampleIntegrationRuntime"
 ///   properties = {
-///     "description" = "A selfhosted integration runtime"
-///     "type"        = "SelfHosted"
+///     description = "A selfhosted integration runtime"
+///     type        = "SelfHosted"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 ///   workspace_name      = "exampleWorkspace"
@@ -93,6 +96,8 @@ import 'integration_runtime_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.IntegrationRuntime;
 /// import com.pulumi.azurenative.synapse.IntegrationRuntimeArgs;
+/// import com.pulumi.azurenative.synapse.inputs.ManagedIntegrationRuntimeArgs;
+/// import com.pulumi.azurenative.synapse.inputs.SelfHostedIntegrationRuntimeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -110,7 +115,6 @@ import 'integration_runtime_args.dart';
 ///             .integrationRuntimeName("exampleIntegrationRuntime")
 ///             .properties(SelfHostedIntegrationRuntimeArgs.builder()
 ///                 .description("A selfhosted integration runtime")
-///                 .type("SelfHosted")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .workspaceName("exampleWorkspace")

@@ -71,7 +71,7 @@ import 'vminstance_guest_agent_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'vminstance_guest_agent_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_scvmm_vminstanceguestagent" "vmInstanceGuestAgent" {
+/// resource "azure-native_scvmm_v_m_instance_guest_agent" "vmInstanceGuestAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credentials = {
 ///     password = "<password>"
 ///     username = "tempuser"

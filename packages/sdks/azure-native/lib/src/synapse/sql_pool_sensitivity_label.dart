@@ -72,7 +72,7 @@ import 'sql_pool_sensitivity_label_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'sql_pool_sensitivity_label_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpoolsensitivitylabel" "sqlPoolSensitivityLabel" {
+/// resource "azure-native_synapse_sql_pool_sensitivity_label" "sqlPoolSensitivityLabel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   column_name              = "myColumn"
 ///   information_type         = "PhoneNumber"
 ///   information_type_id      = "d22fa6e9-5ee4-3bde-4c2b-a409604c4646"

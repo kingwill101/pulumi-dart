@@ -66,7 +66,7 @@ import 'hub_billing_info_format_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'hub_billing_info_format_response.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_hub" "hub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub_billing_info = {
 ///     max_units = 5
 ///     min_units = 1

@@ -155,7 +155,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -163,7 +163,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_connectedenvironmentsdaprcomponent" "connectedEnvironmentsDaprComponent" {
+/// resource "azure-native_app_connected_environments_dapr_component" "connectedEnvironmentsDaprComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_name             = "reddog"
 ///   component_type             = "state.azure.cosmosdb"
 ///   connected_environment_name = "myenvironment"

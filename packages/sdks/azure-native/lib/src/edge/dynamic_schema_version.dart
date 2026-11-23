@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_edge_dynamicschemaversion" "dynamicSchemaVersion" {
+/// resource "azure-native_edge_dynamic_schema_version" "dynamicSchemaVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dynamic_schema_name         = "testname"
 ///   dynamic_schema_version_name = "1.0.0"
 ///   properties = {

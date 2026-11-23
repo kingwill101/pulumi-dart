@@ -69,7 +69,7 @@ import 'account_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,14 +77,17 @@ import 'account_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_accountconnection" "accountConnection" {
+/// resource "azure-native_cognitiveservices_account_connection" "accountConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name    = "account-1"
 ///   connection_name = "connection-1"
 ///   properties = {
-///     "authType"   = "None"
-///     "category"   = "ContainerRegistry"
-///     "expiryTime" = "2024-03-15T14:30:00Z"
-///     "target"     = "[tartget url]"
+///     auth_type   = "None"
+///     category    = "ContainerRegistry"
+///     expiry_time = "2024-03-15T14:30:00Z"
+///     target      = "[tartget url]"
 ///   }
 ///   resource_group_name = "resourceGroup-1"
 /// }
@@ -99,6 +102,18 @@ import 'account_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.AccountConnection;
 /// import com.pulumi.azurenative.cognitiveservices.AccountConnectionArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.AADAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.AccessKeyAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.AccountKeyAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.ApiKeyAuthConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.CustomKeysConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.ManagedIdentityAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.NoneAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.OAuth2AuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.PATAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.SASAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.ServicePrincipalAuthTypeConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.UsernamePasswordAuthTypeConnectionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -116,7 +131,6 @@ import 'account_connection_args.dart';
 ///             .accountName("account-1")
 ///             .connectionName("connection-1")
 ///             .properties(NoneAuthTypeConnectionPropertiesArgs.builder()
-///                 .authType("None")
 ///                 .category("ContainerRegistry")
 ///                 .expiryTime("2024-03-15T14:30:00Z")
 ///                 .target("[tartget url]")

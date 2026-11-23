@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_edgeactionexecutionfilter" "edgeActionExecutionFilter" {
+/// resource "azure-native_cdn_edge_action_execution_filter" "edgeActionExecutionFilter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_action_name                         = "edgeAction1"
 ///   execution_filter                         = "executionFilter1"
 ///   execution_filter_identifier_header_name  = "header-key"

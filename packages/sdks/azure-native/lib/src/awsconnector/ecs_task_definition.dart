@@ -656,7 +656,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -664,7 +664,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ecstaskdefinition" "ecsTaskDefinition" {
+/// resource "azure-native_awsconnector_ecs_task_definition" "ecsTaskDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "hideafehihasfzxdxuqiqubhhzg"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -672,119 +675,119 @@ import 'system_data_response.dart';
 ///     aws_account_id = "efgvyahxivjf"
 ///     aws_properties = {
 ///       container_definitions = [{
-///         "command"         = ["jowixdtkttvhtvcluhzsqkcszit"]
-///         "cpu"             = 17
-///         "credentialSpecs" = ["ooravv"]
-///         "dependsOn" = [{
-///           "condition"     = "xpmiwcexgnrimsrqyrdlvyyquiccp"
-///           "containerName" = "wzcyhuwwutzttwwaopqed"
+///         command          = ["jowixdtkttvhtvcluhzsqkcszit"]
+///         cpu              = 17
+///         credential_specs = ["ooravv"]
+///         depends_on = [{
+///           condition      = "xpmiwcexgnrimsrqyrdlvyyquiccp"
+///           container_name = "wzcyhuwwutzttwwaopqed"
 ///         }]
-///         "disableNetworking"     = true
-///         "dnsSearchDomains"      = ["ggzzwoziotxloooklwdsveul"]
-///         "dnsServers"            = ["ngggprelehukiysguto"]
-///         "dockerSecurityOptions" = ["famtfjusztdnyrdzupruqpxufhxp"]
-///         "entryPoint"            = ["oaiompurpnjswlqkmvgraiaj"]
-///         "environment" = [{
-///           "name"  = "edrmixvb"
-///           "value" = "vdms"
+///         disable_networking      = true
+///         dns_search_domains      = ["ggzzwoziotxloooklwdsveul"]
+///         dns_servers             = ["ngggprelehukiysguto"]
+///         docker_security_options = ["famtfjusztdnyrdzupruqpxufhxp"]
+///         entry_point             = ["oaiompurpnjswlqkmvgraiaj"]
+///         environment = [{
+///           name  = "edrmixvb"
+///           value = "vdms"
 ///         }]
-///         "environmentFiles" = [{
-///           "type"  = "psgsoavpms"
-///           "value" = "ydkrwlbkbzqdm"
+///         environment_files = [{
+///           type  = "psgsoavpms"
+///           value = "ydkrwlbkbzqdm"
 ///         }]
-///         "essential" = true
-///         "extraHosts" = [{
-///           "hostname"  = "unpwutrc"
-///           "ipAddress" = "mcsjkhhqbwqesxwcpnnasbzamixath"
+///         essential = true
+///         extra_hosts = [{
+///           hostname   = "unpwutrc"
+///           ip_address = "mcsjkhhqbwqesxwcpnnasbzamixath"
 ///         }]
-///         "firelensConfiguration" = {
-///           "type" = "uuwlwegjjeoorvbgtyzoaeeucp"
+///         firelens_configuration = {
+///           type = "uuwlwegjjeoorvbgtyzoaeeucp"
 ///         }
-///         "healthCheck" = {
-///           "command"     = ["ppgfrdhjiytbzqtwkumhmnpsk"]
-///           "interval"    = 1
-///           "retries"     = 11
-///           "startPeriod" = 21
-///           "timeout"     = 22
+///         health_check = {
+///           command      = ["ppgfrdhjiytbzqtwkumhmnpsk"]
+///           interval     = 1
+///           retries      = 11
+///           start_period = 21
+///           timeout      = 22
 ///         }
-///         "hostname"    = "qjkxoayeojuesqmrhe"
-///         "image"       = "lmgx"
-///         "interactive" = true
-///         "links"       = ["awgsbfcuoynoomjr"]
-///         "linuxParameters" = {
-///           "capabilities" = {
-///             "add"  = ["xnobooaglhooafh"]
-///             "drop" = ["uscfx"]
+///         hostname    = "qjkxoayeojuesqmrhe"
+///         image       = "lmgx"
+///         interactive = true
+///         links       = ["awgsbfcuoynoomjr"]
+///         linux_parameters = {
+///           capabilities = {
+///             add  = ["xnobooaglhooafh"]
+///             drop = ["uscfx"]
 ///           }
-///           "devices" = [{
-///             "containerPath" = "fveecgcpepimcqufoswgvjibavi"
-///             "hostPath"      = "hvwxdqfcbt"
-///             "permissions"   = ["yqev"]
+///           devices = [{
+///             container_path = "fveecgcpepimcqufoswgvjibavi"
+///             host_path      = "hvwxdqfcbt"
+///             permissions    = ["yqev"]
 ///           }]
-///           "initProcessEnabled" = true
-///           "maxSwap"            = 24
-///           "sharedMemorySize"   = 1
-///           "swappiness"         = 27
-///           "tmpfs" = [{
-///             "containerPath" = "kxvhyrbeu"
-///             "mountOptions"  = ["lylxsszvvczykn"]
-///             "size"          = 24
-///           }]
-///         }
-///         "logConfiguration" = {
-///           "logDriver" = "zgkgcxxggqdvrfngjbdapez"
-///           "secretOptions" = [{
-///             "name"      = "knumytlyulndziptjvgvcpd"
-///             "valueFrom" = "z"
+///           init_process_enabled = true
+///           max_swap             = 24
+///           shared_memory_size   = 1
+///           swappiness           = 27
+///           tmpfs = [{
+///             container_path = "kxvhyrbeu"
+///             mount_options  = ["lylxsszvvczykn"]
+///             size           = 24
 ///           }]
 ///         }
-///         "memory"            = 27
-///         "memoryReservation" = 9
-///         "mountPoints" = [{
-///           "containerPath" = "zjtchyyfjv"
-///           "readOnly"      = true
-///           "sourceVolume"  = "mrimyrhpxx"
-///         }]
-///         "name" = "tfseewfqlgwjqbkjikv"
-///         "portMappings" = [{
-///           "appProtocol"        = "grpc"
-///           "containerPort"      = 17
-///           "containerPortRange" = "hwshvyttesxemvlis"
-///           "hostPort"           = 13
-///           "name"               = "nbxxumpmur"
-///           "protocol"           = "llczx"
-///         }]
-///         "privileged"             = true
-///         "pseudoTerminal"         = true
-///         "readonlyRootFilesystem" = true
-///         "repositoryCredentials" = {
-///           "credentialsParameter" = "pdwxhkhkkxjiwwcpkoiketthuw"
+///         log_configuration = {
+///           log_driver = "zgkgcxxggqdvrfngjbdapez"
+///           secret_options = [{
+///             name       = "knumytlyulndziptjvgvcpd"
+///             value_from = "z"
+///           }]
 ///         }
-///         "resourceRequirements" = [{
-///           "type"  = "yhtgxyeazgtpygnamvgtrt"
-///           "value" = "msamplxjlrq"
+///         memory             = 27
+///         memory_reservation = 9
+///         mount_points = [{
+///           container_path = "zjtchyyfjv"
+///           read_only      = true
+///           source_volume  = "mrimyrhpxx"
 ///         }]
-///         "secrets" = [{
-///           "name"      = "knumytlyulndziptjvgvcpd"
-///           "valueFrom" = "z"
+///         name = "tfseewfqlgwjqbkjikv"
+///         port_mappings = [{
+///           app_protocol         = "grpc"
+///           container_port       = 17
+///           container_port_range = "hwshvyttesxemvlis"
+///           host_port            = 13
+///           name                 = "nbxxumpmur"
+///           protocol             = "llczx"
 ///         }]
-///         "startTimeout" = 10
-///         "stopTimeout"  = 24
-///         "systemControls" = [{
-///           "namespace" = "hcwgpftfycwhenxygrbczcyqxh"
-///           "value"     = "zzjkfgz"
+///         privileged               = true
+///         pseudo_terminal          = true
+///         readonly_root_filesystem = true
+///         repository_credentials = {
+///           credentials_parameter = "pdwxhkhkkxjiwwcpkoiketthuw"
+///         }
+///         resource_requirements = [{
+///           type  = "yhtgxyeazgtpygnamvgtrt"
+///           value = "msamplxjlrq"
 ///         }]
-///         "ulimits" = [{
-///           "hardLimit" = 16
-///           "name"      = "zswtamsvbvaxlueyfkklzaz"
-///           "softLimit" = 2
+///         secrets = [{
+///           name       = "knumytlyulndziptjvgvcpd"
+///           value_from = "z"
 ///         }]
-///         "user" = "hosruyaojhjbh"
-///         "volumesFrom" = [{
-///           "readOnly"        = true
-///           "sourceContainer" = "ktlxxpz"
+///         start_timeout = 10
+///         stop_timeout  = 24
+///         system_controls = [{
+///           namespace = "hcwgpftfycwhenxygrbczcyqxh"
+///           value     = "zzjkfgz"
 ///         }]
-///         "workingDirectory" = "jpdgsckyvfez"
+///         ulimits = [{
+///           hard_limit = 16
+///           name       = "zswtamsvbvaxlueyfkklzaz"
+///           soft_limit = 2
+///         }]
+///         user = "hosruyaojhjbh"
+///         volumes_from = [{
+///           read_only        = true
+///           source_container = "ktlxxpz"
+///         }]
+///         working_directory = "jpdgsckyvfez"
 ///       }]
 ///       cpu = "hijyr"
 ///       ephemeral_storage = {
@@ -793,22 +796,22 @@ import 'system_data_response.dart';
 ///       execution_role_arn = "qqqfakequmccjxadppbeamxuwsitta"
 ///       family             = "atzptqetfqeczglfyn"
 ///       inference_accelerators = [{
-///         "deviceName" = "mh"
-///         "deviceType" = "zfkvyer"
+///         device_name = "mh"
+///         device_type = "zfkvyer"
 ///       }]
 ///       ipc_mode     = "bynxyc"
 ///       memory       = "vwthlhlwlmwyoxowrumsld"
 ///       network_mode = "vrvk"
 ///       pid_mode     = "pthtbdouatcrybmke"
 ///       placement_constraints = [{
-///         "expression" = "skxfvhirrtaegdaujr"
-///         "type"       = "qnklizvyidxybjmtkgdzdls"
+///         expression = "skxfvhirrtaegdaujr"
+///         type       = "qnklizvyidxybjmtkgdzdls"
 ///       }]
 ///       proxy_configuration = {
 ///         container_name = "tykmharv"
 ///         proxy_configuration_properties = [{
-///           "name"  = "edrmixvb"
-///           "value" = "vdms"
+///           name  = "edrmixvb"
+///           value = "vdms"
 ///         }]
 ///         type = "htnvhyjaffhosgiq"
 ///       }
@@ -818,40 +821,40 @@ import 'system_data_response.dart';
 ///         operating_system_family = "topzpehesx"
 ///       }
 ///       tags = [{
-///         "key"   = "sktncibpobzyad"
-///         "value" = "glazi"
+///         key   = "sktncibpobzyad"
+///         value = "glazi"
 ///       }]
 ///       task_definition_arn = "fpexhci"
 ///       task_role_arn       = "vvebkfiglrktpmn"
 ///       volumes = [{
-///         "configuredAtLaunch" = true
-///         "dockerVolumeConfiguration" = {
-///           "autoprovision" = true
-///           "driver"        = "fdypjooligpeypyjkojhhnstigr"
-///           "scope"         = "wourdwnfkwgitfhzywc"
+///         configured_at_launch = true
+///         docker_volume_configuration = {
+///           autoprovision = true
+///           driver        = "fdypjooligpeypyjkojhhnstigr"
+///           scope         = "wourdwnfkwgitfhzywc"
 ///         }
-///         "efsVolumeConfiguration" = {
-///           "authorizationConfig" = {
-///             "accessPointId" = "ipf"
-///             "iam"           = "DISABLED"
+///         efs_volume_configuration = {
+///           authorization_config = {
+///             access_point_id = "ipf"
+///             iam             = "DISABLED"
 ///           }
-///           "filesystemId"          = "kyluffayszoviyute"
-///           "rootDirectory"         = "vqogypwzwvlqikbwdhvy"
-///           "transitEncryption"     = "DISABLED"
-///           "transitEncryptionPort" = 27
+///           filesystem_id           = "kyluffayszoviyute"
+///           root_directory          = "vqogypwzwvlqikbwdhvy"
+///           transit_encryption      = "DISABLED"
+///           transit_encryption_port = 27
 ///         }
-///         "fSxWindowsFileServerVolumeConfiguration" = {
-///           "authorizationConfig" = {
-///             "credentialsParameter" = "ytxpomfevjkqfqrjp"
-///             "domain"               = "igiaaxjfjdstgiwmurfycdsss"
+///         f_sx_windows_file_server_volume_configuration = {
+///           authorization_config = {
+///             credentials_parameter = "ytxpomfevjkqfqrjp"
+///             domain                = "igiaaxjfjdstgiwmurfycdsss"
 ///           }
-///           "fileSystemId"  = "gxcjekzhsm"
-///           "rootDirectory" = "bkbhxkwlfnslgnapevzhyvmfcdaup"
+///           file_system_id = "gxcjekzhsm"
+///           root_directory = "bkbhxkwlfnslgnapevzhyvmfcdaup"
 ///         }
-///         "host" = {
-///           "sourcePath" = "kgadnbxtebvbppaiqqkcmwcipqs"
+///         host = {
+///           source_path = "kgadnbxtebvbppaiqqkcmwcipqs"
 ///         }
-///         "name" = "qslxsptvrywosrsnrdvo"
+///         name = "qslxsptvrywosrsnrdvo"
 ///       }]
 ///     }
 ///     aws_region        = "vdwjcoqcepgcfqjeedexacghbqhz"
@@ -880,9 +883,39 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.EcsTaskDefinitionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EcsTaskDefinitionPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEcsTaskDefinitionPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ContainerDefinitionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ContainerDependencyArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.KeyValuePairArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EnvironmentFileArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.HostEntryArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FirelensConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.HealthCheckArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LinuxParametersArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.KernelCapabilitiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DeviceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TmpfsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LogConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SecretArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MountPointArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PortMappingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RepositoryCredentialsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ResourceRequirementArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SystemControlArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.UlimitArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.VolumeFromArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EphemeralStorageArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InferenceAcceleratorArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TaskDefinitionPlacementConstraintArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProxyConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuntimePlatformArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.VolumeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DockerVolumeConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EFSVolumeConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AuthorizationConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FSxWindowsFileServerVolumeConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FSxAuthorizationConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.HostVolumePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

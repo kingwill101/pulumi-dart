@@ -89,8 +89,8 @@ import 'system_data_response.dart';
 /// 					"template": []map[string]interface{}{
 /// 						map[string]interface{}{
 /// 							"template": map[string]interface{}{
-/// 								"codes": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"codes": []map[string]string{
+/// 									{
 /// 										"code":    "8867-4",
 /// 										"display": "Heart rate",
 /// 										"system":  "http://loinc.org",
@@ -128,7 +128,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -136,7 +136,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_healthcareapis_iotconnectorfhirdestination" "iotConnectorFhirDestination" {
+/// resource "azure-native_healthcareapis_iot_connector_fhir_destination" "iotConnectorFhirDestination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fhir_destination_name = "dest1"
 ///   fhir_mapping = {
 ///     content = {

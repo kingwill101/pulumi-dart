@@ -158,7 +158,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -166,7 +166,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2subnet" "ec2Subnet" {
+/// resource "azure-native_awsconnector_ec2_subnet" "ec2Subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "zlyeymkfsbtninhfrnvrhxprr"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -196,8 +199,8 @@ import 'system_data_response.dart';
 ///       }
 ///       subnet_id = "vxxbkvimjzmcfoxur"
 ///       tags = [{
-///         "key"   = "sffepghmsdrubyiodc"
-///         "value" = "bfgzdnenxrviyueqzftrrvu"
+///         key   = "sffepghmsdrubyiodc"
+///         value = "bfgzdnenxrviyueqzftrrvu"
 ///       }]
 ///       vpc_id = "aqqzsoyvmaxfyqddvthvxlhdti"
 ///     }
@@ -228,6 +231,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2SubnetPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2SubnetPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PrivateDnsNameOptionsOnLaunchModelPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

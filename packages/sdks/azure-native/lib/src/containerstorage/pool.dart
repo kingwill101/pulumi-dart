@@ -37,7 +37,7 @@ import 'system_data_response.dart';
 ///         {
 ///             EphemeralDisk = new AzureNative.ContainerStorage.Inputs.EphemeralDiskArgs
 ///             {
-///                 Replicas = 3,
+///                 Replicas = 3.0,
 ///             },
 ///         },
 ///         ReclaimPolicy = AzureNative.ContainerStorage.ReclaimPolicy.Delete,
@@ -46,14 +46,14 @@ import 'system_data_response.dart';
 ///         {
 ///             Requests = new AzureNative.ContainerStorage.Inputs.RequestsArgs
 ///             {
-///                 Storage = 15578,
+///                 Storage = 15578.0,
 ///             },
 ///         },
 ///         Tags =
 ///         {
 ///             { "key1888", "value1888" },
 ///         },
-///         Zones = new[]
+///         Zones =
 ///         {
 ///             AzureNative.ContainerStorage.Zone.Zone1,
 ///             AzureNative.ContainerStorage.Zone.Zone2,
@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,6 +124,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_containerstorage_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignments {
 ///     id = "/subscriptions/bb4d87a2-4273-466c-a6ba-61d818061b3a/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/containerstoragetest"
 ///   }

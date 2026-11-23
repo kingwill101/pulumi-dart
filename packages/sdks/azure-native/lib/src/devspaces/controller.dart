@@ -26,7 +26,7 @@ import 'sku_response.dart';
 ///             Name = AzureNative.DevSpaces.SkuName.S1,
 ///             Tier = AzureNative.DevSpaces.SkuTier.Standard,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///         TargetContainerHostCredentialsBase64 = "QmFzZTY0IEVuY29kZWQgVmFsdWUK",
 ///         TargetContainerHostResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myCluster",
 ///     });
@@ -68,7 +68,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,6 +77,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_devspaces_controller" "controller" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   name                = "myControllerResource"
 ///   resource_group_name = "myResourceGroup"

@@ -29,7 +29,7 @@ import 'sub_resource_response.dart';
 ///     var expressRouteCircuitPeering = new AzureNative.Network.ExpressRouteCircuitPeering("expressRouteCircuitPeering", new()
 ///     {
 ///         CircuitName = "circuitName",
-///         PeerASN = 200,
+///         PeerASN = 200.0,
 ///         PeeringName = "AzurePrivatePeering",
 ///         PrimaryPeerAddressPrefix = "192.168.16.252/30",
 ///         ResourceGroupName = "rg1",
@@ -71,7 +71,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressroutecircuitpeering" "expressRouteCircuitPeering" {
+/// resource "azure-native_network_express_route_circuit_peering" "expressRouteCircuitPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   circuit_name                  = "circuitName"
 ///   peer_asn                      = 200
 ///   peering_name                  = "AzurePrivatePeering"

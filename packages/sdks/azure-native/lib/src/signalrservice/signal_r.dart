@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 new AzureNative.SignalRService.Inputs.PrivateEndpointACLArgs
 ///                 {
-///                     Allow = new[]
+///                     Allow =
 ///                     {
 ///                         AzureNative.SignalRService.SignalRRequestType.ServerConnection,
 ///                     },
@@ -105,7 +105,7 @@ import 'system_data_response.dart';
 ///             },
 ///             PublicNetwork = new AzureNative.SignalRService.Inputs.NetworkACLArgs
 ///             {
-///                 Allow = new[]
+///                 Allow =
 ///                 {
 ///                     AzureNative.SignalRService.SignalRRequestType.ClientConnection,
 ///                 },
@@ -275,7 +275,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -283,7 +283,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_signalrservice_signalr" "signalR" {
+/// resource "azure-native_signalrservice_signal_r" "signalR" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cors = {
 ///     allowed_origins = ["https://foo.com", "https://bar.com"]
 ///   }
@@ -315,8 +318,8 @@ import 'system_data_response.dart';
 ///   kind = "SignalR"
 ///   live_trace_configuration = {
 ///     categories = [{
-///       "enabled" = "true"
-///       "name"    = "ConnectivityLogs"
+///       enabled = "true"
+///       name    = "ConnectivityLogs"
 ///     }]
 ///     enabled = "false"
 ///   }
@@ -324,8 +327,8 @@ import 'system_data_response.dart';
 ///   network_ac_ls = {
 ///     default_action = "Deny"
 ///     private_endpoints = [{
-///       "allow" = ["ServerConnection"]
-///       "name"  = "mysignalrservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
+///       allow = ["ServerConnection"]
+///       name  = "mysignalrservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
 ///     }]
 ///     public_network = {
 ///       allow = ["ClientConnection"]
@@ -350,16 +353,16 @@ import 'system_data_response.dart';
 ///   }
 ///   upstream = {
 ///     templates = [{
-///       "auth" = {
-///         "managedIdentity" = {
-///           "resource" = "api://example"
+///       auth = {
+///         managed_identity = {
+///           resource = "api://example"
 ///         }
-///         "type" = "ManagedIdentity"
+///         type = "ManagedIdentity"
 ///       }
-///       "categoryPattern" = "*"
-///       "eventPattern"    = "connect,disconnect"
-///       "hubPattern"      = "*"
-///       "urlTemplate"     = "https://example.com/chat/api/connect"
+///       category_pattern = "*"
+///       event_pattern    = "connect,disconnect"
+///       hub_pattern      = "*"
+///       url_template     = "https://example.com/chat/api/connect"
 ///     }]
 ///   }
 /// }
@@ -378,12 +381,17 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.signalrservice.inputs.SignalRFeatureArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.ManagedIdentityArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.LiveTraceConfigurationArgs;
+/// import com.pulumi.azurenative.signalrservice.inputs.LiveTraceCategoryArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.SignalRNetworkACLsArgs;
+/// import com.pulumi.azurenative.signalrservice.inputs.PrivateEndpointACLArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.NetworkACLArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.ServerlessSettingsArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.ResourceSkuArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.SignalRTlsSettingsArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.ServerlessUpstreamSettingsArgs;
+/// import com.pulumi.azurenative.signalrservice.inputs.UpstreamTemplateArgs;
+/// import com.pulumi.azurenative.signalrservice.inputs.UpstreamAuthSettingsArgs;
+/// import com.pulumi.azurenative.signalrservice.inputs.ManagedIdentitySettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

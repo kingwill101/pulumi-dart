@@ -29,7 +29,7 @@ import 'system_data_response.dart';
 ///         HostName = "test.mysql.server",
 ///         MachineId = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourcegroups/demoRG/providers/Microsoft.OffAzure/serverSites/xxx/machines/xxx",
 ///         MysqlVersion = "8.0",
-///         NumberOfDatabase = 16,
+///         NumberOfDatabase = 16.0,
 ///         PortNumber = "3306",
 ///         ResourceGroupName = "testrg",
 ///         ServerName = "testServerName",
@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mysqldiscovery_mysqlserver" "mySQLServer" {
+/// resource "azure-native_mysqldiscovery_my_s_q_l_server" "mySQLServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   host_ip             = ["127.0.0.1", "127.0.0.2"]
 ///   host_name           = "test.mysql.server"
 ///   machine_id          = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourcegroups/demoRG/providers/Microsoft.OffAzure/serverSites/xxx/machines/xxx"

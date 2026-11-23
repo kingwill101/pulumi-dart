@@ -54,7 +54,7 @@ import 'role_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,7 +62,10 @@ import 'role_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+/// resource "azure-native_blueprint_role_assignment_artifact" "roleAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "storageTemplate"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
@@ -184,7 +187,7 @@ import 'role_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -192,7 +195,10 @@ import 'role_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+/// resource "azure-native_blueprint_role_assignment_artifact" "roleAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "costCenterPolicy"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
@@ -322,7 +328,7 @@ import 'role_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -330,7 +336,10 @@ import 'role_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+/// resource "azure-native_blueprint_role_assignment_artifact" "roleAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name      = "ownerAssignment"
 ///   blueprint_name     = "simpleBlueprint"
 ///   display_name       = "enforce owners of given subscription"
@@ -367,7 +376,6 @@ import 'role_assignment_artifact_args.dart';
 ///             .artifactName("ownerAssignment")
 ///             .blueprintName("simpleBlueprint")
 ///             .displayName("enforce owners of given subscription")
-///             .kind("roleAssignment")
 ///             .principalIds("[parameters('owners')]")
 ///             .resourceScope("providers/Microsoft.Management/managementGroups/ContosoOnlineGroup")
 ///             .roleDefinitionId("/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7")
@@ -472,7 +480,7 @@ import 'role_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -480,7 +488,10 @@ import 'role_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+/// resource "azure-native_blueprint_role_assignment_artifact" "roleAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "storageTemplate"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -602,7 +613,7 @@ import 'role_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -610,7 +621,10 @@ import 'role_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+/// resource "azure-native_blueprint_role_assignment_artifact" "roleAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "costCenterPolicy"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -740,7 +754,7 @@ import 'role_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -748,7 +762,10 @@ import 'role_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+/// resource "azure-native_blueprint_role_assignment_artifact" "roleAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name      = "ownerAssignment"
 ///   blueprint_name     = "simpleBlueprint"
 ///   display_name       = "enforce owners of given subscription"
@@ -785,7 +802,6 @@ import 'role_assignment_artifact_args.dart';
 ///             .artifactName("ownerAssignment")
 ///             .blueprintName("simpleBlueprint")
 ///             .displayName("enforce owners of given subscription")
-///             .kind("roleAssignment")
 ///             .principalIds("[parameters('owners')]")
 ///             .resourceScope("subscriptions/00000000-0000-0000-0000-000000000000")
 ///             .roleDefinitionId("/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7")

@@ -130,7 +130,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,7 +138,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policysetdefinitionatmanagementgroup" "policySetDefinitionAtManagementGroup" {
+/// resource "azure-native_authorization_policy_set_definition_at_management_group" "policySetDefinitionAtManagementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Policies to enforce low cost storage SKUs"
 ///   display_name        = "Cost Management"
 ///   management_group_id = "MyManagementGroup"
@@ -180,6 +183,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionAtManagementGroup;
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionAtManagementGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionReferenceArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -499,7 +503,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -507,7 +511,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policysetdefinitionatmanagementgroup" "policySetDefinitionAtManagementGroup" {
+/// resource "azure-native_authorization_policy_set_definition_at_management_group" "policySetDefinitionAtManagementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Policies to enforce low cost storage SKUs"
 ///   display_name        = "Cost Management"
 ///   management_group_id = "MyManagementGroup"
@@ -562,6 +569,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionAtManagementGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionReferenceArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

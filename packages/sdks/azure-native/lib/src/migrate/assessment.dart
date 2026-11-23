@@ -32,7 +32,7 @@ import 'assessment_properties_response.dart';
 ///             AzureOfferCode = AzureNative.Migrate.AzureOfferCode.Msazr0003P,
 ///             AzurePricingTier = AzureNative.Migrate.AzurePricingTier.Standard,
 ///             AzureStorageRedundancy = AzureNative.Migrate.AzureStorageRedundancy.LocallyRedundant,
-///             AzureVmFamilies = new[]
+///             AzureVmFamilies =
 ///             {
 ///                 AzureNative.Migrate.AzureVmFamily.Dv2Series,
 ///                 AzureNative.Migrate.AzureVmFamily.FSeries,
@@ -49,17 +49,17 @@ import 'assessment_properties_response.dart';
 ///                 AzureNative.Migrate.AzureVmFamily.HSeries,
 ///             },
 ///             Currency = AzureNative.Migrate.Currency.USD,
-///             DiscountPercentage = 100,
+///             DiscountPercentage = 100.0,
 ///             Percentile = AzureNative.Migrate.Percentile.Percentile95,
 ///             ReservedInstance = AzureNative.Migrate.ReservedInstance.RI3Year,
-///             ScalingFactor = 1,
+///             ScalingFactor = 1.0,
 ///             SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///             Stage = AzureNative.Migrate.AssessmentStage.InProgress,
 ///             TimeRange = AzureNative.Migrate.TimeRange.Day,
 ///             VmUptime = new AzureNative.Migrate.Inputs.VmUptimeArgs
 ///             {
-///                 DaysPerMonth = 31,
-///                 HoursPerDay = 24,
+///                 DaysPerMonth = 31.0,
+///                 HoursPerDay = 24.0,
 ///             },
 ///         },
 ///         ResourceGroupName = "abgoyal-westEurope",
@@ -132,7 +132,7 @@ import 'assessment_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -141,6 +141,9 @@ import 'assessment_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_migrate_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name = "assessment_5_14_2019_16_48_47"
 ///   e_tag           = "\"1e000c2c-0000-0d00-0000-5cdaa4190000\""
 ///   group_name      = "Group2"

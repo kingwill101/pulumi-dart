@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_sshpublickey" "sshPublicKey" {
+/// resource "azure-native_compute_ssh_public_key" "sshPublicKey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   public_key          = "{ssh-rsa public key}"
 ///   resource_group_name = "myResourceGroup"

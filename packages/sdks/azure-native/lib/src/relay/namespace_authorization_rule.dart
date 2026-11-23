@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///         AuthorizationRuleName = "example-RelayAuthRules-01",
 ///         NamespaceName = "example-RelayNamespace-01",
 ///         ResourceGroupName = "resourcegroup",
-///         Rights = new[]
+///         Rights =
 ///         {
 ///             AzureNative.Relay.AccessRights.Listen,
 ///             AzureNative.Relay.AccessRights.Send,
@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_relay_namespaceauthorizationrule" "namespaceAuthorizationRule" {
+/// resource "azure-native_relay_namespace_authorization_rule" "namespaceAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "example-RelayAuthRules-01"
 ///   namespace_name          = "example-RelayNamespace-01"
 ///   resource_group_name     = "resourcegroup"

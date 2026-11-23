@@ -68,7 +68,7 @@ import 'storage_classification_mapping_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'storage_classification_mapping_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationstorageclassificationmapping" "replicationStorageClassificationMapping" {
+/// resource "azure-native_recoveryservices_replication_storage_classification_mapping" "replicationStorageClassificationMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name = "2a48e3770ac08aa2be8bfbd94fcfb1cbf2dcc487b78fb9d3bd778304441b06a0"
 ///   properties = {
 ///     target_storage_classification_id = "/Subscriptions/9112a37f-0f3e-46ec-9c00-060c6edca071/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/2a48e3770ac08aa2be8bfbd94fcfb1cbf2dcc487b78fb9d3bd778304441b06a0/replicationStorageClassifications/8891569e-aaef-4a46-a4a0-78c14f2d7b09"

@@ -36,7 +36,7 @@ import 'volume_args.dart';
 ///             ResourceId = "mtkeip",
 ///         },
 ///         ResourceGroupName = "resourcegroupname",
-///         SizeGiB = 9,
+///         SizeGiB = 9.0,
 ///         VolumeGroupName = "volumegroupname",
 ///         VolumeName = "volumename",
 ///     });
@@ -80,7 +80,7 @@ import 'volume_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,6 +89,9 @@ import 'volume_args.dart';
 /// }
 ///
 /// resource "azure-native_elasticsan_volume" "volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_source = "None"
 ///     source_id     = "ARM Id of Resource"
@@ -222,7 +225,7 @@ import 'volume_args.dart';
 ///     {
 ///         ElasticSanName = "elasticsanname",
 ///         ResourceGroupName = "resourcegroupname",
-///         SizeGiB = 9,
+///         SizeGiB = 9.0,
 ///         VolumeGroupName = "volumegroupname",
 ///         VolumeName = "volumename",
 ///     });
@@ -259,7 +262,7 @@ import 'volume_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -268,6 +271,9 @@ import 'volume_args.dart';
 /// }
 ///
 /// resource "azure-native_elasticsan_volume" "volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_san_name    = "elasticsanname"
 ///   resource_group_name = "resourcegroupname"
 ///   size_gi_b           = 9

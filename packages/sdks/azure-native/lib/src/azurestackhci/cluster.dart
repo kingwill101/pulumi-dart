@@ -72,7 +72,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,6 +81,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_azurestackhci_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aad_client_id             = "24a6e53d-04e5-44d2-b7cc-1b732a847dfc"
 ///   aad_tenant_id             = "7e589cc1-a8b6-4dff-91bd-5ec0fa18db94"
 ///   cloud_management_endpoint = "https://98294836-31be-4668-aeae-698667faf99b.waconazure.com"

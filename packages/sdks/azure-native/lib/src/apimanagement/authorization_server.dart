@@ -28,7 +28,7 @@ import 'token_body_parameter_contract_response.dart';
 ///             AzureNative.ApiManagement.AuthorizationMethod.GET,
 ///         },
 ///         Authsid = "newauthServer",
-///         BearerTokenSendingMethods = new[]
+///         BearerTokenSendingMethods =
 ///         {
 ///             AzureNative.ApiManagement.BearerTokenSendingMethod.AuthorizationHeader,
 ///         },
@@ -38,7 +38,7 @@ import 'token_body_parameter_contract_response.dart';
 ///         DefaultScope = "read write",
 ///         Description = "test server",
 ///         DisplayName = "test2",
-///         GrantTypes = new[]
+///         GrantTypes =
 ///         {
 ///             AzureNative.ApiManagement.GrantType.AuthorizationCode,
 ///             AzureNative.ApiManagement.GrantType.@Implicit,
@@ -106,7 +106,7 @@ import 'token_body_parameter_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'token_body_parameter_contract_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_authorizationserver" "authorizationServer" {
+/// resource "azure-native_apimanagement_authorization_server" "authorizationServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_endpoint       = "https://www.contoso.com/oauth2/auth"
 ///   authorization_methods        = ["GET"]
 ///   authsid                      = "newauthServer"

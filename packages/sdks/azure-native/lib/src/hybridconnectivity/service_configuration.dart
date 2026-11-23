@@ -23,7 +23,7 @@ import 'system_data_response.dart';
 ///     var serviceConfiguration = new AzureNative.HybridConnectivity.ServiceConfiguration("serviceConfiguration", new()
 ///     {
 ///         EndpointName = "default",
-///         Port = 22,
+///         Port = 22.0,
 ///         ResourceUri = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default",
 ///         ServiceConfigurationName = "SSH",
 ///         ServiceName = AzureNative.HybridConnectivity.ServiceName.SSH,
@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridconnectivity_serviceconfiguration" "serviceConfiguration" {
+/// resource "azure-native_hybridconnectivity_service_configuration" "serviceConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name              = "default"
 ///   port                       = 22
 ///   resource_uri               = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default"
@@ -167,7 +170,7 @@ import 'system_data_response.dart';
 ///     var serviceConfiguration = new AzureNative.HybridConnectivity.ServiceConfiguration("serviceConfiguration", new()
 ///     {
 ///         EndpointName = "default",
-///         Port = 6516,
+///         Port = 6516.0,
 ///         ResourceUri = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default",
 ///         ServiceConfigurationName = "WAC",
 ///         ServiceName = AzureNative.HybridConnectivity.ServiceName.WAC,
@@ -205,7 +208,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -213,7 +216,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridconnectivity_serviceconfiguration" "serviceConfiguration" {
+/// resource "azure-native_hybridconnectivity_service_configuration" "serviceConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name              = "default"
 ///   port                       = 6516
 ///   resource_uri               = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default"

@@ -139,7 +139,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -147,7 +147,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2flowlog" "ec2FlowLog" {
+/// resource "azure-native_awsconnector_ec2_flow_log" "ec2FlowLog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "iheortzyczwfplyjuuqwhdtpscn"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -170,8 +173,8 @@ import 'system_data_response.dart';
 ///       resource_id              = "mokmavuqvq"
 ///       resource_type            = "NetworkInterface"
 ///       tags = [{
-///         "key"   = "hpdlgqvamjjtqreaoxergrowvu"
-///         "value" = "qdqsngozfinennzbilnzeemjzilpb"
+///         key   = "hpdlgqvamjjtqreaoxergrowvu"
+///         value = "qdqsngozfinennzbilnzeemjzilpb"
 ///       }]
 ///       traffic_type = "ACCEPT"
 ///     }
@@ -202,6 +205,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2FlowLogPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2FlowLogPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DestinationOptionsModelPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

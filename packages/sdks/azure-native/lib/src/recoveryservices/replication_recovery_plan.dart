@@ -25,7 +25,7 @@ import 'replication_recovery_plan_args.dart';
 ///         Properties = new AzureNative.RecoveryServices.Inputs.CreateRecoveryPlanInputPropertiesArgs
 ///         {
 ///             FailoverDeploymentModel = AzureNative.RecoveryServices.FailoverDeploymentModel.ResourceManager,
-///             Groups = new[]
+///             Groups =
 ///             {
 ///                 new AzureNative.RecoveryServices.Inputs.RecoveryPlanGroupArgs
 ///                 {
@@ -98,7 +98,7 @@ import 'replication_recovery_plan_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,17 +106,20 @@ import 'replication_recovery_plan_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationrecoveryplan" "replicationRecoveryPlan" {
+/// resource "azure-native_recoveryservices_replication_recovery_plan" "replicationRecoveryPlan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     failover_deployment_model = "ResourceManager"
 ///     groups = [{
-///       "endGroupActions" = []
-///       "groupType"       = "Boot"
-///       "replicationProtectedItems" = [{
-///         "id"               = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectedItems/f8491e4f-817a-40dd-a90c-af773978c75b"
-///         "virtualMachineId" = "f8491e4f-817a-40dd-a90c-af773978c75b"
+///       end_group_actions = []
+///       group_type        = "Boot"
+///       replication_protected_items = [{
+///         id                 = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectedItems/f8491e4f-817a-40dd-a90c-af773978c75b"
+///         virtual_machine_id = "f8491e4f-817a-40dd-a90c-af773978c75b"
 ///       }]
-///       "startGroupActions" = []
+///       start_group_actions = []
 ///     }]
 ///     primary_fabric_id  = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1"
 ///     recovery_fabric_id = "Microsoft Azure"
@@ -137,6 +140,8 @@ import 'replication_recovery_plan_args.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationRecoveryPlan;
 /// import com.pulumi.azurenative.recoveryservices.ReplicationRecoveryPlanArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.CreateRecoveryPlanInputPropertiesArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.RecoveryPlanGroupArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.RecoveryPlanProtectedItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

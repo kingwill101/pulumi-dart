@@ -64,7 +64,7 @@ import 'api_operation_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'api_operation_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apioperationpolicy" "apiOperationPolicy" {
+/// resource "azure-native_apimanagement_api_operation_policy" "apiOperationPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "5600b57e7e8880006a040001"
 ///   format              = "xml"
 ///   operation_id        = "5600b57e7e8880006a080001"

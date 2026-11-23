@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_emailservice" "emailService" {
+/// resource "azure-native_communication_email_service" "emailService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_location       = "United States"
 ///   email_service_name  = "MyEmailServiceResource"
 ///   location            = "Global"

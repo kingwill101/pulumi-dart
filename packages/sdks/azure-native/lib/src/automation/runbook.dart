@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,6 +110,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_automation_runbook" "runbook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "ContoseAutomationAccount"
 ///   description             = "Description of the Runbook"
 ///   location                = "East US 2"
@@ -292,7 +295,7 @@ import 'system_data_response.dart';
 ///     {
 ///         AutomationAccountName = "ContoseAutomationAccount",
 ///         Description = "Description of the Runbook",
-///         Draft = null,
+///         Draft = new() { },
 ///         Location = "East US 2",
 ///         LogProgress = false,
 ///         LogVerbose = false,
@@ -350,7 +353,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -359,6 +362,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_automation_runbook" "runbook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "ContoseAutomationAccount"
 ///   description             = "Description of the Runbook"
 ///   draft                   = {}

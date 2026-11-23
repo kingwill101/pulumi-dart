@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_cassandraresourcecassandraroleassignment" "cassandraResourceCassandraRoleAssignment" {
+/// resource "azure-native_cosmosdb_cassandra_resource_cassandra_role_assignment" "cassandraResourceCassandraRoleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "myAccountName"
 ///   principal_id        = "myPrincipalId"
 ///   resource_group_name = "myResourceGroupName"

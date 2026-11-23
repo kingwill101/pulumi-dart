@@ -74,7 +74,7 @@ import 'vcenter_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'vcenter_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationvcenter" "replicationvCenter" {
+/// resource "azure-native_recoveryservices_replicationv_center" "replicationvCenter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name = "MadhaviFabric"
 ///   properties = {
 ///     friendly_name     = "esx-78"

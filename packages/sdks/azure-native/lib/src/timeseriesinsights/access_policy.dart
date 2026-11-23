@@ -26,7 +26,7 @@ import 'access_policy_args.dart';
 ///         EnvironmentName = "env1",
 ///         PrincipalObjectId = "aGuid",
 ///         ResourceGroupName = "rg1",
-///         Roles = new[]
+///         Roles =
 ///         {
 ///             AzureNative.TimeSeriesInsights.AccessPolicyRole.Reader,
 ///         },
@@ -67,7 +67,7 @@ import 'access_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'access_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_accesspolicy" "accessPolicy" {
+/// resource "azure-native_timeseriesinsights_access_policy" "accessPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_policy_name  = "ap1"
 ///   description         = "some description"
 ///   environment_name    = "env1"

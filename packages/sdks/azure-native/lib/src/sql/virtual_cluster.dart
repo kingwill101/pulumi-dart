@@ -63,7 +63,7 @@ import 'virtual_cluster_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'virtual_cluster_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_virtualcluster" "virtualCluster" {
+/// resource "azure-native_sql_virtual_cluster" "virtualCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "japaneast"
 ///   resource_group_name = "testrg"
 ///   tags = {

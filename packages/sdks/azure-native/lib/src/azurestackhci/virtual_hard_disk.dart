@@ -72,7 +72,7 @@ import 'virtual_hard_disk_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'virtual_hard_disk_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualharddisk" "virtualHardDisk" {
+/// resource "azure-native_azurestackhci_virtual_hard_disk" "virtualHardDisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_id      = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-storage-container"
 ///   create_from_local = true
 ///   extended_location = {
@@ -197,7 +200,7 @@ import 'virtual_hard_disk_status_response.dart';
 /// {
 ///     var virtualHardDisk = new AzureNative.AzureStackHCI.VirtualHardDisk("virtualHardDisk", new()
 ///     {
-///         DiskSizeGB = 32,
+///         DiskSizeGB = 32.0,
 ///         ExtendedLocation = new AzureNative.AzureStackHCI.Inputs.ExtendedLocationArgs
 ///         {
 ///             Name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location",
@@ -243,7 +246,7 @@ import 'virtual_hard_disk_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -251,7 +254,10 @@ import 'virtual_hard_disk_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualharddisk" "virtualHardDisk" {
+/// resource "azure-native_azurestackhci_virtual_hard_disk" "virtualHardDisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk_size_gb = 32
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"

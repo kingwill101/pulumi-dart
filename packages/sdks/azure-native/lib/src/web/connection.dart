@@ -73,7 +73,7 @@ import 'connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,6 +82,9 @@ import 'connection_args.dart';
 /// }
 ///
 /// resource "azure-native_web_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "testManagedApi"
 ///   properties = {
 ///     api = {

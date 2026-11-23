@@ -6,7 +6,7 @@ import 'tag_response.dart';
 ///
 /// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2020-08-01.
 ///
-/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -37,7 +37,7 @@ import 'tag_response.dart';
 ///                 Value = "Computer",
 ///             },
 ///         },
-///         Version = 2,
+///         Version = 2.0,
 ///         WorkspaceName = "TestWS",
 ///     });
 ///
@@ -83,7 +83,7 @@ import 'tag_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'tag_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_savedsearch" "savedSearch" {
+/// resource "azure-native_operationalinsights_saved_search" "savedSearch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   category            = "Saved Search Test Category"
 ///   display_name        = "Create or Update Saved Search Test"
 ///   function_alias      = "heartbeat_func"

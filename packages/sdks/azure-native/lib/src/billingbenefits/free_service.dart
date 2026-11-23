@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billingbenefits_freeservice" "freeService" {
+/// resource "azure-native_billingbenefits_free_service" "freeService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_at              = "2026-10-01T00:00:00Z"
 ///   free_service_name   = "freeservice_20251001"
 ///   location            = "global"

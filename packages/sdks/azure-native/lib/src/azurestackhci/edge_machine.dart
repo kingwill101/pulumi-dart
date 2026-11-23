@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_edgemachine" "edgeMachine" {
+/// resource "azure-native_azurestackhci_edge_machine" "edgeMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_machine_name = "machine-1"
 ///   location          = "eastus"
 ///   properties = {

@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_powerplatform_enterprisepolicy" "enterprisePolicy" {
+/// resource "azure-native_powerplatform_enterprise_policy" "enterprisePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enterprise_policy_name = "enterprisePolicy"
 ///   identity = {
 ///     type = "SystemAssigned"

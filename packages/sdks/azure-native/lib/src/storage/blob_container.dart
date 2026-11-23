@@ -63,7 +63,7 @@ import 'legal_hold_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'legal_hold_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobcontainer" "blobContainer" {
+/// resource "azure-native_storage_blob_container" "blobContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                   = "sto328"
 ///   container_name                 = "container6185"
 ///   default_encryption_scope       = "encryptionscope185"
@@ -210,7 +213,7 @@ import 'legal_hold_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +221,10 @@ import 'legal_hold_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobcontainer" "blobContainer" {
+/// resource "azure-native_storage_blob_container" "blobContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name   = "sto328"
 ///   container_name = "container6185"
 ///   immutable_storage_with_versioning = {
@@ -355,7 +361,7 @@ import 'legal_hold_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -363,7 +369,10 @@ import 'legal_hold_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobcontainer" "blobContainer" {
+/// resource "azure-native_storage_blob_container" "blobContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto328"
 ///   container_name      = "container6185"
 ///   resource_group_name = "res3376"

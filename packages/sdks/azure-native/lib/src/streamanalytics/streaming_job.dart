@@ -34,8 +34,8 @@ import 'transformation_response.dart';
 ///         EventsLateArrivalMaxDelayInSeconds = 5,
 ///         EventsOutOfOrderMaxDelayInSeconds = 0,
 ///         EventsOutOfOrderPolicy = AzureNative.StreamAnalytics.EventsOutOfOrderPolicy.Drop,
-///         Functions = new[] {},
-///         Inputs = new[]
+///         Functions = new() {},
+///         Inputs =
 ///         {
 ///             new AzureNative.StreamAnalytics.Inputs.InputArgs
 ///             {
@@ -68,7 +68,7 @@ import 'transformation_response.dart';
 ///         JobName = "sj7804",
 ///         Location = "West US",
 ///         OutputErrorPolicy = AzureNative.StreamAnalytics.OutputErrorPolicy.Drop,
-///         Outputs = new[]
+///         Outputs =
 ///         {
 ///             new AzureNative.StreamAnalytics.Inputs.OutputArgs
 ///             {
@@ -128,23 +128,23 @@ import 'transformation_response.dart';
 /// 			Inputs: streamanalytics.InputTypeArray{
 /// 				&streamanalytics.InputTypeArgs{
 /// 					Name: pulumi.String("inputtest"),
-/// 					Properties: streamanalytics.StreamInputProperties{
-/// 						Datasource: streamanalytics.BlobStreamInputDataSource{
-/// 							Container:   "containerName",
-/// 							PathPattern: "",
-/// 							StorageAccounts: []streamanalytics.StorageAccount{
-/// 								{
-/// 									AccountKey:  "yourAccountKey==",
-/// 									AccountName: "yourAccountName",
+/// 					Properties: &streamanalytics.StreamInputPropertiesArgs{
+/// 						Datasource: &streamanalytics.BlobStreamInputDataSourceArgs{
+/// 							Container:   pulumi.String("containerName"),
+/// 							PathPattern: pulumi.String(""),
+/// 							StorageAccounts: streamanalytics.StorageAccountArray{
+/// 								&streamanalytics.StorageAccountArgs{
+/// 									AccountKey:  pulumi.String("yourAccountKey=="),
+/// 									AccountName: pulumi.String("yourAccountName"),
 /// 								},
 /// 							},
-/// 							Type: "Microsoft.Storage/Blob",
+/// 							Type: pulumi.String("Microsoft.Storage/Blob"),
 /// 						},
-/// 						Serialization: streamanalytics.JsonSerialization{
-/// 							Encoding: streamanalytics.EncodingUTF8,
-/// 							Type:     "Json",
+/// 						Serialization: &streamanalytics.JsonSerializationArgs{
+/// 							Encoding: pulumi.String(streamanalytics.EncodingUTF8),
+/// 							Type:     pulumi.String("Json"),
 /// 						},
-/// 						Type: "Stream",
+/// 						Type: pulumi.String("Stream"),
 /// 					},
 /// 				},
 /// 			},
@@ -153,13 +153,13 @@ import 'transformation_response.dart';
 /// 			OutputErrorPolicy: pulumi.String(streamanalytics.OutputErrorPolicyDrop),
 /// 			Outputs: streamanalytics.OutputTypeArray{
 /// 				&streamanalytics.OutputTypeArgs{
-/// 					Datasource: streamanalytics.AzureSqlDatabaseOutputDataSource{
-/// 						Database: "databaseName",
-/// 						Password: "userPassword",
-/// 						Server:   "serverName",
-/// 						Table:    "tableName",
-/// 						Type:     "Microsoft.Sql/Server/Database",
-/// 						User:     "<user>",
+/// 					Datasource: &streamanalytics.AzureSqlDatabaseOutputDataSourceArgs{
+/// 						Database: pulumi.String("databaseName"),
+/// 						Password: pulumi.String("userPassword"),
+/// 						Server:   pulumi.String("serverName"),
+/// 						Table:    pulumi.String("tableName"),
+/// 						Type:     pulumi.String("Microsoft.Sql/Server/Database"),
+/// 						User:     pulumi.String("<user>"),
 /// 					},
 /// 					Name: pulumi.String("outputtest"),
 /// 				},
@@ -189,7 +189,7 @@ import 'transformation_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -197,7 +197,10 @@ import 'transformation_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_streamanalytics_streamingjob" "streamingJob" {
+/// resource "azure-native_streamanalytics_streaming_job" "streamingJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compatibility_level                      = "1.0"
 ///   data_locale                              = "en-US"
 ///   events_late_arrival_max_delay_in_seconds = 5
@@ -206,20 +209,20 @@ import 'transformation_response.dart';
 ///   inputs {
 ///     name = "inputtest"
 ///     properties = {
-///       "datasource" = {
-///         "container"   = "containerName"
-///         "pathPattern" = ""
-///         "storageAccounts" = [{
-///           "accountKey"  = "yourAccountKey=="
-///           "accountName" = "yourAccountName"
+///       datasource = {
+///         container    = "containerName"
+///         path_pattern = ""
+///         storage_accounts = [{
+///           account_key  = "yourAccountKey=="
+///           account_name = "yourAccountName"
 ///         }]
-///         "type" = "Microsoft.Storage/Blob"
+///         type = "Microsoft.Storage/Blob"
 ///       }
-///       "serialization" = {
-///         "encoding" = "UTF8"
-///         "type"     = "Json"
+///       serialization = {
+///         encoding = "UTF8"
+///         type     = "Json"
 ///       }
-///       "type" = "Stream"
+///       type = "Stream"
 ///     }
 ///   }
 ///   job_name            = "sj7804"
@@ -227,12 +230,12 @@ import 'transformation_response.dart';
 ///   output_error_policy = "Drop"
 ///   outputs {
 ///     datasource = {
-///       "database" = "databaseName"
-///       "password" = "userPassword"
-///       "server"   = "serverName"
-///       "table"    = "tableName"
-///       "type"     = "Microsoft.Sql/Server/Database"
-///       "user"     = "<user>"
+///       database = "databaseName"
+///       password = "userPassword"
+///       server   = "serverName"
+///       table    = "tableName"
+///       type     = "Microsoft.Sql/Server/Database"
+///       user     = "<user>"
 ///     }
 ///     name = "outputtest"
 ///   }
@@ -263,7 +266,35 @@ import 'transformation_response.dart';
 /// import com.pulumi.azurenative.streamanalytics.StreamingJob;
 /// import com.pulumi.azurenative.streamanalytics.StreamingJobArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StorageAccountArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.SkuArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.TransformationArgs;
 /// import java.util.ArrayList;
@@ -296,13 +327,10 @@ import 'transformation_response.dart';
 ///                             .accountKey("yourAccountKey==")
 ///                             .accountName("yourAccountName")
 ///                             .build())
-///                         .type("Microsoft.Storage/Blob")
 ///                         .build())
 ///                     .serialization(JsonSerializationArgs.builder()
 ///                         .encoding("UTF8")
-///                         .type("Json")
 ///                         .build())
-///                     .type("Stream")
 ///                     .build())
 ///                 .build())
 ///             .jobName("sj7804")
@@ -314,7 +342,6 @@ import 'transformation_response.dart';
 ///                     .password("userPassword")
 ///                     .server("serverName")
 ///                     .table("tableName")
-///                     .type("Microsoft.Sql/Server/Database")
 ///                     .user("<user>")
 ///                     .build())
 ///                 .name("outputtest")
@@ -532,12 +559,12 @@ import 'transformation_response.dart';
 ///         EventsLateArrivalMaxDelayInSeconds = 16,
 ///         EventsOutOfOrderMaxDelayInSeconds = 5,
 ///         EventsOutOfOrderPolicy = AzureNative.StreamAnalytics.EventsOutOfOrderPolicy.Drop,
-///         Functions = new[] {},
-///         Inputs = new[] {},
+///         Functions = new() {},
+///         Inputs = new() {},
 ///         JobName = "sj59",
 ///         Location = "West US",
 ///         OutputErrorPolicy = AzureNative.StreamAnalytics.OutputErrorPolicy.Drop,
-///         Outputs = new[] {},
+///         Outputs = new() {},
 ///         ResourceGroupName = "sjrg6936",
 ///         Sku = new AzureNative.StreamAnalytics.Inputs.SkuArgs
 ///         {
@@ -598,7 +625,7 @@ import 'transformation_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -606,7 +633,10 @@ import 'transformation_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_streamanalytics_streamingjob" "streamingJob" {
+/// resource "azure-native_streamanalytics_streaming_job" "streamingJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compatibility_level                      = "1.0"
 ///   data_locale                              = "en-US"
 ///   events_late_arrival_max_delay_in_seconds = 16

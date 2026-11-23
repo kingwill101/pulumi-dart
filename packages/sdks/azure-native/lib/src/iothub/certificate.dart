@@ -64,7 +64,7 @@ import 'certificate_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,6 +73,9 @@ import 'certificate_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_iothub_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name = "cert"
 ///   properties = {
 ///     certificate = "############################################"

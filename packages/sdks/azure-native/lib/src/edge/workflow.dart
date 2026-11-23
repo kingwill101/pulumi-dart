@@ -68,7 +68,7 @@ import 'workflow_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,6 +77,9 @@ import 'workflow_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_edge_workflow" "workflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   context_name = "testname"
 ///   extended_location = {
 ///     name = "szjrwimeqyiue"

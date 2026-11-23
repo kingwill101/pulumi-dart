@@ -30,18 +30,18 @@ import 'system_data_response.dart';
 ///         AvsAssessmentScenario = AzureNative.Migrate.AvsAssessmentScenario.NewAvsSddc,
 ///         AzureLocation = AzureNative.Migrate.AzureLocation.EastUs,
 ///         AzureOfferCode = AzureNative.Migrate.AzureOfferCode.Msazr0003P,
-///         CpuHeadroom = 12,
+///         CpuHeadroom = 12.0,
 ///         Currency = AzureNative.Migrate.AzureCurrency.USD,
 ///         DedupeCompression = 1.5,
-///         DiscountPercentage = 0,
-///         ExternalStorageTypes = new[]
+///         DiscountPercentage = 0.0,
+///         ExternalStorageTypes =
 ///         {
 ///             AzureNative.Migrate.ExternalStorageType.AnfStandard,
 ///             AzureNative.Migrate.ExternalStorageType.AnfPremium,
 ///             AzureNative.Migrate.ExternalStorageType.AnfUltra,
 ///         },
 ///         FailuresToTolerateAndRaidLevel = AzureNative.Migrate.FttAndRaidLevel.Unknown,
-///         FailuresToTolerateAndRaidLevelList = new[]
+///         FailuresToTolerateAndRaidLevelList =
 ///         {
 ///             AzureNative.Migrate.FttAndRaidLevel.Ftt1Raid1,
 ///             AzureNative.Migrate.FttAndRaidLevel.Ftt1Raid5,
@@ -50,9 +50,9 @@ import 'system_data_response.dart';
 ///         GroupName = "kuchatur-test",
 ///         IsStretchClusterEnabled = true,
 ///         IsVcfByolEnabled = true,
-///         MemOvercommit = 1,
+///         MemOvercommit = 1.0,
 ///         NodeType = AzureNative.Migrate.AzureAvsNodeType.Unknown,
-///         NodeTypes = new[]
+///         NodeTypes =
 ///         {
 ///             AzureNative.Migrate.AzureAvsNodeType.AV36,
 ///             AzureNative.Migrate.AzureAvsNodeType.AV52,
@@ -66,10 +66,10 @@ import 'system_data_response.dart';
 ///         ProvisioningState = AzureNative.Migrate.ProvisioningState.Succeeded,
 ///         ReservedInstance = AzureNative.Migrate.AzureReservedInstance.RI3Year,
 ///         ResourceGroupName = "ayagrawrg",
-///         ScalingFactor = 1,
+///         ScalingFactor = 1.0,
 ///         SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.AsOnPremises,
 ///         TimeRange = AzureNative.Migrate.TimeRange.Day,
-///         VcpuOversubscription = 4,
+///         VcpuOversubscription = 4.0,
 ///     });
 ///
 /// });
@@ -140,7 +140,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -148,7 +148,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_avsassessmentsoperation" "avsAssessmentsOperation" {
+/// resource "azure-native_migrate_avs_assessments_operation" "avsAssessmentsOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name                          = "asm2"
 ///   avs_assessment_scenario                  = "NewAvsSddc"
 ///   azure_location                           = "EastUs"

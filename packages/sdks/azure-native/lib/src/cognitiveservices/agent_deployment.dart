@@ -102,7 +102,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,24 +110,27 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_agentdeployment" "agentDeployment" {
+/// resource "azure-native_cognitiveservices_agent_deployment" "agentDeployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name    = "my-cognitive-services-account"
 ///   app_name        = "agent-app-1"
 ///   deployment_name = "deployment-1"
 ///   project_name    = "my-project"
 ///   properties = {
-///     "agents" = [{
-///       "agentId"      = "agent-123"
-///       "agentName"    = "support-agent"
-///       "agentVersion" = "1.0.0"
+///     agents = [{
+///       agent_id      = "agent-123"
+///       agent_name    = "support-agent"
+///       agent_version = "1.0.0"
 ///     }]
-///     "deploymentType" = "Managed"
-///     "displayName"    = "Production Deployment"
-///     "protocols" = [{
-///       "protocol" = "Agent"
-///       "version"  = "1.0"
+///     deployment_type = "Managed"
+///     display_name    = "Production Deployment"
+///     protocols = [{
+///       protocol = "Agent"
+///       version  = "1.0"
 ///     }]
-///     "state" = "Starting"
+///     state = "Starting"
 ///   }
 ///   resource_group_name = "test-rg"
 /// }
@@ -142,6 +145,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.AgentDeployment;
 /// import com.pulumi.azurenative.cognitiveservices.AgentDeploymentArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.HostedAgentDeploymentArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.VersionedAgentReferenceArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.AgentProtocolVersionArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.ManagedAgentDeploymentArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -166,7 +173,6 @@ import 'system_data_response.dart';
 ///                     .agentName("support-agent")
 ///                     .agentVersion("1.0.0")
 ///                     .build())
-///                 .deploymentType("Managed")
 ///                 .displayName("Production Deployment")
 ///                 .protocols(AgentProtocolVersionArgs.builder()
 ///                     .protocol("Agent")

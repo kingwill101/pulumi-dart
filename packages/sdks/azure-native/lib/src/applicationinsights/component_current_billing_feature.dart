@@ -27,7 +27,7 @@ import 'component_current_billing_feature_args.dart';
 ///         },
 ///         DataVolumeCap = new AzureNative.ApplicationInsights.Inputs.ApplicationInsightsComponentDataVolumeCapArgs
 ///         {
-///             Cap = 100,
+///             Cap = 100.0,
 ///             StopSendNotificationWhenHitCap = true,
 ///         },
 ///         ResourceGroupName = "my-resource-group",
@@ -71,7 +71,7 @@ import 'component_current_billing_feature_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'component_current_billing_feature_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_componentcurrentbillingfeature" "componentCurrentBillingFeature" {
+/// resource "azure-native_applicationinsights_component_current_billing_feature" "componentCurrentBillingFeature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   current_billing_features = ["Basic", "Application Insights Enterprise"]
 ///   data_volume_cap = {
 ///     cap                                 = 100

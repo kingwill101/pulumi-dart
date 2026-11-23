@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// A retention policy resource belonging to the scheduler
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2026-02-01.
 ///
-/// Other available API versions: 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,13 +90,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_durabletask_retentionpolicy" "retentionPolicy" {
+/// resource "azure-native_durabletask_retention_policy" "retentionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     retention_policies = [{
-///       "retentionPeriodInDays" = 30
+///       retention_period_in_days = 30
 ///       }, {
-///       "orchestrationState"    = "Failed"
-///       "retentionPeriodInDays" = 10
+///       orchestration_state      = "Failed"
+///       retention_period_in_days = 10
 ///     }]
 ///   }
 ///   resource_group_name = "rgdurabletask"
@@ -114,6 +117,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.durabletask.RetentionPolicy;
 /// import com.pulumi.azurenative.durabletask.RetentionPolicyArgs;
 /// import com.pulumi.azurenative.durabletask.inputs.RetentionPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.durabletask.inputs.RetentionPolicyDetailsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

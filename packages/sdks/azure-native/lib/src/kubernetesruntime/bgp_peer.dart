@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesruntime_bgppeer" "bgpPeer" {
+/// resource "azure-native_kubernetesruntime_bgp_peer" "bgpPeer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_peer_name = "testpeer"
 ///   my_asn        = 64500
 ///   peer_address  = "10.0.0.1"

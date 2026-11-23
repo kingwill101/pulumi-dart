@@ -110,7 +110,7 @@ import 'sub_resource_response.dart';
 ///                             "443",
 ///                         },
 ///                         Name = "DNAT-HTTPS-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -133,7 +133,7 @@ import 'sub_resource_response.dart';
 ///                             "80",
 ///                         },
 ///                         Name = "DNAT-HTTP-traffic-With-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -173,7 +173,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -196,7 +196,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic-with-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -219,7 +219,7 @@ import 'sub_resource_response.dart';
 ///             { "key1", "value1" },
 ///         },
 ///         ThreatIntelMode = AzureNative.Network.AzureFirewallThreatIntelMode.Alert,
-///         Zones = new[] {},
+///         Zones = new() {},
 ///     });
 ///
 /// });
@@ -396,7 +396,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -404,7 +404,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+/// resource "azure-native_network_azure_firewall" "azureFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_rule_collections {
 ///     action = {
 ///       type = "Deny"
@@ -510,11 +513,15 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.AzureFirewallArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleProtocolArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1067,7 +1074,7 @@ import 'sub_resource_response.dart';
 ///                             "443",
 ///                         },
 ///                         Name = "DNAT-HTTPS-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -1090,7 +1097,7 @@ import 'sub_resource_response.dart';
 ///                             "80",
 ///                         },
 ///                         Name = "DNAT-HTTP-traffic-With-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -1130,7 +1137,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -1153,7 +1160,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic-with-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -1176,7 +1183,7 @@ import 'sub_resource_response.dart';
 ///             { "key1", "value1" },
 ///         },
 ///         ThreatIntelMode = AzureNative.Network.AzureFirewallThreatIntelMode.Alert,
-///         Zones = new[] {},
+///         Zones = new() {},
 ///     });
 ///
 /// });
@@ -1357,7 +1364,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1365,7 +1372,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+/// resource "azure-native_network_azure_firewall" "azureFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_properties = {
 ///     "key1" = "value1"
 ///     "key2" = "value2"
@@ -1475,11 +1485,15 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.AzureFirewallArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleProtocolArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2042,7 +2056,7 @@ import 'sub_resource_response.dart';
 ///                             "443",
 ///                         },
 ///                         Name = "DNAT-HTTPS-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -2065,7 +2079,7 @@ import 'sub_resource_response.dart';
 ///                             "80",
 ///                         },
 ///                         Name = "DNAT-HTTP-traffic-With-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -2105,7 +2119,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -2128,7 +2142,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic-with-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -2151,7 +2165,7 @@ import 'sub_resource_response.dart';
 ///             { "key1", "value1" },
 ///         },
 ///         ThreatIntelMode = AzureNative.Network.AzureFirewallThreatIntelMode.Alert,
-///         Zones = new[] {},
+///         Zones = new() {},
 ///     });
 ///
 /// });
@@ -2328,7 +2342,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2336,7 +2350,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+/// resource "azure-native_network_azure_firewall" "azureFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_rule_collections {
 ///     action = {
 ///       type = "Deny"
@@ -2442,11 +2459,15 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.AzureFirewallArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleProtocolArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2994,7 +3015,7 @@ import 'sub_resource_response.dart';
 ///                             "443",
 ///                         },
 ///                         Name = "DNAT-HTTPS-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -3017,7 +3038,7 @@ import 'sub_resource_response.dart';
 ///                             "80",
 ///                         },
 ///                         Name = "DNAT-HTTP-traffic-With-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -3057,7 +3078,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -3080,7 +3101,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic-with-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -3289,7 +3310,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3297,7 +3318,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+/// resource "azure-native_network_azure_firewall" "azureFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_rule_collections {
 ///     action = {
 ///       type = "Deny"
@@ -3403,11 +3427,15 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.AzureFirewallArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleProtocolArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -3981,7 +4009,7 @@ import 'sub_resource_response.dart';
 ///                             "443",
 ///                         },
 ///                         Name = "DNAT-HTTPS-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -4004,7 +4032,7 @@ import 'sub_resource_response.dart';
 ///                             "80",
 ///                         },
 ///                         Name = "DNAT-HTTP-traffic-With-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -4044,7 +4072,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -4067,7 +4095,7 @@ import 'sub_resource_response.dart';
 ///                             "8443",
 ///                         },
 ///                         Name = "L4-traffic-with-FQDN",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             AzureNative.Network.AzureFirewallNetworkRuleProtocol.TCP,
 ///                         },
@@ -4090,7 +4118,7 @@ import 'sub_resource_response.dart';
 ///             { "key1", "value1" },
 ///         },
 ///         ThreatIntelMode = AzureNative.Network.AzureFirewallThreatIntelMode.Alert,
-///         Zones = new[] {},
+///         Zones = new() {},
 ///     });
 ///
 /// });
@@ -4276,7 +4304,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4284,7 +4312,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+/// resource "azure-native_network_azure_firewall" "azureFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_rule_collections {
 ///     action = {
 ///       type = "Deny"
@@ -4399,11 +4430,15 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.AzureFirewallArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallApplicationRuleProtocolArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -4933,7 +4968,7 @@ import 'sub_resource_response.dart';
 ///         {
 ///             Id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1",
 ///         },
-///         Zones = new[] {},
+///         Zones = new() {},
 ///     });
 ///
 /// });
@@ -4987,7 +5022,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4995,7 +5030,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+/// resource "azure-native_network_azure_firewall" "azureFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_firewall_name = "azurefirewall"
 ///   firewall_policy = {
 ///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/policy1"

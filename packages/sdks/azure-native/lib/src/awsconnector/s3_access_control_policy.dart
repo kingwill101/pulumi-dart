@@ -138,7 +138,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -146,7 +146,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_s3accesscontrolpolicy" "s3AccessControlPolicy" {
+/// resource "azure-native_awsconnector_s3_access_control_policy" "s3AccessControlPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ngeydiaovh"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -154,17 +157,17 @@ import 'system_data_response.dart';
 ///     aws_account_id = "vdzgygqqjlohlqcrnidexbnxccnqjn"
 ///     aws_properties = {
 ///       grants = [{
-///         "grantee" = {
-///           "displayName"  = "xlmygaefkokdbvi"
-///           "emailAddress" = "crwbnkkz"
-///           "id"           = "uyhsprjfhvowaugesuopxt"
-///           "type" = {
-///             "value" = "AmazonCustomerByEmail"
+///         grantee = {
+///           display_name  = "xlmygaefkokdbvi"
+///           email_address = "crwbnkkz"
+///           id            = "uyhsprjfhvowaugesuopxt"
+///           type = {
+///             value = "AmazonCustomerByEmail"
 ///           }
-///           "uri" = "yzwxkelbvsi"
+///           uri = "yzwxkelbvsi"
 ///         }
-///         "permission" = {
-///           "value" = "FULL_CONTROL"
+///         permission = {
+///           value = "FULL_CONTROL"
 ///         }
 ///       }]
 ///       owner = {
@@ -198,6 +201,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.S3AccessControlPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3AccessControlPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsS3AccessControlPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.GrantArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.GranteeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PermissionEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OwnerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

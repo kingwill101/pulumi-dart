@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_clustermanager" "clusterManager" {
+/// resource "azure-native_networkcloud_cluster_manager" "clusterManager" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_workspace_id = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/microsoft.operationalInsights/workspaces/logAnalyticsWorkspaceName"
 ///   cluster_manager_name   = "clusterManagerName"
 ///   fabric_controller_id   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/fabricControllerName"

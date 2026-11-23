@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_dedicatedhost" "dedicatedHost" {
+/// resource "azure-native_compute_dedicated_host" "dedicatedHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   host_group_name       = "myDedicatedHostGroup"
 ///   host_name             = "myDedicatedHost"
 ///   location              = "westus"

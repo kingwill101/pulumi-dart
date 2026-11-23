@@ -91,7 +91,7 @@ import 'topics_related_link_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,6 +100,9 @@ import 'topics_related_link_response.dart';
 /// }
 ///
 /// resource "azure-native_confluent_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id     = "dlz-f3a90de"
 ///   environment_id = "env-12132"
 ///   input_configs {

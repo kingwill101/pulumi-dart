@@ -100,7 +100,7 @@ import 'web_app_slot_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'web_app_slot_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappslot" "webAppSlot" {
+/// resource "azure-native_web_web_app_slot" "webAppSlot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloning_info = {
 ///     app_settings_overrides = {
 ///       "Setting1" = "NewValue1"
@@ -310,7 +313,7 @@ import 'web_app_slot_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -318,7 +321,10 @@ import 'web_app_slot_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappslot" "webAppSlot" {
+/// resource "azure-native_web_web_app_slot" "webAppSlot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                = "app"
 ///   location            = "East US"
 ///   name                = "sitef6141"

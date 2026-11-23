@@ -662,9 +662,9 @@ pulumi.Output<GetRelationshipResult> getRelationshipOutput(
 
 /// Retrieve an scheduled query rule definition.
 ///
-/// Uses Azure REST API version 2025-01-01-preview.
+/// Uses Azure REST API version 2026-03-01.
 ///
-/// Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_scheduled_query_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetScheduledQueryRuleResult> getScheduledQueryRule(

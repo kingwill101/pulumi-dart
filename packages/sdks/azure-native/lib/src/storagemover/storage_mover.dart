@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagemover_storagemover" "storageMover" {
+/// resource "azure-native_storagemover_storage_mover" "storageMover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Example Storage Mover Description"
 ///   location            = "eastus2"
 ///   resource_group_name = "examples-rg"

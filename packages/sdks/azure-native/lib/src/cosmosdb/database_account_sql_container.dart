@@ -28,7 +28,7 @@ import 'unique_key_policy_response.dart';
 ///         AccountName = "ddb1",
 ///         ContainerName = "containerName",
 ///         DatabaseName = "databaseName",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.SqlContainerResourceArgs
 ///         {
 ///             ConflictResolutionPolicy = new AzureNative.CosmosDB.Inputs.ConflictResolutionPolicyArgs
@@ -168,7 +168,7 @@ import 'unique_key_policy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -176,7 +176,10 @@ import 'unique_key_policy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccountsqlcontainer" "databaseAccountSqlContainer" {
+/// resource "azure-native_cosmosdb_database_account_sql_container" "databaseAccountSqlContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name   = "ddb1"
 ///   container_name = "containerName"
 ///   database_name  = "databaseName"
@@ -192,16 +195,16 @@ import 'unique_key_policy_response.dart';
 ///       automatic      = true
 ///       excluded_paths = []
 ///       included_paths = [{
-///         "indexes" = [{
-///           "dataType"  = "String"
-///           "kind"      = "Range"
-///           "precision" = -1
+///         indexes = [{
+///           data_type = "String"
+///           kind      = "Range"
+///           precision = -1
 ///           }, {
-///           "dataType"  = "Number"
-///           "kind"      = "Range"
-///           "precision" = -1
+///           data_type = "Number"
+///           kind      = "Range"
+///           precision = -1
 ///         }]
-///         "path" = "/*"
+///         path = "/*"
 ///       }]
 ///       indexing_mode = "Consistent"
 ///     }
@@ -211,7 +214,7 @@ import 'unique_key_policy_response.dart';
 ///     }
 ///     unique_key_policy = {
 ///       unique_keys = [{
-///         "paths" = ["/testPath"]
+///         paths = ["/testPath"]
 ///       }]
 ///     }
 ///   }
@@ -231,8 +234,11 @@ import 'unique_key_policy_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.inputs.SqlContainerResourceArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ConflictResolutionPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.IndexingPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.IncludedPathArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.IndexesArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ContainerPartitionKeyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.UniqueKeyPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.UniqueKeyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

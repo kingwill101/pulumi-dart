@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,6 +93,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_gallery" "gallery" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "This is the gallery description."
 ///   gallery_name        = "myGalleryName"
 ///   location            = "West US"
@@ -273,7 +276,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -282,6 +285,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_gallery" "gallery" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "This is the gallery description."
 ///   gallery_name        = "myGalleryName"
 ///   location            = "West US"
@@ -432,7 +438,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -441,6 +447,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_gallery" "gallery" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "This is the gallery description."
 ///   gallery_name        = "myGalleryName"
 ///   location            = "West US"
@@ -584,7 +593,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -593,6 +602,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_gallery" "gallery" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "This is the gallery description."
 ///   gallery_name        = "myGalleryName"
 ///   location            = "West US"

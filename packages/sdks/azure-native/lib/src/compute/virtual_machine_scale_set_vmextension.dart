@@ -75,7 +75,7 @@ import 'virtual_machine_scale_set_vmextension_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'virtual_machine_scale_set_vmextension_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescalesetvmextension" "virtualMachineScaleSetVMExtension" {
+/// resource "azure-native_compute_virtual_machine_scale_set_v_m_extension" "virtualMachineScaleSetVMExtension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_upgrade_minor_version = true
 ///   instance_id                = "0"
 ///   publisher                  = "extPublisher"

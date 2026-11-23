@@ -26,11 +26,11 @@ class GetScheduledQueryRuleResult {
   final String? displayName;
   /// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
   final bool? enabled;
-  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+  /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String? etag;
   /// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
   final String? evaluationFrequency;
-  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String? id;
   /// The identity of the resource.
   final IdentityResponse? identity;
@@ -56,7 +56,7 @@ class GetScheduledQueryRuleResult {
   final double? severity;
   /// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
   final bool? skipQueryValidation;
-  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// SystemData of ScheduledQueryRule.
   final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
@@ -77,9 +77,9 @@ class GetScheduledQueryRuleResult {
   /// [description] The description of the scheduled query rule.
   /// [displayName] The display name of the alert rule
   /// [enabled] The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-  /// [etag] "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+  /// [etag] The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   /// [evaluationFrequency] How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
-  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [identity] The identity of the resource.
   /// [isLegacyLogAnalyticsRule] True if alert rule is legacy Log Analytic rule
   /// [isWorkspaceAlertsStorageConfigured] The flag which indicates whether this scheduled query rule has been configured to be stored in the customer's storage. The default is false.
@@ -92,7 +92,7 @@ class GetScheduledQueryRuleResult {
   /// [scopes] The list of resource id's that this scheduled query rule is scoped to.
   /// [severity] Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
   /// [skipQueryValidation] The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
-  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [systemData] SystemData of ScheduledQueryRule.
   /// [tags] Resource tags.
   /// [targetResourceTypes] List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

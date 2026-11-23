@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_iscsipath" "iscsiPath" {
+/// resource "azure-native_avs_iscsi_path" "iscsiPath" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_block       = "192.168.0.0/24"
 ///   private_cloud_name  = "cloud1"
 ///   resource_group_name = "group1"

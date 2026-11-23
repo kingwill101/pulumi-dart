@@ -146,7 +146,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -154,7 +154,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billing_billingprofile" "billingProfile" {
+/// resource "azure-native_billing_billing_profile" "billingProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_name = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31"
 ///   billing_profile_name = "xxxx-xxxx-xxx-xxx"
 ///   properties = {
@@ -175,9 +178,9 @@ import 'system_data_response.dart';
 ///     }
 ///     display_name = "Billing Profile 1"
 ///     enabled_azure_plans = [{
-///       "skuId" = "0001"
+///       sku_id = "0001"
 ///       }, {
-///       "skuId" = "0002"
+///       sku_id = "0002"
 ///     }]
 ///     invoice_email_opt_in = true
 ///     po_number            = "ABC12345"
@@ -211,6 +214,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billing.BillingProfileArgs;
 /// import com.pulumi.azurenative.billing.inputs.BillingProfilePropertiesArgs;
 /// import com.pulumi.azurenative.billing.inputs.BillingProfilePropertiesBillToArgs;
+/// import com.pulumi.azurenative.billing.inputs.AzurePlanArgs;
 /// import com.pulumi.azurenative.billing.inputs.BillingProfilePropertiesShipToArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -129,7 +129,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,6 +138,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "examplelogin"
 ///   administrator_login_password = "examplepassword"
 ///   backup = {
@@ -456,7 +459,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -465,6 +468,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "exampleadministratorlogin"
 ///   administrator_login_password = "examplepassword"
 ///   availability_zone            = "1"
@@ -789,7 +795,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -798,6 +804,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "exampleadministratorlogin"
 ///   administrator_login_password = "examplepassword"
 ///   availability_zone            = "1"
@@ -1069,7 +1078,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1078,6 +1087,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode               = "ReviveDropped"
 ///   location                  = "eastus"
 ///   point_in_time_utc         = "2025-06-01T18:30:22.123456Z"
@@ -1220,7 +1232,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1229,6 +1241,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode               = "PointInTimeRestore"
 ///   location                  = "eastus"
 ///   point_in_time_utc         = "2025-06-01T18:35:22.123456Z"
@@ -1402,7 +1417,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1411,6 +1426,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode = "GeoRestore"
 ///   data_encryption = {
 ///     geo_backup_key_uri                   = "https://examplegeoredundantkeyvault.vault.azure.net/keys/examplekey"
@@ -1445,6 +1463,7 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.UserIdentityArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1657,7 +1676,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1666,6 +1685,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode = "GeoRestore"
 ///   data_encryption = {
 ///     geo_backup_key_uri                   = "https://examplegeoredundantkeyvault.vault.azure.net/keys/examplekey/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
@@ -1700,6 +1722,7 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.UserIdentityArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1948,7 +1971,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1957,6 +1980,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "exampleadministratorlogin"
 ///   administrator_login_password = "examplepassword"
 ///   auth_config = {
@@ -2327,7 +2353,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2336,6 +2362,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "exampleadministratorlogin"
 ///   administrator_login_password = "examplepassword"
 ///   availability_zone            = "1"
@@ -2393,6 +2422,7 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.HighAvailabilityArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.UserIdentityArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
@@ -2730,7 +2760,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2739,6 +2769,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "exampleadministratorlogin"
 ///   administrator_login_password = "examplepassword"
 ///   availability_zone            = "1"
@@ -2796,6 +2829,7 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.HighAvailabilityArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.UserIdentityArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.NetworkArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SkuArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageArgs;
@@ -3082,7 +3116,7 @@ import 'user_assigned_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3091,6 +3125,9 @@ import 'user_assigned_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode = "Replica"
 ///   data_encryption = {
 ///     geo_backup_key_uri                   = ""
@@ -3123,6 +3160,7 @@ import 'user_assigned_identity_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.ServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.DataEncryptionArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.UserIdentityArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

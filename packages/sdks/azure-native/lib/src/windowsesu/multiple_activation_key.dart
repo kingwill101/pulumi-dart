@@ -64,7 +64,7 @@ import 'multiple_activation_key_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'multiple_activation_key_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_windowsesu_multipleactivationkey" "multipleActivationKey" {
+/// resource "azure-native_windowsesu_multiple_activation_key" "multipleActivationKey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agreement_number             = "1a2b45ag"
 ///   installed_server_number      = 100
 ///   is_eligible                  = true

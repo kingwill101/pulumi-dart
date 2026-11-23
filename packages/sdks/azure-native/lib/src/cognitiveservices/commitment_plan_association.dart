@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_commitmentplanassociation" "commitmentPlanAssociation" {
+/// resource "azure-native_cognitiveservices_commitment_plan_association" "commitmentPlanAssociation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                       = "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.CognitiveServices/accounts/accountName"
 ///   commitment_plan_association_name = "commitmentPlanAssociationName"
 ///   commitment_plan_name             = "commitmentPlanName"

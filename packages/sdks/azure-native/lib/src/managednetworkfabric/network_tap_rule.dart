@@ -146,7 +146,7 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 MatchConfigurationName = "config1",
-///                 SequenceNumber = 10,
+///                 SequenceNumber = 10.0,
 ///             },
 ///         },
 ///         NetworkTapRuleName = "example-tapRule",
@@ -288,7 +288,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -296,7 +296,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networktaprule" "networkTapRule" {
+/// resource "azure-native_managednetworkfabric_network_tap_rule" "networkTapRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation         = "annotation"
 ///   configuration_type = "File"
 ///   dynamic_match_configurations {
@@ -372,7 +375,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.NetworkTapRule;
 /// import com.pulumi.azurenative.managednetworkfabric.NetworkTapRuleArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.CommonDynamicMatchConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.IpGroupPropertiesArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.PortGroupPropertiesArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.VlanGroupPropertiesArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NetworkTapRuleMatchConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.NetworkTapRuleActionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.NetworkTapRuleMatchConditionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.IpMatchConditionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.PortConditionArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.VlanMatchConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

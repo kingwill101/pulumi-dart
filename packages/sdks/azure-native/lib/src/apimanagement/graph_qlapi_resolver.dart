@@ -64,7 +64,7 @@ import 'graph_qlapi_resolver_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'graph_qlapi_resolver_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_graphqlapiresolver" "graphQLApiResolver" {
+/// resource "azure-native_apimanagement_graph_q_l_api_resolver" "graphQLApiResolver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "someAPI"
 ///   description         = "A GraphQL Resolver example"
 ///   display_name        = "Query Users"

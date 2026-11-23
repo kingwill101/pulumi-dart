@@ -39,7 +39,7 @@ import 'tls_cert_method_response.dart';
 ///         ResourceGroupName = "rgiotoperationsmq",
 ///         ServiceName = "euxa",
 ///         ServiceType = AzureNative.IoTOperationsMQ.ServiceType.ClusterIp,
-///         Tags = null,
+///         Tags = new() { },
 ///         Tls = new AzureNative.IoTOperationsMQ.Inputs.TlsCertMethodArgs
 ///         {
 ///             Automatic = new AzureNative.IoTOperationsMQ.Inputs.AutomaticCertMethodArgs
@@ -193,7 +193,7 @@ import 'tls_cert_method_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -201,7 +201,10 @@ import 'tls_cert_method_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_brokerlistener" "brokerListener" {
+/// resource "azure-native_iotoperationsmq_broker_listener" "brokerListener" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_enabled = true
 ///   authorization_enabled  = true
 ///   broker_name            = "HGF6WIy6oHv756MjW0JRLILF"

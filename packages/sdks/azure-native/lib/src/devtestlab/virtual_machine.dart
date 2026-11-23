@@ -103,7 +103,7 @@ import 'virtual_machine_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'virtual_machine_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_virtualmachine" "virtualMachine" {
+/// resource "azure-native_devtestlab_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_claim                = true
 ///   disallow_public_ip_address = true
 ///   gallery_image_reference = {

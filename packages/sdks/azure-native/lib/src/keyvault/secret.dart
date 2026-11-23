@@ -64,7 +64,7 @@ import 'secret_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,6 +73,9 @@ import 'secret_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_keyvault_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     value = "secret-value"
 ///   }

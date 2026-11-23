@@ -88,7 +88,7 @@ import 'vpn_nat_rule_mapping_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'vpn_nat_rule_mapping_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_natrule" "natRule" {
+/// resource "azure-native_network_nat_rule" "natRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   external_mappings {
 ///     address_space = "192.168.21.0/24"
 ///   }

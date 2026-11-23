@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_logicapp" "logicApp" {
+/// resource "azure-native_app_logic_app" "logicApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_app_name  = "testcontainerApp0"
 ///   logic_app_name      = "testcontainerApp0"
 ///   resource_group_name = "examplerg"

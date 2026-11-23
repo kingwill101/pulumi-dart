@@ -81,7 +81,7 @@ import 'saas_subscription_level_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'saas_subscription_level_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_saas_saassubscriptionlevel" "saasSubscriptionLevel" {
+/// resource "azure-native_saas_saas_subscription_level" "saasSubscriptionLevel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "global"
 ///   name     = "MyContosoSubscription"
 ///   properties = {

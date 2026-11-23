@@ -38,7 +38,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         Description = "apidescription5200",
 ///         DisplayName = "apiname1463",
 ///         Path = "newapiPath",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Https,
 ///             AzureNative.ApiManagement.Protocol.Http,
@@ -101,7 +101,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,6 +110,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id = "tempgroup"
 ///   authentication_settings = {
 ///     o_auth2 = {
@@ -286,7 +289,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         DisplayName = "Echo API2",
 ///         IsCurrent = true,
 ///         Path = "echo2",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Http,
 ///             AzureNative.ApiManagement.Protocol.Https,
@@ -339,7 +342,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -348,6 +351,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                = "echo-api2"
 ///   description           = "Copy of Existing Echo Api including Operations."
 ///   display_name          = "Echo API2"
@@ -491,7 +497,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         DisplayName = "Echo API2",
 ///         IsCurrent = true,
 ///         Path = "echo2",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Http,
 ///             AzureNative.ApiManagement.Protocol.Https,
@@ -546,7 +552,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -555,6 +561,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                = "echoapiv3"
 ///   api_version           = "v4"
 ///   api_version_set_id    = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458"
@@ -744,7 +753,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -753,6 +762,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                   = "echo-api;rev=3"
 ///   api_revision_description = "Creating a Revision of an existing API"
 ///   path                     = "echo"
@@ -902,7 +914,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -911,6 +923,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "apidocs"
 ///   format              = "swagger-link"
 ///   path                = "petstoreapi123"
@@ -1058,7 +1073,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1067,6 +1082,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "petstore"
 ///   format              = "openapi-link"
 ///   path                = "petstore"
@@ -1211,7 +1229,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1220,6 +1238,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                                      = "petstore"
 ///   format                                      = "openapi-link"
 ///   path                                        = "petstore"
@@ -1367,7 +1388,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1376,6 +1397,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "petstore"
 ///   format              = "swagger-link-json"
 ///   path                = "petstore"
@@ -1518,7 +1542,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1527,6 +1551,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "petstore"
 ///   format              = "wadl-link-json"
 ///   path                = "collector"
@@ -1648,7 +1675,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         Description = "apidescription5200",
 ///         DisplayName = "apiname1463",
 ///         Path = "newapiPath",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Https,
 ///             AzureNative.ApiManagement.Protocol.Http,
@@ -1717,7 +1744,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1726,14 +1753,17 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id = "tempgroup"
 ///   authentication_settings = {
 ///     o_auth2_authentication_settings = [{
-///       "authorizationServerId" = "authorizationServerId2283"
-///       "scope"                 = "oauth2scope2580"
+///       authorization_server_id = "authorizationServerId2283"
+///       scope                   = "oauth2scope2580"
 ///       }, {
-///       "authorizationServerId" = "authorizationServerId2284"
-///       "scope"                 = "oauth2scope2581"
+///       authorization_server_id = "authorizationServerId2284"
+///       scope                   = "oauth2scope2581"
 ///     }]
 ///   }
 ///   description         = "apidescription5200"
@@ -1760,6 +1790,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.OAuth2AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1925,7 +1956,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///             {
 ///                 new AzureNative.ApiManagement.Inputs.OpenIdAuthenticationSettingsContractArgs
 ///                 {
-///                     BearerTokenSendingMethods = new[]
+///                     BearerTokenSendingMethods =
 ///                     {
 ///                         AzureNative.ApiManagement.BearerTokenSendingMethods.AuthorizationHeader,
 ///                     },
@@ -1933,7 +1964,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///                 },
 ///                 new AzureNative.ApiManagement.Inputs.OpenIdAuthenticationSettingsContractArgs
 ///                 {
-///                     BearerTokenSendingMethods = new[]
+///                     BearerTokenSendingMethods =
 ///                     {
 ///                         AzureNative.ApiManagement.BearerTokenSendingMethods.AuthorizationHeader,
 ///                     },
@@ -1944,7 +1975,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         Description = "apidescription5200",
 ///         DisplayName = "apiname1463",
 ///         Path = "newapiPath",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Https,
 ///             AzureNative.ApiManagement.Protocol.Http,
@@ -2017,7 +2048,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2026,14 +2057,17 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id = "tempgroup"
 ///   authentication_settings = {
 ///     openid_authentication_settings = [{
-///       "bearerTokenSendingMethods" = ["authorizationHeader"]
-///       "openidProviderId"          = "openidProviderId2283"
+///       bearer_token_sending_methods = ["authorizationHeader"]
+///       openid_provider_id           = "openidProviderId2283"
 ///       }, {
-///       "bearerTokenSendingMethods" = ["authorizationHeader"]
-///       "openidProviderId"          = "openidProviderId2284"
+///       bearer_token_sending_methods = ["authorizationHeader"]
+///       openid_provider_id           = "openidProviderId2284"
 ///     }]
 ///   }
 ///   description         = "apidescription5200"
@@ -2060,6 +2094,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.OpenIdAuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2225,7 +2260,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         {
 ///             Openid = new AzureNative.ApiManagement.Inputs.OpenIdAuthenticationSettingsContractArgs
 ///             {
-///                 BearerTokenSendingMethods = new[]
+///                 BearerTokenSendingMethods =
 ///                 {
 ///                     AzureNative.ApiManagement.BearerTokenSendingMethods.AuthorizationHeader,
 ///                 },
@@ -2235,7 +2270,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         Description = "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
 ///         DisplayName = "Swagger Petstore",
 ///         Path = "petstore",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Https,
 ///         },
@@ -2298,7 +2333,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2307,6 +2342,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id = "tempgroup"
 ///   authentication_settings = {
 ///     openid = {
@@ -2475,7 +2513,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         Description = "apidescription5200",
 ///         DisplayName = "apiname1463",
 ///         Path = "graphql-api",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Http,
 ///             AzureNative.ApiManagement.Protocol.Https,
@@ -2524,7 +2562,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2533,6 +2571,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "tempgroup"
 ///   api_type            = "graphql"
 ///   description         = "apidescription5200"
@@ -2665,7 +2706,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         DisplayName = "apiname1463",
 ///         Format = AzureNative.ApiManagement.ContentFormat.Grpc_link,
 ///         Path = "grpc-api",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Https,
 ///         },
@@ -2715,7 +2756,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2724,6 +2765,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "tempgroup"
 ///   api_type            = "grpc"
 ///   description         = "apidescription5200"
@@ -2857,7 +2901,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         DisplayName = "apiname1463",
 ///         Format = AzureNative.ApiManagement.ContentFormat.Odata_link,
 ///         Path = "odata-api",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Http,
 ///             AzureNative.ApiManagement.Protocol.Https,
@@ -2909,7 +2953,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2918,6 +2962,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "tempgroup"
 ///   api_type            = "odata"
 ///   description         = "apidescription5200"
@@ -3106,7 +3153,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3115,6 +3162,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "soapApi"
 ///   format              = "wsdl-link"
 ///   path                = "currency"
@@ -3291,7 +3341,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3300,6 +3350,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "soapApi"
 ///   format              = "wsdl-link"
 ///   path                = "currency"
@@ -3426,7 +3479,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         Description = "apidescription5200",
 ///         DisplayName = "apiname1463",
 ///         Path = "newapiPath",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Wss,
 ///             AzureNative.ApiManagement.Protocol.Ws,
@@ -3475,7 +3528,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3484,6 +3537,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "tempgroup"
 ///   api_type            = "websocket"
 ///   description         = "apidescription5200"

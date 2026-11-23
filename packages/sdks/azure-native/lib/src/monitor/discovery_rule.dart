@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,17 +82,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_discoveryrule" "discoveryRule" {
+/// resource "azure-native_monitor_discovery_rule" "discoveryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_monitor_workspace_name = "myWorkspace"
 ///   discovery_rule_name          = "myDiscoveryRule"
 ///   health_model_name            = "myHealthModel"
 ///   properties = {
-///     "addRecommendedSignals" = "Enabled"
-///     "authenticationSetting" = "authSetting1"
-///     "discoverRelationships" = "Enabled"
-///     "discoveryRuleKind"     = "ResourceGraphQuery"
-///     "displayName"           = "myDisplayName"
-///     "resourceGraphQuery"    = "resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'"
+///     add_recommended_signals = "Enabled"
+///     authentication_setting  = "authSetting1"
+///     discover_relationships  = "Enabled"
+///     discovery_rule_kind     = "ResourceGraphQuery"
+///     display_name            = "myDisplayName"
+///     resource_graph_query    = "resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -107,6 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.DiscoveryRule;
 /// import com.pulumi.azurenative.monitor.DiscoveryRuleArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ApplicationInsightsTopologyDiscoveryRulePropertiesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ResourceGraphQueryDiscoveryRulePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -128,7 +133,6 @@ import 'system_data_response.dart';
 ///                 .addRecommendedSignals("Enabled")
 ///                 .authenticationSetting("authSetting1")
 ///                 .discoverRelationships("Enabled")
-///                 .discoveryRuleKind("ResourceGraphQuery")
 ///                 .displayName("myDisplayName")
 ///                 .resourceGraphQuery("resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'")
 ///                 .build())

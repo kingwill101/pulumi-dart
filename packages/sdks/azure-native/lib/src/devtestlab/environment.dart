@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_devtestlab_environment" "environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_properties = {
 ///     arm_template_id = "/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.DevTestLab/labs/{labName}/artifactSources/{artifactSourceName}/armTemplates/{armTemplateName}"
 ///     parameters      = []

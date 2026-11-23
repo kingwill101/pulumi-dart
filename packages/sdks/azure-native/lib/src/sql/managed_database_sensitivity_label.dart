@@ -76,7 +76,7 @@ import 'managed_database_sensitivity_label_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'managed_database_sensitivity_label_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabasesensitivitylabel" "managedDatabaseSensitivityLabel" {
+/// resource "azure-native_sql_managed_database_sensitivity_label" "managedDatabaseSensitivityLabel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_classification_source = "Native"
 ///   column_name                  = "myColumn"
 ///   database_name                = "myDatabase"

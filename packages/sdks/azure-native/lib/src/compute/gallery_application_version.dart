@@ -152,7 +152,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -160,23 +160,26 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryapplicationversion" "galleryApplicationVersion" {
+/// resource "azure-native_compute_gallery_application_version" "galleryApplicationVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gallery_application_name         = "myGalleryApplicationName"
 ///   gallery_application_version_name = "1.0.0"
 ///   gallery_name                     = "myGalleryName"
 ///   location                         = "West US"
 ///   publishing_profile = {
 ///     custom_actions = [{
-///       "description" = "This is the custom action description."
-///       "name"        = "myCustomAction"
-///       "parameters" = [{
-///         "defaultValue" = "default value of parameter."
-///         "description"  = "This is the description of the parameter"
-///         "name"         = "myCustomActionParameter"
-///         "required"     = false
-///         "type"         = "String"
+///       description = "This is the custom action description."
+///       name        = "myCustomAction"
+///       parameters = [{
+///         default_value = "default value of parameter."
+///         description   = "This is the description of the parameter"
+///         name          = "myCustomActionParameter"
+///         required      = false
+///         type          = "String"
 ///       }]
-///       "script" = "myCustomActionScript"
+///       script = "myCustomActionScript"
 ///     }]
 ///     end_of_life_date = "2019-07-01T07:00:00Z"
 ///     manage_actions = {
@@ -189,10 +192,10 @@ import 'system_data_response.dart';
 ///     }
 ///     storage_account_type = "Standard_LRS"
 ///     target_regions = [{
-///       "excludeFromLatest"    = false
-///       "name"                 = "West US"
-///       "regionalReplicaCount" = 1
-///       "storageAccountType"   = "Standard_LRS"
+///       exclude_from_latest    = false
+///       name                   = "West US"
+///       regional_replica_count = 1
+///       storage_account_type   = "Standard_LRS"
 ///     }]
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -212,8 +215,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.GalleryApplicationVersion;
 /// import com.pulumi.azurenative.compute.GalleryApplicationVersionArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryApplicationVersionPublishingProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.GalleryApplicationCustomActionArgs;
+/// import com.pulumi.azurenative.compute.inputs.GalleryApplicationCustomActionParameterArgs;
 /// import com.pulumi.azurenative.compute.inputs.UserArtifactManageArgs;
 /// import com.pulumi.azurenative.compute.inputs.UserArtifactSourceArgs;
+/// import com.pulumi.azurenative.compute.inputs.TargetRegionArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryApplicationVersionSafetyProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

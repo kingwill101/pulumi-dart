@@ -73,7 +73,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securitypartnerprovider" "securityPartnerProvider" {
+/// resource "azure-native_network_security_partner_provider" "securityPartnerProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                       = "West US"
 ///   resource_group_name            = "rg1"
 ///   security_partner_provider_name = "securityPartnerProvider"

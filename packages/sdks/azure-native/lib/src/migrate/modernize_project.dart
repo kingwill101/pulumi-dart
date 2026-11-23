@@ -105,7 +105,7 @@ import 'resource_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,7 +113,10 @@ import 'resource_identity_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_modernizeproject" "modernizeProject" {
+/// resource "azure-native_migrate_modernize_project" "modernizeProject" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     principal_id = "ins"
 ///     tenant_id    = "fjnu"
@@ -151,6 +154,7 @@ import 'resource_identity_response.dart';
 /// import com.pulumi.azurenative.migrate.ModernizeProject;
 /// import com.pulumi.azurenative.migrate.ModernizeProjectArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ResourceIdentityArgs;
+/// import com.pulumi.azurenative.migrate.inputs.UserAssignedIdentityArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ModernizeProjectModelPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrationConfigurationArgs;
 /// import java.util.ArrayList;
@@ -331,7 +335,7 @@ import 'resource_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -339,7 +343,10 @@ import 'resource_identity_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_modernizeproject" "modernizeProject" {
+/// resource "azure-native_migrate_modernize_project" "modernizeProject" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   modernize_project_name = "j"
 ///   resource_group_name    = "rgmigrateEngine"
 /// }

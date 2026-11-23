@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_restapipollerdataconnector" "restApiPollerDataConnector" {
+/// resource "azure-native_securityinsights_rest_api_poller_data_connector" "restApiPollerDataConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_connector_id   = "c345bf40-8509-4ed2-b947-50cb773aaf04"
 ///   resource_group_name = "myRg"
 ///   workspace_name      = "myWorkspace"
@@ -189,7 +192,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -197,7 +200,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_restapipollerdataconnector" "restApiPollerDataConnector" {
+/// resource "azure-native_securityinsights_rest_api_poller_data_connector" "restApiPollerDataConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_connector_id   = "8c569548-a86c-4fb4-8ae4-d1e35a6146f8"
 ///   resource_group_name = "myRg"
 ///   workspace_name      = "myWorkspace"
@@ -319,7 +325,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -327,7 +333,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_restapipollerdataconnector" "restApiPollerDataConnector" {
+/// resource "azure-native_securityinsights_rest_api_poller_data_connector" "restApiPollerDataConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_connector_id   = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
 ///   resource_group_name = "myRg"
 ///   workspace_name      = "myWorkspace"
@@ -449,7 +458,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -457,7 +466,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_restapipollerdataconnector" "restApiPollerDataConnector" {
+/// resource "azure-native_securityinsights_rest_api_poller_data_connector" "restApiPollerDataConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_connector_id   = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
 ///   resource_group_name = "myRg"
 ///   workspace_name      = "myWorkspace"

@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_internetgatewayrule" "internetGatewayRule" {
+/// resource "azure-native_managednetworkfabric_internet_gateway_rule" "internetGatewayRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation                 = "annotationValue"
 ///   internet_gateway_rule_name = "example-internetGatewayRule"
 ///   location                   = "eastus"

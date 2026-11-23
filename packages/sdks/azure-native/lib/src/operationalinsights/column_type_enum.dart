@@ -2,14 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Column data type.
 enum ColumnTypeEnum implements pulumi.PulumiEnum<String> {
-  valueString("string"),
-  valueInt("int"),
-  valueLong("long"),
-  valueReal("real"),
-  valueBoolean("boolean"),
-  valueDateTime("dateTime"),
-  valueGuid("guid"),
-  valueDynamic("dynamic");
+  string_("string"),
+  int_("int"),
+  long("long"),
+  real("real"),
+  boolean("boolean"),
+  dateTime("dateTime"),
+  guid("guid"),
+  dynamic_("dynamic");
 
   const ColumnTypeEnum(this.wireValue);
   @override

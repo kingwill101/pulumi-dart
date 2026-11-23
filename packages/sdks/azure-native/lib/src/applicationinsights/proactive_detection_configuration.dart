@@ -95,7 +95,7 @@ import 'proactive_detection_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'proactive_detection_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_proactivedetectionconfiguration" "proactiveDetectionConfiguration" {
+/// resource "azure-native_applicationinsights_proactive_detection_configuration" "proactiveDetectionConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_id    = "slowpageloadtime"
 ///   custom_emails       = ["foo@microsoft.com", "foo2@microsoft.com"]
 ///   enabled             = true

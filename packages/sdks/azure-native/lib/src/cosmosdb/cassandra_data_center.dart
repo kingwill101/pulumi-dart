@@ -70,7 +70,7 @@ import 'data_center_resource_response_properties.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'data_center_resource_response_properties.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_cassandradatacenter" "cassandraDataCenter" {
+/// resource "azure-native_cosmosdb_cassandra_data_center" "cassandraDataCenter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name     = "cassandra-prod"
 ///   data_center_name = "dc1"
 ///   properties = {

@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mission_enclaveconnection" "enclaveConnection" {
+/// resource "azure-native_mission_enclave_connection" "enclaveConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   community_resource_id   = "/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/testrg/providers/Microsoft.Mission/communities/TestMyCommunity"
 ///   destination_endpoint_id = "/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.Mission/virtualenclaves/TestMyEnclave/enclaveendpoints/TestMyEnclaveEndpoint"
 ///   enclave_connection_name = "TestMyEnclaveConnection"

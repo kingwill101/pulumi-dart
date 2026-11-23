@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_offazure_hypervhostcontroller" "hypervHostController" {
+/// resource "azure-native_offazure_hyperv_host_controller" "hypervHostController" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fqdn                = "lk"
 ///   host_name           = "1FXhE45296-eJUF1Y-"
 ///   provisioning_state  = "Created"

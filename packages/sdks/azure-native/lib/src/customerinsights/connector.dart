@@ -74,7 +74,7 @@ import 'connector_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,6 +83,9 @@ import 'connector_args.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connector_name = "testConnector"
 ///   connector_properties = {
 ///     "connectionKeyVaultUrl" = {

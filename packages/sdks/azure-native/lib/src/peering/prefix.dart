@@ -61,7 +61,7 @@ import 'prefix_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,6 +70,9 @@ import 'prefix_args.dart';
 /// }
 ///
 /// resource "azure-native_peering_prefix" "prefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_service_name       = "peeringServiceName"
 ///   peering_service_prefix_key = "00000000-0000-0000-0000-000000000000"
 ///   prefix                     = "192.168.1.0/24"

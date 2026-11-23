@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 ///                             },
 ///                         },
 ///                     },
-///                     LocalPreference = 20,
+///                     LocalPreference = 20.0,
 ///                 },
 ///                 Annotation = "annotation",
 ///                 Condition = new AzureNative.ManagedNetworkFabric.Inputs.StatementConditionPropertiesArgs
@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 ///                     IpPrefixId = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix",
 ///                     Type = AzureNative.ManagedNetworkFabric.RoutePolicyConditionType.Or,
 ///                 },
-///                 SequenceNumber = 7,
+///                 SequenceNumber = 7.0,
 ///             },
 ///         },
 ///         Tags =
@@ -201,7 +201,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -209,7 +209,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_routepolicy" "routePolicy" {
+/// resource "azure-native_managednetworkfabric_route_policy" "routePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_family_type = "IPv4"
 ///   annotation          = "annotation"
 ///   default_action      = "Deny"

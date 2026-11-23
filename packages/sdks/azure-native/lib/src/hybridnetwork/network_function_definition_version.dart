@@ -30,7 +30,7 @@ import 'system_data_response.dart';
 ///             DeployParameters = "{\"type\":\"object\",\"properties\":{\"releaseName\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"}}}",
 ///             NetworkFunctionTemplate = new AzureNative.HybridNetwork.Inputs.AzureArcKubernetesNetworkFunctionTemplateArgs
 ///             {
-///                 NetworkFunctionApplications = new[]
+///                 NetworkFunctionApplications =
 ///                 {
 ///                     new AzureNative.HybridNetwork.Inputs.AzureArcKubernetesHelmApplicationArgs
 ///                     {
@@ -184,7 +184,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -192,57 +192,60 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunctiondefinitionversion" "networkFunctionDefinitionVersion" {
+/// resource "azure-native_hybridnetwork_network_function_definition_version" "networkFunctionDefinitionVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                 = "eastus"
 ///   network_function_definition_group_name   = "TestNetworkFunctionDefinitionGroupName"
 ///   network_function_definition_version_name = "1.0.0"
 ///   properties = {
-///     "deployParameters" = "{\"type\":\"object\",\"properties\":{\"releaseName\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"}}}"
-///     "networkFunctionTemplate" = {
-///       "networkFunctionApplications" = [{
-///         "artifactProfile" = {
-///           "artifactStore" = {
-///             "id" = "/subscriptions/subid/resourcegroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/testArtifactStore"
+///     deploy_parameters = "{\"type\":\"object\",\"properties\":{\"releaseName\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"}}}"
+///     network_function_template = {
+///       network_function_applications = [{
+///         artifact_profile = {
+///           artifact_store = {
+///             id = "/subscriptions/subid/resourcegroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/testArtifactStore"
 ///           }
-///           "helmArtifactProfile" = {
-///             "helmPackageName"             = "fed-rbac"
-///             "helmPackageVersionRange"     = "~2.1.3"
-///             "imagePullSecretsValuesPaths" = ["global.imagePullSecrets"]
-///             "registryValuesPaths"         = ["global.registry.docker.repoPath"]
+///           helm_artifact_profile = {
+///             helm_package_name               = "fed-rbac"
+///             helm_package_version_range      = "~2.1.3"
+///             image_pull_secrets_values_paths = ["global.imagePullSecrets"]
+///             registry_values_paths           = ["global.registry.docker.repoPath"]
 ///           }
 ///         }
-///         "artifactType" = "HelmPackage"
-///         "dependsOnProfile" = {
-///           "installDependsOn"   = []
-///           "uninstallDependsOn" = []
-///           "updateDependsOn"    = []
+///         artifact_type = "HelmPackage"
+///         depends_on_profile = {
+///           install_depends_on   = []
+///           uninstall_depends_on = []
+///           update_depends_on    = []
 ///         }
-///         "deployParametersMappingRuleProfile" = {
-///           "applicationEnablement" = "Enabled"
-///           "helmMappingRuleProfile" = {
-///             "helmPackageVersion" = "2.1.3"
-///             "options" = {
-///               "installOptions" = {
-///                 "atomic"  = "true"
-///                 "timeout" = "30"
-///                 "wait"    = "waitValue"
+///         deploy_parameters_mapping_rule_profile = {
+///           application_enablement = "Enabled"
+///           helm_mapping_rule_profile = {
+///             helm_package_version = "2.1.3"
+///             options = {
+///               install_options = {
+///                 atomic  = "true"
+///                 timeout = "30"
+///                 wait    = "waitValue"
 ///               }
-///               "upgradeOptions" = {
-///                 "atomic"  = "true"
-///                 "timeout" = "30"
-///                 "wait"    = "waitValue"
+///               upgrade_options = {
+///                 atomic  = "true"
+///                 timeout = "30"
+///                 wait    = "waitValue"
 ///               }
 ///             }
-///             "releaseName"      = "{deployParameters.releaseName}"
-///             "releaseNamespace" = "{deployParameters.namesapce}"
-///             "values"           = ""
+///             release_name      = "{deployParameters.releaseName}"
+///             release_namespace = "{deployParameters.namesapce}"
+///             values            = ""
 ///           }
 ///         }
-///         "name" = "fedrbac"
+///         name = "fedrbac"
 ///       }]
-///       "nfviType" = "AzureArcKubernetes"
+///       nfvi_type = "AzureArcKubernetes"
 ///     }
-///     "networkFunctionType" = "ContainerizedNetworkFunction"
+///     network_function_type = "ContainerizedNetworkFunction"
 ///   }
 ///   publisher_name      = "TestPublisher"
 ///   resource_group_name = "rg"
@@ -258,6 +261,33 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionDefinitionVersion;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ContainerizedNetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesHelmApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.HelmArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.DependsOnProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.HelmMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.HelmMappingRuleProfileOptionsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.HelmInstallOptionsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.HelmUpgradeOptionsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionArmTemplateApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreArmTemplateDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionVhdApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreVhdImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreVhdImageDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionArmTemplateApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusArmTemplateDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionImageApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusImageDeployMappingRuleProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -277,9 +307,9 @@ import 'system_data_response.dart';
 ///             .networkFunctionDefinitionVersionName("1.0.0")
 ///             .properties(ContainerizedNetworkFunctionDefinitionVersionArgs.builder()
 ///                 .deployParameters("{\"type\":\"object\",\"properties\":{\"releaseName\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"}}}")
-///                 .networkFunctionTemplate(Map.ofEntries(
-///                     Map.entry("networkFunctionApplications", Arrays.asList(Map.ofEntries(
-///                         Map.entry("artifactProfile", AzureArcKubernetesArtifactProfileArgs.builder()
+///                 .networkFunctionTemplate(AzureArcKubernetesNetworkFunctionTemplateArgs.builder()
+///                     .networkFunctionApplications(AzureArcKubernetesHelmApplicationArgs.builder()
+///                         .artifactProfile(AzureArcKubernetesArtifactProfileArgs.builder()
 ///                             .artifactStore(ReferencedResourceArgs.builder()
 ///                                 .id("/subscriptions/subid/resourcegroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/testArtifactStore")
 ///                                 .build())
@@ -289,14 +319,13 @@ import 'system_data_response.dart';
 ///                                 .imagePullSecretsValuesPaths("global.imagePullSecrets")
 ///                                 .registryValuesPaths("global.registry.docker.repoPath")
 ///                                 .build())
-///                             .build()),
-///                         Map.entry("artifactType", "HelmPackage"),
-///                         Map.entry("dependsOnProfile", DependsOnProfileArgs.builder()
+///                             .build())
+///                         .dependsOnProfile(DependsOnProfileArgs.builder()
 ///                             .installDependsOn()
 ///                             .uninstallDependsOn()
 ///                             .updateDependsOn()
-///                             .build()),
-///                         Map.entry("deployParametersMappingRuleProfile", AzureArcKubernetesDeployMappingRuleProfileArgs.builder()
+///                             .build())
+///                         .deployParametersMappingRuleProfile(AzureArcKubernetesDeployMappingRuleProfileArgs.builder()
 ///                             .applicationEnablement("Enabled")
 ///                             .helmMappingRuleProfile(HelmMappingRuleProfileArgs.builder()
 ///                                 .helmPackageVersion("2.1.3")
@@ -316,12 +345,10 @@ import 'system_data_response.dart';
 ///                                 .releaseNamespace("{deployParameters.namesapce}")
 ///                                 .values("")
 ///                                 .build())
-///                             .build()),
-///                         Map.entry("name", "fedrbac")
-///                     ))),
-///                     Map.entry("nfviType", "AzureArcKubernetes")
-///                 ))
-///                 .networkFunctionType("ContainerizedNetworkFunction")
+///                             .build())
+///                         .name("fedrbac")
+///                         .build())
+///                     .build())
 ///                 .build())
 ///             .publisherName("TestPublisher")
 ///             .resourceGroupName("rg")
@@ -632,64 +659,64 @@ import 'system_data_response.dart';
 /// 			Properties: &hybridnetwork.VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs{
 /// 				DeployParameters: pulumi.String("{\"virtualMachineName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}"),
 /// 				Description:      pulumi.String("test NFDV for AzureCore"),
-/// 				NetworkFunctionTemplate: hybridnetwork.AzureCoreNetworkFunctionTemplate{
-/// 					NetworkFunctionApplications: []interface{}{
-/// 						hybridnetwork.AzureCoreNetworkFunctionVhdApplication{
-/// 							ArtifactProfile: hybridnetwork.AzureCoreVhdImageArtifactProfile{
-/// 								ArtifactStore: hybridnetwork.ReferencedResource{
-/// 									Id: "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore",
+/// 				NetworkFunctionTemplate: &hybridnetwork.AzureCoreNetworkFunctionTemplateArgs{
+/// 					NetworkFunctionApplications: pulumi.Array{
+/// 						&hybridnetwork.AzureCoreNetworkFunctionVhdApplicationArgs{
+/// 							ArtifactProfile: &hybridnetwork.AzureCoreVhdImageArtifactProfileArgs{
+/// 								ArtifactStore: &hybridnetwork.ReferencedResourceArgs{
+/// 									Id: pulumi.String("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"),
 /// 								},
-/// 								VhdArtifactProfile: hybridnetwork.VhdImageArtifactProfile{
-/// 									VhdName:    "test-image",
-/// 									VhdVersion: "1-0-0",
-/// 								},
-/// 							},
-/// 							ArtifactType: "VhdImageFile",
-/// 							DependsOnProfile: hybridnetwork.DependsOnProfile{
-/// 								InstallDependsOn:   []interface{}{},
-/// 								UninstallDependsOn: []interface{}{},
-/// 								UpdateDependsOn:    []interface{}{},
-/// 							},
-/// 							DeployParametersMappingRuleProfile: hybridnetwork.AzureCoreVhdImageDeployMappingRuleProfile{
-/// 								ApplicationEnablement: hybridnetwork.ApplicationEnablementUnknown,
-/// 								VhdImageMappingRuleProfile: hybridnetwork.VhdImageMappingRuleProfile{
-/// 									UserConfiguration: "",
+/// 								VhdArtifactProfile: &hybridnetwork.VhdImageArtifactProfileArgs{
+/// 									VhdName:    pulumi.String("test-image"),
+/// 									VhdVersion: pulumi.String("1-0-0"),
 /// 								},
 /// 							},
-/// 							Name: "testImageRole",
+/// 							ArtifactType: pulumi.String("VhdImageFile"),
+/// 							DependsOnProfile: &hybridnetwork.DependsOnProfileArgs{
+/// 								InstallDependsOn:   pulumi.StringArray{},
+/// 								UninstallDependsOn: pulumi.StringArray{},
+/// 								UpdateDependsOn:    pulumi.StringArray{},
+/// 							},
+/// 							DeployParametersMappingRuleProfile: &hybridnetwork.AzureCoreVhdImageDeployMappingRuleProfileArgs{
+/// 								ApplicationEnablement: pulumi.String(hybridnetwork.ApplicationEnablementUnknown),
+/// 								VhdImageMappingRuleProfile: &hybridnetwork.VhdImageMappingRuleProfileArgs{
+/// 									UserConfiguration: pulumi.String(""),
+/// 								},
+/// 							},
+/// 							Name: pulumi.String("testImageRole"),
 /// 						},
-/// 						hybridnetwork.AzureCoreNetworkFunctionArmTemplateApplication{
-/// 							ArtifactProfile: hybridnetwork.AzureCoreArmTemplateArtifactProfile{
-/// 								ArtifactStore: hybridnetwork.ReferencedResource{
-/// 									Id: "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore",
+/// 						&hybridnetwork.AzureCoreNetworkFunctionArmTemplateApplicationArgs{
+/// 							ArtifactProfile: &hybridnetwork.AzureCoreArmTemplateArtifactProfileArgs{
+/// 								ArtifactStore: &hybridnetwork.ReferencedResourceArgs{
+/// 									Id: pulumi.String("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"),
 /// 								},
-/// 								TemplateArtifactProfile: hybridnetwork.ArmTemplateArtifactProfile{
-/// 									TemplateName:    "test-template",
-/// 									TemplateVersion: "1.0.0",
-/// 								},
-/// 							},
-/// 							ArtifactType: "ArmTemplate",
-/// 							DependsOnProfile: hybridnetwork.DependsOnProfile{
-/// 								InstallDependsOn: []string{
-/// 									"testImageRole",
-/// 								},
-/// 								UninstallDependsOn: []string{
-/// 									"testImageRole",
-/// 								},
-/// 								UpdateDependsOn: []string{
-/// 									"testImageRole",
+/// 								TemplateArtifactProfile: &hybridnetwork.ArmTemplateArtifactProfileArgs{
+/// 									TemplateName:    pulumi.String("test-template"),
+/// 									TemplateVersion: pulumi.String("1.0.0"),
 /// 								},
 /// 							},
-/// 							DeployParametersMappingRuleProfile: hybridnetwork.AzureCoreArmTemplateDeployMappingRuleProfile{
-/// 								ApplicationEnablement: hybridnetwork.ApplicationEnablementUnknown,
-/// 								TemplateMappingRuleProfile: hybridnetwork.ArmTemplateMappingRuleProfile{
-/// 									TemplateParameters: "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}",
+/// 							ArtifactType: pulumi.String("ArmTemplate"),
+/// 							DependsOnProfile: &hybridnetwork.DependsOnProfileArgs{
+/// 								InstallDependsOn: pulumi.StringArray{
+/// 									pulumi.String("testImageRole"),
+/// 								},
+/// 								UninstallDependsOn: pulumi.StringArray{
+/// 									pulumi.String("testImageRole"),
+/// 								},
+/// 								UpdateDependsOn: pulumi.StringArray{
+/// 									pulumi.String("testImageRole"),
 /// 								},
 /// 							},
-/// 							Name: "testTemplateRole",
+/// 							DeployParametersMappingRuleProfile: &hybridnetwork.AzureCoreArmTemplateDeployMappingRuleProfileArgs{
+/// 								ApplicationEnablement: pulumi.String(hybridnetwork.ApplicationEnablementUnknown),
+/// 								TemplateMappingRuleProfile: &hybridnetwork.ArmTemplateMappingRuleProfileArgs{
+/// 									TemplateParameters: pulumi.String("{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}"),
+/// 								},
+/// 							},
+/// 							Name: pulumi.String("testTemplateRole"),
 /// 						},
 /// 					},
-/// 					NfviType: "AzureCore",
+/// 					NfviType: pulumi.String("AzureCore"),
 /// 				},
 /// 				NetworkFunctionType: pulumi.String("VirtualNetworkFunction"),
 /// 			},
@@ -706,7 +733,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -714,64 +741,67 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunctiondefinitionversion" "networkFunctionDefinitionVersion" {
+/// resource "azure-native_hybridnetwork_network_function_definition_version" "networkFunctionDefinitionVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                 = "eastus"
 ///   network_function_definition_group_name   = "TestNetworkFunctionDefinitionGroupName"
 ///   network_function_definition_version_name = "1.0.0"
 ///   properties = {
-///     "deployParameters" = "{\"virtualMachineName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}"
-///     "description"      = "test NFDV for AzureCore"
-///     "networkFunctionTemplate" = {
-///       "networkFunctionApplications" = [{
-///         "artifactProfile" = {
-///           "artifactStore" = {
-///             "id" = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
+///     deploy_parameters = "{\"virtualMachineName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}"
+///     description       = "test NFDV for AzureCore"
+///     network_function_template = {
+///       network_function_applications = [{
+///         artifact_profile = {
+///           artifact_store = {
+///             id = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
 ///           }
-///           "vhdArtifactProfile" = {
-///             "vhdName"    = "test-image"
-///             "vhdVersion" = "1-0-0"
-///           }
-///         }
-///         "artifactType" = "VhdImageFile"
-///         "dependsOnProfile" = {
-///           "installDependsOn"   = []
-///           "uninstallDependsOn" = []
-///           "updateDependsOn"    = []
-///         }
-///         "deployParametersMappingRuleProfile" = {
-///           "applicationEnablement" = "Unknown"
-///           "vhdImageMappingRuleProfile" = {
-///             "userConfiguration" = ""
+///           vhd_artifact_profile = {
+///             vhd_name    = "test-image"
+///             vhd_version = "1-0-0"
 ///           }
 ///         }
-///         "name" = "testImageRole"
+///         artifact_type = "VhdImageFile"
+///         depends_on_profile = {
+///           install_depends_on   = []
+///           uninstall_depends_on = []
+///           update_depends_on    = []
+///         }
+///         deploy_parameters_mapping_rule_profile = {
+///           application_enablement = "Unknown"
+///           vhd_image_mapping_rule_profile = {
+///             user_configuration = ""
+///           }
+///         }
+///         name = "testImageRole"
 ///         }, {
-///         "artifactProfile" = {
-///           "artifactStore" = {
-///             "id" = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
+///         artifact_profile = {
+///           artifact_store = {
+///             id = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
 ///           }
-///           "templateArtifactProfile" = {
-///             "templateName"    = "test-template"
-///             "templateVersion" = "1.0.0"
-///           }
-///         }
-///         "artifactType" = "ArmTemplate"
-///         "dependsOnProfile" = {
-///           "installDependsOn"   = ["testImageRole"]
-///           "uninstallDependsOn" = ["testImageRole"]
-///           "updateDependsOn"    = ["testImageRole"]
-///         }
-///         "deployParametersMappingRuleProfile" = {
-///           "applicationEnablement" = "Unknown"
-///           "templateMappingRuleProfile" = {
-///             "templateParameters" = "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}"
+///           template_artifact_profile = {
+///             template_name    = "test-template"
+///             template_version = "1.0.0"
 ///           }
 ///         }
-///         "name" = "testTemplateRole"
+///         artifact_type = "ArmTemplate"
+///         depends_on_profile = {
+///           install_depends_on   = ["testImageRole"]
+///           uninstall_depends_on = ["testImageRole"]
+///           update_depends_on    = ["testImageRole"]
+///         }
+///         deploy_parameters_mapping_rule_profile = {
+///           application_enablement = "Unknown"
+///           template_mapping_rule_profile = {
+///             template_parameters = "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}"
+///           }
+///         }
+///         name = "testTemplateRole"
 ///       }]
-///       "nfviType" = "AzureCore"
+///       nfvi_type = "AzureCore"
 ///     }
-///     "networkFunctionType" = "VirtualNetworkFunction"
+///     network_function_type = "VirtualNetworkFunction"
 ///   }
 ///   publisher_name      = "TestPublisher"
 ///   resource_group_name = "rg"
@@ -787,6 +817,32 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionDefinitionVersion;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ContainerizedNetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesHelmApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.DependsOnProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionArmTemplateApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreArmTemplateDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionVhdApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreVhdImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.VhdImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreVhdImageDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.VhdImageMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ArmTemplateMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionArmTemplateApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusArmTemplateDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionImageApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusImageDeployMappingRuleProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -808,10 +864,54 @@ import 'system_data_response.dart';
 ///                 .deployParameters("{\"virtualMachineName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}")
 ///                 .description("test NFDV for AzureCore")
 ///                 .networkFunctionTemplate(AzureCoreNetworkFunctionTemplateArgs.builder()
-///                     .networkFunctionApplications(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
-///                     .nfviType("AzureCore")
+///                     .networkFunctionApplications(
+///                         AzureCoreNetworkFunctionVhdApplicationArgs.builder()
+///                             .artifactProfile(AzureCoreVhdImageArtifactProfileArgs.builder()
+///                                 .artifactStore(ReferencedResourceArgs.builder()
+///                                     .id("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore")
+///                                     .build())
+///                                 .vhdArtifactProfile(VhdImageArtifactProfileArgs.builder()
+///                                     .vhdName("test-image")
+///                                     .vhdVersion("1-0-0")
+///                                     .build())
+///                                 .build())
+///                             .dependsOnProfile(DependsOnProfileArgs.builder()
+///                                 .installDependsOn()
+///                                 .uninstallDependsOn()
+///                                 .updateDependsOn()
+///                                 .build())
+///                             .deployParametersMappingRuleProfile(AzureCoreVhdImageDeployMappingRuleProfileArgs.builder()
+///                                 .applicationEnablement("Unknown")
+///                                 .vhdImageMappingRuleProfile(VhdImageMappingRuleProfileArgs.builder()
+///                                     .userConfiguration("")
+///                                     .build())
+///                                 .build())
+///                             .name("testImageRole")
+///                             .build(),
+///                         AzureCoreNetworkFunctionArmTemplateApplicationArgs.builder()
+///                             .artifactProfile(AzureCoreArmTemplateArtifactProfileArgs.builder()
+///                                 .artifactStore(ReferencedResourceArgs.builder()
+///                                     .id("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore")
+///                                     .build())
+///                                 .templateArtifactProfile(ArmTemplateArtifactProfileArgs.builder()
+///                                     .templateName("test-template")
+///                                     .templateVersion("1.0.0")
+///                                     .build())
+///                                 .build())
+///                             .dependsOnProfile(DependsOnProfileArgs.builder()
+///                                 .installDependsOn("testImageRole")
+///                                 .uninstallDependsOn("testImageRole")
+///                                 .updateDependsOn("testImageRole")
+///                                 .build())
+///                             .deployParametersMappingRuleProfile(AzureCoreArmTemplateDeployMappingRuleProfileArgs.builder()
+///                                 .applicationEnablement("Unknown")
+///                                 .templateMappingRuleProfile(ArmTemplateMappingRuleProfileArgs.builder()
+///                                     .templateParameters("{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}")
+///                                     .build())
+///                                 .build())
+///                             .name("testTemplateRole")
+///                             .build())
 ///                     .build())
-///                 .networkFunctionType("VirtualNetworkFunction")
 ///                 .build())
 ///             .publisherName("TestPublisher")
 ///             .resourceGroupName("rg")
@@ -1146,64 +1246,64 @@ import 'system_data_response.dart';
 /// 			Properties: &hybridnetwork.VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs{
 /// 				DeployParameters: pulumi.String("{\"virtualMachineName\":{\"type\":\"string\"},\"extendedLocationName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}"),
 /// 				Description:      pulumi.String("test NFDV for AzureOperatorNexus"),
-/// 				NetworkFunctionTemplate: hybridnetwork.AzureOperatorNexusNetworkFunctionTemplate{
-/// 					NetworkFunctionApplications: []interface{}{
-/// 						hybridnetwork.AzureOperatorNexusNetworkFunctionImageApplication{
-/// 							ArtifactProfile: hybridnetwork.AzureOperatorNexusImageArtifactProfile{
-/// 								ArtifactStore: hybridnetwork.ReferencedResource{
-/// 									Id: "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore",
+/// 				NetworkFunctionTemplate: &hybridnetwork.AzureOperatorNexusNetworkFunctionTemplateArgs{
+/// 					NetworkFunctionApplications: pulumi.Array{
+/// 						&hybridnetwork.AzureOperatorNexusNetworkFunctionImageApplicationArgs{
+/// 							ArtifactProfile: &hybridnetwork.AzureOperatorNexusImageArtifactProfileArgs{
+/// 								ArtifactStore: &hybridnetwork.ReferencedResourceArgs{
+/// 									Id: pulumi.String("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"),
 /// 								},
-/// 								ImageArtifactProfile: hybridnetwork.ImageArtifactProfile{
-/// 									ImageName:    "test-image",
-/// 									ImageVersion: "1.0.0",
-/// 								},
-/// 							},
-/// 							ArtifactType: "ImageFile",
-/// 							DependsOnProfile: hybridnetwork.DependsOnProfile{
-/// 								InstallDependsOn:   []interface{}{},
-/// 								UninstallDependsOn: []interface{}{},
-/// 								UpdateDependsOn:    []interface{}{},
-/// 							},
-/// 							DeployParametersMappingRuleProfile: hybridnetwork.AzureOperatorNexusImageDeployMappingRuleProfile{
-/// 								ApplicationEnablement: hybridnetwork.ApplicationEnablementUnknown,
-/// 								ImageMappingRuleProfile: hybridnetwork.ImageMappingRuleProfile{
-/// 									UserConfiguration: "",
+/// 								ImageArtifactProfile: &hybridnetwork.ImageArtifactProfileArgs{
+/// 									ImageName:    pulumi.String("test-image"),
+/// 									ImageVersion: pulumi.String("1.0.0"),
 /// 								},
 /// 							},
-/// 							Name: "testImageRole",
+/// 							ArtifactType: pulumi.String("ImageFile"),
+/// 							DependsOnProfile: &hybridnetwork.DependsOnProfileArgs{
+/// 								InstallDependsOn:   pulumi.StringArray{},
+/// 								UninstallDependsOn: pulumi.StringArray{},
+/// 								UpdateDependsOn:    pulumi.StringArray{},
+/// 							},
+/// 							DeployParametersMappingRuleProfile: &hybridnetwork.AzureOperatorNexusImageDeployMappingRuleProfileArgs{
+/// 								ApplicationEnablement: pulumi.String(hybridnetwork.ApplicationEnablementUnknown),
+/// 								ImageMappingRuleProfile: &hybridnetwork.ImageMappingRuleProfileArgs{
+/// 									UserConfiguration: pulumi.String(""),
+/// 								},
+/// 							},
+/// 							Name: pulumi.String("testImageRole"),
 /// 						},
-/// 						hybridnetwork.AzureOperatorNexusNetworkFunctionArmTemplateApplication{
-/// 							ArtifactProfile: hybridnetwork.AzureOperatorNexusArmTemplateArtifactProfile{
-/// 								ArtifactStore: hybridnetwork.ReferencedResource{
-/// 									Id: "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore",
+/// 						&hybridnetwork.AzureOperatorNexusNetworkFunctionArmTemplateApplicationArgs{
+/// 							ArtifactProfile: &hybridnetwork.AzureOperatorNexusArmTemplateArtifactProfileArgs{
+/// 								ArtifactStore: &hybridnetwork.ReferencedResourceArgs{
+/// 									Id: pulumi.String("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"),
 /// 								},
-/// 								TemplateArtifactProfile: hybridnetwork.ArmTemplateArtifactProfile{
-/// 									TemplateName:    "test-template",
-/// 									TemplateVersion: "1.0.0",
-/// 								},
-/// 							},
-/// 							ArtifactType: "ArmTemplate",
-/// 							DependsOnProfile: hybridnetwork.DependsOnProfile{
-/// 								InstallDependsOn: []string{
-/// 									"testImageRole",
-/// 								},
-/// 								UninstallDependsOn: []string{
-/// 									"testImageRole",
-/// 								},
-/// 								UpdateDependsOn: []string{
-/// 									"testImageRole",
+/// 								TemplateArtifactProfile: &hybridnetwork.ArmTemplateArtifactProfileArgs{
+/// 									TemplateName:    pulumi.String("test-template"),
+/// 									TemplateVersion: pulumi.String("1.0.0"),
 /// 								},
 /// 							},
-/// 							DeployParametersMappingRuleProfile: hybridnetwork.AzureOperatorNexusArmTemplateDeployMappingRuleProfile{
-/// 								ApplicationEnablement: hybridnetwork.ApplicationEnablementUnknown,
-/// 								TemplateMappingRuleProfile: hybridnetwork.ArmTemplateMappingRuleProfile{
-/// 									TemplateParameters: "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"extendedLocationName\":\"{deployParameters.extendedLocationName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}",
+/// 							ArtifactType: pulumi.String("ArmTemplate"),
+/// 							DependsOnProfile: &hybridnetwork.DependsOnProfileArgs{
+/// 								InstallDependsOn: pulumi.StringArray{
+/// 									pulumi.String("testImageRole"),
+/// 								},
+/// 								UninstallDependsOn: pulumi.StringArray{
+/// 									pulumi.String("testImageRole"),
+/// 								},
+/// 								UpdateDependsOn: pulumi.StringArray{
+/// 									pulumi.String("testImageRole"),
 /// 								},
 /// 							},
-/// 							Name: "testTemplateRole",
+/// 							DeployParametersMappingRuleProfile: &hybridnetwork.AzureOperatorNexusArmTemplateDeployMappingRuleProfileArgs{
+/// 								ApplicationEnablement: pulumi.String(hybridnetwork.ApplicationEnablementUnknown),
+/// 								TemplateMappingRuleProfile: &hybridnetwork.ArmTemplateMappingRuleProfileArgs{
+/// 									TemplateParameters: pulumi.String("{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"extendedLocationName\":\"{deployParameters.extendedLocationName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}"),
+/// 								},
+/// 							},
+/// 							Name: pulumi.String("testTemplateRole"),
 /// 						},
 /// 					},
-/// 					NfviType: "AzureOperatorNexus",
+/// 					NfviType: pulumi.String("AzureOperatorNexus"),
 /// 				},
 /// 				NetworkFunctionType: pulumi.String("VirtualNetworkFunction"),
 /// 			},
@@ -1220,7 +1320,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1228,64 +1328,67 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunctiondefinitionversion" "networkFunctionDefinitionVersion" {
+/// resource "azure-native_hybridnetwork_network_function_definition_version" "networkFunctionDefinitionVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                 = "eastus"
 ///   network_function_definition_group_name   = "TestNetworkFunctionDefinitionGroupName"
 ///   network_function_definition_version_name = "1.0.0"
 ///   properties = {
-///     "deployParameters" = "{\"virtualMachineName\":{\"type\":\"string\"},\"extendedLocationName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}"
-///     "description"      = "test NFDV for AzureOperatorNexus"
-///     "networkFunctionTemplate" = {
-///       "networkFunctionApplications" = [{
-///         "artifactProfile" = {
-///           "artifactStore" = {
-///             "id" = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
+///     deploy_parameters = "{\"virtualMachineName\":{\"type\":\"string\"},\"extendedLocationName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}"
+///     description       = "test NFDV for AzureOperatorNexus"
+///     network_function_template = {
+///       network_function_applications = [{
+///         artifact_profile = {
+///           artifact_store = {
+///             id = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
 ///           }
-///           "imageArtifactProfile" = {
-///             "imageName"    = "test-image"
-///             "imageVersion" = "1.0.0"
-///           }
-///         }
-///         "artifactType" = "ImageFile"
-///         "dependsOnProfile" = {
-///           "installDependsOn"   = []
-///           "uninstallDependsOn" = []
-///           "updateDependsOn"    = []
-///         }
-///         "deployParametersMappingRuleProfile" = {
-///           "applicationEnablement" = "Unknown"
-///           "imageMappingRuleProfile" = {
-///             "userConfiguration" = ""
+///           image_artifact_profile = {
+///             image_name    = "test-image"
+///             image_version = "1.0.0"
 ///           }
 ///         }
-///         "name" = "testImageRole"
+///         artifact_type = "ImageFile"
+///         depends_on_profile = {
+///           install_depends_on   = []
+///           uninstall_depends_on = []
+///           update_depends_on    = []
+///         }
+///         deploy_parameters_mapping_rule_profile = {
+///           application_enablement = "Unknown"
+///           image_mapping_rule_profile = {
+///             user_configuration = ""
+///           }
+///         }
+///         name = "testImageRole"
 ///         }, {
-///         "artifactProfile" = {
-///           "artifactStore" = {
-///             "id" = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
+///         artifact_profile = {
+///           artifact_store = {
+///             id = "/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"
 ///           }
-///           "templateArtifactProfile" = {
-///             "templateName"    = "test-template"
-///             "templateVersion" = "1.0.0"
-///           }
-///         }
-///         "artifactType" = "ArmTemplate"
-///         "dependsOnProfile" = {
-///           "installDependsOn"   = ["testImageRole"]
-///           "uninstallDependsOn" = ["testImageRole"]
-///           "updateDependsOn"    = ["testImageRole"]
-///         }
-///         "deployParametersMappingRuleProfile" = {
-///           "applicationEnablement" = "Unknown"
-///           "templateMappingRuleProfile" = {
-///             "templateParameters" = "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"extendedLocationName\":\"{deployParameters.extendedLocationName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}"
+///           template_artifact_profile = {
+///             template_name    = "test-template"
+///             template_version = "1.0.0"
 ///           }
 ///         }
-///         "name" = "testTemplateRole"
+///         artifact_type = "ArmTemplate"
+///         depends_on_profile = {
+///           install_depends_on   = ["testImageRole"]
+///           uninstall_depends_on = ["testImageRole"]
+///           update_depends_on    = ["testImageRole"]
+///         }
+///         deploy_parameters_mapping_rule_profile = {
+///           application_enablement = "Unknown"
+///           template_mapping_rule_profile = {
+///             template_parameters = "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"extendedLocationName\":\"{deployParameters.extendedLocationName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}"
+///           }
+///         }
+///         name = "testTemplateRole"
 ///       }]
-///       "nfviType" = "AzureOperatorNexus"
+///       nfvi_type = "AzureOperatorNexus"
 ///     }
-///     "networkFunctionType" = "VirtualNetworkFunction"
+///     network_function_type = "VirtualNetworkFunction"
 ///   }
 ///   publisher_name      = "TestPublisher"
 ///   resource_group_name = "rg"
@@ -1301,6 +1404,32 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionDefinitionVersion;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ContainerizedNetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesHelmApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.DependsOnProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcKubernetesDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionArmTemplateApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreArmTemplateDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNetworkFunctionVhdApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreVhdImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreVhdImageDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ArmTemplateMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionArmTemplateApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusArmTemplateArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusArmTemplateDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusNetworkFunctionImageApplicationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ImageArtifactProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusImageDeployMappingRuleProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ImageMappingRuleProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1322,10 +1451,54 @@ import 'system_data_response.dart';
 ///                 .deployParameters("{\"virtualMachineName\":{\"type\":\"string\"},\"extendedLocationName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}")
 ///                 .description("test NFDV for AzureOperatorNexus")
 ///                 .networkFunctionTemplate(AzureOperatorNexusNetworkFunctionTemplateArgs.builder()
-///                     .networkFunctionApplications(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
-///                     .nfviType("AzureOperatorNexus")
+///                     .networkFunctionApplications(
+///                         AzureOperatorNexusNetworkFunctionImageApplicationArgs.builder()
+///                             .artifactProfile(AzureOperatorNexusImageArtifactProfileArgs.builder()
+///                                 .artifactStore(ReferencedResourceArgs.builder()
+///                                     .id("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore")
+///                                     .build())
+///                                 .imageArtifactProfile(ImageArtifactProfileArgs.builder()
+///                                     .imageName("test-image")
+///                                     .imageVersion("1.0.0")
+///                                     .build())
+///                                 .build())
+///                             .dependsOnProfile(DependsOnProfileArgs.builder()
+///                                 .installDependsOn()
+///                                 .uninstallDependsOn()
+///                                 .updateDependsOn()
+///                                 .build())
+///                             .deployParametersMappingRuleProfile(AzureOperatorNexusImageDeployMappingRuleProfileArgs.builder()
+///                                 .applicationEnablement("Unknown")
+///                                 .imageMappingRuleProfile(ImageMappingRuleProfileArgs.builder()
+///                                     .userConfiguration("")
+///                                     .build())
+///                                 .build())
+///                             .name("testImageRole")
+///                             .build(),
+///                         AzureOperatorNexusNetworkFunctionArmTemplateApplicationArgs.builder()
+///                             .artifactProfile(AzureOperatorNexusArmTemplateArtifactProfileArgs.builder()
+///                                 .artifactStore(ReferencedResourceArgs.builder()
+///                                     .id("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore")
+///                                     .build())
+///                                 .templateArtifactProfile(ArmTemplateArtifactProfileArgs.builder()
+///                                     .templateName("test-template")
+///                                     .templateVersion("1.0.0")
+///                                     .build())
+///                                 .build())
+///                             .dependsOnProfile(DependsOnProfileArgs.builder()
+///                                 .installDependsOn("testImageRole")
+///                                 .uninstallDependsOn("testImageRole")
+///                                 .updateDependsOn("testImageRole")
+///                                 .build())
+///                             .deployParametersMappingRuleProfile(AzureOperatorNexusArmTemplateDeployMappingRuleProfileArgs.builder()
+///                                 .applicationEnablement("Unknown")
+///                                 .templateMappingRuleProfile(ArmTemplateMappingRuleProfileArgs.builder()
+///                                     .templateParameters("{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"extendedLocationName\":\"{deployParameters.extendedLocationName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}")
+///                                     .build())
+///                                 .build())
+///                             .name("testTemplateRole")
+///                             .build())
 ///                     .build())
-///                 .networkFunctionType("VirtualNetworkFunction")
 ///                 .build())
 ///             .publisherName("TestPublisher")
 ///             .resourceGroupName("rg")

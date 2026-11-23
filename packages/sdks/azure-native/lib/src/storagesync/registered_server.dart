@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagesync_registeredserver" "registeredServer" {
+/// resource "azure-native_storagesync_registered_server" "registeredServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_version             = "1.0.277.0"
 ///   application_id            = "00000000-0000-0000-0000-000000000001"
 ///   friendly_name             = "afscv-2304-139"

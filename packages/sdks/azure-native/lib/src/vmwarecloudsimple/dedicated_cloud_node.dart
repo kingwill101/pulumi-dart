@@ -75,7 +75,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_vmwarecloudsimple_dedicatedcloudnode" "dedicatedCloudNode" {
+/// resource "azure-native_vmwarecloudsimple_dedicated_cloud_node" "dedicatedCloudNode" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone_id      = "az1"
 ///   dedicated_cloud_node_name = "myNode"
 ///   id                        = "general"

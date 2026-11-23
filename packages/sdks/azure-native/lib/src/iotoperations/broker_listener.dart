@@ -163,7 +163,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -171,7 +171,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerlistener" "brokerListener" {
+/// resource "azure-native_iotoperations_broker_listener" "brokerListener" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -181,34 +184,34 @@ import 'system_data_response.dart';
 ///   listener_name = "resource-name123"
 ///   properties = {
 ///     ports = [{
-///       "authenticationRef" = "tjvdroaqqy"
-///       "authorizationRef"  = "inxhvxnwswyrvt"
-///       "nodePort"          = 7281
-///       "port"              = 1268
-///       "protocol"          = "Mqtt"
-///       "tls" = {
-///         "certManagerCertificateSpec" = {
-///           "duration" = "qmpeffoksron"
-///           "issuerRef" = {
-///             "group" = "jtmuladdkpasfpoyvewekmiy"
-///             "kind"  = "Issuer"
-///             "name"  = "ocwoqpgucvjrsuudtjhb"
+///       authentication_ref = "tjvdroaqqy"
+///       authorization_ref  = "inxhvxnwswyrvt"
+///       node_port          = 7281
+///       port               = 1268
+///       protocol           = "Mqtt"
+///       tls = {
+///         cert_manager_certificate_spec = {
+///           duration = "qmpeffoksron"
+///           issuer_ref = {
+///             group = "jtmuladdkpasfpoyvewekmiy"
+///             kind  = "Issuer"
+///             name  = "ocwoqpgucvjrsuudtjhb"
 ///           }
-///           "privateKey" = {
-///             "algorithm"      = "Ec256"
-///             "rotationPolicy" = "Always"
+///           private_key = {
+///             algorithm       = "Ec256"
+///             rotation_policy = "Always"
 ///           }
-///           "renewBefore" = "hutno"
-///           "san" = {
-///             "dns" = ["xhvmhrrhgfsapocjeebqtnzarlj"]
-///             "ip"  = ["zbgugfzcgsmegevzktsnibyuyp"]
+///           renew_before = "hutno"
+///           san = {
+///             dns = ["xhvmhrrhgfsapocjeebqtnzarlj"]
+///             ip  = ["zbgugfzcgsmegevzktsnibyuyp"]
 ///           }
-///           "secretName" = "oagi"
+///           secret_name = "oagi"
 ///         }
-///         "manual" = {
-///           "secretRef" = "secret-name"
+///         manual = {
+///           secret_ref = "secret-name"
 ///         }
-///         "mode" = "Automatic"
+///         mode = "Automatic"
 ///       }
 ///     }]
 ///     service_name = "tpfiszlapdpxktx"
@@ -229,6 +232,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerListenerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerListenerPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.ListenerPortArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.TlsCertMethodArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.CertManagerCertificateSpecArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.CertManagerIssuerRefArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.CertManagerPrivateKeyArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.SanForCertArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.X509ManualCertificateArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -588,7 +598,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -596,7 +606,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerlistener" "brokerListener" {
+/// resource "azure-native_iotoperations_broker_listener" "brokerListener" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -606,34 +619,34 @@ import 'system_data_response.dart';
 ///   listener_name = "resource-name123"
 ///   properties = {
 ///     ports = [{
-///       "authenticationRef" = "example-authentication"
-///       "port"              = 8080
-///       "protocol"          = "WebSockets"
+///       authentication_ref = "example-authentication"
+///       port               = 8080
+///       protocol           = "WebSockets"
 ///       }, {
-///       "authenticationRef" = "example-authentication"
-///       "port"              = 8443
-///       "protocol"          = "WebSockets"
-///       "tls" = {
-///         "certManagerCertificateSpec" = {
-///           "issuerRef" = {
-///             "group" = "jtmuladdkpasfpoyvewekmiy"
-///             "kind"  = "Issuer"
-///             "name"  = "example-issuer"
+///       authentication_ref = "example-authentication"
+///       port               = 8443
+///       protocol           = "WebSockets"
+///       tls = {
+///         cert_manager_certificate_spec = {
+///           issuer_ref = {
+///             group = "jtmuladdkpasfpoyvewekmiy"
+///             kind  = "Issuer"
+///             name  = "example-issuer"
 ///           }
 ///         }
-///         "mode" = "Automatic"
+///         mode = "Automatic"
 ///       }
 ///       }, {
-///       "authenticationRef" = "example-authentication"
-///       "port"              = 1883
+///       authentication_ref = "example-authentication"
+///       port               = 1883
 ///       }, {
-///       "authenticationRef" = "example-authentication"
-///       "port"              = 8883
-///       "tls" = {
-///         "manual" = {
-///           "secretRef" = "example-secret"
+///       authentication_ref = "example-authentication"
+///       port               = 8883
+///       tls = {
+///         manual = {
+///           secret_ref = "example-secret"
 ///         }
-///         "mode" = "Manual"
+///         mode = "Manual"
 ///       }
 ///     }]
 ///     service_type = "LoadBalancer"
@@ -653,6 +666,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerListenerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerListenerPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.ListenerPortArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.TlsCertMethodArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.CertManagerCertificateSpecArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.CertManagerIssuerRefArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.X509ManualCertificateArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -946,7 +964,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -954,7 +972,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerlistener" "brokerListener" {
+/// resource "azure-native_iotoperations_broker_listener" "brokerListener" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -964,7 +985,7 @@ import 'system_data_response.dart';
 ///   listener_name = "resource-name123"
 ///   properties = {
 ///     ports = [{
-///       "port" = 1883
+///       port = 1883
 ///     }]
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -982,6 +1003,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerListenerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerListenerPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.ListenerPortArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

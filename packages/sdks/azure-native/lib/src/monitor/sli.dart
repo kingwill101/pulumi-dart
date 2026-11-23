@@ -30,7 +30,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     EvaluationCalculationType = AzureNative.Monitor.EvaluationCalculationType.CalendarDays,
 ///                     EvaluationPeriodDays = 30,
-///                     Value = 99,
+///                     Value = 99.0,
 ///                 },
 ///             },
 ///             Category = AzureNative.Monitor.Category.Latency,
@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 ///                                 new AzureNative.Monitor.Inputs.ConditionV1Args
 ///                                 {
 ///                                     DimensionName = "ApiName",
-///                                     Operator = AzureNative.Monitor.ConditionOperator.Equal,
+///                                     Operator = AzureNative.Monitor.SliConditionOperator.Equal,
 ///                                     Value = "GetContosoUsers",
 ///                                 },
 ///                             },
@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 ///                                 new AzureNative.Monitor.Inputs.ConditionV1Args
 ///                                 {
 ///                                     DimensionName = "ApiName",
-///                                     Operator = AzureNative.Monitor.ConditionOperator.Equal,
+///                                     Operator = AzureNative.Monitor.SliConditionOperator.Equal,
 ///                                     Value = "GetContosoUsers",
 ///                                 },
 ///                             },
@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 ///                 WindowUptimeCriteria = new AzureNative.Monitor.Inputs.WindowUptimeCriteriaArgs
 ///                 {
 ///                     Comparator = AzureNative.Monitor.WindowUptimeCriteriaComparator.GreaterThanOrEqual,
-///                     Target = 95,
+///                     Target = 95.0,
 ///                 },
 ///             },
 ///         },
@@ -169,7 +169,7 @@ import 'system_data_response.dart';
 /// 								Filters: monitor.ConditionV1Array{
 /// 									&monitor.ConditionV1Args{
 /// 										DimensionName: pulumi.String("ApiName"),
-/// 										Operator:      pulumi.String(monitor.ConditionOperatorEqual),
+/// 										Operator:      pulumi.String(monitor.SliConditionOperatorEqual),
 /// 										Value:         pulumi.String("GetContosoUsers"),
 /// 									},
 /// 								},
@@ -194,7 +194,7 @@ import 'system_data_response.dart';
 /// 								Filters: monitor.ConditionV1Array{
 /// 									&monitor.ConditionV1Args{
 /// 										DimensionName: pulumi.String("ApiName"),
-/// 										Operator:      pulumi.String(monitor.ConditionOperatorEqual),
+/// 										Operator:      pulumi.String(monitor.SliConditionOperatorEqual),
 /// 										Value:         pulumi.String("GetContosoUsers"),
 /// 									},
 /// 								},
@@ -236,7 +236,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -245,6 +245,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_monitor_sli" "sli" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     baseline_properties = {
 ///       baseline = {
@@ -256,8 +259,8 @@ import 'system_data_response.dart';
 ///     category    = "Latency"
 ///     description = "Measures the performance characteristics of the GetContosoUsers() API. "
 ///     destination_amw_accounts = [{
-///       "identity"   = "/subscriptions/<subId>/resourcegroups/<rgId>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<idName>"
-///       "resourceId" = "/subscriptions/<subId>/resourcegroups/<rgId>/providers/microsoft.monitor/accounts/<dest>"
+///       identity    = "/subscriptions/<subId>/resourcegroups/<rgId>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<idName>"
+///       resource_id = "/subscriptions/<subId>/resourcegroups/<rgId>/providers/microsoft.monitor/accounts/<dest>"
 ///     }]
 ///     enable_alert    = true
 ///     evaluation_type = "WindowBased"
@@ -265,42 +268,42 @@ import 'system_data_response.dart';
 ///       signals = {
 ///         signal_formula = "(A + B) /2"
 ///         signal_sources = [{
-///           "filters" = [{
-///             "dimensionName" = "ApiName"
-///             "operator"      = "eq"
-///             "value"         = "GetContosoUsers"
+///           filters = [{
+///             dimension_name = "ApiName"
+///             operator       = "eq"
+///             value          = "GetContosoUsers"
 ///           }]
-///           "metricName"                      = "Stamp1Latency"
-///           "metricNamespace"                 = "ContosoMetricsWest"
-///           "signalSourceId"                  = "A"
-///           "sourceAmwAccountManagedIdentity" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity"
-///           "sourceAmwAccountResourceId"      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/microsoft.monitor/accounts/myAccount"
-///           "spatialAggregation" = {
-///             "dimensions" = ["Region", "ResponseCode"]
-///             "type"       = "Average"
+///           metric_name                         = "Stamp1Latency"
+///           metric_namespace                    = "ContosoMetricsWest"
+///           signal_source_id                    = "A"
+///           source_amw_account_managed_identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity"
+///           source_amw_account_resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/microsoft.monitor/accounts/myAccount"
+///           spatial_aggregation = {
+///             dimensions = ["Region", "ResponseCode"]
+///             type       = "Average"
 ///           }
-///           "temporalAggregation" = {
-///             "type"              = "Average"
-///             "windowSizeMinutes" = 5
+///           temporal_aggregation = {
+///             type                = "Average"
+///             window_size_minutes = 5
 ///           }
 ///           }, {
-///           "filters" = [{
-///             "dimensionName" = "ApiName"
-///             "operator"      = "eq"
-///             "value"         = "GetContosoUsers"
+///           filters = [{
+///             dimension_name = "ApiName"
+///             operator       = "eq"
+///             value          = "GetContosoUsers"
 ///           }]
-///           "metricName"                      = "Stamp2Latency"
-///           "metricNamespace"                 = "ContosoMetricsEast"
-///           "signalSourceId"                  = "B"
-///           "sourceAmwAccountManagedIdentity" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity"
-///           "sourceAmwAccountResourceId"      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/microsoft.monitor/accounts/myAccount"
-///           "spatialAggregation" = {
-///             "dimensions" = ["Region", "ResponseCode"]
-///             "type"       = "Average"
+///           metric_name                         = "Stamp2Latency"
+///           metric_namespace                    = "ContosoMetricsEast"
+///           signal_source_id                    = "B"
+///           source_amw_account_managed_identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity"
+///           source_amw_account_resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/microsoft.monitor/accounts/myAccount"
+///           spatial_aggregation = {
+///             dimensions = ["Region", "ResponseCode"]
+///             type       = "Average"
 ///           }
-///           "temporalAggregation" = {
-///             "type"              = "Average"
-///             "windowSizeMinutes" = 5
+///           temporal_aggregation = {
+///             type                = "Average"
+///             window_size_minutes = 5
 ///           }
 ///         }]
 ///       }
@@ -327,8 +330,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.inputs.SliResourceArgs;
 /// import com.pulumi.azurenative.monitor.inputs.BaselinePropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.BaselineArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AmwAccountArgs;
 /// import com.pulumi.azurenative.monitor.inputs.SliPropertiesArgs;
 /// import com.pulumi.azurenative.monitor.inputs.SignalArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SignalSourceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionV1Args;
+/// import com.pulumi.azurenative.monitor.inputs.SpatialAggregationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.TemporalAggregationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.WindowUptimeCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -452,7 +460,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         filters: [{
 ///                             dimensionName: "ApiName",
-///                             operator: azure_native.monitor.ConditionOperator.Equal,
+///                             operator: azure_native.monitor.SliConditionOperator.Equal,
 ///                             value: "GetContosoUsers",
 ///                         }],
 ///                         metricName: "Stamp1Latency",
@@ -475,7 +483,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         filters: [{
 ///                             dimensionName: "ApiName",
-///                             operator: azure_native.monitor.ConditionOperator.Equal,
+///                             operator: azure_native.monitor.SliConditionOperator.Equal,
 ///                             value: "GetContosoUsers",
 ///                         }],
 ///                         metricName: "Stamp2Latency",
@@ -537,7 +545,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         "filters": [{
 ///                             "dimension_name": "ApiName",
-///                             "operator": azure_native.monitor.ConditionOperator.EQUAL,
+///                             "operator": azure_native.monitor.SliConditionOperator.EQUAL,
 ///                             "value": "GetContosoUsers",
 ///                         }],
 ///                         "metric_name": "Stamp1Latency",
@@ -560,7 +568,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         "filters": [{
 ///                             "dimension_name": "ApiName",
-///                             "operator": azure_native.monitor.ConditionOperator.EQUAL,
+///                             "operator": azure_native.monitor.SliConditionOperator.EQUAL,
 ///                             "value": "GetContosoUsers",
 ///                         }],
 ///                         "metric_name": "Stamp2Latency",

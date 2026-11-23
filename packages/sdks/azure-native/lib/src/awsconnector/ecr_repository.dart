@@ -143,7 +143,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,7 +151,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ecrrepository" "ecrRepository" {
+/// resource "azure-native_awsconnector_ecr_repository" "ecrRepository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "uxqfbijfanljas"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -176,8 +179,8 @@ import 'system_data_response.dart';
 ///       repository_policy_text = {}
 ///       repository_uri         = "vmljyfyskxbyjczax"
 ///       tags = [{
-///         "key"   = "moogqsaqjqbgghbindkarxdgqqna"
-///         "value" = "qu"
+///         key   = "moogqsaqjqbgghbindkarxdgqqna"
+///         value = "qu"
 ///       }]
 ///     }
 ///     aws_region        = "wliyvzjqcxbpwtgjae"
@@ -209,6 +212,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.EncryptionConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageScanningConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LifecyclePolicyArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

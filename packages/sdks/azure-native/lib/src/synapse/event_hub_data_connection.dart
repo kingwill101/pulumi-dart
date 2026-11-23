@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_eventhubdataconnection" "eventHubDataConnection" {
+/// resource "azure-native_synapse_event_hub_data_connection" "eventHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_group        = "testConsumerGroup1"
 ///   data_connection_name  = "DataConnections8"
 ///   database_name         = "KustoDatabase8"
@@ -115,7 +118,6 @@ import 'system_data_response.dart';
 ///             .dataConnectionName("DataConnections8")
 ///             .databaseName("KustoDatabase8")
 ///             .eventHubResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.EventHub/namespaces/eventhubTestns1/eventhubs/eventhubTest1")
-///             .kind("EventHub")
 ///             .kustoPoolName("kustoclusterrptest4")
 ///             .location("westus")
 ///             .resourceGroupName("kustorptest")

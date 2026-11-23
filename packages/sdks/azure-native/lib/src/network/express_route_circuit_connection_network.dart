@@ -85,7 +85,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressroutecircuitconnection" "expressRouteCircuitConnection" {
+/// resource "azure-native_network_express_route_circuit_connection" "expressRouteCircuitConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix    = "10.0.0.0/29"
 ///   authorization_key = "946a1918-b7a2-4917-b43c-8c4cdaee006a"
 ///   circuit_name      = "ExpressRouteARMCircuitA"

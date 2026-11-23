@@ -36,7 +36,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Location = "East US",
 ///         ResourceGroupName = "k8sc-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetes_connectedcluster" "connectedCluster" {
+/// resource "azure-native_kubernetes_connected_cluster" "connectedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_public_key_certificate = "MIICYzCCAcygAwIBAgIBADANBgkqhkiG9w0BAQUFADAuMQswCQYDVQQGEwJVUzEMMAoGA1UEChMDSUJNMREwDwYDVQQLEwhMb2NhbCBDQTAeFw05OTEyMjIwNTAwMDBaFw0wMDEyMjMwNDU5NTlaMC4xCzAJBgNVBAYTAlVTMQwwCgYDVQQKEwNJQk0xETAPBgNVBAsTCExvY2FsIENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD2bZEo7xGaX2/0GHkrNFZvlxBou9v1Jmt/PDiTMPve8r9FeJAQ0QdvFST/0JPQYD20rH0bimdDLgNdNynmyRoS2S/IInfpmf69iyc2G0TPyRvmHIiOZbdCd+YBHQi1adkj17NDcWj6S14tVurFX73zx0sNoMS79q3tuXKrDsxeuwIDAQABo4GQMIGNMEsGCVUdDwGG+EIBDQQ+EzxHZW5lcmF0ZWQgYnkgdGhlIFNlY3VyZVdheSBTZWN1cml0eSBTZXJ2ZXIgZm9yIE9TLzM5MCAoUkFDRikwDgYDVR0PAQH/BAQDAgAGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFJ3+ocRyCTJw067dLSwr/nalx6YMMA0GCSqGSIb3DQEBBQUAA4GBAMaQzt+zaj1GU77yzlr8iiMBXgdQrwsZZWJo5exnAucJAEYQZmOfyLiM D6oYq+ZnfvM0n8G/Y79q8nhwvuxpYOnRSAXFp6xSkrIOeZtJMY1h00LKp/JX3Ng1svZ2agE126JHsQ0bhzN5TKsYfbwfTwfjdWAGy6Vf1nYi/rO+ryMO"
 ///   azure_hybrid_benefit         = "NotApplicable"
 ///   cluster_name                 = "testCluster"
@@ -226,7 +229,7 @@ import 'system_data_response.dart';
 ///         PrivateLinkScopeResourceId = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/privateLinkScopeName",
 ///         PrivateLinkState = AzureNative.Kubernetes.PrivateLinkState.Enabled,
 ///         ResourceGroupName = "k8sc-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -269,7 +272,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -277,7 +280,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetes_connectedcluster" "connectedCluster" {
+/// resource "azure-native_kubernetes_connected_cluster" "connectedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_public_key_certificate = "MIICYzCCAcygAwIBAgIBADANBgkqhkiG9w0BAQUFADAuMQswCQYDVQQGEwJVUzEMMAoGA1UEChMDSUJNMREwDwYDVQQLEwhMb2NhbCBDQTAeFw05OTEyMjIwNTAwMDBaFw0wMDEyMjMwNDU5NTlaMC4xCzAJBgNVBAYTAlVTMQwwCgYDVQQKEwNJQk0xETAPBgNVBAsTCExvY2FsIENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD2bZEo7xGaX2/0GHkrNFZvlxBou9v1Jmt/PDiTMPve8r9FeJAQ0QdvFST/0JPQYD20rH0bimdDLgNdNynmyRoS2S/IInfpmf69iyc2G0TPyRvmHIiOZbdCd+YBHQi1adkj17NDcWj6S14tVurFX73zx0sNoMS79q3tuXKrDsxeuwIDAQABo4GQMIGNMEsGCVUdDwGG+EIBDQQ+EzxHZW5lcmF0ZWQgYnkgdGhlIFNlY3VyZVdheSBTZWN1cml0eSBTZXJ2ZXIgZm9yIE9TLzM5MCAoUkFDRikwDgYDVR0PAQH/BAQDAgAGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFJ3+ocRyCTJw067dLSwr/nalx6YMMA0GCSqGSIb3DQEBBQUAA4GBAMaQzt+zaj1GU77yzlr8iiMBXgdQrwsZZWJo5exnAucJAEYQZmOfyLiM D6oYq+ZnfvM0n8G/Y79q8nhwvuxpYOnRSAXFp6xSkrIOeZtJMY1h00LKp/JX3Ng1svZ2agE126JHsQ0bhzN5TKsYfbwfTwfjdWAGy6Vf1nYi/rO+ryMO"
 ///   azure_hybrid_benefit         = "NotApplicable"
 ///   cluster_name                 = "testCluster"
@@ -450,7 +456,7 @@ import 'system_data_response.dart';
 ///         Kind = AzureNative.Kubernetes.ConnectedClusterKind.ProvisionedCluster,
 ///         Location = "East US",
 ///         ResourceGroupName = "k8sc-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -510,7 +516,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -518,7 +524,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetes_connectedcluster" "connectedCluster" {
+/// resource "azure-native_kubernetes_connected_cluster" "connectedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aad_profile = {
 ///     admin_group_object_i_ds = ["56f988bf-86f1-41af-91ab-2d7cd011db47"]
 ///     enable_azure_rbac       = true
@@ -529,9 +538,9 @@ import 'system_data_response.dart';
 ///     agent_auto_upgrade    = "Enabled"
 ///     desired_agent_version = "0.1.0"
 ///     system_components = [{
-///       "majorVersion"         = 0
-///       "type"                 = "Strato"
-///       "userSpecifiedVersion" = "0.1.1"
+///       major_version          = 0
+///       type                   = "Strato"
+///       user_specified_version = "0.1.1"
 ///     }]
 ///   }
 ///   azure_hybrid_benefit = "NotApplicable"
@@ -559,6 +568,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.kubernetes.ConnectedClusterArgs;
 /// import com.pulumi.azurenative.kubernetes.inputs.AadProfileArgs;
 /// import com.pulumi.azurenative.kubernetes.inputs.ArcAgentProfileArgs;
+/// import com.pulumi.azurenative.kubernetes.inputs.SystemComponentArgs;
 /// import com.pulumi.azurenative.kubernetes.inputs.ConnectedClusterIdentityArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

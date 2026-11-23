@@ -10,7 +10,7 @@ import 'managed_service_identity_response.dart';
 ///
 /// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
 ///
-/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2022-10-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -31,7 +31,7 @@ import 'managed_service_identity_response.dart';
 ///         ResourceGroupName = "oiautorest6685",
 ///         Sku = new AzureNative.OperationalInsights.Inputs.ClusterSkuArgs
 ///         {
-///             Capacity = 1000,
+///             Capacity = 1000.0,
 ///             Name = AzureNative.OperationalInsights.ClusterSkuNameEnum.CapacityReservation,
 ///         },
 ///         Tags =
@@ -77,7 +77,7 @@ import 'managed_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'managed_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_operationalinsights_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "oiautorest6685"
 ///   location            = "australiasoutheast"
 ///   resource_group_name = "oiautorest6685"

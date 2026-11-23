@@ -64,7 +64,7 @@ import 'workspace_policy_fragment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'workspace_policy_fragment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacepolicyfragment" "workspacePolicyFragment" {
+/// resource "azure-native_apimanagement_workspace_policy_fragment" "workspacePolicyFragment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "A policy fragment example"
 ///   format              = "xml"
 ///   id                  = "policyFragment1"

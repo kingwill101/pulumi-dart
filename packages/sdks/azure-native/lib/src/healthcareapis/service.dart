@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         ResourceName = "service1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -165,7 +165,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -174,6 +174,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_healthcareapis_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -181,9 +184,9 @@ import 'system_data_response.dart';
 ///   location = "westus2"
 ///   properties = {
 ///     access_policies = [{
-///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       object_id = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
 ///       }, {
-///       "objectId" = "5b307da8-43d4-492b-8b66-b0294ade872f"
+///       object_id = "5b307da8-43d4-492b-8b66-b0294ade872f"
 ///     }]
 ///     authentication_configuration = {
 ///       audience            = "https://azurehealthcareapis.com"
@@ -224,6 +227,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.ServiceArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServicesResourceIdentityArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServicesPropertiesArgs;
+/// import com.pulumi.azurenative.healthcareapis.inputs.ServiceAccessPolicyEntryArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceAuthenticationConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCorsConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCosmosDbConfigurationInfoArgs;
@@ -522,7 +526,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         ResourceName = "service1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -603,7 +607,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -612,6 +616,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_healthcareapis_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -619,9 +626,9 @@ import 'system_data_response.dart';
 ///   location = "Southeast Asia"
 ///   properties = {
 ///     access_policies = [{
-///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       object_id = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
 ///       }, {
-///       "objectId" = "5b307da8-43d4-492b-8b66-b0294ade872f"
+///       object_id = "5b307da8-43d4-492b-8b66-b0294ade872f"
 ///     }]
 ///     authentication_configuration = {
 ///       audience            = "https://azurehealthcareapis.com"
@@ -663,6 +670,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.ServiceArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServicesResourceIdentityArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServicesPropertiesArgs;
+/// import com.pulumi.azurenative.healthcareapis.inputs.ServiceAccessPolicyEntryArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceAuthenticationConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCorsConfigurationInfoArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceCosmosDbConfigurationInfoArgs;
@@ -917,7 +925,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         ResourceName = "service2",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -959,7 +967,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -968,11 +976,14 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_healthcareapis_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind     = "fhir-R4"
 ///   location = "westus2"
 ///   properties = {
 ///     access_policies = [{
-///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       object_id = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -991,6 +1002,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.Service;
 /// import com.pulumi.azurenative.healthcareapis.ServiceArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServicesPropertiesArgs;
+/// import com.pulumi.azurenative.healthcareapis.inputs.ServiceAccessPolicyEntryArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

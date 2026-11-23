@@ -62,7 +62,7 @@ import 'job_credential_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'job_credential_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobcredential" "jobCredential" {
+/// resource "azure-native_sql_job_credential" "jobCredential" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credential_name     = "cred1"
 ///   job_agent_name      = "agent1"
 ///   password            = "<password>"

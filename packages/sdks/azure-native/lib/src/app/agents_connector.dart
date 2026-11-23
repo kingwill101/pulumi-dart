@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// 				Endpoint:          pulumi.String("https://newcluster.eastus.kusto.windows.net"),
 /// 				ExtendedProperties: pulumi.Any(map[string]interface{}{
 /// 					"AuthType": "Custom",
-/// 					"CustomHeader": map[string]interface{}{
+/// 					"CustomHeader": map[string]string{
 /// 						"DD_API_KEY":         "value 1",
 /// 						"DD_APPLICATION_KEY": "value 2",
 /// 					},
@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_agentsconnector" "agentsConnector" {
+/// resource "azure-native_app_agents_connector" "agentsConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name     = "testAgent"
 ///   connector_name = "new-kusto-connector"
 ///   properties = {

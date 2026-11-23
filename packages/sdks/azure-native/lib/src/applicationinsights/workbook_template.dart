@@ -118,7 +118,7 @@ import 'workbook_template_localized_gallery_response.dart';
 /// 				"$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
 /// 				"items": []interface{}{
 /// 					map[string]interface{}{
-/// 						"content": map[string]interface{}{
+/// 						"content": map[string]string{
 /// 							"json": "## New workbook\n---\n\nWelcome to your new workbook.  This area will display text formatted as markdown.\n\n\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections.",
 /// 						},
 /// 						"name": "text - 2",
@@ -151,7 +151,7 @@ import 'workbook_template_localized_gallery_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -159,7 +159,10 @@ import 'workbook_template_localized_gallery_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_workbooktemplate" "workbookTemplate" {
+/// resource "azure-native_applicationinsights_workbook_template" "workbookTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   author = "Contoso"
 ///   galleries {
 ///     category      = "Failures"

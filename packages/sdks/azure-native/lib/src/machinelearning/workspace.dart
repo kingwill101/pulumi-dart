@@ -75,7 +75,7 @@ import 'workspace_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,6 +84,9 @@ import 'workspace_args.dart';
 /// }
 ///
 /// resource "azure-native_machinelearning_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "West Europe"
 ///   owner_email         = "abc@microsoft.com"
 ///   resource_group_name = "myResourceGroup"

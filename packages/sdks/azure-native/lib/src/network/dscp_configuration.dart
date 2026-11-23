@@ -214,7 +214,7 @@ import 'qos_port_range_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -222,7 +222,10 @@ import 'qos_port_range_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_dscpconfiguration" "dscpConfiguration" {
+/// resource "azure-native_network_dscp_configuration" "dscpConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dscp_configuration_name = "mydscpconfig"
 ///   location                = "eastus"
 ///   qos_definition_collection {
@@ -283,6 +286,8 @@ import 'qos_port_range_response.dart';
 /// import com.pulumi.azurenative.network.DscpConfiguration;
 /// import com.pulumi.azurenative.network.DscpConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.QosDefinitionArgs;
+/// import com.pulumi.azurenative.network.inputs.QosIpRangeArgs;
+/// import com.pulumi.azurenative.network.inputs.QosPortRangeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

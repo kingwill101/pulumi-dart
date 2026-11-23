@@ -84,7 +84,7 @@ import 'user_settings_with_location_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'user_settings_with_location_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_portal_usersettingswithlocation" "userSettingsWithLocation" {
+/// resource "azure-native_portal_user_settings_with_location" "userSettingsWithLocation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eastus"
 ///   properties = {
 ///     preferred_location   = "eastus"

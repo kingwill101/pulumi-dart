@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_apicollectionbyazureapimanagementservice" "apiCollectionByAzureApiManagementService" {
+/// resource "azure-native_security_a_p_i_collection_by_azure_api_management_service" "apiCollectionByAzureApiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "echo-api"
 ///   resource_group_name = "rg1"
 ///   service_name        = "apimService1"

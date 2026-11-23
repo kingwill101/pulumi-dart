@@ -57,7 +57,7 @@ import 'suspension_details_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'suspension_details_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_readwritedatabase" "readWriteDatabase" {
+/// resource "azure-native_kusto_read_write_database" "readWriteDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "kustoCluster"
 ///   database_name       = "kustoReadOnlyDatabase"
 ///   resource_group_name = "kustorptest"
@@ -195,7 +198,7 @@ import 'suspension_details_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -203,7 +206,10 @@ import 'suspension_details_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_readwritedatabase" "readWriteDatabase" {
+/// resource "azure-native_kusto_read_write_database" "readWriteDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   caller_role         = "Admin"
 ///   cluster_name        = "kustoCluster"
 ///   database_name       = "KustoDatabase8"
@@ -240,7 +246,6 @@ import 'suspension_details_response.dart';
 ///             .callerRole("Admin")
 ///             .clusterName("kustoCluster")
 ///             .databaseName("KustoDatabase8")
-///             .kind("ReadWrite")
 ///             .location("westus")
 ///             .resourceGroupName("kustorptest")
 ///             .softDeletePeriod("P1D")

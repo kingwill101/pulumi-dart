@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_privatelink" "privateLink" {
+/// resource "azure-native_security_private_link" "privateLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   private_link_name   = "pls"
 ///   resource_group_name = "rg"

@@ -74,7 +74,7 @@ import 'channel_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,6 +83,9 @@ import 'channel_args.dart';
 /// }
 ///
 /// resource "azure-native_engagementfabric_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name      = "ExampleAccount"
 ///   channel_functions = ["MockFunction1", "MockFunction2"]
 ///   channel_name      = "ExampleChannel"

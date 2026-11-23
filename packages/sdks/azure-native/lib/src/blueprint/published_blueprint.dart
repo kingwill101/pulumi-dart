@@ -57,7 +57,7 @@ import 'resource_group_definition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'resource_group_definition_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_publishedblueprint" "publishedBlueprint" {
+/// resource "azure-native_blueprint_published_blueprint" "publishedBlueprint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
 ///   version_id     = "v2"
@@ -187,7 +190,7 @@ import 'resource_group_definition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -195,7 +198,10 @@ import 'resource_group_definition_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_publishedblueprint" "publishedBlueprint" {
+/// resource "azure-native_blueprint_published_blueprint" "publishedBlueprint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
 ///   version_id     = "v2"

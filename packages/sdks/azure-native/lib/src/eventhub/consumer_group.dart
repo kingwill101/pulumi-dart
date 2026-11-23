@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_consumergroup" "consumerGroup" {
+/// resource "azure-native_eventhub_consumer_group" "consumerGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_group_name = "sdk-ConsumerGroup-5563"
 ///   event_hub_name      = "sdk-EventHub-6681"
 ///   namespace_name      = "sdk-Namespace-2661"

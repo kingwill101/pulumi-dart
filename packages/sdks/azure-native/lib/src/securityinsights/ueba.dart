@@ -55,7 +55,7 @@ import 'ueba_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,6 +64,9 @@ import 'ueba_args.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_ueba" "ueba" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   settings_name       = "EyesOn"
 ///   workspace_name      = "myWorkspace"

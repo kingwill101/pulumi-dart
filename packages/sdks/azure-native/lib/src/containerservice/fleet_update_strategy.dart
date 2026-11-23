@@ -89,7 +89,7 @@ import 'update_run_strategy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,16 +97,19 @@ import 'update_run_strategy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_fleetupdatestrategy" "fleetUpdateStrategy" {
+/// resource "azure-native_containerservice_fleet_update_strategy" "fleetUpdateStrategy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fleet_name          = "fleet1"
 ///   resource_group_name = "rg1"
 ///   strategy = {
 ///     stages = [{
-///       "afterStageWaitInSeconds" = 3600
-///       "groups" = [{
-///         "name" = "group-a"
+///       after_stage_wait_in_seconds = 3600
+///       groups = [{
+///         name = "group-a"
 ///       }]
-///       "name" = "stage1"
+///       name = "stage1"
 ///     }]
 ///   }
 ///   update_strategy_name = "strartegy1"
@@ -123,6 +126,8 @@ import 'update_run_strategy_response.dart';
 /// import com.pulumi.azurenative.containerservice.FleetUpdateStrategy;
 /// import com.pulumi.azurenative.containerservice.FleetUpdateStrategyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.UpdateRunStrategyArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.UpdateStageArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.UpdateGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -109,22 +109,25 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_hciedgedevice" "hciEdgeDevice" {
+/// resource "azure-native_azurestackhci_hci_edge_device" "hciEdgeDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_device_name = "default"
 ///   kind             = "HCI"
 ///   properties = {
 ///     device_configuration = {
 ///       device_metadata = ""
 ///       nic_details = [{
-///         "adapterName"          = "ethernet"
-///         "componentId"          = "VMBUS{f8615163-df3e-46c5-913f-f2d2f965ed0g} "
-///         "defaultGateway"       = "10.10.10.1"
-///         "defaultIsolationId"   = "0"
-///         "dnsServers"           = ["100.10.10.1"]
-///         "driverVersion"        = "10.0.20348.1547 "
-///         "interfaceDescription" = "NDIS 6.70 "
-///         "ip4Address"           = "10.10.10.10"
-///         "subnetMask"           = "255.255.255.0"
+///         adapter_name          = "ethernet"
+///         component_id          = "VMBUS{f8615163-df3e-46c5-913f-f2d2f965ed0g} "
+///         default_gateway       = "10.10.10.1"
+///         default_isolation_id  = "0"
+///         dns_servers           = ["100.10.10.1"]
+///         driver_version        = "10.0.20348.1547 "
+///         interface_description = "NDIS 6.70 "
+///         ip4_address           = "10.10.10.10"
+///         subnet_mask           = "255.255.255.0"
 ///       }]
 ///     }
 ///   }
@@ -143,6 +146,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.HciEdgeDevicePropertiesArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.DeviceConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NicDetailArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -158,7 +162,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var hciEdgeDevice = new HciEdgeDevice("hciEdgeDevice", HciEdgeDeviceArgs.builder()
 ///             .edgeDeviceName("default")
-///             .kind("HCI")
 ///             .properties(HciEdgeDevicePropertiesArgs.builder()
 ///                 .deviceConfiguration(DeviceConfigurationArgs.builder()
 ///                     .deviceMetadata("")

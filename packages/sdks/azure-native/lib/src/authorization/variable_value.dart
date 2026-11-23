@@ -79,7 +79,7 @@ import 'variable_value_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'variable_value_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_variablevalue" "variableValue" {
+/// resource "azure-native_authorization_variable_value" "variableValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   values {
 ///     column_name  = "StringColumn"
 ///     column_value = "SampleValue"

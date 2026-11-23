@@ -59,7 +59,7 @@ import 'server_advisor_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'server_advisor_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serveradvisor" "serverAdvisor" {
+/// resource "azure-native_sql_server_advisor" "serverAdvisor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   advisor_name        = "CreateIndex"
 ///   auto_execute_status = "Disabled"
 ///   resource_group_name = "workloadinsight-demos"

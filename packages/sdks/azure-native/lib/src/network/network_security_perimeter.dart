@@ -54,7 +54,7 @@ import 'network_security_perimeter_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,7 +62,10 @@ import 'network_security_perimeter_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networksecurityperimeter" "networkSecurityPerimeter" {
+/// resource "azure-native_network_network_security_perimeter" "networkSecurityPerimeter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_security_perimeter_name = "nsp1"
 ///   resource_group_name             = "rg1"
 /// }

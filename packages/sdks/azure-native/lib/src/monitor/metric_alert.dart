@@ -46,8 +46,8 @@ import 'metric_alert_args.dart';
 ///                     Dimensions = new() { },
 ///                     FailingPeriods = new AzureNative.Monitor.Inputs.DynamicThresholdFailingPeriodsArgs
 ///                     {
-///                         MinFailingPeriodsToAlert = 4,
-///                         NumberOfEvaluationPeriods = 4,
+///                         MinFailingPeriodsToAlert = 4.0,
+///                         NumberOfEvaluationPeriods = 4.0,
 ///                     },
 ///                     MetricName = "Percentage CPU",
 ///                     MetricNamespace = "microsoft.compute/virtualmachines",
@@ -70,7 +70,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme2",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         TargetResourceRegion = "southcentralus",
 ///         TargetResourceType = "Microsoft.Compute/virtualMachines",
 ///         WindowSize = "PT15M",
@@ -104,19 +104,19 @@ import 'metric_alert_args.dart';
 /// 			AutoMitigate: pulumi.Bool(true),
 /// 			Criteria: &monitor.MetricAlertMultipleResourceMultipleMetricCriteriaArgs{
 /// 				AllOf: pulumi.Array{
-/// 					monitor.DynamicMetricCriteria{
-/// 						AlertSensitivity: monitor.DynamicThresholdSensitivityMedium,
-/// 						CriterionType:    "DynamicThresholdCriterion",
-/// 						Dimensions:       []monitor.MetricDimension{},
-/// 						FailingPeriods: monitor.DynamicThresholdFailingPeriods{
-/// 							MinFailingPeriodsToAlert:  4,
-/// 							NumberOfEvaluationPeriods: 4,
+/// 					&monitor.DynamicMetricCriteriaArgs{
+/// 						AlertSensitivity: pulumi.String(monitor.DynamicThresholdSensitivityMedium),
+/// 						CriterionType:    pulumi.String("DynamicThresholdCriterion"),
+/// 						Dimensions:       monitor.MetricDimensionArray{},
+/// 						FailingPeriods: &monitor.DynamicThresholdFailingPeriodsArgs{
+/// 							MinFailingPeriodsToAlert:  pulumi.Float64(4),
+/// 							NumberOfEvaluationPeriods: pulumi.Float64(4),
 /// 						},
-/// 						MetricName:      "Percentage CPU",
-/// 						MetricNamespace: "microsoft.compute/virtualmachines",
-/// 						Name:            "High_CPU_80",
-/// 						Operator:        monitor.DynamicThresholdOperatorGreaterOrLessThan,
-/// 						TimeAggregation: monitor.AggregationTypeEnumAverage,
+/// 						MetricName:      pulumi.String("Percentage CPU"),
+/// 						MetricNamespace: pulumi.String("microsoft.compute/virtualmachines"),
+/// 						Name:            pulumi.String("High_CPU_80"),
+/// 						Operator:        pulumi.String(monitor.DynamicThresholdOperatorGreaterOrLessThan),
+/// 						TimeAggregation: pulumi.String(monitor.AggregationTypeEnumAverage),
 /// 					},
 /// 				},
 /// 				OdataType: pulumi.String("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
@@ -147,7 +147,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -155,7 +155,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -165,21 +168,21 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "alertSensitivity" = "Medium"
-///       "criterionType"    = "DynamicThresholdCriterion"
-///       "dimensions"       = []
-///       "failingPeriods" = {
-///         "minFailingPeriodsToAlert"  = 4
-///         "numberOfEvaluationPeriods" = 4
+///     all_of = [{
+///       alert_sensitivity = "Medium"
+///       criterion_type    = "DynamicThresholdCriterion"
+///       dimensions        = []
+///       failing_periods = {
+///         min_failing_periods_to_alert = 4
+///         number_of_evaluation_periods = 4
 ///       }
-///       "metricName"      = "Percentage CPU"
-///       "metricNamespace" = "microsoft.compute/virtualmachines"
-///       "name"            = "High_CPU_80"
-///       "operator"        = "GreaterOrLessThan"
-///       "timeAggregation" = "Average"
+///       metric_name      = "Percentage CPU"
+///       metric_namespace = "microsoft.compute/virtualmachines"
+///       name             = "High_CPU_80"
+///       operator         = "GreaterOrLessThan"
+///       time_aggregation = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
 ///   }
 ///   description            = "This is the description of the rule1"
 ///   enabled                = true
@@ -206,6 +209,12 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicThresholdFailingPeriodsArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -231,7 +240,6 @@ import 'metric_alert_args.dart';
 ///             .criteria(MetricAlertMultipleResourceMultipleMetricCriteriaArgs.builder()
 ///                 .allOf(DynamicMetricCriteriaArgs.builder()
 ///                     .alertSensitivity("Medium")
-///                     .criterionType("DynamicThresholdCriterion")
 ///                     .dimensions()
 ///                     .failingPeriods(DynamicThresholdFailingPeriodsArgs.builder()
 ///                         .minFailingPeriodsToAlert(4.0)
@@ -243,7 +251,6 @@ import 'metric_alert_args.dart';
 ///                     .operator("GreaterOrLessThan")
 ///                     .timeAggregation("Average")
 ///                     .build())
-///                 .odataType("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria")
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)
@@ -443,8 +450,8 @@ import 'metric_alert_args.dart';
 ///                     Dimensions = new() { },
 ///                     FailingPeriods = new AzureNative.Monitor.Inputs.DynamicThresholdFailingPeriodsArgs
 ///                     {
-///                         MinFailingPeriodsToAlert = 4,
-///                         NumberOfEvaluationPeriods = 4,
+///                         MinFailingPeriodsToAlert = 4.0,
+///                         NumberOfEvaluationPeriods = 4.0,
 ///                     },
 ///                     IgnoreDataBefore = "2019-04-04T21:00:00.000Z",
 ///                     MetricName = "Percentage CPU",
@@ -467,7 +474,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         WindowSize = "PT15M",
 ///     });
 ///
@@ -499,20 +506,20 @@ import 'metric_alert_args.dart';
 /// 			AutoMitigate: pulumi.Bool(true),
 /// 			Criteria: &monitor.MetricAlertMultipleResourceMultipleMetricCriteriaArgs{
 /// 				AllOf: pulumi.Array{
-/// 					monitor.DynamicMetricCriteria{
-/// 						AlertSensitivity: monitor.DynamicThresholdSensitivityMedium,
-/// 						CriterionType:    "DynamicThresholdCriterion",
-/// 						Dimensions:       []monitor.MetricDimension{},
-/// 						FailingPeriods: monitor.DynamicThresholdFailingPeriods{
-/// 							MinFailingPeriodsToAlert:  4,
-/// 							NumberOfEvaluationPeriods: 4,
+/// 					&monitor.DynamicMetricCriteriaArgs{
+/// 						AlertSensitivity: pulumi.String(monitor.DynamicThresholdSensitivityMedium),
+/// 						CriterionType:    pulumi.String("DynamicThresholdCriterion"),
+/// 						Dimensions:       monitor.MetricDimensionArray{},
+/// 						FailingPeriods: &monitor.DynamicThresholdFailingPeriodsArgs{
+/// 							MinFailingPeriodsToAlert:  pulumi.Float64(4),
+/// 							NumberOfEvaluationPeriods: pulumi.Float64(4),
 /// 						},
-/// 						IgnoreDataBefore: "2019-04-04T21:00:00.000Z",
-/// 						MetricName:       "Percentage CPU",
-/// 						MetricNamespace:  "microsoft.compute/virtualmachines",
-/// 						Name:             "High_CPU_80",
-/// 						Operator:         monitor.DynamicThresholdOperatorGreaterOrLessThan,
-/// 						TimeAggregation:  monitor.AggregationTypeEnumAverage,
+/// 						IgnoreDataBefore: pulumi.String("2019-04-04T21:00:00.000Z"),
+/// 						MetricName:       pulumi.String("Percentage CPU"),
+/// 						MetricNamespace:  pulumi.String("microsoft.compute/virtualmachines"),
+/// 						Name:             pulumi.String("High_CPU_80"),
+/// 						Operator:         pulumi.String(monitor.DynamicThresholdOperatorGreaterOrLessThan),
+/// 						TimeAggregation:  pulumi.String(monitor.AggregationTypeEnumAverage),
 /// 					},
 /// 				},
 /// 				OdataType: pulumi.String("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
@@ -540,7 +547,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -548,7 +555,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -558,22 +568,22 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "alertSensitivity" = "Medium"
-///       "criterionType"    = "DynamicThresholdCriterion"
-///       "dimensions"       = []
-///       "failingPeriods" = {
-///         "minFailingPeriodsToAlert"  = 4
-///         "numberOfEvaluationPeriods" = 4
+///     all_of = [{
+///       alert_sensitivity = "Medium"
+///       criterion_type    = "DynamicThresholdCriterion"
+///       dimensions        = []
+///       failing_periods = {
+///         min_failing_periods_to_alert = 4
+///         number_of_evaluation_periods = 4
 ///       }
-///       "ignoreDataBefore" = "2019-04-04T21:00:00.000Z"
-///       "metricName"       = "Percentage CPU"
-///       "metricNamespace"  = "microsoft.compute/virtualmachines"
-///       "name"             = "High_CPU_80"
-///       "operator"         = "GreaterOrLessThan"
-///       "timeAggregation"  = "Average"
+///       ignore_data_before = "2019-04-04T21:00:00.000Z"
+///       metric_name        = "Percentage CPU"
+///       metric_namespace   = "microsoft.compute/virtualmachines"
+///       name               = "High_CPU_80"
+///       operator           = "GreaterOrLessThan"
+///       time_aggregation   = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
 ///   }
 ///   description          = "This is the description of the rule1"
 ///   enabled              = true
@@ -598,6 +608,12 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicThresholdFailingPeriodsArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -623,7 +639,6 @@ import 'metric_alert_args.dart';
 ///             .criteria(MetricAlertMultipleResourceMultipleMetricCriteriaArgs.builder()
 ///                 .allOf(DynamicMetricCriteriaArgs.builder()
 ///                     .alertSensitivity("Medium")
-///                     .criterionType("DynamicThresholdCriterion")
 ///                     .dimensions()
 ///                     .failingPeriods(DynamicThresholdFailingPeriodsArgs.builder()
 ///                         .minFailingPeriodsToAlert(4.0)
@@ -636,7 +651,6 @@ import 'metric_alert_args.dart';
 ///                     .operator("GreaterOrLessThan")
 ///                     .timeAggregation("Average")
 ///                     .build())
-///                 .odataType("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria")
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)
@@ -798,11 +812,11 @@ import 'metric_alert_args.dart';
 /// {
 ///     var metricAlert = new AzureNative.Monitor.MetricAlert("metricAlert", new()
 ///     {
-///         Actions = new[] {},
+///         Actions = new() {},
 ///         Criteria = new AzureNative.Monitor.Inputs.WebtestLocationAvailabilityCriteriaArgs
 ///         {
 ///             ComponentId = "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example",
-///             FailedLocationCount = 2,
+///             FailedLocationCount = 2.0,
 ///             OdataType = "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
 ///             WebTestId = "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example",
 ///         },
@@ -876,7 +890,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -884,12 +898,15 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   criteria = {
-///     "componentId"         = "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"
-///     "failedLocationCount" = 2
-///     "odataType"           = "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria"
-///     "webTestId"           = "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"
+///     component_id          = "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"
+///     failed_location_count = 2
+///     odata_type            = "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria"
+///     web_test_id           = "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"
 ///   }
 ///   description          = "Automatically created alert rule for availability test \"component-example\" a"
 ///   enabled              = true
@@ -916,6 +933,9 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -934,7 +954,6 @@ import 'metric_alert_args.dart';
 ///             .criteria(WebtestLocationAvailabilityCriteriaArgs.builder()
 ///                 .componentId("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example")
 ///                 .failedLocationCount(2.0)
-///                 .odataType("Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria")
 ///                 .webTestId("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example")
 ///                 .build())
 ///             .description("Automatically created alert rule for availability test \"component-example\" a")
@@ -1108,7 +1127,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme2",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         TargetResourceRegion = "southcentralus",
 ///         TargetResourceType = "Microsoft.Compute/virtualMachines",
 ///         WindowSize = "PT15M",
@@ -1142,15 +1161,15 @@ import 'metric_alert_args.dart';
 /// 			AutoMitigate: pulumi.Bool(true),
 /// 			Criteria: &monitor.MetricAlertMultipleResourceMultipleMetricCriteriaArgs{
 /// 				AllOf: pulumi.Array{
-/// 					monitor.MetricCriteria{
-/// 						CriterionType:   "StaticThresholdCriterion",
-/// 						Dimensions:      []monitor.MetricDimension{},
-/// 						MetricName:      "Percentage CPU",
-/// 						MetricNamespace: "microsoft.compute/virtualmachines",
-/// 						Name:            "High_CPU_80",
-/// 						Operator:        monitor.OperatorGreaterThan,
-/// 						Threshold:       80.5,
-/// 						TimeAggregation: monitor.AggregationTypeEnumAverage,
+/// 					&monitor.MetricCriteriaArgs{
+/// 						CriterionType:   pulumi.String("StaticThresholdCriterion"),
+/// 						Dimensions:      monitor.MetricDimensionArray{},
+/// 						MetricName:      pulumi.String("Percentage CPU"),
+/// 						MetricNamespace: pulumi.String("microsoft.compute/virtualmachines"),
+/// 						Name:            pulumi.String("High_CPU_80"),
+/// 						Operator:        pulumi.String(monitor.OperatorGreaterThan),
+/// 						Threshold:       pulumi.Float64(80.5),
+/// 						TimeAggregation: pulumi.String(monitor.AggregationTypeEnumAverage),
 /// 					},
 /// 				},
 /// 				OdataType: pulumi.String("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
@@ -1181,7 +1200,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1189,7 +1208,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -1199,17 +1221,17 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "criterionType"   = "StaticThresholdCriterion"
-///       "dimensions"      = []
-///       "metricName"      = "Percentage CPU"
-///       "metricNamespace" = "microsoft.compute/virtualmachines"
-///       "name"            = "High_CPU_80"
-///       "operator"        = "GreaterThan"
-///       "threshold"       = 80.5
-///       "timeAggregation" = "Average"
+///     all_of = [{
+///       criterion_type   = "StaticThresholdCriterion"
+///       dimensions       = []
+///       metric_name      = "Percentage CPU"
+///       metric_namespace = "microsoft.compute/virtualmachines"
+///       name             = "High_CPU_80"
+///       operator         = "GreaterThan"
+///       threshold        = 80.5
+///       time_aggregation = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
 ///   }
 ///   description            = "This is the description of the rule1"
 ///   enabled                = true
@@ -1236,6 +1258,11 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1260,7 +1287,6 @@ import 'metric_alert_args.dart';
 ///             .autoMitigate(true)
 ///             .criteria(MetricAlertMultipleResourceMultipleMetricCriteriaArgs.builder()
 ///                 .allOf(MetricCriteriaArgs.builder()
-///                     .criterionType("StaticThresholdCriterion")
 ///                     .dimensions()
 ///                     .metricName("Percentage CPU")
 ///                     .metricNamespace("microsoft.compute/virtualmachines")
@@ -1269,7 +1295,6 @@ import 'metric_alert_args.dart';
 ///                     .threshold(80.5)
 ///                     .timeAggregation("Average")
 ///                     .build())
-///                 .odataType("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria")
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)
@@ -1449,7 +1474,7 @@ import 'metric_alert_args.dart';
 ///         AutoMitigate = true,
 ///         Criteria = new AzureNative.Monitor.Inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs
 ///         {
-///             AllOf = new[]
+///             AllOf =
 ///             {
 ///                 new AzureNative.Monitor.Inputs.MetricCriteriaArgs
 ///                 {
@@ -1475,7 +1500,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         WindowSize = "PT15M",
 ///     });
 ///
@@ -1542,7 +1567,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1550,7 +1575,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -1560,16 +1588,16 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "criterionType"   = "StaticThresholdCriterion"
-///       "dimensions"      = []
-///       "metricName"      = "\\Processor(_Total)\\% Processor Time"
-///       "name"            = "High_CPU_80"
-///       "operator"        = "GreaterThan"
-///       "threshold"       = 80.5
-///       "timeAggregation" = "Average"
+///     all_of = [{
+///       criterion_type   = "StaticThresholdCriterion"
+///       dimensions       = []
+///       metric_name      = "\\Processor(_Total)\\% Processor Time"
+///       name             = "High_CPU_80"
+///       operator         = "GreaterThan"
+///       threshold        = 80.5
+///       time_aggregation = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
 ///   }
 ///   description          = "This is the description of the rule1"
 ///   enabled              = true
@@ -1594,6 +1622,11 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1617,16 +1650,14 @@ import 'metric_alert_args.dart';
 ///                 .build())
 ///             .autoMitigate(true)
 ///             .criteria(MetricAlertSingleResourceMultipleMetricCriteriaArgs.builder()
-///                 .allOf(Map.ofEntries(
-///                     Map.entry("criterionType", "StaticThresholdCriterion"),
-///                     Map.entry("dimensions", Arrays.asList()),
-///                     Map.entry("metricName", "\\Processor(_Total)\\% Processor Time"),
-///                     Map.entry("name", "High_CPU_80"),
-///                     Map.entry("operator", "GreaterThan"),
-///                     Map.entry("threshold", 80.5),
-///                     Map.entry("timeAggregation", "Average")
-///                 ))
-///                 .odataType("Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria")
+///                 .allOf(MetricCriteriaArgs.builder()
+///                     .dimensions()
+///                     .metricName("\\Processor(_Total)\\% Processor Time")
+///                     .name("High_CPU_80")
+///                     .operator("GreaterThan")
+///                     .threshold(80.5)
+///                     .timeAggregation("Average")
+///                     .build())
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)
@@ -1814,7 +1845,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest2",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         TargetResourceRegion = "southcentralus",
 ///         TargetResourceType = "Microsoft.Compute/virtualMachines",
 ///         WindowSize = "PT15M",
@@ -1848,15 +1879,15 @@ import 'metric_alert_args.dart';
 /// 			AutoMitigate: pulumi.Bool(true),
 /// 			Criteria: &monitor.MetricAlertMultipleResourceMultipleMetricCriteriaArgs{
 /// 				AllOf: pulumi.Array{
-/// 					monitor.MetricCriteria{
-/// 						CriterionType:   "StaticThresholdCriterion",
-/// 						Dimensions:      []monitor.MetricDimension{},
-/// 						MetricName:      "Percentage CPU",
-/// 						MetricNamespace: "microsoft.compute/virtualmachines",
-/// 						Name:            "High_CPU_80",
-/// 						Operator:        monitor.OperatorGreaterThan,
-/// 						Threshold:       80.5,
-/// 						TimeAggregation: monitor.AggregationTypeEnumAverage,
+/// 					&monitor.MetricCriteriaArgs{
+/// 						CriterionType:   pulumi.String("StaticThresholdCriterion"),
+/// 						Dimensions:      monitor.MetricDimensionArray{},
+/// 						MetricName:      pulumi.String("Percentage CPU"),
+/// 						MetricNamespace: pulumi.String("microsoft.compute/virtualmachines"),
+/// 						Name:            pulumi.String("High_CPU_80"),
+/// 						Operator:        pulumi.String(monitor.OperatorGreaterThan),
+/// 						Threshold:       pulumi.Float64(80.5),
+/// 						TimeAggregation: pulumi.String(monitor.AggregationTypeEnumAverage),
 /// 					},
 /// 				},
 /// 				OdataType: pulumi.String("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
@@ -1887,7 +1918,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1895,7 +1926,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -1905,17 +1939,17 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "criterionType"   = "StaticThresholdCriterion"
-///       "dimensions"      = []
-///       "metricName"      = "Percentage CPU"
-///       "metricNamespace" = "microsoft.compute/virtualmachines"
-///       "name"            = "High_CPU_80"
-///       "operator"        = "GreaterThan"
-///       "threshold"       = 80.5
-///       "timeAggregation" = "Average"
+///     all_of = [{
+///       criterion_type   = "StaticThresholdCriterion"
+///       dimensions       = []
+///       metric_name      = "Percentage CPU"
+///       metric_namespace = "microsoft.compute/virtualmachines"
+///       name             = "High_CPU_80"
+///       operator         = "GreaterThan"
+///       threshold        = 80.5
+///       time_aggregation = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
 ///   }
 ///   description            = "This is the description of the rule1"
 ///   enabled                = true
@@ -1942,6 +1976,11 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1966,7 +2005,6 @@ import 'metric_alert_args.dart';
 ///             .autoMitigate(true)
 ///             .criteria(MetricAlertMultipleResourceMultipleMetricCriteriaArgs.builder()
 ///                 .allOf(MetricCriteriaArgs.builder()
-///                     .criterionType("StaticThresholdCriterion")
 ///                     .dimensions()
 ///                     .metricName("Percentage CPU")
 ///                     .metricNamespace("microsoft.compute/virtualmachines")
@@ -1975,7 +2013,6 @@ import 'metric_alert_args.dart';
 ///                     .threshold(80.5)
 ///                     .timeAggregation("Average")
 ///                     .build())
-///                 .odataType("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria")
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)
@@ -2182,7 +2219,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         TargetResourceRegion = "southcentralus",
 ///         TargetResourceType = "Microsoft.Compute/virtualMachines",
 ///         WindowSize = "PT15M",
@@ -2216,15 +2253,15 @@ import 'metric_alert_args.dart';
 /// 			AutoMitigate: pulumi.Bool(true),
 /// 			Criteria: &monitor.MetricAlertMultipleResourceMultipleMetricCriteriaArgs{
 /// 				AllOf: pulumi.Array{
-/// 					monitor.MetricCriteria{
-/// 						CriterionType:   "StaticThresholdCriterion",
-/// 						Dimensions:      []monitor.MetricDimension{},
-/// 						MetricName:      "Percentage CPU",
-/// 						MetricNamespace: "microsoft.compute/virtualmachines",
-/// 						Name:            "High_CPU_80",
-/// 						Operator:        monitor.OperatorGreaterThan,
-/// 						Threshold:       80.5,
-/// 						TimeAggregation: monitor.AggregationTypeEnumAverage,
+/// 					&monitor.MetricCriteriaArgs{
+/// 						CriterionType:   pulumi.String("StaticThresholdCriterion"),
+/// 						Dimensions:      monitor.MetricDimensionArray{},
+/// 						MetricName:      pulumi.String("Percentage CPU"),
+/// 						MetricNamespace: pulumi.String("microsoft.compute/virtualmachines"),
+/// 						Name:            pulumi.String("High_CPU_80"),
+/// 						Operator:        pulumi.String(monitor.OperatorGreaterThan),
+/// 						Threshold:       pulumi.Float64(80.5),
+/// 						TimeAggregation: pulumi.String(monitor.AggregationTypeEnumAverage),
 /// 					},
 /// 				},
 /// 				OdataType: pulumi.String("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
@@ -2254,7 +2291,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2262,7 +2299,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -2272,17 +2312,17 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "criterionType"   = "StaticThresholdCriterion"
-///       "dimensions"      = []
-///       "metricName"      = "Percentage CPU"
-///       "metricNamespace" = "microsoft.compute/virtualmachines"
-///       "name"            = "High_CPU_80"
-///       "operator"        = "GreaterThan"
-///       "threshold"       = 80.5
-///       "timeAggregation" = "Average"
+///     all_of = [{
+///       criterion_type   = "StaticThresholdCriterion"
+///       dimensions       = []
+///       metric_name      = "Percentage CPU"
+///       metric_namespace = "microsoft.compute/virtualmachines"
+///       name             = "High_CPU_80"
+///       operator         = "GreaterThan"
+///       threshold        = 80.5
+///       time_aggregation = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
 ///   }
 ///   description            = "This is the description of the rule1"
 ///   enabled                = true
@@ -2309,6 +2349,11 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2333,7 +2378,6 @@ import 'metric_alert_args.dart';
 ///             .autoMitigate(true)
 ///             .criteria(MetricAlertMultipleResourceMultipleMetricCriteriaArgs.builder()
 ///                 .allOf(MetricCriteriaArgs.builder()
-///                     .criterionType("StaticThresholdCriterion")
 ///                     .dimensions()
 ///                     .metricName("Percentage CPU")
 ///                     .metricNamespace("microsoft.compute/virtualmachines")
@@ -2342,7 +2386,6 @@ import 'metric_alert_args.dart';
 ///                     .threshold(80.5)
 ///                     .timeAggregation("Average")
 ///                     .build())
-///                 .odataType("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria")
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)
@@ -2543,7 +2586,7 @@ import 'metric_alert_args.dart';
 ///                     MetricNamespace = "Microsoft.KeyVault/vaults",
 ///                     Name = "Metric1",
 ///                     Operator = AzureNative.Monitor.Operator.GreaterThan,
-///                     Threshold = 55,
+///                     Threshold = 55.0,
 ///                     TimeAggregation = AzureNative.Monitor.AggregationTypeEnum.Average,
 ///                 },
 ///             },
@@ -2560,7 +2603,7 @@ import 'metric_alert_args.dart';
 ///             "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.KeyVault/vaults/keyVaultResource",
 ///         },
 ///         Severity = 3,
-///         Tags = null,
+///         Tags = new() { },
 ///         WindowSize = "P1D",
 ///     });
 ///
@@ -2592,30 +2635,30 @@ import 'metric_alert_args.dart';
 /// 			AutoMitigate: pulumi.Bool(true),
 /// 			Criteria: &monitor.MetricAlertMultipleResourceMultipleMetricCriteriaArgs{
 /// 				AllOf: pulumi.Array{
-/// 					monitor.MetricCriteria{
-/// 						CriterionType: "StaticThresholdCriterion",
-/// 						Dimensions: []monitor.MetricDimension{
-/// 							{
-/// 								Name:     "ActivityName",
-/// 								Operator: "Include",
-/// 								Values: []string{
-/// 									"*",
+/// 					&monitor.MetricCriteriaArgs{
+/// 						CriterionType: pulumi.String("StaticThresholdCriterion"),
+/// 						Dimensions: monitor.MetricDimensionArray{
+/// 							&monitor.MetricDimensionArgs{
+/// 								Name:     pulumi.String("ActivityName"),
+/// 								Operator: pulumi.String("Include"),
+/// 								Values: pulumi.StringArray{
+/// 									pulumi.String("*"),
 /// 								},
 /// 							},
-/// 							{
-/// 								Name:     "StatusCode",
-/// 								Operator: "Include",
-/// 								Values: []string{
-/// 									"200",
+/// 							&monitor.MetricDimensionArgs{
+/// 								Name:     pulumi.String("StatusCode"),
+/// 								Operator: pulumi.String("Include"),
+/// 								Values: pulumi.StringArray{
+/// 									pulumi.String("200"),
 /// 								},
 /// 							},
 /// 						},
-/// 						MetricName:      "Availability",
-/// 						MetricNamespace: "Microsoft.KeyVault/vaults",
-/// 						Name:            "Metric1",
-/// 						Operator:        monitor.OperatorGreaterThan,
-/// 						Threshold:       55,
-/// 						TimeAggregation: monitor.AggregationTypeEnumAverage,
+/// 						MetricName:      pulumi.String("Availability"),
+/// 						MetricNamespace: pulumi.String("Microsoft.KeyVault/vaults"),
+/// 						Name:            pulumi.String("Metric1"),
+/// 						Operator:        pulumi.String(monitor.OperatorGreaterThan),
+/// 						Threshold:       pulumi.Float64(55),
+/// 						TimeAggregation: pulumi.String(monitor.AggregationTypeEnumAverage),
 /// 					},
 /// 				},
 /// 				OdataType: pulumi.String("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
@@ -2643,7 +2686,7 @@ import 'metric_alert_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2651,7 +2694,10 @@ import 'metric_alert_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_metricalert" "metricAlert" {
+/// resource "azure-native_monitor_metric_alert" "metricAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     action_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"
 ///     web_hook_properties = {
@@ -2661,25 +2707,25 @@ import 'metric_alert_args.dart';
 ///   }
 ///   auto_mitigate = true
 ///   criteria = {
-///     "allOf" = [{
-///       "criterionType" = "StaticThresholdCriterion"
-///       "dimensions" = [{
-///         "name"     = "ActivityName"
-///         "operator" = "Include"
-///         "values"   = ["*"]
+///     all_of = [{
+///       criterion_type = "StaticThresholdCriterion"
+///       dimensions = [{
+///         name     = "ActivityName"
+///         operator = "Include"
+///         values   = ["*"]
 ///         }, {
-///         "name"     = "StatusCode"
-///         "operator" = "Include"
-///         "values"   = ["200"]
+///         name     = "StatusCode"
+///         operator = "Include"
+///         values   = ["200"]
 ///       }]
-///       "metricName"      = "Availability"
-///       "metricNamespace" = "Microsoft.KeyVault/vaults"
-///       "name"            = "Metric1"
-///       "operator"        = "GreaterThan"
-///       "threshold"       = 55
-///       "timeAggregation" = "Average"
+///       metric_name      = "Availability"
+///       metric_namespace = "Microsoft.KeyVault/vaults"
+///       name             = "Metric1"
+///       operator         = "GreaterThan"
+///       threshold        = 55
+///       time_aggregation = "Average"
 ///     }]
-///     "odataType" = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+///     odata_type = "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
 ///   }
 ///   description          = "This is the description of the rule1"
 ///   enabled              = true
@@ -2704,6 +2750,12 @@ import 'metric_alert_args.dart';
 /// import com.pulumi.azurenative.monitor.MetricAlert;
 /// import com.pulumi.azurenative.monitor.MetricAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.MetricAlertActionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DynamicMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricDimensionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebtestLocationAvailabilityCriteriaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2728,7 +2780,6 @@ import 'metric_alert_args.dart';
 ///             .autoMitigate(true)
 ///             .criteria(MetricAlertMultipleResourceMultipleMetricCriteriaArgs.builder()
 ///                 .allOf(MetricCriteriaArgs.builder()
-///                     .criterionType("StaticThresholdCriterion")
 ///                     .dimensions(
 ///                         MetricDimensionArgs.builder()
 ///                             .name("ActivityName")
@@ -2747,7 +2798,6 @@ import 'metric_alert_args.dart';
 ///                     .threshold(55.0)
 ///                     .timeAggregation("Average")
 ///                     .build())
-///                 .odataType("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria")
 ///                 .build())
 ///             .description("This is the description of the rule1")
 ///             .enabled(true)

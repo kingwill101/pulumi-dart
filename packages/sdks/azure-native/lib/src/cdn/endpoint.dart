@@ -42,7 +42,7 @@ import 'url_signing_key_response.dart';
 ///         DeliveryPolicy = new AzureNative.Cdn.Inputs.EndpointPropertiesUpdateParametersDeliveryPolicyArgs
 ///         {
 ///             Description = "Test description for a policy.",
-///             Rules = new[]
+///             Rules =
 ///             {
 ///                 new AzureNative.Cdn.Inputs.DeliveryRuleArgs
 ///                 {
@@ -204,45 +204,45 @@ import 'url_signing_key_response.dart';
 /// 				Rules: cdn.DeliveryRuleArray{
 /// 					&cdn.DeliveryRuleArgs{
 /// 						Actions: pulumi.Array{
-/// 							cdn.DeliveryRuleCacheExpirationAction{
-/// 								Name: "CacheExpiration",
-/// 								Parameters: cdn.CacheExpirationActionParameters{
-/// 									CacheBehavior: cdn.CacheBehaviorOverride,
-/// 									CacheDuration: "10:10:09",
-/// 									CacheType:     cdn.CacheTypeAll,
-/// 									TypeName:      "DeliveryRuleCacheExpirationActionParameters",
+/// 							&cdn.DeliveryRuleCacheExpirationActionArgs{
+/// 								Name: pulumi.String("CacheExpiration"),
+/// 								Parameters: &cdn.CacheExpirationActionParametersArgs{
+/// 									CacheBehavior: pulumi.String(cdn.CacheBehaviorOverride),
+/// 									CacheDuration: pulumi.String("10:10:09"),
+/// 									CacheType:     pulumi.String(cdn.CacheTypeAll),
+/// 									TypeName:      pulumi.String("DeliveryRuleCacheExpirationActionParameters"),
 /// 								},
 /// 							},
-/// 							cdn.DeliveryRuleResponseHeaderAction{
-/// 								Name: "ModifyResponseHeader",
-/// 								Parameters: cdn.HeaderActionParameters{
-/// 									HeaderAction: cdn.HeaderActionOverwrite,
-/// 									HeaderName:   "Access-Control-Allow-Origin",
-/// 									TypeName:     "DeliveryRuleHeaderActionParameters",
-/// 									Value:        "*",
+/// 							&cdn.DeliveryRuleResponseHeaderActionArgs{
+/// 								Name: pulumi.String("ModifyResponseHeader"),
+/// 								Parameters: &cdn.HeaderActionParametersArgs{
+/// 									HeaderAction: pulumi.String(cdn.HeaderActionOverwrite),
+/// 									HeaderName:   pulumi.String("Access-Control-Allow-Origin"),
+/// 									TypeName:     pulumi.String("DeliveryRuleHeaderActionParameters"),
+/// 									Value:        pulumi.String("*"),
 /// 								},
 /// 							},
-/// 							cdn.DeliveryRuleRequestHeaderAction{
-/// 								Name: "ModifyRequestHeader",
-/// 								Parameters: cdn.HeaderActionParameters{
-/// 									HeaderAction: cdn.HeaderActionOverwrite,
-/// 									HeaderName:   "Accept-Encoding",
-/// 									TypeName:     "DeliveryRuleHeaderActionParameters",
-/// 									Value:        "gzip",
+/// 							&cdn.DeliveryRuleRequestHeaderActionArgs{
+/// 								Name: pulumi.String("ModifyRequestHeader"),
+/// 								Parameters: &cdn.HeaderActionParametersArgs{
+/// 									HeaderAction: pulumi.String(cdn.HeaderActionOverwrite),
+/// 									HeaderName:   pulumi.String("Accept-Encoding"),
+/// 									TypeName:     pulumi.String("DeliveryRuleHeaderActionParameters"),
+/// 									Value:        pulumi.String("gzip"),
 /// 								},
 /// 							},
 /// 						},
 /// 						Conditions: pulumi.Array{
-/// 							cdn.DeliveryRuleRemoteAddressCondition{
-/// 								Name: "RemoteAddress",
-/// 								Parameters: cdn.RemoteAddressMatchConditionParameters{
-/// 									MatchValues: []string{
-/// 										"192.168.1.0/24",
-/// 										"10.0.0.0/24",
+/// 							&cdn.DeliveryRuleRemoteAddressConditionArgs{
+/// 								Name: pulumi.String("RemoteAddress"),
+/// 								Parameters: &cdn.RemoteAddressMatchConditionParametersArgs{
+/// 									MatchValues: pulumi.StringArray{
+/// 										pulumi.String("192.168.1.0/24"),
+/// 										pulumi.String("10.0.0.0/24"),
 /// 									},
-/// 									NegateCondition: true,
-/// 									Operator:        cdn.RemoteAddressOperatorIPMatch,
-/// 									TypeName:        "DeliveryRuleRemoteAddressConditionParameters",
+/// 									NegateCondition: pulumi.Bool(true),
+/// 									Operator:        pulumi.String(cdn.RemoteAddressOperatorIPMatch),
+/// 									TypeName:        pulumi.String("DeliveryRuleRemoteAddressConditionParameters"),
 /// 								},
 /// 							},
 /// 						},
@@ -320,7 +320,7 @@ import 'url_signing_key_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -329,6 +329,9 @@ import 'url_signing_key_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_types_to_compress = ["text/html", "application/octet-stream"]
 ///   default_origin_group = {
 ///     id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/originGroups/originGroup1"
@@ -336,42 +339,42 @@ import 'url_signing_key_response.dart';
 ///   delivery_policy = {
 ///     description = "Test description for a policy."
 ///     rules = [{
-///       "actions" = [{
-///         "name" = "CacheExpiration"
-///         "parameters" = {
-///           "cacheBehavior" = "Override"
-///           "cacheDuration" = "10:10:09"
-///           "cacheType"     = "All"
-///           "typeName"      = "DeliveryRuleCacheExpirationActionParameters"
+///       actions = [{
+///         name = "CacheExpiration"
+///         parameters = {
+///           cache_behavior = "Override"
+///           cache_duration = "10:10:09"
+///           cache_type     = "All"
+///           type_name      = "DeliveryRuleCacheExpirationActionParameters"
 ///         }
 ///         }, {
-///         "name" = "ModifyResponseHeader"
-///         "parameters" = {
-///           "headerAction" = "Overwrite"
-///           "headerName"   = "Access-Control-Allow-Origin"
-///           "typeName"     = "DeliveryRuleHeaderActionParameters"
-///           "value"        = "*"
+///         name = "ModifyResponseHeader"
+///         parameters = {
+///           header_action = "Overwrite"
+///           header_name   = "Access-Control-Allow-Origin"
+///           type_name     = "DeliveryRuleHeaderActionParameters"
+///           value         = "*"
 ///         }
 ///         }, {
-///         "name" = "ModifyRequestHeader"
-///         "parameters" = {
-///           "headerAction" = "Overwrite"
-///           "headerName"   = "Accept-Encoding"
-///           "typeName"     = "DeliveryRuleHeaderActionParameters"
-///           "value"        = "gzip"
+///         name = "ModifyRequestHeader"
+///         parameters = {
+///           header_action = "Overwrite"
+///           header_name   = "Accept-Encoding"
+///           type_name     = "DeliveryRuleHeaderActionParameters"
+///           value         = "gzip"
 ///         }
 ///       }]
-///       "conditions" = [{
-///         "name" = "RemoteAddress"
-///         "parameters" = {
-///           "matchValues"     = ["192.168.1.0/24", "10.0.0.0/24"]
-///           "negateCondition" = true
-///           "operator"        = "IPMatch"
-///           "typeName"        = "DeliveryRuleRemoteAddressConditionParameters"
+///       conditions = [{
+///         name = "RemoteAddress"
+///         parameters = {
+///           match_values     = ["192.168.1.0/24", "10.0.0.0/24"]
+///           negate_condition = true
+///           operator         = "IPMatch"
+///           type_name        = "DeliveryRuleRemoteAddressConditionParameters"
 ///         }
 ///       }]
-///       "name"  = "rule1"
-///       "order" = 1
+///       name  = "rule1"
+///       order = 1
 ///     }]
 ///   }
 ///   endpoint_name          = "endpoint1"
@@ -440,6 +443,62 @@ import 'url_signing_key_response.dart';
 /// import com.pulumi.azurenative.cdn.EndpointArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
 /// import com.pulumi.azurenative.cdn.inputs.EndpointPropertiesUpdateParametersDeliveryPolicyArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleCacheExpirationActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CacheExpirationActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleCacheKeyQueryStringActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CacheKeyQueryStringActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestHeaderActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.HeaderActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleResponseHeaderActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRouteConfigurationOverrideActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RouteConfigurationOverrideActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.OriginGroupOverrideActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.OriginGroupOverrideActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRedirectActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRedirectActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRewriteActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlRewriteActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlSigningActionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlSigningActionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleClientPortConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ClientPortMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleCookiesConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CookiesMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleHostNameConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.HostNameMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleHttpVersionConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.HttpVersionMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleIsDeviceConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.IsDeviceMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRulePostArgsConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.PostArgsMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleQueryStringConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.QueryStringMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRemoteAddressConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RemoteAddressMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestBodyConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestBodyMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestHeaderConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestHeaderMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestMethodConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestMethodMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestSchemeConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestSchemeMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleRequestUriConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.RequestUriMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleServerPortConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ServerPortMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleSocketAddrConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.SocketAddrMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleSslProtocolConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.SslProtocolMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleUrlFileExtensionConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlFileExtensionMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleUrlFileNameConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlFileNameMatchConditionParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.DeliveryRuleUrlPathConditionArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlPathMatchConditionParametersArgs;
 /// import com.pulumi.azurenative.cdn.inputs.DeepCreatedOriginGroupArgs;
 /// import com.pulumi.azurenative.cdn.inputs.HealthProbeParametersArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResponseBasedOriginErrorDetectionParametersArgs;
@@ -469,41 +528,33 @@ import 'url_signing_key_response.dart';
 ///                 .rules(DeliveryRuleArgs.builder()
 ///                     .actions(
 ///                         DeliveryRuleCacheExpirationActionArgs.builder()
-///                             .name("CacheExpiration")
 ///                             .parameters(CacheExpirationActionParametersArgs.builder()
 ///                                 .cacheBehavior("Override")
 ///                                 .cacheDuration("10:10:09")
 ///                                 .cacheType("All")
-///                                 .typeName("DeliveryRuleCacheExpirationActionParameters")
 ///                                 .build())
 ///                             .build(),
 ///                         DeliveryRuleResponseHeaderActionArgs.builder()
-///                             .name("ModifyResponseHeader")
 ///                             .parameters(HeaderActionParametersArgs.builder()
 ///                                 .headerAction("Overwrite")
 ///                                 .headerName("Access-Control-Allow-Origin")
-///                                 .typeName("DeliveryRuleHeaderActionParameters")
 ///                                 .value("*")
 ///                                 .build())
 ///                             .build(),
 ///                         DeliveryRuleRequestHeaderActionArgs.builder()
-///                             .name("ModifyRequestHeader")
 ///                             .parameters(HeaderActionParametersArgs.builder()
 ///                                 .headerAction("Overwrite")
 ///                                 .headerName("Accept-Encoding")
-///                                 .typeName("DeliveryRuleHeaderActionParameters")
 ///                                 .value("gzip")
 ///                                 .build())
 ///                             .build())
 ///                     .conditions(DeliveryRuleRemoteAddressConditionArgs.builder()
-///                         .name("RemoteAddress")
 ///                         .parameters(RemoteAddressMatchConditionParametersArgs.builder()
 ///                             .matchValues(
 ///                                 "192.168.1.0/24",
 ///                                 "10.0.0.0/24")
 ///                             .negateCondition(true)
 ///                             .operator("IPMatch")
-///                             .typeName("DeliveryRuleRemoteAddressConditionParameters")
 ///                             .build())
 ///                         .build())
 ///                     .name("rule1")

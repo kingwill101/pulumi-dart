@@ -61,7 +61,7 @@ import 'workspace_manager_member_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'workspace_manager_member_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_workspacemanagermember" "workspaceManagerMember" {
+/// resource "azure-native_securityinsights_workspace_manager_member" "workspaceManagerMember" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name           = "myRg"
 ///   target_workspace_resource_id  = "/subscriptions/7aef9d48-814f-45ad-b644-b0343316e174/resourceGroups/otherRg/providers/Microsoft.OperationalInsights/workspaces/Example_Workspace"
 ///   target_workspace_tenant_id    = "f676d436-8d16-42db-81b7-ab578e110ccd"

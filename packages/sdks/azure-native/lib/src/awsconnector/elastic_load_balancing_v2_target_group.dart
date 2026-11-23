@@ -188,7 +188,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -196,7 +196,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_elasticloadbalancingv2targetgroup" "elasticLoadBalancingV2TargetGroup" {
+/// resource "azure-native_awsconnector_elastic_load_balancing_v2_target_group" "elasticLoadBalancingV2TargetGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "uyngtpdaililbq"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -221,21 +224,21 @@ import 'system_data_response.dart';
 ///       protocol         = "cltdmqhlrmrhgdamynxpmnbshrth"
 ///       protocol_version = "rpqn"
 ///       tags = [{
-///         "key"   = "fkysin"
-///         "value" = "ivjhgawgxhfvwiyaeruurbpkyx"
+///         key   = "fkysin"
+///         value = "ivjhgawgxhfvwiyaeruurbpkyx"
 ///       }]
 ///       target_group_arn = "nlyfkpaomu"
 ///       target_group_attributes = [{
-///         "key"   = "edcafpxbnifvdfchilay"
-///         "value" = "fiffi"
+///         key   = "edcafpxbnifvdfchilay"
+///         value = "fiffi"
 ///       }]
 ///       target_group_full_name = "xhghbskmnfhkswoncku"
 ///       target_group_name      = "b"
 ///       target_type            = "eekpandbuoghdxtg"
 ///       targets = [{
-///         "availabilityZone" = "degmktltnufhywqic"
-///         "id"               = "dpaky"
-///         "port"             = 13
+///         availability_zone = "degmktltnufhywqic"
+///         id                = "dpaky"
+///         port              = 13
 ///       }]
 ///       unhealthy_threshold_count = 14
 ///       vpc_id                    = "leubklsppgcmljbowvzpwvwya"
@@ -267,6 +270,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ElasticLoadBalancingV2TargetGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsElasticLoadBalancingV2TargetGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MatcherArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TargetGroupAttributeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TargetDescriptionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

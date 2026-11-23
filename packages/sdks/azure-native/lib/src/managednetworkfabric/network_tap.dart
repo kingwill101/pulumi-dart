@@ -103,7 +103,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networktap" "networkTap" {
+/// resource "azure-native_managednetworkfabric_network_tap" "networkTap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation = "annotation"
 ///   destinations {
 ///     destination_id          = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/l3IsloationDomains/example-l3Domain/internalNetworks/example-internalNetwork"

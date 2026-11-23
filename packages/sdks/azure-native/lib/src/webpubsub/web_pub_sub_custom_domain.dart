@@ -67,7 +67,7 @@ import 'web_pub_sub_custom_domain_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'web_pub_sub_custom_domain_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_webpubsub_webpubsubcustomdomain" "webPubSubCustomDomain" {
+/// resource "azure-native_webpubsub_web_pub_sub_custom_domain" "webPubSubCustomDomain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_certificate = {
 ///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.SignalRService/WebPubSub/myWebPubSubService/customCertificates/myCert"
 ///   }

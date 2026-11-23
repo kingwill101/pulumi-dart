@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_healthcareapis_analyticsconnector" "analyticsConnector" {
+/// resource "azure-native_healthcareapis_analytics_connector" "analyticsConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_connector_name = "exampleconnector"
 ///   data_destination_configuration = {
 ///     data_lake_name = "exampledatalake"
@@ -151,16 +154,13 @@ import 'system_data_response.dart';
 ///             .analyticsConnectorName("exampleconnector")
 ///             .dataDestinationConfiguration(AnalyticsConnectorDataLakeDataDestinationArgs.builder()
 ///                 .dataLakeName("exampledatalake")
-///                 .type("datalake")
 ///                 .build())
 ///             .dataMappingConfiguration(AnalyticsConnectorFhirToParquetMappingArgs.builder()
 ///                 .extensionSchemaReference("acrexample.azurecr.io/blah@sha256aaa/Extension")
 ///                 .filterConfigurationReference("acrexample.azurecr.io/blah@sha256xxx")
-///                 .type("fhirToParquet")
 ///                 .build())
 ///             .dataSourceConfiguration(AnalyticsConnectorFhirServiceDataSourceArgs.builder()
 ///                 .kind("R4")
-///                 .type("fhirservice")
 ///                 .url("https://workspace-examplefhir.fhir.azurehealthcareapis.com")
 ///                 .build())
 ///             .location("westus")

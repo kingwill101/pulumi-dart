@@ -65,7 +65,7 @@ import 'connector_collection_info_connector_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,6 +74,9 @@ import 'connector_collection_info_connector_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connector_name      = "AWSBillingAccount"
 ///   credentials_key     = "arn:aws:iam::123456789012:role/AzureCostManagementRole"
 ///   credentials_secret  = "external-id"

@@ -75,7 +75,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_ipgroup" "ipGroup" {
+/// resource "azure-native_network_ip_group" "ipGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_addresses        = ["13.64.39.16/32", "40.74.146.80/31", "40.74.147.32/28"]
 ///   ip_groups_name      = "ipGroups1"
 ///   location            = "West US"

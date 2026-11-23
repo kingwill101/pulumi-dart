@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_firewallrule" "firewallRule" {
+/// resource "azure-native_dbformysql_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_ip_address      = "255.255.255.255"
 ///   firewall_rule_name  = "rule1"
 ///   resource_group_name = "TestGroup"

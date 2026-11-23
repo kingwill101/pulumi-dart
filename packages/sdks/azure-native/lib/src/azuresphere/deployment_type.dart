@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,6 +69,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_azuresphere_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   catalog_name        = "MyCatalog1"
 ///   deployment_name     = "MyDeployment1"
 ///   device_group_name   = "myDeviceGroup1"

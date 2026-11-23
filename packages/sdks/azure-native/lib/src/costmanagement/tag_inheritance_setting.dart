@@ -62,7 +62,7 @@ import 'tag_inheritance_setting_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'tag_inheritance_setting_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_taginheritancesetting" "tagInheritanceSetting" {
+/// resource "azure-native_costmanagement_tag_inheritance_setting" "tagInheritanceSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind = "taginheritance"
 ///   properties = {
 ///     prefer_container_tags = false
@@ -104,7 +107,6 @@ import 'tag_inheritance_setting_args.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var tagInheritanceSetting = new TagInheritanceSetting("tagInheritanceSetting", TagInheritanceSettingArgs.builder()
-///             .kind("taginheritance")
 ///             .properties(TagInheritancePropertiesArgs.builder()
 ///                 .preferContainerTags(false)
 ///                 .build())

@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+/// resource "azure-native_datashare_synapse_workspace_sql_pool_table_data_set_mapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -194,7 +197,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -202,7 +205,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+/// resource "azure-native_datashare_synapse_workspace_sql_pool_table_data_set_mapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -331,7 +337,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -339,7 +345,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+/// resource "azure-native_datashare_synapse_workspace_sql_pool_table_data_set_mapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -468,7 +477,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -476,7 +485,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+/// resource "azure-native_datashare_synapse_workspace_sql_pool_table_data_set_mapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -611,7 +623,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -619,7 +631,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_synapseworkspacesqlpooltabledatasetmapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+/// resource "azure-native_datashare_synapse_workspace_sql_pool_table_data_set_mapping" "synapseWorkspaceSqlPoolTableDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                                 = "consumerAccount"
 ///   data_set_id                                  = "3dc64e49-1fc3-4186-b3dc-d388c4d3076a"
 ///   data_set_mapping_name                        = "datasetMappingName1"
@@ -656,7 +671,6 @@ import 'system_data_response.dart';
 ///             .accountName("consumerAccount")
 ///             .dataSetId("3dc64e49-1fc3-4186-b3dc-d388c4d3076a")
 ///             .dataSetMappingName("datasetMappingName1")
-///             .kind("SynapseWorkspaceSqlPoolTable")
 ///             .resourceGroupName("SampleResourceGroup")
 ///             .shareSubscriptionName("ShareSubscription1")
 ///             .synapseWorkspaceSqlPoolTableResourceId("/subscriptions/0f3dcfc3-18f8-4099-b381-8353e19d43a7/resourceGroups/SampleResourceGroup/providers/Microsoft.Synapse/workspaces/ExampleWorkspace/sqlPools/ExampleSqlPool/schemas/dbo/tables/table1")

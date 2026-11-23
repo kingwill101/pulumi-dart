@@ -199,7 +199,7 @@ import 'integration_account_agreement_args.dart';
 ///         HostPartner = "HostPartner",
 ///         IntegrationAccountName = "testIntegrationAccount",
 ///         Location = "westus",
-///         Metadata = null,
+///         Metadata = new() { },
 ///         ResourceGroupName = "testResourceGroup",
 ///         Tags =
 ///         {
@@ -389,7 +389,7 @@ import 'integration_account_agreement_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -397,7 +397,10 @@ import 'integration_account_agreement_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccountagreement" "integrationAccountAgreement" {
+/// resource "azure-native_logic_integration_account_agreement" "integrationAccountAgreement" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agreement_name = "testAgreement"
 ///   agreement_type = "AS2"
 ///   content = {

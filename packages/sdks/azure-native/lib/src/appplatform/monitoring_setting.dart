@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         Properties = new AzureNative.AppPlatform.Inputs.MonitoringSettingPropertiesArgs
 ///         {
 ///             AppInsightsInstrumentationKey = "00000000-0000-0000-0000-000000000000",
-///             AppInsightsSamplingRate = 10,
+///             AppInsightsSamplingRate = 10.0,
 ///             TraceEnabled = true,
 ///         },
 ///         ResourceGroupName = "myResourceGroup",
@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_monitoringsetting" "monitoringSetting" {
+/// resource "azure-native_appplatform_monitoring_setting" "monitoringSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     app_insights_instrumentation_key = "00000000-0000-0000-0000-000000000000"
 ///     app_insights_sampling_rate       = 10

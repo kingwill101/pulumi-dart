@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_managedenvironmentsstorage" "managedEnvironmentsStorage" {
+/// resource "azure-native_app_managed_environments_storage" "managedEnvironmentsStorage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "managedEnv"
 ///   properties = {
 ///     azure_file = {
@@ -262,7 +265,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -270,7 +273,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_managedenvironmentsstorage" "managedEnvironmentsStorage" {
+/// resource "azure-native_app_managed_environments_storage" "managedEnvironmentsStorage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "managedEnv"
 ///   properties = {
 ///     nfs_azure_file = {

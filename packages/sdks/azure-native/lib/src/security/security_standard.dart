@@ -33,7 +33,7 @@ import 'system_data_response.dart';
 ///                 AssessmentKey = "dbd0cb49-b563-45e7-9724-889e799fa648",
 ///             },
 ///         },
-///         CloudProviders = new[]
+///         CloudProviders =
 ///         {
 ///             AzureNative.Security.StandardSupportedCloud.GCP,
 ///         },
@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_securitystandard" "securityStandard" {
+/// resource "azure-native_security_security_standard" "securityStandard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessments {
 ///     assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
 ///   }
@@ -242,7 +245,7 @@ import 'system_data_response.dart';
 ///                 AssessmentKey = "dbd0cb49-b563-45e7-9724-889e799fa648",
 ///             },
 ///         },
-///         CloudProviders = new[]
+///         CloudProviders =
 ///         {
 ///             AzureNative.Security.StandardSupportedCloud.GCP,
 ///         },
@@ -294,7 +297,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -302,7 +305,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_securitystandard" "securityStandard" {
+/// resource "azure-native_security_security_standard" "securityStandard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessments {
 ///     assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
 ///   }
@@ -444,7 +450,7 @@ import 'system_data_response.dart';
 ///                 AssessmentKey = "dbd0cb49-b563-45e7-9724-889e799fa648",
 ///             },
 ///         },
-///         CloudProviders = new[]
+///         CloudProviders =
 ///         {
 ///             AzureNative.Security.StandardSupportedCloud.GCP,
 ///         },
@@ -498,7 +504,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -506,7 +512,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_securitystandard" "securityStandard" {
+/// resource "azure-native_security_security_standard" "securityStandard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessments {
 ///     assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
 ///   }

@@ -58,7 +58,7 @@ import 'sync_agent_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'sync_agent_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_syncagent" "syncAgent" {
+/// resource "azure-native_sql_sync_agent" "syncAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "syncagentcrud-65440"
 ///   server_name         = "syncagentcrud-8475"
 ///   sync_agent_name     = "syncagentcrud-3187"
@@ -195,7 +198,7 @@ import 'sync_agent_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -203,7 +206,10 @@ import 'sync_agent_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_syncagent" "syncAgent" {
+/// resource "azure-native_sql_sync_agent" "syncAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "syncagentcrud-65440"
 ///   server_name         = "syncagentcrud-8475"
 ///   sync_agent_name     = "syncagentcrud-3187"

@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_assetendpointprofile" "assetEndpointProfile" {
+/// resource "azure-native_deviceregistry_asset_endpoint_profile" "assetEndpointProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_name = "my-assetendpointprofile"
 ///   authentication = {
 ///     method = "Anonymous"
@@ -303,7 +306,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -311,7 +314,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_assetendpointprofile" "assetEndpointProfile" {
+/// resource "azure-native_deviceregistry_asset_endpoint_profile" "assetEndpointProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_name = "my-assetendpointprofile"
 ///   authentication = {
 ///     method = "Anonymous"

@@ -62,7 +62,7 @@ import 'resource_guard_proxy_base_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'resource_guard_proxy_base_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_resourceguardproxy" "resourceGuardProxy" {
+/// resource "azure-native_recoveryservices_resource_guard_proxy" "resourceGuardProxy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     resource_guard_resource_id = "/subscriptions/c999d45b-944f-418c-a0d8-c3fcfd1802c8/resourceGroups/vaultguardRGNew/providers/Microsoft.DataProtection/resourceGuards/VaultGuardTestNew"
 ///   }

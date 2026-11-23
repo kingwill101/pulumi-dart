@@ -203,7 +203,7 @@ import 'tag_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -211,7 +211,10 @@ import 'tag_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_localrule" "localRule" {
+/// resource "azure-native_cloudngfw_local_rule" "localRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_type   = "Allow"
 ///   applications  = ["app1"]
 ///   audit_comment = "example comment"
@@ -518,7 +521,7 @@ import 'tag_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -526,7 +529,10 @@ import 'tag_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_localrule" "localRule" {
+/// resource "azure-native_cloudngfw_local_rule" "localRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   local_rulestack_name = "lrs1"
 ///   priority             = "1"
 ///   resource_group_name  = "firewall-rg"

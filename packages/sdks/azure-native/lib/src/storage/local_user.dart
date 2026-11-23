@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,7 +116,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_localuser" "localUser" {
+/// resource "azure-native_storage_local_user" "localUser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "sto2527"
 ///   allow_acl_authorization = true
 ///   group_id                = 2000
@@ -344,7 +347,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -352,7 +355,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_localuser" "localUser" {
+/// resource "azure-native_storage_local_user" "localUser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto2527"
 ///   extended_groups     = [1001, 1005, 2005]
 ///   is_nf_sv3_enabled   = true
@@ -523,7 +529,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -531,7 +537,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_localuser" "localUser" {
+/// resource "azure-native_storage_local_user" "localUser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "sto2527"
 ///   allow_acl_authorization = false
 ///   extended_groups         = [1001, 1005, 2005]

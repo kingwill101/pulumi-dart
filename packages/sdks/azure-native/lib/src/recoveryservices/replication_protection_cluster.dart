@@ -77,7 +77,7 @@ import 'replication_protection_cluster_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'replication_protection_cluster_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationprotectioncluster" "replicationProtectionCluster" {
+/// resource "azure-native_recoveryservices_replication_protection_cluster" "replicationProtectionCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name = "eastus"
 ///   properties = {
 ///     policy_id = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/24-hour-retention-policy"
@@ -129,7 +132,8 @@ import 'replication_protection_cluster_properties_response.dart';
 ///             .fabricName("eastus")
 ///             .properties(ReplicationProtectionClusterPropertiesArgs.builder()
 ///                 .policyId("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/24-hour-retention-policy")
-///                 .providerSpecificDetails(Map.of("instanceType", "A2A"))
+///                 .providerSpecificDetails(A2AReplicationProtectionClusterDetailsArgs.builder()
+///                     .build())
 ///                 .recoveryContainerId("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/centraluseuap/replicationProtectionContainers/centraluseuap-container")
 ///                 .build())
 ///             .protectionContainerName("eastus-container")

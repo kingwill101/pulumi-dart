@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_longrunningbackup" "longRunningBackup" {
+/// resource "azure-native_dbformysql_long_running_backup" "longRunningBackup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_name         = "testback"
 ///   resource_group_name = "TestGroup"
 ///   server_name         = "mysqltestserver"

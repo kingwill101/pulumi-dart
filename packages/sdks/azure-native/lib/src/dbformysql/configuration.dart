@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,6 +70,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbformysql_configuration" "configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name  = "event_scheduler"
 ///   resource_group_name = "TestGroup"
 ///   server_name         = "testserver"

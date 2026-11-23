@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,7 +127,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databasefleetmanager_fleetdatabase" "fleetDatabase" {
+/// resource "azure-native_databasefleetmanager_fleet_database" "fleetDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name   = "customer-db-prod"
 ///   fleet_name      = "data-fleet-01"
 ///   fleetspace_name = "prod-environment"
@@ -137,9 +140,9 @@ import 'system_data_response.dart';
 ///       federated_client_id = "a2b3c4d5-6789-0123-4567-89abcdef1234"
 ///       identity_type       = "None"
 ///       user_assigned_identities = [{
-///         "clientId"    = "a2b3c4d5-6789-0123-4567-89abcdef1234"
-///         "principalId" = "a2b3c4d5-6789-0123-4567-89abcdef1234"
-///         "resourceId"  = "/subscriptions/12345678-90ab-cdef-1234-567890abcdef/resourceGroups/rg-database-operations/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-01"
+///         client_id    = "a2b3c4d5-6789-0123-4567-89abcdef1234"
+///         principal_id = "a2b3c4d5-6789-0123-4567-89abcdef1234"
+///         resource_id  = "/subscriptions/12345678-90ab-cdef-1234-567890abcdef/resourceGroups/rg-database-operations/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-01"
 ///       }]
 ///     }
 ///     resource_tags = {
@@ -169,6 +172,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databasefleetmanager.FleetDatabaseArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.FleetDatabasePropertiesArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.IdentityArgs;
+/// import com.pulumi.azurenative.databasefleetmanager.inputs.DatabaseIdentityArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.TransparentDataEncryptionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

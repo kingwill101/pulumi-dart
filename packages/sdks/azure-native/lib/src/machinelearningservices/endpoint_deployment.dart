@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,17 +85,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_endpointdeployment" "endpointDeployment" {
+/// resource "azure-native_machinelearningservices_endpoint_deployment" "endpointDeployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "text-davinci-003"
 ///   endpoint_name   = "Azure.OpenAI"
 ///   properties = {
-///     "model" = {
-///       "format"  = "OpenAI"
-///       "name"    = "text-davinci-003"
-///       "version" = "1"
+///     model = {
+///       format  = "OpenAI"
+///       name    = "text-davinci-003"
+///       version = "1"
 ///     }
-///     "type"                 = "Azure.OpenAI"
-///     "versionUpgradeOption" = "OnceNewDefaultVersionAvailable"
+///     type                   = "Azure.OpenAI"
+///     version_upgrade_option = "OnceNewDefaultVersionAvailable"
 ///   }
 ///   resource_group_name = "resourceGroup-1"
 ///   workspace_name      = "testworkspace"
@@ -111,6 +114,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.EndpointDeployment;
 /// import com.pulumi.azurenative.machinelearningservices.EndpointDeploymentArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ContentSafetyEndpointDeploymentResourcePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EndpointDeploymentModelArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ManagedOnlineEndpointDeploymentResourcePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.OpenAIEndpointDeploymentResourcePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SpeechEndpointDeploymentResourcePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -133,7 +141,6 @@ import 'system_data_response.dart';
 ///                     .name("text-davinci-003")
 ///                     .version("1")
 ///                     .build())
-///                 .type("Azure.OpenAI")
 ///                 .versionUpgradeOption("OnceNewDefaultVersionAvailable")
 ///                 .build())
 ///             .resourceGroupName("resourceGroup-1")

@@ -61,7 +61,7 @@ import 'recommended_action_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'recommended_action_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_databaseadvisor" "databaseAdvisor" {
+/// resource "azure-native_sql_database_advisor" "databaseAdvisor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   advisor_name        = "CreateIndex"
 ///   auto_execute_status = "Disabled"
 ///   database_name       = "IndexAdvisor_test_3"

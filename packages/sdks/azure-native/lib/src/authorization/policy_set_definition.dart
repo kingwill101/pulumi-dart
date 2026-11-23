@@ -149,7 +149,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -157,7 +157,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policysetdefinition" "policySetDefinition" {
+/// resource "azure-native_authorization_policy_set_definition" "policySetDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Policies to enforce low cost storage SKUs"
 ///   display_name = "Cost Management"
 ///   metadata = {
@@ -206,7 +209,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicySetDefinition;
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueMetadataArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionReferenceArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -555,7 +561,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -563,7 +569,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policysetdefinition" "policySetDefinition" {
+/// resource "azure-native_authorization_policy_set_definition" "policySetDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Policies to enforce low cost storage SKUs"
 ///   display_name = "Cost Management"
 ///   metadata = {
@@ -619,6 +628,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionReferenceArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

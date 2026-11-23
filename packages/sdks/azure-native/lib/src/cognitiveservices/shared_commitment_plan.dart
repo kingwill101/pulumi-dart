@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_sharedcommitmentplan" "sharedCommitmentPlan" {
+/// resource "azure-native_cognitiveservices_shared_commitment_plan" "sharedCommitmentPlan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   commitment_plan_name = "commitmentPlanName"
 ///   kind                 = "SpeechServices"
 ///   location             = "West US"

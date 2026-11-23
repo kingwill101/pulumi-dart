@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_autoupgradeprofile" "autoUpgradeProfile" {
+/// resource "azure-native_containerservice_auto_upgrade_profile" "autoUpgradeProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_upgrade_profile_name = "autoupgradeprofile1"
 ///   channel                   = "Stable"
 ///   fleet_name                = "fleet1"

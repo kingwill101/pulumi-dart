@@ -492,7 +492,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -500,7 +500,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_autoscalingautoscalinggroup" "autoScalingAutoScalingGroup" {
+/// resource "azure-native_awsconnector_auto_scaling_auto_scaling_group" "autoScalingAutoScalingGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "vfitxfllzgknmbaqgpsv"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -529,20 +532,20 @@ import 'system_data_response.dart';
 ///         version              = "kdlpart"
 ///       }
 ///       lifecycle_hook_specification_list = [{
-///         "defaultResult"         = "qbeojpqbpnhst"
-///         "heartbeatTimeout"      = 14
-///         "lifecycleHookName"     = "xeqfmdmthyzrdxjbmdkyy"
-///         "lifecycleTransition"   = "xsufodhykhlutvc"
-///         "notificationMetadata"  = "bknbkafxdozjlnprrlkrqstgwchxl"
-///         "notificationTargetARN" = "dkeqhlwuifyfamkufdryfiybxnle"
-///         "roleARN"               = "bhenujqtabiiryjgl"
+///         default_result          = "qbeojpqbpnhst"
+///         heartbeat_timeout       = 14
+///         lifecycle_hook_name     = "xeqfmdmthyzrdxjbmdkyy"
+///         lifecycle_transition    = "xsufodhykhlutvc"
+///         notification_metadata   = "bknbkafxdozjlnprrlkrqstgwchxl"
+///         notification_target_arn = "dkeqhlwuifyfamkufdryfiybxnle"
+///         role_arn                = "bhenujqtabiiryjgl"
 ///       }]
 ///       load_balancer_names   = ["qsgaefmtltksmmwswpdfmnlwvovi"]
 ///       max_instance_lifetime = 25
 ///       max_size              = "vqxfpkdyusfijwc"
 ///       metrics_collection = [{
-///         "granularity" = "ygxetadl"
-///         "metrics"     = ["hwukwnkctznjelut"]
+///         granularity = "ygxetadl"
+///         metrics     = ["hwukwnkctznjelut"]
 ///       }]
 ///       min_size = "rfdwflldttnzph"
 ///       mixed_instances_policy = {
@@ -561,66 +564,66 @@ import 'system_data_response.dart';
 ///             version              = "kdlpart"
 ///           }
 ///           overrides = [{
-///             "instanceRequirements" = {
-///               "acceleratorCount" = {
-///                 "max" = 22
-///                 "min" = 12
+///             instance_requirements = {
+///               accelerator_count = {
+///                 max = 22
+///                 min = 12
 ///               }
-///               "acceleratorManufacturers" = ["yrnnynorjjxvzppzrgpahymhm"]
-///               "acceleratorNames"         = ["iqmentbrnypcxv"]
-///               "acceleratorTotalMemoryMiB" = {
-///                 "max" = 7
-///                 "min" = 29
+///               accelerator_manufacturers = ["yrnnynorjjxvzppzrgpahymhm"]
+///               accelerator_names         = ["iqmentbrnypcxv"]
+///               accelerator_total_memory_mi_b = {
+///                 max = 7
+///                 min = 29
 ///               }
-///               "acceleratorTypes"     = ["kmvwibkxxklqitqxqqlpvfifvo"]
-///               "allowedInstanceTypes" = ["tzrxlaofwygbqglbwdxnqjy"]
-///               "bareMetal"            = "kugjpzsjreywlvvzkebv"
-///               "baselineEbsBandwidthMbps" = {
-///                 "max" = 2
-///                 "min" = 19
+///               accelerator_types      = ["kmvwibkxxklqitqxqqlpvfifvo"]
+///               allowed_instance_types = ["tzrxlaofwygbqglbwdxnqjy"]
+///               bare_metal             = "kugjpzsjreywlvvzkebv"
+///               baseline_ebs_bandwidth_mbps = {
+///                 max = 2
+///                 min = 19
 ///               }
-///               "burstablePerformance"                           = "jpwudasuoonf"
-///               "cpuManufacturers"                               = ["scbxthzijnmur"]
-///               "excludedInstanceTypes"                          = ["edadlo"]
-///               "instanceGenerations"                            = ["f"]
-///               "localStorage"                                   = "wglfmvquwice"
-///               "localStorageTypes"                              = ["talnjrldmventgtzlwpaxfcenp"]
-///               "maxSpotPriceAsPercentageOfOptimalOnDemandPrice" = 15
-///               "memoryGiBPerVCpu" = {
-///                 "max" = 23
-///                 "min" = 29
+///               burstable_performance                                   = "jpwudasuoonf"
+///               cpu_manufacturers                                       = ["scbxthzijnmur"]
+///               excluded_instance_types                                 = ["edadlo"]
+///               instance_generations                                    = ["f"]
+///               local_storage                                           = "wglfmvquwice"
+///               local_storage_types                                     = ["talnjrldmventgtzlwpaxfcenp"]
+///               max_spot_price_as_percentage_of_optimal_on_demand_price = 15
+///               memory_gi_b_per_v_cpu = {
+///                 max = 23
+///                 min = 29
 ///               }
-///               "memoryMiB" = {
-///                 "max" = 27
-///                 "min" = 27
+///               memory_mi_b = {
+///                 max = 27
+///                 min = 27
 ///               }
-///               "networkBandwidthGbps" = {
-///                 "max" = 18
-///                 "min" = 29
+///               network_bandwidth_gbps = {
+///                 max = 18
+///                 min = 29
 ///               }
-///               "networkInterfaceCount" = {
-///                 "max" = 14
-///                 "min" = 26
+///               network_interface_count = {
+///                 max = 14
+///                 min = 26
 ///               }
-///               "onDemandMaxPricePercentageOverLowestPrice" = 8
-///               "requireHibernateSupport"                   = true
-///               "spotMaxPricePercentageOverLowestPrice"     = 9
-///               "totalLocalStorageGB" = {
-///                 "max" = 19
-///                 "min" = 7
+///               on_demand_max_price_percentage_over_lowest_price = 8
+///               require_hibernate_support                        = true
+///               spot_max_price_percentage_over_lowest_price      = 9
+///               total_local_storage_gb = {
+///                 max = 19
+///                 min = 7
 ///               }
-///               "vCpuCount" = {
-///                 "max" = 9
-///                 "min" = 26
+///               v_cpu_count = {
+///                 max = 9
+///                 min = 26
 ///               }
 ///             }
-///             "instanceType" = "phudgcnbis"
-///             "launchTemplateSpecification" = {
-///               "launchTemplateId"   = "zpcgiqsftmwjzwqifodopjuvfoxed"
-///               "launchTemplateName" = "jq"
-///               "version"            = "kdlpart"
+///             instance_type = "phudgcnbis"
+///             launch_template_specification = {
+///               launch_template_id   = "zpcgiqsftmwjzwqifodopjuvfoxed"
+///               launch_template_name = "jq"
+///               version              = "kdlpart"
 ///             }
-///             "weightedCapacity" = "iqa"
+///             weighted_capacity = "iqa"
 ///           }]
 ///         }
 ///       }
@@ -630,15 +633,15 @@ import 'system_data_response.dart';
 ///         topic_arn          = "hndjrwrlqssgciezop"
 ///       }
 ///       notification_configurations = [{
-///         "notificationTypes" = ["jzepnjbwtsw"]
-///         "topicARN"          = "hndjrwrlqssgciezop"
+///         notification_types = ["jzepnjbwtsw"]
+///         topic_arn          = "hndjrwrlqssgciezop"
 ///       }]
 ///       placement_group         = "pmanetwktlujhykhxtcekv"
 ///       service_linked_role_arn = "ffqtfkdv"
 ///       tags = [{
-///         "key"               = "vtmmpdwnenzwsmxgf"
-///         "propagateAtLaunch" = true
-///         "value"             = "xoncdkvjanxdfklvixodkyg"
+///         key                 = "vtmmpdwnenzwsmxgf"
+///         propagate_at_launch = true
+///         value               = "xoncdkvjanxdfklvixodkyg"
 ///       }]
 ///       target_group_ar_ns   = ["ttxjwgboopxrdiqxyqjdujw"]
 ///       termination_policies = ["jvwpdujegrgjbdrxbvcjgs"]
@@ -672,10 +675,24 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsAutoScalingAutoScalingGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceMaintenancePolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LaunchTemplateSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LifecycleHookSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricsCollectionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MixedInstancesPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstancesDistributionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LaunchTemplateArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LaunchTemplateOverridesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceRequirementsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AcceleratorCountRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AcceleratorTotalMemoryMiBRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.BaselineEbsBandwidthMbpsRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MemoryGiBPerVCpuRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MemoryMiBRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NetworkBandwidthGbpsRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NetworkInterfaceCountRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TotalLocalStorageGBRequestArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.VCpuCountRequestArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AutoScalingGroupNotificationConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagPropertyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

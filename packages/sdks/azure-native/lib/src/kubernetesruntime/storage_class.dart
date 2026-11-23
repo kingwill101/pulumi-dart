@@ -62,7 +62,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,12 +70,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesruntime_storageclass" "storageClass" {
+/// resource "azure-native_kubernetesruntime_storage_class" "storageClass" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_uri       = "subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1"
 ///   storage_class_name = "testrwx"
 ///   type_properties = {
-///     "backingStorageClassName" = "default"
-///     "type"                    = "RWX"
+///     backing_storage_class_name = "default"
+///     type                       = "RWX"
 ///   }
 /// }
 ///
@@ -89,6 +92,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kubernetesruntime.StorageClass;
 /// import com.pulumi.azurenative.kubernetesruntime.StorageClassArgs;
+/// import com.pulumi.azurenative.kubernetesruntime.inputs.BlobStorageClassTypePropertiesArgs;
+/// import com.pulumi.azurenative.kubernetesruntime.inputs.NativeStorageClassTypePropertiesArgs;
+/// import com.pulumi.azurenative.kubernetesruntime.inputs.NfsStorageClassTypePropertiesArgs;
+/// import com.pulumi.azurenative.kubernetesruntime.inputs.RwxStorageClassTypePropertiesArgs;
+/// import com.pulumi.azurenative.kubernetesruntime.inputs.SmbStorageClassTypePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -107,7 +115,6 @@ import 'system_data_response.dart';
 ///             .storageClassName("testrwx")
 ///             .typeProperties(RwxStorageClassTypePropertiesArgs.builder()
 ///                 .backingStorageClassName("default")
-///                 .type("RWX")
 ///                 .build())
 ///             .build());
 ///

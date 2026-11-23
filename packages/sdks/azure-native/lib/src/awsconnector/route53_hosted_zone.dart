@@ -145,7 +145,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,7 +153,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_route53hostedzone" "route53HostedZone" {
+/// resource "azure-native_awsconnector_route53_hosted_zone" "route53HostedZone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fohhkmxasqynkojwigmrzyhydfpdrd"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -164,8 +167,8 @@ import 'system_data_response.dart';
 ///         comment = "vanhfd"
 ///       }
 ///       hosted_zone_tags = [{
-///         "key"   = "zvuvccszzjwkmfojvfbtxuchpvxcy"
-///         "value" = "ptsrmgayfujrfvjwyxoi"
+///         key   = "zvuvccszzjwkmfojvfbtxuchpvxcy"
+///         value = "ptsrmgayfujrfvjwyxoi"
 ///       }]
 ///       id           = "dwezucqqxsyhynebuyflyc"
 ///       name         = "koqhelfps"
@@ -174,8 +177,8 @@ import 'system_data_response.dart';
 ///         cloud_watch_logs_log_group_arn = "magynetpgpdveymgnonjicfoxzxfp"
 ///       }
 ///       vp_cs = [{
-///         "vpcId"     = "nxfxsb"
-///         "vpcRegion" = "y"
+///         vpc_id     = "nxfxsb"
+///         vpc_region = "y"
 ///       }]
 ///     }
 ///     aws_region        = "nthjzqxrrqsducmjudhrcdiqioy"
@@ -205,7 +208,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Route53HostedZonePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRoute53HostedZonePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.HostedZoneConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.HostedZoneTagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.QueryLoggingConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.VPCArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

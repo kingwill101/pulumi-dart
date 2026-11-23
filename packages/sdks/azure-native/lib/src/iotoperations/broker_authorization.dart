@@ -170,7 +170,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -178,7 +178,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerauthorization" "brokerAuthorization" {
+/// resource "azure-native_iotoperations_broker_authorization" "brokerAuthorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_name = "resource-name123"
 ///   broker_name        = "resource-name123"
 ///   extended_location = {
@@ -190,22 +193,22 @@ import 'system_data_response.dart';
 ///     authorization_policies = {
 ///       cache = "Enabled"
 ///       rules = [{
-///         "brokerResources" = [{
-///           "clientIds" = ["nlc"]
-///           "method"    = "Connect"
-///           "topics"    = ["wvuca"]
+///         broker_resources = [{
+///           client_ids = ["nlc"]
+///           method     = "Connect"
+///           topics     = ["wvuca"]
 ///         }]
-///         "principals" = {
-///           "attributes" = [{
+///         principals = {
+///           attributes = [{
 ///             "key5526" = "nydhzdhbldygqcn"
 ///           }]
-///           "clientIds" = ["smopeaeddsygz"]
-///           "usernames" = ["iozngyqndrteikszkbasinzdjtm"]
+///           client_ids = ["smopeaeddsygz"]
+///           usernames  = ["iozngyqndrteikszkbasinzdjtm"]
 ///         }
-///         "stateStoreResources" = [{
-///           "keyType" = "Pattern"
-///           "keys"    = ["tkounsqtwvzyaklxjqoerpu"]
-///           "method"  = "Read"
+///         state_store_resources = [{
+///           key_type = "Pattern"
+///           keys     = ["tkounsqtwvzyaklxjqoerpu"]
+///           method   = "Read"
 ///         }]
 ///       }]
 ///     }
@@ -226,6 +229,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthorizationPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationConfigArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationRuleArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerResourceRuleArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.PrincipalDefinitionArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.StateStoreResourceRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -594,7 +601,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -602,7 +609,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerauthorization" "brokerAuthorization" {
+/// resource "azure-native_iotoperations_broker_authorization" "brokerAuthorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_name = "resource-name123"
 ///   broker_name        = "resource-name123"
 ///   extended_location = {
@@ -614,31 +624,31 @@ import 'system_data_response.dart';
 ///     authorization_policies = {
 ///       cache = "Enabled"
 ///       rules = [{
-///         "brokerResources" = [{
-///           "clientIds" = ["{principal.attributes.building}*"]
-///           "method"    = "Connect"
+///         broker_resources = [{
+///           client_ids = ["{principal.attributes.building}*"]
+///           method     = "Connect"
 ///           }, {
-///           "method" = "Publish"
-///           "topics" = ["sensors/{principal.attributes.building}/{principal.clientId}/telemetry/*"]
+///           method = "Publish"
+///           topics = ["sensors/{principal.attributes.building}/{principal.clientId}/telemetry/*"]
 ///           }, {
-///           "method" = "Subscribe"
-///           "topics" = ["commands/{principal.attributes.organization}"]
+///           method = "Subscribe"
+///           topics = ["commands/{principal.attributes.organization}"]
 ///         }]
-///         "principals" = {
-///           "attributes" = [{
+///         principals = {
+///           attributes = [{
 ///             "building"     = "17"
 ///             "organization" = "contoso"
 ///           }]
-///           "usernames" = ["temperature-sensor", "humidity-sensor"]
+///           usernames = ["temperature-sensor", "humidity-sensor"]
 ///         }
-///         "stateStoreResources" = [{
-///           "keyType" = "Pattern"
-///           "keys"    = ["myreadkey", "myotherkey?", "mynumerickeysuffix[0-9]", "clients:{principal.clientId}:*"]
-///           "method"  = "Read"
+///         state_store_resources = [{
+///           key_type = "Pattern"
+///           keys     = ["myreadkey", "myotherkey?", "mynumerickeysuffix[0-9]", "clients:{principal.clientId}:*"]
+///           method   = "Read"
 ///           }, {
-///           "keyType" = "Binary"
-///           "keys"    = ["MTE2IDEwMSAxMTUgMTE2"]
-///           "method"  = "ReadWrite"
+///           key_type = "Binary"
+///           keys     = ["MTE2IDEwMSAxMTUgMTE2"]
+///           method   = "ReadWrite"
 ///         }]
 ///       }]
 ///     }
@@ -659,6 +669,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthorizationPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationConfigArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationRuleArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerResourceRuleArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.PrincipalDefinitionArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.StateStoreResourceRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1065,7 +1079,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1073,7 +1087,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerauthorization" "brokerAuthorization" {
+/// resource "azure-native_iotoperations_broker_authorization" "brokerAuthorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_name = "resource-name123"
 ///   broker_name        = "resource-name123"
 ///   extended_location = {
@@ -1085,23 +1102,23 @@ import 'system_data_response.dart';
 ///     authorization_policies = {
 ///       cache = "Enabled"
 ///       rules = [{
-///         "brokerResources" = [{
-///           "method" = "Connect"
+///         broker_resources = [{
+///           method = "Connect"
 ///           }, {
-///           "method" = "Subscribe"
-///           "topics" = ["topic", "topic/with/wildcard/#"]
+///           method = "Subscribe"
+///           topics = ["topic", "topic/with/wildcard/#"]
 ///         }]
-///         "principals" = {
-///           "attributes" = [{
+///         principals = {
+///           attributes = [{
 ///             "floor" = "floor1"
 ///             "site"  = "site1"
 ///           }]
-///           "clientIds" = ["my-client-id"]
+///           client_ids = ["my-client-id"]
 ///         }
-///         "stateStoreResources" = [{
-///           "keyType" = "Pattern"
-///           "keys"    = ["*"]
-///           "method"  = "ReadWrite"
+///         state_store_resources = [{
+///           key_type = "Pattern"
+///           keys     = ["*"]
+///           method   = "ReadWrite"
 ///         }]
 ///       }]
 ///     }
@@ -1122,6 +1139,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthorizationPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationConfigArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationRuleArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerResourceRuleArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.PrincipalDefinitionArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.StateStoreResourceRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -38,11 +38,11 @@ import 'partner_content_response.dart';
 ///         },
 ///         IntegrationAccountName = "testIntegrationAccount",
 ///         Location = "westus",
-///         Metadata = null,
+///         Metadata = new() { },
 ///         PartnerName = "testPartner",
 ///         PartnerType = AzureNative.Logic.PartnerType.B2B,
 ///         ResourceGroupName = "testResourceGroup",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -89,7 +89,7 @@ import 'partner_content_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,12 +97,15 @@ import 'partner_content_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccountpartner" "integrationAccountPartner" {
+/// resource "azure-native_logic_integration_account_partner" "integrationAccountPartner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content = {
 ///     b2b = {
 ///       business_identities = [{
-///         "qualifier" = "AA"
-///         "value"     = "ZZ"
+///         qualifier = "AA"
+///         value     = "ZZ"
 ///       }]
 ///     }
 ///   }
@@ -127,6 +130,7 @@ import 'partner_content_response.dart';
 /// import com.pulumi.azurenative.logic.IntegrationAccountPartnerArgs;
 /// import com.pulumi.azurenative.logic.inputs.PartnerContentArgs;
 /// import com.pulumi.azurenative.logic.inputs.B2BPartnerContentArgs;
+/// import com.pulumi.azurenative.logic.inputs.BusinessIdentityArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

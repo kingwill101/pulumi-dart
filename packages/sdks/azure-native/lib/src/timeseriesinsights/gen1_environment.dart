@@ -84,7 +84,7 @@ import 'time_series_id_property_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'time_series_id_property_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_gen1environment" "gen1Environment" {
+/// resource "azure-native_timeseriesinsights_gen1_environment" "gen1Environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_retention_time = "P31D"
 ///   environment_name    = "env1"
 ///   kind                = "Gen1"
@@ -136,7 +139,6 @@ import 'time_series_id_property_response.dart';
 ///         var gen1Environment = new Gen1Environment("gen1Environment", Gen1EnvironmentArgs.builder()
 ///             .dataRetentionTime("P31D")
 ///             .environmentName("env1")
-///             .kind("Gen1")
 ///             .location("West US")
 ///             .partitionKeyProperties(TimeSeriesIdPropertyArgs.builder()
 ///                 .name("DeviceId1")

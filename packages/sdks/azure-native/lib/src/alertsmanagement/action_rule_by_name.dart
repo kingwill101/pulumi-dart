@@ -84,7 +84,7 @@ import 'action_rule_by_name_args.dart';
 ///             Type = "Suppression",
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -166,7 +166,7 @@ import 'action_rule_by_name_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -174,44 +174,47 @@ import 'action_rule_by_name_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_actionrulebyname" "actionRuleByName" {
+/// resource "azure-native_alertsmanagement_action_rule_by_name" "actionRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_rule_name = "DailySuppression"
 ///   location         = "Global"
 ///   properties = {
-///     "conditions" = {
-///       "monitorCondition" = {
-///         "operator" = "Equals"
-///         "values"   = ["Fired"]
+///     conditions = {
+///       monitor_condition = {
+///         operator = "Equals"
+///         values   = ["Fired"]
 ///       }
-///       "monitorService" = {
-///         "operator" = "Equals"
-///         "values"   = ["Platform", "Application Insights"]
+///       monitor_service = {
+///         operator = "Equals"
+///         values   = ["Platform", "Application Insights"]
 ///       }
-///       "severity" = {
-///         "operator" = "Equals"
-///         "values"   = ["Sev0", "Sev2"]
+///       severity = {
+///         operator = "Equals"
+///         values   = ["Sev0", "Sev2"]
 ///       }
-///       "targetResourceType" = {
-///         "operator" = "NotEquals"
-///         "values"   = ["Microsoft.Compute/VirtualMachines"]
-///       }
-///     }
-///     "description" = "Action rule on resource group for daily suppression"
-///     "scope" = {
-///       "scopeType" = "ResourceGroup"
-///       "values"    = ["/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg"]
-///     }
-///     "status" = "Enabled"
-///     "suppressionConfig" = {
-///       "recurrenceType" = "Daily"
-///       "schedule" = {
-///         "endDate"   = "12/18/2018"
-///         "endTime"   = "14:00:00"
-///         "startDate" = "12/09/2018"
-///         "startTime" = "06:00:00"
+///       target_resource_type = {
+///         operator = "NotEquals"
+///         values   = ["Microsoft.Compute/VirtualMachines"]
 ///       }
 ///     }
-///     "type" = "Suppression"
+///     description = "Action rule on resource group for daily suppression"
+///     scope = {
+///       scope_type = "ResourceGroup"
+///       values     = ["/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg"]
+///     }
+///     status = "Enabled"
+///     suppression_config = {
+///       recurrence_type = "Daily"
+///       schedule = {
+///         end_date   = "12/18/2018"
+///         end_time   = "14:00:00"
+///         start_date = "12/09/2018"
+///         start_time = "06:00:00"
+///       }
+///     }
+///     type = "Suppression"
 ///   }
 ///   resource_group_name = "alertscorrelationrg"
 ///   tags                = {}
@@ -227,6 +230,14 @@ import 'action_rule_by_name_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.alertsmanagement.ActionRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.ActionRuleByNameArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ActionGroupArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ConditionsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ConditionArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ScopeArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.DiagnosticsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.SuppressionArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.SuppressionConfigArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.SuppressionScheduleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -281,7 +292,6 @@ import 'action_rule_by_name_args.dart';
 ///                         .startTime("06:00:00")
 ///                         .build())
 ///                     .build())
-///                 .type("Suppression")
 ///                 .build())
 ///             .resourceGroupName("alertscorrelationrg")
 ///             .tags(Map.ofEntries(

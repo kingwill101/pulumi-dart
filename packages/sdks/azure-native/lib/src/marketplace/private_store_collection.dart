@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_marketplace_privatestorecollection" "privateStoreCollection" {
+/// resource "azure-native_marketplace_private_store_collection" "privateStoreCollection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   all_subscriptions  = false
 ///   claim              = ""
 ///   collection_id      = "d0f5aa2c-ecc3-4d87-906a-f8c486dcc4f1"

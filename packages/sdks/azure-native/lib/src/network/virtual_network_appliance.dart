@@ -67,7 +67,7 @@ import 'virtual_network_appliance_ip_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'virtual_network_appliance_ip_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkappliance" "virtualNetworkAppliance" {
+/// resource "azure-native_network_virtual_network_appliance" "virtualNetworkAppliance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bandwidth_in_gbps   = "100"
 ///   location            = "eastus"
 ///   resource_group_name = "rg1"

@@ -209,7 +209,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -217,7 +217,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2networkinterface" "ec2NetworkInterface" {
+/// resource "azure-native_awsconnector_ec2_network_interface" "ec2NetworkInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "lagtstrmaffl"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -236,30 +239,30 @@ import 'system_data_response.dart';
 ///       interface_type      = "osohhzoujznxwq"
 ///       ipv4_prefix_count   = 18
 ///       ipv4_prefixes = [{
-///         "ipv4Prefix" = "gptczjajfvxavzpalq"
+///         ipv4_prefix = "gptczjajfvxavzpalq"
 ///       }]
 ///       ipv6_address_count = 21
 ///       ipv6_addresses = [{
-///         "ipv6Address" = "yltzjtkgfhbhokimzn"
+///         ipv6_address = "yltzjtkgfhbhokimzn"
 ///       }]
 ///       ipv6_prefix_count = 1
 ///       ipv6_prefixes = [{
-///         "ipv6Prefix" = "srpldhvaafcozyarpechevrnxlf"
+///         ipv6_prefix = "srpldhvaafcozyarpechevrnxlf"
 ///       }]
 ///       primary_ipv6_address       = "uoblo"
 ///       primary_private_ip_address = "qyowqxftdeptwmjwfa"
 ///       private_ip_address         = "qicwhumw"
 ///       private_ip_addresses = [{
-///         "primary"          = true
-///         "privateIpAddress" = "mmkedmvsclcwfvlvx"
+///         primary            = true
+///         private_ip_address = "mmkedmvsclcwfvlvx"
 ///       }]
 ///       secondary_private_ip_address_count = 9
 ///       secondary_private_ip_addresses     = ["mkvwjalereuiy"]
 ///       source_dest_check                  = true
 ///       subnet_id                          = "wfyytldstgkdpoffxak"
 ///       tags = [{
-///         "key"   = "ecbkgvgrwffyykfpbghbipmg"
-///         "value" = "zlzzwcqgyuoe"
+///         key   = "ecbkgvgrwffyykfpbghbipmg"
+///         value = "zlzzwcqgyuoe"
 ///       }]
 ///       vpc_id = "ykqkegxxhqsw"
 ///     }
@@ -290,6 +293,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2NetworkInterfacePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2NetworkInterfacePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ConnectionTrackingSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.Ipv4PrefixSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceIpv6AddressArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.Ipv6PrefixSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PrivateIpAddressSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

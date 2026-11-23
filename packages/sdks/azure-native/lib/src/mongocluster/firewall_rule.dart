@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mongocluster_firewallrule" "firewallRule" {
+/// resource "azure-native_mongocluster_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_rule_name = "rule1"
 ///   mongo_cluster_name = "myMongoCluster"
 ///   properties = {

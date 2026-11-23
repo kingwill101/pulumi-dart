@@ -66,7 +66,7 @@ import 'database_principal_assignment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'database_principal_assignment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_databaseprincipalassignment" "databasePrincipalAssignment" {
+/// resource "azure-native_kusto_database_principal_assignment" "databasePrincipalAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name              = "kustoCluster"
 ///   database_name             = "Kustodatabase8"
 ///   principal_assignment_name = "kustoprincipal1"

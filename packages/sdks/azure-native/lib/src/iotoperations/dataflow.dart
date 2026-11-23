@@ -202,7 +202,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -211,6 +211,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_dataflow" "dataflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_name         = "resource-name123"
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
@@ -221,42 +224,42 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     operations = [{
-///       "builtInTransformationSettings" = {
-///         "datasets" = [{
-///           "description" = "Lorem ipsum odor amet, consectetuer adipiscing elit."
-///           "expression"  = "aatbwomvflemsxialv"
-///           "inputs"      = ["mosffpsslifkq"]
-///           "key"         = "qsfqcgxaxnhfumrsdsokwyv"
-///           "schemaRef"   = "n"
+///       built_in_transformation_settings = {
+///         datasets = [{
+///           description = "Lorem ipsum odor amet, consectetuer adipiscing elit."
+///           expression  = "aatbwomvflemsxialv"
+///           inputs      = ["mosffpsslifkq"]
+///           key         = "qsfqcgxaxnhfumrsdsokwyv"
+///           schema_ref  = "n"
 ///         }]
-///         "filter" = [{
-///           "description" = "Lorem ipsum odor amet, consectetuer adipiscing elit."
-///           "expression"  = "n"
-///           "inputs"      = ["sxmjkbntgb"]
-///           "type"        = "Filter"
+///         filter = [{
+///           description = "Lorem ipsum odor amet, consectetuer adipiscing elit."
+///           expression  = "n"
+///           inputs      = ["sxmjkbntgb"]
+///           type        = "Filter"
 ///         }]
-///         "map" = [{
-///           "description" = "Lorem ipsum odor amet, consectetuer adipiscing elit."
-///           "expression"  = "txoiltogsarwkzalsphvlmt"
-///           "inputs"      = ["xsbxuk"]
-///           "output"      = "nvgtmkfl"
-///           "type"        = "NewProperties"
+///         map = [{
+///           description = "Lorem ipsum odor amet, consectetuer adipiscing elit."
+///           expression  = "txoiltogsarwkzalsphvlmt"
+///           inputs      = ["xsbxuk"]
+///           output      = "nvgtmkfl"
+///           type        = "NewProperties"
 ///         }]
-///         "schemaRef"           = "mcdc"
-///         "serializationFormat" = "Delta"
+///         schema_ref           = "mcdc"
+///         serialization_format = "Delta"
 ///       }
-///       "destinationSettings" = {
-///         "dataDestination" = "cbrh"
-///         "endpointRef"     = "kybkchnzimerguekuvqlqiqdvvrt"
+///       destination_settings = {
+///         data_destination = "cbrh"
+///         endpoint_ref     = "kybkchnzimerguekuvqlqiqdvvrt"
 ///       }
-///       "name"          = "knnafvkwoeakm"
-///       "operationType" = "Source"
-///       "sourceSettings" = {
-///         "assetRef"            = "zayyykwmckaocywdkohmu"
-///         "dataSources"         = ["chkkpymxhp"]
-///         "endpointRef"         = "iixotodhvhkkfcfyrkoveslqig"
-///         "schemaRef"           = "pknmdzqll"
-///         "serializationFormat" = "Json"
+///       name           = "knnafvkwoeakm"
+///       operation_type = "Source"
+///       source_settings = {
+///         asset_ref            = "zayyykwmckaocywdkohmu"
+///         data_sources         = ["chkkpymxhp"]
+///         endpoint_ref         = "iixotodhvhkkfcfyrkoveslqig"
+///         schema_ref           = "pknmdzqll"
+///         serialization_format = "Json"
 ///       }
 ///     }]
 ///   }
@@ -275,6 +278,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowOperationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationDatasetArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationFilterArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationMapArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowDestinationOperationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowSourceOperationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -698,7 +708,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -707,6 +717,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_dataflow" "dataflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_name         = "aio-to-adx-contexualized"
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
@@ -717,36 +730,36 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     operations = [{
-///       "name"          = "source1"
-///       "operationType" = "Source"
-///       "sourceSettings" = {
-///         "dataSources" = ["azure-iot-operations/data/thermostat"]
-///         "endpointRef" = "aio-builtin-broker-endpoint"
+///       name           = "source1"
+///       operation_type = "Source"
+///       source_settings = {
+///         data_sources = ["azure-iot-operations/data/thermostat"]
+///         endpoint_ref = "aio-builtin-broker-endpoint"
 ///       }
 ///       }, {
-///       "builtInTransformationSettings" = {
-///         "datasets" = [{
-///           "expression" = "$1 == $2"
-///           "inputs"     = ["$source.country", "$context.country"]
-///           "key"        = "quality"
+///       built_in_transformation_settings = {
+///         datasets = [{
+///           expression = "$1 == $2"
+///           inputs     = ["$source.country", "$context.country"]
+///           key        = "quality"
 ///         }]
-///         "map" = [{
-///           "inputs" = ["*"]
-///           "output" = "*"
+///         map = [{
+///           inputs = ["*"]
+///           output = "*"
 ///           }, {
-///           "inputs" = ["$context(quality).*"]
-///           "output" = "enriched.*"
+///           inputs = ["$context(quality).*"]
+///           output = "enriched.*"
 ///         }]
 ///       }
-///       "name"          = "transformation1"
-///       "operationType" = "BuiltInTransformation"
+///       name           = "transformation1"
+///       operation_type = "BuiltInTransformation"
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "mytable"
-///         "endpointRef"     = "adx-endpoint"
+///       destination_settings = {
+///         data_destination = "mytable"
+///         endpoint_ref     = "adx-endpoint"
 ///       }
-///       "name"          = "destination1"
-///       "operationType" = "Destination"
+///       name           = "destination1"
+///       operation_type = "Destination"
 ///     }]
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -764,6 +777,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowOperationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowSourceOperationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationDatasetArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationMapArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowDestinationOperationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1260,7 +1279,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1269,6 +1288,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_dataflow" "dataflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_name         = "aio-to-event-hub-transformed"
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
@@ -1279,55 +1301,55 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     operations = [{
-///       "name"          = "source1"
-///       "operationType" = "Source"
-///       "sourceSettings" = {
-///         "dataSources" = ["azure-iot-operations/data/thermostat"]
-///         "endpointRef" = "aio-builtin-broker-endpoint"
+///       name           = "source1"
+///       operation_type = "Source"
+///       source_settings = {
+///         data_sources = ["azure-iot-operations/data/thermostat"]
+///         endpoint_ref = "aio-builtin-broker-endpoint"
 ///       }
 ///       }, {
-///       "builtInTransformationSettings" = {
-///         "filter" = [{
-///           "expression" = "$1 > 9000 && $2 >= 8000"
-///           "inputs"     = ["temperature.Value", "\"Tag 10\".Value"]
+///       built_in_transformation_settings = {
+///         filter = [{
+///           expression = "$1 > 9000 && $2 >= 8000"
+///           inputs     = ["temperature.Value", "\"Tag 10\".Value"]
 ///         }]
-///         "map" = [{
-///           "inputs" = ["*"]
-///           "output" = "*"
+///         map = [{
+///           inputs = ["*"]
+///           output = "*"
 ///           }, {
-///           "expression" = "($1+$2)/2"
-///           "inputs"     = ["temperature.Value", "\"Tag 10\".Value"]
-///           "output"     = "AvgTemp.Value"
+///           expression = "($1+$2)/2"
+///           inputs     = ["temperature.Value", "\"Tag 10\".Value"]
+///           output     = "AvgTemp.Value"
 ///           }, {
-///           "expression" = "true"
-///           "inputs"     = []
-///           "output"     = "dataflow-processed"
+///           expression = "true"
+///           inputs     = []
+///           output     = "dataflow-processed"
 ///           }, {
-///           "expression" = ""
-///           "inputs"     = ["temperature.SourceTimestamp"]
-///           "output"     = ""
+///           expression = ""
+///           inputs     = ["temperature.SourceTimestamp"]
+///           output     = ""
 ///           }, {
-///           "expression" = ""
-///           "inputs"     = ["\"Tag 10\""]
-///           "output"     = "pressure"
+///           expression = ""
+///           inputs     = ["\"Tag 10\""]
+///           output     = "pressure"
 ///           }, {
-///           "expression" = "cToF($1)"
-///           "inputs"     = ["temperature.Value"]
-///           "output"     = "temperatureF.Value"
+///           expression = "cToF($1)"
+///           inputs     = ["temperature.Value"]
+///           output     = "temperatureF.Value"
 ///           }, {
-///           "expression" = "scale ($1,0,10,0,100)"
-///           "inputs"     = ["\"Tag 10\".Value"]
-///           "output"     = "\"Scale Tag 10\".Value"
+///           expression = "scale ($1,0,10,0,100)"
+///           inputs     = ["\"Tag 10\".Value"]
+///           output     = "\"Scale Tag 10\".Value"
 ///         }]
 ///       }
-///       "operationType" = "BuiltInTransformation"
+///       operation_type = "BuiltInTransformation"
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "myuniqueeventhub"
-///         "endpointRef"     = "event-hub-endpoint"
+///       destination_settings = {
+///         data_destination = "myuniqueeventhub"
+///         endpoint_ref     = "event-hub-endpoint"
 ///       }
-///       "name"          = "destination1"
-///       "operationType" = "Destination"
+///       name           = "destination1"
+///       operation_type = "Destination"
 ///     }]
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -1345,6 +1367,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowOperationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowSourceOperationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationFilterArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationMapArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowDestinationOperationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1855,7 +1883,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1864,6 +1892,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_dataflow" "dataflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_name         = "mqtt-filter-to-topic"
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
@@ -1874,35 +1905,35 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     operations = [{
-///       "name"          = "source1"
-///       "operationType" = "Source"
-///       "sourceSettings" = {
-///         "dataSources" = ["azure-iot-operations/data/thermostat"]
-///         "endpointRef" = "aio-builtin-broker-endpoint"
+///       name           = "source1"
+///       operation_type = "Source"
+///       source_settings = {
+///         data_sources = ["azure-iot-operations/data/thermostat"]
+///         endpoint_ref = "aio-builtin-broker-endpoint"
 ///       }
 ///       }, {
-///       "builtInTransformationSettings" = {
-///         "filter" = [{
-///           "description" = "filter-datapoint"
-///           "expression"  = "$1 > 9000 && $2 >= 8000"
-///           "inputs"      = ["temperature.Value", "\"Tag 10\".Value"]
-///           "type"        = "Filter"
+///       built_in_transformation_settings = {
+///         filter = [{
+///           description = "filter-datapoint"
+///           expression  = "$1 > 9000 && $2 >= 8000"
+///           inputs      = ["temperature.Value", "\"Tag 10\".Value"]
+///           type        = "Filter"
 ///         }]
-///         "map" = [{
-///           "inputs" = ["*"]
-///           "output" = "*"
-///           "type"   = "PassThrough"
+///         map = [{
+///           inputs = ["*"]
+///           output = "*"
+///           type   = "PassThrough"
 ///         }]
 ///       }
-///       "name"          = "transformation1"
-///       "operationType" = "BuiltInTransformation"
+///       name           = "transformation1"
+///       operation_type = "BuiltInTransformation"
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "data/filtered/thermostat"
-///         "endpointRef"     = "aio-builtin-broker-endpoint"
+///       destination_settings = {
+///         data_destination = "data/filtered/thermostat"
+///         endpoint_ref     = "aio-builtin-broker-endpoint"
 ///       }
-///       "name"          = "destination1"
-///       "operationType" = "Destination"
+///       name           = "destination1"
+///       operation_type = "Destination"
 ///     }]
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -1920,6 +1951,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowOperationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowSourceOperationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationFilterArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationMapArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowDestinationOperationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2259,7 +2296,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2268,6 +2305,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_dataflow" "dataflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_name         = "aio-to-event-grid"
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
@@ -2278,19 +2318,19 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     operations = [{
-///       "name"          = "source1"
-///       "operationType" = "Source"
-///       "sourceSettings" = {
-///         "dataSources" = ["thermostats/+/telemetry/temperature/#"]
-///         "endpointRef" = "aio-builtin-broker-endpoint"
+///       name           = "source1"
+///       operation_type = "Source"
+///       source_settings = {
+///         data_sources = ["thermostats/+/telemetry/temperature/#"]
+///         endpoint_ref = "aio-builtin-broker-endpoint"
 ///       }
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "factory/telemetry"
-///         "endpointRef"     = "event-grid-endpoint"
+///       destination_settings = {
+///         data_destination = "factory/telemetry"
+///         endpoint_ref     = "event-grid-endpoint"
 ///       }
-///       "name"          = "destination1"
-///       "operationType" = "Destination"
+///       name           = "destination1"
+///       operation_type = "Destination"
 ///     }]
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -2308,6 +2348,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowOperationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowSourceOperationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowDestinationOperationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2589,7 +2632,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2598,6 +2641,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_dataflow" "dataflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_name         = "aio-to-fabric"
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
@@ -2608,25 +2654,25 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     operations = [{
-///       "name"          = "source1"
-///       "operationType" = "Source"
-///       "sourceSettings" = {
-///         "dataSources" = ["azure-iot-operations/data/thermostat"]
-///         "endpointRef" = "aio-builtin-broker-endpoint"
+///       name           = "source1"
+///       operation_type = "Source"
+///       source_settings = {
+///         data_sources = ["azure-iot-operations/data/thermostat"]
+///         endpoint_ref = "aio-builtin-broker-endpoint"
 ///       }
 ///       }, {
-///       "builtInTransformationSettings" = {
-///         "schemaRef"           = "aio-sr://exampleNamespace/exmapleParquetSchema:1.0.0"
-///         "serializationFormat" = "Parquet"
+///       built_in_transformation_settings = {
+///         schema_ref           = "aio-sr://exampleNamespace/exmapleParquetSchema:1.0.0"
+///         serialization_format = "Parquet"
 ///       }
-///       "operationType" = "BuiltInTransformation"
+///       operation_type = "BuiltInTransformation"
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "telemetryTable"
-///         "endpointRef"     = "fabric-endpoint"
+///       destination_settings = {
+///         data_destination = "telemetryTable"
+///         endpoint_ref     = "fabric-endpoint"
 ///       }
-///       "name"          = "destination1"
-///       "operationType" = "Destination"
+///       name           = "destination1"
+///       operation_type = "Destination"
 ///     }]
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -2644,6 +2690,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowOperationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowSourceOperationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowBuiltInTransformationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowDestinationOperationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
