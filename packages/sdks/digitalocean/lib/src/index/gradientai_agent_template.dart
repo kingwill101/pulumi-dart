@@ -6,29 +6,29 @@ import 'gradientai_agent_template_model.dart';
 
 class GradientaiAgentTemplate {
   /// Created At timestamp for the Knowledge Base
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the Agent Template
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Instruction for the Agent
-  final pulumi.Input<String>? instruction;
+  final pulumi.Input<String?>? instruction;
   /// K value for the Agent Template
-  final pulumi.Input<int>? k;
+  final pulumi.Input<int?>? k;
   /// List of Knowledge Bases
-  final pulumi.Input<List<GradientaiAgentTemplateKnowledgeBase>>? knowledgeBases;
+  final pulumi.Input<List<GradientaiAgentTemplateKnowledgeBase>?>? knowledgeBases;
   /// Maximum tokens allowed
-  final pulumi.Input<int>? maxTokens;
+  final pulumi.Input<int?>? maxTokens;
   /// Model of the Agent Template
-  final pulumi.Input<List<GradientaiAgentTemplateModel>>? models;
+  final pulumi.Input<List<GradientaiAgentTemplateModel>?>? models;
   /// Name of the Agent Template
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Agent temperature setting
-  final pulumi.Input<double>? temperature;
+  final pulumi.Input<double?>? temperature;
   /// Top P sampling parameter
-  final pulumi.Input<double>? topP;
+  final pulumi.Input<double?>? topP;
   /// Updated At timestamp for the Agent Template
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// uuid of the Agent Template
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GradientaiAgentTemplate].
   /// [createdAt] Created At timestamp for the Knowledge Base
@@ -80,13 +80,13 @@ class GradientaiAgentTemplate {
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instruction: (() { final guardedValue = map['instruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      k: (() { final guardedValue = map['k']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      k: (() { final guardedValue = map['k']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       knowledgeBases: (() { final guardedValue = map['knowledgeBases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GradientaiAgentTemplateKnowledgeBase>(guardedValue, (value) => GradientaiAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       models: (() { final guardedValue = map['models']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GradientaiAgentTemplateModel>(guardedValue, (value) => GradientaiAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

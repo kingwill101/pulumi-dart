@@ -6,8 +6,8 @@ import 'get_app_spec_ingress_secure_header.dart';
 
 class GetAppSpecIngress {
   /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-  final pulumi.Input<List<GetAppSpecIngressRule>>? rules;
-  final pulumi.Input<GetAppSpecIngressSecureHeader>? secureHeader;
+  final pulumi.Input<List<GetAppSpecIngressRule>?>? rules;
+  final pulumi.Input<GetAppSpecIngressSecureHeader?>? secureHeader;
 
   /// Creates a new [GetAppSpecIngress].
   /// [rules] The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.

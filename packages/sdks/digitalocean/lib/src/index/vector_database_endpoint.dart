@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VectorDatabaseEndpoint {
   /// The gRPC endpoint used to connect to the vector database.
-  final pulumi.Input<String>? grpc;
+  final pulumi.Input<String?>? grpc;
   /// The HTTP endpoint used to connect to the vector database.
-  final pulumi.Input<String>? http;
+  final pulumi.Input<String?>? http;
 
   /// Creates a new [VectorDatabaseEndpoint].
   /// [grpc] The gRPC endpoint used to connect to the vector database.

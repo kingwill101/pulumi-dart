@@ -67,15 +67,15 @@ class GetSizesSize {
   factory GetSizesSize.fromMap(Map<String, dynamic> map) {
     return GetSizesSize(
       available: pulumi.Input.fromValue(map['available'] as bool),
-      disk: pulumi.Input.fromValue(map['disk'] as int),
+      disk: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['disk'])),
       gpuInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSizesSizeGpuInfo>(map['gpuInfos']!, (value) => GetSizesSizeGpuInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      memory: pulumi.Input.fromValue(map['memory'] as int),
-      priceHourly: pulumi.Input.fromValue(map['priceHourly'] as double),
-      priceMonthly: pulumi.Input.fromValue(map['priceMonthly'] as double),
+      memory: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memory'])),
+      priceHourly: pulumi.Input.fromValue((map['priceHourly'] as num).toDouble()),
+      priceMonthly: pulumi.Input.fromValue((map['priceMonthly'] as num).toDouble()),
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
       slug: pulumi.Input.fromValue(map['slug'] as String),
-      transfer: pulumi.Input.fromValue(map['transfer'] as double),
-      vcpus: pulumi.Input.fromValue(map['vcpus'] as int),
+      transfer: pulumi.Input.fromValue((map['transfer'] as num).toDouble()),
+      vcpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vcpus'])),
     );
   }
 }

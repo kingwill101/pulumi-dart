@@ -10,7 +10,7 @@ class DedicatedInferenceTokenArgs {
   /// The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.
   final pulumi.Input<String> dedicatedInferenceId;
   /// A human-readable name for the token. Changing this forces a new resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DedicatedInferenceTokenArgs].
   /// [dedicatedInferenceId] The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.

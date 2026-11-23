@@ -43,7 +43,7 @@ class DatabaseOnlineMigrationSource {
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }

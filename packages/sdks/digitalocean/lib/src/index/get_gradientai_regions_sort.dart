@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiRegionsSort {
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   final pulumi.Input<String> key;
 
   /// Creates a new [GetGradientaiRegionsSort].

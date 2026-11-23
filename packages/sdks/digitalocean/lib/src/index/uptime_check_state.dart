@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UptimeCheck resources.
 class UptimeCheckState {
   /// A boolean value indicating whether the check is enabled/disabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A human-friendly display name for the check.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The endpoint to perform healthchecks on.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// The type of health check to perform: 'ping' 'http' 'https'.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UptimeCheckState].
   /// [enabled] A boolean value indicating whether the check is enabled/disabled.

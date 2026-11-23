@@ -31,7 +31,7 @@ class GetLoadBalancerStickySession {
   factory GetLoadBalancerStickySession.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerStickySession(
       cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
-      cookieTtlSeconds: pulumi.Input.fromValue(map['cookieTtlSeconds'] as int),
+      cookieTtlSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cookieTtlSeconds'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

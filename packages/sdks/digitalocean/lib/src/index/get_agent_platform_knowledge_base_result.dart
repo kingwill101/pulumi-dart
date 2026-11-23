@@ -1,0 +1,93 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_agent_platform_knowledge_base_last_indexing_job.dart';
+
+/// Result data returned by getAgentPlatformKnowledgeBase.
+class GetAgentPlatformKnowledgeBaseResult {
+  final String? addedToAgentAt;
+  final String? createdAt;
+  final String? databaseId;
+  final String? embeddingModelUuid;
+  /// The provider-assigned unique ID for this managed resource.
+  final String? id;
+  final bool? isPublic;
+  final List<GetAgentPlatformKnowledgeBaseLastIndexingJob>? lastIndexingJobs;
+  final String? name;
+  final String? projectId;
+  final String? region;
+  final List<String>? tags;
+  final String? updatedAt;
+  final String? userId;
+  final String? uuid;
+
+  /// Creates a new [GetAgentPlatformKnowledgeBaseResult].
+  /// [addedToAgentAt] Optional.
+  /// [createdAt] Optional.
+  /// [databaseId] Optional.
+  /// [embeddingModelUuid] Optional.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [isPublic] Optional.
+  /// [lastIndexingJobs] Optional.
+  /// [name] Optional.
+  /// [projectId] Optional.
+  /// [region] Optional.
+  /// [tags] Optional.
+  /// [updatedAt] Optional.
+  /// [userId] Optional.
+  /// [uuid] Optional.
+  const GetAgentPlatformKnowledgeBaseResult({
+    this.addedToAgentAt,
+    this.createdAt,
+    this.databaseId,
+    this.embeddingModelUuid,
+    this.id,
+    this.isPublic,
+    this.lastIndexingJobs,
+    this.name,
+    this.projectId,
+    this.region,
+    this.tags,
+    this.updatedAt,
+    this.userId,
+    this.uuid,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'addedToAgentAt': ?addedToAgentAt,
+      'createdAt': ?createdAt,
+      'databaseId': ?databaseId,
+      'embeddingModelUuid': ?embeddingModelUuid,
+      'id': ?id,
+      'isPublic': ?isPublic,
+      'lastIndexingJobs': ?(() { final guardedValue = lastIndexingJobs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAgentPlatformKnowledgeBaseLastIndexingJob, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'projectId': ?projectId,
+      'region': ?region,
+      'tags': ?tags,
+      'updatedAt': ?updatedAt,
+      'userId': ?userId,
+      'uuid': ?uuid,
+    };
+  }
+
+  factory GetAgentPlatformKnowledgeBaseResult.fromMap(Map<String, dynamic> map) {
+    return GetAgentPlatformKnowledgeBaseResult(
+      addedToAgentAt: (() { final guardedValue = map['addedToAgentAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      databaseId: (() { final guardedValue = map['databaseId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      embeddingModelUuid: (() { final guardedValue = map['embeddingModelUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isPublic: (() { final guardedValue = map['isPublic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      lastIndexingJobs: (() { final guardedValue = map['lastIndexingJobs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAgentPlatformKnowledgeBaseLastIndexingJob>(guardedValue, (value) => GetAgentPlatformKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+    );
+  }
+}

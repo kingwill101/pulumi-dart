@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecIngressRuleMatchAuthority {
   /// Exact match.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
 
   /// Creates a new [AppSpecIngressRuleMatchAuthority].
   /// [exact] Exact match.

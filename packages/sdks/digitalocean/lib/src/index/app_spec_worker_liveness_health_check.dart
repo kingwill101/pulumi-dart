@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecWorkerLivenessHealthCheck {
   /// The number of failed health checks before considered unhealthy.
-  final pulumi.Input<int>? failureThreshold;
+  final pulumi.Input<int?>? failureThreshold;
   /// The route path used for the HTTP health check ping.
-  final pulumi.Input<String>? httpPath;
+  final pulumi.Input<String?>? httpPath;
   /// The number of seconds to wait before beginning health checks.
-  final pulumi.Input<int>? initialDelaySeconds;
+  final pulumi.Input<int?>? initialDelaySeconds;
   /// The number of seconds to wait between health checks.
-  final pulumi.Input<int>? periodSeconds;
+  final pulumi.Input<int?>? periodSeconds;
   /// The port on which the health check will be performed.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The number of successful health checks before considered healthy.
-  final pulumi.Input<int>? successThreshold;
+  final pulumi.Input<int?>? successThreshold;
   /// The number of seconds after which the check times out.
-  final pulumi.Input<int>? timeoutSeconds;
+  final pulumi.Input<int?>? timeoutSeconds;
 
   /// Creates a new [AppSpecWorkerLivenessHealthCheck].
   /// [failureThreshold] The number of failed health checks before considered unhealthy.
@@ -50,13 +50,13 @@ class AppSpecWorkerLivenessHealthCheck {
 
   factory AppSpecWorkerLivenessHealthCheck.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerLivenessHealthCheck(
-      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       httpPath: (() { final guardedValue = map['httpPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialDelaySeconds: (() { final guardedValue = map['initialDelaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialDelaySeconds: (() { final guardedValue = map['initialDelaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

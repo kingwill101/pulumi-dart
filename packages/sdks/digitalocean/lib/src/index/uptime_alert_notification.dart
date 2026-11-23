@@ -5,8 +5,8 @@ import 'uptime_alert_notification_slack.dart';
 
 class UptimeAlertNotification {
   /// List of email addresses to sent notifications to.
-  final pulumi.Input<List<String>>? emails;
-  final pulumi.Input<List<UptimeAlertNotificationSlack>>? slacks;
+  final pulumi.Input<List<String>?>? emails;
+  final pulumi.Input<List<UptimeAlertNotificationSlack>?>? slacks;
 
   /// Creates a new [UptimeAlertNotification].
   /// [emails] List of email addresses to sent notifications to.
