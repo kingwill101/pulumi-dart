@@ -5,7 +5,7 @@ import 'get_app_spec_service_autoscaling_metrics_cpu.dart';
 
 class GetAppSpecServiceAutoscalingMetrics {
   /// Settings for scaling the component based on CPU utilization.
-  final pulumi.Input<GetAppSpecServiceAutoscalingMetricsCpu>? cpu;
+  final pulumi.Input<GetAppSpecServiceAutoscalingMetricsCpu?>? cpu;
 
   /// Creates a new [GetAppSpecServiceAutoscalingMetrics].
   /// [cpu] Settings for scaling the component based on CPU utilization.

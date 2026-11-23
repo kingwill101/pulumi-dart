@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsAgentChatbot {
   /// Background color for the chatbot button
-  final pulumi.Input<String>? buttonBackgroundColor;
+  final pulumi.Input<String?>? buttonBackgroundColor;
   /// Logo for the chatbot
-  final pulumi.Input<String>? logo;
+  final pulumi.Input<String?>? logo;
   /// Name of the chatbot
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Primary color for the chatbot
-  final pulumi.Input<String>? primaryColor;
+  final pulumi.Input<String?>? primaryColor;
   /// Secondary color for the chatbot
-  final pulumi.Input<String>? secondaryColor;
+  final pulumi.Input<String?>? secondaryColor;
   /// Starting message for the chatbot
-  final pulumi.Input<String>? startingMessage;
+  final pulumi.Input<String?>? startingMessage;
 
   /// Creates a new [GetGradientaiAgentsAgentChatbot].
   /// [buttonBackgroundColor] Background color for the chatbot button

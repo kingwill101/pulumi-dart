@@ -6,7 +6,7 @@ class AppSpecServiceLogDestinationDatadog {
   /// Datadog API key.
   final pulumi.Input<String> apiKey;
   /// Datadog HTTP log intake endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [AppSpecServiceLogDestinationDatadog].
   /// [apiKey] Datadog API key.

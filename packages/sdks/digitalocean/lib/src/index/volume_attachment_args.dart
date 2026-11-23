@@ -29,7 +29,7 @@ class VolumeAttachmentArgs {
 
   factory VolumeAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentArgs(
-      dropletId: pulumi.Input.fromValue(map['dropletId'] as int),
+      dropletId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dropletId'])),
       volumeId: pulumi.Input.fromValue(map['volumeId'] as String),
     );
   }

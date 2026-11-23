@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedInferencesSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
   final pulumi.Input<String> key;
 

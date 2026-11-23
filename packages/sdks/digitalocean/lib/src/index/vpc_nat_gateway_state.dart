@@ -7,33 +7,33 @@ import 'vpc_nat_gateway_vpc.dart';
 /// Input properties used for looking up and filtering VpcNatGateway resources.
 class VpcNatGatewayState {
   /// Created at timestamp for the VPC NAT Gateway.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
   /// `publicGateways` embedding the reserved `ipv4` addresses.
-  final pulumi.Input<List<VpcNatGatewayEgress>>? egresses;
+  final pulumi.Input<List<VpcNatGatewayEgress>?>? egresses;
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
-  final pulumi.Input<int>? icmpTimeoutSeconds;
+  final pulumi.Input<int?>? icmpTimeoutSeconds;
   /// The name of the VPC NAT Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the project to which the VPC NAT Gateway will be assigned.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The region for the VPC NAT Gateway.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The size of the VPC NAT Gateway.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// State of the VPC NAT Gateway
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The egress timeout value for TCP connections of the VPC NAT Gateway.
-  final pulumi.Input<int>? tcpTimeoutSeconds;
+  final pulumi.Input<int?>? tcpTimeoutSeconds;
   /// The type of the VPC NAT Gateway.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The egress timeout value for UDP connections of the VPC NAT Gateway.
-  final pulumi.Input<int>? udpTimeoutSeconds;
+  final pulumi.Input<int?>? udpTimeoutSeconds;
   /// Updated at timestamp for the VPC NAT Gateway.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   /// documented below.
-  final pulumi.Input<List<VpcNatGatewayVpc>>? vpcs;
+  final pulumi.Input<List<VpcNatGatewayVpc>?>? vpcs;
 
   /// Creates a new [VpcNatGatewayState].
   /// [createdAt] Created at timestamp for the VPC NAT Gateway.
@@ -87,15 +87,15 @@ class VpcNatGatewayState {
     return VpcNatGatewayState(
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       egresses: (() { final guardedValue = map['egresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpcNatGatewayEgress>(guardedValue, (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      icmpTimeoutSeconds: (() { final guardedValue = map['icmpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      icmpTimeoutSeconds: (() { final guardedValue = map['icmpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tcpTimeoutSeconds: (() { final guardedValue = map['tcpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tcpTimeoutSeconds: (() { final guardedValue = map['tcpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      udpTimeoutSeconds: (() { final guardedValue = map['udpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      udpTimeoutSeconds: (() { final guardedValue = map['udpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcs: (() { final guardedValue = map['vpcs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpcNatGatewayVpc>(guardedValue, (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

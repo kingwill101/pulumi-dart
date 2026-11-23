@@ -36,7 +36,7 @@ class GetSizesSizeGpuInfo {
 
   factory GetSizesSizeGpuInfo.fromMap(Map<String, dynamic> map) {
     return GetSizesSizeGpuInfo(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       model: pulumi.Input.fromValue(map['model'] as String),
       supportedPartitionModes: pulumi.Input.fromValue((map['supportedPartitionModes'] as List).cast<String>()),
       vrams: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSizesSizeGpuInfoVram>(map['vrams']!, (value) => GetSizesSizeGpuInfoVram.fromMap((value as Map).cast<String, dynamic>()))),

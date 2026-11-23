@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_nfs_snapshot_nfs_snapshot_args_doc}
 class NfsSnapshotArgs {
   /// A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The region where the NFS snapshot will be created.
   final pulumi.Input<String> region;
   /// The ID of the NFS share to snapshot.
