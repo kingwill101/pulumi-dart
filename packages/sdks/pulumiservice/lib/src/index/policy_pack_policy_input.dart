@@ -5,24 +5,24 @@ import 'policy_pack_compliance_framework_input.dart';
 
 class PolicyPackPolicyInput {
   /// JSON Schema (properties/required/type) for the policy's runtime config. Values are supplied per-policy via the PolicyGroup's policyPacks[].config map.
-  final pulumi.Input<Map<String, dynamic>>? configSchema;
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<Map<String, dynamic>?>? configSchema;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? displayName;
   /// One of: advisory, mandatory, remediate, disabled.
-  final pulumi.Input<String>? enforcementLevel;
+  final pulumi.Input<String?>? enforcementLevel;
   /// Compliance framework this policy belongs to.
-  final pulumi.Input<PolicyPackComplianceFrameworkInput>? framework;
-  final pulumi.Input<String>? message;
+  final pulumi.Input<PolicyPackComplianceFrameworkInput?>? framework;
+  final pulumi.Input<String?>? message;
   /// Unique policy name within the pack.
   final pulumi.Input<String> name;
   /// Description of steps to remediate a violation.
-  final pulumi.Input<String>? remediationSteps;
+  final pulumi.Input<String?>? remediationSteps;
   /// Severity level: low, medium, high, or critical.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// Tags associated with the policy.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// URL with more information about the policy.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [PolicyPackPolicyInput].
   /// [configSchema] JSON Schema (properties/required/type) for the policy's runtime config. Values are supplied per-policy via the PolicyGroup's policyPacks[].config map.

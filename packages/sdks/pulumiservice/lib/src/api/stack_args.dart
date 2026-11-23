@@ -9,6 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackArgs {
   /// The configuration for the new stack.
   final pulumi.Input<dynamic>? config;
+  /// Whether the service should create an ESC environment that the stack manages.
+  final pulumi.Input<bool?>? createManagedEnvironment;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// The project name
@@ -18,12 +20,13 @@ class StackArgs {
   /// An optional state to initialize the stack with.
   final pulumi.Input<dynamic>? state;
   /// An optional set of tags to apply to the stack.
-  final pulumi.Input<Map<String, dynamic>>? tags;
+  final pulumi.Input<Map<String, dynamic>?>? tags;
   /// An optional set of teams to assign to the stack.
-  final pulumi.Input<List<String>>? teams;
+  final pulumi.Input<List<String>?>? teams;
 
   /// Creates a new [StackArgs].
   /// [config] The configuration for the new stack.
+  /// [createManagedEnvironment] Whether the service should create an ESC environment that the stack manages.
   /// [orgName] The organization name
   /// [projectName] The project name
   /// [stackName] The name of the stack being created.
@@ -32,6 +35,7 @@ class StackArgs {
   /// [teams] An optional set of teams to assign to the stack.
   const StackArgs({
     this.config,
+    this.createManagedEnvironment,
     required this.orgName,
     required this.projectName,
     required this.stackName,
@@ -43,6 +47,7 @@ class StackArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'config': ?config,
+      'createManagedEnvironment': ?createManagedEnvironment,
       'orgName': orgName,
       'projectName': projectName,
       'stackName': stackName,
@@ -55,6 +60,7 @@ class StackArgs {
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      createManagedEnvironment: (() { final guardedValue = map['createManagedEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
       stackName: pulumi.Input.fromValue(map['stackName'] as String),

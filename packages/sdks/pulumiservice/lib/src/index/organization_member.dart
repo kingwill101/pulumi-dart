@@ -2,6 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_member_args.dart';
 
 /// Manages a user's membership in a Pulumi Cloud organization and their assigned role. The user must already have a Pulumi Cloud account before they can be added. Custom (fine-grained) roles are assigned by setting `roleId`; built-in roles are assigned by setting `role`. When both are set, `roleId` takes precedence.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{username}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:OrganizationMember my-organization-member my-org/my-user
+/// ```
 class OrganizationMember extends pulumi.CustomResource {
   /// True when this resource adopted an existing organization member (the user was already in the org at Create time). Adopted memberships are left in place on destroy; only the role is reset.
   late final pulumi.Output<bool> adopted;
@@ -11,7 +19,7 @@ class OrganizationMember extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The Pulumi Cloud organization name.
   late final pulumi.Output<String> organizationName;
-  /// The built-in organization role. One of `member`, `admin`, `billing-manager`. Defaults to `member` on create. Ignored when `roleId` is set.
+  /// The built-in organization role. One of `member`, `admin`, `billing-manager`, `reader`, `builder`, `maintainer`. `reader`, `builder` and `maintainer` exist only in organizations that use stored default roles. In those organizations `member` means the organization's default role: the member follows it if an administrator changes it. Defaults to `member` on create. Ignored when `roleId` is set.
   late final pulumi.Output<String?> role;
   /// The ID of a custom (fine-grained) organization role to assign. Takes precedence over `role`.
   late final pulumi.Output<String?> roleId;
@@ -32,8 +40,27 @@ class OrganizationMember extends pulumi.CustomResource {
           'pulumiservice:index:OrganizationMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName', 'username']).merge(options),
         ) {
+    adopted = registerOutput<bool>('adopted');
+    email = registerOutput<String>('email');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    role = registerOutput<String?>('role');
+    roleId = registerOutput<String?>('roleId');
+    roleName = registerOutput<String>('roleName');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationMember] resource.
+  OrganizationMember.reference(String urn)
+    : super(
+        'pulumiservice:index:OrganizationMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adopted = registerOutput<bool>('adopted');
     email = registerOutput<String>('email');
     this.name = registerOutput<String>('name');

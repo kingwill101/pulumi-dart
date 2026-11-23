@@ -11,24 +11,24 @@ class GetPolicyPackArgs {
   final pulumi.Input<String> organizationName;
   /// The name of the policy pack.
   final pulumi.Input<String> policyPackName;
-  /// The version number of the policy pack. If not specified, returns the latest version.
-  final pulumi.Input<int>? version;
+  /// The version tag of the policy pack, for example `1.4.1`, as shown in Pulumi Cloud. If not specified, returns the latest version.
+  final pulumi.Input<String?>? versionTag;
 
   /// Creates a new [GetPolicyPackArgs].
   /// [organizationName] The name of the Pulumi organization.
   /// [policyPackName] The name of the policy pack.
-  /// [version] The version number of the policy pack. If not specified, returns the latest version.
+  /// [versionTag] The version tag of the policy pack, for example `1.4.1`, as shown in Pulumi Cloud. If not specified, returns the latest version.
   const GetPolicyPackArgs({
     required this.organizationName,
     required this.policyPackName,
-    this.version,
+    this.versionTag,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'organizationName': organizationName,
       'policyPackName': policyPackName,
-      'version': ?version,
+      'versionTag': ?versionTag,
     };
   }
 
@@ -36,7 +36,7 @@ class GetPolicyPackArgs {
     return GetPolicyPackArgs(
       organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
       policyPackName: pulumi.Input.fromValue(map['policyPackName'] as String),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      versionTag: (() { final guardedValue = map['versionTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

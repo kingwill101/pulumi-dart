@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Git source settings for a deployment.
 class DeploymentSettingsGitAuthSSHAuth {
   /// Optional password for SSH authentication.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// SSH private key.
   final pulumi.Input<String> sshPrivateKey;
 

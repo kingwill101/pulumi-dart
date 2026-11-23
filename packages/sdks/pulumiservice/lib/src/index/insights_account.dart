@@ -4,6 +4,16 @@ import 'insights_account_args.dart';
 import 'scan_schedule.dart';
 
 /// Insights Account for cloud resource scanning and analysis across AWS, Azure, and GCP.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{accountName}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:InsightsAccount my-insights-account my-org/my-account
+/// ```
+///
+/// `scanSchedule` isn't read back from Pulumi Cloud, so set it in your program after import.
 class InsightsAccount extends pulumi.CustomResource {
   /// Name of the insights account.
   late final pulumi.Output<String> accountName;
@@ -36,16 +46,36 @@ class InsightsAccount extends pulumi.CustomResource {
           'pulumiservice:index:InsightsAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['accountName', 'organizationName', 'provider']).merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     environment = registerOutput<String>('environment');
     insightsAccountId = registerOutput<String>('insightsAccountId');
     organizationName = registerOutput<String>('organizationName');
     provider = registerOutput<CloudProvider>('provider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudProvider.fromValue(guardedValue as String); });
-    providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig');
+    providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     scanSchedule = registerOutput<ScanSchedule>('scanSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScanSchedule.fromValue(guardedValue as String); });
     scheduledScanEnabled = registerOutput<bool>('scheduledScanEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [InsightsAccount] resource.
+  InsightsAccount.reference(String urn)
+    : super(
+        'pulumiservice:index:InsightsAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    environment = registerOutput<String>('environment');
+    insightsAccountId = registerOutput<String>('insightsAccountId');
+    organizationName = registerOutput<String>('organizationName');
+    provider = registerOutput<CloudProvider>('provider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudProvider.fromValue(guardedValue as String); });
+    providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    scanSchedule = registerOutput<ScanSchedule>('scanSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScanSchedule.fromValue(guardedValue as String); });
+    scheduledScanEnabled = registerOutput<bool>('scheduledScanEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

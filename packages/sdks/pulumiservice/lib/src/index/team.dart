@@ -2,6 +2,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'team_args.dart';
 
 /// The Pulumi Cloud offers role-based access control (RBAC) using teams. Teams allow organization admins to assign a set of stack permissions to a group of users.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{teamName}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:Team my-team my-org/my-team
+/// ```
+///
+/// For GitHub teams, `githubTeamId` isn't read back, so set it in your program after import.
 class Team extends pulumi.CustomResource {
   /// Optional. Team description.
   late final pulumi.Output<String?> description;
@@ -9,9 +19,11 @@ class Team extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// The GitHub ID of the team to mirror. Must be in the same GitHub organization that the Pulumi org is backed by. Required for "github" teams.
   late final pulumi.Output<double?> githubTeamId;
-  /// List of Pulumi Cloud usernames of team members.
+  /// The Pulumi Cloud usernames of the team's members.
+  /// Pulumi Cloud adds the user who creates the team as a member, usually the owner of the access token that runs `pulumi up`.
+  /// List that user here to keep them on the team: otherwise `pulumi refresh` shows them as a change, and the next update to `members` removes them.
   late final pulumi.Output<List<String>> members;
-  /// The team's name. Required for "pulumi" teams.
+  /// The team's name, up to 100 characters. Only letters, digits, hyphens, underscores and periods are allowed. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming). Characters that aren't allowed in the logical name are replaced with hyphens. Only "pulumi" teams are auto-named.
   late final pulumi.Output<String?> name;
   /// The name of the Pulumi organization the team belongs to.
   late final pulumi.Output<String> organizationName;
@@ -30,12 +42,30 @@ class Team extends pulumi.CustomResource {
           'pulumiservice:index:Team',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['name', 'organizationName', 'teamType']).merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     githubTeamId = registerOutput<double?>('githubTeamId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String?>('name');
+    organizationName = registerOutput<String>('organizationName');
+    teamType = registerOutput<String>('teamType');
+  }
+
+  /// Creates a typed reference to an existing [Team] resource.
+  Team.reference(String urn)
+    : super(
+        'pulumiservice:index:Team',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    githubTeamId = registerOutput<double?>('githubTeamId');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String?>('name');
     organizationName = registerOutput<String>('organizationName');
     teamType = registerOutput<String>('teamType');

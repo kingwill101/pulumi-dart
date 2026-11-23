@@ -9,16 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationMemberArgs {
   /// The Pulumi Cloud organization name.
   final pulumi.Input<String> organizationName;
-  /// The built-in organization role. One of `member`, `admin`, `billing-manager`. Defaults to `member` on create. Ignored when `roleId` is set.
-  final pulumi.Input<String>? role;
+  /// The built-in organization role. One of `member`, `admin`, `billing-manager`, `reader`, `builder`, `maintainer`. `reader`, `builder` and `maintainer` exist only in organizations that use stored default roles. In those organizations `member` means the organization's default role: the member follows it if an administrator changes it. Defaults to `member` on create. Ignored when `roleId` is set.
+  final pulumi.Input<String?>? role;
   /// The ID of a custom (fine-grained) organization role to assign. Takes precedence over `role`.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
   /// The Pulumi Cloud username of the member.
   final pulumi.Input<String> username;
 
   /// Creates a new [OrganizationMemberArgs].
   /// [organizationName] The Pulumi Cloud organization name.
-  /// [role] The built-in organization role. One of `member`, `admin`, `billing-manager`. Defaults to `member` on create. Ignored when `roleId` is set.
+  /// [role] The built-in organization role. One of `member`, `admin`, `billing-manager`, `reader`, `builder`, `maintainer`. `reader`, `builder` and `maintainer` exist only in organizations that use stored default roles. In those organizations `member` means the organization's default role: the member follows it if an administrator changes it. Defaults to `member` on create. Ignored when `roleId` is set.
   /// [roleId] The ID of a custom (fine-grained) organization role to assign. Takes precedence over `role`.
   /// [username] The Pulumi Cloud username of the member.
   const OrganizationMemberArgs({

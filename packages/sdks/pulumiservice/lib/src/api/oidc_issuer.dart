@@ -46,7 +46,28 @@ class OidcIssuer extends pulumi.CustomResource {
     maxExpiration = registerOutput<int?>('maxExpiration');
     modified = registerOutput<String?>('modified');
     this.name = registerOutput<String>('name');
-    thumbprints = registerOutput<List<String>?>('thumbprints');
+    thumbprints = registerOutput<List<String>?>('thumbprints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [OidcIssuer] resource.
+  OidcIssuer.reference(String urn)
+    : super(
+        'pulumiservice:api/auth:OidcIssuer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String?>('created');
+    issuer = registerOutput<String>('issuer');
+    issuerId = registerOutput<String>('issuerId');
+    jwks = registerOutput<dynamic>('jwks');
+    lastUsed = registerOutput<String?>('lastUsed');
+    maxExpiration = registerOutput<int?>('maxExpiration');
+    modified = registerOutput<String?>('modified');
+    this.name = registerOutput<String>('name');
+    thumbprints = registerOutput<List<String>?>('thumbprints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     url = registerOutput<String>('url');
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_ttl_schedule_args_doc}
 class TtlScheduleArgs {
   /// True if the stack and all associated history and settings should be deleted.
-  final pulumi.Input<bool>? deleteAfterDestroy;
+  final pulumi.Input<bool?>? deleteAfterDestroy;
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Project name.
@@ -24,13 +24,13 @@ class TtlScheduleArgs {
   /// [project] Project name.
   /// [stack] Stack name.
   /// [timestamp] The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z.
-  const TtlScheduleArgs({
-    this.deleteAfterDestroy,
+  TtlScheduleArgs({
+    pulumi.Input<bool?>? deleteAfterDestroy,
     required this.organization,
     required this.project,
     required this.stack,
     required this.timestamp,
-  });
+  }) : deleteAfterDestroy = deleteAfterDestroy ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

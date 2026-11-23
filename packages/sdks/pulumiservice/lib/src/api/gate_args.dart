@@ -10,7 +10,7 @@ class GateArgs {
   /// Whether the change gate is enabled
   final pulumi.Input<bool> enabled;
   /// The change gate identifier
-  final pulumi.Input<String>? gateID;
+  final pulumi.Input<String?>? gateID;
   /// Name of the change gate
   final pulumi.Input<String> name;
   /// The organization name

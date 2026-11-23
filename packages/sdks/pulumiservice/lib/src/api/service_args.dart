@@ -11,7 +11,7 @@ class ServiceArgs {
   final pulumi.Input<String> description;
   /// an optional list of items to add during service creation
   final pulumi.Input<List<dynamic>> items;
-  /// the name of the service
+  /// The name of the service. Between 1 and 80 characters.
   final pulumi.Input<String> name;
   /// The organization name
   final pulumi.Input<String> orgName;
@@ -25,7 +25,7 @@ class ServiceArgs {
   /// Creates a new [ServiceArgs].
   /// [description] an optional description of the service
   /// [items] an optional list of items to add during service creation
-  /// [name] the name of the service
+  /// [name] The name of the service. Between 1 and 80 characters.
   /// [orgName] The organization name
   /// [ownerName] the service owner name
   /// [ownerType] the service owner type

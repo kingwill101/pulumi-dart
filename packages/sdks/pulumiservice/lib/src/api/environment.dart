@@ -19,7 +19,21 @@ class Environment extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['yaml'],
         ) {
-    yaml = registerOutput<String?>('yaml');
+    yaml = registerOutput<String?>('yaml', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['yaml'],
+        isResourceReference: true,
+      ) {
+    yaml = registerOutput<String?>('yaml', isSecret: true);
   }
 }

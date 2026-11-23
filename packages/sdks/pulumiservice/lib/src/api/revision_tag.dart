@@ -37,4 +37,21 @@ class RevisionTag extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     revision = registerOutput<int>('revision');
   }
+
+  /// Creates a typed reference to an existing [RevisionTag] resource.
+  RevisionTag.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:RevisionTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String>('created');
+    editorLogin = registerOutput<String?>('editorLogin');
+    editorName = registerOutput<String?>('editorName');
+    modified = registerOutput<String>('modified');
+    this.name = registerOutput<String>('name');
+    revision = registerOutput<int>('revision');
+  }
 }

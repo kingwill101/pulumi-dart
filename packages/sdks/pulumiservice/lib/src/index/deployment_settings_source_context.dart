@@ -6,7 +6,7 @@ import 'deployment_settings_git_source.dart';
 /// Settings related to the source of the deployment.
 class DeploymentSettingsSourceContext {
   /// Git source settings for a deployment.
-  final pulumi.Input<DeploymentSettingsGitSource>? git;
+  final pulumi.Input<DeploymentSettingsGitSource?>? git;
 
   /// Creates a new [DeploymentSettingsSourceContext].
   /// [git] Git source settings for a deployment.

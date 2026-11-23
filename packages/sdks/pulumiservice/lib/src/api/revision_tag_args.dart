@@ -16,7 +16,7 @@ class RevisionTagArgs {
   /// The project name
   final pulumi.Input<String> projectName;
   /// The revision
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
 
   /// Creates a new [RevisionTagArgs].
   /// [envName] The environment name
@@ -48,7 +48,7 @@ class RevisionTagArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }
