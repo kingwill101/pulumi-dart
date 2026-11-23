@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_staticsitedatabaseconnection" "staticSiteDatabaseConnection" {
+/// resource "azure-native_web_static_site_database_connection" "staticSiteDatabaseConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_identity      = "SystemAssigned"
 ///   connection_string        = "AccountEndpoint=https://exampleDatabaseName.documents.azure.com:443/;Database=mydb;"
 ///   database_connection_name = "default"

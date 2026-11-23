@@ -91,7 +91,7 @@ import 'virtual_machine_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'virtual_machine_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedvmwarevsphere_virtualmachine" "virtualMachine" {
+/// resource "azure-native_connectedvmwarevsphere_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso"
 ///     type = "customLocation"

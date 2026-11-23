@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_dnssecurityrule" "dnsSecurityRule" {
+/// resource "azure-native_dnsresolver_dns_security_rule" "dnsSecurityRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action = {
 ///     action_type         = "Block"
 ///     block_response_code = "SERVFAIL"

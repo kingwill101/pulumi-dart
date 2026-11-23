@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_senderusername" "senderUsername" {
+/// resource "azure-native_communication_sender_username" "senderUsername" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "Contoso News Alerts"
 ///   domain_name         = "contoso.com"
 ///   email_service_name  = "contosoEmailService"

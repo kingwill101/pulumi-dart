@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_managedprivateendpoint" "managedPrivateEndpoint" {
+/// resource "azure-native_kusto_managed_private_endpoint" "managedPrivateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                  = "kustoCluster"
 ///   group_id                      = "blob"
 ///   managed_private_endpoint_name = "managedPrivateEndpointTest"

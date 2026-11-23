@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupprivateendpointconnection" "serverGroupPrivateEndpointConnection" {
+/// resource "azure-native_dbforpostgresql_server_group_private_endpoint_connection" "serverGroupPrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                     = "testcluster"
 ///   private_endpoint_connection_name = "private-endpoint-connection-name"
 ///   private_link_service_connection_state = {

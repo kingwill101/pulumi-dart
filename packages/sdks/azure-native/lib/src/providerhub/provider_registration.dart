@@ -263,7 +263,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -271,15 +271,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_providerregistration" "providerRegistration" {
+/// resource "azure-native_providerhub_provider_registration" "providerRegistration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind = "Direct"
 ///   properties = {
 ///     capabilities = [{
-///       "effect"  = "Allow"
-///       "quotaId" = "CSP_2015-05-01"
+///       effect   = "Allow"
+///       quota_id = "CSP_2015-05-01"
 ///       }, {
-///       "effect"  = "Allow"
-///       "quotaId" = "CSP_MG_2017-12-01"
+///       effect   = "Allow"
+///       quota_id = "CSP_MG_2017-12-01"
 ///     }]
 ///     custom_manifest_version = "2.0"
 ///     dsts_configuration = {
@@ -293,28 +296,28 @@ import 'system_data_response.dart';
 ///       incident_routing_service = "Contoso Resource Provider"
 ///       incident_routing_team    = "Contoso Triage"
 ///       service_tree_infos = [{
-///         "componentId" = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
-///         "readiness"   = "InDevelopment"
-///         "serviceId"   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         component_id = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         readiness    = "InDevelopment"
+///         service_id   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
 ///       }]
 ///     }
 ///     management_group_global_notification_endpoints = [{
-///       "endpointUri" = "{your_management_group_notification_endpoint}"
+///       endpoint_uri = "{your_management_group_notification_endpoint}"
 ///     }]
 ///     notification_options = "EmitSpendingLimit"
 ///     notification_settings = {
 ///       subscriber_settings = [{
-///         "filterRules" = [{
-///           "endpointInformation" = [{
-///             "endpoint"      = "https://userrp.azure.com/arnnotify"
-///             "endpointType"  = "Webhook"
-///             "schemaVersion" = "3.0"
+///         filter_rules = [{
+///           endpoint_information = [{
+///             endpoint       = "https://userrp.azure.com/arnnotify"
+///             endpoint_type  = "Webhook"
+///             schema_version = "3.0"
 ///             }, {
-///             "endpoint"      = "https://userrp.azure.com/arnnotify"
-///             "endpointType"  = "Eventhub"
-///             "schemaVersion" = "3.0"
+///             endpoint       = "https://userrp.azure.com/arnnotify"
+///             endpoint_type  = "Eventhub"
+///             schema_version = "3.0"
 ///           }]
-///           "filterQuery" = "Resources | where event.eventType in ('Microsoft.Network/IpAddresses/write', 'Microsoft.KeyVault/vaults/move/action')"
+///           filter_query = "Resources | where event.eventType in ('Microsoft.Network/IpAddresses/write', 'Microsoft.KeyVault/vaults/move/action')"
 ///         }]
 ///       }]
 ///     }
@@ -325,19 +328,19 @@ import 'system_data_response.dart';
 ///       block_action_verb = "Action"
 ///     }
 ///     resource_hydration_accounts = [{
-///       "accountName"    = "classichydrationprodsn01"
-///       "subscriptionId" = "e4eae963-2d15-43e6-a097-98bd75b33edd"
+///       account_name    = "classichydrationprodsn01"
+///       subscription_id = "e4eae963-2d15-43e6-a097-98bd75b33edd"
 ///       }, {
-///       "accountName"    = "classichydrationprodch01"
-///       "subscriptionId" = "69e69ecb-e69c-41d4-99b8-87dd12781067"
+///       account_name    = "classichydrationprodch01"
+///       subscription_id = "69e69ecb-e69c-41d4-99b8-87dd12781067"
 ///     }]
 ///     response_options = {
 ///       service_client_options_type = "DisableAutomaticDecompression"
 ///     }
 ///     service_name = "root"
 ///     services = [{
-///       "serviceName" = "tags"
-///       "status"      = "Inactive"
+///       service_name = "tags"
+///       status       = "Inactive"
 ///     }]
 ///   }
 ///   provider_namespace = "Microsoft.Contoso"
@@ -354,11 +357,19 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.ProviderRegistration;
 /// import com.pulumi.azurenative.providerhub.ProviderRegistrationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ProviderRegistrationPropertiesArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderCapabilitiesArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesDstsConfigurationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesManagementArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ServiceTreeInfoArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderEndpointArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesNotificationSettingsArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.SubscriberSettingArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.FilterRuleArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.EndpointInformationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ResourceHydrationAccountArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesResponseOptionsArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderServiceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -845,7 +856,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -853,14 +864,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_providerregistration" "providerRegistration" {
+/// resource "azure-native_providerhub_provider_registration" "providerRegistration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     capabilities = [{
-///       "effect"  = "Allow"
-///       "quotaId" = "CSP_2015-05-01"
+///       effect   = "Allow"
+///       quota_id = "CSP_2015-05-01"
 ///       }, {
-///       "effect"  = "Allow"
-///       "quotaId" = "CSP_MG_2017-12-01"
+///       effect   = "Allow"
+///       quota_id = "CSP_MG_2017-12-01"
 ///     }]
 ///     cross_tenant_token_validation = "EnsureSecureValidation"
 ///     management = {
@@ -879,17 +893,17 @@ import 'system_data_response.dart';
 ///       pc_code                      = "P1234"
 ///       profit_center_program_id     = "1234"
 ///       service_tree_infos = [{
-///         "componentId" = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
-///         "readiness"   = "InDevelopment"
-///         "serviceId"   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         component_id = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         readiness    = "InDevelopment"
+///         service_id   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
 ///       }]
 ///     }
 ///     provider_type    = "Internal"
 ///     provider_version = "2.0"
 ///     service_name     = "root"
 ///     services = [{
-///       "serviceName" = "tags"
-///       "status"      = "Inactive"
+///       service_name = "tags"
+///       status       = "Inactive"
 ///     }]
 ///   }
 ///   provider_namespace = "Microsoft.Contoso"
@@ -906,9 +920,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.ProviderRegistration;
 /// import com.pulumi.azurenative.providerhub.ProviderRegistrationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ProviderRegistrationPropertiesArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderCapabilitiesArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManifestPropertiesManagementArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManagementErrorResponseMessageOptionsArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderManagementExpeditedRolloutMetadataArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ServiceTreeInfoArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ResourceProviderServiceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

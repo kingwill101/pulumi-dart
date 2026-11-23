@@ -56,7 +56,7 @@ import 'ddos_custom_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'ddos_custom_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_ddoscustompolicy" "ddosCustomPolicy" {
+/// resource "azure-native_network_ddos_custom_policy" "ddosCustomPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ddos_custom_policy_name = "test-ddos-custom-policy"
 ///   location                = "centraluseuap"
 ///   resource_group_name     = "rg1"

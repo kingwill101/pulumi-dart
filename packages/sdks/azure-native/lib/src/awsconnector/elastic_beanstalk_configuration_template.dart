@@ -131,7 +131,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -139,7 +139,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_elasticbeanstalkconfigurationtemplate" "elasticBeanstalkConfigurationTemplate" {
+/// resource "azure-native_awsconnector_elastic_beanstalk_configuration_template" "elasticBeanstalkConfigurationTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "zzrrrcfibirqbvvfobbhmdfw"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -150,10 +153,10 @@ import 'system_data_response.dart';
 ///       description      = "f"
 ///       environment_id   = "irk"
 ///       option_settings = [{
-///         "namespace"    = "wqnwnaqljiuphwrslzv"
-///         "optionName"   = "jutnzi"
-///         "resourceName" = "cxxafxqqeda"
-///         "value"        = "auojwoarknbok"
+///         namespace     = "wqnwnaqljiuphwrslzv"
+///         option_name   = "jutnzi"
+///         resource_name = "cxxafxqqeda"
+///         value         = "auojwoarknbok"
 ///       }]
 ///       platform_arn        = "shxv"
 ///       solution_stack_name = "ytiftttvorpjlkspzoqxnv"
@@ -189,6 +192,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.ElasticBeanstalkConfigurationTemplateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ElasticBeanstalkConfigurationTemplatePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsElasticBeanstalkConfigurationTemplatePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ConfigurationOptionSettingArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SourceConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

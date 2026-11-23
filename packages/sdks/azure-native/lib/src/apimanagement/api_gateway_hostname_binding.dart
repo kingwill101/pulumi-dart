@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apigatewayhostnamebinding" "apiGatewayHostnameBinding" {
+/// resource "azure-native_apimanagement_api_gateway_hostname_binding" "apiGatewayHostnameBinding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_name          = "apimGateway1"
 ///   hostname              = "primary.cotoso.com"
 ///   hostname_binding_name = "hb-1"

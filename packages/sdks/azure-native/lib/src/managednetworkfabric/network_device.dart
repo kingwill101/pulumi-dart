@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networkdevice" "networkDevice" {
+/// resource "azure-native_managednetworkfabric_network_device" "networkDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation          = "annotation"
 ///   host_name           = "NFA-Device"
 ///   location            = "eastuseuap"

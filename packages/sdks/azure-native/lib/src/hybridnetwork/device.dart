@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_hybridnetwork_device" "device" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name         = "TestDevice"
 ///   device_type         = "AzureStackEdge"
 ///   location            = "eastus"

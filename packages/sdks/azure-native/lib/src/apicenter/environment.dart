@@ -95,7 +95,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,6 +104,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_apicenter_environment" "environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "The primary Azure API Management service for the European division of Contoso."
 ///   environment_name = "public"
 ///   kind             = "production"

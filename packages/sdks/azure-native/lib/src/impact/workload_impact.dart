@@ -92,7 +92,7 @@ import 'workload_impact_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'workload_impact_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+/// resource "azure-native_impact_workload_impact" "workloadImpact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     arm_correlation_ids = ["00000000-0000-0000-0000-000000000000"]
 ///     client_incident_details = {
@@ -338,7 +341,7 @@ import 'workload_impact_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -346,7 +349,10 @@ import 'workload_impact_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+/// resource "azure-native_impact_workload_impact" "workloadImpact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     client_incident_details = {
 ///       client_incident_id     = "AA123"
@@ -604,7 +610,7 @@ import 'workload_impact_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -612,7 +618,10 @@ import 'workload_impact_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+/// resource "azure-native_impact_workload_impact" "workloadImpact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     client_incident_details = {
 ///       client_incident_id     = "AA123"
@@ -773,8 +782,8 @@ import 'workload_impact_properties_response.dart';
 ///             {
 ///                 new AzureNative.Impact.Inputs.PerformanceArgs
 ///                 {
-///                     Actual = 90,
-///                     Expected = 60,
+///                     Actual = 90.0,
+///                     Expected = 60.0,
 ///                     MetricName = "CPU",
 ///                     Unit = "garbage",
 ///                 },
@@ -839,7 +848,7 @@ import 'workload_impact_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -847,7 +856,10 @@ import 'workload_impact_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_impact_workloadimpact" "workloadImpact" {
+/// resource "azure-native_impact_workload_impact" "workloadImpact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     client_incident_details = {
 ///       client_incident_id     = "AA123"
@@ -857,10 +869,10 @@ import 'workload_impact_properties_response.dart';
 ///     impact_description   = "high cpu utilization"
 ///     impacted_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservercontext"
 ///     performance = [{
-///       "actual"     = 90
-///       "expected"   = 60
-///       "metricName" = "CPU"
-///       "unit"       = "garbage"
+///       actual      = 90
+///       expected    = 60
+///       metric_name = "CPU"
+///       unit        = "garbage"
 ///     }]
 ///     start_date_time = "2022-06-15T05:59:46.6517821Z"
 ///     workload = {
@@ -883,6 +895,7 @@ import 'workload_impact_properties_response.dart';
 /// import com.pulumi.azurenative.impact.WorkloadImpactArgs;
 /// import com.pulumi.azurenative.impact.inputs.WorkloadImpactPropertiesArgs;
 /// import com.pulumi.azurenative.impact.inputs.ClientIncidentDetailsArgs;
+/// import com.pulumi.azurenative.impact.inputs.PerformanceArgs;
 /// import com.pulumi.azurenative.impact.inputs.WorkloadArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

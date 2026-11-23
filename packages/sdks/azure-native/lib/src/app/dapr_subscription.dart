@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprsubscription" "daprSubscription" {
+/// resource "azure-native_app_dapr_subscription" "daprSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bulk_subscribe = {
 ///     enabled               = true
 ///     max_await_duration_ms = 500
@@ -296,7 +299,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -304,7 +307,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprsubscription" "daprSubscription" {
+/// resource "azure-native_app_dapr_subscription" "daprSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name    = "myenvironment"
 ///   name                = "mysubscription"
 ///   pubsub_name         = "mypubsubcomponent"
@@ -494,7 +500,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -502,7 +508,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprsubscription" "daprSubscription" {
+/// resource "azure-native_app_dapr_subscription" "daprSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "myenvironment"
 ///   metadata = {
 ///     "foo"   = "bar"
@@ -514,11 +523,11 @@ import 'system_data_response.dart';
 ///   routes = {
 ///     default = "/products"
 ///     rules = [{
-///       "match" = "event.type == 'widget'"
-///       "path"  = "/widgets"
+///       match = "event.type == 'widget'"
+///       path  = "/widgets"
 ///       }, {
-///       "match" = "event.type == 'gadget'"
-///       "path"  = "/gadgets"
+///       match = "event.type == 'gadget'"
+///       path  = "/gadgets"
 ///     }]
 ///   }
 ///   topic = "inventory"
@@ -535,6 +544,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.DaprSubscription;
 /// import com.pulumi.azurenative.app.DaprSubscriptionArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprSubscriptionRoutesArgs;
+/// import com.pulumi.azurenative.app.inputs.DaprSubscriptionRouteRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

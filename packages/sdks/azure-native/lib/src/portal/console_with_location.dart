@@ -53,7 +53,7 @@ import 'console_with_location_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -61,7 +61,10 @@ import 'console_with_location_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_portal_consolewithlocation" "consoleWithLocation" {
+/// resource "azure-native_portal_console_with_location" "consoleWithLocation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   console_name = "default"
 ///   location     = "eastus"
 /// }

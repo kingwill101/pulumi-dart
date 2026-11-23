@@ -163,7 +163,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -171,15 +171,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2s_v3"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -225,6 +228,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxPatchSettingsArgs;
@@ -570,7 +574,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -578,15 +582,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2s_v3"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -637,6 +644,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxPatchSettingsArgs;
@@ -991,7 +999,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -999,15 +1007,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2s_v3"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -1053,6 +1064,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxPatchSettingsArgs;
@@ -1389,7 +1401,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1397,15 +1409,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2s_v3"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -1452,6 +1467,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxPatchSettingsArgs;
@@ -1770,7 +1786,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1778,15 +1794,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -1823,6 +1842,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -2101,7 +2121,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2109,15 +2129,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -2154,6 +2177,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -2487,7 +2511,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2495,7 +2519,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled     = true
@@ -2508,8 +2535,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -2566,6 +2593,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScheduledEventsPolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScheduledEventsAdditionalPublishingTargetsArgs;
@@ -2965,7 +2993,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2973,7 +3001,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_capabilities = {
 ///     hibernation_enabled = true
 ///   }
@@ -2989,8 +3020,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "eastus2euap"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -3033,6 +3064,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -3374,7 +3406,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3382,15 +3414,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2s_v3"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -3435,6 +3470,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ProxyAgentSettingsArgs;
@@ -3767,7 +3803,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3775,15 +3811,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2s_v3"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -3830,6 +3869,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -4170,7 +4210,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4178,7 +4218,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled     = true
@@ -4191,8 +4234,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -4235,6 +4278,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -4582,7 +4626,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4590,7 +4634,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled     = true
@@ -4607,8 +4654,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -4652,6 +4699,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VMSizePropertiesArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -5016,7 +5064,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5024,15 +5072,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DS1_v2"
 ///   }
 ///   location = "westus2"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -5081,6 +5132,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlacementArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
@@ -5461,7 +5513,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5469,7 +5521,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
@@ -5477,22 +5532,22 @@ import 'virtual_machine_instance_view_response.dart';
 ///   network_profile = {
 ///     network_api_version = "2020-11-01"
 ///     network_interface_configurations = [{
-///       "deleteOption" = "Delete"
-///       "ipConfigurations" = [{
-///         "name"    = "{ip-config-name}"
-///         "primary" = true
-///         "publicIPAddressConfiguration" = {
-///           "deleteOption"             = "Detach"
-///           "name"                     = "{publicIP-config-name}"
-///           "publicIPAllocationMethod" = "Static"
-///           "sku" = {
-///             "name" = "Basic"
-///             "tier" = "Global"
+///       delete_option = "Delete"
+///       ip_configurations = [{
+///         name    = "{ip-config-name}"
+///         primary = true
+///         public_ip_address_configuration = {
+///           delete_option               = "Detach"
+///           name                        = "{publicIP-config-name}"
+///           public_ip_allocation_method = "Static"
+///           sku = {
+///             name = "Basic"
+///             tier = "Global"
 ///           }
 ///         }
 ///       }]
-///       "name"    = "{nic-config-name}"
-///       "primary" = true
+///       name    = "{nic-config-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -5532,6 +5587,10 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineNetworkInterfaceConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineNetworkInterfaceIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachinePublicIPAddressConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.PublicIPAddressSkuArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -5932,7 +5991,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5940,7 +5999,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
@@ -5948,26 +6010,26 @@ import 'virtual_machine_instance_view_response.dart';
 ///   network_profile = {
 ///     network_api_version = "2020-11-01"
 ///     network_interface_configurations = [{
-///       "deleteOption" = "Delete"
-///       "ipConfigurations" = [{
-///         "name"    = "{ip-config-name}"
-///         "primary" = true
-///         "publicIPAddressConfiguration" = {
-///           "deleteOption" = "Detach"
-///           "dnsSettings" = {
-///             "domainNameLabel"      = "aaaaa"
-///             "domainNameLabelScope" = "TenantReuse"
+///       delete_option = "Delete"
+///       ip_configurations = [{
+///         name    = "{ip-config-name}"
+///         primary = true
+///         public_ip_address_configuration = {
+///           delete_option = "Detach"
+///           dns_settings = {
+///             domain_name_label       = "aaaaa"
+///             domain_name_label_scope = "TenantReuse"
 ///           }
-///           "name"                     = "{publicIP-config-name}"
-///           "publicIPAllocationMethod" = "Static"
-///           "sku" = {
-///             "name" = "Basic"
-///             "tier" = "Global"
+///           name                        = "{publicIP-config-name}"
+///           public_ip_allocation_method = "Static"
+///           sku = {
+///             name = "Basic"
+///             tier = "Global"
 ///           }
 ///         }
 ///       }]
-///       "name"    = "{nic-config-name}"
-///       "primary" = true
+///       name    = "{nic-config-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -6007,6 +6069,11 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineNetworkInterfaceConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineNetworkInterfaceIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachinePublicIPAddressConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachinePublicIPAddressDnsSettingsConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.PublicIPAddressSkuArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -6405,7 +6472,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -6413,15 +6480,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DC2as_v5"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -6474,6 +6544,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -6845,7 +6916,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -6853,15 +6924,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DC2es_v5"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -6911,6 +6985,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -7270,7 +7345,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -7278,15 +7353,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DC2as_v5"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -7336,6 +7414,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -7688,7 +7767,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -7696,15 +7775,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -7751,6 +7833,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.PatchSettingsArgs;
@@ -8091,7 +8174,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8099,15 +8182,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/nsgExistingNic"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/nsgExistingNic"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -8154,6 +8240,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.PatchSettingsArgs;
@@ -8505,7 +8592,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8513,15 +8600,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -8573,6 +8663,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.PatchSettingsArgs;
@@ -8935,7 +9026,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8943,15 +9034,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -8999,6 +9093,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.PatchSettingsArgs;
@@ -9343,7 +9438,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -9351,15 +9446,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -9406,6 +9504,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.PatchSettingsArgs;
@@ -9748,7 +9847,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -9756,15 +9855,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -9812,6 +9914,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.PatchSettingsArgs;
@@ -10136,7 +10239,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10144,15 +10247,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -10190,6 +10296,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
@@ -10518,7 +10625,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10526,15 +10633,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -10545,18 +10655,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "createOption" = "Empty"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 0
-///       "vhd" = {
-///         "uri" = "http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk0.vhd"
+///       create_option = "Empty"
+///       disk_size_gb  = 1023
+///       lun           = 0
+///       vhd = {
+///         uri = "http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk0.vhd"
 ///       }
 ///       }, {
-///       "createOption" = "Empty"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 1
-///       "vhd" = {
-///         "uri" = "http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk1.vhd"
+///       create_option = "Empty"
+///       disk_size_gb  = 1023
+///       lun           = 1
+///       vhd = {
+///         uri = "http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk1.vhd"
 ///       }
 ///     }]
 ///     image_reference = {
@@ -10589,11 +10699,13 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.DataDiskArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualHardDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
-/// import com.pulumi.azurenative.compute.inputs.VirtualHardDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -10943,7 +11055,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10951,15 +11063,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -10996,6 +11111,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -11274,7 +11390,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11282,15 +11398,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -11327,6 +11446,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -11594,7 +11714,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11602,15 +11722,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -11642,6 +11765,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
@@ -11915,7 +12039,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11923,15 +12047,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -11975,6 +12102,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -12294,7 +12422,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -12302,7 +12430,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_set = {
 ///     id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/availabilitySets/{existing-availability-set-name}"
 ///   }
@@ -12312,8 +12443,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -12354,6 +12485,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -12695,7 +12827,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -12703,17 +12835,20 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_profile = {
 ///     gallery_applications = [{
-///       "configurationReference"          = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config"
-///       "enableAutomaticUpgrade"          = false
-///       "order"                           = 1
-///       "packageReferenceId"              = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0"
-///       "tags"                            = "myTag1"
-///       "treatFailureAsDeploymentFailure" = false
+///       configuration_reference             = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config"
+///       enable_automatic_upgrade            = false
+///       order                               = 1
+///       package_reference_id                = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0"
+///       tags                                = "myTag1"
+///       treat_failure_as_deployment_failure = false
 ///       }, {
-///       "packageReferenceId" = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1"
+///       package_reference_id = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1"
 ///     }]
 ///   }
 ///   hardware_profile = {
@@ -12722,8 +12857,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -12762,8 +12897,10 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachine;
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.ApplicationProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VMGalleryApplicationArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -13175,7 +13312,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -13183,15 +13320,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -13202,27 +13342,27 @@ import 'virtual_machine_instance_view_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "caching"      = "ReadWrite"
-///       "createOption" = "Empty"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 0
-///       "managedDisk" = {
-///         "diskEncryptionSet" = {
-///           "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///       caching       = "ReadWrite"
+///       create_option = "Empty"
+///       disk_size_gb  = 1023
+///       lun           = 0
+///       managed_disk = {
+///         disk_encryption_set = {
+///           id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
 ///         }
-///         "storageAccountType" = "Standard_LRS"
+///         storage_account_type = "Standard_LRS"
 ///       }
 ///       }, {
-///       "caching"      = "ReadWrite"
-///       "createOption" = "Attach"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 1
-///       "managedDisk" = {
-///         "diskEncryptionSet" = {
-///           "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///       caching       = "ReadWrite"
+///       create_option = "Attach"
+///       disk_size_gb  = 1023
+///       lun           = 1
+///       managed_disk = {
+///         disk_encryption_set = {
+///           id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
 ///         }
-///         "id"                 = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-managed-disk-name}"
-///         "storageAccountType" = "Standard_LRS"
+///         id                   = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-managed-disk-name}"
+///         storage_account_type = "Standard_LRS"
 ///       }
 ///     }]
 ///     image_reference = {
@@ -13255,12 +13395,14 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
-/// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
-/// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
+/// import com.pulumi.azurenative.compute.inputs.DataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ManagedDiskParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
+/// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -13667,7 +13809,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -13675,15 +13817,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DS1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -13731,6 +13876,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
@@ -14127,7 +14273,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -14135,7 +14281,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled     = true
@@ -14148,8 +14297,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -14214,6 +14363,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScheduledEventsPolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScheduledEventsAdditionalPublishingTargetsArgs;
@@ -14635,7 +14785,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -14643,15 +14793,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -14696,6 +14849,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
@@ -15028,7 +15182,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -15036,7 +15190,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled     = true
@@ -15050,8 +15207,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -15093,6 +15250,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -15429,7 +15587,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -15437,7 +15595,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled     = true
@@ -15450,8 +15611,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -15493,6 +15654,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -15870,7 +16032,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -15878,15 +16040,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -15897,25 +16062,25 @@ import 'virtual_machine_instance_view_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "createOption" = "Copy"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 0
-///       "sourceResource" = {
-///         "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/{existing-snapshot-name}"
+///       create_option = "Copy"
+///       disk_size_gb  = 1023
+///       lun           = 0
+///       source_resource = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/{existing-snapshot-name}"
 ///       }
 ///       }, {
-///       "createOption" = "Copy"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 1
-///       "sourceResource" = {
-///         "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-disk-name}"
+///       create_option = "Copy"
+///       disk_size_gb  = 1023
+///       lun           = 1
+///       source_resource = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-disk-name}"
 ///       }
 ///       }, {
-///       "createOption" = "Restore"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 2
-///       "sourceResource" = {
-///         "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/{existing-rpc-name}/restorePoints/{existing-rp-name}/diskRestorePoints/{existing-disk-restore-point-name}"
+///       create_option = "Restore"
+///       disk_size_gb  = 1023
+///       lun           = 2
+///       source_resource = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/{existing-rpc-name}/restorePoints/{existing-rp-name}/diskRestorePoints/{existing-disk-restore-point-name}"
 ///       }
 ///     }]
 ///     image_reference = {
@@ -15948,8 +16113,11 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.DataDiskArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ManagedDiskParametersArgs;
@@ -16364,7 +16532,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -16372,15 +16540,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D2_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -16391,13 +16562,13 @@ import 'virtual_machine_instance_view_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "createOption" = "Empty"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 0
+///       create_option = "Empty"
+///       disk_size_gb  = 1023
+///       lun           = 0
 ///       }, {
-///       "createOption" = "Empty"
-///       "diskSizeGB"   = 1023
-///       "lun"          = 1
+///       create_option = "Empty"
+///       disk_size_gb  = 1023
+///       lun           = 1
 ///     }]
 ///     image_reference = {
 ///       offer     = "WindowsServer"
@@ -16429,8 +16600,10 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.DataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ManagedDiskParametersArgs;
@@ -16787,7 +16960,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -16795,15 +16968,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DS1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -16852,6 +17028,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
@@ -17204,7 +17381,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -17212,15 +17389,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DS1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -17269,6 +17449,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
@@ -17621,7 +17802,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -17629,15 +17810,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DS1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -17686,6 +17870,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
@@ -18036,7 +18221,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -18044,15 +18229,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_DS1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -18100,6 +18288,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
@@ -18440,7 +18629,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -18448,7 +18637,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   diagnostics_profile = {
 ///     boot_diagnostics = {
 ///       enabled = true
@@ -18460,8 +18652,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -18503,6 +18695,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -18817,7 +19010,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -18825,15 +19018,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -18873,6 +19069,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -19169,7 +19366,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -19177,15 +19374,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -19225,6 +19425,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -19545,7 +19746,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -19553,15 +19754,18 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hardware_profile = {
 ///     vm_size = "Standard_D1_v2"
 ///   }
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -19571,8 +19775,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///       disable_password_authentication = true
 ///       ssh = {
 ///         public_keys = [{
-///           "keyData" = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeClRAk2ipUs/l5voIsDC5q9RI+YSRd1Bvd/O+axgY4WiBzG+4FwJWZm/mLLe5DoOdHQwmU2FrKXZSW4w2sYE70KeWnrFViCOX5MTVvJgPE8ClugNl8RWth/tU849DvM9sT7vFgfVSHcAS2yDRyDlueii+8nF2ym8XWAPltFVCyLHRsyBp5YPqK8JFYIa1eybKsY3hEAxRCA+/7bq8et+Gj3coOsuRmrehav7rE6N12Pb80I6ofa6SM5XNYq4Xk0iYNx7R3kdz0Jj9XgZYWjAHjJmT0gTRoOnt6upOuxK7xI/ykWrllgpXrCPu3Ymz+c+ujaqcxDopnAl2lmf69/J1"
-///           "path"    = "/home/{your-username}/.ssh/authorized_keys"
+///           key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeClRAk2ipUs/l5voIsDC5q9RI+YSRd1Bvd/O+axgY4WiBzG+4FwJWZm/mLLe5DoOdHQwmU2FrKXZSW4w2sYE70KeWnrFViCOX5MTVvJgPE8ClugNl8RWth/tU849DvM9sT7vFgfVSHcAS2yDRyDlueii+8nF2ym8XWAPltFVCyLHRsyBp5YPqK8JFYIa1eybKsY3hEAxRCA+/7bq8et+Gj3coOsuRmrehav7rE6N12Pb80I6ofa6SM5XNYq4Xk0iYNx7R3kdz0Jj9XgZYWjAHjJmT0gTRoOnt6upOuxK7xI/ykWrllgpXrCPu3Ymz+c+ujaqcxDopnAl2lmf69/J1"
+///           path     = "/home/{your-username}/.ssh/authorized_keys"
 ///         }]
 ///       }
 ///     }
@@ -19609,9 +19813,11 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.SshConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.SshPublicKeyArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSDiskArgs;
@@ -19959,7 +20165,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -19967,7 +20173,10 @@ import 'virtual_machine_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachine" "virtualMachine" {
+/// resource "azure-native_compute_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_reservation = {
 ///     capacity_reservation_group = {
 ///       id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/CapacityReservationGroups/{crgName}"
@@ -19979,8 +20188,8 @@ import 'virtual_machine_instance_view_response.dart';
 ///   location = "westus"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id"      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
-///       "primary" = true
+///       id      = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"
+///       primary = true
 ///     }]
 ///   }
 ///   os_profile = {
@@ -20027,6 +20236,7 @@ import 'virtual_machine_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.compute.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.NetworkInterfaceReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.PlanArgs;
 /// import com.pulumi.azurenative.compute.inputs.StorageProfileArgs;

@@ -118,7 +118,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -126,7 +126,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_globalrulestack" "globalRulestack" {
+/// resource "azure-native_cloudngfw_global_rulestack" "globalRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   associated_subscriptions = ["2bf4a339-294d-4c25-b0b2-ef649e9f5c27"]
 ///   default_mode             = "IPS"
 ///   description              = "global rulestacks"
@@ -168,6 +171,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.GlobalRulestack;
 /// import com.pulumi.azurenative.cloudngfw.GlobalRulestackArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerManagedIdentityPropertiesArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerUserAssignedIdentityArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.SecurityServicesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -368,7 +372,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -376,7 +380,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_globalrulestack" "globalRulestack" {
+/// resource "azure-native_cloudngfw_global_rulestack" "globalRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_rulestack_name = "praval"
 ///   location              = "eastus"
 /// }

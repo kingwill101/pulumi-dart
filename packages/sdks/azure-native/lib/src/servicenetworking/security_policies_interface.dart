@@ -67,7 +67,7 @@ import 'waf_policy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'waf_policy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicenetworking_securitypoliciesinterface" "securityPoliciesInterface" {
+/// resource "azure-native_servicenetworking_security_policies_interface" "securityPoliciesInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                = "NorthCentralUS"
 ///   resource_group_name     = "rg1"
 ///   security_policy_name    = "sp1"

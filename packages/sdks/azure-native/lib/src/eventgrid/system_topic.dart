@@ -71,7 +71,7 @@ import 'system_topic_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_topic_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_systemtopic" "systemTopic" {
+/// resource "azure-native_eventgrid_system_topic" "systemTopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus2"
 ///   resource_group_name = "examplerg"
 ///   source              = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/azureeventgridrunnerrgcentraluseuap/providers/microsoft.storage/storageaccounts/pubstgrunnerb71cd29e"

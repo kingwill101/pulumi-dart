@@ -60,7 +60,7 @@ import 'ipv6_firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'ipv6_firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_ipv6firewallrule" "iPv6FirewallRule" {
+/// resource "azure-native_sql_i_pv6_firewall_rule" "iPv6FirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_i_pv6_address   = "0000:0000:0000:0000:0000:ffff:0000:0003"
 ///   firewall_rule_name  = "firewallrulecrudtest-5370"
 ///   resource_group_name = "firewallrulecrudtest-12"
@@ -204,7 +207,7 @@ import 'ipv6_firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -212,7 +215,10 @@ import 'ipv6_firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_ipv6firewallrule" "iPv6FirewallRule" {
+/// resource "azure-native_sql_i_pv6_firewall_rule" "iPv6FirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_i_pv6_address   = "0000:0000:0000:0000:0000:ffff:0000:0001"
 ///   firewall_rule_name  = "firewallrulecrudtest-3927"
 ///   resource_group_name = "firewallrulecrudtest-12"

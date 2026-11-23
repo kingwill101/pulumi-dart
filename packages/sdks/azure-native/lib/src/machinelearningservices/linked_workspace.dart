@@ -68,7 +68,7 @@ import 'linked_workspace_props_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'linked_workspace_props_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_linkedworkspace" "linkedWorkspace" {
+/// resource "azure-native_machinelearningservices_linked_workspace" "linkedWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   link_name = "link-1"
 ///   name      = "link-1"
 ///   properties = {

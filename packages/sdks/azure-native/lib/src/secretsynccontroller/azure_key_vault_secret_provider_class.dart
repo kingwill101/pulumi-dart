@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_secretsynccontroller_azurekeyvaultsecretproviderclass" "azureKeyVaultSecretProviderClass" {
+/// resource "azure-native_secretsynccontroller_azure_key_vault_secret_provider_class" "azureKeyVaultSecretProviderClass" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_key_vault_secret_provider_class_name = "akvspc-ssc-example"
 ///   client_id                                  = "00000000-0000-0000-0000-000000000000"
 ///   extended_location = {

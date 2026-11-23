@@ -8,7 +8,7 @@ class ColumnResponse {
   final pulumi.Input<String?>? dataTypeHint;
   /// Column description.
   final pulumi.Input<String?>? description;
-  /// Column display name.
+  /// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
   final pulumi.Input<String?>? displayName;
   /// Is displayed by default.
   final pulumi.Input<bool> isDefaultDisplay;
@@ -22,7 +22,7 @@ class ColumnResponse {
   /// Creates a new [ColumnResponse].
   /// [dataTypeHint] Column data type logical hint.
   /// [description] Column description.
-  /// [displayName] Column display name.
+  /// [displayName] Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
   /// [isDefaultDisplay] Is displayed by default.
   /// [isHidden] Is column hidden.
   /// [name] Column name.

@@ -67,7 +67,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressrouteport" "expressRoutePort" {
+/// resource "azure-native_network_express_route_port" "expressRoutePort" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bandwidth_in_gbps       = 100
 ///   billing_type            = "UnlimitedData"
 ///   encapsulation           = "QinQ"
@@ -239,7 +242,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -247,7 +250,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressrouteport" "expressRoutePort" {
+/// resource "azure-native_network_express_route_port" "expressRoutePort" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bandwidth_in_gbps       = 100
 ///   billing_type            = "UnlimitedData"
 ///   encapsulation           = "QinQ"

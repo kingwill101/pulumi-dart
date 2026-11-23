@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_startstopmanagedinstanceschedule" "startStopManagedInstanceSchedule" {
+/// resource "azure-native_sql_start_stop_managed_instance_schedule" "startStopManagedInstanceSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description           = "This is a schedule for our Dev/Test environment."
 ///   managed_instance_name = "schedulemi"
 ///   resource_group_name   = "schedulerg"
@@ -327,7 +330,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -335,7 +338,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_startstopmanagedinstanceschedule" "startStopManagedInstanceSchedule" {
+/// resource "azure-native_sql_start_stop_managed_instance_schedule" "startStopManagedInstanceSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_instance_name = "schedulemi"
 ///   resource_group_name   = "schedulerg"
 ///   schedule_list {

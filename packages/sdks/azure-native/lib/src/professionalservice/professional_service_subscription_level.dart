@@ -70,7 +70,7 @@ import 'professional_service_subscription_level_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'professional_service_subscription_level_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_professionalservice_professionalservicesubscriptionlevel" "professionalServiceSubscriptionLevel" {
+/// resource "azure-native_professionalservice_professional_service_subscription_level" "professionalServiceSubscriptionLevel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "global"
 ///   name     = "MyContosoPS"
 ///   properties = {
@@ -254,7 +257,7 @@ import 'professional_service_subscription_level_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -262,7 +265,10 @@ import 'professional_service_subscription_level_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_professionalservice_professionalservicesubscriptionlevel" "professionalServiceSubscriptionLevel" {
+/// resource "azure-native_professionalservice_professional_service_subscription_level" "professionalServiceSubscriptionLevel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "global"
 ///   name     = "MyContosoPS"
 ///   properties = {

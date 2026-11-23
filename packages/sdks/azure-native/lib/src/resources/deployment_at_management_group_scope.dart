@@ -73,7 +73,7 @@ import 'deployment_properties_extended_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'deployment_properties_extended_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_deploymentatmanagementgroupscope" "deploymentAtManagementGroupScope" {
+/// resource "azure-native_resources_deployment_at_management_group_scope" "deploymentAtManagementGroupScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "my-deployment"
 ///   group_id        = "my-management-group-id"
 ///   location        = "eastus"

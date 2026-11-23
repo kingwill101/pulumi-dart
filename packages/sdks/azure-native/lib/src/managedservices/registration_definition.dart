@@ -152,7 +152,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -160,7 +160,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managedservices_registrationdefinition" "registrationDefinition" {
+/// resource "azure-native_managedservices_registration_definition" "registrationDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   plan = {
 ///     name      = "addesai-plan"
 ///     product   = "test"
@@ -169,28 +172,28 @@ import 'system_data_response.dart';
 ///   }
 ///   properties = {
 ///     authorizations = [{
-///       "principalId"            = "f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"
-///       "principalIdDisplayName" = "Support User"
-///       "roleDefinitionId"       = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+///       principal_id              = "f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"
+///       principal_id_display_name = "Support User"
+///       role_definition_id        = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
 ///       }, {
-///       "delegatedRoleDefinitionIds" = ["b24988ac-6180-42a0-ab88-20f7382dd24c"]
-///       "principalId"                = "f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"
-///       "principalIdDisplayName"     = "User Access Administrator"
-///       "roleDefinitionId"           = "18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"
+///       delegated_role_definition_ids = ["b24988ac-6180-42a0-ab88-20f7382dd24c"]
+///       principal_id                  = "f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"
+///       principal_id_display_name     = "User Access Administrator"
+///       role_definition_id            = "18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"
 ///     }]
 ///     description = "Tes1t"
 ///     eligible_authorizations = [{
-///       "justInTimeAccessPolicy" = {
-///         "managedByTenantApprovers" = [{
-///           "principalId"            = "d9b22cd6-6407-43cc-8c60-07c56df0b51a"
-///           "principalIdDisplayName" = "Approver Group"
+///       just_in_time_access_policy = {
+///         managed_by_tenant_approvers = [{
+///           principal_id              = "d9b22cd6-6407-43cc-8c60-07c56df0b51a"
+///           principal_id_display_name = "Approver Group"
 ///         }]
-///         "maximumActivationDuration" = "PT8H"
-///         "multiFactorAuthProvider"   = "Azure"
+///         maximum_activation_duration = "PT8H"
+///         multi_factor_auth_provider  = "Azure"
 ///       }
-///       "principalId"            = "3e0ed8c6-e902-4fc5-863c-e3ddbb2ae2a2"
-///       "principalIdDisplayName" = "Support User"
-///       "roleDefinitionId"       = "ae349356-3a1b-4a5e-921d-050484c6347e"
+///       principal_id              = "3e0ed8c6-e902-4fc5-863c-e3ddbb2ae2a2"
+///       principal_id_display_name = "Support User"
+///       role_definition_id        = "ae349356-3a1b-4a5e-921d-050484c6347e"
 ///     }]
 ///     managed_by_tenant_id         = "83abe5cd-bcc3-441a-bd86-e6a75360cecc"
 ///     registration_definition_name = "DefinitionName"
@@ -211,6 +214,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managedservices.RegistrationDefinitionArgs;
 /// import com.pulumi.azurenative.managedservices.inputs.PlanArgs;
 /// import com.pulumi.azurenative.managedservices.inputs.RegistrationDefinitionPropertiesArgs;
+/// import com.pulumi.azurenative.managedservices.inputs.AuthorizationArgs;
+/// import com.pulumi.azurenative.managedservices.inputs.EligibleAuthorizationArgs;
+/// import com.pulumi.azurenative.managedservices.inputs.JustInTimeAccessPolicyArgs;
+/// import com.pulumi.azurenative.managedservices.inputs.EligibleApproverArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

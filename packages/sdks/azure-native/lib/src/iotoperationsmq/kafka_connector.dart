@@ -141,7 +141,7 @@ import 'system_data_response.dart';
 ///             Value = "sfafsjdcezdmkwibxeluukxgl",
 ///         },
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -264,7 +264,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -272,7 +272,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_kafkaconnector" "kafkaConnector" {
+/// resource "azure-native_iotoperationsmq_kafka_connector" "kafkaConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id_prefix = "yybbbeowkw"
 ///   extended_location = {
 ///     name = "an"

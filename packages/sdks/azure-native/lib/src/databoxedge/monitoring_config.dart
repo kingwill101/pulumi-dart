@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_monitoringconfig" "monitoringConfig" {
+/// resource "azure-native_databoxedge_monitoring_config" "monitoringConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name = "testedgedevice"
 ///   metric_configurations {
 ///     counter_sets {
@@ -131,6 +134,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.MonitoringConfig;
 /// import com.pulumi.azurenative.databoxedge.MonitoringConfigArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.MetricConfigurationArgs;
+/// import com.pulumi.azurenative.databoxedge.inputs.MetricCounterSetArgs;
+/// import com.pulumi.azurenative.databoxedge.inputs.MetricCounterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

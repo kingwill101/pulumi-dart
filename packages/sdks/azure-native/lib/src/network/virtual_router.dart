@@ -71,7 +71,7 @@ import 'virtual_router_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'virtual_router_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualrouter" "virtualRouter" {
+/// resource "azure-native_network_virtual_router" "virtualRouter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hosted_gateway = {
 ///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vnetGateway"
 ///   }

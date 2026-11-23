@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,10 +88,13 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
-///     "endpointType" = "EventHub"
-///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
+///     endpoint_type = "EventHub"
+///     resource_id   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -112,6 +115,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -128,7 +140,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .destination(EventHubEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("EventHub")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -278,7 +289,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -286,15 +297,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dead_letter_destination = {
 ///     blob_container_name = "contosocontainer"
 ///     endpoint_type       = "StorageBlob"
 ///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   destination = {
-///     "endpointType" = "AzureFunction"
-///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Web/sites/ContosoSite/funtions/ContosoFunc"
+///     endpoint_type = "AzureFunction"
+///     resource_id   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Web/sites/ContosoSite/funtions/ContosoFunc"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -316,6 +330,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -333,11 +356,9 @@ import 'system_data_response.dart';
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .deadLetterDestination(StorageBlobDeadLetterDestinationArgs.builder()
 ///                 .blobContainerName("contosocontainer")
-///                 .endpointType("StorageBlob")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
 ///             .destination(AzureFunctionEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("AzureFunction")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Web/sites/ContosoSite/funtions/ContosoFunc")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -501,7 +522,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -509,15 +530,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dead_letter_destination = {
 ///     blob_container_name = "contosocontainer"
 ///     endpoint_type       = "StorageBlob"
 ///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   destination = {
-///     "endpointType" = "EventHub"
-///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
+///     endpoint_type = "EventHub"
+///     resource_id   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -539,6 +563,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -556,11 +589,9 @@ import 'system_data_response.dart';
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .deadLetterDestination(StorageBlobDeadLetterDestinationArgs.builder()
 ///                 .blobContainerName("contosocontainer")
-///                 .endpointType("StorageBlob")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
 ///             .destination(EventHubEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("EventHub")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -724,7 +755,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -732,15 +763,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dead_letter_destination = {
 ///     blob_container_name = "contosocontainer"
 ///     endpoint_type       = "StorageBlob"
 ///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   destination = {
-///     "endpointType" = "HybridConnection"
-///     "resourceId"   = "/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Relay/namespaces/ContosoNamespace/hybridConnections/HC1"
+///     endpoint_type = "HybridConnection"
+///     resource_id   = "/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Relay/namespaces/ContosoNamespace/hybridConnections/HC1"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -762,6 +796,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -779,11 +822,9 @@ import 'system_data_response.dart';
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .deadLetterDestination(StorageBlobDeadLetterDestinationArgs.builder()
 ///                 .blobContainerName("contosocontainer")
-///                 .endpointType("StorageBlob")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
 ///             .destination(HybridConnectionEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("HybridConnection")
 ///                 .resourceId("/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Relay/namespaces/ContosoNamespace/hybridConnections/HC1")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -947,7 +988,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -955,15 +996,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dead_letter_destination = {
 ///     blob_container_name = "contosocontainer"
 ///     endpoint_type       = "StorageBlob"
 ///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   destination = {
-///     "endpointType" = "ServiceBusQueue"
-///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/queues/SBQ"
+///     endpoint_type = "ServiceBusQueue"
+///     resource_id   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/queues/SBQ"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -985,6 +1029,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1002,11 +1055,9 @@ import 'system_data_response.dart';
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .deadLetterDestination(StorageBlobDeadLetterDestinationArgs.builder()
 ///                 .blobContainerName("contosocontainer")
-///                 .endpointType("StorageBlob")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
 ///             .destination(ServiceBusQueueEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("ServiceBusQueue")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/queues/SBQ")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -1170,7 +1221,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1178,15 +1229,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dead_letter_destination = {
 ///     blob_container_name = "contosocontainer"
 ///     endpoint_type       = "StorageBlob"
 ///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   destination = {
-///     "endpointType" = "ServiceBusTopic"
-///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/topics/SBT"
+///     endpoint_type = "ServiceBusTopic"
+///     resource_id   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/topics/SBT"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -1208,6 +1262,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1225,11 +1288,9 @@ import 'system_data_response.dart';
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .deadLetterDestination(StorageBlobDeadLetterDestinationArgs.builder()
 ///                 .blobContainerName("contosocontainer")
-///                 .endpointType("StorageBlob")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
 ///             .destination(ServiceBusTopicEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("ServiceBusTopic")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/topics/SBT")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -1395,7 +1456,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1403,16 +1464,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dead_letter_destination = {
 ///     blob_container_name = "contosocontainer"
 ///     endpoint_type       = "StorageBlob"
 ///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   destination = {
-///     "endpointType" = "StorageQueue"
-///     "queueName"    = "queue1"
-///     "resourceId"   = "/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///     endpoint_type = "StorageQueue"
+///     queue_name    = "queue1"
+///     resource_id   = "/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -1434,6 +1498,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1451,11 +1524,9 @@ import 'system_data_response.dart';
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .deadLetterDestination(StorageBlobDeadLetterDestinationArgs.builder()
 ///                 .blobContainerName("contosocontainer")
-///                 .endpointType("StorageBlob")
 ///                 .resourceId("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
 ///             .destination(StorageQueueEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("StorageQueue")
 ///                 .queueName("queue1")
 ///                 .resourceId("/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg")
 ///                 .build())
@@ -1612,7 +1683,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1620,10 +1691,13 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
-///     "endpointType" = "WebHook"
-///     "endpointUrl"  = "https://azurefunctionexample.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=PASSWORDCODE"
+///     endpoint_type = "WebHook"
+///     endpoint_url  = "https://azurefunctionexample.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=PASSWORDCODE"
 ///   }
 ///   event_subscription_name = "examplesubscription1"
 ///   filter = {
@@ -1644,6 +1718,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1660,7 +1743,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .destination(WebHookEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("WebHook")
 ///                 .endpointUrl("https://azurefunctionexample.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=PASSWORDCODE")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription1")
@@ -1799,7 +1881,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1807,10 +1889,13 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
-///     "endpointType" = "WebHook"
-///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///     endpoint_type = "WebHook"
+///     endpoint_url  = "https://requestb.in/15ksip71"
 ///   }
 ///   event_subscription_name = "examplesubscription10"
 ///   filter = {
@@ -1831,6 +1916,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1847,7 +1941,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .destination(WebHookEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("WebHook")
 ///                 .endpointUrl("https://requestb.in/15ksip71")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription10")
@@ -1986,7 +2079,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1994,10 +2087,13 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
-///     "endpointType" = "WebHook"
-///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///     endpoint_type = "WebHook"
+///     endpoint_url  = "https://requestb.in/15ksip71"
 ///   }
 ///   event_subscription_name = "examplesubscription2"
 ///   filter = {
@@ -2018,6 +2114,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2034,7 +2139,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .destination(WebHookEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("WebHook")
 ///                 .endpointUrl("https://requestb.in/15ksip71")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription2")
@@ -2169,7 +2273,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2177,10 +2281,13 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+/// resource "azure-native_eventgrid_event_subscription" "eventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
-///     "endpointType" = "WebHook"
-///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///     endpoint_type = "WebHook"
+///     endpoint_url  = "https://requestb.in/15ksip71"
 ///   }
 ///   event_subscription_name = "examplesubscription3"
 ///   filter = {
@@ -2199,6 +2306,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2215,7 +2331,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var eventSubscription = new EventSubscription("eventSubscription", EventSubscriptionArgs.builder()
 ///             .destination(WebHookEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("WebHook")
 ///                 .endpointUrl("https://requestb.in/15ksip71")
 ///                 .build())
 ///             .eventSubscriptionName("examplesubscription3")

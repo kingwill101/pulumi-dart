@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_edge_dynamicschema" "dynamicSchema" {
+/// resource "azure-native_edge_dynamic_schema" "dynamicSchema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dynamic_schema_name = "testname"
 ///   resource_group_name = "rgconfigurationmanager"
 ///   schema_name         = "testname"

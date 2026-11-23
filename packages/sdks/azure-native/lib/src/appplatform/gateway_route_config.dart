@@ -106,7 +106,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_gatewayrouteconfig" "gatewayRouteConfig" {
+/// resource "azure-native_appplatform_gateway_route_config" "gatewayRouteConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_name = "default"
 ///   properties = {
 ///     app_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apps/myApp"
@@ -123,10 +126,10 @@ import 'system_data_response.dart';
 ///     }
 ///     protocol = "HTTPS"
 ///     routes = [{
-///       "filters"    = ["StripPrefix=2", "RateLimit=1,1s"]
-///       "predicates" = ["Path=/api5/customer/**"]
-///       "ssoEnabled" = true
-///       "title"      = "myApp route config"
+///       filters     = ["StripPrefix=2", "RateLimit=1,1s"]
+///       predicates  = ["Path=/api5/customer/**"]
+///       sso_enabled = true
+///       title       = "myApp route config"
 ///     }]
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -146,6 +149,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.GatewayRouteConfigArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayRouteConfigPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayRouteConfigOpenApiPropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.GatewayApiRouteArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,6 +78,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_datastore" "datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name   = "cluster1"
 ///   datastore_name = "datastore1"
 ///   net_app_volume = {

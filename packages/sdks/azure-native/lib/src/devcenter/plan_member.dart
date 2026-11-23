@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_planmember" "planMember" {
+/// resource "azure-native_devcenter_plan_member" "planMember" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   member_id           = "d702f662-b3f2-4796-9e8c-13c22378ced3"
 ///   member_name         = "d702f662-b3f2-4796-9e8c-13c22378ced3"
 ///   member_type         = "User"

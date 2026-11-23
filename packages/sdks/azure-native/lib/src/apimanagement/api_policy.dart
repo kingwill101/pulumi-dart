@@ -62,7 +62,7 @@ import 'api_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'api_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apipolicy" "apiPolicy" {
+/// resource "azure-native_apimanagement_api_policy" "apiPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "5600b57e7e8880006a040001"
 ///   format              = "xml"
 ///   policy_id           = "policy"
@@ -227,7 +230,7 @@ import 'api_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -235,7 +238,10 @@ import 'api_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apipolicy" "apiPolicy" {
+/// resource "azure-native_apimanagement_api_policy" "apiPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "5600b57e7e8880006a040001"
 ///   format              = "rawxml"
 ///   policy_id           = "policy"

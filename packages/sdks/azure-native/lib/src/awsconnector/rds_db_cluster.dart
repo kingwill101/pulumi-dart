@@ -112,8 +112,8 @@ import 'system_data_response.dart';
 ///                 },
 ///                 ServerlessV2ScalingConfiguration = new AzureNative.AwsConnector.Inputs.ServerlessV2ScalingConfigurationArgs
 ///                 {
-///                     MaxCapacity = 23,
-///                     MinCapacity = 16,
+///                     MaxCapacity = 23.0,
+///                     MinCapacity = 16.0,
 ///                 },
 ///                 SnapshotIdentifier = "vqowgxcqbclzjexvyigvdzlpcdluvv",
 ///                 SourceDBClusterIdentifier = "jtvnbddzyqf",
@@ -290,7 +290,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -298,7 +298,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_rdsdbcluster" "rdsDbCluster" {
+/// resource "azure-native_awsconnector_rds_db_cluster" "rdsDbCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "di"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -307,8 +310,8 @@ import 'system_data_response.dart';
 ///     aws_properties = {
 ///       allocated_storage = 12
 ///       associated_roles = [{
-///         "featureName" = "yupxlegnstbpoght"
-///         "roleArn"     = "pcilcosyud"
+///         feature_name = "yupxlegnstbpoght"
+///         role_arn     = "pcilcosyud"
 ///       }]
 ///       auto_minor_version_upgrade         = true
 ///       availability_zones                 = ["xbabqekpowoz"]
@@ -383,8 +386,8 @@ import 'system_data_response.dart';
 ///       storage_throughput           = 6
 ///       storage_type                 = "iiwkeunemifyewevpcvcrbs"
 ///       tags = [{
-///         "key"   = "lsvdhwafvfrtobfvrwigfodughve"
-///         "value" = "szbfittyghldzvnflsglc"
+///         key   = "lsvdhwafvfrtobfvrwigfodughve"
+///         value = "szbfittyghldzvnflsglc"
 ///       }]
 ///       use_latest_restorable_time = true
 ///       vpc_security_group_ids     = ["jdkxpjhsibvgvorizsuzta"]
@@ -415,11 +418,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsDbClusterArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDBClusterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsDBClusterPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DBClusterRoleArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDbClusterEndpointArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MasterUserSecretArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReadEndpointArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ScalingConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServerlessV2ScalingConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

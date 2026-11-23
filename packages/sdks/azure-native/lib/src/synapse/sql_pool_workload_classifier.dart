@@ -72,7 +72,7 @@ import 'sql_pool_workload_classifier_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'sql_pool_workload_classifier_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpoolworkloadclassifier" "sqlPoolWorkloadClassifier" {
+/// resource "azure-native_synapse_sql_pool_workload_classifier" "sqlPoolWorkloadClassifier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   context                  = "test_context"
 ///   end_time                 = "14:00"
 ///   importance               = "high"
@@ -248,7 +251,7 @@ import 'sql_pool_workload_classifier_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -256,7 +259,10 @@ import 'sql_pool_workload_classifier_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpoolworkloadclassifier" "sqlPoolWorkloadClassifier" {
+/// resource "azure-native_synapse_sql_pool_workload_classifier" "sqlPoolWorkloadClassifier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   member_name              = "dbo"
 ///   resource_group_name      = "sqlcrudtest-6852"
 ///   sql_pool_name            = "sqlcrudtest-9187"

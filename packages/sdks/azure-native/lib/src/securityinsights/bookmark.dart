@@ -94,7 +94,7 @@ import 'user_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,6 +103,9 @@ import 'user_info_response.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_bookmark" "bookmark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bookmark_id = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
 ///   created     = "2019-01-01T13:15:30Z"
 ///   created_by = {

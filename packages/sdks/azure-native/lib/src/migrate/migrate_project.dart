@@ -24,9 +24,9 @@ import 'migrate_project_response_tags.dart';
 ///         ETag = "\"b701c73a-0000-0000-0000-59c12ff00000\"",
 ///         Location = "Southeast Asia",
 ///         MigrateProjectName = "project01",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "myResourceGroup",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -62,7 +62,7 @@ import 'migrate_project_response_tags.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'migrate_project_response_tags.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_migrateproject" "migrateProject" {
+/// resource "azure-native_migrate_migrate_project" "migrateProject" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag                = "\"b701c73a-0000-0000-0000-59c12ff00000\""
 ///   location             = "Southeast Asia"
 ///   migrate_project_name = "project01"

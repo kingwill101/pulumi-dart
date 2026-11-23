@@ -98,7 +98,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,15 +106,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_buildservicebuilder" "buildServiceBuilder" {
+/// resource "azure-native_appplatform_build_service_builder" "buildServiceBuilder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   build_service_name = "default"
 ///   builder_name       = "mybuilder"
 ///   properties = {
 ///     buildpack_groups = [{
-///       "buildpacks" = [{
-///         "id" = "tanzu-buildpacks/java-azure"
+///       buildpacks = [{
+///         id = "tanzu-buildpacks/java-azure"
 ///       }]
-///       "name" = "mix"
+///       name = "mix"
 ///     }]
 ///     stack = {
 ///       id      = "io.buildpacks.stacks.bionic"
@@ -136,6 +139,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.BuildServiceBuilder;
 /// import com.pulumi.azurenative.appplatform.BuildServiceBuilderArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuilderPropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.BuildpacksGroupPropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.BuildpackPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.StackPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

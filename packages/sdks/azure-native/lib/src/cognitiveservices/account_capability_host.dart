@@ -64,7 +64,7 @@ import 'capability_host_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'capability_host_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_accountcapabilityhost" "accountCapabilityHost" {
+/// resource "azure-native_cognitiveservices_account_capability_host" "accountCapabilityHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name         = "account-1"
 ///   capability_host_name = "capabilityHostName"
 ///   capability_host_properties = {

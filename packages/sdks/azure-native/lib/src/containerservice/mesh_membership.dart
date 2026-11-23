@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_meshmembership" "meshMembership" {
+/// resource "azure-native_containerservice_mesh_membership" "meshMembership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mesh_membership_name = "meshmembership1"
 ///   properties = {
 ///     managed_mesh_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.AppLink/applinks/applink1/appLinkMembers/member1"

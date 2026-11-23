@@ -93,7 +93,7 @@ import 'target_endpoint_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'target_endpoint_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_afdtargetgroup" "afdTargetGroup" {
+/// resource "azure-native_cdn_a_f_d_target_group" "afdTargetGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   profile_name        = "profile1"
 ///   resource_group_name = "RG"
 ///   target_endpoints {

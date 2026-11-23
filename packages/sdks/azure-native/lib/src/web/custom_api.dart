@@ -75,7 +75,7 @@ import 'custom_api_properties_definition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'custom_api_properties_definition_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_customapi" "customApi" {
+/// resource "azure-native_web_custom_api" "customApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_name = "testCustomApi"
 ///   properties = {
 ///     api_definitions = {

@@ -58,7 +58,7 @@ import 'workspace_response_properties.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'workspace_response_properties.dart';
 /// }
 ///
 /// resource "azure-native_healthcareapis_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "testRG"
 ///   workspace_name      = "workspace1"

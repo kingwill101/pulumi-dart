@@ -69,7 +69,7 @@ import 'route_filter_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'route_filter_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routefilterrule" "routeFilterRule" {
+/// resource "azure-native_network_route_filter_rule" "routeFilterRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access                 = "Allow"
 ///   communities            = ["12076:5030", "12076:5040"]
 ///   resource_group_name    = "rg1"

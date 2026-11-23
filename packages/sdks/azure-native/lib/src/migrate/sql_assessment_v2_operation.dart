@@ -45,14 +45,14 @@ import 'system_data_response.dart';
 ///         },
 ///         AzureSqlVmSettings = new AzureNative.Migrate.Inputs.SqlVmSettingsArgs
 ///         {
-///             InstanceSeries = new[]
+///             InstanceSeries =
 ///             {
 ///                 AzureNative.Migrate.AzureVmFamily.Eadsv5Series,
 ///             },
 ///         },
 ///         Currency = AzureNative.Migrate.AzureCurrency.USD,
 ///         DisasterRecoveryLocation = AzureNative.Migrate.AzureLocation.EastAsia,
-///         DiscountPercentage = 0,
+///         DiscountPercentage = 0.0,
 ///         EnableHadrAssessment = true,
 ///         EntityUptime = new AzureNative.Migrate.Inputs.EntityUptimeArgs
 ///         {
@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 ///         ReservedInstance = AzureNative.Migrate.AzureReservedInstance.None,
 ///         ReservedInstanceForVm = AzureNative.Migrate.AzureReservedInstance.None,
 ///         ResourceGroupName = "rgmigrate",
-///         ScalingFactor = 1,
+///         ScalingFactor = 1.0,
 ///         SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///         SqlServerLicense = AzureNative.Migrate.SqlServerLicense.Unknown,
 ///         TimeRange = AzureNative.Migrate.TimeRange.Day,
@@ -144,7 +144,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -152,7 +152,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_sqlassessmentv2operation" "sqlAssessmentV2Operation" {
+/// resource "azure-native_migrate_sql_assessment_v2_operation" "sqlAssessmentV2Operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name          = "test_swagger_1"
 ///   async_commit_mode_intent = "DisasterRecovery"
 ///   azure_location           = "SoutheastAsia"

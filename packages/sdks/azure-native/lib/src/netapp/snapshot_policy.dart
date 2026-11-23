@@ -111,7 +111,7 @@ import 'weekly_schedule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -119,7 +119,10 @@ import 'weekly_schedule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_snapshotpolicy" "snapshotPolicy" {
+/// resource "azure-native_netapp_snapshot_policy" "snapshotPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   daily_schedule = {
 ///     hour              = 14

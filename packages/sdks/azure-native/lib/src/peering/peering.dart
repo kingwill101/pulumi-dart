@@ -134,7 +134,7 @@ import 'peering_sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -143,26 +143,29 @@ import 'peering_sku_response.dart';
 /// }
 ///
 /// resource "azure-native_peering_peering" "peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   direct = {
 ///     connections = [{
-///       "bandwidthInMbps" = 10000
-///       "bgpSession" = {
-///         "maxPrefixesAdvertisedV4" = 1000
-///         "maxPrefixesAdvertisedV6" = 100
-///         "md5AuthenticationKey"    = "test-md5-auth-key"
-///         "sessionPrefixV4"         = "192.168.0.0/31"
-///         "sessionPrefixV6"         = "fd00::0/127"
+///       bandwidth_in_mbps = 10000
+///       bgp_session = {
+///         max_prefixes_advertised_v4 = 1000
+///         max_prefixes_advertised_v6 = 100
+///         md5_authentication_key     = "test-md5-auth-key"
+///         session_prefix_v4          = "192.168.0.0/31"
+///         session_prefix_v6          = "fd00::0/127"
 ///       }
-///       "connectionIdentifier"   = "5F4CB5C7-6B43-4444-9338-9ABC72606C16"
-///       "peeringDBFacilityId"    = 99999
-///       "sessionAddressProvider" = "Peer"
-///       "useForPeeringService"   = false
+///       connection_identifier    = "5F4CB5C7-6B43-4444-9338-9ABC72606C16"
+///       peering_db_facility_id   = 99999
+///       session_address_provider = "Peer"
+///       use_for_peering_service  = false
 ///       }, {
-///       "bandwidthInMbps"        = 10000
-///       "connectionIdentifier"   = "8AB00818-D533-4504-A25A-03A17F61201C"
-///       "peeringDBFacilityId"    = 99999
-///       "sessionAddressProvider" = "Microsoft"
-///       "useForPeeringService"   = true
+///       bandwidth_in_mbps        = 10000
+///       connection_identifier    = "8AB00818-D533-4504-A25A-03A17F61201C"
+///       peering_db_facility_id   = 99999
+///       session_address_provider = "Microsoft"
+///       use_for_peering_service  = true
 ///     }]
 ///     direct_peering_type = "Edge"
 ///     peer_asn = {
@@ -190,6 +193,8 @@ import 'peering_sku_response.dart';
 /// import com.pulumi.azurenative.peering.Peering;
 /// import com.pulumi.azurenative.peering.PeeringArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringPropertiesDirectArgs;
+/// import com.pulumi.azurenative.peering.inputs.DirectConnectionArgs;
+/// import com.pulumi.azurenative.peering.inputs.BgpSessionArgs;
 /// import com.pulumi.azurenative.peering.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringSkuArgs;
 /// import java.util.ArrayList;
@@ -484,7 +489,7 @@ import 'peering_sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -493,20 +498,23 @@ import 'peering_sku_response.dart';
 /// }
 ///
 /// resource "azure-native_peering_peering" "peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   direct = {
 ///     connections = [{
-///       "bandwidthInMbps" = 10000
-///       "bgpSession" = {
-///         "maxPrefixesAdvertisedV4"     = 1000
-///         "maxPrefixesAdvertisedV6"     = 100
-///         "microsoftSessionIPv4Address" = "192.168.0.123"
-///         "peerSessionIPv4Address"      = "192.168.0.234"
-///         "sessionPrefixV4"             = "192.168.0.0/24"
+///       bandwidth_in_mbps = 10000
+///       bgp_session = {
+///         max_prefixes_advertised_v4      = 1000
+///         max_prefixes_advertised_v6      = 100
+///         microsoft_session_i_pv4_address = "192.168.0.123"
+///         peer_session_i_pv4_address      = "192.168.0.234"
+///         session_prefix_v4               = "192.168.0.0/24"
 ///       }
-///       "connectionIdentifier"   = "5F4CB5C7-6B43-4444-9338-9ABC72606C16"
-///       "peeringDBFacilityId"    = 99999
-///       "sessionAddressProvider" = "Peer"
-///       "useForPeeringService"   = true
+///       connection_identifier    = "5F4CB5C7-6B43-4444-9338-9ABC72606C16"
+///       peering_db_facility_id   = 99999
+///       session_address_provider = "Peer"
+///       use_for_peering_service  = true
 ///     }]
 ///     direct_peering_type = "IxRs"
 ///     peer_asn = {
@@ -534,6 +542,8 @@ import 'peering_sku_response.dart';
 /// import com.pulumi.azurenative.peering.Peering;
 /// import com.pulumi.azurenative.peering.PeeringArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringPropertiesDirectArgs;
+/// import com.pulumi.azurenative.peering.inputs.DirectConnectionArgs;
+/// import com.pulumi.azurenative.peering.inputs.BgpSessionArgs;
 /// import com.pulumi.azurenative.peering.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringSkuArgs;
 /// import java.util.ArrayList;
@@ -813,7 +823,7 @@ import 'peering_sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -822,27 +832,30 @@ import 'peering_sku_response.dart';
 /// }
 ///
 /// resource "azure-native_peering_peering" "peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exchange = {
 ///     connections = [{
-///       "bgpSession" = {
-///         "maxPrefixesAdvertisedV4" = 1000
-///         "maxPrefixesAdvertisedV6" = 100
-///         "md5AuthenticationKey"    = "test-md5-auth-key"
-///         "peerSessionIPv4Address"  = "192.168.2.1"
-///         "peerSessionIPv6Address"  = "fd00::1"
+///       bgp_session = {
+///         max_prefixes_advertised_v4 = 1000
+///         max_prefixes_advertised_v6 = 100
+///         md5_authentication_key     = "test-md5-auth-key"
+///         peer_session_i_pv4_address = "192.168.2.1"
+///         peer_session_i_pv6_address = "fd00::1"
 ///       }
-///       "connectionIdentifier" = "CE495334-0E94-4E51-8164-8116D6CD284D"
-///       "peeringDBFacilityId"  = 99999
+///       connection_identifier  = "CE495334-0E94-4E51-8164-8116D6CD284D"
+///       peering_db_facility_id = 99999
 ///       }, {
-///       "bgpSession" = {
-///         "maxPrefixesAdvertisedV4" = 1000
-///         "maxPrefixesAdvertisedV6" = 100
-///         "md5AuthenticationKey"    = "test-md5-auth-key"
-///         "peerSessionIPv4Address"  = "192.168.2.2"
-///         "peerSessionIPv6Address"  = "fd00::2"
+///       bgp_session = {
+///         max_prefixes_advertised_v4 = 1000
+///         max_prefixes_advertised_v6 = 100
+///         md5_authentication_key     = "test-md5-auth-key"
+///         peer_session_i_pv4_address = "192.168.2.2"
+///         peer_session_i_pv6_address = "fd00::2"
 ///       }
-///       "connectionIdentifier" = "CDD8E673-CB07-47E6-84DE-3739F778762B"
-///       "peeringDBFacilityId"  = 99999
+///       connection_identifier  = "CDD8E673-CB07-47E6-84DE-3739F778762B"
+///       peering_db_facility_id = 99999
 ///     }]
 ///     peer_asn = {
 ///       id = "/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"
@@ -869,6 +882,8 @@ import 'peering_sku_response.dart';
 /// import com.pulumi.azurenative.peering.Peering;
 /// import com.pulumi.azurenative.peering.PeeringArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringPropertiesExchangeArgs;
+/// import com.pulumi.azurenative.peering.inputs.ExchangeConnectionArgs;
+/// import com.pulumi.azurenative.peering.inputs.BgpSessionArgs;
 /// import com.pulumi.azurenative.peering.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.peering.inputs.PeeringSkuArgs;
 /// import java.util.ArrayList;

@@ -60,7 +60,7 @@ import 'ip_firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'ip_firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_ipfirewallrule" "ipFirewallRule" {
+/// resource "azure-native_synapse_ip_firewall_rule" "ipFirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_ip_address      = "10.0.0.254"
 ///   resource_group_name = "ExampleResourceGroup"
 ///   rule_name           = "ExampleIpFirewallRule"

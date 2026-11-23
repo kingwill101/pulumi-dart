@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "testcluster"
 ///   location            = "westus"
 ///   point_in_time_utc   = "2017-12-14T00:00:37.467Z"
@@ -218,7 +221,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -226,7 +229,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "testcluster"
 ///   location            = "westus"
 ///   resource_group_name = "TestGroup"
@@ -389,7 +395,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -397,7 +403,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login_password        = "password"
 ///   citus_version                       = "11.3"
 ///   cluster_name                        = "testcluster-custom-db-name"
@@ -574,7 +583,7 @@ import 'system_data_response.dart';
 ///         PostgresqlVersion = "15",
 ///         PreferredPrimaryZone = "1",
 ///         ResourceGroupName = "TestGroup",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -623,7 +632,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -631,7 +640,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login_password        = "password"
 ///   citus_version                       = "11.1"
 ///   cluster_name                        = "testcluster-multinode"
@@ -863,7 +875,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -871,7 +883,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login_password        = "password"
 ///   citus_version                       = "11.3"
 ///   cluster_name                        = "testcluster-burstablev1"
@@ -1089,7 +1104,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1097,7 +1112,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login_password        = "password"
 ///   citus_version                       = "11.3"
 ///   cluster_name                        = "testcluster-burstablev2"
@@ -1315,7 +1333,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1323,7 +1341,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+/// resource "azure-native_dbforpostgresql_server_group_cluster" "serverGroupCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login_password        = "password"
 ///   citus_version                       = "11.3"
 ///   cluster_name                        = "testcluster-singlenode"

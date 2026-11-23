@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,6 +95,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_standard" "standard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   category = "SecurityCenter"
 ///   components {
 ///     key = "1195afff-c881-495e-9bc5-1486211ae03f"

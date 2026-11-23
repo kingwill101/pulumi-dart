@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_agentspacesconnector" "agentSpacesConnector" {
+/// resource "azure-native_app_agent_spaces_connector" "agentSpacesConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_space_name = "testAgentSpace"
 ///   connector_name   = "new-shared-cosmosdb-connector"
 ///   properties = {

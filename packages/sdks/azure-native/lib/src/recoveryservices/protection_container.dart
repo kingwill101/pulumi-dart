@@ -73,7 +73,7 @@ import 'protection_container_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,15 +81,18 @@ import 'protection_container_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_protectioncontainer" "protectionContainer" {
+/// resource "azure-native_recoveryservices_protection_container" "protectionContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_name = "StorageContainer;Storage;SwaggerTestRg;swaggertestsa"
 ///   fabric_name    = "Azure"
 ///   properties = {
-///     "acquireStorageAccountLock" = "Acquire"
-///     "backupManagementType"      = "AzureStorage"
-///     "containerType"             = "StorageContainer"
-///     "friendlyName"              = "swaggertestsa"
-///     "sourceResourceId"          = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/SwaggerTestRg/providers/Microsoft.Storage/storageAccounts/swaggertestsa"
+///     acquire_storage_account_lock = "Acquire"
+///     backup_management_type       = "AzureStorage"
+///     container_type               = "StorageContainer"
+///     friendly_name                = "swaggertestsa"
+///     source_resource_id           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/SwaggerTestRg/providers/Microsoft.Storage/storageAccounts/swaggertestsa"
 ///   }
 ///   resource_group_name = "SwaggerTestRg"
 ///   vault_name          = "swaggertestvault"
@@ -105,6 +108,18 @@ import 'protection_container_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionContainer;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureBackupServerContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSClassicComputeVMContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureIaaSComputeVMContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureSQLAGWorkloadContainerProtectionContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureSqlContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureStorageContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureVMAppContainerProtectionContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureWorkloadContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.DpmContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.GenericContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.IaaSVMContainerArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.MabContainerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -124,7 +139,6 @@ import 'protection_container_args.dart';
 ///             .properties(AzureStorageContainerArgs.builder()
 ///                 .acquireStorageAccountLock("Acquire")
 ///                 .backupManagementType("AzureStorage")
-///                 .containerType("StorageContainer")
 ///                 .friendlyName("swaggertestsa")
 ///                 .sourceResourceId("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/SwaggerTestRg/providers/Microsoft.Storage/storageAccounts/swaggertestsa")
 ///                 .build())

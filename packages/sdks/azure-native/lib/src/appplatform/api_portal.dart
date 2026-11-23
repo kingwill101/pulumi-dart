@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_apiportal" "apiPortal" {
+/// resource "azure-native_appplatform_api_portal" "apiPortal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_portal_name = "default"
 ///   properties = {
 ///     api_try_out_enabled_state = "Enabled"

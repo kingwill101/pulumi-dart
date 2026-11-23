@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -123,7 +123,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_dynamodbcontinuousbackupsdescription" "dynamoDbContinuousBackupsDescription" {
+/// resource "azure-native_awsconnector_dynamo_db_continuous_backups_description" "dynamoDbContinuousBackupsDescription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "zlepfxe"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {

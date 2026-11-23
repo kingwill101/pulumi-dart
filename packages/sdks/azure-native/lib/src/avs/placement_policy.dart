@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,17 +100,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_placementpolicy" "placementPolicy" {
+/// resource "azure-native_avs_placement_policy" "placementPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name          = "cluster1"
 ///   placement_policy_name = "policy1"
 ///   private_cloud_name    = "cloud1"
 ///   properties = {
-///     "affinityStrength"       = "Must"
-///     "affinityType"           = "AntiAffinity"
-///     "azureHybridBenefitType" = "SqlHost"
-///     "hostMembers"            = ["fakehost22.nyc1.kubernetes.center", "fakehost23.nyc1.kubernetes.center", "fakehost24.nyc1.kubernetes.center"]
-///     "type"                   = "VmHost"
-///     "vmMembers"              = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-128", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-256"]
+///     affinity_strength         = "Must"
+///     affinity_type             = "AntiAffinity"
+///     azure_hybrid_benefit_type = "SqlHost"
+///     host_members              = ["fakehost22.nyc1.kubernetes.center", "fakehost23.nyc1.kubernetes.center", "fakehost24.nyc1.kubernetes.center"]
+///     type                      = "VmHost"
+///     vm_members                = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-128", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-256"]
 ///   }
 ///   resource_group_name = "group1"
 /// }
@@ -125,6 +128,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.PlacementPolicy;
 /// import com.pulumi.azurenative.avs.PlacementPolicyArgs;
+/// import com.pulumi.azurenative.avs.inputs.VmHostPlacementPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.avs.inputs.VmVmPlacementPolicyPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -150,7 +155,6 @@ import 'system_data_response.dart';
 ///                     "fakehost22.nyc1.kubernetes.center",
 ///                     "fakehost23.nyc1.kubernetes.center",
 ///                     "fakehost24.nyc1.kubernetes.center")
-///                 .type("VmHost")
 ///                 .vmMembers(
 ///                     "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-128",
 ///                     "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-256")

@@ -68,9 +68,9 @@ import 'system_data_response.dart';
 /// 				AllowSoftwareUpdate: pulumi.Bool(false),
 /// 				ConfigurationType:   pulumi.String("Open"),
 /// 				DeploymentValues:    pulumi.String("{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}"),
-/// 				NetworkFunctionDefinitionVersionResourceReference: hybridnetwork.SecretDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1",
-/// 					IdType: "Secret",
+/// 				NetworkFunctionDefinitionVersionResourceReference: &hybridnetwork.SecretDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"),
+/// 					IdType: pulumi.String("Secret"),
 /// 				},
 /// 				NfviId:   pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"),
 /// 				NfviType: pulumi.String(hybridnetwork.NFVITypeAzureArcKubernetes),
@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,20 +99,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunction" "networkFunction" {
+/// resource "azure-native_hybridnetwork_network_function" "networkFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "eastus"
 ///   network_function_name = "testNf"
 ///   properties = {
-///     "allowSoftwareUpdate" = false
-///     "configurationType"   = "Open"
-///     "deploymentValues"    = "{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}"
-///     "networkFunctionDefinitionVersionResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
-///       "idType" = "Secret"
+///     allow_software_update = false
+///     configuration_type    = "Open"
+///     deployment_values     = "{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}"
+///     network_function_definition_version_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
+///       id_type = "Secret"
 ///     }
-///     "nfviId"             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
-///     "nfviType"           = "AzureArcKubernetes"
-///     "roleOverrideValues" = ["{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"]
+///     nfvi_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
+///     nfvi_type            = "AzureArcKubernetes"
+///     role_override_values = ["{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"]
 ///   }
 ///   resource_group_name = "rg"
 /// }
@@ -127,6 +130,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunction;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -145,11 +152,9 @@ import 'system_data_response.dart';
 ///             .networkFunctionName("testNf")
 ///             .properties(NetworkFunctionValueWithoutSecretsArgs.builder()
 ///                 .allowSoftwareUpdate(false)
-///                 .configurationType("Open")
 ///                 .deploymentValues("{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}")
 ///                 .networkFunctionDefinitionVersionResourceReference(SecretDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1")
-///                     .idType("Secret")
 ///                     .build())
 ///                 .nfviId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation")
 ///                 .nfviType("AzureArcKubernetes")
@@ -299,9 +304,9 @@ import 'system_data_response.dart';
 /// 				AllowSoftwareUpdate: pulumi.Bool(false),
 /// 				ConfigurationType:   pulumi.String("Open"),
 /// 				DeploymentValues:    pulumi.String("{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}"),
-/// 				NetworkFunctionDefinitionVersionResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1",
-/// 					IdType: "Open",
+/// 				NetworkFunctionDefinitionVersionResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				NfviId:   pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"),
 /// 				NfviType: pulumi.String(hybridnetwork.NFVITypeAzureArcKubernetes),
@@ -322,7 +327,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -330,20 +335,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunction" "networkFunction" {
+/// resource "azure-native_hybridnetwork_network_function" "networkFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "eastus"
 ///   network_function_name = "testNf"
 ///   properties = {
-///     "allowSoftwareUpdate" = false
-///     "configurationType"   = "Open"
-///     "deploymentValues"    = "{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}"
-///     "networkFunctionDefinitionVersionResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
-///       "idType" = "Open"
+///     allow_software_update = false
+///     configuration_type    = "Open"
+///     deployment_values     = "{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}"
+///     network_function_definition_version_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
+///       id_type = "Open"
 ///     }
-///     "nfviId"             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
-///     "nfviType"           = "AzureArcKubernetes"
-///     "roleOverrideValues" = ["{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"]
+///     nfvi_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
+///     nfvi_type            = "AzureArcKubernetes"
+///     role_override_values = ["{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"]
 ///   }
 ///   resource_group_name = "rg"
 /// }
@@ -358,6 +366,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunction;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -376,11 +388,9 @@ import 'system_data_response.dart';
 ///             .networkFunctionName("testNf")
 ///             .properties(NetworkFunctionValueWithoutSecretsArgs.builder()
 ///                 .allowSoftwareUpdate(false)
-///                 .configurationType("Open")
 ///                 .deploymentValues("{\"releaseName\":\"testReleaseName\",\"namespace\":\"testNamespace\"}")
 ///                 .networkFunctionDefinitionVersionResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1")
-///                     .idType("Open")
 ///                     .build())
 ///                 .nfviId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation")
 ///                 .nfviType("AzureArcKubernetes")
@@ -529,9 +539,9 @@ import 'system_data_response.dart';
 /// 			Properties: &hybridnetwork.NetworkFunctionValueWithSecretsArgs{
 /// 				AllowSoftwareUpdate: pulumi.Bool(false),
 /// 				ConfigurationType:   pulumi.String("Secret"),
-/// 				NetworkFunctionDefinitionVersionResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1",
-/// 					IdType: "Open",
+/// 				NetworkFunctionDefinitionVersionResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				NfviId:   pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"),
 /// 				NfviType: pulumi.String(hybridnetwork.NFVITypeAzureArcKubernetes),
@@ -553,7 +563,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -561,20 +571,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunction" "networkFunction" {
+/// resource "azure-native_hybridnetwork_network_function" "networkFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "eastus"
 ///   network_function_name = "testNf"
 ///   properties = {
-///     "allowSoftwareUpdate" = false
-///     "configurationType"   = "Secret"
-///     "networkFunctionDefinitionVersionResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
-///       "idType" = "Open"
+///     allow_software_update = false
+///     configuration_type    = "Secret"
+///     network_function_definition_version_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
+///       id_type = "Open"
 ///     }
-///     "nfviId"                 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
-///     "nfviType"               = "AzureArcKubernetes"
-///     "roleOverrideValues"     = ["{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"]
-///     "secretDeploymentValues" = "{\"adminPassword\":\"password1\",\"userPassword\":\"password2\"}"
+///     nfvi_id                  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
+///     nfvi_type                = "AzureArcKubernetes"
+///     role_override_values     = ["{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"]
+///     secret_deployment_values = "{\"adminPassword\":\"password1\",\"userPassword\":\"password2\"}"
 ///   }
 ///   resource_group_name = "rg"
 /// }
@@ -589,6 +602,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunction;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -607,10 +624,8 @@ import 'system_data_response.dart';
 ///             .networkFunctionName("testNf")
 ///             .properties(NetworkFunctionValueWithSecretsArgs.builder()
 ///                 .allowSoftwareUpdate(false)
-///                 .configurationType("Secret")
 ///                 .networkFunctionDefinitionVersionResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1")
-///                     .idType("Open")
 ///                     .build())
 ///                 .nfviId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation")
 ///                 .nfviType("AzureArcKubernetes")
@@ -756,9 +771,9 @@ import 'system_data_response.dart';
 /// 				AllowSoftwareUpdate: pulumi.Bool(false),
 /// 				ConfigurationType:   pulumi.String("Open"),
 /// 				DeploymentValues:    pulumi.String("{\"virtualMachineName\":\"test-VM\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}"),
-/// 				NetworkFunctionDefinitionVersionResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1",
-/// 					IdType: "Open",
+/// 				NetworkFunctionDefinitionVersionResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				NfviId:   pulumi.String("/subscriptions/subid/resourceGroups/testResourceGroup"),
 /// 				NfviType: pulumi.String(hybridnetwork.NFVITypeAzureCore),
@@ -775,7 +790,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -783,19 +798,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunction" "networkFunction" {
+/// resource "azure-native_hybridnetwork_network_function" "networkFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "eastus"
 ///   network_function_name = "testNf"
 ///   properties = {
-///     "allowSoftwareUpdate" = false
-///     "configurationType"   = "Open"
-///     "deploymentValues"    = "{\"virtualMachineName\":\"test-VM\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}"
-///     "networkFunctionDefinitionVersionResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
-///       "idType" = "Open"
+///     allow_software_update = false
+///     configuration_type    = "Open"
+///     deployment_values     = "{\"virtualMachineName\":\"test-VM\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}"
+///     network_function_definition_version_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
+///       id_type = "Open"
 ///     }
-///     "nfviId"   = "/subscriptions/subid/resourceGroups/testResourceGroup"
-///     "nfviType" = "AzureCore"
+///     nfvi_id   = "/subscriptions/subid/resourceGroups/testResourceGroup"
+///     nfvi_type = "AzureCore"
 ///   }
 ///   resource_group_name = "rg"
 /// }
@@ -810,6 +828,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunction;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -828,11 +850,9 @@ import 'system_data_response.dart';
 ///             .networkFunctionName("testNf")
 ///             .properties(NetworkFunctionValueWithoutSecretsArgs.builder()
 ///                 .allowSoftwareUpdate(false)
-///                 .configurationType("Open")
 ///                 .deploymentValues("{\"virtualMachineName\":\"test-VM\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}")
 ///                 .networkFunctionDefinitionVersionResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1")
-///                     .idType("Open")
 ///                     .build())
 ///                 .nfviId("/subscriptions/subid/resourceGroups/testResourceGroup")
 ///                 .nfviType("AzureCore")
@@ -963,9 +983,9 @@ import 'system_data_response.dart';
 /// 				AllowSoftwareUpdate: pulumi.Bool(false),
 /// 				ConfigurationType:   pulumi.String("Open"),
 /// 				DeploymentValues:    pulumi.String("{\"virtualMachineName\":\"test-VM\",\"extendedLocationName\":\"test-cluster\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}"),
-/// 				NetworkFunctionDefinitionVersionResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1",
-/// 					IdType: "Open",
+/// 				NetworkFunctionDefinitionVersionResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				NfviId:   pulumi.String("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"),
 /// 				NfviType: pulumi.String(hybridnetwork.NFVITypeAzureOperatorNexus),
@@ -982,7 +1002,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -990,19 +1010,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkfunction" "networkFunction" {
+/// resource "azure-native_hybridnetwork_network_function" "networkFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "eastus"
 ///   network_function_name = "testNf"
 ///   properties = {
-///     "allowSoftwareUpdate" = false
-///     "configurationType"   = "Open"
-///     "deploymentValues"    = "{\"virtualMachineName\":\"test-VM\",\"extendedLocationName\":\"test-cluster\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}"
-///     "networkFunctionDefinitionVersionResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
-///       "idType" = "Open"
+///     allow_software_update = false
+///     configuration_type    = "Open"
+///     deployment_values     = "{\"virtualMachineName\":\"test-VM\",\"extendedLocationName\":\"test-cluster\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}"
+///     network_function_definition_version_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"
+///       id_type = "Open"
 ///     }
-///     "nfviId"   = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
-///     "nfviType" = "AzureOperatorNexus"
+///     nfvi_id   = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"
+///     nfvi_type = "AzureOperatorNexus"
 ///   }
 ///   resource_group_name = "rg"
 /// }
@@ -1017,6 +1040,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunction;
 /// import com.pulumi.azurenative.hybridnetwork.NetworkFunctionArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1035,11 +1062,9 @@ import 'system_data_response.dart';
 ///             .networkFunctionName("testNf")
 ///             .properties(NetworkFunctionValueWithoutSecretsArgs.builder()
 ///                 .allowSoftwareUpdate(false)
-///                 .configurationType("Open")
 ///                 .deploymentValues("{\"virtualMachineName\":\"test-VM\",\"extendedLocationName\":\"test-cluster\",\"cpuCores\":4,\"memorySizeGB\":8,\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"test-csnet\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-cs-vlan\"},\"networkAttachments\":[{\"attachedNetworkId\":\"test-l3vlan\",\"defaultGateway\":\"True\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"test-vlan\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa CMIIIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0TqlveKKlc2MFvEmuXJiLGBsY1t4ML4uiRADGSZlnc+7Ugv3h+MCjkkwOKiOdsNo8k4KSBIG5GcQfKYOOd17AJvqCL6cGQbaLuqv0a64jeDm8oO8/xN/IM0oKw7rMr/2oAJOgIsfeXPkRxWWic9AVIS++H5Qi2r7bUFX+cqFsyUCAwEBBQ==\"}],\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":10}},\"userData\":\"testUserData\",\"adminUsername\":\"testUser\",\"virtioInterface\":\"Transitional\",\"isolateEmulatorThread\":\"False\",\"bootMethod\":\"BIOS\",\"placementHints\":[]}")
 ///                 .networkFunctionDefinitionVersionResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1")
-///                     .idType("Open")
 ///                     .build())
 ///                 .nfviId("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation")
 ///                 .nfviType("AzureOperatorNexus")

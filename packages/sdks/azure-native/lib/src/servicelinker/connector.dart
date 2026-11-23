@@ -84,7 +84,7 @@ import 'vnet_solution_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,8 +93,11 @@ import 'vnet_solution_response.dart';
 /// }
 ///
 /// resource "azure-native_servicelinker_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_info = {
-///     "authType" = "secret"
+///     auth_type = "secret"
 ///   }
 ///   connector_name      = "connectorName"
 ///   location            = "westus"
@@ -103,8 +106,8 @@ import 'vnet_solution_response.dart';
 ///     key_vault_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/test-kv"
 ///   }
 ///   target_service = {
-///     "id"   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"
-///     "type" = "AzureResource"
+///     id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"
+///     type = "AzureResource"
 ///   }
 /// }
 ///
@@ -118,7 +121,19 @@ import 'vnet_solution_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicelinker.Connector;
 /// import com.pulumi.azurenative.servicelinker.ConnectorArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.AccessKeyInfoBaseArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.EasyAuthMicrosoftEntraIDAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SecretAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ServicePrincipalCertificateAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ServicePrincipalSecretAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SystemAssignedIdentityAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.UserAccountAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.UserAssignedIdentityAuthInfoArgs;
 /// import com.pulumi.azurenative.servicelinker.inputs.SecretStoreArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.AzureResourceArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ConfluentBootstrapServerArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ConfluentSchemaRegistryArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SelfHostedServerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -134,7 +149,6 @@ import 'vnet_solution_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var connector = new Connector("connector", ConnectorArgs.builder()
 ///             .authInfo(SecretAuthInfoArgs.builder()
-///                 .authType("secret")
 ///                 .build())
 ///             .connectorName("connectorName")
 ///             .location("westus")
@@ -144,7 +158,6 @@ import 'vnet_solution_response.dart';
 ///                 .build())
 ///             .targetService(AzureResourceArgs.builder()
 ///                 .id("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db")
-///                 .type("AzureResource")
 ///                 .build())
 ///             .build());
 ///

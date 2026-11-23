@@ -58,7 +58,7 @@ import 'registered_asn_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'registered_asn_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_peering_registeredasn" "registeredAsn" {
+/// resource "azure-native_peering_registered_asn" "registeredAsn" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asn                 = 65000
 ///   peering_name        = "peeringName"
 ///   registered_asn_name = "registeredAsnName"

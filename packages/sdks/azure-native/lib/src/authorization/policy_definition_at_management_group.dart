@@ -111,13 +111,13 @@ import 'system_data_response.dart';
 /// 			},
 /// 			PolicyDefinitionName: pulumi.String("ResourceNaming"),
 /// 			PolicyRule: pulumi.Any(map[string]interface{}{
-/// 				"if": map[string]interface{}{
-/// 					"not": map[string]interface{}{
+/// 				"if": map[string]map[string]string{
+/// 					"not": map[string]string{
 /// 						"field": "name",
 /// 						"like":  "[concat(parameters('prefix'), '*', parameters('suffix'))]",
 /// 					},
 /// 				},
-/// 				"then": map[string]interface{}{
+/// 				"then": map[string]string{
 /// 					"effect": "deny",
 /// 				},
 /// 			}),
@@ -132,7 +132,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -140,7 +140,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policydefinitionatmanagementgroup" "policyDefinitionAtManagementGroup" {
+/// resource "azure-native_authorization_policy_definition_at_management_group" "policyDefinitionAtManagementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Force resource names to begin with given 'prefix' and/or end with given 'suffix'"
 ///   display_name        = "Enforce resource naming convention"
 ///   management_group_id = "MyManagementGroup"
@@ -188,6 +191,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyDefinitionAtManagementGroup;
 /// import com.pulumi.azurenative.authorization.PolicyDefinitionAtManagementGroupArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterDefinitionsValueMetadataArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

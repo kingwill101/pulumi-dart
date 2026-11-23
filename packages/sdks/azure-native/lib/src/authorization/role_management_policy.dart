@@ -37,7 +37,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -48,7 +48,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Admin_Admin_Eligibility",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "admin_admin_eligible@test.com",
 ///                 },
@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -87,34 +87,34 @@ import 'system_data_response.dart';
 /// 		_, err := authorization.NewRoleManagementPolicy(ctx, "roleManagementPolicy", &authorization.RoleManagementPolicyArgs{
 /// 			RoleManagementPolicyName: pulumi.String("570c3619-7688-4b34-b290-2b8bb3ccab2a"),
 /// 			Rules: pulumi.Array{
-/// 				authorization.RoleManagementPolicyExpirationRule{
-/// 					Id:                   "Expiration_Admin_Eligibility",
-/// 					IsExpirationRequired: false,
-/// 					MaximumDuration:      "P180D",
-/// 					RuleType:             "RoleManagementPolicyExpirationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyExpirationRuleArgs{
+/// 					Id:                   pulumi.String("Expiration_Admin_Eligibility"),
+/// 					IsExpirationRequired: pulumi.Bool(false),
+/// 					MaximumDuration:      pulumi.String("P180D"),
+/// 					RuleType:             pulumi.String("RoleManagementPolicyExpirationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Admin_Admin_Eligibility",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"admin_admin_eligible@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Admin_Admin_Eligibility"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("admin_admin_eligible@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeAdmin,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeAdmin),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
@@ -131,7 +131,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -139,30 +139,33 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_rolemanagementpolicy" "roleManagementPolicy" {
+/// resource "azure-native_authorization_role_management_policy" "roleManagementPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_management_policy_name = "570c3619-7688-4b34-b290-2b8bb3ccab2a"
 ///   rules = [{
-///     "id"                   = "Expiration_Admin_Eligibility"
-///     "isExpirationRequired" = false
-///     "maximumDuration"      = "P180D"
-///     "ruleType"             = "RoleManagementPolicyExpirationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     id                     = "Expiration_Admin_Eligibility"
+///     is_expiration_required = false
+///     maximum_duration       = "P180D"
+///     rule_type              = "RoleManagementPolicyExpirationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Admin_Admin_Eligibility"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["admin_admin_eligible@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Admin"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     id                            = "Notification_Admin_Admin_Eligibility"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["admin_admin_eligible@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Admin"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///   }]
 ///   scope = "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368"
@@ -178,6 +181,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicy;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicyArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyApprovalRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyRuleTargetArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyAuthenticationContextRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyEnablementRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyExpirationRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyNotificationRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyPimOnlyModeRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -198,7 +208,6 @@ import 'system_data_response.dart';
 ///                     .id("Expiration_Admin_Eligibility")
 ///                     .isExpirationRequired(false)
 ///                     .maximumDuration("P180D")
-///                     .ruleType("RoleManagementPolicyExpirationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -212,7 +221,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("admin_admin_eligible@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Admin")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -361,7 +369,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -372,7 +380,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Admin_Admin_Eligibility",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "admin_admin_eligible@test.com",
 ///                 },
@@ -383,7 +391,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -394,7 +402,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Requestor_Admin_Eligibility",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "requestor_admin_eligible@test.com",
 ///                 },
@@ -405,7 +413,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -416,7 +424,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Approver_Admin_Eligibility",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "approver_admin_eligible@test.com",
 ///                 },
@@ -427,7 +435,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -435,14 +443,14 @@ import 'system_data_response.dart';
 ///             },
 ///             new AzureNative.Authorization.Inputs.RoleManagementPolicyEnablementRuleArgs
 ///             {
-///                 EnabledRules = new() { },
+///                 EnabledRules =  {},
 ///                 Id = "Enablement_Admin_Eligibility",
 ///                 RuleType = "RoleManagementPolicyEnablementRule",
 ///                 Target = new AzureNative.Authorization.Inputs.RoleManagementPolicyRuleTargetArgs
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Eligibility",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -458,7 +466,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -466,7 +474,7 @@ import 'system_data_response.dart';
 ///             },
 ///             new AzureNative.Authorization.Inputs.RoleManagementPolicyEnablementRuleArgs
 ///             {
-///                 EnabledRules = new[]
+///                 EnabledRules =
 ///                 {
 ///                     AzureNative.Authorization.EnablementRules.Justification,
 ///                     AzureNative.Authorization.EnablementRules.MultiFactorAuthentication,
@@ -477,7 +485,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -488,7 +496,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Admin_Admin_Assignment",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "admin_admin_member@test.com",
 ///                 },
@@ -499,7 +507,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -510,7 +518,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Requestor_Admin_Assignment",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "requestor_admin_member@test.com",
 ///                 },
@@ -521,7 +529,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -532,7 +540,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Approver_Admin_Assignment",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "approver_admin_member@test.com",
 ///                 },
@@ -543,7 +551,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "Admin",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -559,7 +567,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -567,7 +575,7 @@ import 'system_data_response.dart';
 ///             },
 ///             new AzureNative.Authorization.Inputs.RoleManagementPolicyEnablementRuleArgs
 ///             {
-///                 EnabledRules = new[]
+///                 EnabledRules =
 ///                 {
 ///                     AzureNative.Authorization.EnablementRules.Justification,
 ///                     AzureNative.Authorization.EnablementRules.MultiFactorAuthentication,
@@ -579,7 +587,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -592,7 +600,7 @@ import 'system_data_response.dart';
 ///                 Setting = new AzureNative.Authorization.Inputs.ApprovalSettingsArgs
 ///                 {
 ///                     ApprovalMode = AzureNative.Authorization.ApprovalMode.SingleStage,
-///                     ApprovalStages = new[]
+///                     ApprovalStages =
 ///                     {
 ///                         new AzureNative.Authorization.Inputs.ApprovalStageArgs
 ///                         {
@@ -600,7 +608,7 @@ import 'system_data_response.dart';
 ///                             EscalationTimeInMinutes = 0,
 ///                             IsApproverJustificationRequired = true,
 ///                             IsEscalationEnabled = false,
-///                             PrimaryApprovers = new[]
+///                             PrimaryApprovers =
 ///                             {
 ///                                 new AzureNative.Authorization.Inputs.UserSetArgs
 ///                                 {
@@ -627,7 +635,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -643,7 +651,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -654,7 +662,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Admin_EndUser_Assignment",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "admin_enduser_member@test.com",
 ///                 },
@@ -665,7 +673,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -676,7 +684,7 @@ import 'system_data_response.dart';
 ///                 Id = "Notification_Requestor_EndUser_Assignment",
 ///                 IsDefaultRecipientsEnabled = false,
 ///                 NotificationLevel = AzureNative.Authorization.NotificationLevel.Critical,
-///                 NotificationRecipients = new[]
+///                 NotificationRecipients =
 ///                 {
 ///                     "requestor_enduser_member@test.com",
 ///                 },
@@ -687,7 +695,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -705,7 +713,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Caller = "EndUser",
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "All",
 ///                     },
@@ -716,11 +724,11 @@ import 'system_data_response.dart';
 ///                 Id = "PIMOnlyMode_Admin_Assignment",
 ///                 PimOnlyModeSettings = new AzureNative.Authorization.Inputs.PIMOnlyModeSettingsArgs
 ///                 {
-///                     ExcludedAssignmentTypes = new[]
+///                     ExcludedAssignmentTypes =
 ///                     {
 ///                         AzureNative.Authorization.ExcludedPrincipalTypes.ServicePrincipalsAsTarget,
 ///                     },
-///                     Excludes = new[]
+///                     Excludes =
 ///                     {
 ///                         new AzureNative.Authorization.Inputs.UsersOrServicePrincipalSetArgs
 ///                         {
@@ -744,20 +752,20 @@ import 'system_data_response.dart';
 ///                 Target = new AzureNative.Authorization.Inputs.RoleManagementPolicyRuleTargetArgs
 ///                 {
 ///                     Caller = "Admin",
-///                     EnforcedSettings = new[]
+///                     EnforcedSettings =
 ///                     {
 ///                         "all",
 ///                     },
-///                     InheritableSettings = new[]
+///                     InheritableSettings =
 ///                     {
 ///                         "all",
 ///                     },
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "all",
 ///                     },
-///                     TargetObjects = new() { },
+///                     TargetObjects =  {},
 ///                 },
 ///             },
 ///         },
@@ -782,335 +790,335 @@ import 'system_data_response.dart';
 /// 		_, err := authorization.NewRoleManagementPolicy(ctx, "roleManagementPolicy", &authorization.RoleManagementPolicyArgs{
 /// 			RoleManagementPolicyName: pulumi.String("570c3619-7688-4b34-b290-2b8bb3ccab2a"),
 /// 			Rules: pulumi.Array{
-/// 				authorization.RoleManagementPolicyExpirationRule{
-/// 					Id:                   "Expiration_Admin_Eligibility",
-/// 					IsExpirationRequired: false,
-/// 					MaximumDuration:      "P180D",
-/// 					RuleType:             "RoleManagementPolicyExpirationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyExpirationRuleArgs{
+/// 					Id:                   pulumi.String("Expiration_Admin_Eligibility"),
+/// 					IsExpirationRequired: pulumi.Bool(false),
+/// 					MaximumDuration:      pulumi.String("P180D"),
+/// 					RuleType:             pulumi.String("RoleManagementPolicyExpirationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Admin_Admin_Eligibility",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"admin_admin_eligible@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Admin_Admin_Eligibility"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("admin_admin_eligible@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeAdmin,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeAdmin),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Requestor_Admin_Eligibility",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"requestor_admin_eligible@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Requestor_Admin_Eligibility"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("requestor_admin_eligible@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeRequestor,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeRequestor),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Approver_Admin_Eligibility",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"approver_admin_eligible@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Approver_Admin_Eligibility"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("approver_admin_eligible@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeApprover,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeApprover),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyEnablementRule{
-/// 					EnabledRules: []authorization.EnablementRules{},
-/// 					Id:           "Enablement_Admin_Eligibility",
-/// 					RuleType:     "RoleManagementPolicyEnablementRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Eligibility",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyEnablementRuleArgs{
+/// 					EnabledRules: pulumi.StringArray{},
+/// 					Id:           pulumi.String("Enablement_Admin_Eligibility"),
+/// 					RuleType:     pulumi.String("RoleManagementPolicyEnablementRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Eligibility"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyExpirationRule{
-/// 					Id:                   "Expiration_Admin_Assignment",
-/// 					IsExpirationRequired: false,
-/// 					MaximumDuration:      "P90D",
-/// 					RuleType:             "RoleManagementPolicyExpirationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyExpirationRuleArgs{
+/// 					Id:                   pulumi.String("Expiration_Admin_Assignment"),
+/// 					IsExpirationRequired: pulumi.Bool(false),
+/// 					MaximumDuration:      pulumi.String("P90D"),
+/// 					RuleType:             pulumi.String("RoleManagementPolicyExpirationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyEnablementRule{
-/// 					EnabledRules: []authorization.EnablementRules{
-/// 						authorization.EnablementRulesJustification,
-/// 						authorization.EnablementRulesMultiFactorAuthentication,
+/// 				&authorization.RoleManagementPolicyEnablementRuleArgs{
+/// 					EnabledRules: pulumi.StringArray{
+/// 						pulumi.String(authorization.EnablementRulesJustification),
+/// 						pulumi.String(authorization.EnablementRulesMultiFactorAuthentication),
 /// 					},
-/// 					Id:       "Enablement_Admin_Assignment",
-/// 					RuleType: "RoleManagementPolicyEnablementRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					Id:       pulumi.String("Enablement_Admin_Assignment"),
+/// 					RuleType: pulumi.String("RoleManagementPolicyEnablementRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Admin_Admin_Assignment",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"admin_admin_member@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Admin_Admin_Assignment"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("admin_admin_member@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeAdmin,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeAdmin),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Requestor_Admin_Assignment",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"requestor_admin_member@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Requestor_Admin_Assignment"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("requestor_admin_member@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeRequestor,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeRequestor),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Approver_Admin_Assignment",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"approver_admin_member@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Approver_Admin_Assignment"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("approver_admin_member@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeApprover,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeApprover),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyExpirationRule{
-/// 					Id:                   "Expiration_EndUser_Assignment",
-/// 					IsExpirationRequired: true,
-/// 					MaximumDuration:      "PT7H",
-/// 					RuleType:             "RoleManagementPolicyExpirationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyExpirationRuleArgs{
+/// 					Id:                   pulumi.String("Expiration_EndUser_Assignment"),
+/// 					IsExpirationRequired: pulumi.Bool(true),
+/// 					MaximumDuration:      pulumi.String("PT7H"),
+/// 					RuleType:             pulumi.String("RoleManagementPolicyExpirationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyEnablementRule{
-/// 					EnabledRules: []authorization.EnablementRules{
-/// 						authorization.EnablementRulesJustification,
-/// 						authorization.EnablementRulesMultiFactorAuthentication,
-/// 						authorization.EnablementRulesTicketing,
+/// 				&authorization.RoleManagementPolicyEnablementRuleArgs{
+/// 					EnabledRules: pulumi.StringArray{
+/// 						pulumi.String(authorization.EnablementRulesJustification),
+/// 						pulumi.String(authorization.EnablementRulesMultiFactorAuthentication),
+/// 						pulumi.String(authorization.EnablementRulesTicketing),
 /// 					},
-/// 					Id:       "Enablement_EndUser_Assignment",
-/// 					RuleType: "RoleManagementPolicyEnablementRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					Id:       pulumi.String("Enablement_EndUser_Assignment"),
+/// 					RuleType: pulumi.String("RoleManagementPolicyEnablementRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyApprovalRule{
-/// 					Id:       "Approval_EndUser_Assignment",
-/// 					RuleType: "RoleManagementPolicyApprovalRule",
-/// 					Setting: authorization.ApprovalSettings{
-/// 						ApprovalMode: authorization.ApprovalModeSingleStage,
-/// 						ApprovalStages: []authorization.ApprovalStage{
-/// 							{
-/// 								ApprovalStageTimeOutInDays:      1,
-/// 								EscalationTimeInMinutes:         0,
-/// 								IsApproverJustificationRequired: true,
-/// 								IsEscalationEnabled:             false,
-/// 								PrimaryApprovers: []authorization.UserSet{
-/// 									{
-/// 										Description: "amansw_new_group",
-/// 										Id:          "2385b0f3-5fa9-43cf-8ca4-b01dc97298cd",
-/// 										IsBackup:    false,
-/// 										UserType:    authorization.UserTypeGroup,
+/// 				&authorization.RoleManagementPolicyApprovalRuleArgs{
+/// 					Id:       pulumi.String("Approval_EndUser_Assignment"),
+/// 					RuleType: pulumi.String("RoleManagementPolicyApprovalRule"),
+/// 					Setting: &authorization.ApprovalSettingsArgs{
+/// 						ApprovalMode: pulumi.String(authorization.ApprovalModeSingleStage),
+/// 						ApprovalStages: authorization.ApprovalStageArray{
+/// 							&authorization.ApprovalStageArgs{
+/// 								ApprovalStageTimeOutInDays:      pulumi.Int(1),
+/// 								EscalationTimeInMinutes:         pulumi.Int(0),
+/// 								IsApproverJustificationRequired: pulumi.Bool(true),
+/// 								IsEscalationEnabled:             pulumi.Bool(false),
+/// 								PrimaryApprovers: authorization.UserSetArray{
+/// 									&authorization.UserSetArgs{
+/// 										Description: pulumi.String("amansw_new_group"),
+/// 										Id:          pulumi.String("2385b0f3-5fa9-43cf-8ca4-b01dc97298cd"),
+/// 										IsBackup:    pulumi.Bool(false),
+/// 										UserType:    pulumi.String(authorization.UserTypeGroup),
 /// 									},
-/// 									{
-/// 										Description: "amansw_group",
-/// 										Id:          "2f4913c9-d15b-406a-9946-1d66a28f2690",
-/// 										IsBackup:    false,
-/// 										UserType:    authorization.UserTypeGroup,
+/// 									&authorization.UserSetArgs{
+/// 										Description: pulumi.String("amansw_group"),
+/// 										Id:          pulumi.String("2f4913c9-d15b-406a-9946-1d66a28f2690"),
+/// 										IsBackup:    pulumi.Bool(false),
+/// 										UserType:    pulumi.String(authorization.UserTypeGroup),
 /// 									},
 /// 								},
 /// 							},
 /// 						},
-/// 						IsApprovalRequired:               true,
-/// 						IsApprovalRequiredForExtension:   false,
-/// 						IsRequestorJustificationRequired: true,
+/// 						IsApprovalRequired:               pulumi.Bool(true),
+/// 						IsApprovalRequiredForExtension:   pulumi.Bool(false),
+/// 						IsRequestorJustificationRequired: pulumi.Bool(true),
 /// 					},
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyAuthenticationContextRule{
-/// 					ClaimValue: "",
-/// 					Id:         "AuthenticationContext_EndUser_Assignment",
-/// 					IsEnabled:  false,
-/// 					RuleType:   "RoleManagementPolicyAuthenticationContextRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyAuthenticationContextRuleArgs{
+/// 					ClaimValue: pulumi.String(""),
+/// 					Id:         pulumi.String("AuthenticationContext_EndUser_Assignment"),
+/// 					IsEnabled:  pulumi.Bool(false),
+/// 					RuleType:   pulumi.String("RoleManagementPolicyAuthenticationContextRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Admin_EndUser_Assignment",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"admin_enduser_member@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Admin_EndUser_Assignment"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("admin_enduser_member@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeAdmin,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeAdmin),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Requestor_EndUser_Assignment",
-/// 					IsDefaultRecipientsEnabled: false,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationRecipients: []string{
-/// 						"requestor_enduser_member@test.com",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Requestor_EndUser_Assignment"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(false),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationRecipients: pulumi.StringArray{
+/// 						pulumi.String("requestor_enduser_member@test.com"),
 /// 					},
-/// 					NotificationType: authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:    authorization.RecipientTypeRequestor,
-/// 					RuleType:         "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 					NotificationType: pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:    pulumi.String(authorization.RecipientTypeRequestor),
+/// 					RuleType:         pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyNotificationRule{
-/// 					Id:                         "Notification_Approver_EndUser_Assignment",
-/// 					IsDefaultRecipientsEnabled: true,
-/// 					NotificationLevel:          authorization.NotificationLevelCritical,
-/// 					NotificationType:           authorization.NotificationDeliveryMechanismEmail,
-/// 					RecipientType:              authorization.RecipientTypeApprover,
-/// 					RuleType:                   "RoleManagementPolicyNotificationRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "EndUser",
-/// 						Level:  "Assignment",
-/// 						Operations: []string{
-/// 							"All",
+/// 				&authorization.RoleManagementPolicyNotificationRuleArgs{
+/// 					Id:                         pulumi.String("Notification_Approver_EndUser_Assignment"),
+/// 					IsDefaultRecipientsEnabled: pulumi.Bool(true),
+/// 					NotificationLevel:          pulumi.String(authorization.NotificationLevelCritical),
+/// 					NotificationType:           pulumi.String(authorization.NotificationDeliveryMechanismEmail),
+/// 					RecipientType:              pulumi.String(authorization.RecipientTypeApprover),
+/// 					RuleType:                   pulumi.String("RoleManagementPolicyNotificationRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("EndUser"),
+/// 						Level:  pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("All"),
 /// 						},
 /// 					},
 /// 				},
-/// 				authorization.RoleManagementPolicyPimOnlyModeRule{
-/// 					Id: "PIMOnlyMode_Admin_Assignment",
-/// 					PimOnlyModeSettings: authorization.PIMOnlyModeSettings{
-/// 						ExcludedAssignmentTypes: []authorization.ExcludedPrincipalTypes{
-/// 							authorization.ExcludedPrincipalTypesServicePrincipalsAsTarget,
+/// 				&authorization.RoleManagementPolicyPimOnlyModeRuleArgs{
+/// 					Id: pulumi.String("PIMOnlyMode_Admin_Assignment"),
+/// 					PimOnlyModeSettings: &authorization.PIMOnlyModeSettingsArgs{
+/// 						ExcludedAssignmentTypes: pulumi.StringArray{
+/// 							pulumi.String(authorization.ExcludedPrincipalTypesServicePrincipalsAsTarget),
 /// 						},
-/// 						Excludes: []authorization.UsersOrServicePrincipalSet{
-/// 							{
-/// 								Id:   "ec42a424-a0c0-4418-8788-d19bdeb03704",
-/// 								Type: authorization.UsersOrServicePrincipalSetUserTypeUser,
+/// 						Excludes: authorization.UsersOrServicePrincipalSetArray{
+/// 							&authorization.UsersOrServicePrincipalSetArgs{
+/// 								Id:   pulumi.String("ec42a424-a0c0-4418-8788-d19bdeb03704"),
+/// 								Type: pulumi.String(authorization.UsersOrServicePrincipalSetUserTypeUser),
 /// 							},
-/// 							{
-/// 								Id:   "00029dfb-0218-4e7a-9a85-c15dc0c880bc",
-/// 								Type: authorization.UsersOrServicePrincipalSetUserTypeGroup,
+/// 							&authorization.UsersOrServicePrincipalSetArgs{
+/// 								Id:   pulumi.String("00029dfb-0218-4e7a-9a85-c15dc0c880bc"),
+/// 								Type: pulumi.String(authorization.UsersOrServicePrincipalSetUserTypeGroup),
 /// 							},
-/// 							{
-/// 								Id:   "0000103d-1fc2-4ac8-81de-71517765655c",
-/// 								Type: authorization.UsersOrServicePrincipalSetUserTypeServicePrincipal,
+/// 							&authorization.UsersOrServicePrincipalSetArgs{
+/// 								Id:   pulumi.String("0000103d-1fc2-4ac8-81de-71517765655c"),
+/// 								Type: pulumi.String(authorization.UsersOrServicePrincipalSetUserTypeServicePrincipal),
 /// 							},
 /// 						},
-/// 						Mode: authorization.PIMOnlyModeEnabled,
+/// 						Mode: pulumi.String(authorization.PIMOnlyModeEnabled),
 /// 					},
-/// 					RuleType: "RoleManagementPolicyPimOnlyModeRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						EnforcedSettings: []string{
-/// 							"all",
+/// 					RuleType: pulumi.String("RoleManagementPolicyPimOnlyModeRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						EnforcedSettings: pulumi.StringArray{
+/// 							pulumi.String("all"),
 /// 						},
-/// 						InheritableSettings: []string{
-/// 							"all",
+/// 						InheritableSettings: pulumi.StringArray{
+/// 							pulumi.String("all"),
 /// 						},
-/// 						Level: "Assignment",
-/// 						Operations: []string{
-/// 							"all",
+/// 						Level: pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("all"),
 /// 						},
-/// 						TargetObjects: []interface{}{},
+/// 						TargetObjects: pulumi.StringArray{},
 /// 					},
 /// 				},
 /// 			},
@@ -1126,7 +1134,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1134,246 +1142,249 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_rolemanagementpolicy" "roleManagementPolicy" {
+/// resource "azure-native_authorization_role_management_policy" "roleManagementPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_management_policy_name = "570c3619-7688-4b34-b290-2b8bb3ccab2a"
 ///   rules = [{
-///     "id"                   = "Expiration_Admin_Eligibility"
-///     "isExpirationRequired" = false
-///     "maximumDuration"      = "P180D"
-///     "ruleType"             = "RoleManagementPolicyExpirationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     id                     = "Expiration_Admin_Eligibility"
+///     is_expiration_required = false
+///     maximum_duration       = "P180D"
+///     rule_type              = "RoleManagementPolicyExpirationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Admin_Admin_Eligibility"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["admin_admin_eligible@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Admin"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     id                            = "Notification_Admin_Admin_Eligibility"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["admin_admin_eligible@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Admin"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Requestor_Admin_Eligibility"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["requestor_admin_eligible@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Requestor"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     id                            = "Notification_Requestor_Admin_Eligibility"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["requestor_admin_eligible@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Requestor"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Approver_Admin_Eligibility"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["approver_admin_eligible@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Approver"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     id                            = "Notification_Approver_Admin_Eligibility"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["approver_admin_eligible@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Approver"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "enabledRules" = []
-///     "id"           = "Enablement_Admin_Eligibility"
-///     "ruleType"     = "RoleManagementPolicyEnablementRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Eligibility"
-///       "operations" = ["All"]
+///     enabled_rules = []
+///     id            = "Enablement_Admin_Eligibility"
+///     rule_type     = "RoleManagementPolicyEnablementRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Eligibility"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                   = "Expiration_Admin_Assignment"
-///     "isExpirationRequired" = false
-///     "maximumDuration"      = "P90D"
-///     "ruleType"             = "RoleManagementPolicyExpirationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                     = "Expiration_Admin_Assignment"
+///     is_expiration_required = false
+///     maximum_duration       = "P90D"
+///     rule_type              = "RoleManagementPolicyExpirationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "enabledRules" = ["Justification", "MultiFactorAuthentication"]
-///     "id"           = "Enablement_Admin_Assignment"
-///     "ruleType"     = "RoleManagementPolicyEnablementRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     enabled_rules = ["Justification", "MultiFactorAuthentication"]
+///     id            = "Enablement_Admin_Assignment"
+///     rule_type     = "RoleManagementPolicyEnablementRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Admin_Admin_Assignment"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["admin_admin_member@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Admin"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                            = "Notification_Admin_Admin_Assignment"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["admin_admin_member@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Admin"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Requestor_Admin_Assignment"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["requestor_admin_member@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Requestor"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                            = "Notification_Requestor_Admin_Assignment"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["requestor_admin_member@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Requestor"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Approver_Admin_Assignment"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["approver_admin_member@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Approver"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "Admin"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                            = "Notification_Approver_Admin_Assignment"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["approver_admin_member@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Approver"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "Admin"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                   = "Expiration_EndUser_Assignment"
-///     "isExpirationRequired" = true
-///     "maximumDuration"      = "PT7H"
-///     "ruleType"             = "RoleManagementPolicyExpirationRule"
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                     = "Expiration_EndUser_Assignment"
+///     is_expiration_required = true
+///     maximum_duration       = "PT7H"
+///     rule_type              = "RoleManagementPolicyExpirationRule"
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "enabledRules" = ["Justification", "MultiFactorAuthentication", "Ticketing"]
-///     "id"           = "Enablement_EndUser_Assignment"
-///     "ruleType"     = "RoleManagementPolicyEnablementRule"
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     enabled_rules = ["Justification", "MultiFactorAuthentication", "Ticketing"]
+///     id            = "Enablement_EndUser_Assignment"
+///     rule_type     = "RoleManagementPolicyEnablementRule"
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"       = "Approval_EndUser_Assignment"
-///     "ruleType" = "RoleManagementPolicyApprovalRule"
-///     "setting" = {
-///       "approvalMode" = "SingleStage"
-///       "approvalStages" = [{
-///         "approvalStageTimeOutInDays"      = 1
-///         "escalationTimeInMinutes"         = 0
-///         "isApproverJustificationRequired" = true
-///         "isEscalationEnabled"             = false
-///         "primaryApprovers" = [{
-///           "description" = "amansw_new_group"
-///           "id"          = "2385b0f3-5fa9-43cf-8ca4-b01dc97298cd"
-///           "isBackup"    = false
-///           "userType"    = "Group"
+///     id        = "Approval_EndUser_Assignment"
+///     rule_type = "RoleManagementPolicyApprovalRule"
+///     setting = {
+///       approval_mode = "SingleStage"
+///       approval_stages = [{
+///         approval_stage_time_out_in_days    = 1
+///         escalation_time_in_minutes         = 0
+///         is_approver_justification_required = true
+///         is_escalation_enabled              = false
+///         primary_approvers = [{
+///           description = "amansw_new_group"
+///           id          = "2385b0f3-5fa9-43cf-8ca4-b01dc97298cd"
+///           is_backup   = false
+///           user_type   = "Group"
 ///           }, {
-///           "description" = "amansw_group"
-///           "id"          = "2f4913c9-d15b-406a-9946-1d66a28f2690"
-///           "isBackup"    = false
-///           "userType"    = "Group"
+///           description = "amansw_group"
+///           id          = "2f4913c9-d15b-406a-9946-1d66a28f2690"
+///           is_backup   = false
+///           user_type   = "Group"
 ///         }]
 ///       }]
-///       "isApprovalRequired"               = true
-///       "isApprovalRequiredForExtension"   = false
-///       "isRequestorJustificationRequired" = true
+///       is_approval_required                = true
+///       is_approval_required_for_extension  = false
+///       is_requestor_justification_required = true
 ///     }
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
-///     }
-///     }, {
-///     "claimValue" = ""
-///     "id"         = "AuthenticationContext_EndUser_Assignment"
-///     "isEnabled"  = false
-///     "ruleType"   = "RoleManagementPolicyAuthenticationContextRule"
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Admin_EndUser_Assignment"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["admin_enduser_member@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Admin"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     claim_value = ""
+///     id          = "AuthenticationContext_EndUser_Assignment"
+///     is_enabled  = false
+///     rule_type   = "RoleManagementPolicyAuthenticationContextRule"
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Requestor_EndUser_Assignment"
-///     "isDefaultRecipientsEnabled" = false
-///     "notificationLevel"          = "Critical"
-///     "notificationRecipients"     = ["requestor_enduser_member@test.com"]
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Requestor"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                            = "Notification_Admin_EndUser_Assignment"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["admin_enduser_member@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Admin"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id"                         = "Notification_Approver_EndUser_Assignment"
-///     "isDefaultRecipientsEnabled" = true
-///     "notificationLevel"          = "Critical"
-///     "notificationType"           = "Email"
-///     "recipientType"              = "Approver"
-///     "ruleType"                   = "RoleManagementPolicyNotificationRule"
-///     "target" = {
-///       "caller"     = "EndUser"
-///       "level"      = "Assignment"
-///       "operations" = ["All"]
+///     id                            = "Notification_Requestor_EndUser_Assignment"
+///     is_default_recipients_enabled = false
+///     notification_level            = "Critical"
+///     notification_recipients       = ["requestor_enduser_member@test.com"]
+///     notification_type             = "Email"
+///     recipient_type                = "Requestor"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
 ///     }
 ///     }, {
-///     "id" = "PIMOnlyMode_Admin_Assignment"
-///     "pimOnlyModeSettings" = {
-///       "excludedAssignmentTypes" = ["ServicePrincipalsAsTarget"]
-///       "excludes" = [{
-///         "id"   = "ec42a424-a0c0-4418-8788-d19bdeb03704"
-///         "type" = "User"
+///     id                            = "Notification_Approver_EndUser_Assignment"
+///     is_default_recipients_enabled = true
+///     notification_level            = "Critical"
+///     notification_type             = "Email"
+///     recipient_type                = "Approver"
+///     rule_type                     = "RoleManagementPolicyNotificationRule"
+///     target = {
+///       caller     = "EndUser"
+///       level      = "Assignment"
+///       operations = ["All"]
+///     }
+///     }, {
+///     id = "PIMOnlyMode_Admin_Assignment"
+///     pim_only_mode_settings = {
+///       excluded_assignment_types = ["ServicePrincipalsAsTarget"]
+///       excludes = [{
+///         id   = "ec42a424-a0c0-4418-8788-d19bdeb03704"
+///         type = "User"
 ///         }, {
-///         "id"   = "00029dfb-0218-4e7a-9a85-c15dc0c880bc"
-///         "type" = "Group"
+///         id   = "00029dfb-0218-4e7a-9a85-c15dc0c880bc"
+///         type = "Group"
 ///         }, {
-///         "id"   = "0000103d-1fc2-4ac8-81de-71517765655c"
-///         "type" = "ServicePrincipal"
+///         id   = "0000103d-1fc2-4ac8-81de-71517765655c"
+///         type = "ServicePrincipal"
 ///       }]
-///       "mode" = "Enabled"
+///       mode = "Enabled"
 ///     }
-///     "ruleType" = "RoleManagementPolicyPimOnlyModeRule"
-///     "target" = {
-///       "caller"              = "Admin"
-///       "enforcedSettings"    = ["all"]
-///       "inheritableSettings" = ["all"]
-///       "level"               = "Assignment"
-///       "operations"          = ["all"]
-///       "targetObjects"       = []
+///     rule_type = "RoleManagementPolicyPimOnlyModeRule"
+///     target = {
+///       caller               = "Admin"
+///       enforced_settings    = ["all"]
+///       inheritable_settings = ["all"]
+///       level                = "Assignment"
+///       operations           = ["all"]
+///       target_objects       = []
 ///     }
 ///   }]
 ///   scope = "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368"
@@ -1389,6 +1400,18 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicy;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicyArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyApprovalRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyRuleTargetArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyAuthenticationContextRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyEnablementRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyExpirationRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyNotificationRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyPimOnlyModeRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ApprovalSettingsArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ApprovalStageArgs;
+/// import com.pulumi.azurenative.authorization.inputs.UserSetArgs;
+/// import com.pulumi.azurenative.authorization.inputs.PIMOnlyModeSettingsArgs;
+/// import com.pulumi.azurenative.authorization.inputs.UsersOrServicePrincipalSetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1409,7 +1432,6 @@ import 'system_data_response.dart';
 ///                     .id("Expiration_Admin_Eligibility")
 ///                     .isExpirationRequired(false)
 ///                     .maximumDuration("P180D")
-///                     .ruleType("RoleManagementPolicyExpirationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -1423,7 +1445,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("admin_admin_eligible@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Admin")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -1437,7 +1458,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("requestor_admin_eligible@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Requestor")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -1451,7 +1471,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("approver_admin_eligible@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Approver")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -1461,7 +1480,6 @@ import 'system_data_response.dart';
 ///                 RoleManagementPolicyEnablementRuleArgs.builder()
 ///                     .enabledRules()
 ///                     .id("Enablement_Admin_Eligibility")
-///                     .ruleType("RoleManagementPolicyEnablementRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Eligibility")
@@ -1472,7 +1490,6 @@ import 'system_data_response.dart';
 ///                     .id("Expiration_Admin_Assignment")
 ///                     .isExpirationRequired(false)
 ///                     .maximumDuration("P90D")
-///                     .ruleType("RoleManagementPolicyExpirationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Assignment")
@@ -1484,7 +1501,6 @@ import 'system_data_response.dart';
 ///                         "Justification",
 ///                         "MultiFactorAuthentication")
 ///                     .id("Enablement_Admin_Assignment")
-///                     .ruleType("RoleManagementPolicyEnablementRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Assignment")
@@ -1498,7 +1514,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("admin_admin_member@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Admin")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Assignment")
@@ -1512,7 +1527,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("requestor_admin_member@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Requestor")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Assignment")
@@ -1526,7 +1540,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("approver_admin_member@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Approver")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .level("Assignment")
@@ -1537,7 +1550,6 @@ import 'system_data_response.dart';
 ///                     .id("Expiration_EndUser_Assignment")
 ///                     .isExpirationRequired(true)
 ///                     .maximumDuration("PT7H")
-///                     .ruleType("RoleManagementPolicyExpirationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("EndUser")
 ///                         .level("Assignment")
@@ -1550,7 +1562,6 @@ import 'system_data_response.dart';
 ///                         "MultiFactorAuthentication",
 ///                         "Ticketing")
 ///                     .id("Enablement_EndUser_Assignment")
-///                     .ruleType("RoleManagementPolicyEnablementRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("EndUser")
 ///                         .level("Assignment")
@@ -1559,7 +1570,6 @@ import 'system_data_response.dart';
 ///                     .build(),
 ///                 RoleManagementPolicyApprovalRuleArgs.builder()
 ///                     .id("Approval_EndUser_Assignment")
-///                     .ruleType("RoleManagementPolicyApprovalRule")
 ///                     .setting(ApprovalSettingsArgs.builder()
 ///                         .approvalMode("SingleStage")
 ///                         .approvalStages(ApprovalStageArgs.builder()
@@ -1595,7 +1605,6 @@ import 'system_data_response.dart';
 ///                     .claimValue("")
 ///                     .id("AuthenticationContext_EndUser_Assignment")
 ///                     .isEnabled(false)
-///                     .ruleType("RoleManagementPolicyAuthenticationContextRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("EndUser")
 ///                         .level("Assignment")
@@ -1609,7 +1618,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("admin_enduser_member@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Admin")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("EndUser")
 ///                         .level("Assignment")
@@ -1623,7 +1631,6 @@ import 'system_data_response.dart';
 ///                     .notificationRecipients("requestor_enduser_member@test.com")
 ///                     .notificationType("Email")
 ///                     .recipientType("Requestor")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("EndUser")
 ///                         .level("Assignment")
@@ -1636,7 +1643,6 @@ import 'system_data_response.dart';
 ///                     .notificationLevel("Critical")
 ///                     .notificationType("Email")
 ///                     .recipientType("Approver")
-///                     .ruleType("RoleManagementPolicyNotificationRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("EndUser")
 ///                         .level("Assignment")
@@ -1662,7 +1668,6 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                         .mode("Enabled")
 ///                         .build())
-///                     .ruleType("RoleManagementPolicyPimOnlyModeRule")
 ///                     .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                         .caller("Admin")
 ///                         .enforcedSettings("all")
@@ -2501,18 +2506,18 @@ import 'system_data_response.dart';
 ///     var roleManagementPolicy = new AzureNative.Authorization.RoleManagementPolicy("roleManagementPolicy", new()
 ///     {
 ///         RoleManagementPolicyName = "570c3619-7688-4b34-b290-2b8bb3ccab2a",
-///         Rules = new[]
+///         Rules =
 ///         {
 ///             new AzureNative.Authorization.Inputs.RoleManagementPolicyPimOnlyModeRuleArgs
 ///             {
 ///                 Id = "PIMOnlyMode_Admin_Assignment",
 ///                 PimOnlyModeSettings = new AzureNative.Authorization.Inputs.PIMOnlyModeSettingsArgs
 ///                 {
-///                     ExcludedAssignmentTypes = new[]
+///                     ExcludedAssignmentTypes =
 ///                     {
 ///                         AzureNative.Authorization.ExcludedPrincipalTypes.ServicePrincipalsAsTarget,
 ///                     },
-///                     Excludes = new[]
+///                     Excludes =
 ///                     {
 ///                         new AzureNative.Authorization.Inputs.UsersOrServicePrincipalSetArgs
 ///                         {
@@ -2536,20 +2541,20 @@ import 'system_data_response.dart';
 ///                 Target = new AzureNative.Authorization.Inputs.RoleManagementPolicyRuleTargetArgs
 ///                 {
 ///                     Caller = "Admin",
-///                     EnforcedSettings = new[]
+///                     EnforcedSettings =
 ///                     {
 ///                         "all",
 ///                     },
-///                     InheritableSettings = new[]
+///                     InheritableSettings =
 ///                     {
 ///                         "all",
 ///                     },
 ///                     Level = "Assignment",
-///                     Operations = new[]
+///                     Operations =
 ///                     {
 ///                         "all",
 ///                     },
-///                     TargetObjects = new() { },
+///                     TargetObjects =  {},
 ///                 },
 ///             },
 ///         },
@@ -2574,42 +2579,42 @@ import 'system_data_response.dart';
 /// 		_, err := authorization.NewRoleManagementPolicy(ctx, "roleManagementPolicy", &authorization.RoleManagementPolicyArgs{
 /// 			RoleManagementPolicyName: pulumi.String("570c3619-7688-4b34-b290-2b8bb3ccab2a"),
 /// 			Rules: pulumi.Array{
-/// 				authorization.RoleManagementPolicyPimOnlyModeRule{
-/// 					Id: "PIMOnlyMode_Admin_Assignment",
-/// 					PimOnlyModeSettings: authorization.PIMOnlyModeSettings{
-/// 						ExcludedAssignmentTypes: []authorization.ExcludedPrincipalTypes{
-/// 							authorization.ExcludedPrincipalTypesServicePrincipalsAsTarget,
+/// 				&authorization.RoleManagementPolicyPimOnlyModeRuleArgs{
+/// 					Id: pulumi.String("PIMOnlyMode_Admin_Assignment"),
+/// 					PimOnlyModeSettings: &authorization.PIMOnlyModeSettingsArgs{
+/// 						ExcludedAssignmentTypes: pulumi.StringArray{
+/// 							pulumi.String(authorization.ExcludedPrincipalTypesServicePrincipalsAsTarget),
 /// 						},
-/// 						Excludes: []authorization.UsersOrServicePrincipalSet{
-/// 							{
-/// 								Id:   "ec42a424-a0c0-4418-8788-d19bdeb03704",
-/// 								Type: authorization.UsersOrServicePrincipalSetUserTypeUser,
+/// 						Excludes: authorization.UsersOrServicePrincipalSetArray{
+/// 							&authorization.UsersOrServicePrincipalSetArgs{
+/// 								Id:   pulumi.String("ec42a424-a0c0-4418-8788-d19bdeb03704"),
+/// 								Type: pulumi.String(authorization.UsersOrServicePrincipalSetUserTypeUser),
 /// 							},
-/// 							{
-/// 								Id:   "00029dfb-0218-4e7a-9a85-c15dc0c880bc",
-/// 								Type: authorization.UsersOrServicePrincipalSetUserTypeGroup,
+/// 							&authorization.UsersOrServicePrincipalSetArgs{
+/// 								Id:   pulumi.String("00029dfb-0218-4e7a-9a85-c15dc0c880bc"),
+/// 								Type: pulumi.String(authorization.UsersOrServicePrincipalSetUserTypeGroup),
 /// 							},
-/// 							{
-/// 								Id:   "0000103d-1fc2-4ac8-81de-71517765655c",
-/// 								Type: authorization.UsersOrServicePrincipalSetUserTypeServicePrincipal,
+/// 							&authorization.UsersOrServicePrincipalSetArgs{
+/// 								Id:   pulumi.String("0000103d-1fc2-4ac8-81de-71517765655c"),
+/// 								Type: pulumi.String(authorization.UsersOrServicePrincipalSetUserTypeServicePrincipal),
 /// 							},
 /// 						},
-/// 						Mode: authorization.PIMOnlyModeEnabled,
+/// 						Mode: pulumi.String(authorization.PIMOnlyModeEnabled),
 /// 					},
-/// 					RuleType: "RoleManagementPolicyPimOnlyModeRule",
-/// 					Target: authorization.RoleManagementPolicyRuleTarget{
-/// 						Caller: "Admin",
-/// 						EnforcedSettings: []string{
-/// 							"all",
+/// 					RuleType: pulumi.String("RoleManagementPolicyPimOnlyModeRule"),
+/// 					Target: &authorization.RoleManagementPolicyRuleTargetArgs{
+/// 						Caller: pulumi.String("Admin"),
+/// 						EnforcedSettings: pulumi.StringArray{
+/// 							pulumi.String("all"),
 /// 						},
-/// 						InheritableSettings: []string{
-/// 							"all",
+/// 						InheritableSettings: pulumi.StringArray{
+/// 							pulumi.String("all"),
 /// 						},
-/// 						Level: "Assignment",
-/// 						Operations: []string{
-/// 							"all",
+/// 						Level: pulumi.String("Assignment"),
+/// 						Operations: pulumi.StringArray{
+/// 							pulumi.String("all"),
 /// 						},
-/// 						TargetObjects: []interface{}{},
+/// 						TargetObjects: pulumi.StringArray{},
 /// 					},
 /// 				},
 /// 			},
@@ -2625,7 +2630,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2633,32 +2638,35 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_rolemanagementpolicy" "roleManagementPolicy" {
+/// resource "azure-native_authorization_role_management_policy" "roleManagementPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_management_policy_name = "570c3619-7688-4b34-b290-2b8bb3ccab2a"
 ///   rules = [{
-///     "id" = "PIMOnlyMode_Admin_Assignment"
-///     "pimOnlyModeSettings" = {
-///       "excludedAssignmentTypes" = ["ServicePrincipalsAsTarget"]
-///       "excludes" = [{
-///         "id"   = "ec42a424-a0c0-4418-8788-d19bdeb03704"
-///         "type" = "User"
+///     id = "PIMOnlyMode_Admin_Assignment"
+///     pim_only_mode_settings = {
+///       excluded_assignment_types = ["ServicePrincipalsAsTarget"]
+///       excludes = [{
+///         id   = "ec42a424-a0c0-4418-8788-d19bdeb03704"
+///         type = "User"
 ///         }, {
-///         "id"   = "00029dfb-0218-4e7a-9a85-c15dc0c880bc"
-///         "type" = "Group"
+///         id   = "00029dfb-0218-4e7a-9a85-c15dc0c880bc"
+///         type = "Group"
 ///         }, {
-///         "id"   = "0000103d-1fc2-4ac8-81de-71517765655c"
-///         "type" = "ServicePrincipal"
+///         id   = "0000103d-1fc2-4ac8-81de-71517765655c"
+///         type = "ServicePrincipal"
 ///       }]
-///       "mode" = "Enabled"
+///       mode = "Enabled"
 ///     }
-///     "ruleType" = "RoleManagementPolicyPimOnlyModeRule"
-///     "target" = {
-///       "caller"              = "Admin"
-///       "enforcedSettings"    = ["all"]
-///       "inheritableSettings" = ["all"]
-///       "level"               = "Assignment"
-///       "operations"          = ["all"]
-///       "targetObjects"       = []
+///     rule_type = "RoleManagementPolicyPimOnlyModeRule"
+///     target = {
+///       caller               = "Admin"
+///       enforced_settings    = ["all"]
+///       inheritable_settings = ["all"]
+///       level                = "Assignment"
+///       operations           = ["all"]
+///       target_objects       = []
 ///     }
 ///   }]
 ///   scope = "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368"
@@ -2674,6 +2682,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicy;
 /// import com.pulumi.azurenative.authorization.RoleManagementPolicyArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyApprovalRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyRuleTargetArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyAuthenticationContextRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyEnablementRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyExpirationRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyNotificationRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.RoleManagementPolicyPimOnlyModeRuleArgs;
+/// import com.pulumi.azurenative.authorization.inputs.PIMOnlyModeSettingsArgs;
+/// import com.pulumi.azurenative.authorization.inputs.UsersOrServicePrincipalSetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2708,7 +2725,6 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                     .mode("Enabled")
 ///                     .build())
-///                 .ruleType("RoleManagementPolicyPimOnlyModeRule")
 ///                 .target(RoleManagementPolicyRuleTargetArgs.builder()
 ///                     .caller("Admin")
 ///                     .enforcedSettings("all")

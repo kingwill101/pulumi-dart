@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         Budget = new AzureNative.Education.Inputs.AmountArgs
 ///         {
 ///             Currency = "USD",
-///             Value = 100,
+///             Value = 100.0,
 ///         },
 ///         Email = "test@contoso.com",
 ///         ExpirationDate = "2021-11-09T22:13:21.795Z",
@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_education_student" "student" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_name = "{billingAccountName}"
 ///   billing_profile_name = "{billingProfileName}"
 ///   budget = {

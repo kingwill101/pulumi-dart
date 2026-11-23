@@ -175,7 +175,7 @@ import 'workload_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -183,7 +183,10 @@ import 'workload_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_managedenvironment" "managedEnvironment" {
+/// resource "azure-native_app_managed_environment" "managedEnvironment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_logs_configuration = {
 ///     log_analytics_configuration = {
 ///       customer_id = "string"

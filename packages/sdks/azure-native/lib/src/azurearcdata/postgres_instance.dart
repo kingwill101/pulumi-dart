@@ -193,7 +193,7 @@ import 'system_data_response.dart';
 /// 							"fullMinutes":  10,
 /// 							"tiers": []map[string]interface{}{
 /// 								map[string]interface{}{
-/// 									"retention": map[string]interface{}{
+/// 									"retention": map[string][]string{
 /// 										"maximums": []string{
 /// 											"6",
 /// 											"512MB",
@@ -202,40 +202,40 @@ import 'system_data_response.dart';
 /// 											"3",
 /// 										},
 /// 									},
-/// 									"storage": map[string]interface{}{
+/// 									"storage": map[string]string{
 /// 										"volumeSize": "1Gi",
 /// 									},
 /// 								},
 /// 							},
 /// 						},
-/// 						"engine": map[string]interface{}{
-/// 							"extensions": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 						"engine": map[string][]map[string]string{
+/// 							"extensions": []map[string]string{
+/// 								{
 /// 									"name": "citus",
 /// 								},
 /// 							},
 /// 						},
-/// 						"scale": map[string]interface{}{
+/// 						"scale": map[string]int{
 /// 							"shards": 3,
 /// 						},
-/// 						"scheduling": map[string]interface{}{
-/// 							"default": map[string]interface{}{
-/// 								"resources": map[string]interface{}{
-/// 									"requests": map[string]interface{}{
+/// 						"scheduling": map[string]map[string]map[string]map[string]string{
+/// 							"default": map[string]map[string]map[string]string{
+/// 								"resources": map[string]map[string]string{
+/// 									"requests": map[string]string{
 /// 										"memory": "256Mi",
 /// 									},
 /// 								},
 /// 							},
 /// 						},
-/// 						"service": map[string]interface{}{
+/// 						"service": map[string]string{
 /// 							"type": "NodePort",
 /// 						},
-/// 						"storage": map[string]interface{}{
-/// 							"data": map[string]interface{}{
+/// 						"storage": map[string]map[string]string{
+/// 							"data": map[string]string{
 /// 								"className": "local-storage",
 /// 								"size":      "5Gi",
 /// 							},
-/// 							"logs": map[string]interface{}{
+/// 							"logs": map[string]string{
 /// 								"className": "local-storage",
 /// 								"size":      "5Gi",
 /// 							},
@@ -265,7 +265,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -273,7 +273,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_postgresinstance" "postgresInstance" {
+/// resource "azure-native_azurearcdata_postgres_instance" "postgresInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"
 ///     type = "CustomLocation"

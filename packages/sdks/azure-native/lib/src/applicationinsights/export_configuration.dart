@@ -72,7 +72,7 @@ import 'export_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'export_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_exportconfiguration" "exportConfiguration" {
+/// resource "azure-native_applicationinsights_export_configuration" "exportConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_account_id              = "/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.ClassicStorage/storageAccounts/mystorageblob"
 ///   destination_address                 = "https://mystorageblob.blob.core.windows.net/fchentest?sv=2015-04-05&sr=c&sig=token"
 ///   destination_storage_location_id     = "eastus"

@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_sqlserverlicense" "sqlServerLicense" {
+/// resource "azure-native_azurearcdata_sql_server_license" "sqlServerLicense" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "northeurope"
 ///   properties = {
 ///     activation_state = "Deactivated"

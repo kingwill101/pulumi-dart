@@ -66,7 +66,7 @@ import 'api_issue_comment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'api_issue_comment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apiissuecomment" "apiIssueComment" {
+/// resource "azure-native_apimanagement_api_issue_comment" "apiIssueComment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "57d1f7558aa04f15146d9d8a"
 ///   comment_id          = "599e29ab193c3c0bd0b3e2fb"
 ///   created_date        = "2018-02-01T22:21:20.467Z"

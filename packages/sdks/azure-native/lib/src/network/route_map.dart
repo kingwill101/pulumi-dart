@@ -26,7 +26,7 @@ import 'route_map_rule_response.dart';
 ///         {
 ///             "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1",
 ///         },
-///         AssociatedOutboundConnections = new[] {},
+///         AssociatedOutboundConnections = new() {},
 ///         ResourceGroupName = "rg1",
 ///         RouteMapName = "routeMap1",
 ///         Rules = new[]
@@ -136,7 +136,7 @@ import 'route_map_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -144,7 +144,10 @@ import 'route_map_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routemap" "routeMap" {
+/// resource "azure-native_network_route_map" "routeMap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   associated_inbound_connections  = ["/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1"]
 ///   associated_outbound_connections = []
 ///   resource_group_name             = "rg1"
@@ -181,6 +184,9 @@ import 'route_map_rule_response.dart';
 /// import com.pulumi.azurenative.network.RouteMap;
 /// import com.pulumi.azurenative.network.RouteMapArgs;
 /// import com.pulumi.azurenative.network.inputs.RouteMapRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.ActionArgs;
+/// import com.pulumi.azurenative.network.inputs.ParameterArgs;
+/// import com.pulumi.azurenative.network.inputs.CriterionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

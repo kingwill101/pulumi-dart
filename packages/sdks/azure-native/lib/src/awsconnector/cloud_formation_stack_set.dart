@@ -237,7 +237,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -245,7 +245,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_cloudformationstackset" "cloudFormationStackSet" {
+/// resource "azure-native_awsconnector_cloud_formation_stack_set" "cloudFormationStackSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "oubo"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -273,28 +276,28 @@ import 'system_data_response.dart';
 ///         region_order                 = ["gwaceriunclgehhoue"]
 ///       }
 ///       parameters = [{
-///         "parameterKey"   = "akfjkpykscisdhjmmlmsqsokk"
-///         "parameterValue" = "lldiqsjfqukysjecb"
+///         parameter_key   = "akfjkpykscisdhjmmlmsqsokk"
+///         parameter_value = "lldiqsjfqukysjecb"
 ///       }]
 ///       permission_model = "SELF_MANAGED"
 ///       stack_instances_group = [{
-///         "deploymentTargets" = {
-///           "accountFilterType"     = "DIFFERENCE"
-///           "accounts"              = ["xc"]
-///           "accountsUrl"           = "nvixaunvovhintyelj"
-///           "organizationalUnitIds" = ["gnnzuj"]
+///         deployment_targets = {
+///           account_filter_type     = "DIFFERENCE"
+///           accounts                = ["xc"]
+///           accounts_url            = "nvixaunvovhintyelj"
+///           organizational_unit_ids = ["gnnzuj"]
 ///         }
-///         "parameterOverrides" = [{
-///           "parameterKey"   = "akfjkpykscisdhjmmlmsqsokk"
-///           "parameterValue" = "lldiqsjfqukysjecb"
+///         parameter_overrides = [{
+///           parameter_key   = "akfjkpykscisdhjmmlmsqsokk"
+///           parameter_value = "lldiqsjfqukysjecb"
 ///         }]
-///         "regions" = ["eyondljwt"]
+///         regions = ["eyondljwt"]
 ///       }]
 ///       stack_set_id   = "ypfkcclgbgzikkjqfeiq"
 ///       stack_set_name = "bkfqkuqedspfb"
 ///       tags = [{
-///         "key"   = "rhuz"
-///         "value" = "ntm"
+///         key   = "rhuz"
+///         value = "ntm"
 ///       }]
 ///       template_body = "no"
 ///       template_url  = "icoki"
@@ -328,6 +331,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AutoDeploymentArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ActiveModelArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OperationPreferencesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ParameterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StackInstancesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DeploymentTargetsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

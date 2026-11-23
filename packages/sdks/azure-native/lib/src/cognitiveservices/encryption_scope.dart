@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_encryptionscope" "encryptionScope" {
+/// resource "azure-native_cognitiveservices_encryption_scope" "encryptionScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name          = "accountName"
 ///   encryption_scope_name = "encryptionScopeName"
 ///   properties = {

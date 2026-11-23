@@ -114,7 +114,7 @@ import 'spark_config_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'spark_config_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_bigdatapool" "bigDataPool" {
+/// resource "azure-native_synapse_big_data_pool" "bigDataPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_pause = {
 ///     delay_in_minutes = 15
 ///     enabled          = true

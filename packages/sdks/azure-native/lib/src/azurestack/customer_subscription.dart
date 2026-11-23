@@ -58,7 +58,7 @@ import 'customer_subscription_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'customer_subscription_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestack_customersubscription" "customerSubscription" {
+/// resource "azure-native_azurestack_customer_subscription" "customerSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_subscription_name = "E09A4E93-29A7-4EBA-A6D4-76202383F07F"
 ///   registration_name          = "testregistration"
 ///   resource_group             = "azurestack"

@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_orbital_edgesite" "edgeSite" {
+/// resource "azure-native_orbital_edge_site" "edgeSite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_site_name = "es1"
 ///   global_communications_site = {
 ///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/providers/Microsoft.Orbital/globalCommunicationsSites/contoso-Vernon"

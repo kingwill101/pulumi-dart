@@ -81,7 +81,7 @@ import 'vmmserver_properties_response_credentials.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'vmmserver_properties_response_credentials.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_scvmm_vmmserver" "vmmServer" {
+/// resource "azure-native_scvmm_vmm_server" "vmmServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credentials = {
 ///     password = "password"
 ///     username = "testuser"

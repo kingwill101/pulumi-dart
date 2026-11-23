@@ -378,7 +378,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -386,7 +386,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -1243,7 +1246,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1251,7 +1254,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "adlsv2-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -1496,7 +1502,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1504,7 +1510,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "adx-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -1769,7 +1778,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1777,7 +1786,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "aio-builtin-broker-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -2038,7 +2050,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2046,7 +2058,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "event-grid-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -2296,7 +2311,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2304,7 +2319,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "event-hub-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -2561,7 +2579,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2569,7 +2587,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "fabric-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -2861,7 +2882,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2869,7 +2890,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "generic-kafka-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -3179,7 +3203,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3187,7 +3211,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "local-storage-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -3417,7 +3444,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3425,7 +3452,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowendpoint" "dataflowEndpoint" {
+/// resource "azure-native_iotoperations_dataflow_endpoint" "dataflowEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_endpoint_name = "generic-mqtt-broker-endpoint"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"

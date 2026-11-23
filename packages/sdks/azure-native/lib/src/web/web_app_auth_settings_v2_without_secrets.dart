@@ -103,7 +103,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 ///                 {
 ///                     Directory = "/wwwroot/sites/example",
 ///                 },
-///                 TokenRefreshExtensionHours = 96,
+///                 TokenRefreshExtensionHours = 96.0,
 ///             },
 ///         },
 ///         Name = "sitef6141",
@@ -210,7 +210,7 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +218,10 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappauthsettingsv2withoutsecrets" "webAppAuthSettingsV2WithoutSecrets" {
+/// resource "azure-native_web_web_app_auth_settings_v2_without_secrets" "webAppAuthSettingsV2WithoutSecrets" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_validation = {
 ///     excluded_paths                = ["/nosecrets/Path"]
 ///     require_authentication        = true

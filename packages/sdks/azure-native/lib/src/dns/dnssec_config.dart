@@ -54,7 +54,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,7 +62,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_dnssecconfig" "dnssecConfig" {
+/// resource "azure-native_dns_dnssec_config" "dnssecConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "rg1"
 ///   zone_name           = "zone1"
 /// }

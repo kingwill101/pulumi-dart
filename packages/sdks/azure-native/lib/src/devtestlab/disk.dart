@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,6 +72,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_devtestlab_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk_size_gi_b      = 1023
 ///   disk_type           = "Standard"
 ///   lab_name            = "{labName}"

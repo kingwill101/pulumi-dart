@@ -5,7 +5,7 @@ import 'data_source_args.dart';
 ///
 /// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2020-08-01.
 ///
-/// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -65,7 +65,7 @@ import 'data_source_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'data_source_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_datasource" "dataSource" {
+/// resource "azure-native_operationalinsights_data_source" "dataSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_name = "AzTestDS774"
 ///   kind             = "AzureActivityLog"
 ///   properties = {

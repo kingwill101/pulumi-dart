@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_fabric_fabriccapacity" "fabricCapacity" {
+/// resource "azure-native_fabric_fabric_capacity" "fabricCapacity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administration = {
 ///     members = ["azsdktest@microsoft.com", "azsdktest2@microsoft.com"]
 ///   }

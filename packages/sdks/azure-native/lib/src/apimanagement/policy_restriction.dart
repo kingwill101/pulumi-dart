@@ -60,7 +60,7 @@ import 'policy_restriction_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'policy_restriction_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_policyrestriction" "policyRestriction" {
+/// resource "azure-native_apimanagement_policy_restriction" "policyRestriction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_restriction_id = "policyRestriction1"
 ///   require_base          = "true"
 ///   resource_group_name   = "rg1"

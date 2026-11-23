@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedclustersnapshot" "managedClusterSnapshot" {
+/// resource "azure-native_containerservice_managed_cluster_snapshot" "managedClusterSnapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     source_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.ContainerService/managedClusters/cluster1"
 ///   }

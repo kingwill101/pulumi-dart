@@ -105,7 +105,7 @@ import 'resource_group_definition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,6 +114,9 @@ import 'resource_group_definition_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_blueprint" "blueprint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blueprint_name = "simpleBlueprint"
 ///   description    = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"
 ///   parameters = {
@@ -150,6 +153,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.Blueprint;
 /// import com.pulumi.azurenative.blueprint.BlueprintArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterDefinitionArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupDefinitionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -359,7 +364,7 @@ import 'resource_group_definition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -368,6 +373,9 @@ import 'resource_group_definition_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_blueprint" "blueprint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blueprint_name = "simpleBlueprint"
 ///   description    = "An example blueprint containing an RG with two tags."
 ///   resource_groups = {
@@ -395,6 +403,7 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.Blueprint;
 /// import com.pulumi.azurenative.blueprint.BlueprintArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupDefinitionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -592,7 +601,7 @@ import 'resource_group_definition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -601,6 +610,9 @@ import 'resource_group_definition_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_blueprint" "blueprint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blueprint_name = "simpleBlueprint"
 ///   description    = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"
 ///   parameters = {
@@ -637,6 +649,8 @@ import 'resource_group_definition_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.Blueprint;
 /// import com.pulumi.azurenative.blueprint.BlueprintArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterDefinitionArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupDefinitionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

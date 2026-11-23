@@ -32,7 +32,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "rgdependencyMap",
 ///         SourceName = "sourceTest1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dependencymap_discoverysource" "discoverySource" {
+/// resource "azure-native_dependencymap_discovery_source" "discoverySource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "y"
 ///   map_name = "mapsTest1"
 ///   properties = {
@@ -120,7 +123,6 @@ import 'system_data_response.dart';
 ///             .mapName("mapsTest1")
 ///             .properties(OffAzureDiscoverySourceResourcePropertiesArgs.builder()
 ///                 .sourceId("wzlrkzumplzjmixbqv")
-///                 .sourceType("OffAzure")
 ///                 .build())
 ///             .resourceGroupName("rgdependencyMap")
 ///             .sourceName("sourceTest1")

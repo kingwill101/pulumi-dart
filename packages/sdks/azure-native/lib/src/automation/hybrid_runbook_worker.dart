@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_hybridrunbookworker" "hybridRunbookWorker" {
+/// resource "azure-native_automation_hybrid_runbook_worker" "hybridRunbookWorker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name          = "testaccount"
 ///   hybrid_runbook_worker_group_name = "TestHybridGroup"
 ///   hybrid_runbook_worker_id         = "c010ad12-ef14-4a2a-aa9e-ef22c4745ddd"

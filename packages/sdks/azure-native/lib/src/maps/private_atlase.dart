@@ -64,7 +64,7 @@ import 'private_atlase_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'private_atlase_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_maps_privateatlase" "privateAtlase" {
+/// resource "azure-native_maps_private_atlase" "privateAtlase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "myMapsAccount"
 ///   location            = "unitedstates"
 ///   private_atlas_name  = "myPrivateAtlas"

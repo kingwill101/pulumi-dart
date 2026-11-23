@@ -169,7 +169,7 @@ import 'worker_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -177,7 +177,10 @@ import 'worker_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redhatopenshift_openshiftcluster" "openShiftCluster" {
+/// resource "azure-native_redhatopenshift_open_shift_cluster" "openShiftCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   apiserver_profile = {
 ///     visibility = "Public"
 ///   }

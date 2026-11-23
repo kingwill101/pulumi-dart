@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_connectedenvironmentscertificate" "connectedEnvironmentsCertificate" {
+/// resource "azure-native_app_connected_environments_certificate" "connectedEnvironmentsCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name           = "certificate-firendly-name"
 ///   connected_environment_name = "testcontainerenv"
 ///   location                   = "East US"

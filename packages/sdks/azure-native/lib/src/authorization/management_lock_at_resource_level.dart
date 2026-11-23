@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_managementlockatresourcelevel" "managementLockAtResourceLevel" {
+/// resource "azure-native_authorization_management_lock_at_resource_level" "managementLockAtResourceLevel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   level                       = "ReadOnly"
 ///   lock_name                   = "testlock"
 ///   parent_resource_path        = "parentResourcePath"

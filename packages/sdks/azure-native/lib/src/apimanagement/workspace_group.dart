@@ -60,7 +60,7 @@ import 'workspace_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'workspace_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacegroup" "workspaceGroup" {
+/// resource "azure-native_apimanagement_workspace_group" "workspaceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "temp group"
 ///   group_id            = "tempgroup"
 ///   resource_group_name = "rg1"
@@ -210,7 +213,7 @@ import 'workspace_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +221,10 @@ import 'workspace_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacegroup" "workspaceGroup" {
+/// resource "azure-native_apimanagement_workspace_group" "workspaceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "new group to test"
 ///   display_name        = "NewGroup (samiraad.onmicrosoft.com)"
 ///   external_id         = "aad://samiraad.onmicrosoft.com/groups/83cf2753-5831-4675-bc0e-2f8dc067c58d"

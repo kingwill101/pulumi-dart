@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_identitybinding" "identityBinding" {
+/// resource "azure-native_containerservice_identity_binding" "identityBinding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_binding_name = "identitybinding1"
 ///   properties = {
 ///     managed_identity = {

@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_proximityplacementgroup" "proximityPlacementGroup" {
+/// resource "azure-native_compute_proximity_placement_group" "proximityPlacementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intent = {
 ///     vm_sizes = ["Basic_A0", "Basic_A2"]
 ///   }

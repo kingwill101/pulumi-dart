@@ -26,13 +26,13 @@ import 'cassandra_resource_cassandra_keyspace_args.dart';
 ///         AccountName = "ddb1",
 ///         KeyspaceName = "keyspaceName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.CassandraKeyspaceResourceArgs
 ///         {
 ///             Id = "keyspaceName",
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'cassandra_resource_cassandra_keyspace_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'cassandra_resource_cassandra_keyspace_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_cassandraresourcecassandrakeyspace" "cassandraResourceCassandraKeyspace" {
+/// resource "azure-native_cosmosdb_cassandra_resource_cassandra_keyspace" "cassandraResourceCassandraKeyspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   keyspace_name = "keyspaceName"
 ///   location      = "West US"

@@ -67,7 +67,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id           = "233d7008-b157-4354-88d1-ba191f06a900"
 ///   client_secret       = "vdvgdvdvdv"
 ///   data_store_type     = "adls"
@@ -234,7 +237,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -242,7 +245,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "nicksadlsgen2storage"
 ///   client_id           = "233d7008-b157-4354-88d1-ba191f06a900"
 ///   client_secret       = "vdegbvedgeg"
@@ -402,7 +408,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -410,7 +416,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_key         = "wddrfewfewsgewgrrwegwreg"
 ///   account_name        = "acjainmleastus9484093746"
 ///   container_name      = "azureml-blobstore-5da947c5-53aa-41a5-bb2b-074074e73b7"
@@ -554,7 +563,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -562,7 +571,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_store_type     = "dbfs"
 ///   datastore_name      = "blobDatastore"
 ///   resource_group_name = "acjain-mleastUS2"
@@ -697,7 +709,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -705,7 +717,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_key         = "wddrfewfewsgewgrrwegwreg"
 ///   account_name        = "acjainmleastus9484093746"
 ///   data_store_type     = "file"
@@ -857,7 +872,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -865,7 +880,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_store_type     = "mysqldb"
 ///   database_name       = "dataset"
 ///   datastore_name      = "mySqlDatastore"
@@ -1022,7 +1040,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1030,7 +1048,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_store_type     = "psqldb"
 ///   database_name       = "dataset"
 ///   datastore_name      = "postgreSqlDatastore"
@@ -1187,7 +1208,7 @@ import 'sku_machine_learning_datastore_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1195,7 +1216,10 @@ import 'sku_machine_learning_datastore_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+/// resource "azure-native_machinelearningservices_machine_learning_datastore" "machineLearningDatastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_store_type     = "sqldb"
 ///   database_name       = "dataset"
 ///   datastore_name      = "sqlDatastore"

@@ -91,7 +91,7 @@ import 'web_agent_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'web_agent_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_webagent" "webAgent" {
+/// resource "azure-native_cdn_web_agent" "webAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Primary web agent for content processing"
 ///   location    = "WestUs"
 ///   paths {

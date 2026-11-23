@@ -56,7 +56,7 @@ import 'private_link_scoped_resource_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'private_link_scoped_resource_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcompute_privatelinkscopedresource" "privateLinkScopedResource" {
+/// resource "azure-native_hybridcompute_private_link_scoped_resource" "privateLinkScopedResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linked_resource_id  = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/Machines/machineName1"
 ///   name                = "scoped-resource-name"
 ///   resource_group_name = "myResourceGroup"

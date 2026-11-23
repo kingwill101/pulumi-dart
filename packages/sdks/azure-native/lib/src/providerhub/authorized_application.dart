@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,12 +95,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_authorizedapplication" "authorizedApplication" {
+/// resource "azure-native_providerhub_authorized_application" "authorizedApplication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "760505bf-dcfa-4311-b890-18da392a00b2"
 ///   properties = {
 ///     data_authorizations = [{
-///       "resourceTypes" = ["*"]
-///       "role"          = "ServiceOwner"
+///       resource_types = ["*"]
+///       role           = "ServiceOwner"
 ///     }]
 ///     provider_authorization = {
 ///       managed_by_role_definition_id = "1a3b5c7d-8e9f-10g1-1h12-i13j14k1"
@@ -121,6 +124,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.AuthorizedApplication;
 /// import com.pulumi.azurenative.providerhub.AuthorizedApplicationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.AuthorizedApplicationPropertiesArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.ApplicationDataAuthorizationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ApplicationProviderAuthorizationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

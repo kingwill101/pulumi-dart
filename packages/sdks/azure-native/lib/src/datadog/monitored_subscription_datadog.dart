@@ -191,7 +191,7 @@ import 'subscription_list_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -199,54 +199,57 @@ import 'subscription_list_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datadog_monitoredsubscription" "monitoredSubscription" {
+/// resource "azure-native_datadog_monitored_subscription" "monitoredSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name = "default"
 ///   monitor_name       = "myMonitor"
 ///   properties = {
 ///     monitored_subscription_list = [{
-///       "status"         = "Active"
-///       "subscriptionId" = "/subscriptions/00000000-0000-0000-0000-000000000000"
-///       "tagRules" = {
-///         "automuting" = true
-///         "logRules" = {
-///           "filteringTags" = [{
-///             "action" = "Include"
-///             "name"   = "Environment"
-///             "value"  = "Prod"
+///       status          = "Active"
+///       subscription_id = "/subscriptions/00000000-0000-0000-0000-000000000000"
+///       tag_rules = {
+///         automuting = true
+///         log_rules = {
+///           filtering_tags = [{
+///             action = "Include"
+///             name   = "Environment"
+///             value  = "Prod"
 ///             }, {
-///             "action" = "Exclude"
-///             "name"   = "Environment"
-///             "value"  = "Dev"
+///             action = "Exclude"
+///             name   = "Environment"
+///             value  = "Dev"
 ///           }]
-///           "sendAadLogs"          = false
-///           "sendResourceLogs"     = true
-///           "sendSubscriptionLogs" = true
+///           send_aad_logs          = false
+///           send_resource_logs     = true
+///           send_subscription_logs = true
 ///         }
-///         "metricRules" = {
-///           "filteringTags" = []
+///         metric_rules = {
+///           filtering_tags = []
 ///         }
 ///       }
 ///       }, {
-///       "status"         = "Failed"
-///       "subscriptionId" = "/subscriptions/00000000-0000-0000-0000-000000000001"
-///       "tagRules" = {
-///         "automuting" = true
-///         "logRules" = {
-///           "filteringTags" = [{
-///             "action" = "Include"
-///             "name"   = "Environment"
-///             "value"  = "Prod"
+///       status          = "Failed"
+///       subscription_id = "/subscriptions/00000000-0000-0000-0000-000000000001"
+///       tag_rules = {
+///         automuting = true
+///         log_rules = {
+///           filtering_tags = [{
+///             action = "Include"
+///             name   = "Environment"
+///             value  = "Prod"
 ///             }, {
-///             "action" = "Exclude"
-///             "name"   = "Environment"
-///             "value"  = "Dev"
+///             action = "Exclude"
+///             name   = "Environment"
+///             value  = "Dev"
 ///           }]
-///           "sendAadLogs"          = false
-///           "sendResourceLogs"     = true
-///           "sendSubscriptionLogs" = true
+///           send_aad_logs          = false
+///           send_resource_logs     = true
+///           send_subscription_logs = true
 ///         }
-///         "metricRules" = {
-///           "filteringTags" = []
+///         metric_rules = {
+///           filtering_tags = []
 ///         }
 ///       }
 ///     }]
@@ -264,8 +267,11 @@ import 'subscription_list_response.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datadog.MonitoredSubscription;
-/// import com.pulumi.azurenative.datadog.MonitoredSubscriptionArgs;
 /// import com.pulumi.azurenative.datadog.inputs.SubscriptionListArgs;
+/// import com.pulumi.azurenative.datadog.inputs.MonitoringTagRulesPropertiesArgs;
+/// import com.pulumi.azurenative.datadog.inputs.LogRulesArgs;
+/// import com.pulumi.azurenative.datadog.inputs.FilteringTagArgs;
+/// import com.pulumi.azurenative.datadog.inputs.MetricRulesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -284,7 +290,7 @@ import 'subscription_list_response.dart';
 ///             .monitorName("myMonitor")
 ///             .properties(SubscriptionListArgs.builder()
 ///                 .monitoredSubscriptionList(
-///                     MonitoredSubscriptionArgs.builder()
+///                     com.pulumi.azurenative.datadog.inputs.MonitoredSubscriptionArgs.builder()
 ///                         .status("Active")
 ///                         .subscriptionId("/subscriptions/00000000-0000-0000-0000-000000000000")
 ///                         .tagRules(MonitoringTagRulesPropertiesArgs.builder()
@@ -310,7 +316,7 @@ import 'subscription_list_response.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .build(),
-///                     MonitoredSubscriptionArgs.builder()
+///                     com.pulumi.azurenative.datadog.inputs.MonitoredSubscriptionArgs.builder()
 ///                         .status("Failed")
 ///                         .subscriptionId("/subscriptions/00000000-0000-0000-0000-000000000001")
 ///                         .tagRules(MonitoringTagRulesPropertiesArgs.builder()

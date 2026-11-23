@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_dnsresolverpolicy" "dnsResolverPolicy" {
+/// resource "azure-native_dnsresolver_dns_resolver_policy" "dnsResolverPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_resolver_policy_name = "sampleDnsResolverPolicy"
 ///   location                 = "westus2"
 ///   resource_group_name      = "sampleResourceGroup"

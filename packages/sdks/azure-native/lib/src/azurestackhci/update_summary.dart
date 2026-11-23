@@ -67,7 +67,7 @@ import 'update_summary_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'update_summary_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_updatesummary" "updateSummary" {
+/// resource "azure-native_azurestackhci_update_summary" "updateSummary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "testcluster"
 ///   current_version     = "4.2203.2.32"
 ///   hardware_model      = "PowerEdge R730xd"

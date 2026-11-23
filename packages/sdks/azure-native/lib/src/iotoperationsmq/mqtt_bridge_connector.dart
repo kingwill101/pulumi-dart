@@ -113,7 +113,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -215,7 +215,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -223,7 +223,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_mqttbridgeconnector" "mqttBridgeConnector" {
+/// resource "azure-native_iotoperationsmq_mqtt_bridge_connector" "mqttBridgeConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bridge_instances = 4528
 ///   client_id_prefix = "yqipejvabahsexbnttiegjnh"
 ///   extended_location = {

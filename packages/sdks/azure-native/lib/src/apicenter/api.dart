@@ -104,7 +104,7 @@ import 'terms_of_service_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,6 +113,9 @@ import 'terms_of_service_response.dart';
 /// }
 ///
 /// resource "azure-native_apicenter_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_name = "echo-api"
 ///   custom_properties = {
 ///     "author" = "John Doe"

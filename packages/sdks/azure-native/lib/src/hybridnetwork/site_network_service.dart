@@ -76,9 +76,9 @@ import 'system_data_response.dart';
 /// 						Id: pulumi.String("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/configurationgroupvalues/MyVM_Configuration1"),
 /// 					},
 /// 				},
-/// 				NetworkServiceDesignVersionResourceReference: hybridnetwork.SecretDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0",
-/// 					IdType: "Secret",
+/// 				NetworkServiceDesignVersionResourceReference: &hybridnetwork.SecretDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"),
+/// 					IdType: pulumi.String("Secret"),
 /// 				},
 /// 				SiteReference: &hybridnetwork.ReferencedResourceArgs{
 /// 					Id: pulumi.String("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite"),
@@ -100,7 +100,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_sitenetworkservice" "siteNetworkService" {
+/// resource "azure-native_hybridnetwork_site_network_service" "siteNetworkService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westUs2"
 ///   properties = {
 ///     desired_state_configuration_group_value_references = {
@@ -117,8 +120,8 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     network_service_design_version_resource_reference = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"
-///       "idType" = "Secret"
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"
+///       id_type = "Secret"
 ///     }
 ///     site_reference = {
 ///       id = "/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite"
@@ -143,6 +146,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.SiteNetworkServiceArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SiteNetworkServicePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -165,7 +170,6 @@ import 'system_data_response.dart';
 ///                     .build()))
 ///                 .networkServiceDesignVersionResourceReference(SecretDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0")
-///                     .idType("Secret")
 ///                     .build())
 ///                 .siteReference(ReferencedResourceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite")
@@ -326,9 +330,9 @@ import 'system_data_response.dart';
 /// 						Id: pulumi.String("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/configurationgroupvalues/MyVM_Configuration1"),
 /// 					},
 /// 				},
-/// 				NetworkServiceDesignVersionResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0",
-/// 					IdType: "Open",
+/// 				NetworkServiceDesignVersionResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				SiteReference: &hybridnetwork.ReferencedResourceArgs{
 /// 					Id: pulumi.String("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite"),
@@ -350,7 +354,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -358,7 +362,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_sitenetworkservice" "siteNetworkService" {
+/// resource "azure-native_hybridnetwork_site_network_service" "siteNetworkService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westUs2"
 ///   properties = {
 ///     desired_state_configuration_group_value_references = {
@@ -367,8 +374,8 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     network_service_design_version_resource_reference = {
-///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"
-///       "idType" = "Open"
+///       id      = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"
+///       id_type = "Open"
 ///     }
 ///     site_reference = {
 ///       id = "/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite"
@@ -393,6 +400,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.SiteNetworkServiceArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SiteNetworkServicePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -415,7 +424,6 @@ import 'system_data_response.dart';
 ///                     .build()))
 ///                 .networkServiceDesignVersionResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0")
-///                     .idType("Open")
 ///                     .build())
 ///                 .siteReference(ReferencedResourceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite")

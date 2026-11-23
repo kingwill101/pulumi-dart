@@ -54,7 +54,7 @@ import 'queue_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,6 +63,9 @@ import 'queue_args.dart';
 /// }
 ///
 /// resource "azure-native_storage_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto328"
 ///   queue_name          = "queue6185"
 ///   resource_group_name = "res3376"
@@ -193,7 +196,7 @@ import 'queue_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -202,6 +205,9 @@ import 'queue_args.dart';
 /// }
 ///
 /// resource "azure-native_storage_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sto328"
 ///   metadata = {
 ///     "sample1" = "meta1"

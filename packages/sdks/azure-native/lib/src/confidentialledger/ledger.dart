@@ -104,7 +104,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,17 +113,20 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_confidentialledger_ledger" "ledger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ledger_name = "DummyLedgerName"
 ///   location    = "EastUS"
 ///   properties = {
 ///     aad_based_security_principals = [{
-///       "ledgerRoleName" = "Administrator"
-///       "principalId"    = "34621747-6fc8-4771-a2eb-72f31c461f2e"
-///       "tenantId"       = "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
+///       ledger_role_name = "Administrator"
+///       principal_id     = "34621747-6fc8-4771-a2eb-72f31c461f2e"
+///       tenant_id        = "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
 ///     }]
 ///     cert_based_security_principals = [{
-///       "cert"           = "-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----"
-///       "ledgerRoleName" = "Reader"
+///       cert             = "-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----"
+///       ledger_role_name = "Reader"
 ///     }]
 ///     ledger_sku  = "Standard"
 ///     ledger_type = "Public"
@@ -145,6 +148,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.confidentialledger.Ledger;
 /// import com.pulumi.azurenative.confidentialledger.LedgerArgs;
 /// import com.pulumi.azurenative.confidentialledger.inputs.LedgerPropertiesArgs;
+/// import com.pulumi.azurenative.confidentialledger.inputs.AADBasedSecurityPrincipalArgs;
+/// import com.pulumi.azurenative.confidentialledger.inputs.CertBasedSecurityPrincipalArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

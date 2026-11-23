@@ -68,7 +68,7 @@ import 'vcenter_controller_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'vcenter_controller_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_offazure_vcentercontroller" "vcenterController" {
+/// resource "azure-native_offazure_vcenter_controller" "vcenterController" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fqdn                = "fuclodcnofphkcrnex"
 ///   friendly_name       = "qvycnab"
 ///   port                = "bdospcacndrchuqluozmwrvetxul"

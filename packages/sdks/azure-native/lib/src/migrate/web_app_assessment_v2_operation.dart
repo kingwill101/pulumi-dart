@@ -39,9 +39,9 @@ import 'web_app_assessment_v2_operation_args.dart';
 ///         AzureLocation = "UkWest",
 ///         AzureOfferCode = AzureNative.Migrate.AzureOfferCode.Msazr0003P,
 ///         AzureSecurityOfferingType = AzureNative.Migrate.AzureSecurityOfferingType.NO,
-///         ConfidenceRatingInPercentage = 13,
+///         ConfidenceRatingInPercentage = 13.0,
 ///         Currency = AzureNative.Migrate.AzureCurrency.USD,
-///         DiscountPercentage = 13,
+///         DiscountPercentage = 13.0,
 ///         DiscoveredEntityLightSummary = new AzureNative.Migrate.Inputs.DiscoveredEntityLightSummaryArgs
 ///         {
 ///             NumberOfMachines = 27,
@@ -63,7 +63,7 @@ import 'web_app_assessment_v2_operation_args.dart';
 ///         ProjectName = "sumukk-ccy-bcs4557project",
 ///         ReservedInstance = AzureNative.Migrate.AzureReservedInstance.None,
 ///         ResourceGroupName = "rgopenapi",
-///         ScalingFactor = 17,
+///         ScalingFactor = 17.0,
 ///         SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///         TimeRange = AzureNative.Migrate.TimeRange.Day,
 ///     });
@@ -131,7 +131,7 @@ import 'web_app_assessment_v2_operation_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -139,7 +139,10 @@ import 'web_app_assessment_v2_operation_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_webappassessmentv2operation" "webAppAssessmentV2Operation" {
+/// resource "azure-native_migrate_web_app_assessment_v2_operation" "webAppAssessmentV2Operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_svc_container_settings = {
 ///     isolation_required = true
 ///   }

@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_batch_applicationpackage" "applicationPackage" {
+/// resource "azure-native_batch_application_package" "applicationPackage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sampleacct"
 ///   application_name    = "app1"
 ///   resource_group_name = "default-azurebatch-japaneast"

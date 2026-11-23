@@ -81,7 +81,7 @@ import 'role_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'role_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongodbresourcemongouserdefinition" "mongoDBResourceMongoUserDefinition" {
+/// resource "azure-native_cosmosdb_mongo_d_b_resource_mongo_user_definition" "mongoDBResourceMongoUserDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "myAccountName"
 ///   custom_data              = "My custom data"
 ///   database_name            = "sales"

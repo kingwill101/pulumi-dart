@@ -83,7 +83,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_instancepool" "instancePool" {
+/// resource "azure-native_sql_instance_pool" "instancePool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_pool_name           = "testIP"
 ///   license_type                 = "LicenseIncluded"
 ///   location                     = "japaneast"
@@ -287,7 +290,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -295,7 +298,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_instancepool" "instancePool" {
+/// resource "azure-native_sql_instance_pool" "instancePool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_pool_name  = "testIP"
 ///   license_type        = "LicenseIncluded"
 ///   location            = "japaneast"

@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,6 +80,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assigned_standard = {
 ///     id = "/providers/Microsoft.Security/Standards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
 ///   }
@@ -267,7 +270,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -276,6 +279,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_data = {
 ///     exemption_category = "waiver"
 ///   }

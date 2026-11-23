@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_scopeconnection" "scopeConnection" {
+/// resource "azure-native_network_scope_connection" "scopeConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description           = "This is a scope connection to a cross tenant subscription."
 ///   network_manager_name  = "testNetworkManager"
 ///   resource_group_name   = "rg1"

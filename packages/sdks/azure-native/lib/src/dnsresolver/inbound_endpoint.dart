@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_inboundendpoint" "inboundEndpoint" {
+/// resource "azure-native_dnsresolver_inbound_endpoint" "inboundEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_resolver_name     = "sampleDnsResolver"
 ///   inbound_endpoint_name = "sampleInboundEndpoint"
 ///   ip_configurations {

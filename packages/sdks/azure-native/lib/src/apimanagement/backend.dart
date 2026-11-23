@@ -132,7 +132,7 @@ import 'backend_tls_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -141,6 +141,9 @@ import 'backend_tls_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_backend" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id = "proxybackend"
 ///   credentials = {
 ///     authorization = {
@@ -441,7 +444,7 @@ import 'backend_tls_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -450,6 +453,9 @@ import 'backend_tls_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_backend" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id  = "sfbackend"
 ///   description = "Service Fabric Test App 1"
 ///   properties = {
@@ -458,8 +464,8 @@ import 'backend_tls_properties_response.dart';
 ///       management_endpoints             = ["https://somecluster.com"]
 ///       max_partition_resolution_retries = 5
 ///       server_x509_names = [{
-///         "issuerCertificateThumbprint" = "IssuerCertificateThumbprint1"
-///         "name"                        = "ServerCommonName1"
+///         issuer_certificate_thumbprint = "IssuerCertificateThumbprint1"
+///         name                          = "ServerCommonName1"
 ///       }]
 ///     }
 ///   }
@@ -481,6 +487,7 @@ import 'backend_tls_properties_response.dart';
 /// import com.pulumi.azurenative.apimanagement.BackendArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendPropertiesArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendServiceFabricClusterPropertiesArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.X509CertificateNameArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -689,7 +696,7 @@ import 'backend_tls_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -698,20 +705,23 @@ import 'backend_tls_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_backend" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id = "priority-based-load-balancer"
 ///   pool = {
 ///     services = [{
-///       "id"       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-1"
-///       "priority" = 1
+///       id       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-1"
+///       priority = 1
 ///       }, {
-///       "id"       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-2"
-///       "priority" = 1
+///       id       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-2"
+///       priority = 1
 ///       }, {
-///       "id"       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-3"
-///       "priority" = 2
+///       id       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-3"
+///       priority = 2
 ///       }, {
-///       "id"       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-4"
-///       "priority" = 2
+///       id       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-4"
+///       priority = 2
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -730,6 +740,7 @@ import 'backend_tls_properties_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Backend;
 /// import com.pulumi.azurenative.apimanagement.BackendArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendBaseParametersPoolArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.BackendPoolItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -935,7 +946,7 @@ import 'backend_tls_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -944,12 +955,15 @@ import 'backend_tls_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_backend" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id = "simple-load-balancer"
 ///   pool = {
 ///     services = [{
-///       "id" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-1"
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-1"
 ///       }, {
-///       "id" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-2"
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-2"
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -968,6 +982,7 @@ import 'backend_tls_properties_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Backend;
 /// import com.pulumi.azurenative.apimanagement.BackendArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendBaseParametersPoolArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.BackendPoolItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1141,7 +1156,7 @@ import 'backend_tls_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1150,14 +1165,17 @@ import 'backend_tls_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_backend" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id = "weighted-load-balancer"
 ///   pool = {
 ///     services = [{
-///       "id"     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-1"
-///       "weight" = 75
+///       id     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-1"
+///       weight = 75
 ///       }, {
-///       "id"     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-2"
-///       "weight" = 25
+///       id     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/backends/backend-2"
+///       weight = 25
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -1176,6 +1194,7 @@ import 'backend_tls_properties_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Backend;
 /// import com.pulumi.azurenative.apimanagement.BackendArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendBaseParametersPoolArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.BackendPoolItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

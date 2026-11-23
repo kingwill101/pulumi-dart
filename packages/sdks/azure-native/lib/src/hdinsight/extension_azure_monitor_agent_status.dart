@@ -59,7 +59,7 @@ import 'extension_azure_monitor_agent_status_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'extension_azure_monitor_agent_status_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hdinsight_extensionazuremonitoragentstatus" "extensionAzureMonitorAgentStatus" {
+/// resource "azure-native_hdinsight_extension_azure_monitor_agent_status" "extensionAzureMonitorAgentStatus" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "cluster1"
 ///   primary_key         = "**********"
 ///   resource_group_name = "rg1"

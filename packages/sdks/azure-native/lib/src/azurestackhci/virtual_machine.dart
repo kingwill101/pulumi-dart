@@ -136,7 +136,7 @@ import 'virtual_machine_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -144,7 +144,10 @@ import 'virtual_machine_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachine" "virtualMachine" {
+/// resource "azure-native_azurestackhci_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -155,7 +158,7 @@ import 'virtual_machine_status_response.dart';
 ///   location = "West US2"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "test-nic"
+///       id = "test-nic"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -192,6 +195,7 @@ import 'virtual_machine_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesNetworkInterfacesArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesOsProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesUefiSettingsArgs;
@@ -482,7 +486,7 @@ import 'virtual_machine_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -490,7 +494,10 @@ import 'virtual_machine_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachine" "virtualMachine" {
+/// resource "azure-native_azurestackhci_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -501,7 +508,7 @@ import 'virtual_machine_status_response.dart';
 ///   location = "West US2"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "test-nic"
+///       id = "test-nic"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -538,6 +545,7 @@ import 'virtual_machine_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesNetworkInterfacesArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesOsProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesUefiSettingsArgs;
@@ -817,7 +825,7 @@ import 'virtual_machine_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -825,7 +833,10 @@ import 'virtual_machine_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualmachine" "virtualMachine" {
+/// resource "azure-native_azurestackhci_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -836,7 +847,7 @@ import 'virtual_machine_status_response.dart';
 ///   location = "West US2"
 ///   network_profile = {
 ///     network_interfaces = [{
-///       "id" = "test-nic"
+///       id = "test-nic"
 ///     }]
 ///   }
 ///   resource_group_name = "test-rg"
@@ -868,6 +879,7 @@ import 'virtual_machine_status_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesHardwareProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesNetworkInterfacesArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesSecurityProfileArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesUefiSettingsArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualMachinePropertiesStorageProfileArgs;

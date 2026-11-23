@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagemover_jobdefinition" "jobDefinition" {
+/// resource "azure-native_storagemover_job_definition" "jobDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name          = "migration-agent"
 ///   copy_mode           = "Additive"
 ///   description         = "Example Job Definition Description"

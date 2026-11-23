@@ -293,7 +293,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -301,7 +301,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_macie2jobsummary" "macie2JobSummary" {
+/// resource "azure-native_awsconnector_macie2_job_summary" "macie2JobSummary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "sxbjamusvyf"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -311,52 +314,52 @@ import 'system_data_response.dart';
 ///       bucket_criteria = {
 ///         excludes = {
 ///           and = [{
-///             "simpleCriterion" = {
-///               "comparator" = {
-///                 "value" = "CONTAINS"
+///             simple_criterion = {
+///               comparator = {
+///                 value = "CONTAINS"
 ///               }
-///               "key" = {
-///                 "value" = "ACCOUNT_ID"
+///               key = {
+///                 value = "ACCOUNT_ID"
 ///               }
-///               "values" = ["jtymirlxjxhaohkasaozlwag"]
+///               values = ["jtymirlxjxhaohkasaozlwag"]
 ///             }
-///             "tagCriterion" = {
-///               "comparator" = {
-///                 "value" = "CONTAINS"
+///             tag_criterion = {
+///               comparator = {
+///                 value = "CONTAINS"
 ///               }
-///               "tagValues" = [{
-///                 "key"   = "gygqhiagsveuxhrughhbddqpmufuwb"
-///                 "value" = "yfiitptbkmgpsdnnhvfc"
+///               tag_values = [{
+///                 key   = "gygqhiagsveuxhrughhbddqpmufuwb"
+///                 value = "yfiitptbkmgpsdnnhvfc"
 ///               }]
 ///             }
 ///           }]
 ///         }
 ///         includes = {
 ///           and = [{
-///             "simpleCriterion" = {
-///               "comparator" = {
-///                 "value" = "CONTAINS"
+///             simple_criterion = {
+///               comparator = {
+///                 value = "CONTAINS"
 ///               }
-///               "key" = {
-///                 "value" = "ACCOUNT_ID"
+///               key = {
+///                 value = "ACCOUNT_ID"
 ///               }
-///               "values" = ["jtymirlxjxhaohkasaozlwag"]
+///               values = ["jtymirlxjxhaohkasaozlwag"]
 ///             }
-///             "tagCriterion" = {
-///               "comparator" = {
-///                 "value" = "CONTAINS"
+///             tag_criterion = {
+///               comparator = {
+///                 value = "CONTAINS"
 ///               }
-///               "tagValues" = [{
-///                 "key"   = "gygqhiagsveuxhrughhbddqpmufuwb"
-///                 "value" = "yfiitptbkmgpsdnnhvfc"
+///               tag_values = [{
+///                 key   = "gygqhiagsveuxhrughhbddqpmufuwb"
+///                 value = "yfiitptbkmgpsdnnhvfc"
 ///               }]
 ///             }
 ///           }]
 ///         }
 ///       }
 ///       bucket_definitions = [{
-///         "accountId" = "eprxunabacgebqtyyff"
-///         "buckets"   = ["nxnhxjevimwkagh"]
+///         account_id = "eprxunabacgebqtyyff"
+///         buckets    = ["nxnhxjevimwkagh"]
 ///       }]
 ///       created_at = "2024-10-08T03:51:31.106Z"
 ///       job_id     = "jtjrvg"
@@ -406,6 +409,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsMacie2JobSummaryPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3BucketCriteriaForJobArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CriteriaBlockForJobArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CriteriaForJobArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SimpleCriterionForJobArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.JobComparatorEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SimpleCriterionKeyForJobEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagCriterionForJobArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagCriterionPairForJobArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.S3BucketDefinitionForJobArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.JobStatusEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.JobTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LastRunErrorStatusArgs;

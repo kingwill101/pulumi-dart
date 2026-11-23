@@ -51,7 +51,7 @@ import 'system_data_response.dart';
 ///                 },
 ///                 AzureSqlVmSettings = new AzureNative.Migrate.Inputs.SqlVmSettingsArgs
 ///                 {
-///                     InstanceSeries = new[]
+///                     InstanceSeries =
 ///                     {
 ///                         AzureNative.Migrate.AzureVmFamily.Unknown,
 ///                     },
@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 ///                 },
 ///                 Currency = AzureNative.Migrate.AzureCurrency.Unknown,
 ///                 DisasterRecoveryLocation = AzureNative.Migrate.AzureLocation.Unknown,
-///                 DiscountPercentage = 8,
+///                 DiscountPercentage = 8.0,
 ///                 EnableHadrAssessment = true,
 ///                 EntityUptime = new AzureNative.Migrate.Inputs.EntityUptimeArgs
 ///                 {
@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 ///                     PerfDataStartTime = "2025-02-21T05:15:28.133Z",
 ///                     TimeRange = AzureNative.Migrate.TimeRange.Day,
 ///                 },
-///                 PreferredTargets = new[]
+///                 PreferredTargets =
 ///                 {
 ///                     AzureNative.Migrate.AzureTarget.Unknown,
 ///                 },
@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 ///                     AzureOfferCode = AzureNative.Migrate.AzureOffer.Unknown,
 ///                     SavingsOptions = AzureNative.Migrate.SavingsOptions.None,
 ///                 },
-///                 ScalingFactor = 27,
+///                 ScalingFactor = 27.0,
 ///                 SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///                 SqlServerLicense = AzureNative.Migrate.SqlServerLicense.Unknown,
 ///             },
@@ -188,7 +188,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -196,7 +196,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_sqlassessmentv3operation" "sqlAssessmentV3Operation" {
+/// resource "azure-native_migrate_sql_assessment_v3_operation" "sqlAssessmentV3Operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name = "assessmentName"
 ///   project_name    = "contosoProject"
 ///   properties = {

@@ -65,7 +65,7 @@ import 'virtual_hub_ip_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'virtual_hub_ip_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualhubipconfiguration" "virtualHubIpConfiguration" {
+/// resource "azure-native_network_virtual_hub_ip_configuration" "virtualHubIpConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_config_name      = "ipconfig1"
 ///   resource_group_name = "rg1"
 ///   subnet = {

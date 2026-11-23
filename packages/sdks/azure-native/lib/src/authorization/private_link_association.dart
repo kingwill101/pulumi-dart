@@ -60,7 +60,7 @@ import 'private_link_association_properties_expanded_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'private_link_association_properties_expanded_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_privatelinkassociation" "privateLinkAssociation" {
+/// resource "azure-native_authorization_private_link_association" "privateLinkAssociation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id = "my-management-group"
 ///   pla_id   = "00000000-0000-0000-0000-000000000000"
 ///   properties = {

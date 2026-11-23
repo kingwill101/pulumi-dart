@@ -62,7 +62,7 @@ import 'data_masking_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'data_masking_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_datamaskingpolicy" "dataMaskingPolicy" {
+/// resource "azure-native_sql_data_masking_policy" "dataMaskingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_masking_policy_name = "Default"
 ///   data_masking_state       = "Enabled"
 ///   database_name            = "sqlcrudtest-331"
@@ -211,7 +214,7 @@ import 'data_masking_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -219,7 +222,10 @@ import 'data_masking_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_datamaskingpolicy" "dataMaskingPolicy" {
+/// resource "azure-native_sql_data_masking_policy" "dataMaskingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_masking_policy_name = "Default"
 ///   data_masking_state       = "Enabled"
 ///   database_name            = "sqlcrudtest-331"

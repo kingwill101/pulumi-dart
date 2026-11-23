@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_readwritedatabase" "readWriteDatabase" {
+/// resource "azure-native_synapse_read_write_database" "readWriteDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "KustoDatabase8"
 ///   kind                = "ReadWrite"
 ///   kusto_pool_name     = "kustoclusterrptest4"
@@ -107,7 +110,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var readWriteDatabase = new ReadWriteDatabase("readWriteDatabase", ReadWriteDatabaseArgs.builder()
 ///             .databaseName("KustoDatabase8")
-///             .kind("ReadWrite")
 ///             .kustoPoolName("kustoclusterrptest4")
 ///             .location("westus")
 ///             .resourceGroupName("kustorptest")

@@ -82,7 +82,7 @@ import 'server_collector_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'server_collector_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_servercollector" "serverCollector" {
+/// resource "azure-native_migrate_server_collector" "serverCollector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag        = "\"00000606-0000-0d00-0000-605999bf0000\""
 ///   project_name = "app11141project"
 ///   properties = {

@@ -59,7 +59,7 @@ import 'workspace_manager_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'workspace_manager_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_workspacemanagerconfiguration" "workspaceManagerConfiguration" {
+/// resource "azure-native_securityinsights_workspace_manager_configuration" "workspaceManagerConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mode                                 = "Enabled"
 ///   resource_group_name                  = "myRg"
 ///   workspace_manager_configuration_name = "default"

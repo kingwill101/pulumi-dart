@@ -61,7 +61,7 @@ import 'tenant_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'tenant_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_portal_tenantconfiguration" "tenantConfiguration" {
+/// resource "azure-native_portal_tenant_configuration" "tenantConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name = "default"
 ///   properties = {
 ///     enforce_private_markdown_storage = true

@@ -62,7 +62,7 @@ import 'event_hub_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'event_hub_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventhubconnection" "eventHubConnection" {
+/// resource "azure-native_kusto_event_hub_connection" "eventHubConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name              = "KustoClusterRPTest4"
 ///   consumer_group            = "testConsumerGroup1"
 ///   database_name             = "KustoDatabase8"

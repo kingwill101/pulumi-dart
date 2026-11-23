@@ -62,7 +62,7 @@ import 'app_service_certificate_order_certificate_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'app_service_certificate_order_certificate_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_certificateregistration_appservicecertificateordercertificate" "appServiceCertificateOrderCertificate" {
+/// resource "azure-native_certificateregistration_app_service_certificate_order_certificate" "appServiceCertificateOrderCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_order_name = "SampleCertificateOrderName"
 ///   key_vault_id           = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"
 ///   key_vault_secret_name  = "SampleSecretName1"

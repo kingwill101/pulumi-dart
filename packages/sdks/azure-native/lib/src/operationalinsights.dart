@@ -95,6 +95,7 @@ export 'operationalinsights/system_data_response.dart';
 export 'operationalinsights/table.dart';
 export 'operationalinsights/table_args.dart';
 export 'operationalinsights/table_plan_enum.dart';
+export 'operationalinsights/table_protection_level_enum.dart';
 export 'operationalinsights/tag.dart';
 export 'operationalinsights/tag_response.dart';
 export 'operationalinsights/time_selector_enum.dart';

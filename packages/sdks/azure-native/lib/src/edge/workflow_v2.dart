@@ -73,7 +73,7 @@ import 'workflow_v2_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'workflow_v2_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_edge_workflowv2" "workflowV2" {
+/// resource "azure-native_edge_workflow_v2" "workflowV2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "szjrwimeqyiue"
 ///     type = "EdgeZone"

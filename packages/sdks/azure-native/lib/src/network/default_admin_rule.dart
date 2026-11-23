@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_defaultadminrule" "defaultAdminRule" {
+/// resource "azure-native_network_default_admin_rule" "defaultAdminRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name   = "myTestSecurityConfig"
 ///   network_manager_name = "testNetworkManager"
 ///   resource_group_name  = "rg1"
@@ -204,7 +207,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -212,7 +215,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_defaultadminrule" "defaultAdminRule" {
+/// resource "azure-native_network_default_admin_rule" "defaultAdminRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name   = "myTestSecurityConfig"
 ///   network_manager_name = "testNetworkManager"
 ///   resource_group_name  = "rg1"

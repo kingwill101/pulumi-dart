@@ -60,8 +60,8 @@ import 'target_args.dart';
 /// 			ParentResourceName:      pulumi.String("exampleVM"),
 /// 			ParentResourceType:      pulumi.String("virtualMachines"),
 /// 			Properties: pulumi.Any(map[string]interface{}{
-/// 				"identities": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"identities": []map[string]string{
+/// 					{
 /// 						"subject": "CN=example.subject",
 /// 						"type":    "CertificateSubjectIssuer",
 /// 					},
@@ -80,7 +80,7 @@ import 'target_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,6 +89,9 @@ import 'target_args.dart';
 /// }
 ///
 /// resource "azure-native_chaos_target" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent_provider_namespace = "Microsoft.Compute"
 ///   parent_resource_name      = "exampleVM"
 ///   parent_resource_type      = "virtualMachines"

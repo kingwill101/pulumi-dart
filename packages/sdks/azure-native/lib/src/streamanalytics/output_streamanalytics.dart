@@ -76,7 +76,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,14 +85,17 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "accountId"             = "someAccountId"
-///     "accountKey"            = "accountKey=="
-///     "collectionNamePattern" = "collection"
-///     "database"              = "db01"
-///     "documentId"            = "documentId"
-///     "partitionKey"          = "key"
-///     "type"                  = "Microsoft.Storage/DocumentDB"
+///     account_id              = "someAccountId"
+///     account_key             = "accountKey=="
+///     collection_name_pattern = "collection"
+///     database                = "db01"
+///     document_id             = "documentId"
+///     partition_key           = "key"
+///     type                    = "Microsoft.Storage/DocumentDB"
 ///   }
 ///   job_name            = "sj2331"
 ///   output_name         = "output3022"
@@ -109,6 +112,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -130,7 +146,6 @@ import 'output_args.dart';
 ///                 .database("db01")
 ///                 .documentId("documentId")
 ///                 .partitionKey("key")
-///                 .type("Microsoft.Storage/DocumentDB")
 ///                 .build())
 ///             .jobName("sj2331")
 ///             .outputName("output3022")
@@ -259,7 +274,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -268,9 +283,12 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "topic" = "EdgeTopic1"
-///     "type"  = "GatewayMessageBus"
+///     topic = "EdgeTopic1"
+///     type  = "GatewayMessageBus"
 ///   }
 ///   job_name            = "sj2331"
 ///   output_name         = "output3022"
@@ -287,6 +305,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -303,7 +334,6 @@ import 'output_args.dart';
 ///         var output = new Output("output", OutputArgs.builder()
 ///             .datasource(GatewayMessageBusOutputDataSourceArgs.builder()
 ///                 .topic("EdgeTopic1")
-///                 .type("GatewayMessageBus")
 ///                 .build())
 ///             .jobName("sj2331")
 ///             .outputName("output3022")
@@ -429,7 +459,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -438,15 +468,18 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "dataset"                = "someDataset"
-///     "groupId"                = "ac40305e-3e8d-43ac-8161-c33799f43e95"
-///     "groupName"              = "MyPowerBIGroup"
-///     "refreshToken"           = "someRefreshToken=="
-///     "table"                  = "someTable"
-///     "tokenUserDisplayName"   = "Bob Smith"
-///     "tokenUserPrincipalName" = "bobsmith@contoso.com"
-///     "type"                   = "PowerBI"
+///     dataset                   = "someDataset"
+///     group_id                  = "ac40305e-3e8d-43ac-8161-c33799f43e95"
+///     group_name                = "MyPowerBIGroup"
+///     refresh_token             = "someRefreshToken=="
+///     table                     = "someTable"
+///     token_user_display_name   = "Bob Smith"
+///     token_user_principal_name = "bobsmith@contoso.com"
+///     type                      = "PowerBI"
 ///   }
 ///   job_name            = "sj2331"
 ///   output_name         = "output3022"
@@ -463,6 +496,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -485,7 +531,6 @@ import 'output_args.dart';
 ///                 .table("someTable")
 ///                 .tokenUserDisplayName("Bob Smith")
 ///                 .tokenUserPrincipalName("bobsmith@contoso.com")
-///                 .type("PowerBI")
 ///                 .build())
 ///             .jobName("sj2331")
 ///             .outputName("output3022")
@@ -648,7 +693,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -657,23 +702,26 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "propertyColumns"        = ["column1", "column2"]
-///     "queueName"              = "sdkqueue"
-///     "serviceBusNamespace"    = "sdktest"
-///     "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
-///     "sharedAccessPolicyName" = "RootManageSharedAccessKey"
-///     "systemPropertyColumns" = {
+///     property_columns          = ["column1", "column2"]
+///     queue_name                = "sdkqueue"
+///     service_bus_namespace     = "sdktest"
+///     shared_access_policy_key  = "sharedAccessPolicyKey="
+///     shared_access_policy_name = "RootManageSharedAccessKey"
+///     system_property_columns = {
 ///       "MessageId"    = "col3"
 ///       "PartitionKey" = "col4"
 ///     }
-///     "type" = "Microsoft.ServiceBus/Queue"
+///     type = "Microsoft.ServiceBus/Queue"
 ///   }
 ///   job_name            = "sj5095"
 ///   output_name         = "output3456"
 ///   resource_group_name = "sjrg3410"
 ///   serialization = {
-///     "type" = "Avro"
+///     type = "Avro"
 ///   }
 /// }
 ///
@@ -687,6 +735,23 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -713,13 +778,11 @@ import 'output_args.dart';
 ///                     Map.entry("MessageId", "col3"),
 ///                     Map.entry("PartitionKey", "col4")
 ///                 ))
-///                 .type("Microsoft.ServiceBus/Queue")
 ///                 .build())
 ///             .jobName("sj5095")
 ///             .outputName("output3456")
 ///             .resourceGroupName("sjrg3410")
 ///             .serialization(AvroSerializationArgs.builder()
-///                 .type("Avro")
 ///                 .build())
 ///             .build());
 ///
@@ -895,7 +958,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -904,21 +967,24 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "propertyColumns"        = ["column1", "column2"]
-///     "serviceBusNamespace"    = "sdktest"
-///     "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
-///     "sharedAccessPolicyName" = "RootManageSharedAccessKey"
-///     "topicName"              = "sdktopic"
-///     "type"                   = "Microsoft.ServiceBus/Topic"
+///     property_columns          = ["column1", "column2"]
+///     service_bus_namespace     = "sdktest"
+///     shared_access_policy_key  = "sharedAccessPolicyKey="
+///     shared_access_policy_name = "RootManageSharedAccessKey"
+///     topic_name                = "sdktopic"
+///     type                      = "Microsoft.ServiceBus/Topic"
 ///   }
 ///   job_name            = "sj7094"
 ///   output_name         = "output7886"
 ///   resource_group_name = "sjrg6450"
 ///   serialization = {
-///     "encoding"       = "UTF8"
-///     "fieldDelimiter" = ","
-///     "type"           = "Csv"
+///     encoding        = "UTF8"
+///     field_delimiter = ","
+///     type            = "Csv"
 ///   }
 /// }
 ///
@@ -932,6 +998,23 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -954,7 +1037,6 @@ import 'output_args.dart';
 ///                 .sharedAccessPolicyKey("sharedAccessPolicyKey=")
 ///                 .sharedAccessPolicyName("RootManageSharedAccessKey")
 ///                 .topicName("sdktopic")
-///                 .type("Microsoft.ServiceBus/Topic")
 ///                 .build())
 ///             .jobName("sj7094")
 ///             .outputName("output7886")
@@ -962,7 +1044,6 @@ import 'output_args.dart';
 ///             .serialization(CsvSerializationArgs.builder()
 ///                 .encoding("UTF8")
 ///                 .fieldDelimiter(",")
-///                 .type("Csv")
 ///                 .build())
 ///             .build());
 ///
@@ -1138,7 +1219,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1147,24 +1228,27 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "container"   = "state"
-///     "dateFormat"  = "yyyy/MM/dd"
-///     "pathPattern" = "{date}/{time}"
-///     "storageAccounts" = [{
-///       "accountKey"  = "accountKey=="
-///       "accountName" = "someAccountName"
+///     container    = "state"
+///     date_format  = "yyyy/MM/dd"
+///     path_pattern = "{date}/{time}"
+///     storage_accounts = [{
+///       account_key  = "accountKey=="
+///       account_name = "someAccountName"
 ///     }]
-///     "timeFormat" = "HH"
-///     "type"       = "Microsoft.Storage/Blob"
+///     time_format = "HH"
+///     type        = "Microsoft.Storage/Blob"
 ///   }
 ///   job_name            = "sj900"
 ///   output_name         = "output1623"
 ///   resource_group_name = "sjrg5023"
 ///   serialization = {
-///     "encoding"       = "UTF8"
-///     "fieldDelimiter" = ","
-///     "type"           = "Csv"
+///     encoding        = "UTF8"
+///     field_delimiter = ","
+///     type            = "Csv"
 ///   }
 /// }
 ///
@@ -1178,6 +1262,24 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StorageAccountArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1201,7 +1303,6 @@ import 'output_args.dart';
 ///                     .accountName("someAccountName")
 ///                     .build())
 ///                 .timeFormat("HH")
-///                 .type("Microsoft.Storage/Blob")
 ///                 .build())
 ///             .jobName("sj900")
 ///             .outputName("output1623")
@@ -1209,7 +1310,6 @@ import 'output_args.dart';
 ///             .serialization(CsvSerializationArgs.builder()
 ///                 .encoding("UTF8")
 ///                 .fieldDelimiter(",")
-///                 .type("Csv")
 ///                 .build())
 ///             .build());
 ///
@@ -1379,7 +1479,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1388,24 +1488,27 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "accountName"            = "someaccount"
-///     "dateFormat"             = "yyyy/MM/dd"
-///     "filePathPrefix"         = "{date}/{time}"
-///     "refreshToken"           = "someRefreshToken=="
-///     "tenantId"               = "cea4e98b-c798-49e7-8c40-4a2b3beb47dd"
-///     "timeFormat"             = "HH"
-///     "tokenUserDisplayName"   = "Bob Smith"
-///     "tokenUserPrincipalName" = "bobsmith@contoso.com"
-///     "type"                   = "Microsoft.DataLake/Accounts"
+///     account_name              = "someaccount"
+///     date_format               = "yyyy/MM/dd"
+///     file_path_prefix          = "{date}/{time}"
+///     refresh_token             = "someRefreshToken=="
+///     tenant_id                 = "cea4e98b-c798-49e7-8c40-4a2b3beb47dd"
+///     time_format               = "HH"
+///     token_user_display_name   = "Bob Smith"
+///     token_user_principal_name = "bobsmith@contoso.com"
+///     type                      = "Microsoft.DataLake/Accounts"
 ///   }
 ///   job_name            = "sj3310"
 ///   output_name         = "output5195"
 ///   resource_group_name = "sjrg6912"
 ///   serialization = {
-///     "encoding" = "UTF8"
-///     "format"   = "Array"
-///     "type"     = "Json"
+///     encoding = "UTF8"
+///     format   = "Array"
+///     type     = "Json"
 ///   }
 /// }
 ///
@@ -1419,6 +1522,23 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1442,7 +1562,6 @@ import 'output_args.dart';
 ///                 .timeFormat("HH")
 ///                 .tokenUserDisplayName("Bob Smith")
 ///                 .tokenUserPrincipalName("bobsmith@contoso.com")
-///                 .type("Microsoft.DataLake/Accounts")
 ///                 .build())
 ///             .jobName("sj3310")
 ///             .outputName("output5195")
@@ -1450,7 +1569,6 @@ import 'output_args.dart';
 ///             .serialization(JsonSerializationArgs.builder()
 ///                 .encoding("UTF8")
 ///                 .format("Array")
-///                 .type("Json")
 ///                 .build())
 ///             .build());
 ///
@@ -1604,7 +1722,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1613,13 +1731,16 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "database" = "zhayaSQLpool"
-///     "password" = "password123"
-///     "server"   = "asatestserver"
-///     "table"    = "test2"
-///     "type"     = "Microsoft.Sql/Server/DataWarehouse"
-///     "user"     = "tolladmin"
+///     database = "zhayaSQLpool"
+///     password = "password123"
+///     server   = "asatestserver"
+///     table    = "test2"
+///     type     = "Microsoft.Sql/Server/DataWarehouse"
+///     user     = "tolladmin"
 ///   }
 ///   job_name            = "sjName"
 ///   output_name         = "dwOutput"
@@ -1636,6 +1757,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1655,7 +1789,6 @@ import 'output_args.dart';
 ///                 .password("password123")
 ///                 .server("asatestserver")
 ///                 .table("test2")
-///                 .type("Microsoft.Sql/Server/DataWarehouse")
 ///                 .user("tolladmin")
 ///                 .build())
 ///             .jobName("sjName")
@@ -1742,8 +1875,8 @@ import 'output_args.dart';
 ///         {
 ///             FunctionAppName = "functionappforasaautomation",
 ///             FunctionName = "HttpTrigger2",
-///             MaxBatchCount = 100,
-///             MaxBatchSize = 256,
+///             MaxBatchCount = 100.0,
+///             MaxBatchSize = 256.0,
 ///             Type = "Microsoft.AzureFunction",
 ///         },
 ///         JobName = "sjName",
@@ -1788,7 +1921,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1797,12 +1930,15 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "functionAppName" = "functionappforasaautomation"
-///     "functionName"    = "HttpTrigger2"
-///     "maxBatchCount"   = 100
-///     "maxBatchSize"    = 256
-///     "type"            = "Microsoft.AzureFunction"
+///     function_app_name = "functionappforasaautomation"
+///     function_name     = "HttpTrigger2"
+///     max_batch_count   = 100
+///     max_batch_size    = 256
+///     type              = "Microsoft.AzureFunction"
 ///   }
 ///   job_name            = "sjName"
 ///   output_name         = "azureFunction1"
@@ -1819,6 +1955,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1838,7 +1987,6 @@ import 'output_args.dart';
 ///                 .functionName("HttpTrigger2")
 ///                 .maxBatchCount(100.0)
 ///                 .maxBatchSize(256.0)
-///                 .type("Microsoft.AzureFunction")
 ///                 .build())
 ///             .jobName("sjName")
 ///             .outputName("azureFunction1")
@@ -1969,7 +2117,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1978,13 +2126,16 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "database" = "someDatabase"
-///     "password" = "somePassword"
-///     "server"   = "someServer"
-///     "table"    = "someTable"
-///     "type"     = "Microsoft.Sql/Server/Database"
-///     "user"     = "<user>"
+///     database = "someDatabase"
+///     password = "somePassword"
+///     server   = "someServer"
+///     table    = "someTable"
+///     type     = "Microsoft.Sql/Server/Database"
+///     user     = "<user>"
 ///   }
 ///   job_name            = "sj6458"
 ///   output_name         = "output1755"
@@ -2001,6 +2152,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2020,7 +2184,6 @@ import 'output_args.dart';
 ///                 .password("somePassword")
 ///                 .server("someServer")
 ///                 .table("someTable")
-///                 .type("Microsoft.Sql/Server/Database")
 ///                 .user("<user>")
 ///                 .build())
 ///             .jobName("sj6458")
@@ -2166,7 +2329,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2175,15 +2338,18 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "accountKey"      = "accountKey=="
-///     "accountName"     = "someAccountName"
-///     "batchSize"       = 25
-///     "columnsToRemove" = ["column1", "column2"]
-///     "partitionKey"    = "partitionKey"
-///     "rowKey"          = "rowKey"
-///     "table"           = "samples"
-///     "type"            = "Microsoft.Storage/Table"
+///     account_key       = "accountKey=="
+///     account_name      = "someAccountName"
+///     batch_size        = 25
+///     columns_to_remove = ["column1", "column2"]
+///     partition_key     = "partitionKey"
+///     row_key           = "rowKey"
+///     table             = "samples"
+///     type              = "Microsoft.Storage/Table"
 ///   }
 ///   job_name            = "sj2790"
 ///   output_name         = "output958"
@@ -2200,6 +2366,19 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2224,7 +2403,6 @@ import 'output_args.dart';
 ///                 .partitionKey("partitionKey")
 ///                 .rowKey("rowKey")
 ///                 .table("samples")
-///                 .type("Microsoft.Storage/Table")
 ///                 .build())
 ///             .jobName("sj2790")
 ///             .outputName("output958")
@@ -2383,7 +2561,7 @@ import 'output_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2392,21 +2570,24 @@ import 'output_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_output" "output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datasource = {
-///     "eventHubName"           = "sdkeventhub"
-///     "partitionKey"           = "partitionKey"
-///     "serviceBusNamespace"    = "sdktest"
-///     "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
-///     "sharedAccessPolicyName" = "RootManageSharedAccessKey"
-///     "type"                   = "Microsoft.ServiceBus/EventHub"
+///     event_hub_name            = "sdkeventhub"
+///     partition_key             = "partitionKey"
+///     service_bus_namespace     = "sdktest"
+///     shared_access_policy_key  = "sharedAccessPolicyKey="
+///     shared_access_policy_name = "RootManageSharedAccessKey"
+///     type                      = "Microsoft.ServiceBus/EventHub"
 ///   }
 ///   job_name            = "sj3310"
 ///   output_name         = "output5195"
 ///   resource_group_name = "sjrg6912"
 ///   serialization = {
-///     "encoding" = "UTF8"
-///     "format"   = "Array"
-///     "type"     = "Json"
+///     encoding = "UTF8"
+///     format   = "Array"
+///     type     = "Json"
 ///   }
 /// }
 ///
@@ -2420,6 +2601,23 @@ import 'output_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Output;
 /// import com.pulumi.azurenative.streamanalytics.OutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureDataLakeStoreOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureFunctionOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlDatabaseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSynapseOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureTableOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.DocumentDbOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2OutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.PowerBIOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusQueueOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ServiceBusTopicOutputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2440,7 +2638,6 @@ import 'output_args.dart';
 ///                 .serviceBusNamespace("sdktest")
 ///                 .sharedAccessPolicyKey("sharedAccessPolicyKey=")
 ///                 .sharedAccessPolicyName("RootManageSharedAccessKey")
-///                 .type("Microsoft.ServiceBus/EventHub")
 ///                 .build())
 ///             .jobName("sj3310")
 ///             .outputName("output5195")
@@ -2448,7 +2645,6 @@ import 'output_args.dart';
 ///             .serialization(JsonSerializationArgs.builder()
 ///                 .encoding("UTF8")
 ///                 .format("Array")
-///                 .type("Json")
 ///                 .build())
 ///             .build());
 ///

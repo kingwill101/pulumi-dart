@@ -96,7 +96,7 @@ import 'replication_recovery_services_provider_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'replication_recovery_services_provider_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationrecoveryservicesprovider" "replicationRecoveryServicesProvider" {
+/// resource "azure-native_recoveryservices_replication_recovery_services_provider" "replicationRecoveryServicesProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name = "vmwarefabric1"
 ///   properties = {
 ///     authentication_identity_input = {

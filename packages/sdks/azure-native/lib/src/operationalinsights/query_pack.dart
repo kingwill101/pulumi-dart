@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2019-09-01.
 ///
-/// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01, 2025-07-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_querypack" "queryPack" {
+/// resource "azure-native_operationalinsights_query_pack" "queryPack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   query_pack_name     = "my-querypack"
 ///   resource_group_name = "my-resource-group"
@@ -194,7 +197,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -202,7 +205,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_querypack" "queryPack" {
+/// resource "azure-native_operationalinsights_query_pack" "queryPack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   query_pack_name     = "my-querypack"
 ///   resource_group_name = "my-resource-group"

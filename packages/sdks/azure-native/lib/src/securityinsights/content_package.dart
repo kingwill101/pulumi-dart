@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_contentpackage" "contentPackage" {
+/// resource "azure-native_securityinsights_content_package" "contentPackage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_id          = "str.azure-sentinel-solution-str"
 ///   content_kind        = "Solution"
 ///   content_product_id  = "str.azure-sentinel-solution-str-sl-igl6jawr4gwmu"

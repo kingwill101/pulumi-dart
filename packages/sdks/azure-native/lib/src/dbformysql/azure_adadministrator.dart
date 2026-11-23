@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_azureadadministrator" "azureADAdministrator" {
+/// resource "azure-native_dbformysql_azure_a_d_administrator" "azureADAdministrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_name   = "ActiveDirectory"
 ///   administrator_type   = "ActiveDirectory"
 ///   identity_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi"

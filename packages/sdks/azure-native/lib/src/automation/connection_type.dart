@@ -100,7 +100,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_connectiontype" "connectionType" {
+/// resource "azure-native_automation_connection_type" "connectionType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount22"
 ///   connection_type_name    = "myCT"
 ///   field_definitions = {
@@ -143,6 +146,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.automation.ConnectionType;
 /// import com.pulumi.azurenative.automation.ConnectionTypeArgs;
+/// import com.pulumi.azurenative.automation.inputs.FieldDefinitionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

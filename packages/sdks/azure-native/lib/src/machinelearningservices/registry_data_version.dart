@@ -95,7 +95,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,19 +103,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_registrydataversion" "registryDataVersion" {
+/// resource "azure-native_machinelearningservices_registry_data_version" "registryDataVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
-///     "dataType"    = "mltable"
-///     "dataUri"     = "string"
-///     "description" = "string"
-///     "isAnonymous" = false
-///     "isArchived"  = false
-///     "properties" = {
+///     data_type    = "mltable"
+///     data_uri     = "string"
+///     description  = "string"
+///     is_anonymous = false
+///     is_archived  = false
+///     properties = {
 ///       "string" = "string"
 ///     }
-///     "referencedUris" = ["string"]
-///     "tags" = {
+///     referenced_uris = ["string"]
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -134,6 +137,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryDataVersion;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryDataVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableDataArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileDataVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderDataVersionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -150,7 +156,6 @@ import 'system_data_response.dart';
 ///         var registryDataVersion = new RegistryDataVersion("registryDataVersion", RegistryDataVersionArgs.builder()
 ///             .name("string")
 ///             .properties(MLTableDataArgs.builder()
-///                 .dataType("mltable")
 ///                 .dataUri("string")
 ///                 .description("string")
 ///                 .isAnonymous(false)

@@ -126,7 +126,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,6 +135,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbformysql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "cloudsa"
 ///   administrator_login_password = "your_password"
 ///   availability_zone            = "1"
@@ -392,7 +395,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -401,6 +404,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbformysql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode               = "Replica"
 ///   location                  = "SoutheastAsia"
 ///   resource_group_name       = "testgr"
@@ -554,7 +560,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -563,6 +569,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbformysql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode           = "PointInTimeRestore"
 ///   location              = "SoutheastAsia"
 ///   resource_group_name   = "TargetResourceGroup"

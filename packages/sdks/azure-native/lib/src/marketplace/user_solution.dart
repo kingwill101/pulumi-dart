@@ -52,7 +52,7 @@ import 'user_solution_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -60,7 +60,10 @@ import 'user_solution_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_marketplace_usersolution" "userSolution" {
+/// resource "azure-native_marketplace_user_solution" "userSolution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   solution_id = "starting_prices_23"
 /// }
 ///

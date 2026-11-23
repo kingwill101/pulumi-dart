@@ -58,7 +58,7 @@ import 'api_gateway_config_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'api_gateway_config_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apigatewayconfigconnection" "apiGatewayConfigConnection" {
+/// resource "azure-native_apimanagement_api_gateway_config_connection" "apiGatewayConfigConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_connection_name = "gcc-01"
 ///   gateway_name           = "standard-gw-01"
 ///   resource_group_name    = "rg1"

@@ -91,7 +91,7 @@ import 'user_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,6 +100,9 @@ import 'user_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_mongocluster_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mongo_cluster_name = "myMongoCluster"
 ///   properties = {
 ///     identity_provider = {
@@ -109,8 +112,8 @@ import 'user_properties_response.dart';
 ///       type = "MicrosoftEntraID"
 ///     }
 ///     roles = [{
-///       "db"   = "admin"
-///       "role" = "dbOwner"
+///       db   = "admin"
+///       role = "dbOwner"
 ///     }]
 ///   }
 ///   resource_group_name = "TestGroup"
@@ -130,6 +133,7 @@ import 'user_properties_response.dart';
 /// import com.pulumi.azurenative.mongocluster.inputs.UserPropertiesArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.EntraIdentityProviderArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.EntraIdentityProviderPropertiesArgs;
+/// import com.pulumi.azurenative.mongocluster.inputs.DatabaseRoleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -146,12 +150,11 @@ import 'user_properties_response.dart';
 ///         var user = new User("user", UserArgs.builder()
 ///             .mongoClusterName("myMongoCluster")
 ///             .properties(UserPropertiesArgs.builder()
-///                 .identityProvider(Map.ofEntries(
-///                     Map.entry("properties", EntraIdentityProviderPropertiesArgs.builder()
+///                 .identityProvider(EntraIdentityProviderArgs.builder()
+///                     .properties(EntraIdentityProviderPropertiesArgs.builder()
 ///                         .principalType("user")
-///                         .build()),
-///                     Map.entry("type", "MicrosoftEntraID")
-///                 ))
+///                         .build())
+///                     .build())
 ///                 .roles(DatabaseRoleArgs.builder()
 ///                     .db("admin")
 ///                     .role("dbOwner")

@@ -30,11 +30,11 @@ import 'system_data_response.dart';
 ///             Type = "CustomLocation",
 ///         },
 ///         InstanceName = "xh--6h732-2-6-21-4513-2-597q-5412971q",
-///         Keys = null,
+///         Keys = new() { },
 ///         Location = "westus",
 ///         Payload = ".value",
 ///         ResourceGroupName = "rgopenapi",
-///         Tags = null,
+///         Tags = new() { },
 ///         Timestamp = ".timestamp",
 ///         Ttl = "72h",
 ///     });
@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,6 +89,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsdataprocessor_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_name = "709v7-95-5-t-52oc5--s-5-5876j45wp6mf6--n-8bh--l55-r477"
 ///   description  = "pakdvhh"
 ///   extended_location = {

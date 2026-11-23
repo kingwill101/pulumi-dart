@@ -54,7 +54,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     "*",
 ///                 },
-///                 MaxAge = 1440,
+///                 MaxAge = 1440.0,
 ///                 Methods = new[]
 ///                 {
 ///                     "DELETE",
@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 ///             CosmosDbConfiguration = new AzureNative.M365SecurityAndCompliance.Inputs.ServiceCosmosDbConfigurationInfoArgs
 ///             {
 ///                 KeyVaultKeyUri = "https://my-vault.vault.azure.net/keys/my-key",
-///                 OfferThroughput = 1000,
+///                 OfferThroughput = 1000.0,
 ///             },
 ///             ExportConfiguration = new AzureNative.M365SecurityAndCompliance.Inputs.ServiceExportConfigurationInfoArgs
 ///             {
@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         ResourceName = "service1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -163,7 +163,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -171,7 +171,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_m365securityandcompliance_privatelinkservicesformippolicysync" "privateLinkServicesForMIPPolicySync" {
+/// resource "azure-native_m365securityandcompliance_private_link_services_for_m_i_p_policy_sync" "privateLinkServicesForMIPPolicySync" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -179,9 +182,9 @@ import 'system_data_response.dart';
 ///   location = "westus2"
 ///   properties = {
 ///     access_policies = [{
-///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       object_id = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
 ///       }, {
-///       "objectId" = "5b307da8-43d4-492b-8b66-b0294ade872f"
+///       object_id = "5b307da8-43d4-492b-8b66-b0294ade872f"
 ///     }]
 ///     authentication_configuration = {
 ///       audience            = "https://azurehealthcareapis.com"
@@ -222,6 +225,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.m365securityandcompliance.PrivateLinkServicesForMIPPolicySyncArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServicesResourceIdentityArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServicesPropertiesArgs;
+/// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceAccessPolicyEntryArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceAuthenticationConfigurationInfoArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceCorsConfigurationInfoArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceCosmosDbConfigurationInfoArgs;
@@ -472,7 +476,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         ResourceName = "service2",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -514,7 +518,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -522,12 +526,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_m365securityandcompliance_privatelinkservicesformippolicysync" "privateLinkServicesForMIPPolicySync" {
+/// resource "azure-native_m365securityandcompliance_private_link_services_for_m_i_p_policy_sync" "privateLinkServicesForMIPPolicySync" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind     = "fhir-R4"
 ///   location = "westus2"
 ///   properties = {
 ///     access_policies = [{
-///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       object_id = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -546,6 +553,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.m365securityandcompliance.PrivateLinkServicesForMIPPolicySync;
 /// import com.pulumi.azurenative.m365securityandcompliance.PrivateLinkServicesForMIPPolicySyncArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServicesPropertiesArgs;
+/// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceAccessPolicyEntryArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -71,7 +71,7 @@ import 'service_endpoint_policy_definition_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'service_endpoint_policy_definition_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_serviceendpointpolicydefinition" "serviceEndpointPolicyDefinition" {
+/// resource "azure-native_network_service_endpoint_policy_definition" "serviceEndpointPolicyDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description                             = "Storage Service EndpointPolicy Definition"
 ///   resource_group_name                     = "rg1"
 ///   service                                 = "Microsoft.Storage"

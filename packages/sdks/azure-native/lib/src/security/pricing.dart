@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,6 +90,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_pricing" "pricing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extensions {
 ///     is_enabled = "True"
 ///     name       = "ContainerRegistriesVulnerabilityAssessments"
@@ -311,7 +314,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -320,6 +323,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_pricing" "pricing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extensions {
 ///     is_enabled = "True"
 ///     name       = "ContainerRegistriesVulnerabilityAssessments"
@@ -552,7 +558,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -561,6 +567,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_pricing" "pricing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pricing_name = "virtualMachines"
 ///   pricing_tier = "Standard"
 ///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/DEMO/providers/Microsoft.Compute/virtualMachines/VM-1"
@@ -687,7 +696,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -696,6 +705,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_pricing" "pricing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pricing_name = "CloudPosture"
 ///   pricing_tier = "Standard"
 ///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
@@ -817,7 +829,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -826,6 +838,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_pricing" "pricing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pricing_name = "CloudPosture"
 ///   pricing_tier = "Standard"
 ///   scope_id     = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
@@ -951,7 +966,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -960,6 +975,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_pricing" "pricing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enforce      = "True"
 ///   pricing_name = "VirtualMachines"
 ///   pricing_tier = "Standard"

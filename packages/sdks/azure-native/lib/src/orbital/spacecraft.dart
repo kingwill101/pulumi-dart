@@ -25,16 +25,16 @@ import 'system_data_response.dart';
 ///         {
 ///             new AzureNative.Orbital.Inputs.SpacecraftLinkArgs
 ///             {
-///                 BandwidthMHz = 2,
-///                 CenterFrequencyMHz = 2250,
+///                 BandwidthMHz = 2.0,
+///                 CenterFrequencyMHz = 2250.0,
 ///                 Direction = AzureNative.Orbital.Direction.Uplink,
 ///                 Name = "uplink_lhcp1",
 ///                 Polarization = AzureNative.Orbital.Polarization.LHCP,
 ///             },
 ///             new AzureNative.Orbital.Inputs.SpacecraftLinkArgs
 ///             {
-///                 BandwidthMHz = 15,
-///                 CenterFrequencyMHz = 8160,
+///                 BandwidthMHz = 15.0,
+///                 CenterFrequencyMHz = 8160.0,
 ///                 Direction = AzureNative.Orbital.Direction.Downlink,
 ///                 Name = "downlink_rhcp1",
 ///                 Polarization = AzureNative.Orbital.Polarization.RHCP,
@@ -99,7 +99,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,6 +108,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_orbital_spacecraft" "spacecraft" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   links {
 ///     bandwidth_m_hz        = 2
 ///     center_frequency_m_hz = 2250

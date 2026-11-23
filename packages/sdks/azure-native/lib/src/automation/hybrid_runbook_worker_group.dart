@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_hybridrunbookworkergroup" "hybridRunbookWorkerGroup" {
+/// resource "azure-native_automation_hybrid_runbook_worker_group" "hybridRunbookWorkerGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "testaccount"
 ///   credential = {
 ///     name = "myRunAsCredentialName"

@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 ///                             MetricResourceUri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                             Operator = AzureNative.Monitor.ComparisonOperationType.GreaterThan,
 ///                             Statistic = AzureNative.Monitor.MetricStatisticType.Average,
-///                             Threshold = 10,
+///                             Threshold = 10.0,
 ///                             TimeAggregation = AzureNative.Monitor.TimeAggregationType.Average,
 ///                             TimeGrain = "PT1M",
 ///                             TimeWindow = "PT5M",
@@ -103,7 +103,7 @@ import 'system_data_response.dart';
 ///                             MetricResourceUri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                             Operator = AzureNative.Monitor.ComparisonOperationType.GreaterThan,
 ///                             Statistic = AzureNative.Monitor.MetricStatisticType.Average,
-///                             Threshold = 15,
+///                             Threshold = 15.0,
 ///                             TimeAggregation = AzureNative.Monitor.TimeAggregationType.Average,
 ///                             TimeGrain = "PT2M",
 ///                             TimeWindow = "PT5M",
@@ -158,7 +158,7 @@ import 'system_data_response.dart';
 ///                             MetricResourceUri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                             Operator = AzureNative.Monitor.ComparisonOperationType.GreaterThan,
 ///                             Statistic = AzureNative.Monitor.MetricStatisticType.Average,
-///                             Threshold = 10,
+///                             Threshold = 10.0,
 ///                             TimeAggregation = AzureNative.Monitor.TimeAggregationType.Average,
 ///                             TimeGrain = "PT1M",
 ///                             TimeWindow = "PT5M",
@@ -180,7 +180,7 @@ import 'system_data_response.dart';
 ///                             MetricResourceUri = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc",
 ///                             Operator = AzureNative.Monitor.ComparisonOperationType.GreaterThan,
 ///                             Statistic = AzureNative.Monitor.MetricStatisticType.Average,
-///                             Threshold = 15,
+///                             Threshold = 15.0,
 ///                             TimeAggregation = AzureNative.Monitor.TimeAggregationType.Average,
 ///                             TimeGrain = "PT2M",
 ///                             TimeWindow = "PT5M",
@@ -381,7 +381,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -389,7 +389,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_autoscalesetting" "autoscaleSetting" {
+/// resource "azure-native_monitor_autoscale_setting" "autoscaleSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autoscale_setting_name = "MySetting"
 ///   enabled                = true
 ///   location               = "West US"
@@ -534,10 +537,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.AutoscaleSettingArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AutoscaleNotificationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.EmailNotificationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WebhookNotificationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PredictiveAutoscalePolicyArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AutoscaleProfileArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ScaleCapacityArgs;
 /// import com.pulumi.azurenative.monitor.inputs.TimeWindowArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ScaleRuleArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MetricTriggerArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ScaleActionArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RecurrenceArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RecurrentScheduleArgs;
 /// import java.util.ArrayList;

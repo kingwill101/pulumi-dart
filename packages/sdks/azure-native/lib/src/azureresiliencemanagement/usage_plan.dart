@@ -72,7 +72,7 @@ import 'usage_plan_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'usage_plan_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureresiliencemanagement_usageplan" "usagePlan" {
+/// resource "azure-native_azureresiliencemanagement_usage_plan" "usagePlan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "global"
 ///   properties = {
 ///     plan_type = "Standard"

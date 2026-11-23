@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Location = "location",
 ///         RackId = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName",
-///         RackSlot = 1,
+///         RackSlot = 1.0,
 ///         ResourceGroupName = "resourceGroupName",
 ///         SerialNumber = "BM1219XXX",
 ///         StorageApplianceName = "storageApplianceName",
@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_storageappliance" "storageAppliance" {
+/// resource "azure-native_networkcloud_storage_appliance" "storageAppliance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_credentials = {
 ///     password = "{password}"
 ///     username = "adminUser"

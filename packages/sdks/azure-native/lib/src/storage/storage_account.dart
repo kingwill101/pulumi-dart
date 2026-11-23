@@ -113,7 +113,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -121,7 +121,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name              = "sto4445"
 ///   enable_extended_groups    = true
 ///   enable_https_traffic_only = false
@@ -134,7 +137,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///     default_action = "Allow"
 ///     ip_rules       = []
 ///     virtual_network_rules = [{
-///       "virtualNetworkResourceId" = "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.Network/virtualNetworks/net123/subnets/subnet12"
+///       virtual_network_resource_id = "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.Network/virtualNetworks/net123/subnets/subnet12"
 ///     }]
 ///   }
 ///   resource_group_name = "res9101"
@@ -154,6 +157,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// import com.pulumi.azurenative.storage.StorageAccount;
 /// import com.pulumi.azurenative.storage.StorageAccountArgs;
 /// import com.pulumi.azurenative.storage.inputs.NetworkRuleSetArgs;
+/// import com.pulumi.azurenative.storage.inputs.VirtualNetworkRuleArgs;
 /// import com.pulumi.azurenative.storage.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -420,7 +424,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -428,7 +432,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                     = "sto4445"
 ///   allow_blob_public_access         = false
 ///   allow_shared_key_access          = true
@@ -855,7 +862,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -863,7 +870,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "sto4445"
 ///   allow_blob_public_access = false
 ///   allow_shared_key_access  = true
@@ -1265,7 +1275,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1273,7 +1283,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "sto4445"
 ///   allow_blob_public_access = false
 ///   allow_shared_key_access  = true
@@ -1684,7 +1697,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1692,7 +1705,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "sto4445"
 ///   allow_blob_public_access = false
 ///   allow_shared_key_access  = true
@@ -2127,7 +2143,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2135,7 +2151,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                     = "sto4445"
 ///   allow_blob_public_access         = false
 ///   allow_shared_key_access          = true
@@ -2580,7 +2599,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2588,7 +2607,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                     = "sto4445"
 ///   allow_blob_public_access         = false
 ///   allow_shared_key_access          = true
@@ -3029,7 +3051,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3037,7 +3059,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "sto4445"
 ///   allow_blob_public_access = false
 ///   allow_shared_key_access  = true
@@ -3426,7 +3451,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3434,7 +3459,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "sto4445"
 ///   allow_shared_key_access = true
 ///   encryption = {
@@ -3710,7 +3738,7 @@ import 'storage_account_sku_conversion_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3718,7 +3746,10 @@ import 'storage_account_sku_conversion_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storageaccount" "storageAccount" {
+/// resource "azure-native_storage_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sto4445"
 ///   extended_location = {
 ///     name = "losangeles001"

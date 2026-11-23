@@ -64,7 +64,7 @@ import 'connection_monitor_test_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'connection_monitor_test_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_peering_connectionmonitortest" "connectionMonitorTest" {
+/// resource "azure-native_peering_connection_monitor_test" "connectionMonitorTest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_monitor_test_name = "connectionMonitorTestName"
 ///   destination                  = "Example Destination"
 ///   destination_port             = 443

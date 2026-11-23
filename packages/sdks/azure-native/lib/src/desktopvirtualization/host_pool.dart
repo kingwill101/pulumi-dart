@@ -141,7 +141,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -149,15 +149,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_hostpool" "hostPool" {
+/// resource "azure-native_desktopvirtualization_host_pool" "hostPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_update = {
 ///     maintenance_window_time_zone = "Alaskan Standard Time"
 ///     maintenance_windows = [{
-///       "dayOfWeek" = "Friday"
-///       "hour"      = 7
+///       day_of_week = "Friday"
+///       hour        = 7
 ///       }, {
-///       "dayOfWeek" = "Saturday"
-///       "hour"      = 8
+///       day_of_week = "Saturday"
+///       hour        = 8
 ///     }]
 ///     type                        = "Scheduled"
 ///     use_session_host_local_time = false
@@ -199,6 +202,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.desktopvirtualization.HostPool;
 /// import com.pulumi.azurenative.desktopvirtualization.HostPoolArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.AgentUpdatePropertiesArgs;
+/// import com.pulumi.azurenative.desktopvirtualization.inputs.MaintenanceWindowPropertiesArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.RegistrationInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -90,7 +90,7 @@ import 'server_details_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'server_details_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_analysisservices_serverdetails" "serverDetails" {
+/// resource "azure-native_analysisservices_server_details" "serverDetails" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   as_administrators = {
 ///     members = ["azsdktest@microsoft.com", "azsdktest2@microsoft.com"]
 ///   }

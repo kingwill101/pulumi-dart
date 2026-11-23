@@ -119,7 +119,7 @@ import 'resource_group_value_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -128,6 +128,9 @@ import 'resource_group_value_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignment_name = "assignSimpleBlueprint"
 ///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
 ///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
@@ -167,6 +170,8 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -424,7 +429,7 @@ import 'resource_group_value_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -433,6 +438,9 @@ import 'resource_group_value_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignment_name = "assignSimpleBlueprint"
 ///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
 ///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
@@ -471,6 +479,8 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -733,7 +743,7 @@ import 'resource_group_value_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -742,6 +752,9 @@ import 'resource_group_value_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignment_name = "assignSimpleBlueprint"
 ///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
 ///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
@@ -784,6 +797,9 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1059,7 +1075,7 @@ import 'resource_group_value_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1068,6 +1084,9 @@ import 'resource_group_value_response.dart';
 /// }
 ///
 /// resource "azure-native_blueprint_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignment_name = "assignSimpleBlueprint"
 ///   blueprint_id    = "/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"
 ///   description     = "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."
@@ -1109,6 +1128,9 @@ import 'resource_group_value_response.dart';
 /// import com.pulumi.azurenative.blueprint.Assignment;
 /// import com.pulumi.azurenative.blueprint.AssignmentArgs;
 /// import com.pulumi.azurenative.blueprint.inputs.ManagedServiceIdentityArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.UserAssignedIdentityArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ResourceGroupValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

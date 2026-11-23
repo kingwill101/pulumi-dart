@@ -33,7 +33,7 @@ import 'vault_properties_response.dart';
 ///                     ObjectId = "00000000-0000-0000-0000-000000000000",
 ///                     Permissions = new AzureNative.KeyVault.Inputs.PermissionsArgs
 ///                     {
-///                         Certificates = new[]
+///                         Certificates =
 ///                         {
 ///                             AzureNative.KeyVault.CertificatePermissions.@Get,
 ///                             AzureNative.KeyVault.CertificatePermissions.List,
@@ -50,7 +50,7 @@ import 'vault_properties_response.dart';
 ///                             AzureNative.KeyVault.CertificatePermissions.Recover,
 ///                             AzureNative.KeyVault.CertificatePermissions.Purge,
 ///                         },
-///                         Keys = new[]
+///                         Keys =
 ///                         {
 ///                             AzureNative.KeyVault.KeyPermissions.Encrypt,
 ///                             AzureNative.KeyVault.KeyPermissions.Decrypt,
@@ -69,7 +69,7 @@ import 'vault_properties_response.dart';
 ///                             AzureNative.KeyVault.KeyPermissions.Recover,
 ///                             AzureNative.KeyVault.KeyPermissions.Purge,
 ///                         },
-///                         Secrets = new[]
+///                         Secrets =
 ///                         {
 ///                             AzureNative.KeyVault.SecretPermissions.@Get,
 ///                             AzureNative.KeyVault.SecretPermissions.List,
@@ -192,7 +192,7 @@ import 'vault_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -201,16 +201,19 @@ import 'vault_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_keyvault_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
 ///     access_policies = [{
-///       "objectId" = "00000000-0000-0000-0000-000000000000"
-///       "permissions" = {
-///         "certificates" = ["get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge"]
-///         "keys"         = ["encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import", "delete", "backup", "restore", "recover", "purge"]
-///         "secrets"      = ["get", "list", "set", "delete", "backup", "restore", "recover", "purge"]
+///       object_id = "00000000-0000-0000-0000-000000000000"
+///       permissions = {
+///         certificates = ["get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge"]
+///         keys         = ["encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import", "delete", "backup", "restore", "recover", "purge"]
+///         secrets      = ["get", "list", "set", "delete", "backup", "restore", "recover", "purge"]
 ///       }
-///       "tenantId" = "00000000-0000-0000-0000-000000000000"
+///       tenant_id = "00000000-0000-0000-0000-000000000000"
 ///     }]
 ///     enabled_for_deployment          = true
 ///     enabled_for_disk_encryption     = true
@@ -237,6 +240,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.keyvault.Vault;
 /// import com.pulumi.azurenative.keyvault.VaultArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.VaultPropertiesArgs;
+/// import com.pulumi.azurenative.keyvault.inputs.AccessPolicyEntryArgs;
+/// import com.pulumi.azurenative.keyvault.inputs.PermissionsArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -640,7 +645,7 @@ import 'vault_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -649,6 +654,9 @@ import 'vault_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_keyvault_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
 ///     enabled_for_deployment          = true
@@ -658,12 +666,12 @@ import 'vault_properties_response.dart';
 ///       bypass         = "AzureServices"
 ///       default_action = "Deny"
 ///       ip_rules = [{
-///         "value" = "124.56.78.91"
+///         value = "124.56.78.91"
 ///         }, {
-///         "value" = "'10.91.4.0/24'"
+///         value = "'10.91.4.0/24'"
 ///       }]
 ///       virtual_network_rules = [{
-///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1"
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1"
 ///       }]
 ///     }
 ///     sku = {
@@ -688,6 +696,8 @@ import 'vault_properties_response.dart';
 /// import com.pulumi.azurenative.keyvault.VaultArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.VaultPropertiesArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.NetworkRuleSetArgs;
+/// import com.pulumi.azurenative.keyvault.inputs.IPRuleArgs;
+/// import com.pulumi.azurenative.keyvault.inputs.VirtualNetworkRuleArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

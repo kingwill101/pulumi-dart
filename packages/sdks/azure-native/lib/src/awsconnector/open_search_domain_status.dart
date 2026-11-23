@@ -193,8 +193,8 @@ import 'system_data_response.dart';
 ///                     {
 ///                         WindowStartTime = new AzureNative.AwsConnector.Inputs.WindowStartTimeArgs
 ///                         {
-///                             Hours = 19,
-///                             Minutes = 7,
+///                             Hours = 19.0,
+///                             Minutes = 7.0,
 ///                         },
 ///                     },
 ///                 },
@@ -469,7 +469,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -477,7 +477,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_opensearchdomainstatus" "openSearchDomainStatus" {
+/// resource "azure-native_awsconnector_open_search_domain_status" "openSearchDomainStatus" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "cjnfjucekzuxbrhfzskptnxmy"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -599,11 +602,11 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       modifying_properties = [{
-///         "activeValue"  = "igvntcixfgeammklivfvtjjxfka"
-///         "name"         = "wbfqxsudlhdpidezy"
-///         "pendingValue" = "n"
-///         "valueType" = {
-///           "value" = "PLAIN_TEXT"
+///         active_value  = "igvntcixfgeammklivfvtjjxfka"
+///         name          = "wbfqxsudlhdpidezy"
+///         pending_value = "n"
+///         value_type = {
+///           value = "PLAIN_TEXT"
 ///         }
 ///       }]
 ///       node_to_node_encryption_options = {
@@ -692,6 +695,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.VolumeTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EncryptionAtRestOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IPAddressTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LogPublishingOptionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ModifyingPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PropertyValueTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NodeToNodeEncryptionOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OffPeakWindowOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OffPeakWindowArgs;

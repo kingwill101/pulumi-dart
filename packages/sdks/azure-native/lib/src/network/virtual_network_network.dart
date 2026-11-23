@@ -79,7 +79,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -263,7 +266,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -271,7 +274,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -484,7 +490,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -492,7 +498,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -521,6 +530,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
+/// import com.pulumi.azurenative.network.inputs.DelegationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -704,7 +714,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -712,7 +722,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -935,7 +948,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -943,11 +956,14 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     ipam_pool_prefix_allocations = [{
-///       "id"                  = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/nm1/ipamPools/testIpamPool"
-///       "numberOfIpAddresses" = "65536"
+///       id                     = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/nm1/ipamPools/testIpamPool"
+///       number_of_ip_addresses = "65536"
 ///     }]
 ///   }
 ///   location            = "eastus"
@@ -973,6 +989,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetwork;
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
+/// import com.pulumi.azurenative.network.inputs.IpamPoolPrefixAllocationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1166,7 +1183,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1174,7 +1191,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -1202,6 +1222,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
+/// import com.pulumi.azurenative.network.inputs.ServiceEndpointPropertiesFormatArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1396,7 +1417,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1404,7 +1425,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -1435,6 +1459,8 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
+/// import com.pulumi.azurenative.network.inputs.ServiceEndpointPolicyArgs;
+/// import com.pulumi.azurenative.network.inputs.ServiceEndpointPropertiesFormatArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1616,7 +1642,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1624,7 +1650,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }
@@ -1815,7 +1844,7 @@ import 'virtual_network_peering_virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1823,7 +1852,10 @@ import 'virtual_network_peering_virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+/// resource "azure-native_network_virtual_network" "virtualNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }

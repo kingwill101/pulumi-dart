@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_datamigration_file" "file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   file_name    = "x114d023d8"
 ///   group_name   = "DmsSdkRg"
 ///   project_name = "DmsSdkProject"

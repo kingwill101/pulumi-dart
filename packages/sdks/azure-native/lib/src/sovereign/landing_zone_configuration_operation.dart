@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             LogAnalyticsWorkspaceCreationOption = AzureNative.Sovereign.ResourceCreationOptions.UseExisting,
-///             LogRetentionInDays = 540,
+///             LogRetentionInDays = 540.0,
 ///             ManagedIdentity = new AzureNative.Sovereign.Inputs.ManagedIdentityPropertiesArgs
 ///             {
 ///                 Type = AzureNative.Sovereign.ManagedIdentityResourceType.UserAssigned,
@@ -503,7 +503,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -511,23 +511,26 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sovereign_landingzoneconfigurationoperation" "landingZoneConfigurationOperation" {
+/// resource "azure-native_sovereign_landing_zone_configuration_operation" "landingZoneConfigurationOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   landing_zone_account_name       = "lza-RemApiExample"
 ///   landing_zone_configuration_name = "lzc-RemApiExample"
 ///   properties = {
 ///     azure_bastion_creation_option = "UseExisting"
 ///     custom_naming_convention = [{
-///       "formula"      = "{ResourceTypeAbbreviation}-{DeploymentPrefix}-Contoso-{DeploymentSuffix}"
-///       "resourceType" = "ddosProtectionPlans"
+///       formula       = "{ResourceTypeAbbreviation}-{DeploymentPrefix}-Contoso-{DeploymentSuffix}"
+///       resource_type = "ddosProtectionPlans"
 ///     }]
 ///     ddos_protection_creation_option = "UseExisting"
 ///     decommissioned_mg_metadata = {
 ///       create = true
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     existing_azure_bastion_id           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-RemApiExample/providers/Microsoft.Network/bastionHosts/bas-RemApiExample"
@@ -538,30 +541,30 @@ import 'system_data_response.dart';
 ///     gateway_subnet_cidr_block           = "10.20.252.0/24"
 ///     hub_network_cidr_block              = "10.20.0.0/16"
 ///     landing_zones_mg_children = [{
-///       "name"                                  = "Corp"
-///       "policyInitiativesAssignmentProperties" = []
+///       name                                     = "Corp"
+///       policy_initiatives_assignment_properties = []
 ///       }, {
-///       "name"                                  = "Online"
-///       "policyInitiativesAssignmentProperties" = []
+///       name                                     = "Online"
+///       policy_initiatives_assignment_properties = []
 ///       }, {
-///       "name" = "Confidential Corp"
-///       "policyInitiativesAssignmentProperties" = [{
-///         "assignmentParameters" = {}
-///         "policyInitiativeId"   = "/providers/Microsoft.Authorization/policySetDefinitions/03de05a4-c324-4ccd-882f-a814ea8ab9ea"
+///       name = "Confidential Corp"
+///       policy_initiatives_assignment_properties = [{
+///         assignment_parameters = {}
+///         policy_initiative_id  = "/providers/Microsoft.Authorization/policySetDefinitions/03de05a4-c324-4ccd-882f-a814ea8ab9ea"
 ///       }]
 ///       }, {
-///       "name" = "Confidential Online"
-///       "policyInitiativesAssignmentProperties" = [{
-///         "assignmentParameters" = {}
-///         "policyInitiativeId"   = "/providers/Microsoft.Authorization/policySetDefinitions/03de05a4-c324-4ccd-882f-a814ea8ab9ea"
+///       name = "Confidential Online"
+///       policy_initiatives_assignment_properties = [{
+///         assignment_parameters = {}
+///         policy_initiative_id  = "/providers/Microsoft.Authorization/policySetDefinitions/03de05a4-c324-4ccd-882f-a814ea8ab9ea"
 ///       }]
 ///     }]
 ///     landing_zones_mg_metadata = {
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     log_analytics_workspace_creation_option = "UseExisting"
@@ -573,75 +576,75 @@ import 'system_data_response.dart';
 ///     naming_convention_formula = "{ResourceTypeAbbreviation}-{DeploymentPrefix}-Contoso-{DeploymentSuffix}-{Environment}"
 ///     platform_connectivity_mg_metadata = {
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     platform_identity_mg_metadata = {
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     platform_management_mg_metadata = {
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     platform_mg_children = [{
-///       "name" = "Telemetry"
-///       "policyInitiativesAssignmentProperties" = [{
-///         "assignmentParameters" = {
+///       name = "Telemetry"
+///       policy_initiatives_assignment_properties = [{
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///       }, {
-///       "name" = "Security"
-///       "policyInitiativesAssignmentProperties" = [{
-///         "assignmentParameters" = {
+///       name = "Security"
+///       policy_initiatives_assignment_properties = [{
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }]
 ///     platform_mg_metadata = {
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     sandbox_mg_metadata = {
 ///       create = true
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///     tags = [{
-///       "name"  = "tag1"
-///       "value" = "Lorem"
+///       name  = "tag1"
+///       value = "Lorem"
 ///       }, {
-///       "name"  = "tag2"
-///       "value" = "Ipsum"
+///       name  = "tag2"
+///       value = "Ipsum"
 ///     }]
 ///     top_level_mg_metadata = {
 ///       policy_initiatives_assignment_properties = [{
-///         "assignmentParameters" = {
+///         assignment_parameters = {
 ///           "listOfAllowedLocations" = ["swedencentral", "eastus2", "uksouth"]
 ///         }
-///         "policyInitiativeId" = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
+///         policy_initiative_id = "/providers/Microsoft.Authorization/policySetDefinitions/c1cbff38-87c0-4b9f-9f70-035c7a3b5523"
 ///       }]
 ///     }
 ///   }
@@ -659,10 +662,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.sovereign.LandingZoneConfigurationOperation;
 /// import com.pulumi.azurenative.sovereign.LandingZoneConfigurationOperationArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.LandingZoneConfigurationResourcePropertiesArgs;
+/// import com.pulumi.azurenative.sovereign.inputs.CustomNamingConventionArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.DecommissionedManagementGroupPropertiesArgs;
+/// import com.pulumi.azurenative.sovereign.inputs.PolicyInitiativeAssignmentPropertiesArgs;
+/// import com.pulumi.azurenative.sovereign.inputs.LandingZoneManagementGroupPropertiesArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.ManagementGroupPropertiesArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.ManagedIdentityPropertiesArgs;
+/// import com.pulumi.azurenative.sovereign.inputs.PlatformManagementGroupPropertiesArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.SandboxManagementGroupPropertiesArgs;
+/// import com.pulumi.azurenative.sovereign.inputs.TagsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

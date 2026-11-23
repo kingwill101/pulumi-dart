@@ -27,7 +27,7 @@ import 'mongo_dbresource_mongo_dbcollection_args.dart';
 ///         CollectionName = "collectionName",
 ///         DatabaseName = "databaseName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.MongoDBCollectionResourceArgs
 ///         {
 ///             Id = "collectionName",
@@ -65,7 +65,7 @@ import 'mongo_dbresource_mongo_dbcollection_args.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -128,7 +128,7 @@ import 'mongo_dbresource_mongo_dbcollection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -136,7 +136,10 @@ import 'mongo_dbresource_mongo_dbcollection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongodbresourcemongodbcollection" "mongoDBResourceMongoDBCollection" {
+/// resource "azure-native_cosmosdb_mongo_d_b_resource_mongo_d_b_collection" "mongoDBResourceMongoDBCollection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name    = "ddb1"
 ///   collection_name = "collectionName"
 ///   database_name   = "databaseName"
@@ -145,16 +148,16 @@ import 'mongo_dbresource_mongo_dbcollection_args.dart';
 ///   resource = {
 ///     id = "collectionName"
 ///     indexes = [{
-///       "key" = {
-///         "keys" = ["_ts"]
+///       key = {
+///         keys = ["_ts"]
 ///       }
-///       "options" = {
-///         "expireAfterSeconds" = 100
-///         "unique"             = true
+///       options = {
+///         expire_after_seconds = 100
+///         unique               = true
 ///       }
 ///       }, {
-///       "key" = {
-///         "keys" = ["_id"]
+///       key = {
+///         keys = ["_id"]
 ///       }
 ///     }]
 ///     shard_key = {
@@ -177,6 +180,9 @@ import 'mongo_dbresource_mongo_dbcollection_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.MongoDBResourceMongoDBCollectionArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.CreateUpdateOptionsArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.MongoDBCollectionResourceArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MongoIndexArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MongoIndexKeysArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MongoIndexOptionsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

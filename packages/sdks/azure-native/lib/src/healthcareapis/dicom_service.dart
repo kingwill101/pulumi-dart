@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_healthcareapis_dicomservice" "dicomService" {
+/// resource "azure-native_healthcareapis_dicom_service" "dicomService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dicom_service_name     = "blue"
 ///   enable_data_partitions = false
 ///   location               = "westus"

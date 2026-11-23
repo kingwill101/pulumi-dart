@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,6 +89,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_azuredatatransfer_flow" "flow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "testConnection"
 ///   flow_name       = "testFlow"
 ///   location        = "East US"

@@ -125,7 +125,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -134,6 +134,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_botservice_bot" "bot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind     = "sdk"
 ///   location = "West US"
 ///   properties = {

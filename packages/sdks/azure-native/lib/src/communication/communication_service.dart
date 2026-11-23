@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_communicationservice" "communicationService" {
+/// resource "azure-native_communication_communication_service" "communicationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_service_name = "MyCommunicationResource"
 ///   data_location              = "United States"
 ///   location                   = "Global"
@@ -199,7 +202,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -207,7 +210,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_communicationservice" "communicationService" {
+/// resource "azure-native_communication_communication_service" "communicationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_service_name = "MyCommunicationResource"
 ///   data_location              = "United States"
 ///   disable_local_auth         = true
@@ -343,7 +349,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -351,7 +357,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_communicationservice" "communicationService" {
+/// resource "azure-native_communication_communication_service" "communicationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_service_name = "MyCommunicationResource"
 ///   data_location              = "United States"
 ///   location                   = "Global"
@@ -492,7 +501,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -500,7 +509,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_communicationservice" "communicationService" {
+/// resource "azure-native_communication_communication_service" "communicationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_service_name = "MyCommunicationResource"
 ///   data_location              = "United States"
 ///   identity = {

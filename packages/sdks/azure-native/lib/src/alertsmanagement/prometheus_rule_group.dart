@@ -169,7 +169,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -177,7 +177,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_prometheusrulegroup" "prometheusRuleGroup" {
+/// resource "azure-native_alertsmanagement_prometheus_rule_group" "prometheusRuleGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "myClusterName"
 ///   description         = "This is the description of the following rule group"
 ///   enabled             = true
@@ -237,6 +240,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.PrometheusRuleGroup;
 /// import com.pulumi.azurenative.alertsmanagement.PrometheusRuleGroupArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleGroupActionArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.PrometheusRuleResolveConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -569,7 +573,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -577,7 +581,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_prometheusrulegroup" "prometheusRuleGroup" {
+/// resource "azure-native_alertsmanagement_prometheus_rule_group" "prometheusRuleGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "myClusterName"
 ///   description         = "This is a rule group with culster centric configuration"
 ///   interval            = "PT10M"

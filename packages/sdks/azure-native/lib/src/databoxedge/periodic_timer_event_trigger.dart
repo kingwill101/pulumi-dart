@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_periodictimereventtrigger" "periodicTimerEventTrigger" {
+/// resource "azure-native_databoxedge_periodic_timer_event_trigger" "periodicTimerEventTrigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name         = "testedgedevice"
 ///   name                = "trigger1"
 ///   resource_group_name = "GroupForEdgeAutomation"

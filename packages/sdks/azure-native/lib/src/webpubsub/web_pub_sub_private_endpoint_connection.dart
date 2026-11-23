@@ -24,7 +24,7 @@ import 'web_pub_sub_private_endpoint_connection_args.dart';
 /// {
 ///     var webPubSubPrivateEndpointConnection = new AzureNative.WebPubSub.WebPubSubPrivateEndpointConnection("webPubSubPrivateEndpointConnection", new()
 ///     {
-///         PrivateEndpoint = null,
+///         PrivateEndpoint = new() { },
 ///         PrivateEndpointConnectionName = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e",
 ///         PrivateLinkServiceConnectionState = new AzureNative.WebPubSub.Inputs.PrivateLinkServiceConnectionStateArgs
 ///         {
@@ -70,7 +70,7 @@ import 'web_pub_sub_private_endpoint_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'web_pub_sub_private_endpoint_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_webpubsub_webpubsubprivateendpointconnection" "webPubSubPrivateEndpointConnection" {
+/// resource "azure-native_webpubsub_web_pub_sub_private_endpoint_connection" "webPubSubPrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint                 = {}
 ///   private_endpoint_connection_name = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
 ///   private_link_service_connection_state = {

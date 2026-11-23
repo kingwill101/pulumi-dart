@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,6 +94,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_macc" "macc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_at              = "2024-07-01T00:00:00Z"
 ///   entity_type         = "Contributor"
 ///   location            = "global"
@@ -232,7 +235,7 @@ import 'system_data_response.dart';
 ///         AllowContributors = true,
 ///         Commitment = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
 ///         {
-///             Amount = 20000,
+///             Amount = 20000.0,
 ///             CurrencyCode = "USD",
 ///             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
 ///         },
@@ -247,7 +250,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 Commitment = new AzureNative.BillingBenefits.Inputs.PriceArgs
 ///                 {
-///                     Amount = 10000,
+///                     Amount = 10000.0,
 ///                     CurrencyCode = "USD",
 ///                 },
 ///                 EndAt = "2026-05-31T23:59:59Z",
@@ -256,7 +259,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 Commitment = new AzureNative.BillingBenefits.Inputs.PriceArgs
 ///                 {
-///                     Amount = 15000,
+///                     Amount = 15000.0,
 ///                     CurrencyCode = "USD",
 ///                 },
 ///                 EndAt = "2027-05-31T23:59:59Z",
@@ -335,7 +338,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -344,6 +347,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_macc" "macc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_contributors = true
 ///   commitment = {
 ///     amount        = 20000
@@ -584,7 +590,7 @@ import 'system_data_response.dart';
 ///         AllowContributors = true,
 ///         Commitment = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
 ///         {
-///             Amount = 20000,
+///             Amount = 20000.0,
 ///             CurrencyCode = "USD",
 ///             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
 ///         },
@@ -650,7 +656,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -659,6 +665,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_macc" "macc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_contributors = true
 ///   commitment = {
 ///     amount        = 20000

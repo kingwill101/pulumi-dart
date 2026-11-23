@@ -79,7 +79,7 @@ import 'workbook_resource_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,6 +88,9 @@ import 'workbook_resource_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_applicationinsights_workbook" "workbook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   category            = "workbook"
 ///   description         = "Sample workbook"
 ///   display_name        = "Sample workbook"

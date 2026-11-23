@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_fileeventtrigger" "fileEventTrigger" {
+/// resource "azure-native_databoxedge_file_event_trigger" "fileEventTrigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_context_tag  = "CustomContextTags-1235346475"
 ///   device_name         = "testedgedevice"
 ///   kind                = "FileEvent"
@@ -125,7 +128,6 @@ import 'system_data_response.dart';
 ///         var fileEventTrigger = new FileEventTrigger("fileEventTrigger", FileEventTriggerArgs.builder()
 ///             .customContextTag("CustomContextTags-1235346475")
 ///             .deviceName("testedgedevice")
-///             .kind("FileEvent")
 ///             .name("trigger1")
 ///             .resourceGroupName("GroupForEdgeAutomation")
 ///             .sinkInfo(RoleSinkInfoArgs.builder()

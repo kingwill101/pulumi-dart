@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///     {
 ///         DevicePoolName = "devicePool-1",
 ///         Location = "eastus",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "ArcInstance-rg",
 ///     });
 ///
@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_devicepool" "devicePool" {
+/// resource "azure-native_azurestackhci_device_pool" "devicePool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_pool_name    = "devicePool-1"
 ///   location            = "eastus"
 ///   properties          = {}
@@ -165,7 +168,7 @@ import 'system_data_response.dart';
 ///     {
 ///         DevicePoolName = "devicePool1",
 ///         Location = "eastus",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "ArcInstance-rg",
 ///     });
 ///
@@ -200,7 +203,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -208,7 +211,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_devicepool" "devicePool" {
+/// resource "azure-native_azurestackhci_device_pool" "devicePool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_pool_name    = "devicePool1"
 ///   location            = "eastus"
 ///   properties          = {}

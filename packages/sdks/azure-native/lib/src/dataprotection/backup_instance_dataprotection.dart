@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 ///                 PolicyId = "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1",
 ///                 PolicyParameters = new AzureNative.DataProtection.Inputs.PolicyParametersArgs
 ///                 {
-///                     DataStoreParametersList = new[]
+///                     DataStoreParametersList =
 ///                     {
 ///                         new AzureNative.DataProtection.Inputs.AzureOperationalStoreParametersArgs
 ///                         {
@@ -167,7 +167,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -175,7 +175,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backupinstance" "backupInstance" {
+/// resource "azure-native_dataprotection_backup_instance" "backupInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_instance_name = "testInstance1"
 ///   properties = {
 ///     data_source_info = {
@@ -213,9 +216,9 @@ import 'system_data_response.dart';
 ///       policy_id = "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1"
 ///       policy_parameters = {
 ///         data_store_parameters_list = [{
-///           "dataStoreType"   = "OperationalStore"
-///           "objectType"      = "AzureOperationalStoreParameters"
-///           "resourceGroupId" = "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest"
+///           data_store_type   = "OperationalStore"
+///           object_type       = "AzureOperationalStoreParameters"
+///           resource_group_id = "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest"
 ///         }]
 ///       }
 ///     }
@@ -244,6 +247,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.IdentityDetailsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.PolicyInfoArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.PolicyParametersArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AzureOperationalStoreParametersArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -259,7 +263,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var backupInstance = new BackupInstance("backupInstance", BackupInstanceArgs.builder()
 ///             .backupInstanceName("testInstance1")
-///             .properties(BackupInstanceArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupInstanceArgs.builder()
 ///                 .dataSourceInfo(DatasourceArgs.builder()
 ///                     .datasourceType("Microsoft.DBforPostgreSQL/servers/databases")
 ///                     .objectType("Datasource")
@@ -278,13 +282,12 @@ import 'system_data_response.dart';
 ///                     .resourceType("Microsoft.DBforPostgreSQL/servers")
 ///                     .resourceUri("")
 ///                     .build())
-///                 .datasourceAuthCredentials(Map.ofEntries(
-///                     Map.entry("objectType", "SecretStoreBasedAuthCredentials"),
-///                     Map.entry("secretStoreResource", SecretStoreResourceArgs.builder()
+///                 .datasourceAuthCredentials(SecretStoreBasedAuthCredentialsArgs.builder()
+///                     .secretStoreResource(SecretStoreResourceArgs.builder()
 ///                         .secretStoreType("AzureKeyVault")
 ///                         .uri("https://samplevault.vault.azure.net/secrets/credentials")
 ///                         .build())
-///                 ))
+///                     .build())
 ///                 .friendlyName("harshitbi2")
 ///                 .identityDetails(IdentityDetailsArgs.builder()
 ///                     .useSystemAssignedIdentity(false)
@@ -294,11 +297,10 @@ import 'system_data_response.dart';
 ///                 .policyInfo(PolicyInfoArgs.builder()
 ///                     .policyId("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1")
 ///                     .policyParameters(PolicyParametersArgs.builder()
-///                         .dataStoreParametersList(Map.ofEntries(
-///                             Map.entry("dataStoreType", "OperationalStore"),
-///                             Map.entry("objectType", "AzureOperationalStoreParameters"),
-///                             Map.entry("resourceGroupId", "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest")
-///                         ))
+///                         .dataStoreParametersList(AzureOperationalStoreParametersArgs.builder()
+///                             .dataStoreType("OperationalStore")
+///                             .resourceGroupId("/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest")
+///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .validationType("ShallowValidation")
@@ -539,7 +541,7 @@ import 'system_data_response.dart';
 ///                                 "test",
 ///                             },
 ///                             IncludedResourceTypes = new() { },
-///                             IncludedVolumeTypes = new[]
+///                             IncludedVolumeTypes =
 ///                             {
 ///                                 AzureNative.DataProtection.AKSVolumeTypes.AzureDisk,
 ///                                 AzureNative.DataProtection.AKSVolumeTypes.AzureFileShareSMB,
@@ -549,7 +551,7 @@ import 'system_data_response.dart';
 ///                             SnapshotVolumes = true,
 ///                         },
 ///                     },
-///                     DataStoreParametersList = new[]
+///                     DataStoreParametersList =
 ///                     {
 ///                         new AzureNative.DataProtection.Inputs.AzureOperationalStoreParametersArgs
 ///                         {
@@ -611,25 +613,25 @@ import 'system_data_response.dart';
 /// 					PolicyId: pulumi.String("/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksrg/providers/Microsoft.DataProtection/BackupVaults/aksvault/backupPolicies/akspolicy"),
 /// 					PolicyParameters: &dataprotection.PolicyParametersArgs{
 /// 						BackupDatasourceParametersList: pulumi.Array{
-/// 							dataprotection.KubernetesClusterBackupDatasourceParameters{
-/// 								ExcludedNamespaces: []string{
-/// 									"kube-system",
+/// 							&dataprotection.KubernetesClusterBackupDatasourceParametersArgs{
+/// 								ExcludedNamespaces: pulumi.StringArray{
+/// 									pulumi.String("kube-system"),
 /// 								},
-/// 								ExcludedResourceTypes: []string{
-/// 									"v1/Secret",
+/// 								ExcludedResourceTypes: pulumi.StringArray{
+/// 									pulumi.String("v1/Secret"),
 /// 								},
-/// 								IncludeClusterScopeResources: true,
-/// 								IncludedNamespaces: []string{
-/// 									"test",
+/// 								IncludeClusterScopeResources: pulumi.Bool(true),
+/// 								IncludedNamespaces: pulumi.StringArray{
+/// 									pulumi.String("test"),
 /// 								},
-/// 								IncludedResourceTypes: []interface{}{},
-/// 								IncludedVolumeTypes: []dataprotection.AKSVolumeTypes{
-/// 									dataprotection.AKSVolumeTypesAzureDisk,
-/// 									dataprotection.AKSVolumeTypesAzureFileShareSMB,
+/// 								IncludedResourceTypes: pulumi.StringArray{},
+/// 								IncludedVolumeTypes: pulumi.StringArray{
+/// 									pulumi.String(dataprotection.AKSVolumeTypesAzureDisk),
+/// 									pulumi.String(dataprotection.AKSVolumeTypesAzureFileShareSMB),
 /// 								},
-/// 								LabelSelectors:  []interface{}{},
-/// 								ObjectType:      "KubernetesClusterBackupDatasourceParameters",
-/// 								SnapshotVolumes: true,
+/// 								LabelSelectors:  pulumi.StringArray{},
+/// 								ObjectType:      pulumi.String("KubernetesClusterBackupDatasourceParameters"),
+/// 								SnapshotVolumes: pulumi.Bool(true),
 /// 							},
 /// 						},
 /// 						DataStoreParametersList: dataprotection.AzureOperationalStoreParametersArray{
@@ -658,7 +660,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -666,7 +668,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backupinstance" "backupInstance" {
+/// resource "azure-native_dataprotection_backup_instance" "backupInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_instance_name = "aksbi"
 ///   properties = {
 ///     data_source_info = {
@@ -693,20 +698,20 @@ import 'system_data_response.dart';
 ///       policy_id = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksrg/providers/Microsoft.DataProtection/BackupVaults/aksvault/backupPolicies/akspolicy"
 ///       policy_parameters = {
 ///         backup_datasource_parameters_list = [{
-///           "excludedNamespaces"           = ["kube-system"]
-///           "excludedResourceTypes"        = ["v1/Secret"]
-///           "includeClusterScopeResources" = true
-///           "includedNamespaces"           = ["test"]
-///           "includedResourceTypes"        = []
-///           "includedVolumeTypes"          = ["AzureDisk", "AzureFileShareSMB"]
-///           "labelSelectors"               = []
-///           "objectType"                   = "KubernetesClusterBackupDatasourceParameters"
-///           "snapshotVolumes"              = true
+///           excluded_namespaces             = ["kube-system"]
+///           excluded_resource_types         = ["v1/Secret"]
+///           include_cluster_scope_resources = true
+///           included_namespaces             = ["test"]
+///           included_resource_types         = []
+///           included_volume_types           = ["AzureDisk", "AzureFileShareSMB"]
+///           label_selectors                 = []
+///           object_type                     = "KubernetesClusterBackupDatasourceParameters"
+///           snapshot_volumes                = true
 ///         }]
 ///         data_store_parameters_list = [{
-///           "dataStoreType"   = "OperationalStore"
-///           "objectType"      = "AzureOperationalStoreParameters"
-///           "resourceGroupId" = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksrg"
+///           data_store_type   = "OperationalStore"
+///           object_type       = "AzureOperationalStoreParameters"
+///           resource_group_id = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksrg"
 ///         }]
 ///       }
 ///     }
@@ -731,6 +736,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.DatasourceSetArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.PolicyInfoArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.PolicyParametersArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.BlobBackupDatasourceParametersArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.KubernetesClusterBackupDatasourceParametersArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AzureOperationalStoreParametersArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -746,7 +754,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var backupInstance = new BackupInstance("backupInstance", BackupInstanceArgs.builder()
 ///             .backupInstanceName("aksbi")
-///             .properties(BackupInstanceArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupInstanceArgs.builder()
 ///                 .dataSourceInfo(DatasourceArgs.builder()
 ///                     .datasourceType("Microsoft.ContainerService/managedclusters")
 ///                     .objectType("Datasource")
@@ -780,14 +788,12 @@ import 'system_data_response.dart';
 ///                                 "AzureDisk",
 ///                                 "AzureFileShareSMB")
 ///                             .labelSelectors()
-///                             .objectType("KubernetesClusterBackupDatasourceParameters")
 ///                             .snapshotVolumes(true)
 ///                             .build())
-///                         .dataStoreParametersList(Map.ofEntries(
-///                             Map.entry("dataStoreType", "OperationalStore"),
-///                             Map.entry("objectType", "AzureOperationalStoreParameters"),
-///                             Map.entry("resourceGroupId", "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksrg")
-///                         ))
+///                         .dataStoreParametersList(AzureOperationalStoreParametersArgs.builder()
+///                             .dataStoreType("OperationalStore")
+///                             .resourceGroupId("/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksrg")
+///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -1028,7 +1034,7 @@ import 'system_data_response.dart';
 ///                 PolicyId = "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1",
 ///                 PolicyParameters = new AzureNative.DataProtection.Inputs.PolicyParametersArgs
 ///                 {
-///                     DataStoreParametersList = new[]
+///                     DataStoreParametersList =
 ///                     {
 ///                         new AzureNative.DataProtection.Inputs.AzureOperationalStoreParametersArgs
 ///                         {
@@ -1131,7 +1137,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1139,7 +1145,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backupinstance" "backupInstance" {
+/// resource "azure-native_dataprotection_backup_instance" "backupInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_instance_name = "testInstance1"
 ///   properties = {
 ///     data_source_info = {
@@ -1173,9 +1182,9 @@ import 'system_data_response.dart';
 ///       policy_id = "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1"
 ///       policy_parameters = {
 ///         data_store_parameters_list = [{
-///           "dataStoreType"   = "OperationalStore"
-///           "objectType"      = "AzureOperationalStoreParameters"
-///           "resourceGroupId" = "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest"
+///           data_store_type   = "OperationalStore"
+///           object_type       = "AzureOperationalStoreParameters"
+///           resource_group_id = "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest"
 ///         }]
 ///       }
 ///     }
@@ -1204,6 +1213,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.SecretStoreResourceArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.PolicyInfoArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.PolicyParametersArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AzureOperationalStoreParametersArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1219,7 +1229,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var backupInstance = new BackupInstance("backupInstance", BackupInstanceArgs.builder()
 ///             .backupInstanceName("testInstance1")
-///             .properties(BackupInstanceArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupInstanceArgs.builder()
 ///                 .dataSourceInfo(DatasourceArgs.builder()
 ///                     .datasourceType("Microsoft.DBforPostgreSQL/servers/databases")
 ///                     .objectType("Datasource")
@@ -1238,23 +1248,21 @@ import 'system_data_response.dart';
 ///                     .resourceType("Microsoft.DBforPostgreSQL/servers")
 ///                     .resourceUri("")
 ///                     .build())
-///                 .datasourceAuthCredentials(Map.ofEntries(
-///                     Map.entry("objectType", "SecretStoreBasedAuthCredentials"),
-///                     Map.entry("secretStoreResource", SecretStoreResourceArgs.builder()
+///                 .datasourceAuthCredentials(SecretStoreBasedAuthCredentialsArgs.builder()
+///                     .secretStoreResource(SecretStoreResourceArgs.builder()
 ///                         .secretStoreType("AzureKeyVault")
 ///                         .uri("https://samplevault.vault.azure.net/secrets/credentials")
 ///                         .build())
-///                 ))
+///                     .build())
 ///                 .friendlyName("harshitbi2")
 ///                 .objectType("BackupInstance")
 ///                 .policyInfo(PolicyInfoArgs.builder()
 ///                     .policyId("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1")
 ///                     .policyParameters(PolicyParametersArgs.builder()
-///                         .dataStoreParametersList(Map.ofEntries(
-///                             Map.entry("dataStoreType", "OperationalStore"),
-///                             Map.entry("objectType", "AzureOperationalStoreParameters"),
-///                             Map.entry("resourceGroupId", "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest")
-///                         ))
+///                         .dataStoreParametersList(AzureOperationalStoreParametersArgs.builder()
+///                             .dataStoreType("OperationalStore")
+///                             .resourceGroupId("/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest")
+///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .resourceGuardOperationRequests("/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ankurResourceGuard1/providers/Microsoft.DataProtection/resourceGuards/ResourceGuard38-1/dppModifyPolicy/default")

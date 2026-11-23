@@ -76,13 +76,13 @@ import 'system_data_response.dart';
 /// 						TargetId: pulumi.String("/subscriptions/c4488a3f-a7f7-4ad4-aa72-0e1f4d9c0756/resourceGroups/westusRG/providers/Microsoft.Network/networkInterfaces/eastusvm140"),
 /// 					},
 /// 				},
-/// 				ResourceSettings: migrate.VirtualMachineResourceSettings{
-/// 					ResourceType:            "Microsoft.Compute/virtualMachines",
-/// 					TargetAvailabilitySetId: "/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/availabilitySets/avset1",
-/// 					TargetAvailabilityZone:  migrate.TargetAvailabilityZoneTwo,
-/// 					TargetResourceName:      "westusvm1",
-/// 					UserManagedIdentities: []string{
-/// 						"/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi1",
+/// 				ResourceSettings: &migrate.VirtualMachineResourceSettingsArgs{
+/// 					ResourceType:            pulumi.String("Microsoft.Compute/virtualMachines"),
+/// 					TargetAvailabilitySetId: pulumi.String("/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/availabilitySets/avset1"),
+/// 					TargetAvailabilityZone:  pulumi.String(migrate.TargetAvailabilityZoneTwo),
+/// 					TargetResourceName:      pulumi.String("westusvm1"),
+/// 					UserManagedIdentities: pulumi.StringArray{
+/// 						pulumi.String("/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi1"),
 /// 					},
 /// 				},
 /// 				SourceId: pulumi.String("/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/virtualMachines/eastusvm1"),
@@ -99,7 +99,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -107,20 +107,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_moveresource" "moveResource" {
+/// resource "azure-native_migrate_move_resource" "moveResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   move_collection_name = "movecollection1"
 ///   move_resource_name   = "moveresourcename1"
 ///   properties = {
 ///     depends_on_overrides = [{
-///       "id"       = "/subscriptions/c4488a3f-a7f7-4ad4-aa72-0e1f4d9c0756/resourceGroups/eastusRG/providers/Microsoft.Network/networkInterfaces/eastusvm140"
-///       "targetId" = "/subscriptions/c4488a3f-a7f7-4ad4-aa72-0e1f4d9c0756/resourceGroups/westusRG/providers/Microsoft.Network/networkInterfaces/eastusvm140"
+///       id        = "/subscriptions/c4488a3f-a7f7-4ad4-aa72-0e1f4d9c0756/resourceGroups/eastusRG/providers/Microsoft.Network/networkInterfaces/eastusvm140"
+///       target_id = "/subscriptions/c4488a3f-a7f7-4ad4-aa72-0e1f4d9c0756/resourceGroups/westusRG/providers/Microsoft.Network/networkInterfaces/eastusvm140"
 ///     }]
 ///     resource_settings = {
-///       "resourceType"            = "Microsoft.Compute/virtualMachines"
-///       "targetAvailabilitySetId" = "/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/availabilitySets/avset1"
-///       "targetAvailabilityZone"  = "2"
-///       "targetResourceName"      = "westusvm1"
-///       "userManagedIdentities"   = ["/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi1"]
+///       resource_type              = "Microsoft.Compute/virtualMachines"
+///       target_availability_set_id = "/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/availabilitySets/avset1"
+///       target_availability_zone   = "2"
+///       target_resource_name       = "westusvm1"
+///       user_managed_identities    = ["/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi1"]
 ///     }
 ///     source_id = "/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/virtualMachines/eastusvm1"
 ///   }
@@ -138,6 +141,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.MoveResource;
 /// import com.pulumi.azurenative.migrate.MoveResourceArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MoveResourcePropertiesArgs;
+/// import com.pulumi.azurenative.migrate.inputs.MoveResourceDependencyOverrideArgs;
+/// import com.pulumi.azurenative.migrate.inputs.AvailabilitySetResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.DiskEncryptionSetResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.KeyVaultResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.LoadBalancerResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.NetworkInterfaceResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.NetworkSecurityGroupResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.PublicIPAddressResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.ResourceGroupResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.SqlDatabaseResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.SqlElasticPoolResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.SqlServerResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.VirtualMachineResourceSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.VirtualNetworkResourceSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -160,7 +177,6 @@ import 'system_data_response.dart';
 ///                     .targetId("/subscriptions/c4488a3f-a7f7-4ad4-aa72-0e1f4d9c0756/resourceGroups/westusRG/providers/Microsoft.Network/networkInterfaces/eastusvm140")
 ///                     .build())
 ///                 .resourceSettings(VirtualMachineResourceSettingsArgs.builder()
-///                     .resourceType("Microsoft.Compute/virtualMachines")
 ///                     .targetAvailabilitySetId("/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/availabilitySets/avset1")
 ///                     .targetAvailabilityZone("2")
 ///                     .targetResourceName("westusvm1")

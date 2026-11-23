@@ -58,8 +58,8 @@ import 'replication_protected_item_properties_response.dart';
 /// 			Properties: &recoveryservices.EnableProtectionInputPropertiesArgs{
 /// 				PolicyId:          pulumi.String("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/protectionprofile1"),
 /// 				ProtectableItemId: pulumi.String("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectableItems/f8491e4f-817a-40dd-a90c-af773978c75b"),
-/// 				ProviderSpecificDetails: recoveryservices.HyperVReplicaAzureEnableProtectionInput{
-/// 					InstanceType: "HyperVReplicaAzure",
+/// 				ProviderSpecificDetails: &recoveryservices.HyperVReplicaAzureEnableProtectionInputArgs{
+/// 					InstanceType: pulumi.String("HyperVReplicaAzure"),
 /// 				},
 /// 			},
 /// 			ProtectionContainerName:     pulumi.String("cloud_6d224fc6-f326-5d35-96de-fbf51efb3179"),
@@ -77,7 +77,7 @@ import 'replication_protected_item_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,13 +85,16 @@ import 'replication_protected_item_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationprotecteditem" "replicationProtectedItem" {
+/// resource "azure-native_recoveryservices_replication_protected_item" "replicationProtectedItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name = "cloud1"
 ///   properties = {
 ///     policy_id           = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/protectionprofile1"
 ///     protectable_item_id = "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectableItems/f8491e4f-817a-40dd-a90c-af773978c75b"
 ///     provider_specific_details = {
-///       "instanceType" = "HyperVReplicaAzure"
+///       instance_type = "HyperVReplicaAzure"
 ///     }
 ///   }
 ///   protection_container_name      = "cloud_6d224fc6-f326-5d35-96de-fbf51efb3179"
@@ -111,6 +114,12 @@ import 'replication_protected_item_properties_response.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationProtectedItem;
 /// import com.pulumi.azurenative.recoveryservices.ReplicationProtectedItemArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.EnableProtectionInputPropertiesArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.A2ACrossClusterMigrationEnableProtectionInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.A2AEnableProtectionInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.HyperVReplicaAzureEnableProtectionInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMageAzureV2EnableProtectionInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMageEnableProtectionInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMageRcmEnableProtectionInputArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -130,7 +139,6 @@ import 'replication_protected_item_properties_response.dart';
 ///                 .policyId("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/protectionprofile1")
 ///                 .protectableItemId("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectableItems/f8491e4f-817a-40dd-a90c-af773978c75b")
 ///                 .providerSpecificDetails(HyperVReplicaAzureEnableProtectionInputArgs.builder()
-///                     .instanceType("HyperVReplicaAzure")
 ///                     .build())
 ///                 .build())
 ///             .protectionContainerName("cloud_6d224fc6-f326-5d35-96de-fbf51efb3179")

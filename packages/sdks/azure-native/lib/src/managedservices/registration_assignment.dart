@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managedservices_registrationassignment" "registrationAssignment" {
+/// resource "azure-native_managedservices_registration_assignment" "registrationAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     registration_definition_id = "/subscriptions/0afefe50-734e-4610-8a82-a144ahf49dea/providers/Microsoft.ManagedServices/registrationDefinitions/26c128c2-fefa-4340-9bb1-6e081c90ada2"
 ///   }

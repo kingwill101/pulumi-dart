@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcloud_cloudconnection" "cloudConnection" {
+/// resource "azure-native_hybridcloud_cloud_connection" "cloudConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_connection_name = "cloudconnection1"
 ///   cloud_connector = {
 ///     id = "/subscriptions/subid/resourceGroups/demo-rg/providers/Microsoft.HybridCloud/cloudConnectors/123456789012"

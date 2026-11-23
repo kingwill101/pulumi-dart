@@ -62,7 +62,7 @@ import 'workspace_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'workspace_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacepolicy" "workspacePolicy" {
+/// resource "azure-native_apimanagement_workspace_policy" "workspacePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   format              = "xml"
 ///   policy_id           = "policy"
 ///   resource_group_name = "rg1"
@@ -227,7 +230,7 @@ import 'workspace_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -235,7 +238,10 @@ import 'workspace_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacepolicy" "workspacePolicy" {
+/// resource "azure-native_apimanagement_workspace_policy" "workspacePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   format              = "rawxml"
 ///   policy_id           = "policy"
 ///   resource_group_name = "rg1"

@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_computelimit_sharedlimit" "sharedLimit" {
+/// resource "azure-native_computelimit_shared_limit" "sharedLimit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eastus"
 ///   name     = "StandardDSv3Family"
 /// }

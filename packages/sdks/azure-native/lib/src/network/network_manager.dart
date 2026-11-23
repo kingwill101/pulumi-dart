@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///     {
 ///         Description = "My Test Network Manager",
 ///         NetworkManagerName = "TestNetworkManager",
-///         NetworkManagerScopeAccesses = new[]
+///         NetworkManagerScopeAccesses =
 ///         {
 ///             AzureNative.Network.ConfigurationType.Connectivity,
 ///         },
@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkmanager" "networkManager" {
+/// resource "azure-native_network_network_manager" "networkManager" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description                    = "My Test Network Manager"
 ///   network_manager_name           = "TestNetworkManager"
 ///   network_manager_scope_accesses = ["Connectivity"]

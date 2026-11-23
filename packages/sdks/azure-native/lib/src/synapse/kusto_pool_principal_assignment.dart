@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_kustopoolprincipalassignment" "kustoPoolPrincipalAssignment" {
+/// resource "azure-native_synapse_kusto_pool_principal_assignment" "kustoPoolPrincipalAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kusto_pool_name           = "kustoclusterrptest4"
 ///   principal_assignment_name = "kustoprincipal1"
 ///   principal_id              = "87654321-1234-1234-1234-123456789123"

@@ -175,7 +175,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -183,7 +183,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacities = {
 ///     "ClientConnections" = "65536"
 ///   }
@@ -242,6 +245,7 @@ import 'vmssextension_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.VmManagedIdentityArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VaultSecretGroupArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.VaultCertificateArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -601,7 +605,7 @@ import 'vmssextension_response.dart';
 ///                 Name = "Microsoft.Azure.Geneva.GenevaMonitoring",
 ///                 Publisher = "Microsoft.Azure.Geneva",
 ///                 Settings = null,
-///                 SetupOrder = new[]
+///                 SetupOrder =
 ///                 {
 ///                     AzureNative.ServiceFabric.VmssExtensionSetupOrder.BeforeSFRuntime,
 ///                 },
@@ -640,7 +644,7 @@ import 'vmssextension_response.dart';
 ///                 },
 ///             },
 ///         },
-///         VmSetupActions = new[]
+///         VmSetupActions =
 ///         {
 ///             AzureNative.ServiceFabric.VmSetupAction.EnableContainers,
 ///             AzureNative.ServiceFabric.VmSetupAction.EnableHyperV,
@@ -817,7 +821,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -825,7 +829,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_data_disks {
 ///     disk_letter  = "F"
 ///     disk_size_gb = 256
@@ -857,8 +864,8 @@ import 'vmssextension_response.dart';
 ///       private_ip_address_version = "IPv4"
 ///       public_ip_address_configuration = {
 ///         ip_tags = [{
-///           "ipTagType" = "RoutingPreference"
-///           "tag"       = "Internet"
+///           ip_tag_type = "RoutingPreference"
+///           tag         = "Internet"
 ///         }]
 ///         name                      = "publicip-1"
 ///         public_ip_address_version = "IPv4"
@@ -953,10 +960,14 @@ import 'vmssextension_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.VmssDataDiskArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.AdditionalNetworkInterfaceConfigurationArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.IpConfigurationArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.IpConfigurationPublicIPAddressConfigurationArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.IpTagArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.FrontendConfigurationArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VMSSExtensionArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VmManagedIdentityArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VaultSecretGroupArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.VaultCertificateArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1520,7 +1531,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1528,7 +1539,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "myCluster"
 ///   data_disk_size_gb   = 200
 ///   is_primary          = false
@@ -1734,7 +1748,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1742,7 +1756,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name              = "myCluster"
 ///   enable_encryption_at_host = true
 ///   is_primary                = false
@@ -1970,7 +1987,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1978,7 +1995,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "myCluster"
 ///   data_disk_size_gb    = 200
 ///   is_primary           = false
@@ -2090,14 +2110,14 @@ import 'vmssextension_response.dart';
 /// {
 ///     var nodeType = new AzureNative.ServiceFabric.NodeType("nodeType", new()
 ///     {
-///         Capacities = null,
+///         Capacities = new() { },
 ///         ClusterName = "myCluster",
 ///         DataDiskSizeGB = 200,
 ///         DataDiskType = AzureNative.ServiceFabric.DiskType.StandardSSD_LRS,
 ///         HostGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testhostgroupRG/providers/Microsoft.Compute/hostGroups/testHostGroup",
 ///         IsPrimary = false,
 ///         NodeTypeName = "BE",
-///         PlacementProperties = null,
+///         PlacementProperties = new() { },
 ///         ResourceGroupName = "resRg",
 ///         VmImageOffer = "WindowsServer",
 ///         VmImagePublisher = "MicrosoftWindowsServer",
@@ -2156,7 +2176,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2164,7 +2184,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacities           = {}
 ///   cluster_name         = "myCluster"
 ///   data_disk_size_gb    = 200
@@ -2364,7 +2387,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2372,7 +2395,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name               = "myCluster"
 ///   data_disk_size_gb          = 200
 ///   is_primary                 = false
@@ -2546,7 +2572,7 @@ import 'vmssextension_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2554,7 +2580,10 @@ import 'vmssextension_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+/// resource "azure-native_servicefabric_node_type" "nodeType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "myCluster"
 ///   data_disk_size_gb   = 200
 ///   is_primary          = false

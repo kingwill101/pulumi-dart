@@ -27,8 +27,8 @@ import 'system_data_response.dart';
 ///         {
 ///             Enabled = true,
 ///             LatencyMs = 9110,
-///             MaxBytes = 732052221,
-///             MaxMessages = 373078076,
+///             MaxBytes = 732052221.0,
+///             MaxMessages = 373078076.0,
 ///         },
 ///         Compression = AzureNative.IoTOperationsMQ.KafkaMessageCompressionType.None,
 ///         CopyMqttProperties = "efpqgkycuawnzyubdyt",
@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///         TopicMapName = "q582ViEY-b7wF1OO2A",
 ///     });
 ///
@@ -145,7 +145,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,7 +153,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_kafkaconnectortopicmap" "kafkaConnectorTopicMap" {
+/// resource "azure-native_iotoperationsmq_kafka_connector_topic_map" "kafkaConnectorTopicMap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   batching = {
 ///     enabled      = true
 ///     latency_ms   = 9110

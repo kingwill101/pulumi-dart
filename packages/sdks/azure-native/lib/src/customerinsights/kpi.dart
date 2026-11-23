@@ -55,8 +55,8 @@ import 'kpi_thresholds_response.dart';
 ///         ThresHolds = new AzureNative.CustomerInsights.Inputs.KpiThresholdsArgs
 ///         {
 ///             IncreasingKpi = true,
-///             LowerLimit = 5,
-///             UpperLimit = 50,
+///             LowerLimit = 5.0,
+///             UpperLimit = 50.0,
 ///         },
 ///         Unit = "unit",
 ///     });
@@ -117,7 +117,7 @@ import 'kpi_thresholds_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -126,6 +126,9 @@ import 'kpi_thresholds_response.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_kpi" "kpi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aliases {
 ///     alias_name = "alias"
 ///     expression = "Id+4"

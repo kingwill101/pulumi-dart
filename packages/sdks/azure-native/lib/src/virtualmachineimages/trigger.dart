@@ -60,7 +60,7 @@ import 'trigger_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,6 +69,9 @@ import 'trigger_status_response.dart';
 /// }
 ///
 /// resource "azure-native_virtualmachineimages_trigger" "trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_template_name = "myImageTemplate"
 ///   kind                = "SourceImage"
 ///   resource_group_name = "myResourceGroup"

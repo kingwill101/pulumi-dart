@@ -58,7 +58,7 @@ import 'single_server_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'single_server_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_singleserverdatabase" "singleServerDatabase" {
+/// resource "azure-native_dbformysql_single_server_database" "singleServerDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   charset             = "utf8"
 ///   collation           = "utf8_general_ci"
 ///   database_name       = "db1"

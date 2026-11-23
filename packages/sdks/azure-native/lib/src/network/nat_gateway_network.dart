@@ -89,7 +89,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_natgateway" "natGateway" {
+/// resource "azure-native_network_nat_gateway" "natGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "westus"
 ///   nat_gateway_name = "test-natgateway"
 ///   public_ip_addresses {

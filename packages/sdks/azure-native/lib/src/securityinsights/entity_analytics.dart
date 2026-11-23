@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_entityanalytics" "entityAnalytics" {
+/// resource "azure-native_securityinsights_entity_analytics" "entityAnalytics" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   settings_name       = "EyesOn"
 ///   workspace_name      = "myWorkspace"

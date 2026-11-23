@@ -39,11 +39,11 @@ import 'system_data_response.dart';
 ///             CipherSuiteSetType = AzureNative.Cdn.AfdCipherSuiteSetType.Customized,
 ///             CustomizedCipherSuiteSet = new AzureNative.Cdn.Inputs.AFDDomainHttpsCustomizedCipherSuiteSetArgs
 ///             {
-///                 CipherSuiteSetForTls12 = new[]
+///                 CipherSuiteSetForTls12 =
 ///                 {
 ///                     AzureNative.Cdn.AfdCustomizedCipherSuiteForTls12.ECDHE_RSA_AES128_GCM_SHA256,
 ///                 },
-///                 CipherSuiteSetForTls13 = new[]
+///                 CipherSuiteSetForTls13 =
 ///                 {
 ///                     AzureNative.Cdn.AfdCustomizedCipherSuiteForTls13.TLS_AES_128_GCM_SHA256,
 ///                     AzureNative.Cdn.AfdCustomizedCipherSuiteForTls13.TLS_AES_256_GCM_SHA384,
@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -109,7 +109,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_afdcustomdomain" "afdCustomDomain" {
+/// resource "azure-native_cdn_a_f_d_custom_domain" "afdCustomDomain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_dns_zone = {
 ///     id = ""
 ///   }

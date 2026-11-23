@@ -65,9 +65,9 @@ import 'system_data_response.dart';
 /// 			},
 /// 			InstanceName: pulumi.String("resource-123"),
 /// 			Properties: &iotoperations.RegistryEndpointPropertiesArgs{
-/// 				Authentication: iotoperations.RegistryEndpointAnonymousAuthentication{
-/// 					AnonymousSettings: map[string]interface{}{},
-/// 					Method:            "Anonymous",
+/// 				Authentication: &iotoperations.RegistryEndpointAnonymousAuthenticationArgs{
+/// 					AnonymousSettings: pulumi.Any(map[string]interface{}{}),
+/// 					Method:            pulumi.String("Anonymous"),
 /// 				},
 /// 				Host: pulumi.String("contoso.azurecr.io"),
 /// 			},
@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_registryendpoint" "registryEndpoint" {
+/// resource "azure-native_iotoperations_registry_endpoint" "registryEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/F8C729F9-DF9C-4743-848F-96EE433D8E53/resourceGroups/rgiotoperations/providers/Microsoft.ExtendedLocation/customLocations/resource-123"
 ///     type = "CustomLocation"
@@ -100,8 +103,8 @@ import 'system_data_response.dart';
 ///   instance_name = "resource-123"
 ///   properties = {
 ///     authentication = {
-///       "anonymousSettings" = {}
-///       "method"            = "Anonymous"
+///       anonymous_settings = {}
+///       method             = "Anonymous"
 ///     }
 ///     host = "contoso.azurecr.io"
 ///   }
@@ -121,6 +124,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.RegistryEndpointArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.RegistryEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.RegistryEndpointAnonymousAuthenticationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.RegistryEndpointArtifactPullSecretAuthenticationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.RegistryEndpointSystemAssignedIdentityAuthenticationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.RegistryEndpointUserAssignedIdentityAuthenticationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -144,7 +151,6 @@ import 'system_data_response.dart';
 ///                 .authentication(RegistryEndpointAnonymousAuthenticationArgs.builder()
 ///                     .anonymousSettings(Map.ofEntries(
 ///                     ))
-///                     .method("Anonymous")
 ///                     .build())
 ///                 .host("contoso.azurecr.io")
 ///                 .build())

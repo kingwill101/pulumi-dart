@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_roleassignment" "roleAssignment" {
+/// resource "azure-native_authorization_role_assignment" "roleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal_id         = "ce2ce14e-85d7-4629-bdbc-454d0519d987"
 ///   principal_type       = "User"
 ///   role_assignment_name = "05c5a614-a7d6-4502-b150-c2fb455033ff"
@@ -205,7 +208,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -213,7 +216,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_roleassignment" "roleAssignment" {
+/// resource "azure-native_authorization_role_assignment" "roleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal_id         = "ce2ce14e-85d7-4629-bdbc-454d0519d987"
 ///   principal_type       = "User"
 ///   role_assignment_name = "05c5a614-a7d6-4502-b150-c2fb455033ff"
@@ -349,7 +355,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -357,7 +363,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_roleassignment" "roleAssignment" {
+/// resource "azure-native_authorization_role_assignment" "roleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal_id         = "ce2ce14e-85d7-4629-bdbc-454d0519d987"
 ///   principal_type       = "User"
 ///   role_assignment_name = "05c5a614-a7d6-4502-b150-c2fb455033ff"

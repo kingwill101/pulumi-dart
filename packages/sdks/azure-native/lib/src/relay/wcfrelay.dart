@@ -63,7 +63,7 @@ import 'wcfrelay_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'wcfrelay_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_relay_wcfrelay" "wcfRelay" {
+/// resource "azure-native_relay_w_c_f_relay" "wcfRelay" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name                = "example-RelayNamespace-9953"
 ///   relay_name                    = "example-Relay-Wcf-1194"
 ///   relay_type                    = "NetTcp"

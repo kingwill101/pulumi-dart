@@ -122,7 +122,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -130,7 +130,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerappssourcecontrol" "containerAppsSourceControl" {
+/// resource "azure-native_app_container_apps_source_control" "containerAppsSourceControl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   branch             = "master"
 ///   container_app_name = "testcanadacentral"
 ///   github_action_configuration = {
@@ -141,11 +144,11 @@ import 'system_data_response.dart';
 ///       tenant_id     = "<tenantid>"
 ///     }
 ///     build_environment_variables = [{
-///       "name"  = "foo1"
-///       "value" = "bar1"
+///       name  = "foo1"
+///       value = "bar1"
 ///       }, {
-///       "name"  = "foo2"
-///       "value" = "bar2"
+///       name  = "foo2"
+///       value = "bar2"
 ///     }]
 ///     context_path                 = "./"
 ///     dockerfile_path              = "./Dockerfile"
@@ -174,6 +177,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.ContainerAppsSourceControlArgs;
 /// import com.pulumi.azurenative.app.inputs.GithubActionConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.AzureCredentialsArgs;
+/// import com.pulumi.azurenative.app.inputs.EnvironmentVariableArgs;
 /// import com.pulumi.azurenative.app.inputs.RegistryInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_marketplacegalleryimage" "marketplaceGalleryImage" {
+/// resource "azure-native_azurestackhci_marketplace_gallery_image" "marketplaceGalleryImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_init_data_source = "Azure"
 ///   container_id           = "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.AzureStackHCI/storageContainers/test-storage-container"
 ///   extended_location = {

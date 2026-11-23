@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_scom_monitoredresource" "monitoredResource" {
+/// resource "azure-native_scom_monitored_resource" "monitoredResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_name           = "myInstance"
 ///   monitored_resource_name = "d877b154-9a8d-4bfe-8a24-20682fcf2ed3"
 ///   resource_group_name     = "myResGroup"

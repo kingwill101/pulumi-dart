@@ -58,7 +58,7 @@ import 'single_server_firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'single_server_firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserverfirewallrule" "singleServerFirewallRule" {
+/// resource "azure-native_dbforpostgresql_single_server_firewall_rule" "singleServerFirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_ip_address      = "255.255.255.255"
 ///   firewall_rule_name  = "rule1"
 ///   resource_group_name = "TestGroup"

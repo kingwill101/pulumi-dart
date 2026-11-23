@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recommendationsservice_serviceendpoint" "serviceEndpoint" {
+/// resource "azure-native_recommendationsservice_service_endpoint" "serviceEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleAccount"
 ///   location     = "West US"
 ///   properties = {

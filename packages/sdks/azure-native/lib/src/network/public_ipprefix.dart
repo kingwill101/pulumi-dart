@@ -75,7 +75,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_publicipprefix" "publicIPPrefix" {
+/// resource "azure-native_network_public_i_p_prefix" "publicIPPrefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                  = "westus"
 ///   prefix_length             = 30
 ///   public_ip_address_version = "IPv4"
@@ -244,7 +247,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -252,7 +255,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_publicipprefix" "publicIPPrefix" {
+/// resource "azure-native_network_public_i_p_prefix" "publicIPPrefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "westus"
 ///   prefix_length         = 30
 ///   public_ip_prefix_name = "test-ipprefix"

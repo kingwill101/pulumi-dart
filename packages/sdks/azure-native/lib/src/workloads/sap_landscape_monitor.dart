@@ -57,10 +57,10 @@ import 'system_data_response.dart';
 ///         {
 ///             new AzureNative.Workloads.Inputs.SapLandscapeMonitorMetricThresholdsArgs
 ///             {
-///                 Green = 90,
+///                 Green = 90.0,
 ///                 Name = "Instance Availability",
-///                 Red = 50,
-///                 Yellow = 75,
+///                 Red = 50.0,
+///                 Yellow = 75.0,
 ///             },
 ///         },
 ///     });
@@ -122,7 +122,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -130,15 +130,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_saplandscapemonitor" "sapLandscapeMonitor" {
+/// resource "azure-native_workloads_sap_landscape_monitor" "sapLandscapeMonitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   grouping = {
 ///     landscape = [{
-///       "name"   = "Prod"
-///       "topSid" = ["SID1", "SID2"]
+///       name    = "Prod"
+///       top_sid = ["SID1", "SID2"]
 ///     }]
 ///     sap_application = [{
-///       "name"   = "ERP1"
-///       "topSid" = ["SID1", "SID2"]
+///       name    = "ERP1"
+///       top_sid = ["SID1", "SID2"]
 ///     }]
 ///   }
 ///   monitor_name        = "mySapMonitor"
@@ -162,6 +165,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.workloads.SapLandscapeMonitor;
 /// import com.pulumi.azurenative.workloads.SapLandscapeMonitorArgs;
 /// import com.pulumi.azurenative.workloads.inputs.SapLandscapeMonitorPropertiesGroupingArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SapLandscapeMonitorSidMappingArgs;
 /// import com.pulumi.azurenative.workloads.inputs.SapLandscapeMonitorMetricThresholdsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

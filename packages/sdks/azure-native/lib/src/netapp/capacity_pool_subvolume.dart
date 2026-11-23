@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_capacitypoolsubvolume" "capacityPoolSubvolume" {
+/// resource "azure-native_netapp_capacity_pool_subvolume" "capacityPoolSubvolume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "account1"
 ///   path                = "/subvolumePath"
 ///   pool_name           = "pool1"

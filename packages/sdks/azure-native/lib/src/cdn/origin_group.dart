@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_origingroup" "originGroup" {
+/// resource "azure-native_cdn_origin_group" "originGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "endpoint1"
 ///   health_probe_settings = {
 ///     probe_interval_in_seconds = 120

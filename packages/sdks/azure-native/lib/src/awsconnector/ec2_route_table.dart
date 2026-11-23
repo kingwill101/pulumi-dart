@@ -110,7 +110,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -118,7 +118,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2routetable" "ec2RouteTable" {
+/// resource "azure-native_awsconnector_ec2_route_table" "ec2RouteTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "hovrzjhgmyvotekfhnhfmvlcak"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -127,8 +130,8 @@ import 'system_data_response.dart';
 ///     aws_properties = {
 ///       route_table_id = "wjkircnwaktkmbnrmuglladvcdghmn"
 ///       tags = [{
-///         "key"   = "jeqm"
-///         "value" = "ywbmagghbowtrgxkmnquatuohxj"
+///         key   = "jeqm"
+///         value = "ywbmagghbowtrgxkmnquatuohxj"
 ///       }]
 ///       vpc_id = "ndnaspemjnmztnyriemuybzp"
 ///     }
@@ -158,6 +161,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2RouteTableArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2RouteTablePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2RouteTablePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

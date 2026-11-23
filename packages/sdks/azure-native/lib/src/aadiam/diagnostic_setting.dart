@@ -82,7 +82,7 @@ import 'log_settings_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'log_settings_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_aadiam_diagnosticsetting" "diagnosticSetting" {
+/// resource "azure-native_aadiam_diagnostic_setting" "diagnosticSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_hub_authorization_rule_id = "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/eventhubs/myeventhub/authorizationrules/myrule"
 ///   event_hub_name                  = "myeventhub"
 ///   logs {

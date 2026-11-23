@@ -62,7 +62,7 @@ import 'extended_database_blob_auditing_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'extended_database_blob_auditing_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_extendeddatabaseblobauditingpolicy" "extendedDatabaseBlobAuditingPolicy" {
+/// resource "azure-native_sql_extended_database_blob_auditing_policy" "extendedDatabaseBlobAuditingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blob_auditing_policy_name       = "default"
 ///   database_name                   = "testdb"
 ///   is_azure_monitor_target_enabled = true
@@ -238,7 +241,7 @@ import 'extended_database_blob_auditing_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -246,7 +249,10 @@ import 'extended_database_blob_auditing_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_extendeddatabaseblobauditingpolicy" "extendedDatabaseBlobAuditingPolicy" {
+/// resource "azure-native_sql_extended_database_blob_auditing_policy" "extendedDatabaseBlobAuditingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   audit_actions_and_groups        = ["DATABASE_LOGOUT_GROUP", "DATABASE_ROLE_MEMBER_CHANGE_GROUP", "UPDATE on database::TestDatabaseName by public"]
 ///   blob_auditing_policy_name       = "default"
 ///   database_name                   = "testdb"
@@ -445,7 +451,7 @@ import 'extended_database_blob_auditing_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -453,7 +459,10 @@ import 'extended_database_blob_auditing_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_extendeddatabaseblobauditingpolicy" "extendedDatabaseBlobAuditingPolicy" {
+/// resource "azure-native_sql_extended_database_blob_auditing_policy" "extendedDatabaseBlobAuditingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blob_auditing_policy_name  = "default"
 ///   database_name              = "testdb"
 ///   resource_group_name        = "blobauditingtest-4799"

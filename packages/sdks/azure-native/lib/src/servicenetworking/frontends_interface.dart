@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicenetworking_frontendsinterface" "frontendsInterface" {
+/// resource "azure-native_servicenetworking_frontends_interface" "frontendsInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   frontend_name           = "fe1"
 ///   location                = "NorthCentralUS"
 ///   resource_group_name     = "rg1"

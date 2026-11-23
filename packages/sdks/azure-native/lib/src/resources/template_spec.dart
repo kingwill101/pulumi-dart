@@ -60,7 +60,7 @@ import 'template_spec_version_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'template_spec_version_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_templatespec" "templateSpec" {
+/// resource "azure-native_resources_template_spec" "templateSpec" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "A very simple Template Spec"
 ///   location            = "eastus"
 ///   resource_group_name = "templateSpecRG"

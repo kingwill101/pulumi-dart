@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,6 +101,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appcomplianceautomation_report" "report" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   offer_guid  = "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002"
 ///   report_name = "testReportName"
 ///   resources {

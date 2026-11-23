@@ -56,7 +56,7 @@ import 'express_route_port_authorization_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'express_route_port_authorization_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressrouteportauthorization" "expressRoutePortAuthorization" {
+/// resource "azure-native_network_express_route_port_authorization" "expressRoutePortAuthorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_name      = "authorizatinName"
 ///   express_route_port_name = "expressRoutePortName"
 ///   resource_group_name     = "rg1"

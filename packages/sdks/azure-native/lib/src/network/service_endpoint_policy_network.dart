@@ -58,7 +58,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_serviceendpointpolicy" "serviceEndpointPolicy" {
+/// resource "azure-native_network_service_endpoint_policy" "serviceEndpointPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "westus"
 ///   resource_group_name          = "rg1"
 ///   service_endpoint_policy_name = "testPolicy"
@@ -215,7 +218,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -223,7 +226,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_serviceendpointpolicy" "serviceEndpointPolicy" {
+/// resource "azure-native_network_service_endpoint_policy" "serviceEndpointPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "rg1"
 ///   service_endpoint_policy_definitions {

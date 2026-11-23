@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_relay_hybridconnection" "hybridConnection" {
+/// resource "azure-native_relay_hybrid_connection" "hybridConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hybrid_connection_name        = "example-Relay-Hybrid-01"
 ///   namespace_name                = "example-RelayNamespace-01"
 ///   requires_client_authorization = true

@@ -66,7 +66,7 @@ import 'virtual_machine_scale_set_migration_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'virtual_machine_scale_set_migration_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_availabilityset" "availabilitySet" {
+/// resource "azure-native_compute_availability_set" "availabilitySet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_set_name        = "myAvailabilitySet"
 ///   location                     = "westus"
 ///   platform_fault_domain_count  = 2
@@ -210,7 +213,7 @@ import 'virtual_machine_scale_set_migration_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +221,10 @@ import 'virtual_machine_scale_set_migration_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_availabilityset" "availabilitySet" {
+/// resource "azure-native_compute_availability_set" "availabilitySet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_set_name        = "myAvailabilitySet"
 ///   location                     = "westus"
 ///   platform_fault_domain_count  = 2

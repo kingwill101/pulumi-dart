@@ -89,7 +89,7 @@ import 'network_profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'network_profile_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkprofile" "networkProfile" {
+/// resource "azure-native_network_network_profile" "networkProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_network_interface_configurations {
 ///     ip_configurations {
 ///       name = "ipconfig1"
@@ -123,6 +126,8 @@ import 'network_profile_args.dart';
 /// import com.pulumi.azurenative.network.NetworkProfile;
 /// import com.pulumi.azurenative.network.NetworkProfileArgs;
 /// import com.pulumi.azurenative.network.inputs.ContainerNetworkInterfaceConfigurationArgs;
+/// import com.pulumi.azurenative.network.inputs.IPConfigurationProfileArgs;
+/// import com.pulumi.azurenative.network.inputs.SubnetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,15 +79,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_linkedservice" "linkedService" {
+/// resource "azure-native_datafactory_linked_service" "linkedService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name        = "exampleFactoryName"
 ///   linked_service_name = "exampleLinkedService"
 ///   properties = {
-///     "connectionString" = {
+///     connection_string = {
 ///       "type"  = "SecureString"
 ///       "value" = "DefaultEndpointsProtocol=https;AccountName=examplestorageaccount;AccountKey=<storage key>"
 ///     }
-///     "type" = "AzureStorage"
+///     type = "AzureStorage"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -102,6 +105,127 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.LinkedService;
 /// import com.pulumi.azurenative.datafactory.LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonMWSLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForOracleLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForSqlServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRedshiftLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonS3CompatibleLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonS3LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AppFiguresLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AsanaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBatchLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobFSLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataExplorerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataLakeAnalyticsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataLakeStoreLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDatabricksDeltaLakeLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDatabricksLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureFileStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureFunctionLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureKeyVaultLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMLLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMLServiceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMariaDBLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMySqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzurePostgreSqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSearchLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlDWLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlDatabaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlMILinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSynapseArtifactsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureTableStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CassandraLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CommonDataServiceForAppsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ConcurLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbMongoDbApiLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CouchbaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CustomDataSourceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataworldLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Db2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DrillLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsAXLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsCrmLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.EloquaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FileServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FtpServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleAdWordsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleCloudStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleSheetsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GreenplumLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HBaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HDInsightLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HDInsightOnDemandLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HdfsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HiveLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HttpLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HubspotLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ImpalaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.InformixLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JiraLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.LakeHouseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MagentoLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MariaDBLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MarketoLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MicrosoftAccessLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbAtlasLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MySqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.NetezzaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ODataLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OdbcLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Office365LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleCloudStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleServiceCloudLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PaypalLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PhoenixLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PrestoLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.QuickBooksLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.QuickbaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ResponsysLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RestServiceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceMarketingCloudLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapBWLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapCloudForCustomerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapEccLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapHanaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOdpLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOpenHubLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapTableLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SftpServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SharePointOnlineListLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ShopifyLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SmartsheetLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SparkLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SqlServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SquareLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SybaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TeamDeskLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TeradataLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TwilioLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.VerticaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WarehouseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WebLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.XeroLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ZendeskLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ZohoLinkedServiceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -123,7 +247,6 @@ import 'system_data_response.dart';
 ///                     Map.entry("type", "SecureString"),
 ///                     Map.entry("value", "DefaultEndpointsProtocol=https;AccountName=examplestorageaccount;AccountKey=<storage key>")
 ///                 ))
-///                 .type("AzureStorage")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());
@@ -252,7 +375,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -260,16 +383,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_linkedservice" "linkedService" {
+/// resource "azure-native_datafactory_linked_service" "linkedService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name        = "exampleFactoryName"
 ///   linked_service_name = "exampleLinkedService"
 ///   properties = {
-///     "connectionString" = {
+///     connection_string = {
 ///       "type"  = "SecureString"
 ///       "value" = "DefaultEndpointsProtocol=https;AccountName=examplestorageaccount;AccountKey=<storage key>"
 ///     }
-///     "description" = "Example description"
-///     "type"        = "AzureStorage"
+///     description = "Example description"
+///     type        = "AzureStorage"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -284,6 +410,127 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.LinkedService;
 /// import com.pulumi.azurenative.datafactory.LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonMWSLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForOracleLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForSqlServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRedshiftLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonS3CompatibleLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonS3LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AppFiguresLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AsanaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBatchLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobFSLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataExplorerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataLakeAnalyticsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataLakeStoreLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDatabricksDeltaLakeLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDatabricksLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureFileStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureFunctionLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureKeyVaultLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMLLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMLServiceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMariaDBLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMySqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzurePostgreSqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSearchLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlDWLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlDatabaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlMILinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSynapseArtifactsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureTableStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CassandraLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CommonDataServiceForAppsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ConcurLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbMongoDbApiLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CouchbaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CustomDataSourceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataworldLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Db2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DrillLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsAXLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsCrmLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.EloquaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FileServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FtpServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleAdWordsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleCloudStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleSheetsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GreenplumLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HBaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HDInsightLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HDInsightOnDemandLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HdfsLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HiveLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HttpLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HubspotLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ImpalaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.InformixLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JiraLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.LakeHouseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MagentoLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MariaDBLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MarketoLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MicrosoftAccessLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbAtlasLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MySqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.NetezzaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ODataLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OdbcLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Office365LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleCloudStorageLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleServiceCloudLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PaypalLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PhoenixLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PrestoLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.QuickBooksLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.QuickbaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ResponsysLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RestServiceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceMarketingCloudLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapBWLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapCloudForCustomerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapEccLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapHanaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOdpLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOpenHubLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapTableLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SftpServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SharePointOnlineListLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ShopifyLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SmartsheetLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeV2LinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SparkLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SqlServerLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SquareLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SybaseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TeamDeskLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TeradataLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TwilioLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.VerticaLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WarehouseLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WebLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.XeroLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ZendeskLinkedServiceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ZohoLinkedServiceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -306,7 +553,6 @@ import 'system_data_response.dart';
 ///                     Map.entry("value", "DefaultEndpointsProtocol=https;AccountName=examplestorageaccount;AccountKey=<storage key>")
 ///                 ))
 ///                 .description("Example description")
-///                 .type("AzureStorage")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());

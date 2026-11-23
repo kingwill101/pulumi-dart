@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_hybridconnectivity_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "custom"
 ///   resource_id   = "/subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.Relay/namespaces/custom-relay-namespace"
 ///   resource_uri  = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine"
@@ -194,7 +197,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -203,6 +206,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_hybridconnectivity_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "default"
 ///   resource_uri  = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine"
 ///   type          = "default"

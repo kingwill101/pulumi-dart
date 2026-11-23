@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_remediationatsubscription" "remediationAtSubscription" {
+/// resource "azure-native_policyinsights_remediation_at_subscription" "remediationAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_assignment_id = "/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"
 ///   remediation_name     = "storageRemediation"
 /// }
@@ -210,7 +213,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +221,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_remediationatsubscription" "remediationAtSubscription" {
+/// resource "azure-native_policyinsights_remediation_at_subscription" "remediationAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   failure_threshold = {
 ///     percentage = 0.1
 ///   }
@@ -439,7 +445,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -447,7 +453,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_remediationatsubscription" "remediationAtSubscription" {
+/// resource "azure-native_policyinsights_remediation_at_subscription" "remediationAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   failure_threshold = {
 ///     percentage = 0.1
 ///   }

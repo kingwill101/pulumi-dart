@@ -143,7 +143,7 @@ import 'connection_monitor_test_group_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,7 +151,10 @@ import 'connection_monitor_test_group_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_connectionmonitor" "connectionMonitor" {
+/// resource "azure-native_network_connection_monitor" "connectionMonitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_monitor_name = "cm1"
 ///   endpoints {
 ///     name        = "source"
@@ -396,7 +399,7 @@ import 'connection_monitor_test_group_response.dart';
 ///             },
 ///         },
 ///         NetworkWatcherName = "nw1",
-///         Outputs = new[] {},
+///         Outputs = new() {},
 ///         ResourceGroupName = "rg1",
 ///         TestConfigurations = new[]
 ///         {
@@ -522,7 +525,7 @@ import 'connection_monitor_test_group_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -530,7 +533,10 @@ import 'connection_monitor_test_group_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_connectionmonitor" "connectionMonitor" {
+/// resource "azure-native_network_connection_monitor" "connectionMonitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_monitor_name = "cm1"
 ///   endpoints {
 ///     name        = "vm1"
@@ -539,8 +545,8 @@ import 'connection_monitor_test_group_response.dart';
 ///   endpoints {
 ///     filter = {
 ///       items = [{
-///         "address" = "npmuser"
-///         "type"    = "AgentAddress"
+///         address = "npmuser"
+///         type    = "AgentAddress"
 ///       }]
 ///       type = "Include"
 ///     }
@@ -587,6 +593,7 @@ import 'connection_monitor_test_group_response.dart';
 /// import com.pulumi.azurenative.network.ConnectionMonitorArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointFilterArgs;
+/// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointFilterItemArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTcpConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestGroupArgs;
@@ -878,7 +885,7 @@ import 'connection_monitor_test_group_response.dart';
 ///             },
 ///         },
 ///         NetworkWatcherName = "nw1",
-///         Outputs = new[] {},
+///         Outputs = new() {},
 ///         ResourceGroupName = "rg1",
 ///         TestConfigurations = new[]
 ///         {
@@ -1009,7 +1016,7 @@ import 'connection_monitor_test_group_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1017,7 +1024,10 @@ import 'connection_monitor_test_group_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_connectionmonitor" "connectionMonitor" {
+/// resource "azure-native_network_connection_monitor" "connectionMonitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_monitor_name = "cm1"
 ///   endpoints {
 ///     name        = "vm1"
@@ -1041,7 +1051,7 @@ import 'connection_monitor_test_group_response.dart';
 ///     name = "ArcBasedNetwork"
 ///     scope = {
 ///       include = [{
-///         "address" = "172.21.128.0/20"
+///         address = "172.21.128.0/20"
 ///       }]
 ///     }
 ///     subscription_id = "9cece3e3-0f7d-47ca-af0e-9772773f90b7"
@@ -1080,6 +1090,7 @@ import 'connection_monitor_test_group_response.dart';
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointLocationDetailsArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointScopeArgs;
+/// import com.pulumi.azurenative.network.inputs.ConnectionMonitorEndpointScopeItemArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTcpConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestGroupArgs;

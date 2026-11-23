@@ -125,7 +125,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -133,7 +133,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_bmckeyset" "bmcKeySet" {
+/// resource "azure-native_networkcloud_bmc_key_set" "bmcKeySet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_group_id   = "f110271b-XXXX-4163-9b99-214d91660f0e"
 ///   bmc_key_set_name = "bmcKeySetName"
 ///   cluster_name     = "clusterName"

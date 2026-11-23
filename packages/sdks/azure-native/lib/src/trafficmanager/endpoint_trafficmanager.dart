@@ -72,7 +72,7 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,6 +81,9 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   always_serve        = "Enabled"
 ///   endpoint_location   = "North Europe"
 ///   endpoint_name       = "azsmnet7187"
@@ -272,7 +275,7 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -281,6 +284,9 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_headers {
 ///     name  = "header-1"
 ///     value = "value-1"
@@ -494,7 +500,7 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -503,6 +509,9 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name       = "My%20external%20endpoint"
 ///   endpoint_status     = "Enabled"
 ///   endpoint_type       = "ExternalEndpoints"
@@ -676,7 +685,7 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -685,6 +694,9 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_location   = "North Europe"
 ///   endpoint_name       = "azsmnet7187"
 ///   endpoint_status     = "Enabled"
@@ -869,7 +881,7 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -878,6 +890,9 @@ import 'endpoint_properties_subnets_item_response.dart';
 /// }
 ///
 /// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name       = "My%20external%20endpoint"
 ///   endpoint_status     = "Enabled"
 ///   endpoint_type       = "ExternalEndpoints"

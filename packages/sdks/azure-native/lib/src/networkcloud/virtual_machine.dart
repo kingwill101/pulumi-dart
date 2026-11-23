@@ -33,14 +33,14 @@ import 'virtual_machine_placement_hint_response.dart';
 ///             AttachedNetworkId = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/cloudServicesNetworks/cloudServicesNetworkName",
 ///             IpAllocationMethod = AzureNative.NetworkCloud.VirtualMachineIPAllocationMethod.Dynamic,
 ///         },
-///         CpuCores = 2,
+///         CpuCores = 2.0,
 ///         ExtendedLocation = new AzureNative.NetworkCloud.Inputs.ExtendedLocationArgs
 ///         {
 ///             Name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName",
 ///             Type = "CustomLocation",
 ///         },
 ///         Location = "location",
-///         MemorySizeGB = 8,
+///         MemorySizeGB = 8.0,
 ///         NetworkAttachments = new[]
 ///         {
 ///             new AzureNative.NetworkCloud.Inputs.NetworkAttachmentArgs
@@ -78,7 +78,7 @@ import 'virtual_machine_placement_hint_response.dart';
 ///             {
 ///                 CreateOption = AzureNative.NetworkCloud.OsDiskCreateOption.Ephemeral,
 ///                 DeleteOption = AzureNative.NetworkCloud.OsDiskDeleteOption.Delete,
-///                 DiskSizeGB = 120,
+///                 DiskSizeGB = 120.0,
 ///             },
 ///             VolumeAttachments = new[]
 ///             {
@@ -190,7 +190,7 @@ import 'virtual_machine_placement_hint_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -198,7 +198,10 @@ import 'virtual_machine_placement_hint_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_virtualmachine" "virtualMachine" {
+/// resource "azure-native_networkcloud_virtual_machine" "virtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_username = "username"
 ///   boot_method    = "UEFI"
 ///   cloud_services_network_attachment = {

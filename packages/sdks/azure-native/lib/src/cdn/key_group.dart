@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_keygroup" "keyGroup" {
+/// resource "azure-native_cdn_key_group" "keyGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_group_name = "kg1"
 ///   key_references {
 ///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/secrets/secret1"

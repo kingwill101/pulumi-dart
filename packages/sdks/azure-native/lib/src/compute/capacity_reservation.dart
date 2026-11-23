@@ -31,7 +31,7 @@ import 'system_data_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 4,
+///             Capacity = 4.0,
 ///             Name = "Standard_DS1_v2",
 ///         },
 ///         Tags =
@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_capacityreservation" "capacityReservation" {
+/// resource "azure-native_compute_capacity_reservation" "capacityReservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_reservation_group_name = "myCapacityReservationGroup"
 ///   capacity_reservation_name       = "myCapacityReservation"
 ///   location                        = "westus"

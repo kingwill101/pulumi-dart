@@ -81,7 +81,7 @@ import 'vpn_server_configuration_properties_response.dart';
 ///                 new AzureNative.Network.Inputs.RadiusServerArgs
 ///                 {
 ///                     RadiusServerAddress = "10.0.0.0",
-///                     RadiusServerScore = 25,
+///                     RadiusServerScore = 25.0,
 ///                     RadiusServerSecret = "radiusServerSecret",
 ///                 },
 ///             },
@@ -115,7 +115,7 @@ import 'vpn_server_configuration_properties_response.dart';
 ///                     PublicCertData = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuN",
 ///                 },
 ///             },
-///             VpnProtocols = new[]
+///             VpnProtocols =
 ///             {
 ///                 AzureNative.Network.VpnGatewayTunnelingProtocol.IkeV2,
 ///             },
@@ -237,7 +237,7 @@ import 'vpn_server_configuration_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -245,60 +245,63 @@ import 'vpn_server_configuration_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_vpnserverconfiguration" "vpnServerConfiguration" {
+/// resource "azure-native_network_vpn_server_configuration" "vpnServerConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "West US"
 ///   properties = {
 ///     configuration_policy_groups = [{
-///       "id"        = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup1"
-///       "isDefault" = true
-///       "name"      = "policyGroup1"
-///       "policyMembers" = [{
-///         "attributeType"  = "RadiusAzureGroupId"
-///         "attributeValue" = "6ad1bd08"
-///         "name"           = "policy1"
+///       id         = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup1"
+///       is_default = true
+///       name       = "policyGroup1"
+///       policy_members = [{
+///         attribute_type  = "RadiusAzureGroupId"
+///         attribute_value = "6ad1bd08"
+///         name            = "policy1"
 ///       }]
-///       "priority" = 0
+///       priority = 0
 ///       }, {
-///       "id"        = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup2"
-///       "isDefault" = true
-///       "name"      = "policyGroup2"
-///       "policyMembers" = [{
-///         "attributeType"  = "CertificateGroupId"
-///         "attributeValue" = "red.com"
-///         "name"           = "policy2"
+///       id         = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup2"
+///       is_default = true
+///       name       = "policyGroup2"
+///       policy_members = [{
+///         attribute_type  = "CertificateGroupId"
+///         attribute_value = "red.com"
+///         name            = "policy2"
 ///       }]
-///       "priority" = 0
+///       priority = 0
 ///     }]
 ///     radius_client_root_certificates = [{
-///       "name"       = "vpnServerConfigRadiusClientRootCert1"
-///       "thumbprint" = "83FFBFC8848B5A5836C94D0112367E16148A286F"
+///       name       = "vpnServerConfigRadiusClientRootCert1"
+///       thumbprint = "83FFBFC8848B5A5836C94D0112367E16148A286F"
 ///     }]
 ///     radius_server_root_certificates = [{
-///       "name"           = "vpnServerConfigRadiusServerRootCer1"
-///       "publicCertData" = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuM"
+///       name             = "vpnServerConfigRadiusServerRootCer1"
+///       public_cert_data = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuM"
 ///     }]
 ///     radius_servers = [{
-///       "radiusServerAddress" = "10.0.0.0"
-///       "radiusServerScore"   = 25
-///       "radiusServerSecret"  = "radiusServerSecret"
+///       radius_server_address = "10.0.0.0"
+///       radius_server_score   = 25
+///       radius_server_secret  = "radiusServerSecret"
 ///     }]
 ///     vpn_client_ipsec_policies = [{
-///       "dhGroup"             = "DHGroup14"
-///       "ikeEncryption"       = "AES256"
-///       "ikeIntegrity"        = "SHA384"
-///       "ipsecEncryption"     = "AES256"
-///       "ipsecIntegrity"      = "SHA256"
-///       "pfsGroup"            = "PFS14"
-///       "saDataSizeKilobytes" = 429497
-///       "saLifeTimeSeconds"   = 86472
+///       dh_group               = "DHGroup14"
+///       ike_encryption         = "AES256"
+///       ike_integrity          = "SHA384"
+///       ipsec_encryption       = "AES256"
+///       ipsec_integrity        = "SHA256"
+///       pfs_group              = "PFS14"
+///       sa_data_size_kilobytes = 429497
+///       sa_life_time_seconds   = 86472
 ///     }]
 ///     vpn_client_revoked_certificates = [{
-///       "name"       = "vpnServerConfigVpnClientRevokedCert1"
-///       "thumbprint" = "83FFBFC8848B5A5836C94D0112367E16148A286F"
+///       name       = "vpnServerConfigVpnClientRevokedCert1"
+///       thumbprint = "83FFBFC8848B5A5836C94D0112367E16148A286F"
 ///     }]
 ///     vpn_client_root_certificates = [{
-///       "name"           = "vpnServerConfigVpnClientRootCert1"
-///       "publicCertData" = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuN"
+///       name             = "vpnServerConfigVpnClientRootCert1"
+///       public_cert_data = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuN"
 ///     }]
 ///     vpn_protocols = ["IkeV2"]
 ///   }
@@ -320,6 +323,14 @@ import 'vpn_server_configuration_properties_response.dart';
 /// import com.pulumi.azurenative.network.VpnServerConfiguration;
 /// import com.pulumi.azurenative.network.VpnServerConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnServerConfigurationPropertiesArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnServerConfigurationPolicyGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnServerConfigurationPolicyGroupMemberArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnServerConfigRadiusClientRootCertificateArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnServerConfigRadiusServerRootCertificateArgs;
+/// import com.pulumi.azurenative.network.inputs.RadiusServerArgs;
+/// import com.pulumi.azurenative.network.inputs.IpsecPolicyArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnServerConfigVpnClientRevokedCertificateArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnServerConfigVpnClientRootCertificateArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

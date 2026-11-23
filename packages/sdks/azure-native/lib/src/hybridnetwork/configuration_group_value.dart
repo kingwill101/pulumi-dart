@@ -56,9 +56,9 @@ import 'system_data_response.dart';
 /// 			ConfigurationGroupValueName: pulumi.String("testConfigurationGroupValue"),
 /// 			Location:                    pulumi.String("eastus"),
 /// 			Properties: &hybridnetwork.ConfigurationValueWithoutSecretsArgs{
-/// 				ConfigurationGroupSchemaResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName",
-/// 					IdType: "Open",
+/// 				ConfigurationGroupSchemaResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				ConfigurationType:  pulumi.String("Open"),
 /// 				ConfigurationValue: pulumi.String("{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"),
@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,16 +83,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_configurationgroupvalue" "configurationGroupValue" {
+/// resource "azure-native_hybridnetwork_configuration_group_value" "configurationGroupValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_group_value_name = "testConfigurationGroupValue"
 ///   location                       = "eastus"
 ///   properties = {
-///     "configurationGroupSchemaResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"
-///       "idType" = "Open"
+///     configuration_group_schema_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"
+///       id_type = "Open"
 ///     }
-///     "configurationType"  = "Open"
-///     "configurationValue" = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"
+///     configuration_type  = "Open"
+///     configuration_value = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"
 ///   }
 ///   resource_group_name = "rg1"
 /// }
@@ -107,6 +110,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupValue;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupValueArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -126,9 +133,7 @@ import 'system_data_response.dart';
 ///             .properties(ConfigurationValueWithoutSecretsArgs.builder()
 ///                 .configurationGroupSchemaResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName")
-///                     .idType("Open")
 ///                     .build())
-///                 .configurationType("Open")
 ///                 .configurationValue("{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}")
 ///                 .build())
 ///             .resourceGroupName("rg1")
@@ -242,9 +247,9 @@ import 'system_data_response.dart';
 /// 			ConfigurationGroupValueName: pulumi.String("testConfigurationGroupValue"),
 /// 			Location:                    pulumi.String("eastus"),
 /// 			Properties: &hybridnetwork.ConfigurationValueWithSecretsArgs{
-/// 				ConfigurationGroupSchemaResourceReference: hybridnetwork.OpenDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName",
-/// 					IdType: "Open",
+/// 				ConfigurationGroupSchemaResourceReference: &hybridnetwork.OpenDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"),
+/// 					IdType: pulumi.String("Open"),
 /// 				},
 /// 				ConfigurationType:        pulumi.String("Secret"),
 /// 				SecretConfigurationValue: pulumi.String("{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"),
@@ -261,7 +266,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -269,16 +274,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_configurationgroupvalue" "configurationGroupValue" {
+/// resource "azure-native_hybridnetwork_configuration_group_value" "configurationGroupValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_group_value_name = "testConfigurationGroupValue"
 ///   location                       = "eastus"
 ///   properties = {
-///     "configurationGroupSchemaResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"
-///       "idType" = "Open"
+///     configuration_group_schema_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"
+///       id_type = "Open"
 ///     }
-///     "configurationType"        = "Secret"
-///     "secretConfigurationValue" = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"
+///     configuration_type         = "Secret"
+///     secret_configuration_value = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"
 ///   }
 ///   resource_group_name = "rg1"
 /// }
@@ -293,6 +301,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupValue;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupValueArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -312,9 +324,7 @@ import 'system_data_response.dart';
 ///             .properties(ConfigurationValueWithSecretsArgs.builder()
 ///                 .configurationGroupSchemaResourceReference(OpenDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName")
-///                     .idType("Open")
 ///                     .build())
-///                 .configurationType("Secret")
 ///                 .secretConfigurationValue("{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}")
 ///                 .build())
 ///             .resourceGroupName("rg1")
@@ -428,9 +438,9 @@ import 'system_data_response.dart';
 /// 			ConfigurationGroupValueName: pulumi.String("testConfigurationGroupValue"),
 /// 			Location:                    pulumi.String("eastus"),
 /// 			Properties: &hybridnetwork.ConfigurationValueWithoutSecretsArgs{
-/// 				ConfigurationGroupSchemaResourceReference: hybridnetwork.SecretDeploymentResourceReference{
-/// 					Id:     "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName",
-/// 					IdType: "Secret",
+/// 				ConfigurationGroupSchemaResourceReference: &hybridnetwork.SecretDeploymentResourceReferenceArgs{
+/// 					Id:     pulumi.String("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"),
+/// 					IdType: pulumi.String("Secret"),
 /// 				},
 /// 				ConfigurationType:  pulumi.String("Open"),
 /// 				ConfigurationValue: pulumi.String("{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"),
@@ -447,7 +457,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -455,16 +465,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_configurationgroupvalue" "configurationGroupValue" {
+/// resource "azure-native_hybridnetwork_configuration_group_value" "configurationGroupValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_group_value_name = "testConfigurationGroupValue"
 ///   location                       = "eastus"
 ///   properties = {
-///     "configurationGroupSchemaResourceReference" = {
-///       "id"     = "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"
-///       "idType" = "Secret"
+///     configuration_group_schema_resource_reference = {
+///       id      = "/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"
+///       id_type = "Secret"
 ///     }
-///     "configurationType"  = "Open"
-///     "configurationValue" = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"
+///     configuration_type  = "Open"
+///     configuration_value = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}"
 ///   }
 ///   resource_group_name = "rg1"
 /// }
@@ -479,6 +492,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupValue;
 /// import com.pulumi.azurenative.hybridnetwork.ConfigurationGroupValueArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationValueWithSecretsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OpenDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SecretDeploymentResourceReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ConfigurationValueWithoutSecretsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -498,9 +515,7 @@ import 'system_data_response.dart';
 ///             .properties(ConfigurationValueWithoutSecretsArgs.builder()
 ///                 .configurationGroupSchemaResourceReference(SecretDeploymentResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName")
-///                     .idType("Secret")
 ///                     .build())
-///                 .configurationType("Open")
 ///                 .configurationValue("{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}")
 ///                 .build())
 ///             .resourceGroupName("rg1")

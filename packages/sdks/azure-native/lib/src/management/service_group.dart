@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_management_servicegroup" "serviceGroup" {
+/// resource "azure-native_management_service_group" "serviceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     display_name = "ServiceGroup 1 Name"
 ///     parent = {

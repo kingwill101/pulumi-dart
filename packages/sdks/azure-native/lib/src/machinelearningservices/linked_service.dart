@@ -74,7 +74,7 @@ import 'linked_service_props_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'linked_service_props_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_linkedservice" "linkedService" {
+/// resource "azure-native_machinelearningservices_linked_service" "linkedService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }

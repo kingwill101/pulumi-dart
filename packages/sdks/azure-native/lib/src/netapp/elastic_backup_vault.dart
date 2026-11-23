@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_elasticbackupvault" "elasticBackupVault" {
+/// resource "azure-native_netapp_elastic_backup_vault" "elasticBackupVault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "account1"
 ///   backup_vault_name   = "backupVault1"
 ///   location            = "eastus"

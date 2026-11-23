@@ -73,7 +73,7 @@ import 'power_shell72_module_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'power_shell72_module_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_powershell72module" "powerShell72Module" {
+/// resource "azure-native_automation_power_shell72_module" "powerShell72Module" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount33"
 ///   content_link = {
 ///     content_hash = {

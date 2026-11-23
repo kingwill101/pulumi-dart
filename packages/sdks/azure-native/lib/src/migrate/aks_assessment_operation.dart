@@ -38,7 +38,7 @@ import 'system_data_response.dart';
 ///             Category = AzureNative.Migrate.AzureVmCategory.All,
 ///             Consolidation = AzureNative.Migrate.ConsolidationType.Full,
 ///             Currency = AzureNative.Migrate.AzureCurrency.Unknown,
-///             DiscountPercentage = 15,
+///             DiscountPercentage = 15.0,
 ///             EnvironmentType = AzureNative.Migrate.AzureEnvironmentType.Unknown,
 ///             LicensingProgram = "Default",
 ///             PerformanceData = new AzureNative.Migrate.Inputs.PerfDataSettingsArgs
@@ -50,7 +50,7 @@ import 'system_data_response.dart';
 ///             },
 ///             PricingTier = AzureNative.Migrate.PricingTier.Standard,
 ///             SavingsOptions = AzureNative.Migrate.SavingsOptions.None,
-///             ScalingFactor = 3,
+///             ScalingFactor = 3.0,
 ///             SizingCriteria = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///         },
 ///     });
@@ -107,7 +107,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -115,7 +115,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_aksassessmentoperation" "aksAssessmentOperation" {
+/// resource "azure-native_migrate_aks_assessment_operation" "aksAssessmentOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name     = "testaksassessment"
 ///   project_name        = "testproject"
 ///   resource_group_name = "rgaksswagger"

@@ -37,7 +37,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 Notification = new AzureNative.MachineLearningServices.Inputs.NotificationSettingArgs
 ///                 {
-///                     EmailOn = new[]
+///                     EmailOn =
 ///                     {
 ///                         AzureNative.MachineLearningServices.EmailNotificationEnableType.JobFailed,
 ///                     },
@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 ///                         {
 ///                             1,
 ///                         },
-///                         WeekDays = new[]
+///                         WeekDays =
 ///                         {
 ///                             AzureNative.MachineLearningServices.WeekDay.Monday,
 ///                         },
@@ -191,7 +191,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -199,7 +199,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_featuresetversion" "featuresetVersion" {
+/// resource "azure-native_machinelearningservices_featureset_version" "featuresetVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
 ///     description  = "string"
@@ -294,20 +297,19 @@ import 'system_data_response.dart';
 ///                     .resource(MaterializationComputeResourceArgs.builder()
 ///                         .instanceType("string")
 ///                         .build())
-///                     .schedule(Map.ofEntries(
-///                         Map.entry("endTime", "string"),
-///                         Map.entry("frequency", "Day"),
-///                         Map.entry("interval", 1),
-///                         Map.entry("schedule", RecurrenceScheduleArgs.builder()
+///                     .schedule(RecurrenceTriggerArgs.builder()
+///                         .endTime("string")
+///                         .frequency("Day")
+///                         .interval(1)
+///                         .schedule(RecurrenceScheduleArgs.builder()
 ///                             .hours(1)
 ///                             .minutes(1)
 ///                             .monthDays(1)
 ///                             .weekDays("Monday")
-///                             .build()),
-///                         Map.entry("startTime", "string"),
-///                         Map.entry("timeZone", "string"),
-///                         Map.entry("triggerType", "Recurrence")
-///                     ))
+///                             .build())
+///                         .startTime("string")
+///                         .timeZone("string")
+///                         .build())
 ///                     .sparkConfiguration(Map.of("string", "string"))
 ///                     .storeType("Online")
 ///                     .build())

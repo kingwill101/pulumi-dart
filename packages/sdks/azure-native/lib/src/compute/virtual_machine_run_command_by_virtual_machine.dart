@@ -114,7 +114,7 @@ import 'virtual_machine_run_command_script_source_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'virtual_machine_run_command_script_source_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachineruncommandbyvirtualmachine" "virtualMachineRunCommandByVirtualMachine" {
+/// resource "azure-native_compute_virtual_machine_run_command_by_virtual_machine" "virtualMachineRunCommandByVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   async_execution = false
 ///   error_blob_uri  = "https://mystorageaccount.blob.core.windows.net/scriptcontainer/scriptURI"
 ///   location        = "West US"

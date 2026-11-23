@@ -78,7 +78,7 @@ import 'watchlist_user_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,18 +87,23 @@ import 'watchlist_user_info_response.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_watchlist" "watchlist" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_type            = "text/csv"
 ///   description             = "Watchlist from CSV content"
 ///   display_name            = "High Value Assets Watchlist"
 ///   items_search_key        = "header1"
 ///   number_of_lines_to_skip = 1
-///   provider                = "Microsoft"
-///   raw_content             = "This line will be skipped\nheader1,header2\nvalue1,value2"
-///   resource_group_name     = "myRg"
-///   source                  = "watchlist.csv"
-///   source_type             = "Local"
-///   watchlist_alias         = "highValueAsset"
-///   workspace_name          = "myWorkspace"
+///   _ {
+///     provider = "Microsoft"
+///   }
+///   raw_content         = "This line will be skipped\nheader1,header2\nvalue1,value2"
+///   resource_group_name = "myRg"
+///   source              = "watchlist.csv"
+///   source_type         = "Local"
+///   watchlist_alias     = "highValueAsset"
+///   workspace_name      = "myWorkspace"
 /// }
 ///
 /// ```
@@ -275,7 +280,7 @@ import 'watchlist_user_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -284,10 +289,15 @@ import 'watchlist_user_info_response.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_watchlist" "watchlist" {
-///   description         = "Watchlist from CSV content"
-///   display_name        = "High Value Assets Watchlist"
-///   items_search_key    = "header1"
-///   provider            = "Microsoft"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   description      = "Watchlist from CSV content"
+///   display_name     = "High Value Assets Watchlist"
+///   items_search_key = "header1"
+///   _ {
+///     provider = "Microsoft"
+///   }
 ///   resource_group_name = "myRg"
 ///   source              = "watchlist.csv"
 ///   source_type         = "Local"

@@ -20,7 +20,7 @@ import 'system_data_response.dart';
 /// {
 ///     var customRecommendation = new AzureNative.Security.CustomRecommendation("customRecommendation", new()
 ///     {
-///         CloudProviders = new[]
+///         CloudProviders =
 ///         {
 ///             AzureNative.Security.RecommendationSupportedClouds.AWS,
 ///         },
@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_customrecommendation" "customRecommendation" {
+/// resource "azure-native_security_custom_recommendation" "customRecommendation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_providers            = ["AWS"]
 ///   custom_recommendation_name = "33e7cc6e-a139-4723-a0e5-76993aee0771"
 ///   description                = "organization passwords policy"
@@ -198,7 +201,7 @@ import 'system_data_response.dart';
 /// {
 ///     var customRecommendation = new AzureNative.Security.CustomRecommendation("customRecommendation", new()
 ///     {
-///         CloudProviders = new[]
+///         CloudProviders =
 ///         {
 ///             AzureNative.Security.RecommendationSupportedClouds.AWS,
 ///         },
@@ -250,7 +253,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -258,7 +261,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_customrecommendation" "customRecommendation" {
+/// resource "azure-native_security_custom_recommendation" "customRecommendation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_providers            = ["AWS"]
 ///   custom_recommendation_name = "33e7cc6e-a139-4723-a0e5-76993aee0771"
 ///   description                = "organization passwords policy"
@@ -376,7 +382,7 @@ import 'system_data_response.dart';
 /// {
 ///     var customRecommendation = new AzureNative.Security.CustomRecommendation("customRecommendation", new()
 ///     {
-///         CloudProviders = new[]
+///         CloudProviders =
 ///         {
 ///             AzureNative.Security.RecommendationSupportedClouds.AWS,
 ///         },
@@ -428,7 +434,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -436,7 +442,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_customrecommendation" "customRecommendation" {
+/// resource "azure-native_security_custom_recommendation" "customRecommendation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_providers            = ["AWS"]
 ///   custom_recommendation_name = "33e7cc6e-a139-4723-a0e5-76993aee0771"
 ///   description                = "organization passwords policy"

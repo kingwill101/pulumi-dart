@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 ///         Location = "jpiglusfxynfcewcjwvvnn",
 ///         PublicCloudConnector = "advjwoakdusalamomg",
 ///         ResourceGroupName = "rgpublicCloud",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridconnectivity_publiccloudconnector" "publicCloudConnector" {
+/// resource "azure-native_hybridconnectivity_public_cloud_connector" "publicCloudConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_cloud_profile = {
 ///     account_id                = "snbnuxckevyqpm"
 ///     excluded_accounts         = ["rwgqpukglvbqmogqcliqolucp"]

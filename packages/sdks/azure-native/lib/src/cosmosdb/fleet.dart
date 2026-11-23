@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cosmosdb_fleet" "fleet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fleet_name          = "fleet1"
 ///   location            = "West US"
 ///   resource_group_name = "rg1"

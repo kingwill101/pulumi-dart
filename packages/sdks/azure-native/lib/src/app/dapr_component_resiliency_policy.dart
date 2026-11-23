@@ -138,7 +138,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -146,7 +146,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprcomponentresiliencypolicy" "daprComponentResiliencyPolicy" {
+/// resource "azure-native_app_dapr_component_resiliency_policy" "daprComponentResiliencyPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_name   = "mydaprcomponent"
 ///   environment_name = "myenvironment"
 ///   inbound_policy = {
@@ -479,7 +482,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -487,7 +490,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprcomponentresiliencypolicy" "daprComponentResiliencyPolicy" {
+/// resource "azure-native_app_dapr_component_resiliency_policy" "daprComponentResiliencyPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_name   = "mydaprcomponent"
 ///   environment_name = "myenvironment"
 ///   name             = "myresiliencypolicy"
@@ -743,7 +749,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -751,7 +757,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_daprcomponentresiliencypolicy" "daprComponentResiliencyPolicy" {
+/// resource "azure-native_app_dapr_component_resiliency_policy" "daprComponentResiliencyPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   component_name   = "mydaprcomponent"
 ///   environment_name = "myenvironment"
 ///   inbound_policy = {

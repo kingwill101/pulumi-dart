@@ -28,7 +28,7 @@ import 'workload_network_port_mirroring_args.dart';
 ///         PortMirroringId = "portMirroring1",
 ///         PrivateCloudName = "cloud1",
 ///         ResourceGroupName = "group1",
-///         Revision = 1,
+///         Revision = 1.0,
 ///         Source = "vmGroup1",
 ///     });
 ///
@@ -67,7 +67,7 @@ import 'workload_network_port_mirroring_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'workload_network_port_mirroring_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworkportmirroring" "workloadNetworkPortMirroring" {
+/// resource "azure-native_avs_workload_network_port_mirroring" "workloadNetworkPortMirroring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination         = "vmGroup2"
 ///   direction           = "BIDIRECTIONAL"
 ///   display_name        = "portMirroring1"

@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_namespacetopic" "namespaceTopic" {
+/// resource "azure-native_eventgrid_namespace_topic" "namespaceTopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_retention_in_days = 1
 ///   input_schema            = "CloudEventSchemaV1_0"
 ///   namespace_name          = "examplenamespace2"

@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securityadminconfiguration" "securityAdminConfiguration" {
+/// resource "azure-native_network_security_admin_configuration" "securityAdminConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name                             = "myTestSecurityConfig"
 ///   description                                    = "A configuration which will update any network groups ip addresses at commit times."
 ///   network_group_address_space_aggregation_option = "Manual"
@@ -166,7 +169,7 @@ import 'system_data_response.dart';
 /// {
 ///     var securityAdminConfiguration = new AzureNative.Network.SecurityAdminConfiguration("securityAdminConfiguration", new()
 ///     {
-///         ApplyOnNetworkIntentPolicyBasedServices = new[]
+///         ApplyOnNetworkIntentPolicyBasedServices =
 ///         {
 ///             AzureNative.Network.NetworkIntentPolicyBasedService.None,
 ///         },
@@ -210,7 +213,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +221,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securityadminconfiguration" "securityAdminConfiguration" {
+/// resource "azure-native_network_security_admin_configuration" "securityAdminConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   apply_on_network_intent_policy_based_services = ["None"]
 ///   configuration_name                            = "myTestSecurityConfig"
 ///   description                                   = "A sample policy"

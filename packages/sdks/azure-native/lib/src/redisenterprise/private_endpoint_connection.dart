@@ -67,7 +67,7 @@ import 'private_link_service_connection_state_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'private_link_service_connection_state_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redisenterprise_privateendpointconnection" "privateEndpointConnection" {
+/// resource "azure-native_redisenterprise_private_endpoint_connection" "privateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                     = "cache1"
 ///   private_endpoint_connection_name = "pectest01"
 ///   private_link_service_connection_state = {

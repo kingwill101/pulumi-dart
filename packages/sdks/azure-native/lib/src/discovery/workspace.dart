@@ -107,7 +107,7 @@ import 'workspace_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,6 +116,9 @@ import 'workspace_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_discovery_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "uksouth"
 ///   properties = {
 ///     agent_subnet_id       = "/subscriptions/31735C59-6307-4464-8B80-3675223F23D2/providers/Microsoft.Network/virtualNetworks/virtualnetwork1/subnets/agentSubnet1"

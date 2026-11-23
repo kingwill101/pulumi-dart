@@ -80,7 +80,7 @@ import 'single_server_server_security_alert_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'single_server_server_security_alert_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserverserversecurityalertpolicy" "singleServerServerSecurityAlertPolicy" {
+/// resource "azure-native_dbforpostgresql_single_server_server_security_alert_policy" "singleServerServerSecurityAlertPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disabled_alerts            = ["Access_Anomaly", "Usage_Anomaly"]
 ///   email_account_admins       = true
 ///   email_addresses            = ["testSecurityAlert@microsoft.com"]
@@ -260,7 +263,7 @@ import 'single_server_server_security_alert_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -268,7 +271,10 @@ import 'single_server_server_security_alert_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserverserversecurityalertpolicy" "singleServerServerSecurityAlertPolicy" {
+/// resource "azure-native_dbforpostgresql_single_server_server_security_alert_policy" "singleServerServerSecurityAlertPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_account_admins       = true
 ///   resource_group_name        = "securityalert-4799"
 ///   security_alert_policy_name = "Default"

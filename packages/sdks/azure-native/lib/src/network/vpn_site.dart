@@ -60,7 +60,7 @@ import 'vpn_site_link_response.dart';
 ///             {
 ///                 BgpProperties = new AzureNative.Network.Inputs.VpnLinkBgpSettingsArgs
 ///                 {
-///                     Asn = 1234,
+///                     Asn = 1234.0,
 ///                     BgpPeeringAddress = "192.168.0.0",
 ///                 },
 ///                 Fqdn = "link1.vpnsite1.contoso.com",
@@ -140,7 +140,7 @@ import 'vpn_site_link_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -148,7 +148,10 @@ import 'vpn_site_link_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_vpnsite" "vpnSite" {
+/// resource "azure-native_network_vpn_site" "vpnSite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_space = {
 ///     address_prefixes = ["10.0.0.0/16"]
 ///   }

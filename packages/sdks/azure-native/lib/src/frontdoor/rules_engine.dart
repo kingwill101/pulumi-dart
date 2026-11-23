@@ -24,7 +24,7 @@ import 'rules_engine_rule_response.dart';
 ///     {
 ///         FrontDoorName = "frontDoor1",
 ///         ResourceGroupName = "rg1",
-///         Rules = new[]
+///         Rules =
 ///         {
 ///             new AzureNative.FrontDoor.Inputs.RulesEngineRuleArgs
 ///             {
@@ -81,7 +81,7 @@ import 'rules_engine_rule_response.dart';
 ///                         },
 ///                         RulesEngineMatchVariable = AzureNative.FrontDoor.RulesEngineMatchVariable.RequestFilenameExtension,
 ///                         RulesEngineOperator = AzureNative.FrontDoor.RulesEngineOperator.Equal,
-///                         Transforms = new[]
+///                         Transforms =
 ///                         {
 ///                             AzureNative.FrontDoor.Transform.Lowercase,
 ///                         },
@@ -123,7 +123,7 @@ import 'rules_engine_rule_response.dart';
 ///                         RulesEngineMatchVariable = AzureNative.FrontDoor.RulesEngineMatchVariable.RequestHeader,
 ///                         RulesEngineOperator = AzureNative.FrontDoor.RulesEngineOperator.Equal,
 ///                         Selector = "Rules-Engine-Route-Forward",
-///                         Transforms = new[]
+///                         Transforms =
 ///                         {
 ///                             AzureNative.FrontDoor.Transform.Lowercase,
 ///                         },
@@ -157,14 +157,14 @@ import 'rules_engine_rule_response.dart';
 /// 			Rules: frontdoor.RulesEngineRuleArray{
 /// 				&frontdoor.RulesEngineRuleArgs{
 /// 					Action: &frontdoor.RulesEngineActionArgs{
-/// 						RouteConfigurationOverride: frontdoor.RedirectConfiguration{
-/// 							CustomFragment:    "fragment",
-/// 							CustomHost:        "www.bing.com",
-/// 							CustomPath:        "/api",
-/// 							CustomQueryString: "a=b",
-/// 							OdataType:         "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration",
-/// 							RedirectProtocol:  frontdoor.FrontDoorRedirectProtocolHttpsOnly,
-/// 							RedirectType:      frontdoor.FrontDoorRedirectTypeMoved,
+/// 						RouteConfigurationOverride: &frontdoor.RedirectConfigurationArgs{
+/// 							CustomFragment:    pulumi.String("fragment"),
+/// 							CustomHost:        pulumi.String("www.bing.com"),
+/// 							CustomPath:        pulumi.String("/api"),
+/// 							CustomQueryString: pulumi.String("a=b"),
+/// 							OdataType:         pulumi.String("#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration"),
+/// 							RedirectProtocol:  pulumi.String(frontdoor.FrontDoorRedirectProtocolHttpsOnly),
+/// 							RedirectType:      pulumi.String(frontdoor.FrontDoorRedirectTypeMoved),
 /// 						},
 /// 					},
 /// 					MatchConditions: frontdoor.RulesEngineMatchConditionArray{
@@ -207,18 +207,18 @@ import 'rules_engine_rule_response.dart';
 /// 				},
 /// 				&frontdoor.RulesEngineRuleArgs{
 /// 					Action: &frontdoor.RulesEngineActionArgs{
-/// 						RouteConfigurationOverride: frontdoor.ForwardingConfiguration{
-/// 							BackendPool: frontdoor.SubResource{
-/// 								Id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1",
+/// 						RouteConfigurationOverride: &frontdoor.ForwardingConfigurationArgs{
+/// 							BackendPool: &frontdoor.SubResourceArgs{
+/// 								Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"),
 /// 							},
-/// 							CacheConfiguration: frontdoor.CacheConfiguration{
-/// 								CacheDuration:                "P1DT12H20M30S",
-/// 								DynamicCompression:           frontdoor.DynamicCompressionEnabledDisabled,
-/// 								QueryParameterStripDirective: frontdoor.FrontDoorQueryStripOnly,
-/// 								QueryParameters:              "a=b,p=q",
+/// 							CacheConfiguration: &frontdoor.CacheConfigurationArgs{
+/// 								CacheDuration:                pulumi.String("P1DT12H20M30S"),
+/// 								DynamicCompression:           pulumi.String(frontdoor.DynamicCompressionEnabledDisabled),
+/// 								QueryParameterStripDirective: pulumi.String(frontdoor.FrontDoorQueryStripOnly),
+/// 								QueryParameters:              pulumi.String("a=b,p=q"),
 /// 							},
-/// 							ForwardingProtocol: frontdoor.FrontDoorForwardingProtocolHttpsOnly,
-/// 							OdataType:          "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+/// 							ForwardingProtocol: pulumi.String(frontdoor.FrontDoorForwardingProtocolHttpsOnly),
+/// 							OdataType:          pulumi.String("#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"),
 /// 						},
 /// 					},
 /// 					MatchConditions: frontdoor.RulesEngineMatchConditionArray{
@@ -251,7 +251,7 @@ import 'rules_engine_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -259,19 +259,22 @@ import 'rules_engine_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_frontdoor_rulesengine" "rulesEngine" {
+/// resource "azure-native_frontdoor_rules_engine" "rulesEngine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   front_door_name     = "frontDoor1"
 ///   resource_group_name = "rg1"
 ///   rules {
 ///     action = {
 ///       route_configuration_override = {
-///         "customFragment"    = "fragment"
-///         "customHost"        = "www.bing.com"
-///         "customPath"        = "/api"
-///         "customQueryString" = "a=b"
-///         "odataType"         = "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration"
-///         "redirectProtocol"  = "HttpsOnly"
-///         "redirectType"      = "Moved"
+///         custom_fragment     = "fragment"
+///         custom_host         = "www.bing.com"
+///         custom_path         = "/api"
+///         custom_query_string = "a=b"
+///         odata_type          = "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration"
+///         redirect_protocol   = "HttpsOnly"
+///         redirect_type       = "Moved"
 ///       }
 ///     }
 ///     match_conditions {
@@ -286,9 +289,9 @@ import 'rules_engine_rule_response.dart';
 ///   rules {
 ///     action = {
 ///       response_header_actions = [{
-///         "headerActionType" = "Overwrite"
-///         "headerName"       = "Cache-Control"
-///         "value"            = "public, max-age=31536000"
+///         header_action_type = "Overwrite"
+///         header_name        = "Cache-Control"
+///         value              = "public, max-age=31536000"
 ///       }]
 ///     }
 ///     match_conditions {
@@ -303,17 +306,17 @@ import 'rules_engine_rule_response.dart';
 ///   rules {
 ///     action = {
 ///       route_configuration_override = {
-///         "backendPool" = {
-///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"
+///         backend_pool = {
+///           id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"
 ///         }
-///         "cacheConfiguration" = {
-///           "cacheDuration"                = "P1DT12H20M30S"
-///           "dynamicCompression"           = "Disabled"
-///           "queryParameterStripDirective" = "StripOnly"
-///           "queryParameters"              = "a=b,p=q"
+///         cache_configuration = {
+///           cache_duration                  = "P1DT12H20M30S"
+///           dynamic_compression             = "Disabled"
+///           query_parameter_strip_directive = "StripOnly"
+///           query_parameters                = "a=b,p=q"
 ///         }
-///         "forwardingProtocol" = "HttpsOnly"
-///         "odataType"          = "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"
+///         forwarding_protocol = "HttpsOnly"
+///         odata_type          = "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"
 ///       }
 ///     }
 ///     match_conditions {
@@ -342,6 +345,12 @@ import 'rules_engine_rule_response.dart';
 /// import com.pulumi.azurenative.frontdoor.RulesEngineArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RulesEngineRuleArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RulesEngineActionArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ForwardingConfigurationArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.RedirectConfigurationArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.RulesEngineMatchConditionArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.HeaderActionArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.CacheConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -366,7 +375,6 @@ import 'rules_engine_rule_response.dart';
 ///                             .customHost("www.bing.com")
 ///                             .customPath("/api")
 ///                             .customQueryString("a=b")
-///                             .odataType("#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration")
 ///                             .redirectProtocol("HttpsOnly")
 ///                             .redirectType("Moved")
 ///                             .build())
@@ -410,7 +418,6 @@ import 'rules_engine_rule_response.dart';
 ///                                 .queryParameters("a=b,p=q")
 ///                                 .build())
 ///                             .forwardingProtocol("HttpsOnly")
-///                             .odataType("#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration")
 ///                             .build())
 ///                         .build())
 ///                     .matchConditions(RulesEngineMatchConditionArgs.builder()

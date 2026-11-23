@@ -63,7 +63,7 @@ import 'workspace_certificate_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'workspace_certificate_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacecertificate" "workspaceCertificate" {
+/// resource "azure-native_apimanagement_workspace_certificate" "workspaceCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_id      = "tempcert"
 ///   data                = "****************Base 64 Encoded Certificate *******************************"
 ///   password            = "****Certificate Password******"
@@ -219,7 +222,7 @@ import 'workspace_certificate_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -227,7 +230,10 @@ import 'workspace_certificate_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacecertificate" "workspaceCertificate" {
+/// resource "azure-native_apimanagement_workspace_certificate" "workspaceCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_id = "templateCertkv"
 ///   key_vault = {
 ///     identity_client_id = "ceaa6b06-c00f-43ef-99ac-f53d1fe876a0"

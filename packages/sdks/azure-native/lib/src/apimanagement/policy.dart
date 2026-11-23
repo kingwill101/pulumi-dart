@@ -72,7 +72,7 @@ import 'policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,6 +81,9 @@ import 'policy_args.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   format              = "xml"
 ///   policy_id           = "policy"
 ///   resource_group_name = "rg1"

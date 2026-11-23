@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_internetgateway" "internetGateway" {
+/// resource "azure-native_managednetworkfabric_internet_gateway" "internetGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation                   = "annotation"
 ///   internet_gateway_name        = "example-internetGateway"
 ///   internet_gateway_rule_id     = "/subscriptions/xxxx-xxxx-xxxx-xxxx/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/example-internetGatewayRule"

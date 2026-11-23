@@ -35,7 +35,7 @@ import 'table_service_properties_args.dart';
 ///                         "x-ms-meta-data*",
 ///                         "x-ms-meta-target*",
 ///                     },
-///                     AllowedMethods = new[]
+///                     AllowedMethods =
 ///                     {
 ///                         AzureNative.Storage.AllowedMethods.GET,
 ///                         AzureNative.Storage.AllowedMethods.HEAD,
@@ -61,7 +61,7 @@ import 'table_service_properties_args.dart';
 ///                     {
 ///                         "*",
 ///                     },
-///                     AllowedMethods = new[]
+///                     AllowedMethods =
 ///                     {
 ///                         AzureNative.Storage.AllowedMethods.GET,
 ///                     },
@@ -81,7 +81,7 @@ import 'table_service_properties_args.dart';
 ///                     {
 ///                         "x-ms-meta-12345675754564*",
 ///                     },
-///                     AllowedMethods = new[]
+///                     AllowedMethods =
 ///                     {
 ///                         AzureNative.Storage.AllowedMethods.GET,
 ///                         AzureNative.Storage.AllowedMethods.PUT,
@@ -196,7 +196,7 @@ import 'table_service_properties_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -204,27 +204,30 @@ import 'table_service_properties_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_tableserviceproperties" "tableServiceProperties" {
+/// resource "azure-native_storage_table_service_properties" "tableServiceProperties" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sto8607"
 ///   cors = {
 ///     cors_rules = [{
-///       "allowedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
-///       "allowedMethods"  = ["GET", "HEAD", "POST", "OPTIONS", "MERGE", "PUT"]
-///       "allowedOrigins"  = ["http://www.contoso.com", "http://www.fabrikam.com"]
-///       "exposedHeaders"  = ["x-ms-meta-*"]
-///       "maxAgeInSeconds" = 100
+///       allowed_headers    = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
+///       allowed_methods    = ["GET", "HEAD", "POST", "OPTIONS", "MERGE", "PUT"]
+///       allowed_origins    = ["http://www.contoso.com", "http://www.fabrikam.com"]
+///       exposed_headers    = ["x-ms-meta-*"]
+///       max_age_in_seconds = 100
 ///       }, {
-///       "allowedHeaders"  = ["*"]
-///       "allowedMethods"  = ["GET"]
-///       "allowedOrigins"  = ["*"]
-///       "exposedHeaders"  = ["*"]
-///       "maxAgeInSeconds" = 2
+///       allowed_headers    = ["*"]
+///       allowed_methods    = ["GET"]
+///       allowed_origins    = ["*"]
+///       exposed_headers    = ["*"]
+///       max_age_in_seconds = 2
 ///       }, {
-///       "allowedHeaders"  = ["x-ms-meta-12345675754564*"]
-///       "allowedMethods"  = ["GET", "PUT"]
-///       "allowedOrigins"  = ["http://www.abc23.com", "https://www.fabrikam.com/*"]
-///       "exposedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
-///       "maxAgeInSeconds" = 2000
+///       allowed_headers    = ["x-ms-meta-12345675754564*"]
+///       allowed_methods    = ["GET", "PUT"]
+///       allowed_origins    = ["http://www.abc23.com", "https://www.fabrikam.com/*"]
+///       exposed_headers    = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
+///       max_age_in_seconds = 2000
 ///     }]
 ///   }
 ///   resource_group_name = "res4410"
@@ -242,6 +245,7 @@ import 'table_service_properties_args.dart';
 /// import com.pulumi.azurenative.storage.TableServiceProperties;
 /// import com.pulumi.azurenative.storage.TableServicePropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.CorsRulesArgs;
+/// import com.pulumi.azurenative.storage.inputs.CorsRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

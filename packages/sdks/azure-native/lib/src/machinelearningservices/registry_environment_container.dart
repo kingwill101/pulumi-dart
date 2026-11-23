@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_registryenvironmentcontainer" "registryEnvironmentContainer" {
+/// resource "azure-native_machinelearningservices_registry_environment_container" "registryEnvironmentContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "testEnvironment"
 ///   properties = {
 ///     description = "string"

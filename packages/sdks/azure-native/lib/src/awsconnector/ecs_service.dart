@@ -429,7 +429,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -437,7 +437,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ecsservice" "ecsService" {
+/// resource "azure-native_awsconnector_ecs_service" "ecsService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "xqpjwxermnqxbnitxykbnjhw"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -445,9 +448,9 @@ import 'system_data_response.dart';
 ///     aws_account_id = "egkrtzylfud"
 ///     aws_properties = {
 ///       capacity_provider_strategy = [{
-///         "base"             = 4
-///         "capacityProvider" = "wlfpynlwozihqvkgynmdqqmojbs"
-///         "weight"           = 28
+///         base              = 4
+///         capacity_provider = "wlfpynlwozihqvkgynmdqqmojbs"
+///         weight            = 28
 ///       }]
 ///       cluster = "rdbkmvsugiuvbwkuzagsnrx"
 ///       deployment_configuration = {
@@ -472,10 +475,10 @@ import 'system_data_response.dart';
 ///       health_check_grace_period_seconds = 1
 ///       launch_type                       = "EC2"
 ///       load_balancers = [{
-///         "containerName"    = "vjvntpnuzyftbm"
-///         "containerPort"    = 17
-///         "loadBalancerName" = "eryjxwmbfkms"
-///         "targetGroupArn"   = "woxbyyccpmqyiy"
+///         container_name     = "vjvntpnuzyftbm"
+///         container_port     = 17
+///         load_balancer_name = "eryjxwmbfkms"
+///         target_group_arn   = "woxbyyccpmqyiy"
 ///       }]
 ///       name = "vo"
 ///       network_configuration = {
@@ -486,12 +489,12 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       placement_constraints = [{
-///         "expression" = "hxzfzxbfmqqiwgbpgn"
-///         "type"       = "distinctInstance"
+///         expression = "hxzfzxbfmqqiwgbpgn"
+///         type       = "distinctInstance"
 ///       }]
 ///       placement_strategies = [{
-///         "field" = "tyrqdzgjrkwfhzwebvqld"
-///         "type"  = "binpack"
+///         field = "tyrqdzgjrkwfhzwebvqld"
+///         type  = "binpack"
 ///       }]
 ///       platform_version    = "sfsqyvslsustugopfnnzssjli"
 ///       propagate_tags      = "SERVICE"
@@ -503,65 +506,65 @@ import 'system_data_response.dart';
 ///         log_configuration = {
 ///           log_driver = "xwshxwanyuqrfzboxwfv"
 ///           secret_options = [{
-///             "name"      = "uxsxwquwbafmsmbyyivhsjrjmfpmim"
-///             "valueFrom" = "jnygsbiroyjlgrhs"
+///             name       = "uxsxwquwbafmsmbyyivhsjrjmfpmim"
+///             value_from = "jnygsbiroyjlgrhs"
 ///           }]
 ///         }
 ///         namespace = "tlewpbulbuguuuvq"
 ///         services = [{
-///           "clientAliases" = [{
-///             "dnsName" = "hnnavbjclqhbdebomjoqzo"
-///             "port"    = 16
+///           client_aliases = [{
+///             dns_name = "hnnavbjclqhbdebomjoqzo"
+///             port     = 16
 ///           }]
-///           "discoveryName"       = "zuhijazofg"
-///           "ingressPortOverride" = 26
-///           "portName"            = "q"
-///           "timeout" = {
-///             "idleTimeoutSeconds"       = 11
-///             "perRequestTimeoutSeconds" = 22
+///           discovery_name        = "zuhijazofg"
+///           ingress_port_override = 26
+///           port_name             = "q"
+///           timeout = {
+///             idle_timeout_seconds        = 11
+///             per_request_timeout_seconds = 22
 ///           }
-///           "tls" = {
-///             "issuerCertificateAuthority" = {
-///               "awsPcaAuthorityArn" = "fqrmk"
+///           tls = {
+///             issuer_certificate_authority = {
+///               aws_pca_authority_arn = "fqrmk"
 ///             }
-///             "kmsKey"  = "jdjym"
-///             "roleArn" = "stdhwuiylmutipeonkolqjnbqelds"
+///             kms_key  = "jdjym"
+///             role_arn = "stdhwuiylmutipeonkolqjnbqelds"
 ///           }
 ///         }]
 ///       }
 ///       service_name = "lyblywxxfszkgaaornuxliolfbft"
 ///       service_registries = [{
-///         "containerName" = "ppbxlxmpdbri"
-///         "containerPort" = 7
-///         "port"          = 6
-///         "registryArn"   = "qmfm"
+///         container_name = "ppbxlxmpdbri"
+///         container_port = 7
+///         port           = 6
+///         registry_arn   = "qmfm"
 ///       }]
 ///       tags = [{
-///         "key"   = "dteknaijsygghfdplikegztgz"
-///         "value" = "qukd"
+///         key   = "dteknaijsygghfdplikegztgz"
+///         value = "qukd"
 ///       }]
 ///       task_definition = "fozrumijzejhpjxeqkmthsswwuden"
 ///       volume_configurations = [{
-///         "managedEBSVolume" = {
-///           "encrypted"      = true
-///           "filesystemType" = "ugwxqcjnrqonyao"
-///           "iops"           = 10
-///           "kmsKeyId"       = "oyuobklzhgpvg"
-///           "roleArn"        = "gdudzczxymgopjjzqubzphgdi"
-///           "sizeInGiB"      = 15
-///           "snapshotId"     = "yff"
-///           "tagSpecifications" = [{
-///             "propagateTags" = "SERVICE"
-///             "resourceType"  = "tocxgkuiblcccawaenqv"
-///             "tags" = [{
-///               "key"   = "dteknaijsygghfdplikegztgz"
-///               "value" = "qukd"
+///         managed_ebs_volume = {
+///           encrypted       = true
+///           filesystem_type = "ugwxqcjnrqonyao"
+///           iops            = 10
+///           kms_key_id      = "oyuobklzhgpvg"
+///           role_arn        = "gdudzczxymgopjjzqubzphgdi"
+///           size_in_gi_b    = 15
+///           snapshot_id     = "yff"
+///           tag_specifications = [{
+///             propagate_tags = "SERVICE"
+///             resource_type  = "tocxgkuiblcccawaenqv"
+///             tags = [{
+///               key   = "dteknaijsygghfdplikegztgz"
+///               value = "qukd"
 ///             }]
 ///           }]
-///           "throughput" = 3
-///           "volumeType" = "uwvjfmuzpksfpnfsukbunbuqcwxslx"
+///           throughput  = 3
+///           volume_type = "uwvjfmuzpksfpnfsukbunbuqcwxslx"
 ///         }
-///         "name" = "zkqnipaoexthwwot"
+///         name = "zkqnipaoexthwwot"
 ///       }]
 ///     }
 ///     aws_region        = "pwmulwhqhosmbthwzammshywxzaxhi"
@@ -590,14 +593,29 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.EcsServiceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EcsServicePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEcsServicePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CapacityProviderStrategyItemArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DeploymentConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DeploymentAlarmsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DeploymentCircuitBreakerArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DeploymentControllerArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LoadBalancerArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsVpcConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PlacementConstraintArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PlacementStrategyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SecretArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectServiceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectClientAliasArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TimeoutConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectTlsConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceConnectTlsCertificateAuthorityArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceRegistryArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceVolumeConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServiceManagedEBSVolumeConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EBSTagSpecificationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

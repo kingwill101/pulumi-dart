@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         EventHubName = "sdk-EventHub-532",
 ///         NamespaceName = "sdk-Namespace-960",
 ///         ResourceGroupName = "ArunMonocle",
-///         Rights = new[]
+///         Rights =
 ///         {
 ///             AzureNative.EventHub.AccessRights.Listen,
 ///             AzureNative.EventHub.AccessRights.Send,
@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_eventhubauthorizationrule" "eventHubAuthorizationRule" {
+/// resource "azure-native_eventhub_event_hub_authorization_rule" "eventHubAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "sdk-Authrules-2513"
 ///   event_hub_name          = "sdk-EventHub-532"
 ///   namespace_name          = "sdk-Namespace-960"

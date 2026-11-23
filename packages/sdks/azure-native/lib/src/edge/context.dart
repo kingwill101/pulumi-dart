@@ -100,7 +100,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -109,17 +109,20 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_edge_context" "context" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   context_name = "testname"
 ///   location     = "pkquwbplcp"
 ///   properties = {
 ///     capabilities = [{
-///       "description" = "banbenutsngwytoqh"
-///       "name"        = "tpylinjcmlnycfpofpxjtqmt"
-///       "state"       = "active"
+///       description = "banbenutsngwytoqh"
+///       name        = "tpylinjcmlnycfpofpxjtqmt"
+///       state       = "active"
 ///     }]
 ///     hierarchies = [{
-///       "description" = "vg"
-///       "name"        = "upqe"
+///       description = "vg"
+///       name        = "upqe"
 ///     }]
 ///   }
 ///   resource_group_name = "rgconfigurationmanager"
@@ -139,6 +142,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edge.Context;
 /// import com.pulumi.azurenative.edge.ContextArgs;
 /// import com.pulumi.azurenative.edge.inputs.ContextPropertiesArgs;
+/// import com.pulumi.azurenative.edge.inputs.CapabilityArgs;
+/// import com.pulumi.azurenative.edge.inputs.HierarchyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billing_billingroleassignmentbybillingaccount" "billingRoleAssignmentByBillingAccount" {
+/// resource "azure-native_billing_billing_role_assignment_by_billing_account" "billingRoleAssignmentByBillingAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_name         = "7898901"
 ///   billing_role_assignment_name = "9dfd08c2-62a3-4d47-85bd-1cdba1408402"
 ///   properties = {

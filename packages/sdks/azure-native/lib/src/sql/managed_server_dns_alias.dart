@@ -56,7 +56,7 @@ import 'managed_server_dns_alias_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'managed_server_dns_alias_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedserverdnsalias" "managedServerDnsAlias" {
+/// resource "azure-native_sql_managed_server_dns_alias" "managedServerDnsAlias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_alias_name        = "dns-alias-mi"
 ///   managed_instance_name = "dns-mi"
 ///   resource_group_name   = "Default"

@@ -62,7 +62,7 @@ import 'backup_short_term_retention_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'backup_short_term_retention_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_backupshorttermretentionpolicy" "backupShortTermRetentionPolicy" {
+/// resource "azure-native_sql_backup_short_term_retention_policy" "backupShortTermRetentionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name                 = "testdb"
 ///   diff_backup_interval_in_hours = 24
 ///   policy_name                   = "default"

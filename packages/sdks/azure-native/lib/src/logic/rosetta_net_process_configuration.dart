@@ -157,7 +157,7 @@ import 'rosetta_net_process_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -165,7 +165,10 @@ import 'rosetta_net_process_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_rosettanetprocessconfiguration" "rosettaNetProcessConfiguration" {
+/// resource "azure-native_logic_rosetta_net_process_configuration" "rosettaNetProcessConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   activity_settings = {
 ///     acknowledgment_of_receipt_settings = {
 ///       is_non_repudiation_required    = false

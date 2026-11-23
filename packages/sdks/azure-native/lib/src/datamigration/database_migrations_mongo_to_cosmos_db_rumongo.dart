@@ -127,7 +127,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,7 +135,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_databasemigrationsmongotocosmosdbrumongo" "databaseMigrationsMongoToCosmosDbRUMongo" {
+/// resource "azure-native_datamigration_database_migrations_mongo_to_cosmos_db_r_u_mongo" "databaseMigrationsMongoToCosmosDbRUMongo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_list {
 ///     source_collection = "sourceCol1"
 ///     source_database   = "sourceDb1"
@@ -209,7 +212,6 @@ import 'system_data_response.dart';
 ///                     .targetCollection("sourceCol2")
 ///                     .targetDatabase("sourceDb2")
 ///                     .build())
-///             .kind("MongoToCosmosDbMongo")
 ///             .migrationName("migrationRequest")
 ///             .migrationService("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/MigrationServices/testMigrationService")
 ///             .resourceGroupName("testrg")
@@ -459,7 +461,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -467,7 +469,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_databasemigrationsmongotocosmosdbrumongo" "databaseMigrationsMongoToCosmosDbRUMongo" {
+/// resource "azure-native_datamigration_database_migrations_mongo_to_cosmos_db_r_u_mongo" "databaseMigrationsMongoToCosmosDbRUMongo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_list {
 ///     source_collection = "sourceCol1"
 ///     source_database   = "sourceDb1"
@@ -533,7 +538,6 @@ import 'system_data_response.dart';
 ///                     .sourceCollection("sourceCol2")
 ///                     .sourceDatabase("sourceDb2")
 ///                     .build())
-///             .kind("MongoToCosmosDbMongo")
 ///             .migrationName("migrationRequest")
 ///             .migrationService("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/MigrationServices/testMigrationService")
 ///             .resourceGroupName("testrg")

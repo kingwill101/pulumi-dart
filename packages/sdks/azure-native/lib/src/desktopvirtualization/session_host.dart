@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_sessionhost" "sessionHost" {
+/// resource "azure-native_desktopvirtualization_session_host" "sessionHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   host_pool_name      = "hostPool1"
 ///   resource_group_name = "resourceGroup1"
 ///   session_host_name   = "sessionHost1.microsoft.com"

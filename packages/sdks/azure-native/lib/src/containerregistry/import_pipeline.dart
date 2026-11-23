@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ImportPipelineName = "myImportPipeline",
 ///         Location = "westus",
-///         Options = new[]
+///         Options =
 ///         {
 ///             AzureNative.ContainerRegistry.PipelineOptions.OverwriteTags,
 ///             AzureNative.ContainerRegistry.PipelineOptions.DeleteSourceBlobOnSuccess,
@@ -98,7 +98,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,7 +106,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_importpipeline" "importPipeline" {
+/// resource "azure-native_containerregistry_import_pipeline" "importPipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "UserAssigned"
 ///     user_assigned_identities = {
@@ -136,6 +139,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerregistry.ImportPipeline;
 /// import com.pulumi.azurenative.containerregistry.ImportPipelineArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.IdentityPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.UserIdentityPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.ImportPipelineSourcePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

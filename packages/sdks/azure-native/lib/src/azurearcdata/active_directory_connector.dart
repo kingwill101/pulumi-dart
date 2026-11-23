@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 ///                         "22.22.222.222",
 ///                     },
 ///                     PreferK8sDnsForPtrLookups = false,
-///                     Replicas = 1,
+///                     Replicas = 1.0,
 ///                 },
 ///             },
 ///         },
@@ -126,7 +126,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -134,7 +134,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_activedirectoryconnector" "activeDirectoryConnector" {
+/// resource "azure-native_azurearcdata_active_directory_connector" "activeDirectoryConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_directory_connector_name = "testADConnector"
 ///   data_controller_name            = "testdataController"
 ///   properties = {
@@ -145,9 +148,9 @@ import 'system_data_response.dart';
 ///             hostname = "dc1.contoso.local"
 ///           }
 ///           secondary_domain_controllers = [{
-///             "hostname" = "dc2.contoso.local"
+///             hostname = "dc2.contoso.local"
 ///             }, {
-///             "hostname" = "dc3.contoso.local"
+///             hostname = "dc3.contoso.local"
 ///           }]
 ///         }
 ///         realm                        = "CONTOSO.LOCAL"

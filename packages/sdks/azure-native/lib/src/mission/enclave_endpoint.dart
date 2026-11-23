@@ -33,7 +33,7 @@ import 'system_data_response.dart';
 ///                 Destination = "10.0.0.0/24",
 ///                 EndpointRuleName = "54CEECEF-2C30-488E-946F-D20F414D99BA",
 ///                 Ports = "443",
-///                 Protocols = new[]
+///                 Protocols =
 ///                 {
 ///                     AzureNative.Mission.EnclaveEndpointProtocol.TCP,
 ///                 },
@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mission_enclaveendpoint" "enclaveEndpoint" {
+/// resource "azure-native_mission_enclave_endpoint" "enclaveEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enclave_endpoint_name = "TestMyEnclaveEndpoint"
 ///   location              = "West US"
 ///   resource_group_name   = "rgopenapi"

@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,6 +90,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_edge_execution" "execution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   context_name   = "abcde"
 ///   execution_name = "abcde"
 ///   extended_location = {

@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,6 +66,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_redhatopenshift_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   child_resource_name = "childResourceName"
 ///   resource_group_name = "resourceGroup"
 ///   resource_name       = "resourceName"

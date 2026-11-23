@@ -145,7 +145,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,7 +153,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_elasticloadbalancingv2targethealthdescription" "elasticLoadBalancingv2TargetHealthDescription" {
+/// resource "azure-native_awsconnector_elastic_load_balancingv2_target_health_description" "elasticLoadBalancingv2TargetHealthDescription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fjdx"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {

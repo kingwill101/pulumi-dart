@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 Antivirus = new AzureNative.AzureDataTransfer.Inputs.AntivirusRulesetArgs
 ///                 {
-///                     AvSolutions = new[]
+///                     AvSolutions =
 ///                     {
 ///                         AzureNative.AzureDataTransfer.AntivirusSolutions.Defender,
 ///                         AzureNative.AzureDataTransfer.AntivirusSolutions.ClamAv,
@@ -43,15 +43,15 @@ import 'system_data_response.dart';
 ///                 },
 ///                 Archives = new AzureNative.AzureDataTransfer.Inputs.ArchiveRulesetArgs
 ///                 {
-///                     MaximumCompressionRatioLimit = 123,
-///                     MaximumDepthLimit = 12,
-///                     MaximumExpansionSizeLimit = 123456,
-///                     MinimumSizeForExpansion = 1,
+///                     MaximumCompressionRatioLimit = 123.0,
+///                     MaximumDepthLimit = 12.0,
+///                     MaximumExpansionSizeLimit = 123456.0,
+///                     MinimumSizeForExpansion = 1.0,
 ///                 },
 ///                 DataSize = new AzureNative.AzureDataTransfer.Inputs.DataSizeRulesetArgs
 ///                 {
-///                     Maximum = 123456789,
-///                     Minimum = 1,
+///                     Maximum = 123456789.0,
+///                     Minimum = 1.0,
 ///                 },
 ///                 MimeFilters = new AzureNative.AzureDataTransfer.Inputs.MimeFilterRulesetArgs
 ///                 {
@@ -186,7 +186,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -194,7 +194,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azuredatatransfer_flowprofile" "flowProfile" {
+/// resource "azure-native_azuredatatransfer_flow_profile" "flowProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   flow_profile_name = "testFlowProfile"
 ///   location          = "East US"
 ///   pipeline_name     = "testPipeline"
@@ -217,20 +220,20 @@ import 'system_data_response.dart';
 ///       }
 ///       mime_filters = {
 ///         filters = [{
-///           "extensions" = [".json", ".app", ".js"]
-///           "media"      = "application/json"
+///           extensions = [".json", ".app", ".js"]
+///           media      = "application/json"
 ///         }]
 ///         type = "Allow"
 ///       }
 ///       text_matching = {
 ///         deny = [{
-///           "caseSensitivity" = "Insensitive"
-///           "matchType"       = "Partial"
-///           "text"            = "hello world"
+///           case_sensitivity = "Insensitive"
+///           match_type       = "Partial"
+///           text             = "hello world"
 ///           }, {
-///           "caseSensitivity" = "Sensitive"
-///           "matchType"       = "Complete"
-///           "text"            = "hello"
+///           case_sensitivity = "Sensitive"
+///           match_type       = "Complete"
+///           text             = "hello"
 ///         }]
 ///       }
 ///       xml_filters = {
@@ -260,7 +263,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.ArchiveRulesetArgs;
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.DataSizeRulesetArgs;
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.MimeFilterRulesetArgs;
+/// import com.pulumi.azurenative.azuredatatransfer.inputs.MimeTypeFilterArgs;
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.TextMatchingRulesetArgs;
+/// import com.pulumi.azurenative.azuredatatransfer.inputs.TextMatchArgs;
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.XmlFilterRulesetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

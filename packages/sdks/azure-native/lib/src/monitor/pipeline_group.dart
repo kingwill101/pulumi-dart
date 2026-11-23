@@ -218,7 +218,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -226,7 +226,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+/// resource "azure-native_monitor_pipeline_group" "pipelineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
 ///     type = "CustomLocation"
@@ -235,48 +238,48 @@ import 'system_data_response.dart';
 ///   pipeline_group_name = "plGroup1"
 ///   properties = {
 ///     exporters = [{
-///       "azureMonitorWorkspaceLogs" = {
-///         "api" = {
-///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
-///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
-///           "schema" = {
-///             "recordMap" = [{
-///               "from" = "body"
-///               "to"   = "Body"
+///       azure_monitor_workspace_logs = {
+///         api = {
+///           data_collection_endpoint_url = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           data_collection_rule         = "dcr-00000000000000000000000000000000"
+///           schema = {
+///             record_map = [{
+///               from = "body"
+///               to   = "Body"
 ///               }, {
-///               "from" = "severity_text"
-///               "to"   = "SeverityText"
+///               from = "severity_text"
+///               to   = "SeverityText"
 ///               }, {
-///               "from" = "time_unix_nano"
-///               "to"   = "TimeGenerated"
+///               from = "time_unix_nano"
+///               to   = "TimeGenerated"
 ///             }]
 ///           }
-///           "stream" = "Custom-MyTableRawData_CL"
+///           stream = "Custom-MyTableRawData_CL"
 ///         }
-///         "concurrency" = {
-///           "batchQueueSize" = 100
-///           "workerCount"    = 4
+///         concurrency = {
+///           batch_queue_size = 100
+///           worker_count     = 4
 ///         }
 ///       }
-///       "name" = "my-workspace-logs-exporter1"
-///       "type" = "AzureMonitorWorkspaceLogs"
+///       name = "my-workspace-logs-exporter1"
+///       type = "AzureMonitorWorkspaceLogs"
 ///     }]
 ///     processors = []
 ///     receivers = [{
-///       "name" = "udp-receiver1"
-///       "type" = "UDP"
-///       "udp" = {
-///         "encoding" = "utf-8"
-///         "endpoint" = "0.0.0.0:518"
+///       name = "udp-receiver1"
+///       type = "UDP"
+///       udp = {
+///         encoding = "utf-8"
+///         endpoint = "0.0.0.0:518"
 ///       }
 ///     }]
 ///     service = {
 ///       pipelines = [{
-///         "exporters"  = ["my-workspace-logs-exporter1"]
-///         "name"       = "MyPipelineForLogs1"
-///         "processors" = []
-///         "receivers"  = ["udp-receiver1"]
-///         "type"       = "Logs"
+///         exporters  = ["my-workspace-logs-exporter1"]
+///         name       = "MyPipelineForLogs1"
+///         processors = []
+///         receivers  = ["udp-receiver1"]
+///         type       = "Logs"
 ///       }]
 ///     }
 ///   }
@@ -299,7 +302,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PipelineGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsApiConfigArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SchemaMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.RecordMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConcurrencyConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.UdpReceiverArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.PipelineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -813,7 +825,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -821,7 +833,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+/// resource "azure-native_monitor_pipeline_group" "pipelineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
 ///     type = "CustomLocation"
@@ -830,57 +845,57 @@ import 'system_data_response.dart';
 ///   pipeline_group_name = "plGroup1"
 ///   properties = {
 ///     exporters = [{
-///       "azureMonitorWorkspaceLogs" = {
-///         "api" = {
-///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
-///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
-///           "schema" = {
-///             "recordMap" = [{
-///               "from" = "body"
-///               "to"   = "Body"
+///       azure_monitor_workspace_logs = {
+///         api = {
+///           data_collection_endpoint_url = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           data_collection_rule         = "dcr-00000000000000000000000000000000"
+///           schema = {
+///             record_map = [{
+///               from = "body"
+///               to   = "Body"
 ///               }, {
-///               "from" = "severity_text"
-///               "to"   = "SeverityText"
+///               from = "severity_text"
+///               to   = "SeverityText"
 ///               }, {
-///               "from" = "time_unix_nano"
-///               "to"   = "TimeGenerated"
+///               from = "time_unix_nano"
+///               to   = "TimeGenerated"
 ///             }]
 ///           }
-///           "stream" = "Custom-MyTableRawData_CL"
+///           stream = "Custom-MyTableRawData_CL"
 ///         }
-///         "concurrency" = {
-///           "batchQueueSize" = 100
-///           "workerCount"    = 4
+///         concurrency = {
+///           batch_queue_size = 100
+///           worker_count     = 4
 ///         }
 ///       }
-///       "name" = "my-workspace-logs-exporter1"
-///       "type" = "AzureMonitorWorkspaceLogs"
+///       name = "my-workspace-logs-exporter1"
+///       type = "AzureMonitorWorkspaceLogs"
 ///     }]
 ///     processors = []
 ///     receivers = [{
-///       "name" = "udp-receiver1"
-///       "type" = "UDP"
-///       "udp" = {
-///         "encoding" = "utf-8"
-///         "endpoint" = "0.0.0.0:518"
-///         "jsonArrayMapper" = {
-///           "destinationField" = {
-///             "destination" = "attributes"
+///       name = "udp-receiver1"
+///       type = "UDP"
+///       udp = {
+///         encoding = "utf-8"
+///         endpoint = "0.0.0.0:518"
+///         json_array_mapper = {
+///           destination_field = {
+///             destination = "attributes"
 ///           }
-///           "keys" = ["key1", "key2", "key3"]
-///           "sourceField" = {
-///             "fieldName" = "field1"
+///           keys = ["key1", "key2", "key3"]
+///           source_field = {
+///             field_name = "field1"
 ///           }
 ///         }
 ///       }
 ///     }]
 ///     service = {
 ///       pipelines = [{
-///         "exporters"  = ["my-workspace-logs-exporter1"]
-///         "name"       = "MyPipelineForLogs1"
-///         "processors" = []
-///         "receivers"  = ["udp-receiver1"]
-///         "type"       = "Logs"
+///         exporters  = ["my-workspace-logs-exporter1"]
+///         name       = "MyPipelineForLogs1"
+///         processors = []
+///         receivers  = ["udp-receiver1"]
+///         type       = "Logs"
 ///       }]
 ///     }
 ///   }
@@ -903,7 +918,19 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PipelineGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsApiConfigArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SchemaMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.RecordMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConcurrencyConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.UdpReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.JsonArrayMapperArgs;
+/// import com.pulumi.azurenative.monitor.inputs.JsonMapperDestinationFieldArgs;
+/// import com.pulumi.azurenative.monitor.inputs.JsonMapperSourceFieldArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.PipelineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1449,7 +1476,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1457,7 +1484,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+/// resource "azure-native_monitor_pipeline_group" "pipelineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
 ///     type = "CustomLocation"
@@ -1466,50 +1496,50 @@ import 'system_data_response.dart';
 ///   pipeline_group_name = "plGroup1"
 ///   properties = {
 ///     exporters = [{
-///       "azureMonitorWorkspaceLogs" = {
-///         "api" = {
-///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
-///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
-///           "schema" = {
-///             "recordMap" = [{
-///               "from" = "body"
-///               "to"   = "Body"
+///       azure_monitor_workspace_logs = {
+///         api = {
+///           data_collection_endpoint_url = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           data_collection_rule         = "dcr-00000000000000000000000000000000"
+///           schema = {
+///             record_map = [{
+///               from = "body"
+///               to   = "Body"
 ///               }, {
-///               "from" = "severity_text"
-///               "to"   = "SeverityText"
+///               from = "severity_text"
+///               to   = "SeverityText"
 ///               }, {
-///               "from" = "time_unix_nano"
-///               "to"   = "TimeGenerated"
+///               from = "time_unix_nano"
+///               to   = "TimeGenerated"
 ///             }]
 ///           }
-///           "stream" = "Custom-MyTableRawData_CL"
+///           stream = "Custom-MyTableRawData_CL"
 ///         }
-///         "concurrency" = {
-///           "batchQueueSize" = 100
-///           "workerCount"    = 4
+///         concurrency = {
+///           batch_queue_size = 100
+///           worker_count     = 4
 ///         }
 ///       }
-///       "name" = "my-workspace-logs-exporter1"
-///       "type" = "AzureMonitorWorkspaceLogs"
+///       name = "my-workspace-logs-exporter1"
+///       type = "AzureMonitorWorkspaceLogs"
 ///     }]
 ///     processors = [{
-///       "name" = "batch-processor1"
-///       "type" = "Batch"
+///       name = "batch-processor1"
+///       type = "Batch"
 ///     }]
 ///     receivers = [{
-///       "name" = "syslog-receiver1"
-///       "syslog" = {
-///         "endpoint" = "0.0.0.0:514"
+///       name = "syslog-receiver1"
+///       syslog = {
+///         endpoint = "0.0.0.0:514"
 ///       }
-///       "type" = "Syslog"
+///       type = "Syslog"
 ///     }]
 ///     service = {
 ///       pipelines = [{
-///         "exporters"  = ["my-workspace-logs-exporter1"]
-///         "name"       = "MyPipelineForLogs1"
-///         "processors" = ["batch-processor1"]
-///         "receivers"  = ["syslog-receiver1"]
-///         "type"       = "Logs"
+///         exporters  = ["my-workspace-logs-exporter1"]
+///         name       = "MyPipelineForLogs1"
+///         processors = ["batch-processor1"]
+///         receivers  = ["syslog-receiver1"]
+///         type       = "Logs"
 ///       }]
 ///     }
 ///   }
@@ -1532,7 +1562,17 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PipelineGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsApiConfigArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SchemaMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.RecordMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConcurrencyConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ProcessorArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SyslogReceiverArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.PipelineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2048,7 +2088,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2056,7 +2096,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+/// resource "azure-native_monitor_pipeline_group" "pipelineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
 ///     type = "CustomLocation"
@@ -2065,54 +2108,54 @@ import 'system_data_response.dart';
 ///   pipeline_group_name = "plGroup1"
 ///   properties = {
 ///     exporters = [{
-///       "azureMonitorWorkspaceLogs" = {
-///         "api" = {
-///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
-///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
-///           "schema" = {
-///             "recordMap" = [{
-///               "from" = "body"
-///               "to"   = "Body"
+///       azure_monitor_workspace_logs = {
+///         api = {
+///           data_collection_endpoint_url = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           data_collection_rule         = "dcr-00000000000000000000000000000000"
+///           schema = {
+///             record_map = [{
+///               from = "body"
+///               to   = "Body"
 ///               }, {
-///               "from" = "severity_text"
-///               "to"   = "SeverityText"
+///               from = "severity_text"
+///               to   = "SeverityText"
 ///               }, {
-///               "from" = "time_unix_nano"
-///               "to"   = "TimeGenerated"
+///               from = "time_unix_nano"
+///               to   = "TimeGenerated"
 ///             }]
 ///           }
-///           "stream" = "Custom-MyTableRawData_CL"
+///           stream = "Custom-MyTableRawData_CL"
 ///         }
-///         "cache" = {
-///           "maxStorageUsage" = 100
-///           "retentionPeriod" = 10
+///         cache = {
+///           max_storage_usage = 100
+///           retention_period  = 10
 ///         }
-///         "concurrency" = {
-///           "batchQueueSize" = 100
-///           "workerCount"    = 4
+///         concurrency = {
+///           batch_queue_size = 100
+///           worker_count     = 4
 ///         }
 ///       }
-///       "name" = "my-workspace-logs-exporter1"
-///       "type" = "AzureMonitorWorkspaceLogs"
+///       name = "my-workspace-logs-exporter1"
+///       type = "AzureMonitorWorkspaceLogs"
 ///     }]
 ///     processors = [{
-///       "name" = "batch-processor1"
-///       "type" = "Batch"
+///       name = "batch-processor1"
+///       type = "Batch"
 ///     }]
 ///     receivers = [{
-///       "name" = "syslog-receiver1"
-///       "syslog" = {
-///         "endpoint" = "0.0.0.0:514"
+///       name = "syslog-receiver1"
+///       syslog = {
+///         endpoint = "0.0.0.0:514"
 ///       }
-///       "type" = "Syslog"
+///       type = "Syslog"
 ///     }]
 ///     service = {
 ///       pipelines = [{
-///         "exporters"  = ["my-workspace-logs-exporter1"]
-///         "name"       = "MyPipelineForLogs1"
-///         "processors" = ["batch-processor1"]
-///         "receivers"  = ["syslog-receiver1"]
-///         "type"       = "Logs"
+///         exporters  = ["my-workspace-logs-exporter1"]
+///         name       = "MyPipelineForLogs1"
+///         processors = ["batch-processor1"]
+///         receivers  = ["syslog-receiver1"]
+///         type       = "Logs"
 ///       }]
 ///     }
 ///   }
@@ -2135,7 +2178,18 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PipelineGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsApiConfigArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SchemaMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.RecordMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.CacheConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConcurrencyConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ProcessorArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SyslogReceiverArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.PipelineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2666,7 +2720,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2674,7 +2728,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_pipelinegroup" "pipelineGroup" {
+/// resource "azure-native_monitor_pipeline_group" "pipelineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/myTestCustomLocation"
 ///     type = "CustomLocation"
@@ -2683,54 +2740,54 @@ import 'system_data_response.dart';
 ///   pipeline_group_name = "plGroup1"
 ///   properties = {
 ///     exporters = [{
-///       "azureMonitorWorkspaceLogs" = {
-///         "api" = {
-///           "dataCollectionEndpointUrl" = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
-///           "dataCollectionRule"        = "dcr-00000000000000000000000000000000"
-///           "schema" = {
-///             "recordMap" = [{
-///               "from" = "body"
-///               "to"   = "Body"
+///       azure_monitor_workspace_logs = {
+///         api = {
+///           data_collection_endpoint_url = "https://logs-myingestion-eb0s.eastus-1.ingest.monitor.azure.com"
+///           data_collection_rule         = "dcr-00000000000000000000000000000000"
+///           schema = {
+///             record_map = [{
+///               from = "body"
+///               to   = "Body"
 ///               }, {
-///               "from" = "severity_text"
-///               "to"   = "SeverityText"
+///               from = "severity_text"
+///               to   = "SeverityText"
 ///               }, {
-///               "from" = "time_unix_nano"
-///               "to"   = "TimeGenerated"
+///               from = "time_unix_nano"
+///               to   = "TimeGenerated"
 ///             }]
 ///           }
-///           "stream" = "Custom-MyTableRawData_CL"
+///           stream = "Custom-MyTableRawData_CL"
 ///         }
-///         "concurrency" = {
-///           "batchQueueSize" = 100
-///           "workerCount"    = 4
+///         concurrency = {
+///           batch_queue_size = 100
+///           worker_count     = 4
 ///         }
 ///       }
-///       "name" = "my-workspace-logs-exporter1"
-///       "type" = "AzureMonitorWorkspaceLogs"
+///       name = "my-workspace-logs-exporter1"
+///       type = "AzureMonitorWorkspaceLogs"
 ///     }]
 ///     networking_configurations = [{
-///       "externalNetworkingMode" = "LoadBalancerOnly"
-///       "host"                   = "azuremonitorpipeline.contoso.com"
-///       "routes" = [{
-///         "receiver" = "syslog-receiver1"
+///       external_networking_mode = "LoadBalancerOnly"
+///       host                     = "azuremonitorpipeline.contoso.com"
+///       routes = [{
+///         receiver = "syslog-receiver1"
 ///       }]
 ///     }]
 ///     processors = []
 ///     receivers = [{
-///       "name" = "syslog-receiver1"
-///       "syslog" = {
-///         "endpoint" = "0.0.0.0:514"
+///       name = "syslog-receiver1"
+///       syslog = {
+///         endpoint = "0.0.0.0:514"
 ///       }
-///       "type" = "Syslog"
+///       type = "Syslog"
 ///     }]
 ///     service = {
 ///       pipelines = [{
-///         "exporters"  = ["my-workspace-logs-exporter1"]
-///         "name"       = "MyPipelineForLogs1"
-///         "processors" = []
-///         "receivers"  = ["syslog-receiver1"]
-///         "type"       = "Logs"
+///         exporters  = ["my-workspace-logs-exporter1"]
+///         name       = "MyPipelineForLogs1"
+///         processors = []
+///         receivers  = ["syslog-receiver1"]
+///         type       = "Logs"
 ///       }]
 ///     }
 ///   }
@@ -2753,7 +2810,18 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.PipelineGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.monitor.inputs.PipelineGroupPropertiesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsExporterArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AzureMonitorWorkspaceLogsApiConfigArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SchemaMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.RecordMapArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConcurrencyConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.NetworkingConfigurationArgs;
+/// import com.pulumi.azurenative.monitor.inputs.NetworkingRouteArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SyslogReceiverArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ServiceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.PipelineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

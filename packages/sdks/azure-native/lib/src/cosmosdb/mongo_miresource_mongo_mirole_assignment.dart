@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongomiresourcemongomiroleassignment" "mongoMIResourceMongoMIRoleAssignment" {
+/// resource "azure-native_cosmosdb_mongo_m_i_resource_mongo_m_i_role_assignment" "mongoMIResourceMongoMIRoleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "myAccountName"
 ///   principal_id        = "myPrincipalId"
 ///   resource_group_name = "myResourceGroupName"

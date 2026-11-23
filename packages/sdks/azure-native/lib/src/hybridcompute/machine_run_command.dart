@@ -105,7 +105,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,7 +113,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcompute_machineruncommand" "machineRunCommand" {
+/// resource "azure-native_hybridcompute_machine_run_command" "machineRunCommand" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   async_execution = false
 ///   error_blob_uri  = "https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt"
 ///   location        = "eastus2"

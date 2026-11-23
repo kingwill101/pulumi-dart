@@ -140,7 +140,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -148,7 +148,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_sqsqueue" "sqsQueue" {
+/// resource "azure-native_awsconnector_sqs_queue" "sqsQueue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fqdcgrb"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -172,8 +175,8 @@ import 'system_data_response.dart';
 ///       redrive_policy                    = {}
 ///       sqs_managed_sse_enabled           = true
 ///       tags = [{
-///         "key"   = "xvchjfddrrmpbyizcjxdplxu"
-///         "value" = "nxjcfolrd"
+///         key   = "xvchjfddrrmpbyizcjxdplxu"
+///         value = "nxjcfolrd"
 ///       }]
 ///       visibility_timeout = 2
 ///     }
@@ -203,6 +206,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.SqsQueueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SqsQueuePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSqsQueuePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

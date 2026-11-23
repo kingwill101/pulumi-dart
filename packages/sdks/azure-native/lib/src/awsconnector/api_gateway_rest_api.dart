@@ -176,7 +176,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -184,7 +184,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_apigatewayrestapi" "apiGatewayRestApi" {
+/// resource "azure-native_awsconnector_api_gateway_rest_api" "apiGatewayRestApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "lvqczthlir"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -218,8 +221,8 @@ import 'system_data_response.dart';
 ///       rest_api_id      = "hlyfcdcgknhbjezdxgbg"
 ///       root_resource_id = "jfmgp"
 ///       tags = [{
-///         "key"   = "zvkbvzxmbhtugr"
-///         "value" = "uozcrgrc"
+///         key   = "zvkbvzxmbhtugr"
+///         value = "uozcrgrc"
 ///       }]
 ///     }
 ///     aws_region        = "bzj"
@@ -250,6 +253,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsApiGatewayRestApiPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3LocationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EndpointConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

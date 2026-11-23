@@ -413,7 +413,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -421,7 +421,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_networkfirewallrulegroup" "networkFirewallRuleGroup" {
+/// resource "azure-native_awsconnector_network_firewall_rule_group" "networkFirewallRuleGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "npjhzlsmeqnuoj"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -458,54 +461,54 @@ import 'system_data_response.dart';
 ///           }
 ///           rules_string = "xujqqtutwcprdqudsnalep"
 ///           stateful_rules = [{
-///             "action" = "ALERT"
-///             "header" = {
-///               "destination"     = "monehvupaofeakgppr"
-///               "destinationPort" = "qlhyfsewpdlrpkxbdwfojdz"
-///               "direction"       = "ANY"
-///               "protocol"        = "DCERPC"
-///               "source"          = "bmxmxcbelcmrkaigfwwbtbakerp"
-///               "sourcePort"      = "ieimsyntk"
+///             action = "ALERT"
+///             header = {
+///               destination      = "monehvupaofeakgppr"
+///               destination_port = "qlhyfsewpdlrpkxbdwfojdz"
+///               direction        = "ANY"
+///               protocol         = "DCERPC"
+///               source           = "bmxmxcbelcmrkaigfwwbtbakerp"
+///               source_port      = "ieimsyntk"
 ///             }
-///             "ruleOptions" = [{
-///               "keyword"  = "obxwkhfbshjufmmrpjtskldelzb"
-///               "settings" = ["xflxrtoyhczflnevdftw"]
+///             rule_options = [{
+///               keyword  = "obxwkhfbshjufmmrpjtskldelzb"
+///               settings = ["xflxrtoyhczflnevdftw"]
 ///             }]
 ///           }]
 ///           stateless_rules_and_custom_actions = {
 ///             custom_actions = [{
-///               "actionDefinition" = {
-///                 "publishMetricAction" = {
-///                   "dimensions" = [{
-///                     "value" = "wninrpqzvmeovspprohpjge"
+///               action_definition = {
+///                 publish_metric_action = {
+///                   dimensions = [{
+///                     value = "wninrpqzvmeovspprohpjge"
 ///                   }]
 ///                 }
 ///               }
-///               "actionName" = "kcfqhtt"
+///               action_name = "kcfqhtt"
 ///             }]
 ///             stateless_rules = [{
-///               "priority" = 11
-///               "ruleDefinition" = {
-///                 "actions" = ["ofwytyaxwaoxjuhfror"]
-///                 "matchAttributes" = {
-///                   "destinationPorts" = [{
-///                     "fromPort" = 15
-///                     "toPort"   = 3
+///               priority = 11
+///               rule_definition = {
+///                 actions = ["ofwytyaxwaoxjuhfror"]
+///                 match_attributes = {
+///                   destination_ports = [{
+///                     from_port = 15
+///                     to_port   = 3
 ///                   }]
-///                   "destinations" = [{
-///                     "addressDefinition" = "upxiaznlcwpjgrahrg"
+///                   destinations = [{
+///                     address_definition = "upxiaznlcwpjgrahrg"
 ///                   }]
-///                   "protocols" = [27]
-///                   "sourcePorts" = [{
-///                     "fromPort" = 15
-///                     "toPort"   = 3
+///                   protocols = [27]
+///                   source_ports = [{
+///                     from_port = 15
+///                     to_port   = 3
 ///                   }]
-///                   "sources" = [{
-///                     "addressDefinition" = "upxiaznlcwpjgrahrg"
+///                   sources = [{
+///                     address_definition = "upxiaznlcwpjgrahrg"
 ///                   }]
-///                   "tcpFlags" = [{
-///                     "flags" = ["hc"]
-///                     "masks" = ["yycdx"]
+///                   tcp_flags = [{
+///                     flags = ["hc"]
+///                     masks = ["yycdx"]
 ///                   }]
 ///                 }
 ///               }
@@ -520,8 +523,8 @@ import 'system_data_response.dart';
 ///       rule_group_id   = "qfdxbisrqddn"
 ///       rule_group_name = "dypivpjvrdiecto"
 ///       tags = [{
-///         "key"   = "wuuykkzufgvvtcpdohiydsnqvutq"
-///         "value" = "pbppqwfrbdysivibwbk"
+///         key   = "wuuykkzufgvvtcpdohiydsnqvutq"
+///         value = "pbppqwfrbdysivibwbk"
 ///       }]
 ///       type = "STATEFUL"
 ///     }
@@ -553,11 +556,28 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsNetworkFirewallRuleGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuleGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReferenceSetsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IPSetReferenceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuleVariablesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IPSetArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PortSetArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RulesSourceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RulesSourceListArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatefulRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.HeaderArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RuleOptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatelessRulesAndCustomActionsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CustomActionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ActionDefinitionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PublishMetricActionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DimensionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatelessRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RuleDefinitionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MatchAttributesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PortRangeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AddressArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TCPFlagFieldArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatefulRuleOptionsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -60,7 +60,7 @@ import 'replication_link_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'replication_link_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_replicationlink" "replicationLink" {
+/// resource "azure-native_sql_replication_link" "replicationLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "gamma-db"
 ///   link_id             = "00000000-1111-2222-3333-666666666666"
 ///   link_type           = "STANDBY"

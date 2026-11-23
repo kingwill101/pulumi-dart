@@ -75,7 +75,7 @@ import 'virtual_appliance_site_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'virtual_appliance_site_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualappliancesite" "virtualApplianceSite" {
+/// resource "azure-native_network_virtual_appliance_site" "virtualApplianceSite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix                 = "192.168.1.0/24"
 ///   network_virtual_appliance_name = "nva"
 ///   o365_policy = {

@@ -58,7 +58,7 @@ import 'single_server_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'single_server_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserverconfiguration" "singleServerConfiguration" {
+/// resource "azure-native_dbforpostgresql_single_server_configuration" "singleServerConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name  = "array_nulls"
 ///   resource_group_name = "TestGroup"
 ///   server_name         = "testserver"

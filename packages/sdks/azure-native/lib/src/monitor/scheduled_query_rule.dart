@@ -8,9 +8,9 @@ import 'system_data_response.dart';
 
 /// The scheduled query rule resource.
 ///
-/// Uses Azure REST API version 2025-01-01-preview.
+/// Uses Azure REST API version 2026-03-01.
 ///
-/// Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -73,14 +73,14 @@ import 'system_data_response.dart';
 ///                     },
 ///                     FailingPeriods = new AzureNative.Monitor.Inputs.ConditionFailingPeriodsArgs
 ///                     {
-///                         MinFailingPeriodsToAlert = 1,
-///                         NumberOfEvaluationPeriods = 1,
+///                         MinFailingPeriodsToAlert = 1.0,
+///                         NumberOfEvaluationPeriods = 1.0,
 ///                     },
 ///                     MetricMeasureColumn = "% Processor Time",
-///                     Operator = "GreaterThan",
+///                     Operator = AzureNative.Monitor.ConditionOperator.GreaterThan,
 ///                     Query = "Perf | where ObjectName == \"Processor\"",
 ///                     ResourceIdColumn = "resourceId",
-///                     Threshold = 70,
+///                     Threshold = 70.0,
 ///                     TimeAggregation = AzureNative.Monitor.TimeAggregation.Average,
 ///                 },
 ///             },
@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 ///         {
 ///             "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1/providers/Microsoft.Compute/virtualMachines/vm1",
 ///         },
-///         Severity = 4,
+///         Severity = 4.0,
 ///         SkipQueryValidation = true,
 ///         WindowSize = "PT10M",
 ///     });
@@ -160,7 +160,7 @@ import 'system_data_response.dart';
 /// 							NumberOfEvaluationPeriods: pulumi.Float64(1),
 /// 						},
 /// 						MetricMeasureColumn: pulumi.String("% Processor Time"),
-/// 						Operator:            pulumi.String("GreaterThan"),
+/// 						Operator:            pulumi.String(monitor.ConditionOperatorGreaterThan),
 /// 						Query:               pulumi.String("Perf | where ObjectName == \"Processor\""),
 /// 						ResourceIdColumn:    pulumi.String("resourceId"),
 /// 						Threshold:           pulumi.Float64(70),
@@ -196,7 +196,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -204,7 +204,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_scheduledqueryrule" "scheduledQueryRule" {
+/// resource "azure-native_monitor_scheduled_query_rule" "scheduledQueryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = ["/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"]
 ///     action_properties = {
@@ -219,25 +222,25 @@ import 'system_data_response.dart';
 ///   check_workspace_alerts_storage_configured = true
 ///   criteria = {
 ///     all_of = [{
-///       "dimensions" = [{
-///         "name"     = "ComputerIp"
-///         "operator" = "Exclude"
-///         "values"   = ["192.168.1.1"]
+///       dimensions = [{
+///         name     = "ComputerIp"
+///         operator = "Exclude"
+///         values   = ["192.168.1.1"]
 ///         }, {
-///         "name"     = "OSType"
-///         "operator" = "Include"
-///         "values"   = ["*"]
+///         name     = "OSType"
+///         operator = "Include"
+///         values   = ["*"]
 ///       }]
-///       "failingPeriods" = {
-///         "minFailingPeriodsToAlert"  = 1
-///         "numberOfEvaluationPeriods" = 1
+///       failing_periods = {
+///         min_failing_periods_to_alert = 1
+///         number_of_evaluation_periods = 1
 ///       }
-///       "metricMeasureColumn" = "% Processor Time"
-///       "operator"            = "GreaterThan"
-///       "query"               = "Perf | where ObjectName == \"Processor\""
-///       "resourceIdColumn"    = "resourceId"
-///       "threshold"           = 70
-///       "timeAggregation"     = "Average"
+///       metric_measure_column = "% Processor Time"
+///       operator              = "GreaterThan"
+///       query                 = "Perf | where ObjectName == \"Processor\""
+///       resource_id_column    = "resourceId"
+///       threshold             = 70
+///       time_aggregation      = "Average"
 ///     }]
 ///   }
 ///   description           = "Performance rule"
@@ -269,6 +272,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ScheduledQueryRuleArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ScheduledQueryRuleCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DimensionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionFailingPeriodsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RuleResolveConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -379,7 +385,7 @@ import 'system_data_response.dart';
 ///                 numberOfEvaluationPeriods: 1,
 ///             },
 ///             metricMeasureColumn: "% Processor Time",
-///             operator: "GreaterThan",
+///             operator: azure_native.monitor.ConditionOperator.GreaterThan,
 ///             query: "Perf | where ObjectName == \"Processor\"",
 ///             resourceIdColumn: "resourceId",
 ///             threshold: 70,
@@ -441,7 +447,7 @@ import 'system_data_response.dart';
 ///                 "number_of_evaluation_periods": float(1),
 ///             },
 ///             "metric_measure_column": "% Processor Time",
-///             "operator": "GreaterThan",
+///             "operator": azure_native.monitor.ConditionOperator.GREATER_THAN,
 ///             "query": "Perf | where ObjectName == \"Processor\"",
 ///             "resource_id_column": "resourceId",
 ///             "threshold": float(70),
@@ -559,12 +565,12 @@ import 'system_data_response.dart';
 ///                     Dimensions = new() { },
 ///                     FailingPeriods = new AzureNative.Monitor.Inputs.ConditionFailingPeriodsArgs
 ///                     {
-///                         MinFailingPeriodsToAlert = 1,
-///                         NumberOfEvaluationPeriods = 1,
+///                         MinFailingPeriodsToAlert = 1.0,
+///                         NumberOfEvaluationPeriods = 1.0,
 ///                     },
-///                     Operator = "GreaterThan",
+///                     Operator = AzureNative.Monitor.ConditionOperator.GreaterThan,
 ///                     Query = "Heartbeat",
-///                     Threshold = 360,
+///                     Threshold = 360.0,
 ///                     TimeAggregation = AzureNative.Monitor.TimeAggregation.Count,
 ///                 },
 ///             },
@@ -585,7 +591,7 @@ import 'system_data_response.dart';
 ///         {
 ///             "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1",
 ///         },
-///         Severity = 4,
+///         Severity = 4.0,
 ///         SkipQueryValidation = true,
 ///         TargetResourceTypes = new[]
 ///         {
@@ -632,7 +638,7 @@ import 'system_data_response.dart';
 /// 							MinFailingPeriodsToAlert:  pulumi.Float64(1),
 /// 							NumberOfEvaluationPeriods: pulumi.Float64(1),
 /// 						},
-/// 						Operator:        pulumi.String("GreaterThan"),
+/// 						Operator:        pulumi.String(monitor.ConditionOperatorGreaterThan),
 /// 						Query:           pulumi.String("Heartbeat"),
 /// 						Threshold:       pulumi.Float64(360),
 /// 						TimeAggregation: pulumi.String(monitor.TimeAggregationCount),
@@ -670,7 +676,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -678,7 +684,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_scheduledqueryrule" "scheduledQueryRule" {
+/// resource "azure-native_monitor_scheduled_query_rule" "scheduledQueryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = ["/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"]
 ///     action_properties = {
@@ -693,15 +702,15 @@ import 'system_data_response.dart';
 ///   check_workspace_alerts_storage_configured = true
 ///   criteria = {
 ///     all_of = [{
-///       "dimensions" = []
-///       "failingPeriods" = {
-///         "minFailingPeriodsToAlert"  = 1
-///         "numberOfEvaluationPeriods" = 1
+///       dimensions = []
+///       failing_periods = {
+///         min_failing_periods_to_alert = 1
+///         number_of_evaluation_periods = 1
 ///       }
-///       "operator"        = "GreaterThan"
-///       "query"           = "Heartbeat"
-///       "threshold"       = 360
-///       "timeAggregation" = "Count"
+///       operator         = "GreaterThan"
+///       query            = "Heartbeat"
+///       threshold        = 360
+///       time_aggregation = "Count"
 ///     }]
 ///   }
 ///   description           = "Health check rule"
@@ -734,6 +743,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ScheduledQueryRuleArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ScheduledQueryRuleCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionFailingPeriodsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RuleResolveConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -821,7 +832,7 @@ import 'system_data_response.dart';
 ///                 minFailingPeriodsToAlert: 1,
 ///                 numberOfEvaluationPeriods: 1,
 ///             },
-///             operator: "GreaterThan",
+///             operator: azure_native.monitor.ConditionOperator.GreaterThan,
 ///             query: "Heartbeat",
 ///             threshold: 360,
 ///             timeAggregation: azure_native.monitor.TimeAggregation.Count,
@@ -871,7 +882,7 @@ import 'system_data_response.dart';
 ///                 "min_failing_periods_to_alert": float(1),
 ///                 "number_of_evaluation_periods": float(1),
 ///             },
-///             "operator": "GreaterThan",
+///             "operator": azure_native.monitor.ConditionOperator.GREATER_THAN,
 ///             "query": "Heartbeat",
 ///             "threshold": float(360),
 ///             "time_aggregation": azure_native.monitor.TimeAggregation.COUNT,
@@ -1001,14 +1012,14 @@ import 'system_data_response.dart';
 ///                     },
 ///                     FailingPeriods = new AzureNative.Monitor.Inputs.ConditionFailingPeriodsArgs
 ///                     {
-///                         MinFailingPeriodsToAlert = 1,
-///                         NumberOfEvaluationPeriods = 1,
+///                         MinFailingPeriodsToAlert = 1.0,
+///                         NumberOfEvaluationPeriods = 1.0,
 ///                     },
 ///                     MetricMeasureColumn = "% Processor Time",
-///                     Operator = "GreaterThan",
+///                     Operator = AzureNative.Monitor.ConditionOperator.GreaterThan,
 ///                     Query = "Perf | where ObjectName == \"Processor\"",
 ///                     ResourceIdColumn = "resourceId",
-///                     Threshold = 70,
+///                     Threshold = 70.0,
 ///                     TimeAggregation = AzureNative.Monitor.TimeAggregation.Average,
 ///                 },
 ///             },
@@ -1029,7 +1040,7 @@ import 'system_data_response.dart';
 ///         {
 ///             "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147",
 ///         },
-///         Severity = 4,
+///         Severity = 4.0,
 ///         SkipQueryValidation = true,
 ///         TargetResourceTypes = new[]
 ///         {
@@ -1092,7 +1103,7 @@ import 'system_data_response.dart';
 /// 							NumberOfEvaluationPeriods: pulumi.Float64(1),
 /// 						},
 /// 						MetricMeasureColumn: pulumi.String("% Processor Time"),
-/// 						Operator:            pulumi.String("GreaterThan"),
+/// 						Operator:            pulumi.String(monitor.ConditionOperatorGreaterThan),
 /// 						Query:               pulumi.String("Perf | where ObjectName == \"Processor\""),
 /// 						ResourceIdColumn:    pulumi.String("resourceId"),
 /// 						Threshold:           pulumi.Float64(70),
@@ -1131,7 +1142,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1139,7 +1150,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_scheduledqueryrule" "scheduledQueryRule" {
+/// resource "azure-native_monitor_scheduled_query_rule" "scheduledQueryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = ["/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"]
 ///     action_properties = {
@@ -1154,25 +1168,25 @@ import 'system_data_response.dart';
 ///   check_workspace_alerts_storage_configured = true
 ///   criteria = {
 ///     all_of = [{
-///       "dimensions" = [{
-///         "name"     = "ComputerIp"
-///         "operator" = "Exclude"
-///         "values"   = ["192.168.1.1"]
+///       dimensions = [{
+///         name     = "ComputerIp"
+///         operator = "Exclude"
+///         values   = ["192.168.1.1"]
 ///         }, {
-///         "name"     = "OSType"
-///         "operator" = "Include"
-///         "values"   = ["*"]
+///         name     = "OSType"
+///         operator = "Include"
+///         values   = ["*"]
 ///       }]
-///       "failingPeriods" = {
-///         "minFailingPeriodsToAlert"  = 1
-///         "numberOfEvaluationPeriods" = 1
+///       failing_periods = {
+///         min_failing_periods_to_alert = 1
+///         number_of_evaluation_periods = 1
 ///       }
-///       "metricMeasureColumn" = "% Processor Time"
-///       "operator"            = "GreaterThan"
-///       "query"               = "Perf | where ObjectName == \"Processor\""
-///       "resourceIdColumn"    = "resourceId"
-///       "threshold"           = 70
-///       "timeAggregation"     = "Average"
+///       metric_measure_column = "% Processor Time"
+///       operator              = "GreaterThan"
+///       query                 = "Perf | where ObjectName == \"Processor\""
+///       resource_id_column    = "resourceId"
+///       threshold             = 70
+///       time_aggregation      = "Average"
 ///     }]
 ///   }
 ///   description           = "Performance rule"
@@ -1205,6 +1219,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ScheduledQueryRuleArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ScheduledQueryRuleCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DimensionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionFailingPeriodsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.RuleResolveConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1316,7 +1333,7 @@ import 'system_data_response.dart';
 ///                 numberOfEvaluationPeriods: 1,
 ///             },
 ///             metricMeasureColumn: "% Processor Time",
-///             operator: "GreaterThan",
+///             operator: azure_native.monitor.ConditionOperator.GreaterThan,
 ///             query: "Perf | where ObjectName == \"Processor\"",
 ///             resourceIdColumn: "resourceId",
 ///             threshold: 70,
@@ -1379,7 +1396,7 @@ import 'system_data_response.dart';
 ///                 "number_of_evaluation_periods": float(1),
 ///             },
 ///             "metric_measure_column": "% Processor Time",
-///             "operator": "GreaterThan",
+///             "operator": azure_native.monitor.ConditionOperator.GREATER_THAN,
 ///             "query": "Perf | where ObjectName == \"Processor\"",
 ///             "resource_id_column": "resourceId",
 ///             "threshold": float(70),
@@ -1512,7 +1529,7 @@ import 'system_data_response.dart';
 ///         {
 ///             "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1/providers/Microsoft.Compute/virtualMachines/vm1",
 ///         },
-///         Severity = 4,
+///         Severity = 4.0,
 ///         SkipQueryValidation = true,
 ///     });
 ///
@@ -1576,7 +1593,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1584,7 +1601,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_scheduledqueryrule" "scheduledQueryRule" {
+/// resource "azure-native_monitor_scheduled_query_rule" "scheduledQueryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = ["/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"]
 ///     action_properties = {
@@ -1600,7 +1620,7 @@ import 'system_data_response.dart';
 ///   check_workspace_alerts_storage_configured = true
 ///   criteria = {
 ///     all_of = [{
-///       "query" = "Perf | where ObjectName == \"Processor\""
+///       query = "Perf | where ObjectName == \"Processor\""
 ///     }]
 ///   }
 ///   description           = "Performance rule"
@@ -1626,6 +1646,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ScheduledQueryRuleArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ScheduledQueryRuleCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1839,7 +1860,7 @@ import 'system_data_response.dart';
 ///                     },
 ///                     IgnoreDataBefore = "2024-06-01T21:00:00.000Z",
 ///                     MetricMeasureColumn = "% Processor Time",
-///                     Operator = "GreaterOrLessThan",
+///                     Operator = AzureNative.Monitor.ConditionOperator.GreaterOrLessThan,
 ///                     Query = "Perf | where ObjectName == \"Processor\"",
 ///                     ResourceIdColumn = "resourceId",
 ///                     TimeAggregation = AzureNative.Monitor.TimeAggregation.Average,
@@ -1857,7 +1878,7 @@ import 'system_data_response.dart';
 ///         {
 ///             "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1/providers/Microsoft.Compute/virtualMachines/vm1",
 ///         },
-///         Severity = 4,
+///         Severity = 4.0,
 ///         SkipQueryValidation = true,
 ///         WindowSize = "PT10M",
 ///     });
@@ -1915,7 +1936,7 @@ import 'system_data_response.dart';
 /// 						},
 /// 						IgnoreDataBefore:    pulumi.String("2024-06-01T21:00:00.000Z"),
 /// 						MetricMeasureColumn: pulumi.String("% Processor Time"),
-/// 						Operator:            pulumi.String("GreaterOrLessThan"),
+/// 						Operator:            pulumi.String(monitor.ConditionOperatorGreaterOrLessThan),
 /// 						Query:               pulumi.String("Perf | where ObjectName == \"Processor\""),
 /// 						ResourceIdColumn:    pulumi.String("resourceId"),
 /// 						TimeAggregation:     pulumi.String(monitor.TimeAggregationAverage),
@@ -1946,7 +1967,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1954,7 +1975,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_scheduledqueryrule" "scheduledQueryRule" {
+/// resource "azure-native_monitor_scheduled_query_rule" "scheduledQueryRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = ["/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"]
 ///     action_properties = {
@@ -1969,23 +1993,23 @@ import 'system_data_response.dart';
 ///   check_workspace_alerts_storage_configured = true
 ///   criteria = {
 ///     all_of = [{
-///       "alertSensitivity" = "Medium"
-///       "criterionType"    = "DynamicThresholdCriterion"
-///       "dimensions" = [{
-///         "name"     = "ComputerIp"
-///         "operator" = "Exclude"
-///         "values"   = ["192.168.1.1"]
+///       alert_sensitivity = "Medium"
+///       criterion_type    = "DynamicThresholdCriterion"
+///       dimensions = [{
+///         name     = "ComputerIp"
+///         operator = "Exclude"
+///         values   = ["192.168.1.1"]
 ///         }, {
-///         "name"     = "OSType"
-///         "operator" = "Include"
-///         "values"   = ["*"]
+///         name     = "OSType"
+///         operator = "Include"
+///         values   = ["*"]
 ///       }]
-///       "ignoreDataBefore"    = "2024-06-01T21:00:00.000Z"
-///       "metricMeasureColumn" = "% Processor Time"
-///       "operator"            = "GreaterOrLessThan"
-///       "query"               = "Perf | where ObjectName == \"Processor\""
-///       "resourceIdColumn"    = "resourceId"
-///       "timeAggregation"     = "Average"
+///       ignore_data_before    = "2024-06-01T21:00:00.000Z"
+///       metric_measure_column = "% Processor Time"
+///       operator              = "GreaterOrLessThan"
+///       query                 = "Perf | where ObjectName == \"Processor\""
+///       resource_id_column    = "resourceId"
+///       time_aggregation      = "Average"
 ///     }]
 ///   }
 ///   description           = "Performance rule"
@@ -2013,6 +2037,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.ScheduledQueryRuleArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionsArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ScheduledQueryRuleCriteriaArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.DimensionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2115,7 +2141,7 @@ import 'system_data_response.dart';
 ///             ],
 ///             ignoreDataBefore: "2024-06-01T21:00:00.000Z",
 ///             metricMeasureColumn: "% Processor Time",
-///             operator: "GreaterOrLessThan",
+///             operator: azure_native.monitor.ConditionOperator.GreaterOrLessThan,
 ///             query: "Perf | where ObjectName == \"Processor\"",
 ///             resourceIdColumn: "resourceId",
 ///             timeAggregation: azure_native.monitor.TimeAggregation.Average,
@@ -2171,7 +2197,7 @@ import 'system_data_response.dart';
 ///             ],
 ///             "ignore_data_before": "2024-06-01T21:00:00.000Z",
 ///             "metric_measure_column": "% Processor Time",
-///             "operator": "GreaterOrLessThan",
+///             "operator": azure_native.monitor.ConditionOperator.GREATER_OR_LESS_THAN,
 ///             "query": "Perf | where ObjectName == \"Processor\"",
 ///             "resource_id_column": "resourceId",
 ///             "time_aggregation": azure_native.monitor.TimeAggregation.AVERAGE,
@@ -2262,14 +2288,14 @@ class ScheduledQueryRule extends pulumi.CustomResource {
   /// The api-version used when creating this alert rule
   late final pulumi.Output<String> createdWithApiVersion;
   /// The rule criteria that defines the conditions of the scheduled query rule.
-  late final pulumi.Output<ScheduledQueryRuleCriteriaResponse?> criteria;
+  late final pulumi.Output<ScheduledQueryRuleCriteriaResponse> criteria;
   /// The description of the scheduled query rule.
   late final pulumi.Output<String?> description;
   /// The display name of the alert rule
   late final pulumi.Output<String?> displayName;
   /// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-  late final pulumi.Output<bool?> enabled;
-  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+  late final pulumi.Output<bool> enabled;
+  /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
   /// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
   late final pulumi.Output<String?> evaluationFrequency;
@@ -2292,12 +2318,12 @@ class ScheduledQueryRule extends pulumi.CustomResource {
   /// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
   late final pulumi.Output<RuleResolveConfigurationResponse?> resolveConfiguration;
   /// The list of resource id's that this scheduled query rule is scoped to.
-  late final pulumi.Output<List<String>?> scopes;
+  late final pulumi.Output<List<String>> scopes;
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
   late final pulumi.Output<double?> severity;
   /// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
   late final pulumi.Output<bool?> skipQueryValidation;
-  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// SystemData of ScheduledQueryRule.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -2327,10 +2353,10 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     checkWorkspaceAlertsStorageConfigured = registerOutput<bool?>('checkWorkspaceAlertsStorageConfigured');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse?>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRuleCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRuleCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    enabled = registerOutput<bool?>('enabled');
+    enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     evaluationFrequency = registerOutput<String?>('evaluationFrequency');
     identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2342,7 +2368,7 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     overrideQueryTimeRange = registerOutput<String?>('overrideQueryTimeRange');
     resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>('resolveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleResolveConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<double?>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2366,10 +2392,10 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     checkWorkspaceAlertsStorageConfigured = registerOutput<bool?>('checkWorkspaceAlertsStorageConfigured');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse?>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRuleCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRuleCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    enabled = registerOutput<bool?>('enabled');
+    enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     evaluationFrequency = registerOutput<String?>('evaluationFrequency');
     identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2381,7 +2407,7 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     overrideQueryTimeRange = registerOutput<String?>('overrideQueryTimeRange');
     resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>('resolveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleResolveConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<double?>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

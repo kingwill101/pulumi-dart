@@ -221,7 +221,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -229,7 +229,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_databasemigrationservicereplicationinstance" "databaseMigrationServiceReplicationInstance" {
+/// resource "azure-native_awsconnector_database_migration_service_replication_instance" "databaseMigrationServiceReplicationInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "pkvlgucpnkkigflvahztr"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -269,19 +272,19 @@ import 'system_data_response.dart';
 ///         replication_subnet_group_identifier  = "lp"
 ///         subnet_group_status                  = "u"
 ///         subnets = [{
-///           "subnetAvailabilityZone" = {
-///             "name" = "zkqyndrxrxjgvbcwycfd"
+///           subnet_availability_zone = {
+///             name = "zkqyndrxrxjgvbcwycfd"
 ///           }
-///           "subnetIdentifier" = "bbjyuchlt"
-///           "subnetStatus"     = "pzsp"
+///           subnet_identifier = "bbjyuchlt"
+///           subnet_status     = "pzsp"
 ///         }]
 ///         supported_network_types = ["flrojgbtzlv"]
 ///         vpc_id                  = "zsg"
 ///       }
 ///       secondary_availability_zone = "gfricycigffhmqcwzxxzwevrwf"
 ///       vpc_security_groups = [{
-///         "status"             = "tioerjd"
-///         "vpcSecurityGroupId" = "szupfofnwyrfpcpwi"
+///         status                = "tioerjd"
+///         vpc_security_group_id = "szupfofnwyrfpcpwi"
 ///       }]
 ///     }
 ///     aws_region        = "xflnvjqertqoawntyvmyorzemmx"
@@ -312,6 +315,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsDatabaseMigrationServiceReplicationInstancePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationPendingModifiedValuesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationSubnetGroupArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SubnetArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AvailabilityZoneArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.VpcSecurityGroupMembershipArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

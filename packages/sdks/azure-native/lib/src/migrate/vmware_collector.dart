@@ -82,7 +82,7 @@ import 'vmware_collector_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'vmware_collector_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_vmwarecollector" "vMwareCollector" {
+/// resource "azure-native_migrate_v_mware_collector" "vMwareCollector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag        = "\"01003d32-0000-0d00-0000-5d74d2e50000\""
 ///   project_name = "abgoyalWEselfhostb72bproject"
 ///   properties = {

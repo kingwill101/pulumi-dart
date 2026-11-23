@@ -26,14 +26,14 @@ import 'managed_service_identity_response.dart';
 ///     {
 ///         AccountName = "ddb1",
 ///         KeyspaceName = "keyspacename",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.CassandraViewResourceArgs
 ///         {
 ///             Id = "viewname",
 ///             ViewDefinition = "SELECT columna, columnb, columnc FROM keyspacename.srctablename WHERE columna IS NOT NULL AND columnc IS NOT NULL PRIMARY (columnc, columna)",
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///         ViewName = "viewname",
 ///     });
 ///
@@ -74,7 +74,7 @@ import 'managed_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'managed_service_identity_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_cassandraresourcecassandraview" "cassandraResourceCassandraView" {
+/// resource "azure-native_cosmosdb_cassandra_resource_cassandra_view" "cassandraResourceCassandraView" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   keyspace_name = "keyspacename"
 ///   options       = {}

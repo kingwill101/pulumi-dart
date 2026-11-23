@@ -92,7 +92,7 @@ import 'project_capability_host_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'project_capability_host_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_projectcapabilityhost" "projectCapabilityHost" {
+/// resource "azure-native_cognitiveservices_project_capability_host" "projectCapabilityHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name         = "account-1"
 ///   capability_host_name = "capabilityHostName"
 ///   project_capability_host_properties = {
@@ -138,7 +141,7 @@ import 'project_capability_host_response.dart';
 ///         var projectCapabilityHost = new ProjectCapabilityHost("projectCapabilityHost", ProjectCapabilityHostArgs.builder()
 ///             .accountName("account-1")
 ///             .capabilityHostName("capabilityHostName")
-///             .projectCapabilityHostProperties(ProjectCapabilityHostArgs.builder()
+///             .projectCapabilityHostProperties(com.pulumi.azurenative.cognitiveservices.inputs.ProjectCapabilityHostArgs.builder()
 ///                 .aiServicesConnections("aoai_connection")
 ///                 .storageConnections("blob_connection")
 ///                 .threadStorageConnections("aca_connection")

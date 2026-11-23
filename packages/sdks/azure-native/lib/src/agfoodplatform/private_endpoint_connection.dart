@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_agfoodplatform_privateendpointconnection" "privateEndpointConnection" {
+/// resource "azure-native_agfoodplatform_private_endpoint_connection" "privateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_manager_for_agriculture_resource_name = "examples-farmbeatsResourceName"
 ///   private_endpoint_connection_name           = "privateEndpointConnectionName"
 ///   private_link_service_connection_state = {

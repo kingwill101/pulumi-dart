@@ -66,7 +66,7 @@ import 'traffic_controller_interface_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'traffic_controller_interface_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicenetworking_trafficcontrollerinterface" "trafficControllerInterface" {
+/// resource "azure-native_servicenetworking_traffic_controller_interface" "trafficControllerInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "NorthCentralUS"
 ///   resource_group_name = "rg1"
 ///   tags = {

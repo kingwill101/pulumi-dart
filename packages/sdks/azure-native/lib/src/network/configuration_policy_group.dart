@@ -89,7 +89,7 @@ import 'vpn_server_configuration_policy_group_member_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'vpn_server_configuration_policy_group_member_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_configurationpolicygroup" "configurationPolicyGroup" {
+/// resource "azure-native_network_configuration_policy_group" "configurationPolicyGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_policy_group_name = "policyGroup1"
 ///   is_default                      = true
 ///   policy_members {

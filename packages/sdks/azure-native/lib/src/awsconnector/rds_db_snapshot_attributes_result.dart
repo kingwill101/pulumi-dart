@@ -113,7 +113,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -121,7 +121,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_rdsdbsnapshotattributesresult" "rdsDbSnapshotAttributesResult" {
+/// resource "azure-native_awsconnector_rds_db_snapshot_attributes_result" "rdsDbSnapshotAttributesResult" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "luzcqukssqazokzghltlzp"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -129,8 +132,8 @@ import 'system_data_response.dart';
 ///     aws_account_id = "za"
 ///     aws_properties = {
 ///       db_snapshot_attributes = [{
-///         "attributeName"   = "yszcujemf"
-///         "attributeValues" = ["cffn"]
+///         attribute_name   = "yszcujemf"
+///         attribute_values = ["cffn"]
 ///       }]
 ///       db_snapshot_identifier = "hgeztauvapideyaajrbafqyup"
 ///     }
@@ -160,6 +163,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsDbSnapshotAttributesResultArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDBSnapshotAttributesResultPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsDBSnapshotAttributesResultPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DBSnapshotAttributeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

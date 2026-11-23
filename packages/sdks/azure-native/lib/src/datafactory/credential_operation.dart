@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,12 +72,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_credentialoperation" "credentialOperation" {
+/// resource "azure-native_datafactory_credential_operation" "credentialOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credential_name = "exampleCredential"
 ///   factory_name    = "exampleFactoryName"
 ///   properties = {
-///     "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"
-///     "type"       = "ManagedIdentity"
+///     resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"
+///     type        = "ManagedIdentity"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -92,6 +95,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.CredentialOperation;
 /// import com.pulumi.azurenative.datafactory.CredentialOperationArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ManagedIdentityCredentialArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServicePrincipalCredentialArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -110,7 +115,6 @@ import 'system_data_response.dart';
 ///             .factoryName("exampleFactoryName")
 ///             .properties(ManagedIdentityCredentialArgs.builder()
 ///                 .resourceId("/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami")
-///                 .type("ManagedIdentity")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());

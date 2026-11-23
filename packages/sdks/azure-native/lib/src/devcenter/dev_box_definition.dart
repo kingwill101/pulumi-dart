@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_devboxdefinition" "devBoxDefinition" {
+/// resource "azure-native_devcenter_dev_box_definition" "devBoxDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dev_box_definition_name = "WebDevBox"
 ///   dev_center_name         = "Contoso"
 ///   hibernate_support       = "Enabled"

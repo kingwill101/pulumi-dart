@@ -71,7 +71,7 @@ import 'authorization_access_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'authorization_access_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_authorizationaccesspolicy" "authorizationAccessPolicy" {
+/// resource "azure-native_apimanagement_authorization_access_policy" "authorizationAccessPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_ids                        = ["d5f04bb0-ba78-4878-a43e-35a0b74fe315"]
 ///   authorization_access_policy_id = "fe0bed83-631f-4149-bd0b-0464b1bc7cab"
 ///   authorization_id               = "authz1"

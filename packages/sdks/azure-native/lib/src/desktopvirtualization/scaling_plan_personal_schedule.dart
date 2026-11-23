@@ -23,7 +23,7 @@ import 'time_response.dart';
 /// {
 ///     var scalingPlanPersonalSchedule = new AzureNative.DesktopVirtualization.ScalingPlanPersonalSchedule("scalingPlanPersonalSchedule", new()
 ///     {
-///         DaysOfWeek = new[]
+///         DaysOfWeek =
 ///         {
 ///             AzureNative.DesktopVirtualization.DayOfWeek.Monday,
 ///             AzureNative.DesktopVirtualization.DayOfWeek.Tuesday,
@@ -151,7 +151,7 @@ import 'time_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -159,7 +159,10 @@ import 'time_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_scalingplanpersonalschedule" "scalingPlanPersonalSchedule" {
+/// resource "azure-native_desktopvirtualization_scaling_plan_personal_schedule" "scalingPlanPersonalSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   days_of_week                           = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 ///   off_peak_action_on_disconnect          = "None"
 ///   off_peak_action_on_logoff              = "Deallocate"

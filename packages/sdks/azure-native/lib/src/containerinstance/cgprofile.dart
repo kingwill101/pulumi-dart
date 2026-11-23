@@ -56,7 +56,7 @@ import 'volume_response.dart';
 ///                 {
 ///                     Requests = new AzureNative.ContainerInstance.Inputs.ResourceRequestsArgs
 ///                     {
-///                         Cpu = 1,
+///                         Cpu = 1.0,
 ///                         MemoryInGB = 1.5,
 ///                     },
 ///                 },
@@ -73,7 +73,7 @@ import 'volume_response.dart';
 ///                 },
 ///             },
 ///         },
-///         ImageRegistryCredentials = new[] {},
+///         ImageRegistryCredentials = new() {},
 ///         IpAddress = new AzureNative.ContainerInstance.Inputs.IpAddressArgs
 ///         {
 ///             Ports = new[]
@@ -171,7 +171,7 @@ import 'volume_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -179,7 +179,10 @@ import 'volume_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+/// resource "azure-native_containerinstance_c_g_profile" "cgProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   confidential_compute_properties = {
 ///     cce_policy = "eyJhbGxvd19hbGwiOiB0cnVlLCAiY29udGFpbmVycyI6IHsibGVuZ3RoIjogMCwgImVsZW1lbnRzIjogbnVsbH19"
 ///   }
@@ -206,8 +209,8 @@ import 'volume_response.dart';
 ///   }
 ///   ip_address = {
 ///     ports = [{
-///       "port"     = 8000
-///       "protocol" = "TCP"
+///       port     = 8000
+///       protocol = "TCP"
 ///     }]
 ///     type = "Public"
 ///   }
@@ -230,11 +233,13 @@ import 'volume_response.dart';
 /// import com.pulumi.azurenative.containerinstance.CGProfileArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ConfidentialComputePropertiesArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.ContainerPortArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequirementsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.SecurityContextDefinitionArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.SecurityContextCapabilitiesDefinitionArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.PortArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -459,7 +464,7 @@ import 'volume_response.dart';
 ///                 {
 ///                     Requests = new AzureNative.ContainerInstance.Inputs.ResourceRequestsArgs
 ///                     {
-///                         Cpu = 1,
+///                         Cpu = 1.0,
 ///                         MemoryInGB = 1.5,
 ///                     },
 ///                 },
@@ -489,7 +494,7 @@ import 'volume_response.dart';
 ///                 Version = "1.0",
 ///             },
 ///         },
-///         ImageRegistryCredentials = new[] {},
+///         ImageRegistryCredentials = new() {},
 ///         IpAddress = new AzureNative.ContainerInstance.Inputs.IpAddressArgs
 ///         {
 ///             Ports = new[]
@@ -593,7 +598,7 @@ import 'volume_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -601,7 +606,10 @@ import 'volume_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+/// resource "azure-native_containerinstance_c_g_profile" "cgProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_group_profile_name = "demo1"
 ///   containers {
 ///     command = []
@@ -636,8 +644,8 @@ import 'volume_response.dart';
 ///   }
 ///   ip_address = {
 ///     ports = [{
-///       "port"     = 80
-///       "protocol" = "TCP"
+///       port     = 80
+///       protocol = "TCP"
 ///     }]
 ///     type = "Private"
 ///   }
@@ -658,10 +666,12 @@ import 'volume_response.dart';
 /// import com.pulumi.azurenative.containerinstance.CGProfile;
 /// import com.pulumi.azurenative.containerinstance.CGProfileArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.ContainerPortArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequirementsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.DeploymentExtensionSpecArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.PortArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -914,7 +924,7 @@ import 'volume_response.dart';
 ///                 {
 ///                     Requests = new AzureNative.ContainerInstance.Inputs.ResourceRequestsArgs
 ///                     {
-///                         Cpu = 1,
+///                         Cpu = 1.0,
 ///                         MemoryInGB = 1.5,
 ///                     },
 ///                 },
@@ -927,7 +937,7 @@ import 'volume_response.dart';
 ///             KeyVersion = "<key version>",
 ///             VaultBaseUrl = "https://testkeyvault.vault.azure.net",
 ///         },
-///         ImageRegistryCredentials = new[] {},
+///         ImageRegistryCredentials = new() {},
 ///         IpAddress = new AzureNative.ContainerInstance.Inputs.IpAddressArgs
 ///         {
 ///             Ports = new[]
@@ -1018,7 +1028,7 @@ import 'volume_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1026,7 +1036,10 @@ import 'volume_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+/// resource "azure-native_containerinstance_c_g_profile" "cgProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_group_profile_name = "demo1"
 ///   containers {
 ///     command = []
@@ -1050,8 +1063,8 @@ import 'volume_response.dart';
 ///   }
 ///   ip_address = {
 ///     ports = [{
-///       "port"     = 80
-///       "protocol" = "TCP"
+///       port     = 80
+///       protocol = "TCP"
 ///     }]
 ///     type = "Public"
 ///   }
@@ -1072,10 +1085,12 @@ import 'volume_response.dart';
 /// import com.pulumi.azurenative.containerinstance.CGProfile;
 /// import com.pulumi.azurenative.containerinstance.CGProfileArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.ContainerPortArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequirementsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.EncryptionPropertiesArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.PortArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1285,7 +1300,7 @@ import 'volume_response.dart';
 ///                 {
 ///                     Requests = new AzureNative.ContainerInstance.Inputs.ResourceRequestsArgs
 ///                     {
-///                         Cpu = 1,
+///                         Cpu = 1.0,
 ///                         Gpu = new AzureNative.ContainerInstance.Inputs.GpuResourceArgs
 ///                         {
 ///                             Count = 1,
@@ -1331,7 +1346,7 @@ import 'volume_response.dart';
 ///                 WorkspaceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace",
 ///             },
 ///         },
-///         ImageRegistryCredentials = new[] {},
+///         ImageRegistryCredentials = new() {},
 ///         IpAddress = new AzureNative.ContainerInstance.Inputs.IpAddressArgs
 ///         {
 ///             Ports = new[]
@@ -1496,7 +1511,7 @@ import 'volume_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1504,7 +1519,10 @@ import 'volume_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerinstance_cgprofile" "cgProfile" {
+/// resource "azure-native_containerinstance_c_g_profile" "cgProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_group_profile_name = "demo1"
 ///   containers {
 ///     command = []
@@ -1552,8 +1570,8 @@ import 'volume_response.dart';
 ///   }
 ///   ip_address = {
 ///     ports = [{
-///       "port"     = 80
-///       "protocol" = "TCP"
+///       port     = 80
+///       protocol = "TCP"
 ///     }]
 ///     type = "Public"
 ///   }
@@ -1593,12 +1611,15 @@ import 'volume_response.dart';
 /// import com.pulumi.azurenative.containerinstance.CGProfile;
 /// import com.pulumi.azurenative.containerinstance.CGProfileArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.ContainerPortArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequirementsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ResourceRequestsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.GpuResourceArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.VolumeMountArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.ContainerGroupDiagnosticsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.LogAnalyticsArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.IpAddressArgs;
+/// import com.pulumi.azurenative.containerinstance.inputs.PortArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.VolumeArgs;
 /// import com.pulumi.azurenative.containerinstance.inputs.AzureFileVolumeArgs;
 /// import java.util.ArrayList;

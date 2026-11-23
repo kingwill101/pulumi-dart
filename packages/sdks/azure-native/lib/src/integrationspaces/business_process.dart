@@ -246,7 +246,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -254,7 +254,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_integrationspaces_businessprocess" "businessProcess" {
+/// resource "azure-native_integrationspaces_business_process" "businessProcess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = "Application1"
 ///   business_process_mapping = {
 ///     "Completed" = {
@@ -346,6 +349,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.integrationspaces.BusinessProcess;
 /// import com.pulumi.azurenative.integrationspaces.BusinessProcessArgs;
+/// import com.pulumi.azurenative.integrationspaces.inputs.BusinessProcessMappingItemArgs;
+/// import com.pulumi.azurenative.integrationspaces.inputs.BusinessProcessStageArgs;
 /// import com.pulumi.azurenative.integrationspaces.inputs.BusinessProcessIdentifierArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

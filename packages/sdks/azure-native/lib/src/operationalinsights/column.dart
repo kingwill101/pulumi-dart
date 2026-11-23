@@ -8,7 +8,7 @@ class Column {
   final pulumi.Input<dynamic>? dataTypeHint;
   /// Column description.
   final pulumi.Input<String?>? description;
-  /// Column display name.
+  /// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
   final pulumi.Input<String?>? displayName;
   /// Column name.
   final pulumi.Input<String?>? name;
@@ -18,7 +18,7 @@ class Column {
   /// Creates a new [Column].
   /// [dataTypeHint] Column data type logical hint.
   /// [description] Column description.
-  /// [displayName] Column display name.
+  /// [displayName] Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
   /// [name] Column name.
   /// [type] Column data type.
   const Column({

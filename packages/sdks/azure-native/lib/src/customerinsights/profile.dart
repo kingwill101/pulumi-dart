@@ -173,7 +173,7 @@ import 'strong_id_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -182,6 +182,9 @@ import 'strong_id_response.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_entity_set_name = "TestProfileType396"
 ///   fields {
 ///     field_name  = "Id"

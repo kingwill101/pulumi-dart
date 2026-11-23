@@ -31,7 +31,7 @@ import 'system_data_response.dart';
 ///         {
 ///             new AzureNative.CosmosDB.Inputs.NodeGroupSpecArgs
 ///             {
-///                 DiskSizeGB = 128,
+///                 DiskSizeGB = 128.0,
 ///                 EnableHa = true,
 ///                 Kind = AzureNative.CosmosDB.NodeKind.Shard,
 ///                 NodeCount = 3,
@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongocluster" "mongoCluster" {
+/// resource "azure-native_cosmosdb_mongo_cluster" "mongoCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "mongoAdmin"
 ///   administrator_login_password = "password"
 ///   location                     = "westus2"
@@ -275,7 +278,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -283,7 +286,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongocluster" "mongoCluster" {
+/// resource "azure-native_cosmosdb_mongo_cluster" "mongoCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "PointInTimeRestore"
 ///   location            = "westus2"
 ///   mongo_cluster_name  = "myMongoCluster"

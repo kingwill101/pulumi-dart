@@ -88,11 +88,11 @@ import 'system_data_response.dart';
 /// 				Description: pulumi.String("acc-desc"),
 /// 				DisplayName: pulumi.String("acc-name"),
 /// 				GitRepository: &appplatform.AcceleratorGitRepositoryArgs{
-/// 					AuthSetting: appplatform.AcceleratorSshSetting{
-/// 						AuthType:         "SSH",
-/// 						HostKey:          "git-auth-hostkey",
-/// 						HostKeyAlgorithm: "git-auth-algorithm",
-/// 						PrivateKey:       "git-auth-privatekey",
+/// 					AuthSetting: &appplatform.AcceleratorSshSettingArgs{
+/// 						AuthType:         pulumi.String("SSH"),
+/// 						HostKey:          pulumi.String("git-auth-hostkey"),
+/// 						HostKeyAlgorithm: pulumi.String("git-auth-algorithm"),
+/// 						PrivateKey:       pulumi.String("git-auth-privatekey"),
 /// 					},
 /// 					Branch:            pulumi.String("git-branch"),
 /// 					Commit:            pulumi.String("12345"),
@@ -120,7 +120,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -128,7 +128,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_customizedaccelerator" "customizedAccelerator" {
+/// resource "azure-native_appplatform_customized_accelerator" "customizedAccelerator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_accelerator_name = "default"
 ///   customized_accelerator_name  = "acc-name"
 ///   properties = {
@@ -137,10 +140,10 @@ import 'system_data_response.dart';
 ///     display_name     = "acc-name"
 ///     git_repository = {
 ///       auth_setting = {
-///         "authType"         = "SSH"
-///         "hostKey"          = "git-auth-hostkey"
-///         "hostKeyAlgorithm" = "git-auth-algorithm"
-///         "privateKey"       = "git-auth-privatekey"
+///         auth_type          = "SSH"
+///         host_key           = "git-auth-hostkey"
+///         host_key_algorithm = "git-auth-algorithm"
+///         private_key        = "git-auth-privatekey"
 ///       }
 ///       branch              = "git-branch"
 ///       commit              = "12345"
@@ -171,6 +174,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.CustomizedAcceleratorArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.CustomizedAcceleratorPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.AcceleratorGitRepositoryArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.AcceleratorBasicAuthSettingArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.AcceleratorPublicSettingArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.AcceleratorSshSettingArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -196,7 +202,6 @@ import 'system_data_response.dart';
 ///                 .displayName("acc-name")
 ///                 .gitRepository(AcceleratorGitRepositoryArgs.builder()
 ///                     .authSetting(AcceleratorSshSettingArgs.builder()
-///                         .authType("SSH")
 ///                         .hostKey("git-auth-hostkey")
 ///                         .hostKeyAlgorithm("git-auth-algorithm")
 ///                         .privateKey("git-auth-privatekey")

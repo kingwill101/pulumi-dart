@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -109,7 +109,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_capacitypoolcache" "capacityPoolCache" {
+/// resource "azure-native_netapp_capacity_pool_cache" "capacityPoolCache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   cache_name   = "cache1"
 ///   location     = "eastus"

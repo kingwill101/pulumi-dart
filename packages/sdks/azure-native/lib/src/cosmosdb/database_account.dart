@@ -91,7 +91,7 @@ import 'virtual_network_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'virtual_network_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccount" "databaseAccount" {
+/// resource "azure-native_cosmosdb_database_account" "databaseAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                = "ddb1"
 ///   create_mode                 = "Default"
 ///   database_account_offer_type = "Standard"
@@ -238,7 +241,7 @@ import 'virtual_network_rule_response.dart';
 ///         {
 ///             DefaultConsistencyLevel = AzureNative.CosmosDB.DefaultConsistencyLevel.BoundedStaleness,
 ///             MaxIntervalInSeconds = 10,
-///             MaxStalenessPrefix = 200,
+///             MaxStalenessPrefix = 200.0,
 ///         },
 ///         CreateMode = AzureNative.CosmosDB.CreateMode.Restore,
 ///         DatabaseAccountOfferType = AzureNative.CosmosDB.DatabaseAccountOfferType.Standard,
@@ -287,7 +290,7 @@ import 'virtual_network_rule_response.dart';
 ///             RestoreWithTtlDisabled = false,
 ///             SourceBackupLocation = "westus",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -372,7 +375,7 @@ import 'virtual_network_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -380,16 +383,19 @@ import 'virtual_network_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccount" "databaseAccount" {
+/// resource "azure-native_cosmosdb_database_account" "databaseAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   api_properties = {
 ///     server_version = "3.2"
 ///   }
 ///   backup_policy = {
-///     "continuousModeProperties" = {
-///       "tier" = "Continuous30Days"
+///     continuous_mode_properties = {
+///       tier = "Continuous30Days"
 ///     }
-///     "type" = "Continuous"
+///     type = "Continuous"
 ///   }
 ///   consistency_policy = {
 ///     default_consistency_level = "BoundedStaleness"
@@ -412,11 +418,11 @@ import 'virtual_network_rule_response.dart';
 ///   resource_group_name = "rg1"
 ///   restore_parameters = {
 ///     databases_to_restore = [{
-///       "collectionNames" = ["collection1", "collection2"]
-///       "databaseName"    = "db1"
+///       collection_names = ["collection1", "collection2"]
+///       database_name    = "db1"
 ///       }, {
-///       "collectionNames" = ["collection3", "collection4"]
-///       "databaseName"    = "db2"
+///       collection_names = ["collection3", "collection4"]
+///       database_name    = "db2"
 ///     }]
 ///     restore_mode              = "PointInTime"
 ///     restore_source            = "/subscriptions/subid/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/1a97b4bb-f6a0-430e-ade1-638d781830cc"
@@ -438,9 +444,13 @@ import 'virtual_network_rule_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccount;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ApiPropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.ContinuousModeBackupPolicyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.ContinuousModePropertiesArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.PeriodicModeBackupPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ConsistencyPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.LocationArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.RestoreParametersArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.DatabaseRestoreResourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -463,7 +473,6 @@ import 'virtual_network_rule_response.dart';
 ///                 .continuousModeProperties(ContinuousModePropertiesArgs.builder()
 ///                     .tier("Continuous30Days")
 ///                     .build())
-///                 .type("Continuous")
 ///                 .build())
 ///             .consistencyPolicy(ConsistencyPolicyArgs.builder()
 ///                 .defaultConsistencyLevel("BoundedStaleness")

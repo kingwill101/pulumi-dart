@@ -115,13 +115,13 @@ import 'template_artifact_args.dart';
 /// 			ResourceScope: pulumi.String("providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"),
 /// 			Template: pulumi.Any(map[string]interface{}{
 /// 				"contentVersion": "1.0.0.0",
-/// 				"outputs": map[string]interface{}{
-/// 					"storageAccountName": map[string]interface{}{
+/// 				"outputs": map[string]map[string]string{
+/// 					"storageAccountName": map[string]string{
 /// 						"type":  "string",
 /// 						"value": "[variables('storageAccountName')]",
 /// 					},
 /// 				},
-/// 				"parameters": map[string]interface{}{
+/// 				"parameters": map[string]map[string]interface{}{
 /// 					"storageAccountType": map[string]interface{}{
 /// 						"allowedValues": []string{
 /// 							"Standard_LRS",
@@ -130,7 +130,7 @@ import 'template_artifact_args.dart';
 /// 							"Premium_LRS",
 /// 						},
 /// 						"defaultValue": "Standard_LRS",
-/// 						"metadata": map[string]interface{}{
+/// 						"metadata": map[string]string{
 /// 							"description": "Storage Account type",
 /// 						},
 /// 						"type": "string",
@@ -143,13 +143,13 @@ import 'template_artifact_args.dart';
 /// 						"location":   "[resourceGroup().location]",
 /// 						"name":       "[variables('storageAccountName')]",
 /// 						"properties": map[string]interface{}{},
-/// 						"sku": map[string]interface{}{
+/// 						"sku": map[string]string{
 /// 							"name": "[parameters('storageAccountType')]",
 /// 						},
 /// 						"type": "Microsoft.Storage/storageAccounts",
 /// 					},
 /// 				},
-/// 				"variables": map[string]interface{}{
+/// 				"variables": map[string]string{
 /// 					"storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]",
 /// 				},
 /// 			}),
@@ -164,7 +164,7 @@ import 'template_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -172,7 +172,10 @@ import 'template_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_templateartifact" "templateArtifact" {
+/// resource "azure-native_blueprint_template_artifact" "templateArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "storageTemplate"
 ///   blueprint_name = "simpleBlueprint"
 ///   kind           = "template"
@@ -228,6 +231,7 @@ import 'template_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.TemplateArtifact;
 /// import com.pulumi.azurenative.blueprint.TemplateArtifactArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -244,7 +248,6 @@ import 'template_artifact_args.dart';
 ///         var templateArtifact = new TemplateArtifact("templateArtifact", TemplateArtifactArgs.builder()
 ///             .artifactName("storageTemplate")
 ///             .blueprintName("simpleBlueprint")
-///             .kind("template")
 ///             .parameters(Map.of("storageAccountType", ParameterValueArgs.builder()
 ///                 .value("[parameters('storageAccountType')]")
 ///                 .build()))
@@ -490,7 +493,7 @@ import 'template_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -498,7 +501,10 @@ import 'template_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_templateartifact" "templateArtifact" {
+/// resource "azure-native_blueprint_template_artifact" "templateArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "costCenterPolicy"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
@@ -620,7 +626,7 @@ import 'template_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -628,7 +634,10 @@ import 'template_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_templateartifact" "templateArtifact" {
+/// resource "azure-native_blueprint_template_artifact" "templateArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "ownerAssignment"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
@@ -810,13 +819,13 @@ import 'template_artifact_args.dart';
 /// 			ResourceScope: pulumi.String("subscriptions/00000000-0000-0000-0000-000000000000"),
 /// 			Template: pulumi.Any(map[string]interface{}{
 /// 				"contentVersion": "1.0.0.0",
-/// 				"outputs": map[string]interface{}{
-/// 					"storageAccountName": map[string]interface{}{
+/// 				"outputs": map[string]map[string]string{
+/// 					"storageAccountName": map[string]string{
 /// 						"type":  "string",
 /// 						"value": "[variables('storageAccountName')]",
 /// 					},
 /// 				},
-/// 				"parameters": map[string]interface{}{
+/// 				"parameters": map[string]map[string]interface{}{
 /// 					"storageAccountType": map[string]interface{}{
 /// 						"allowedValues": []string{
 /// 							"Standard_LRS",
@@ -825,7 +834,7 @@ import 'template_artifact_args.dart';
 /// 							"Premium_LRS",
 /// 						},
 /// 						"defaultValue": "Standard_LRS",
-/// 						"metadata": map[string]interface{}{
+/// 						"metadata": map[string]string{
 /// 							"description": "Storage Account type",
 /// 						},
 /// 						"type": "string",
@@ -838,13 +847,13 @@ import 'template_artifact_args.dart';
 /// 						"location":   "[resourceGroup().location]",
 /// 						"name":       "[variables('storageAccountName')]",
 /// 						"properties": map[string]interface{}{},
-/// 						"sku": map[string]interface{}{
+/// 						"sku": map[string]string{
 /// 							"name": "[parameters('storageAccountType')]",
 /// 						},
 /// 						"type": "Microsoft.Storage/storageAccounts",
 /// 					},
 /// 				},
-/// 				"variables": map[string]interface{}{
+/// 				"variables": map[string]string{
 /// 					"storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]",
 /// 				},
 /// 			}),
@@ -859,7 +868,7 @@ import 'template_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -867,7 +876,10 @@ import 'template_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_templateartifact" "templateArtifact" {
+/// resource "azure-native_blueprint_template_artifact" "templateArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "storageTemplate"
 ///   blueprint_name = "simpleBlueprint"
 ///   kind           = "template"
@@ -923,6 +935,7 @@ import 'template_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.TemplateArtifact;
 /// import com.pulumi.azurenative.blueprint.TemplateArtifactArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -939,7 +952,6 @@ import 'template_artifact_args.dart';
 ///         var templateArtifact = new TemplateArtifact("templateArtifact", TemplateArtifactArgs.builder()
 ///             .artifactName("storageTemplate")
 ///             .blueprintName("simpleBlueprint")
-///             .kind("template")
 ///             .parameters(Map.of("storageAccountType", ParameterValueArgs.builder()
 ///                 .value("[parameters('storageAccountType')]")
 ///                 .build()))
@@ -1185,7 +1197,7 @@ import 'template_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1193,7 +1205,10 @@ import 'template_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_templateartifact" "templateArtifact" {
+/// resource "azure-native_blueprint_template_artifact" "templateArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "costCenterPolicy"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -1315,7 +1330,7 @@ import 'template_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1323,7 +1338,10 @@ import 'template_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_templateartifact" "templateArtifact" {
+/// resource "azure-native_blueprint_template_artifact" "templateArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "ownerAssignment"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"

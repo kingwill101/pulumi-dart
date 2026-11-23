@@ -12,11 +12,13 @@ import 'search_results.dart';
 class TableArgs {
   /// Instruct the system how to handle and charge the logs ingested to this table.
   final pulumi.Input<dynamic>? plan;
+  /// The protection level of the table. Determines the default data access isolation behavior.
+  final pulumi.Input<dynamic>? protectionLevel;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Parameters of the restore operation that initiated this table.
   final pulumi.Input<RestoredLogs?>? restoredLogs;
-  /// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+  /// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
   final pulumi.Input<int?>? retentionInDays;
   /// Table schema.
   final pulumi.Input<Schema?>? schema;
@@ -24,23 +26,25 @@ class TableArgs {
   final pulumi.Input<SearchResults?>? searchResults;
   /// The name of the table.
   final pulumi.Input<String?>? tableName;
-  /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+  /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
   final pulumi.Input<int?>? totalRetentionInDays;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [TableArgs].
   /// [plan] Instruct the system how to handle and charge the logs ingested to this table.
+  /// [protectionLevel] The protection level of the table. Determines the default data access isolation behavior.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [restoredLogs] Parameters of the restore operation that initiated this table.
-  /// [retentionInDays] The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+  /// [retentionInDays] In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
   /// [schema] Table schema.
   /// [searchResults] Parameters of the search job that initiated this table.
   /// [tableName] The name of the table.
-  /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+  /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
   /// [workspaceName] The name of the workspace.
   const TableArgs({
     this.plan,
+    this.protectionLevel,
     required this.resourceGroupName,
     this.restoredLogs,
     this.retentionInDays,
@@ -54,6 +58,7 @@ class TableArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'plan': ?plan,
+      'protectionLevel': ?protectionLevel,
       'resourceGroupName': resourceGroupName,
       'restoredLogs': ?pulumi.Input.mapOptionalInputValue<RestoredLogs, Map<String, dynamic>>(restoredLogs, (value) => value.toMap()),
       'retentionInDays': ?retentionInDays,
@@ -68,6 +73,7 @@ class TableArgs {
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      protectionLevel: (() { final guardedValue = map['protectionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       restoredLogs: (() { final guardedValue = map['restoredLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoredLogs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),

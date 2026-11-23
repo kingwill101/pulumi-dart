@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_prefixlistlocalrulestack" "prefixListLocalRulestack" {
+/// resource "azure-native_cloudngfw_prefix_list_local_rulestack" "prefixListLocalRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   audit_comment        = "comment"
 ///   description          = "string"
 ///   local_rulestack_name = "lrs1"
@@ -221,7 +224,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -229,7 +232,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_prefixlistlocalrulestack" "prefixListLocalRulestack" {
+/// resource "azure-native_cloudngfw_prefix_list_local_rulestack" "prefixListLocalRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   local_rulestack_name = "lrs1"
 ///   name                 = "armid1"
 ///   prefix_list          = ["1.0.0.0/24"]

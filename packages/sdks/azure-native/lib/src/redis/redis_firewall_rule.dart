@@ -58,7 +58,7 @@ import 'redis_firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'redis_firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redis_redisfirewallrule" "redisFirewallRule" {
+/// resource "azure-native_redis_redis_firewall_rule" "redisFirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_name          = "cache1"
 ///   end_ip              = "192.168.1.4"
 ///   resource_group_name = "rg1"

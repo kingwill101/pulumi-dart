@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_connectedenvironment" "connectedEnvironment" {
+/// resource "azure-native_app_connected_environment" "connectedEnvironment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connected_environment_name = "testenv"
 ///   custom_domain_configuration = {
 ///     certificate_password = "private key password"

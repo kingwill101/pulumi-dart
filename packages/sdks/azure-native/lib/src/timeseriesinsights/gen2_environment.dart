@@ -57,7 +57,7 @@ import 'warm_store_configuration_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'warm_store_configuration_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_gen2environment" "gen2Environment" {
+/// resource "azure-native_timeseriesinsights_gen2_environment" "gen2Environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name    = "env1"
 ///   resource_group_name = "rg1"
 /// }

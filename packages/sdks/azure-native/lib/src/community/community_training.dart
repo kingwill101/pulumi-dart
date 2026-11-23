@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -109,7 +109,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_community_communitytraining" "communityTraining" {
+/// resource "azure-native_community_community_training" "communityTraining" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   community_training_name   = "ctApplication"
 ///   disaster_recovery_enabled = true
 ///   identity_configuration = {

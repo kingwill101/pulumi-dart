@@ -28,9 +28,9 @@ import 'system_data_response.dart';
 ///         {
 ///             "1",
 ///         },
-///         BaseSizeTiB = 5,
+///         BaseSizeTiB = 5.0,
 ///         ElasticSanName = "elasticsanname",
-///         ExtendedCapacitySizeTiB = 25,
+///         ExtendedCapacitySizeTiB = 25.0,
 ///         Location = "France Central",
 ///         PublicNetworkAccess = AzureNative.ElasticSan.PublicNetworkAccess.Enabled,
 ///         ResourceGroupName = "resourcegroupname",
@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elasticsan_elasticsan" "elasticSan" {
+/// resource "azure-native_elasticsan_elastic_san" "elasticSan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zones          = ["1"]
 ///   base_size_ti_b              = 5
 ///   elastic_san_name            = "elasticsanname"
@@ -236,9 +239,9 @@ import 'system_data_response.dart';
 /// {
 ///     var elasticSan = new AzureNative.ElasticSan.ElasticSan("elasticSan", new()
 ///     {
-///         BaseSizeTiB = 15,
+///         BaseSizeTiB = 15.0,
 ///         ElasticSanName = "elasticsanname",
-///         ExtendedCapacitySizeTiB = 27,
+///         ExtendedCapacitySizeTiB = 27.0,
 ///         Location = "France Central",
 ///         ResourceGroupName = "resourcegroupname",
 ///         Sku = new AzureNative.ElasticSan.Inputs.SkuArgs
@@ -282,7 +285,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -290,7 +293,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elasticsan_elasticsan" "elasticSan" {
+/// resource "azure-native_elasticsan_elastic_san" "elasticSan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   base_size_ti_b              = 15
 ///   elastic_san_name            = "elasticsanname"
 ///   extended_capacity_size_ti_b = 27

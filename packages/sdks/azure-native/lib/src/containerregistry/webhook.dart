@@ -22,7 +22,7 @@ import 'webhook_args.dart';
 /// {
 ///     var webhook = new AzureNative.ContainerRegistry.Webhook("webhook", new()
 ///     {
-///         Actions = new[]
+///         Actions =
 ///         {
 ///             AzureNative.ContainerRegistry.WebhookAction.Push,
 ///         },
@@ -86,7 +86,7 @@ import 'webhook_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,6 +95,9 @@ import 'webhook_args.dart';
 /// }
 ///
 /// resource "azure-native_containerregistry_webhook" "webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = ["push"]
 ///   custom_headers = {
 ///     "Authorization" = "******"

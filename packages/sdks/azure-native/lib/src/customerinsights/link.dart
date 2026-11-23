@@ -108,7 +108,7 @@ import 'type_properties_mapping_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -117,6 +117,9 @@ import 'type_properties_mapping_response.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_link" "link" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = {
 ///     "en-us" = "Link Description"
 ///   }

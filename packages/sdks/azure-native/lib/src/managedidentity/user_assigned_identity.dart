@@ -66,7 +66,7 @@ import 'user_assigned_identity_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'user_assigned_identity_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managedidentity_userassignedidentity" "userAssignedIdentity" {
+/// resource "azure-native_managedidentity_user_assigned_identity" "userAssignedIdentity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   resource_group_name = "rgName"
 ///   resource_name       = "resourceName"

@@ -89,7 +89,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,12 +97,15 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+/// resource "azure-native_dbforpostgresql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "brazilsouth"
 ///   properties = {
-///     "createMode"         = "PointInTimeRestore"
-///     "restorePointInTime" = "2017-12-14T00:00:37.467Z"
-///     "sourceServerId"     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"
+///     create_mode           = "PointInTimeRestore"
+///     restore_point_in_time = "2017-12-14T00:00:37.467Z"
+///     source_server_id      = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"
 ///   }
 ///   resource_group_name = "TargetResourceGroup"
 ///   server_name         = "targetserver"
@@ -127,6 +130,10 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -144,7 +151,6 @@ import 'storage_profile_response.dart';
 ///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
 ///             .location("brazilsouth")
 ///             .properties(ServerPropertiesForRestoreArgs.builder()
-///                 .createMode("PointInTimeRestore")
 ///                 .restorePointInTime("2017-12-14T00:00:37.467Z")
 ///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver")
 ///                 .build())
@@ -331,7 +337,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -339,18 +345,21 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+/// resource "azure-native_dbforpostgresql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
-///     "administratorLogin"         = "cloudsa"
-///     "administratorLoginPassword" = "<administratorLoginPassword>"
-///     "createMode"                 = "Default"
-///     "minimalTlsVersion"          = "TLS1_2"
-///     "sslEnforcement"             = "Enabled"
-///     "storageProfile" = {
-///       "backupRetentionDays" = 7
-///       "geoRedundantBackup"  = "Disabled"
-///       "storageMB"           = 128000
+///     administrator_login          = "cloudsa"
+///     administrator_login_password = "<administratorLoginPassword>"
+///     create_mode                  = "Default"
+///     minimal_tls_version          = "TLS1_2"
+///     ssl_enforcement              = "Enabled"
+///     storage_profile = {
+///       backup_retention_days = 7
+///       geo_redundant_backup  = "Disabled"
+///       storage_mb            = 128000
 ///     }
 ///   }
 ///   resource_group_name = "TestGroup"
@@ -376,6 +385,11 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.StorageProfileArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -395,7 +409,6 @@ import 'storage_profile_response.dart';
 ///             .properties(ServerPropertiesForDefaultCreateArgs.builder()
 ///                 .administratorLogin("cloudsa")
 ///                 .administratorLoginPassword("<administratorLoginPassword>")
-///                 .createMode("Default")
 ///                 .minimalTlsVersion("TLS1_2")
 ///                 .sslEnforcement("Enabled")
 ///                 .storageProfile(StorageProfileArgs.builder()
@@ -583,7 +596,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -591,11 +604,14 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+/// resource "azure-native_dbforpostgresql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westcentralus"
 ///   properties = {
-///     "createMode"     = "Replica"
-///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup_WestCentralUS/providers/Microsoft.DBforPostgreSQL/servers/testserver-master"
+///     create_mode      = "Replica"
+///     source_server_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup_WestCentralUS/providers/Microsoft.DBforPostgreSQL/servers/testserver-master"
 ///   }
 ///   resource_group_name = "TestGroup_WestCentralUS"
 ///   server_name         = "testserver-replica1"
@@ -617,6 +633,10 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -634,7 +654,6 @@ import 'storage_profile_response.dart';
 ///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
 ///             .location("westcentralus")
 ///             .properties(ServerPropertiesForReplicaArgs.builder()
-///                 .createMode("Replica")
 ///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup_WestCentralUS/providers/Microsoft.DBforPostgreSQL/servers/testserver-master")
 ///                 .build())
 ///             .resourceGroupName("TestGroup_WestCentralUS")
@@ -791,7 +810,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -799,11 +818,14 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+/// resource "azure-native_dbforpostgresql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
-///     "createMode"     = "GeoRestore"
-///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"
+///     create_mode      = "GeoRestore"
+///     source_server_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"
 ///   }
 ///   resource_group_name = "TargetResourceGroup"
 ///   server_name         = "targetserver"
@@ -828,6 +850,10 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbforpostgresql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -845,7 +871,6 @@ import 'storage_profile_response.dart';
 ///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
 ///             .location("westus")
 ///             .properties(ServerPropertiesForGeoRestoreArgs.builder()
-///                 .createMode("GeoRestore")
 ///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver")
 ///                 .build())
 ///             .resourceGroupName("TargetResourceGroup")

@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_attachednetworkbydevcenter" "attachedNetworkByDevCenter" {
+/// resource "azure-native_devcenter_attached_network_by_dev_center" "attachedNetworkByDevCenter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attached_network_connection_name = "network-uswest3"
 ///   dev_center_name                  = "Contoso"
 ///   network_connection_id            = "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/NetworkConnections/network-uswest3"

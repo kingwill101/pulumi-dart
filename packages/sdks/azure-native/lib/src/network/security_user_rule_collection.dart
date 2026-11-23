@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securityuserrulecollection" "securityUserRuleCollection" {
+/// resource "azure-native_network_security_user_rule_collection" "securityUserRuleCollection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   applies_to_groups {
 ///     network_group_id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"
 ///   }

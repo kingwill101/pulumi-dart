@@ -22,9 +22,9 @@ import 'network_resource_properties_response.dart';
 ///     {
 ///         Location = "EastUS",
 ///         NetworkResourceName = "sampleNetwork",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "sbz_demo",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -59,7 +59,7 @@ import 'network_resource_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'network_resource_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_servicefabricmesh_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "EastUS"
 ///   network_resource_name = "sampleNetwork"
 ///   properties            = {}

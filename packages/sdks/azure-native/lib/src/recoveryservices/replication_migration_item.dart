@@ -103,7 +103,7 @@ import 'replication_migration_item_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'replication_migration_item_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationmigrationitem" "replicationMigrationItem" {
+/// resource "azure-native_recoveryservices_replication_migration_item" "replicationMigrationItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name         = "vmwarefabric1"
 ///   migration_item_name = "virtualmachine1"
 ///   properties = {
@@ -119,10 +122,10 @@ import 'replication_migration_item_args.dart';
 ///     provider_specific_details = {
 ///       data_mover_run_as_account_id = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1"
 ///       disks_to_include = [{
-///         "diskId"                         = "disk1"
-///         "isOSDisk"                       = "true"
-///         "logStorageAccountId"            = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1"
-///         "logStorageAccountSasSecretName" = "logStorageSas"
+///         disk_id                             = "disk1"
+///         is_os_disk                          = "true"
+///         log_storage_account_id              = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1"
+///         log_storage_account_sas_secret_name = "logStorageSas"
 ///       }]
 ///       instance_type              = "VMwareCbt"
 ///       snapshot_run_as_account_id = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1"
@@ -148,6 +151,7 @@ import 'replication_migration_item_args.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationMigrationItemArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.EnableMigrationInputPropertiesArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.VMwareCbtEnableMigrationInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.VMwareCbtDiskInputArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -166,20 +170,19 @@ import 'replication_migration_item_args.dart';
 ///             .migrationItemName("virtualmachine1")
 ///             .properties(EnableMigrationInputPropertiesArgs.builder()
 ///                 .policyId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.RecoveryServices/vaults/migrationvault/replicationPolicies/vmwarepolicy1")
-///                 .providerSpecificDetails(Map.ofEntries(
-///                     Map.entry("dataMoverRunAsAccountId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1"),
-///                     Map.entry("disksToInclude", Arrays.asList(VMwareCbtDiskInputArgs.builder()
+///                 .providerSpecificDetails(VMwareCbtEnableMigrationInputArgs.builder()
+///                     .dataMoverRunAsAccountId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1")
+///                     .disksToInclude(VMwareCbtDiskInputArgs.builder()
 ///                         .diskId("disk1")
 ///                         .isOSDisk("true")
 ///                         .logStorageAccountId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1")
 ///                         .logStorageAccountSasSecretName("logStorageSas")
-///                         .build())),
-///                     Map.entry("instanceType", "VMwareCbt"),
-///                     Map.entry("snapshotRunAsAccountId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1"),
-///                     Map.entry("targetNetworkId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworks/virtualNetwork1"),
-///                     Map.entry("targetResourceGroupId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1"),
-///                     Map.entry("vmwareMachineId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/machines/virtualmachine1")
-///                 ))
+///                         .build())
+///                     .snapshotRunAsAccountId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1")
+///                     .targetNetworkId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworks/virtualNetwork1")
+///                     .targetResourceGroupId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1")
+///                     .vmwareMachineId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/machines/virtualmachine1")
+///                     .build())
 ///                 .build())
 ///             .protectionContainerName("vmwareContainer1")
 ///             .resourceGroupName("resourcegroup1")

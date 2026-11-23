@@ -73,7 +73,7 @@ import 'deployment_properties_extended_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,6 +82,9 @@ import 'deployment_properties_extended_response.dart';
 /// }
 ///
 /// resource "azure-native_resources_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "my-deployment"
 ///   properties = {
 ///     mode       = "Incremental"
@@ -253,7 +256,7 @@ import 'deployment_properties_extended_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -262,6 +265,9 @@ import 'deployment_properties_extended_response.dart';
 /// }
 ///
 /// resource "azure-native_resources_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "my-deployment"
 ///   properties = {
 ///     mode       = "Incremental"
@@ -437,7 +443,7 @@ import 'deployment_properties_extended_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -446,6 +452,9 @@ import 'deployment_properties_extended_response.dart';
 /// }
 ///
 /// resource "azure-native_resources_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "my-deployment"
 ///   properties = {
 ///     mode = "Complete"
@@ -639,7 +648,7 @@ import 'deployment_properties_extended_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -648,6 +657,9 @@ import 'deployment_properties_extended_response.dart';
 /// }
 ///
 /// resource "azure-native_resources_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "my-deployment"
 ///   properties = {
 ///     mode = "Complete"

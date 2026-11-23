@@ -113,7 +113,7 @@ import 'table_level_sharing_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -121,7 +121,10 @@ import 'table_level_sharing_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_kustopoolattacheddatabaseconfiguration" "kustoPoolAttachedDatabaseConfiguration" {
+/// resource "azure-native_synapse_kusto_pool_attached_database_configuration" "kustoPoolAttachedDatabaseConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attached_database_configuration_name = "attachedDatabaseConfigurations1"
 ///   database_name                        = "kustodatabase"
 ///   default_principals_modification_kind = "Union"

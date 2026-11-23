@@ -92,7 +92,7 @@ import 'wsfc_domain_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'wsfc_domain_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachinegroup" "sqlVirtualMachineGroup" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine_group" "sqlVirtualMachineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                       = "northeurope"
 ///   resource_group_name            = "testrg"
 ///   sql_image_offer                = "SQL2016-WS2016"

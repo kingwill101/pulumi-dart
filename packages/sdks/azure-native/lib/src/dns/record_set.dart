@@ -50,7 +50,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "A",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -94,7 +94,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,7 +102,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   a_records {
 ///     ipv4_address = "127.0.0.1"
 ///   }
@@ -237,7 +240,7 @@ import 'txt_record_response.dart';
 ///         {
 ///             Id = "/subscriptions/726f8cd6-6459-4db4-8e6d-2cd2716904e2/resourceGroups/test/providers/Microsoft.Network/trafficManagerProfiles/testpp2",
 ///         },
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -279,7 +282,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -287,7 +290,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -422,7 +428,7 @@ import 'txt_record_response.dart';
 ///         {
 ///             Id = "/subscriptions/726f8cd6-6459-4db4-8e6d-2cd2716904e2/resourceGroups/test/providers/Microsoft.Network/trafficManagerProfiles/testpp2",
 ///         },
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -464,7 +470,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -472,7 +478,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -610,7 +619,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "AAAA",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -654,7 +663,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -662,7 +671,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aaaa_records {
 ///     ipv6_address = "::1"
 ///   }
@@ -802,7 +814,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "CAA",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -848,7 +860,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -856,7 +868,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   caa_records {
 ///     flags = 0
 ///     tag   = "issue"
@@ -1001,7 +1016,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "CNAME",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -1043,7 +1058,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1051,7 +1066,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cname_record = {
 ///     cname = "contoso.com"
 ///   }
@@ -1195,7 +1213,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "DS",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -1244,7 +1262,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1252,7 +1270,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ds_records {
 ///     algorithm = 5
 ///     digest = {
@@ -1416,7 +1437,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "MX",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -1461,7 +1482,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1469,7 +1490,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -1617,7 +1641,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "NAPTR",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -1666,7 +1690,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1674,7 +1698,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -1837,7 +1864,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "NS",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -1881,7 +1908,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1889,7 +1916,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -2027,7 +2057,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "PTR",
 ///         RelativeRecordSetName = "1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "0.0.127.in-addr.arpa",
 ///     });
 ///
@@ -2071,7 +2101,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2079,7 +2109,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -2213,14 +2246,14 @@ import 'txt_record_response.dart';
 ///         SoaRecord = new AzureNative.Dns.Inputs.SoaRecordArgs
 ///         {
 ///             Email = "hostmaster.contoso.com",
-///             ExpireTime = 2419200,
+///             ExpireTime = 2419200.0,
 ///             Host = "ns1.contoso.com",
-///             MinimumTtl = 300,
-///             RefreshTime = 3600,
-///             RetryTime = 300,
-///             SerialNumber = 1,
+///             MinimumTtl = 300.0,
+///             RefreshTime = 3600.0,
+///             RetryTime = 300.0,
+///             SerialNumber = 1.0,
 ///         },
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -2268,7 +2301,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2276,7 +2309,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -2447,7 +2483,7 @@ import 'txt_record_response.dart';
 ///                 Weight = 10,
 ///             },
 ///         },
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -2494,7 +2530,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2502,7 +2538,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -2658,7 +2697,7 @@ import 'txt_record_response.dart';
 ///                 Usage = 3,
 ///             },
 ///         },
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         ZoneName = "zone1",
 ///     });
 ///
@@ -2705,7 +2744,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2713,7 +2752,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }
@@ -2859,7 +2901,7 @@ import 'txt_record_response.dart';
 ///         RecordType = "TXT",
 ///         RelativeRecordSetName = "record1",
 ///         ResourceGroupName = "rg1",
-///         Ttl = 3600,
+///         Ttl = 3600.0,
 ///         TxtRecords = new[]
 ///         {
 ///             new AzureNative.Dns.Inputs.TxtRecordArgs
@@ -2917,7 +2959,7 @@ import 'txt_record_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2925,7 +2967,10 @@ import 'txt_record_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dns_recordset" "recordSet" {
+/// resource "azure-native_dns_record_set" "recordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "key1" = "value1"
 ///   }

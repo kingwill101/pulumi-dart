@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_profile" "profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "global"
 ///   profile_name        = "profile1"
 ///   resource_group_name = "RG"

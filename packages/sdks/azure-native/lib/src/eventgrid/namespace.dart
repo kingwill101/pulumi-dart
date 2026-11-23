@@ -81,7 +81,7 @@ import 'topics_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,6 +90,9 @@ import 'topics_configuration_response.dart';
 /// }
 ///
 /// resource "azure-native_eventgrid_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   namespace_name      = "exampleNamespaceName1"
 ///   resource_group_name = "examplerg"

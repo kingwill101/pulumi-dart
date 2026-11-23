@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_disasterrecoveryconfig" "disasterRecoveryConfig" {
+/// resource "azure-native_eventhub_disaster_recovery_config" "disasterRecoveryConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias               = "sdk-DisasterRecovery-3814"
 ///   namespace_name      = "sdk-Namespace-8859"
 ///   partner_namespace   = "sdk-Namespace-37"

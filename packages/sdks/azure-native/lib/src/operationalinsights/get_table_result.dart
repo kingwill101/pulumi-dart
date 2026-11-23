@@ -8,11 +8,11 @@ import 'system_data_response.dart';
 
 /// Result data returned by getTable.
 class GetTableResult {
-  /// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
+  /// The tables long-term retention in days. Calculated as (totalRetentionInDays-retentionInDays).
   final int? archiveRetentionInDays;
   /// The Azure API version of the resource.
   final String? azureApiVersion;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String? id;
   /// The timestamp that table plan was last modified (UTC).
   final String? lastPlanModifiedDate;
@@ -20,13 +20,15 @@ class GetTableResult {
   final String? name;
   /// Instruct the system how to handle and charge the logs ingested to this table.
   final String? plan;
+  /// The protection level of the table. Determines the default data access isolation behavior.
+  final String? protectionLevel;
   /// Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
   final String? provisioningState;
   /// Parameters of the restore operation that initiated this table.
   final RestoredLogsResponse? restoredLogs;
   /// Search job execution statistics.
   final ResultStatisticsResponse? resultStatistics;
-  /// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+  /// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
   final int? retentionInDays;
   /// True - Value originates from workspace retention in days, False - Customer specific.
   final bool? retentionInDaysAsDefault;
@@ -34,9 +36,9 @@ class GetTableResult {
   final SchemaResponse? schema;
   /// Parameters of the search job that initiated this table.
   final SearchResultsResponse? searchResults;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse? systemData;
-  /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+  /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
   final int? totalRetentionInDays;
   /// True - Value originates from retention in days, False - Customer specific.
   final bool? totalRetentionInDaysAsDefault;
@@ -44,21 +46,22 @@ class GetTableResult {
   final String? type;
 
   /// Creates a new [GetTableResult].
-  /// [archiveRetentionInDays] The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
+  /// [archiveRetentionInDays] The tables long-term retention in days. Calculated as (totalRetentionInDays-retentionInDays).
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [lastPlanModifiedDate] The timestamp that table plan was last modified (UTC).
   /// [name] The name of the resource
   /// [plan] Instruct the system how to handle and charge the logs ingested to this table.
+  /// [protectionLevel] The protection level of the table. Determines the default data access isolation behavior.
   /// [provisioningState] Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
   /// [restoredLogs] Parameters of the restore operation that initiated this table.
   /// [resultStatistics] Search job execution statistics.
-  /// [retentionInDays] The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+  /// [retentionInDays] In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
   /// [retentionInDaysAsDefault] True - Value originates from workspace retention in days, False - Customer specific.
   /// [schema] Table schema.
   /// [searchResults] Parameters of the search job that initiated this table.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
-  /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
   /// [totalRetentionInDaysAsDefault] True - Value originates from retention in days, False - Customer specific.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetTableResult({
@@ -68,6 +71,7 @@ class GetTableResult {
     this.lastPlanModifiedDate,
     this.name,
     this.plan,
+    this.protectionLevel,
     this.provisioningState,
     this.restoredLogs,
     this.resultStatistics,
@@ -89,6 +93,7 @@ class GetTableResult {
       'lastPlanModifiedDate': ?lastPlanModifiedDate,
       'name': ?name,
       'plan': ?plan,
+      'protectionLevel': ?protectionLevel,
       'provisioningState': ?provisioningState,
       'restoredLogs': ?restoredLogs?.toMap(),
       'resultStatistics': ?resultStatistics?.toMap(),
@@ -111,6 +116,7 @@ class GetTableResult {
       lastPlanModifiedDate: (() { final guardedValue = map['lastPlanModifiedDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protectionLevel: (() { final guardedValue = map['protectionLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       restoredLogs: (() { final guardedValue = map['restoredLogs']; if (guardedValue == null) return null; return RestoredLogsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       resultStatistics: (() { final guardedValue = map['resultStatistics']; if (guardedValue == null) return null; return ResultStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

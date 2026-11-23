@@ -2,10 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Column data type logical hint.
 enum ColumnDataTypeHintEnum implements pulumi.PulumiEnum<String> {
-  valueUri("uri"),
-  valueGuid("guid"),
-  valueArmPath("armPath"),
-  valueIp("ip");
+  uri("uri"),
+  guid("guid"),
+  armPath("armPath"),
+  ip("ip"),
+  vector16("vector16");
 
   const ColumnDataTypeHintEnum(this.wireValue);
   @override

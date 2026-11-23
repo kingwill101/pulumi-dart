@@ -25,8 +25,8 @@ import 'system_data_response.dart';
 ///         Properties = new AzureNative.DatabaseFleetManager.Inputs.FleetTierPropertiesArgs
 ///         {
 ///             Capacity = 4,
-///             DatabaseCapacityMax = 4,
-///             DatabaseCapacityMin = 0,
+///             DatabaseCapacityMax = 4.0,
+///             DatabaseCapacityMin = 0.0,
 ///             DatabaseSizeGbMax = 50,
 ///             Family = "Gen5",
 ///             HighAvailabilityReplicaCount = 5,
@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databasefleetmanager_fleettier" "fleetTier" {
+/// resource "azure-native_databasefleetmanager_fleet_tier" "fleetTier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fleet_name = "critical-production-fleet"
 ///   properties = {
 ///     capacity                        = 4

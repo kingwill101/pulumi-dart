@@ -28,7 +28,7 @@ import 'system_data_response.dart';
 ///     {
 ///         Credit = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
 ///         {
-///             Amount = 20000,
+///             Amount = 20000.0,
 ///             CurrencyCode = "USD",
 ///             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
 ///         },
@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,6 +96,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_source" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credit = {
 ///     amount        = 20000
 ///     currency_code = "USD"

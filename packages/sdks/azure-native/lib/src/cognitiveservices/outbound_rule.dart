@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,14 +80,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_outboundrule" "outboundRule" {
+/// resource "azure-native_cognitiveservices_outbound_rule" "outboundRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name         = "cognitive-account-name"
 ///   managed_network_name = "default"
 ///   properties = {
-///     "category"    = "UserDefined"
-///     "destination" = "destination_endpoint"
-///     "status"      = "Active"
-///     "type"        = "FQDN"
+///     category    = "UserDefined"
+///     destination = "destination_endpoint"
+///     status      = "Active"
+///     type        = "FQDN"
 ///   }
 ///   resource_group_name = "test-rg"
 ///   rule_name           = "rule_name_1"
@@ -103,6 +106,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.OutboundRule;
 /// import com.pulumi.azurenative.cognitiveservices.OutboundRuleArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.FqdnOutboundRuleArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.PrivateEndpointOutboundRuleArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.ServiceTagOutboundRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -123,7 +129,6 @@ import 'system_data_response.dart';
 ///                 .category("UserDefined")
 ///                 .destination("destination_endpoint")
 ///                 .status("Active")
-///                 .type("FQDN")
 ///                 .build())
 ///             .resourceGroupName("test-rg")
 ///             .ruleName("rule_name_1")

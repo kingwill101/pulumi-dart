@@ -82,9 +82,9 @@ import 'system_data_response.dart';
 /// 		_, err := appplatform.NewJob(ctx, "job", &appplatform.JobArgs{
 /// 			JobName: pulumi.String("test-job"),
 /// 			Properties: &appplatform.JobResourcePropertiesArgs{
-/// 				Source: appplatform.BuildResultUserSourceInfo{
-/// 					BuildResultId: "<default>",
-/// 					Type:          "BuildResult",
+/// 				Source: &appplatform.BuildResultUserSourceInfoArgs{
+/// 					BuildResultId: pulumi.String("<default>"),
+/// 					Type:          pulumi.String("BuildResult"),
 /// 				},
 /// 				Template: &appplatform.JobExecutionTemplateArgs{
 /// 					Args: pulumi.StringArray{
@@ -123,7 +123,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -132,23 +132,26 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_name = "test-job"
 ///   properties = {
 ///     source = {
-///       "buildResultId" = "<default>"
-///       "type"          = "BuildResult"
+///       build_result_id = "<default>"
+///       type            = "BuildResult"
 ///     }
 ///     template = {
 ///       args = ["arg1", "arg2"]
 ///       environment_variables = [{
-///         "name"  = "key1"
-///         "value" = "value1"
+///         name  = "key1"
+///         value = "value1"
 ///         }, {
-///         "name"  = "env2"
-///         "value" = "value2"
+///         name  = "env2"
+///         value = "value2"
 ///         }, {
-///         "name"        = "secretKey1"
-///         "secretValue" = "secretValue1"
+///         name         = "secretKey1"
+///         secret_value = "secretValue1"
 ///       }]
 ///     }
 ///     trigger_config = {
@@ -170,7 +173,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.Job;
 /// import com.pulumi.azurenative.appplatform.JobArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.JobResourcePropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.BuildResultUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.CustomContainerUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.JarUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.NetCoreZipUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.SourceUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.UploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.WarUploadedUserSourceInfoArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.JobExecutionTemplateArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.EnvVarArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ManualJobTriggerConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -190,7 +201,6 @@ import 'system_data_response.dart';
 ///             .properties(JobResourcePropertiesArgs.builder()
 ///                 .source(BuildResultUserSourceInfoArgs.builder()
 ///                     .buildResultId("<default>")
-///                     .type("BuildResult")
 ///                     .build())
 ///                 .template(JobExecutionTemplateArgs.builder()
 ///                     .args(
@@ -210,7 +220,8 @@ import 'system_data_response.dart';
 ///                             .secretValue("secretValue1")
 ///                             .build())
 ///                     .build())
-///                 .triggerConfig(Map.of("triggerType", "Manual"))
+///                 .triggerConfig(ManualJobTriggerConfigArgs.builder()
+///                     .build())
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")
 ///             .serviceName("myservice")

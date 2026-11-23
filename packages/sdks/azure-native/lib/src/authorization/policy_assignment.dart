@@ -104,7 +104,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,7 +112,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Force resource names to begin with given DeptA and end with -LC"
 ///   display_name = "Enforce resource naming rules"
 ///   metadata = {
@@ -145,6 +148,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.NonComplianceMessageArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -340,7 +344,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -348,7 +352,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "Force resource names to begin with given DeptA and end with -LC"
 ///   display_name     = "Enforce resource naming rules"
 ///   enforcement_mode = "Enroll"
@@ -378,6 +385,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -575,7 +583,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -583,7 +591,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "Force resource names to begin with given DeptA and end with -LC"
 ///   display_name     = "Enforce resource naming rules"
 ///   enforcement_mode = "Default"
@@ -618,6 +629,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.IdentityArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -821,7 +833,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -829,7 +841,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Enforce security policies"
 ///   non_compliance_messages {
 ///     message = "Resources must comply with all internal security policies. See <internal site URL> for more info."
@@ -1090,7 +1105,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1098,7 +1113,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition_version = "1.*.*"
 ///   description        = "Limit the resource location and resource SKU"
 ///   display_name       = "Limit the resource location and resource SKU"
@@ -1137,6 +1155,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.OverrideArgs;
+/// import com.pulumi.azurenative.authorization.inputs.SelectorArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1392,7 +1411,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1400,7 +1419,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Limit the resource location and resource SKU"
 ///   display_name = "Limit the resource location and resource SKU"
 ///   metadata = {
@@ -1429,6 +1451,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
 /// import com.pulumi.azurenative.authorization.inputs.ResourceSelectorArgs;
+/// import com.pulumi.azurenative.authorization.inputs.SelectorArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1620,7 +1643,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1628,7 +1651,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyassignment" "policyAssignment" {
+/// resource "azure-native_authorization_policy_assignment" "policyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "Force resource names to begin with given DeptA and end with -LC"
 ///   display_name     = "Enforce resource naming rules"
 ///   enforcement_mode = "DoNotEnforce"
@@ -1658,6 +1684,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyAssignment;
 /// import com.pulumi.azurenative.authorization.PolicyAssignmentArgs;
+/// import com.pulumi.azurenative.authorization.inputs.ParameterValuesValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

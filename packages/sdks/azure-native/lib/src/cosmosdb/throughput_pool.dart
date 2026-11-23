@@ -25,7 +25,7 @@ import 'throughput_pool_args.dart';
 ///         Location = "westus2",
 ///         MaxThroughput = 10000,
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///         ThroughputPoolName = "tp1",
 ///     });
 ///
@@ -61,7 +61,7 @@ import 'throughput_pool_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'throughput_pool_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_throughputpool" "throughputPool" {
+/// resource "azure-native_cosmosdb_throughput_pool" "throughputPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "westus2"
 ///   max_throughput       = 10000
 ///   resource_group_name  = "rg1"

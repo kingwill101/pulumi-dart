@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -123,7 +123,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_labservices_labplan" "labPlan" {
+/// resource "azure-native_labservices_lab_plan" "labPlan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_auto_shutdown_profile = {
 ///     disconnect_delay            = "PT5M"
 ///     idle_delay                  = "PT5M"

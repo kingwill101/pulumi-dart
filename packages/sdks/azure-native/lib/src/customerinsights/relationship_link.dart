@@ -102,7 +102,7 @@ import 'relationship_link_field_mapping_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,7 +110,10 @@ import 'relationship_link_field_mapping_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_customerinsights_relationshiplink" "relationshipLink" {
+/// resource "azure-native_customerinsights_relationship_link" "relationshipLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = {
 ///     "en-us" = "Link Description"
 ///   }

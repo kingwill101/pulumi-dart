@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///                 new AzureNative.NotificationHubs.Inputs.IpRuleArgs
 ///                 {
 ///                     IpMask = "185.48.100.00/24",
-///                     Rights = new[]
+///                     Rights =
 ///                     {
 ///                         AzureNative.NotificationHubs.AccessRights.Manage,
 ///                         AzureNative.NotificationHubs.AccessRights.Send,
@@ -45,7 +45,7 @@ import 'system_data_response.dart';
 ///             },
 ///             PublicNetworkRule = new AzureNative.NotificationHubs.Inputs.PublicInternetAuthorizationRuleArgs
 ///             {
-///                 Rights = new[]
+///                 Rights =
 ///                 {
 ///                     AzureNative.NotificationHubs.AccessRights.Listen,
 ///                 },
@@ -121,7 +121,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -130,12 +130,15 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_notificationhubs_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "South Central US"
 ///   namespace_name = "nh-sdk-ns"
 ///   network_acls = {
 ///     ip_rules = [{
-///       "ipMask" = "185.48.100.00/24"
-///       "rights" = ["Manage", "Send", "Listen"]
+///       ip_mask = "185.48.100.00/24"
+///       rights  = ["Manage", "Send", "Listen"]
 ///     }]
 ///     public_network_rule = {
 ///       rights = ["Listen"]
@@ -164,6 +167,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.notificationhubs.Namespace;
 /// import com.pulumi.azurenative.notificationhubs.NamespaceArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.NetworkAclsArgs;
+/// import com.pulumi.azurenative.notificationhubs.inputs.IpRuleArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.PublicInternetAuthorizationRuleArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.SkuArgs;
 /// import java.util.ArrayList;

@@ -187,7 +187,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -195,39 +195,42 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_dataflow" "dataFlow" {
+/// resource "azure-native_datafactory_data_flow" "dataFlow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_flow_name = "exampleDataFlow"
 ///   factory_name   = "exampleFactoryName"
 ///   properties = {
-///     "description" = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."
-///     "scriptLines" = ["source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: false,", "validateSchema: false) ~> USDCurrency", "source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: true,", "validateSchema: false) ~> CADSource", "USDCurrency, CADSource union(byName: true)~> Union", "Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn", "NewCurrencyColumn split(Country == 'USD',", "Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)", "ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink", "ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"]
-///     "sinks" = [{
-///       "dataset" = {
-///         "referenceName" = "USDOutput"
-///         "type"          = "DatasetReference"
+///     description  = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."
+///     script_lines = ["source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: false,", "validateSchema: false) ~> USDCurrency", "source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: true,", "validateSchema: false) ~> CADSource", "USDCurrency, CADSource union(byName: true)~> Union", "Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn", "NewCurrencyColumn split(Country == 'USD',", "Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)", "ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink", "ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"]
+///     sinks = [{
+///       dataset = {
+///         reference_name = "USDOutput"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "USDSink"
+///       name = "USDSink"
 ///       }, {
-///       "dataset" = {
-///         "referenceName" = "CADOutput"
-///         "type"          = "DatasetReference"
+///       dataset = {
+///         reference_name = "CADOutput"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "CADSink"
+///       name = "CADSink"
 ///     }]
-///     "sources" = [{
-///       "dataset" = {
-///         "referenceName" = "CurrencyDatasetUSD"
-///         "type"          = "DatasetReference"
+///     sources = [{
+///       dataset = {
+///         reference_name = "CurrencyDatasetUSD"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "USDCurrency"
+///       name = "USDCurrency"
 ///       }, {
-///       "dataset" = {
-///         "referenceName" = "CurrencyDatasetCAD"
-///         "type"          = "DatasetReference"
+///       dataset = {
+///         reference_name = "CurrencyDatasetCAD"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "CADSource"
+///       name = "CADSource"
 ///     }]
-///     "type" = "MappingDataFlow"
+///     type = "MappingDataFlow"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -242,6 +245,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.DataFlow;
 /// import com.pulumi.azurenative.datafactory.DataFlowArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FlowletArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataFlowSinkArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DatasetReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataFlowSourceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MappingDataFlowArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WranglingDataFlowArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PowerQuerySourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -313,7 +323,6 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .name("CADSource")
 ///                         .build())
-///                 .type("MappingDataFlow")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());
@@ -701,7 +710,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -709,39 +718,42 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_dataflow" "dataFlow" {
+/// resource "azure-native_datafactory_data_flow" "dataFlow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_flow_name = "exampleDataFlow"
 ///   factory_name   = "exampleFactoryName"
 ///   properties = {
-///     "description" = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."
-///     "scriptLines" = ["source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: false,", "validateSchema: false) ~> USDCurrency", "source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: true,", "validateSchema: false) ~> CADSource", "USDCurrency, CADSource union(byName: true)~> Union", "Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn", "NewCurrencyColumn split(Country == 'USD',", "Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)", "ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink", "ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"]
-///     "sinks" = [{
-///       "dataset" = {
-///         "referenceName" = "USDOutput"
-///         "type"          = "DatasetReference"
+///     description  = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."
+///     script_lines = ["source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: false,", "validateSchema: false) ~> USDCurrency", "source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: true,", "validateSchema: false) ~> CADSource", "USDCurrency, CADSource union(byName: true)~> Union", "Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn", "NewCurrencyColumn split(Country == 'USD',", "Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)", "ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink", "ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"]
+///     sinks = [{
+///       dataset = {
+///         reference_name = "USDOutput"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "USDSink"
+///       name = "USDSink"
 ///       }, {
-///       "dataset" = {
-///         "referenceName" = "CADOutput"
-///         "type"          = "DatasetReference"
+///       dataset = {
+///         reference_name = "CADOutput"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "CADSink"
+///       name = "CADSink"
 ///     }]
-///     "sources" = [{
-///       "dataset" = {
-///         "referenceName" = "CurrencyDatasetUSD"
-///         "type"          = "DatasetReference"
+///     sources = [{
+///       dataset = {
+///         reference_name = "CurrencyDatasetUSD"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "USDCurrency"
+///       name = "USDCurrency"
 ///       }, {
-///       "dataset" = {
-///         "referenceName" = "CurrencyDatasetCAD"
-///         "type"          = "DatasetReference"
+///       dataset = {
+///         reference_name = "CurrencyDatasetCAD"
+///         type           = "DatasetReference"
 ///       }
-///       "name" = "CADSource"
+///       name = "CADSource"
 ///     }]
-///     "type" = "MappingDataFlow"
+///     type = "MappingDataFlow"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -756,6 +768,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.DataFlow;
 /// import com.pulumi.azurenative.datafactory.DataFlowArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FlowletArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataFlowSinkArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DatasetReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DataFlowSourceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MappingDataFlowArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WranglingDataFlowArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PowerQuerySourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -827,7 +846,6 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .name("CADSource")
 ///                         .build())
-///                 .type("MappingDataFlow")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());

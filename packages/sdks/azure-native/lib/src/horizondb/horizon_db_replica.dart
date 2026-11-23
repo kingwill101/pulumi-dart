@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_horizondb_horizondbreplica" "horizonDbReplica" {
+/// resource "azure-native_horizondb_horizon_db_replica" "horizonDbReplica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = "examplecluster"
 ///   pool_name    = "examplepool"
 ///   properties = {

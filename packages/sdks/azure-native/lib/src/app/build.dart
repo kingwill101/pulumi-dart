@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_app_build" "build" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   build_name          = "testBuild"
 ///   builder_name        = "testBuilder"
 ///   resource_group_name = "rg"
@@ -303,7 +306,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -312,35 +315,38 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_app_build" "build" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   build_name   = "testBuild-123456789az"
 ///   builder_name = "testBuilder"
 ///   configuration = {
 ///     base_os = "DebianBullseye"
 ///     environment_variables = [{
-///       "name"  = "foo1"
-///       "value" = "bar1"
+///       name  = "foo1"
+///       value = "bar1"
 ///       }, {
-///       "name"  = "foo2"
-///       "value" = "bar2"
+///       name  = "foo2"
+///       value = "bar2"
 ///     }]
 ///     platform         = "dotnetcore"
 ///     platform_version = "7.0"
 ///     pre_build_steps = [{
-///       "description" = "First pre build step."
-///       "httpGet" = {
-///         "fileName" = "output.txt"
-///         "headers"  = ["foo", "bar"]
-///         "url"      = "https://microsoft.com"
+///       description = "First pre build step."
+///       http_get = {
+///         file_name = "output.txt"
+///         headers   = ["foo", "bar"]
+///         url       = "https://microsoft.com"
 ///       }
-///       "scripts" = ["echo 'hello'", "echo 'world'"]
+///       scripts = ["echo 'hello'", "echo 'world'"]
 ///       }, {
-///       "description" = "Second pre build step."
-///       "httpGet" = {
-///         "fileName" = "output.txt"
-///         "headers"  = ["foo"]
-///         "url"      = "https://microsoft.com"
+///       description = "Second pre build step."
+///       http_get = {
+///         file_name = "output.txt"
+///         headers   = ["foo"]
+///         url       = "https://microsoft.com"
 ///       }
-///       "scripts" = ["echo 'hello'", "echo 'again'"]
+///       scripts = ["echo 'hello'", "echo 'again'"]
 ///     }]
 ///   }
 ///   destination_container_registry = {
@@ -361,6 +367,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.Build;
 /// import com.pulumi.azurenative.app.BuildArgs;
 /// import com.pulumi.azurenative.app.inputs.BuildConfigurationArgs;
+/// import com.pulumi.azurenative.app.inputs.EnvironmentVariableArgs;
+/// import com.pulumi.azurenative.app.inputs.PreBuildStepArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpGetArgs;
 /// import com.pulumi.azurenative.app.inputs.ContainerRegistryWithCustomImageArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

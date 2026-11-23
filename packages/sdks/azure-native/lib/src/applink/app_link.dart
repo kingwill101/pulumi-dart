@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applink_applink" "appLink" {
+/// resource "azure-native_applink_app_link" "appLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_link_name = "applink-test-01"
 ///   identity = {
 ///     type = "SystemAssigned"

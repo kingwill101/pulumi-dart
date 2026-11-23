@@ -67,7 +67,7 @@ import 'managed_instance_private_link_service_connection_state_property_response
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'managed_instance_private_link_service_connection_state_property_response
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstanceprivateendpointconnection" "managedInstancePrivateEndpointConnection" {
+/// resource "azure-native_sql_managed_instance_private_endpoint_connection" "managedInstancePrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_instance_name            = "test-cl"
 ///   private_endpoint_connection_name = "private-endpoint-connection-name"
 ///   private_link_service_connection_state = {

@@ -96,7 +96,7 @@ import 'topic_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,6 +105,9 @@ import 'topic_args.dart';
 /// }
 ///
 /// resource "azure-native_eventgrid_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   inbound_ip_rules {
 ///     action  = "Allow"
 ///     ip_mask = "12.18.30.15"

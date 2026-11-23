@@ -66,7 +66,7 @@ import 'response_contract_response.dart';
 ///             },
 ///         },
 ///         ServiceName = "apimService1",
-///         TemplateParameters = new[] {},
+///         TemplateParameters = new() {},
 ///         UrlTemplate = "/user1",
 ///     });
 ///
@@ -133,7 +133,7 @@ import 'response_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -141,7 +141,10 @@ import 'response_contract_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apioperation" "apiOperation" {
+/// resource "azure-native_apimanagement_api_operation" "apiOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id       = "PetStoreTemplate2"
 ///   description  = "This can only be done by the logged in user."
 ///   display_name = "createUser2"
@@ -152,9 +155,9 @@ import 'response_contract_response.dart';
 ///     headers          = []
 ///     query_parameters = []
 ///     representations = [{
-///       "contentType" = "application/json"
-///       "schemaId"    = "592f6c1d0af5840ca8897f0c"
-///       "typeName"    = "User"
+///       content_type = "application/json"
+///       schema_id    = "592f6c1d0af5840ca8897f0c"
+///       type_name    = "User"
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -183,6 +186,7 @@ import 'response_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.ApiOperation;
 /// import com.pulumi.azurenative.apimanagement.ApiOperationArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.RequestContractArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.RepresentationContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ResponseContractArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

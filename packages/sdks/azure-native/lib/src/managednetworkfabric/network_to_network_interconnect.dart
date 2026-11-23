@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 ///         },
 ///         OptionBLayer3Configuration = new AzureNative.ManagedNetworkFabric.Inputs.NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs
 ///         {
-///             PeerASN = 61234,
+///             PeerASN = 61234.0,
 ///             PrimaryIpv4Prefix = "10.0.0.12/30",
 ///             PrimaryIpv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
 ///             SecondaryIpv4Prefix = "40.0.0.14/30",
@@ -173,7 +173,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -181,7 +181,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networktonetworkinterconnect" "networkToNetworkInterconnect" {
+/// resource "azure-native_managednetworkfabric_network_to_network_interconnect" "networkToNetworkInterconnect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress_acl_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
 ///   export_route_policy = {
 ///     export_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"
@@ -206,12 +209,12 @@ import 'system_data_response.dart';
 ///       multiplier                = 25
 ///     }
 ///     ipv4_routes = [{
-///       "nextHop" = ["21.20.20.20"]
-///       "prefix"  = "20.0.0.12/30"
+///       next_hop = ["21.20.20.20"]
+///       prefix   = "20.0.0.12/30"
 ///     }]
 ///     ipv6_routes = [{
-///       "nextHop" = ["4FFE:FFFF:0:CD30::ac"]
-///       "prefix"  = "3FFE:FFFF:0:CD30::ac/127"
+///       next_hop = ["4FFE:FFFF:0:CD30::ac"]
+///       prefix   = "3FFE:FFFF:0:CD30::ac/127"
 ///     }]
 ///   }
 ///   option_b_layer3_configuration = {
@@ -241,6 +244,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.Layer2ConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NpbStaticRouteConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.BfdConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.StaticRoutePropertiesArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

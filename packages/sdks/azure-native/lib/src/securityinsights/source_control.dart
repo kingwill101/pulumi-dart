@@ -28,7 +28,7 @@ import 'workload_identity_federation_response.dart';
 /// {
 ///     var sourceControl = new AzureNative.SecurityInsights.SourceControl("sourceControl", new()
 ///     {
-///         ContentTypes = new[]
+///         ContentTypes =
 ///         {
 ///             AzureNative.SecurityInsights.ContentType.AnalyticsRule,
 ///             AzureNative.SecurityInsights.ContentType.Workbook,
@@ -102,7 +102,7 @@ import 'workload_identity_federation_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,7 +110,10 @@ import 'workload_identity_federation_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_sourcecontrol" "sourceControl" {
+/// resource "azure-native_securityinsights_source_control" "sourceControl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_types = ["AnalyticsRule", "Workbook"]
 ///   description   = "This is a source control"
 ///   display_name  = "My Source Control"

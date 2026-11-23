@@ -143,7 +143,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,7 +151,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_iamrole" "iamRole" {
+/// resource "azure-native_awsconnector_iam_role" "iamRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "vkzeblhpdgxwu"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -166,14 +169,14 @@ import 'system_data_response.dart';
 ///       path                        = "qxfdn"
 ///       permissions_boundary        = "wofktscexalvotvxaxsq"
 ///       policies = [{
-///         "policyDocument" = {}
-///         "policyName"     = "bpqsmdhzxaruuvctyddrcedbf"
+///         policy_document = {}
+///         policy_name     = "bpqsmdhzxaruuvctyddrcedbf"
 ///       }]
 ///       role_id   = "l"
 ///       role_name = "vpczljoyhnvybvtyagxaxaraogzdyx"
 ///       tags = [{
-///         "key"   = "fppaonhdrxztfctritlgmqm"
-///         "value" = "jcpberdkjmspmjbzyewyhyd"
+///         key   = "fppaonhdrxztfctritlgmqm"
+///         value = "jcpberdkjmspmjbzyewyhyd"
 ///       }]
 ///     }
 ///     aws_region        = "yqtvmgzsvcgtehapncinnqvsql"
@@ -202,6 +205,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamRoleArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamRolePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamRolePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PolicyArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

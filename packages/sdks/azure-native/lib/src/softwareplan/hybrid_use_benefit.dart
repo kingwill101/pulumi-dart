@@ -60,7 +60,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_softwareplan_hybridusebenefit" "hybridUseBenefit" {
+/// resource "azure-native_softwareplan_hybrid_use_benefit" "hybridUseBenefit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   plan_id = "94f46eda-45f8-493a-8425-251921463a89"
 ///   scope   = "subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Compute/HostGroups/{host-group-name}/hosts/{host-name}"
 ///   sku = {

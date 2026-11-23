@@ -44,7 +44,7 @@ import 'system_data_response.dart';
 ///                     MaxSessionExpirySeconds = 3859,
 ///                     SubscriberQueueLimit = new AzureNative.IoTOperations.Inputs.SubscriberQueueLimitArgs
 ///                     {
-///                         Length = 6,
+///                         Length = 6.0,
 ///                         Strategy = AzureNative.IoTOperations.SubscriberMessageDropStrategy.None,
 ///                     },
 ///                 },
@@ -401,7 +401,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -410,6 +410,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_broker" "broker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -496,9 +499,9 @@ import 'system_data_response.dart';
 ///         }
 ///         selector = {
 ///           match_expressions = [{
-///             "key"      = "e"
-///             "operator" = "In"
-///             "values"   = ["slmpajlywqvuyknipgztsonqyybt"]
+///             key      = "e"
+///             operator = "In"
+///             values   = ["slmpajlywqvuyknipgztsonqyybt"]
 ///           }]
 ///           match_labels = {
 ///             "key6673" = "wlngfalznwxnurzpgxomcxhbqefpr"
@@ -532,9 +535,9 @@ import 'system_data_response.dart';
 ///         }
 ///         selector = {
 ///           match_expressions = [{
-///             "key"      = "e"
-///             "operator" = "In"
-///             "values"   = ["slmpajlywqvuyknipgztsonqyybt"]
+///             key      = "e"
+///             operator = "In"
+///             values   = ["slmpajlywqvuyknipgztsonqyybt"]
 ///           }]
 ///           match_labels = {
 ///             "key6673" = "wlngfalznwxnurzpgxomcxhbqefpr"
@@ -585,6 +588,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.KubernetesReferenceArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.VolumeClaimResourceRequirementsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.VolumeClaimSpecSelectorArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.VolumeClaimSpecSelectorMatchExpressionsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.GenerateResourceLimitsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1255,7 +1259,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1264,6 +1268,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_broker" "broker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -1521,7 +1528,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1530,6 +1537,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_broker" "broker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -1734,7 +1744,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1743,6 +1753,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperations_broker" "broker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   broker_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"

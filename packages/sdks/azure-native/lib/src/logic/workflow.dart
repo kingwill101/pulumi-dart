@@ -102,7 +102,7 @@ import 'workflow_parameter_response.dart';
 ///             } },
 ///         },
 ///         ResourceGroupName = "test-resource-group",
-///         Tags = null,
+///         Tags = new() { },
 ///         WorkflowName = "test-workflow",
 ///     });
 ///
@@ -124,11 +124,11 @@ import 'workflow_parameter_response.dart';
 /// 		_, err := logic.NewWorkflow(ctx, "workflow", &logic.WorkflowArgs{
 /// 			Definition: pulumi.Any(map[string]interface{}{
 /// 				"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-/// 				"actions": map[string]interface{}{
+/// 				"actions": map[string]map[string]interface{}{
 /// 					"Find_pet_by_ID": map[string]interface{}{
 /// 						"inputs": map[string]interface{}{
-/// 							"host": map[string]interface{}{
-/// 								"connection": map[string]interface{}{
+/// 							"host": map[string]map[string]string{
+/// 								"connection": map[string]string{
 /// 									"name": "@parameters('$connections')['test-custom-connector']['connectionId']",
 /// 								},
 /// 							},
@@ -141,15 +141,15 @@ import 'workflow_parameter_response.dart';
 /// 				},
 /// 				"contentVersion": "1.0.0.0",
 /// 				"outputs":        map[string]interface{}{},
-/// 				"parameters": map[string]interface{}{
+/// 				"parameters": map[string]map[string]interface{}{
 /// 					"$connections": map[string]interface{}{
 /// 						"defaultValue": map[string]interface{}{},
 /// 						"type":         "Object",
 /// 					},
 /// 				},
-/// 				"triggers": map[string]interface{}{
+/// 				"triggers": map[string]map[string]interface{}{
 /// 					"manual": map[string]interface{}{
-/// 						"inputs": map[string]interface{}{
+/// 						"inputs": map[string]map[string]interface{}{
 /// 							"schema": map[string]interface{}{},
 /// 						},
 /// 						"kind": "Http",
@@ -164,7 +164,7 @@ import 'workflow_parameter_response.dart';
 /// 			Parameters: logic.WorkflowParameterMap{
 /// 				"$connections": &logic.WorkflowParameterArgs{
 /// 					Value: pulumi.Any(map[string]interface{}{
-/// 						"test-custom-connector": map[string]interface{}{
+/// 						"test-custom-connector": map[string]string{
 /// 							"connectionId":   "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Web/connections/test-custom-connector",
 /// 							"connectionName": "test-custom-connector",
 /// 							"id":             "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/providers/Microsoft.Web/locations/brazilsouth/managedApis/test-custom-connector",
@@ -186,7 +186,7 @@ import 'workflow_parameter_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -195,6 +195,9 @@ import 'workflow_parameter_response.dart';
 /// }
 ///
 /// resource "azure-native_logic_workflow" "workflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     "$schema" = "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#"
 ///     "actions" = {
@@ -261,6 +264,7 @@ import 'workflow_parameter_response.dart';
 /// import com.pulumi.azurenative.logic.Workflow;
 /// import com.pulumi.azurenative.logic.WorkflowArgs;
 /// import com.pulumi.azurenative.logic.inputs.ResourceReferenceArgs;
+/// import com.pulumi.azurenative.logic.inputs.WorkflowParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

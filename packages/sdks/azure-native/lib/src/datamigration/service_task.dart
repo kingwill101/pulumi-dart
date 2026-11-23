@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,17 +88,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_servicetask" "serviceTask" {
+/// resource "azure-native_datamigration_service_task" "serviceTask" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name = "DmsSdkRg"
 ///   properties = {
-///     "input" = {
-///       "sourceConnectionInfo" = {
-///         "port"       = 3306
-///         "serverName" = "localhost"
-///         "type"       = "MySqlConnectionInfo"
+///     input = {
+///       source_connection_info = {
+///         port        = 3306
+///         server_name = "localhost"
+///         type        = "MySqlConnectionInfo"
 ///       }
 ///     }
-///     "taskType" = "ConnectToSource.MySql"
+///     task_type = "ConnectToSource.MySql"
 ///   }
 ///   service_name = "DmsSdkService"
 ///   task_name    = "DmsSdkTask"
@@ -114,6 +117,75 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datamigration.ServiceTask;
 /// import com.pulumi.azurenative.datamigration.ServiceTaskArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToMongoDbTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MongoDbConnectionInfoArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceMySqlTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceMySqlTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MySqlConnectionInfoArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceOracleSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceOracleSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.OracleConnectionInfoArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourcePostgreSqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourcePostgreSqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.PostgreSqlConnectionInfoArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceSqlServerSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceSqlServerTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.SqlConnectionInfoArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToSourceSqlServerTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetAzureDbForMySqlTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetAzureDbForMySqlTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetAzureDbForPostgreSqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetAzureDbForPostgreSqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlDbTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlDbTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlMISyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlMISyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlMITaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlMITaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlSqlDbSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ConnectToTargetSqlSqlDbSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetTdeCertificatesSqlTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetTdeCertificatesSqlTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesMySqlTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesMySqlTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesOracleTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesOracleTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesPostgreSqlTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesPostgreSqlTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesSqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesSqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesSqlTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.GetUserTablesSqlTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateMongoDbTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MongoDbMigrationSettingsArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateMySqlAzureDbForMySqlOfflineTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateMySqlAzureDbForMySqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateMySqlAzureDbForMySqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateOracleAzureDbForPostgreSqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateOracleAzureDbPostgreSqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlDbSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlDbSyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlDbTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlDbTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlMISyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlMISyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlMITaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSqlServerSqlMITaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSsisTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.MigrateSsisTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateSyncMigrationInputSqlServerTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateMigrationInputSqlServerSqlMISyncTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateMigrationInputSqlServerSqlMISyncTaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateMigrationInputSqlServerSqlMITaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateMigrationInputSqlServerSqlMITaskInputArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateMongoDbTaskPropertiesArgs;
+/// import com.pulumi.azurenative.datamigration.inputs.ValidateOracleAzureDbForPostgreSqlSyncTaskPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -131,13 +203,11 @@ import 'system_data_response.dart';
 ///             .groupName("DmsSdkRg")
 ///             .properties(ConnectToSourceMySqlTaskPropertiesArgs.builder()
 ///                 .input(ConnectToSourceMySqlTaskInputArgs.builder()
-///                     .sourceConnectionInfo(Map.ofEntries(
-///                         Map.entry("port", 3306),
-///                         Map.entry("serverName", "localhost"),
-///                         Map.entry("type", "MySqlConnectionInfo")
-///                     ))
+///                     .sourceConnectionInfo(MySqlConnectionInfoArgs.builder()
+///                         .port(3306)
+///                         .serverName("localhost")
+///                         .build())
 ///                     .build())
-///                 .taskType("ConnectToSource.MySql")
 ///                 .build())
 ///             .serviceName("DmsSdkService")
 ///             .taskName("DmsSdkTask")

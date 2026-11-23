@@ -127,7 +127,7 @@ import 'workflow_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -136,6 +136,9 @@ import 'workflow_args.dart';
 /// }
 ///
 /// resource "azure-native_devhub_workflow" "workflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   github_workflow_profile = {
 ///     acr = {
 ///       acr_registry_name   = "registry1"
@@ -488,7 +491,7 @@ import 'workflow_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -497,6 +500,9 @@ import 'workflow_args.dart';
 /// }
 ///
 /// resource "azure-native_devhub_workflow" "workflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_name                    = "my-app"
 ///   dockerfile_generation_mode  = "enabled"
 ///   dockerfile_output_directory = "./"

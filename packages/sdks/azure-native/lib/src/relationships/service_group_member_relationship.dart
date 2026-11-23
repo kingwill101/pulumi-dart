@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_relationships_servicegroupmemberrelationship" "serviceGroupMemberRelationship" {
+/// resource "azure-native_relationships_service_group_member_relationship" "serviceGroupMemberRelationship" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "sg1"
 ///   properties = {
 ///     target_id     = "/providers/Microsoft.Management/serviceGroups/sg1"

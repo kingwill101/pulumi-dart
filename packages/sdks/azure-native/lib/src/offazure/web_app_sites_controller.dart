@@ -98,7 +98,7 @@ import 'web_app_sites_controller_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,7 +106,10 @@ import 'web_app_sites_controller_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_offazure_webappsitescontroller" "webAppSitesController" {
+/// resource "azure-native_offazure_web_app_sites_controller" "webAppSitesController" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discovery_scenario  = "Migrate"
 ///   resource_group_name = "rgmigrate"
 ///   site_appliance_properties_collection {

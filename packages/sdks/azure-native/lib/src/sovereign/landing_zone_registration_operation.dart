@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sovereign_landingzoneregistrationoperation" "landingZoneRegistrationOperation" {
+/// resource "azure-native_sovereign_landing_zone_registration_operation" "landingZoneRegistrationOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   landing_zone_account_name      = "lza-RemApiExample"
 ///   landing_zone_registration_name = "lzr-RemApiExample"
 ///   properties = {

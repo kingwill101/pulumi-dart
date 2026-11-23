@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_huntrelation" "huntRelation" {
+/// resource "azure-native_securityinsights_hunt_relation" "huntRelation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hunt_id             = "163e7b2a-a2ec-4041-aaba-d878a38f265f"
 ///   hunt_relation_id    = "2216d0e1-91e3-4902-89fd-d2df8c535096"
 ///   labels              = ["Test Label"]

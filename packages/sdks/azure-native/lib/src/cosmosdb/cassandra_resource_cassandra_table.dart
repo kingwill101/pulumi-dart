@@ -26,7 +26,7 @@ import 'cassandra_table_get_properties_response_resource.dart';
 ///         AccountName = "ddb1",
 ///         KeyspaceName = "keyspaceName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.CassandraTableResourceArgs
 ///         {
 ///             DefaultTtl = 100,
@@ -60,7 +60,7 @@ import 'cassandra_table_get_properties_response_resource.dart';
 ///         },
 ///         ResourceGroupName = "rg1",
 ///         TableName = "tableName",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -120,7 +120,7 @@ import 'cassandra_table_get_properties_response_resource.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -128,7 +128,10 @@ import 'cassandra_table_get_properties_response_resource.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_cassandraresourcecassandratable" "cassandraResourceCassandraTable" {
+/// resource "azure-native_cosmosdb_cassandra_resource_cassandra_table" "cassandraResourceCassandraTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   keyspace_name = "keyspaceName"
 ///   location      = "West US"
@@ -138,15 +141,15 @@ import 'cassandra_table_get_properties_response_resource.dart';
 ///     id          = "tableName"
 ///     schema = {
 ///       cluster_keys = [{
-///         "name"    = "columnA"
-///         "orderBy" = "Asc"
+///         name     = "columnA"
+///         order_by = "Asc"
 ///       }]
 ///       columns = [{
-///         "name" = "columnA"
-///         "type" = "Ascii"
+///         name = "columnA"
+///         type = "Ascii"
 ///       }]
 ///       partition_keys = [{
-///         "name" = "columnA"
+///         name = "columnA"
 ///       }]
 ///     }
 ///   }
@@ -168,6 +171,9 @@ import 'cassandra_table_get_properties_response_resource.dart';
 /// import com.pulumi.azurenative.cosmosdb.inputs.CreateUpdateOptionsArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.CassandraTableResourceArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.CassandraSchemaArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.ClusterKeyArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.ColumnArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.CassandraPartitionKeyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

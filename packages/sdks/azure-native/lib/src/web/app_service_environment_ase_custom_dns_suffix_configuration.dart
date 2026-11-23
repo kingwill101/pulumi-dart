@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_appserviceenvironmentasecustomdnssuffixconfiguration" "appServiceEnvironmentAseCustomDnsSuffixConfiguration" {
+/// resource "azure-native_web_app_service_environment_ase_custom_dns_suffix_configuration" "appServiceEnvironmentAseCustomDnsSuffixConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_url              = "https://test-kv.vault.azure.net/secrets/contosocert"
 ///   dns_suffix                   = "contoso.com"
 ///   key_vault_reference_identity = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/test-rg/providers/microsoft.managedidentity/userassignedidentities/test-user-mi"

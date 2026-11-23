@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_sapinstance" "sapInstance" {
+/// resource "azure-native_workloads_sap_instance" "sapInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                = "eastus"
 ///   resource_group_name     = "test-rg"
 ///   sap_discovery_site_name = "SampleSite"

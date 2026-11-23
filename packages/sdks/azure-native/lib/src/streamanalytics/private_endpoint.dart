@@ -74,7 +74,7 @@ import 'private_link_service_connection_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'private_link_service_connection_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_streamanalytics_privateendpoint" "privateEndpoint" {
+/// resource "azure-native_streamanalytics_private_endpoint" "privateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = "testcluster"
 ///   manual_private_link_service_connections {
 ///     group_ids               = ["groupIdFromResource"]

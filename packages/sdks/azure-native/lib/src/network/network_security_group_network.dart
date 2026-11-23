@@ -60,7 +60,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networksecuritygroup" "networkSecurityGroup" {
+/// resource "azure-native_network_network_security_group" "networkSecurityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "eastus"
 ///   network_security_group_name = "testnsg"
 ///   resource_group_name         = "rg1"
@@ -218,7 +221,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -226,7 +229,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networksecuritygroup" "networkSecurityGroup" {
+/// resource "azure-native_network_network_security_group" "networkSecurityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "eastus"
 ///   network_security_group_name = "testnsg"
 ///   resource_group_name         = "rg1"

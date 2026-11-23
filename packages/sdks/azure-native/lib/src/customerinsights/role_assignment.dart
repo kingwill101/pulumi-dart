@@ -81,7 +81,7 @@ import 'role_assignment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'role_assignment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_customerinsights_roleassignment" "roleAssignment" {
+/// resource "azure-native_customerinsights_role_assignment" "roleAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignment_name = "assignmentName8976"
 ///   hub_name        = "sdkTestHub"
 ///   principals {

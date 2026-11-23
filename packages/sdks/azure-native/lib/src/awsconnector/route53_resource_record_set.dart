@@ -77,12 +77,12 @@ import 'system_data_response.dart';
 ///                 },
 ///                 SetIdentifier = "rmgriiqkzi",
 ///                 TrafficPolicyInstanceId = "nttbthvurnpsjgshknlxpamzymcgno",
-///                 Ttl = 18,
+///                 Ttl = 18.0,
 ///                 Type = new AzureNative.AwsConnector.Inputs.RRTypeEnumValueArgs
 ///                 {
 ///                     Value = AzureNative.AwsConnector.RRType.A,
 ///                 },
-///                 Weight = 16,
+///                 Weight = 16.0,
 ///             },
 ///             AwsRegion = "bccacstjducrajieglqbivvq",
 ///             AwsSourceSchema = "w",
@@ -190,7 +190,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -198,7 +198,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_route53resourcerecordset" "route53ResourceRecordSet" {
+/// resource "azure-native_awsconnector_route53_resource_record_set" "route53ResourceRecordSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fjdvlwthtamvmempnqmew"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -238,7 +241,7 @@ import 'system_data_response.dart';
 ///         value = "af-south-1"
 ///       }
 ///       resource_records = [{
-///         "value" = "joiqyrlrpntv"
+///         value = "joiqyrlrpntv"
 ///       }]
 ///       set_identifier             = "rmgriiqkzi"
 ///       traffic_policy_instance_id = "nttbthvurnpsjgshknlxpamzymcgno"
@@ -281,6 +284,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.GeoProximityLocationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CoordinatesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ResourceRecordSetRegionEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ResourceRecordArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RRTypeEnumValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

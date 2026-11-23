@@ -67,7 +67,7 @@ import 'key_value_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'key_value_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appconfiguration_keyvalue" "keyValue" {
+/// resource "azure-native_appconfiguration_key_value" "keyValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_store_name   = "contoso"
 ///   key_value_name      = "myKey$myLabel"
 ///   resource_group_name = "myResourceGroup"

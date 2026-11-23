@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,6 +101,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_workloads_monitor" "monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_location = "westus"
 ///   app_service_plan_configuration = {
 ///     capacity = 1
@@ -327,7 +330,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -336,6 +339,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_workloads_monitor" "monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_location = "westus"
 ///   app_service_plan_configuration = {
 ///     capacity = 1

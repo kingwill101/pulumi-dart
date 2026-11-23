@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,7 +127,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_iamgroup" "iamGroup" {
+/// resource "azure-native_awsconnector_iam_group" "iamGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "badqu"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -139,8 +142,8 @@ import 'system_data_response.dart';
 ///       managed_policy_arns = ["uqek"]
 ///       path                = "liuneeastp"
 ///       policies = [{
-///         "policyDocument" = {}
-///         "policyName"     = "cokejufrpuszoopjjywwxopal"
+///         policy_document = {}
+///         policy_name     = "cokejufrpuszoopjjywwxopal"
 ///       }]
 ///     }
 ///     aws_region        = "uqzi"
@@ -169,6 +172,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamGroupPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PolicyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

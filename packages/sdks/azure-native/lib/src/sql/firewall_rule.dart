@@ -60,7 +60,7 @@ import 'firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_firewallrule" "firewallRule" {
+/// resource "azure-native_sql_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_ip_address      = "0.0.0.3"
 ///   firewall_rule_name  = "firewallrulecrudtest-5370"
 ///   resource_group_name = "firewallrulecrudtest-12"
@@ -204,7 +207,7 @@ import 'firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -212,7 +215,10 @@ import 'firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_firewallrule" "firewallRule" {
+/// resource "azure-native_sql_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   end_ip_address      = "0.0.0.1"
 ///   firewall_rule_name  = "firewallrulecrudtest-3927"
 ///   resource_group_name = "firewallrulecrudtest-12"

@@ -60,7 +60,7 @@ import 'transparent_data_encryption_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'transparent_data_encryption_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_transparentdataencryption" "transparentDataEncryption" {
+/// resource "azure-native_sql_transparent_data_encryption" "transparentDataEncryption" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "testdb"
 ///   resource_group_name = "securitytde-42-rg"
 ///   server_name         = "securitytde-42"

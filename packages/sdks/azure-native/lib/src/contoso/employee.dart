@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,6 +85,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_contoso_employee" "employee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   employee_name = "9KF-f-8b"
 ///   location      = "itajgxyqozseoygnl"
 ///   properties = {

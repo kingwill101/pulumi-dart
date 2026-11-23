@@ -29,7 +29,7 @@ import 'project_properties_response.dart';
 ///             ProjectStatus = AzureNative.Migrate.ProjectStatus.Active,
 ///         },
 ///         ResourceGroupName = "abgoyal-westEurope",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -68,7 +68,7 @@ import 'project_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,6 +77,9 @@ import 'project_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_migrate_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag        = ""
 ///   location     = "West Europe"
 ///   project_name = "abGoyalProject2"

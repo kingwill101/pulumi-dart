@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securityuserconfiguration" "securityUserConfiguration" {
+/// resource "azure-native_network_security_user_configuration" "securityUserConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name   = "myTestSecurityConfig"
 ///   description          = "A sample policy"
 ///   network_manager_name = "testNetworkManager"

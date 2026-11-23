@@ -111,7 +111,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -120,6 +120,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cognitiveservices_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "testCreate1"
 ///   identity = {
 ///     type = "SystemAssigned"
@@ -136,7 +139,7 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     user_owned_storage = [{
-///       "resourceId" = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+///       resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 ///     }]
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -159,6 +162,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.inputs.AccountPropertiesArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.EncryptionArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.KeyVaultPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.UserOwnedStorageArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -312,7 +316,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Kind = "CognitiveServices",
 ///         Location = "West US",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.CognitiveServices.Inputs.SkuArgs
 ///         {
@@ -358,7 +362,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -367,6 +371,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cognitiveservices_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "testCreate1"
 ///   identity = {
 ///     type = "SystemAssigned"

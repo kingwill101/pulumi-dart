@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         Query = "where isnotnull(tags['Prod']) and properties.extensions[0].Name == 'docker'",
 ///         ResourceGroupName = "my-resource-group",
 ///         ResourceName = "MyDockerVMs",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resourcegraph_graphquery" "graphQuery" {
+/// resource "azure-native_resourcegraph_graph_query" "graphQuery" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Docker VMs in PROD"
 ///   query               = "where isnotnull(tags['Prod']) and properties.extensions[0].Name == 'docker'"
 ///   resource_group_name = "my-resource-group"

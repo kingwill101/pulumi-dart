@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_edgeactionversion" "edgeActionVersion" {
+/// resource "azure-native_cdn_edge_action_version" "edgeActionVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_type     = "zip"
 ///   edge_action_name    = "edgeAction1"
 ///   is_default_version  = "True"

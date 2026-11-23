@@ -278,7 +278,7 @@ import 'api_schema_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -286,7 +286,10 @@ import 'api_schema_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apischema" "apiSchema" {
+/// resource "azure-native_apimanagement_api_schema" "apiSchema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "59d6bb8f1f7fab13dc67ec9b"
 ///   content_type        = "application/vnd.ms-azure-apim.xsd+xml"
 ///   resource_group_name = "rg1"

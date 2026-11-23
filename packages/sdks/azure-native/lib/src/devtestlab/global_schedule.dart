@@ -87,7 +87,7 @@ import 'week_details_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'week_details_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_globalschedule" "globalSchedule" {
+/// resource "azure-native_devtestlab_global_schedule" "globalSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "labvmautostart"
 ///   resource_group_name = "resourceGroupName"
 ///   status              = "Enabled"

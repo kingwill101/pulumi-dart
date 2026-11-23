@@ -118,7 +118,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -126,7 +126,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_iamservercertificate" "iamServerCertificate" {
+/// resource "azure-native_awsconnector_iam_server_certificate" "iamServerCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ddjdvyseqfbfufjoxr"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -140,8 +143,8 @@ import 'system_data_response.dart';
 ///       private_key             = "ynoaydpaju"
 ///       server_certificate_name = "yblyjjfteysombtxapaqjkrqo"
 ///       tags = [{
-///         "key"   = "ipoetrffzaxcntgqbdcuprhbn"
-///         "value" = "jstuopgodfwmzigjbb"
+///         key   = "ipoetrffzaxcntgqbdcuprhbn"
+///         value = "jstuopgodfwmzigjbb"
 ///       }]
 ///     }
 ///     aws_region        = "gflixuzdblwuy"
@@ -170,6 +173,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamServerCertificateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamServerCertificatePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamServerCertificatePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

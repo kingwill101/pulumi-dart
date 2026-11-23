@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_advancedthreatprotection" "advancedThreatProtection" {
+/// resource "azure-native_security_advanced_threat_protection" "advancedThreatProtection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   is_enabled   = true
 ///   resource_id  = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Storage/storageAccounts/samplestorageaccount"
 ///   setting_name = "current"

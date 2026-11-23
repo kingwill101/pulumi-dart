@@ -56,7 +56,7 @@ import 'trusted_id_provider_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'trusted_id_provider_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datalakestore_trustedidprovider" "trustedIdProvider" {
+/// resource "azure-native_datalakestore_trusted_id_provider" "trustedIdProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "contosoadla"
 ///   id_provider              = "https://sts.windows.net/ea9ec534-a3e3-4e45-ad36-3afc5bb291c1"
 ///   resource_group_name      = "contosorg"

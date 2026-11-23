@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'condition_failing_periods_response.dart';
+import 'condition_response_failing_periods.dart';
 import 'dimension_response.dart';
 
 /// A condition of the scheduled query rule.
@@ -10,10 +10,10 @@ class ConditionResponse {
   final pulumi.Input<String?>? alertSensitivity;
   /// Specifies the type of threshold criteria
   final pulumi.Input<String?>? criterionType;
-  /// List of Dimensions conditions
+  /// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
   final pulumi.Input<List<DimensionResponse>?>? dimensions;
   /// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
-  final pulumi.Input<ConditionFailingPeriodsResponse?>? failingPeriods;
+  final pulumi.Input<ConditionResponseFailingPeriods?>? failingPeriods;
   /// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
   final pulumi.Input<String?>? ignoreDataBefore;
   /// The column containing the metric measure number. Relevant only for rules of the kind LogAlert.
@@ -36,7 +36,7 @@ class ConditionResponse {
   /// Creates a new [ConditionResponse].
   /// [alertSensitivity] The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
   /// [criterionType] Specifies the type of threshold criteria
-  /// [dimensions] List of Dimensions conditions
+  /// [dimensions] List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
   /// [failingPeriods] The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
   /// [ignoreDataBefore] Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
   /// [metricMeasureColumn] The column containing the metric measure number. Relevant only for rules of the kind LogAlert.
@@ -68,7 +68,7 @@ class ConditionResponse {
       'alertSensitivity': ?alertSensitivity,
       'criterionType': ?criterionType,
       'dimensions': ?pulumi.Input.mapOptionalInputValue<List<DimensionResponse>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<DimensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'failingPeriods': ?pulumi.Input.mapOptionalInputValue<ConditionFailingPeriodsResponse, Map<String, dynamic>>(failingPeriods, (value) => value.toMap()),
+      'failingPeriods': ?pulumi.Input.mapOptionalInputValue<ConditionResponseFailingPeriods, Map<String, dynamic>>(failingPeriods, (value) => value.toMap()),
       'ignoreDataBefore': ?ignoreDataBefore,
       'metricMeasureColumn': ?metricMeasureColumn,
       'metricName': ?metricName,
@@ -86,7 +86,7 @@ class ConditionResponse {
       alertSensitivity: (() { final guardedValue = map['alertSensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       criterionType: (() { final guardedValue = map['criterionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DimensionResponse>(guardedValue, (value) => DimensionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      failingPeriods: (() { final guardedValue = map['failingPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConditionFailingPeriodsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      failingPeriods: (() { final guardedValue = map['failingPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConditionResponseFailingPeriods.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreDataBefore: (() { final guardedValue = map['ignoreDataBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricMeasureColumn: (() { final guardedValue = map['metricMeasureColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

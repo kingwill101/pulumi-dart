@@ -155,7 +155,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -163,7 +163,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2snapshot" "ec2Snapshot" {
+/// resource "azure-native_awsconnector_ec2_snapshot" "ec2Snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "kqbtvnmdasfajwylafmkah"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -192,8 +195,8 @@ import 'system_data_response.dart';
 ///         value = "archive"
 ///       }
 ///       tags = [{
-///         "key"   = "xjeeorwcwraovqjs"
-///         "value" = "vjhh"
+///         key   = "xjeeorwcwraovqjs"
+///         value = "vjhh"
 ///       }]
 ///       volume_id   = "rzepawgzsvqncqbpjxnijhwofbgc"
 ///       volume_size = 3
@@ -227,6 +230,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SSETypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnapshotStateEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StorageTierEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

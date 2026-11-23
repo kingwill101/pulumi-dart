@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_sourcecontrol" "sourceControl" {
+/// resource "azure-native_automation_source_control" "sourceControl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_sync               = true
 ///   automation_account_name = "sampleAccount9"
 ///   branch                  = "master"

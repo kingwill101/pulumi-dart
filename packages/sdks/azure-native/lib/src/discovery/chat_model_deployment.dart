@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_discovery_chatmodeldeployment" "chatModelDeployment" {
+/// resource "azure-native_discovery_chat_model_deployment" "chatModelDeployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   chat_model_deployment_name = "d1844ae17cc93bd299"
 ///   location                   = "uksouth"
 ///   properties = {
