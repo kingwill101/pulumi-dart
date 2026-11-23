@@ -5,7 +5,7 @@ import 'authz_policy_http_rule_to_not_operation.dart';
 import 'authz_policy_http_rule_to_operation.dart';
 
 class AuthzPolicyHttpRuleTo {
-  /// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+  /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
   /// Structure is documented below.
   final pulumi.Input<List<AuthzPolicyHttpRuleToNotOperation>?>? notOperations;
   /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
@@ -13,7 +13,7 @@ class AuthzPolicyHttpRuleTo {
   final pulumi.Input<List<AuthzPolicyHttpRuleToOperation>?>? operations;
 
   /// Creates a new [AuthzPolicyHttpRuleTo].
-  /// [notOperations] Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+  /// [notOperations] Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
   /// [operations] Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
   const AuthzPolicyHttpRuleTo({
     this.notOperations,

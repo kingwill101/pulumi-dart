@@ -10,20 +10,17 @@ class GetDataSourceReferencesResult {
   final String? id;
   final String? location;
   final String? project;
-  final String? resourceType;
 
   /// Creates a new [GetDataSourceReferencesResult].
   /// [dataSourceReferences] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Optional.
   /// [project] Optional.
-  /// [resourceType] Optional.
   const GetDataSourceReferencesResult({
     this.dataSourceReferences,
     this.id,
     this.location,
     this.project,
-    this.resourceType,
   });
 
   Map<String, dynamic> toMap() {
@@ -32,7 +29,6 @@ class GetDataSourceReferencesResult {
       'id': ?id,
       'location': ?location,
       'project': ?project,
-      'resourceType': ?resourceType,
     };
   }
 
@@ -42,7 +38,6 @@ class GetDataSourceReferencesResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

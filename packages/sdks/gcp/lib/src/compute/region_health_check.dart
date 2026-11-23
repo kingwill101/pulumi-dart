@@ -29,6 +29,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Region Health Check Tcp
@@ -85,7 +86,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +108,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -115,7 +116,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "tcp-region-health-check" {
+/// resource "gcp_compute_region_health_check" "tcp-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tcp-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -169,6 +173,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       tcpHealthCheck:
 ///         port: '80'
 /// ```
+///
 ///
 /// ### Region Health Check Tcp Full
 ///
@@ -245,7 +250,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -274,7 +279,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -282,7 +287,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "tcp-region-health-check" {
+/// resource "gcp_compute_region_health_check" "tcp-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tcp-region-health-check"
 ///   description         = "Health check via tcp"
 ///   timeout_sec         = 1
@@ -358,6 +366,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///         response: I AM HEALTHY
 /// ```
 ///
+///
 /// ### Region Health Check Ssl
 ///
 ///
@@ -412,7 +421,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -434,7 +443,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -442,7 +451,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "ssl-region-health-check" {
+/// resource "gcp_compute_region_health_check" "ssl-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "ssl-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -496,6 +508,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       sslHealthCheck:
 ///         port: '443'
 /// ```
+///
 ///
 /// ### Region Health Check Ssl Full
 ///
@@ -572,7 +585,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -601,7 +614,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -609,7 +622,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "ssl-region-health-check" {
+/// resource "gcp_compute_region_health_check" "ssl-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "ssl-region-health-check"
 ///   description         = "Health check via ssl"
 ///   timeout_sec         = 1
@@ -685,6 +701,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///         response: I AM HEALTHY
 /// ```
 ///
+///
 /// ### Region Health Check Http
 ///
 ///
@@ -739,7 +756,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -761,7 +778,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -769,7 +786,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "http-region-health-check" {
+/// resource "gcp_compute_region_health_check" "http-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -823,6 +843,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       httpHealthCheck:
 ///         port: '80'
 /// ```
+///
 ///
 /// ### Region Health Check Http Logs
 ///
@@ -888,7 +909,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -913,7 +934,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -921,7 +942,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "http-region-health-check" {
+/// resource "gcp_compute_region_health_check" "http-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -984,6 +1008,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       logConfig:
 ///         enable: true
 /// ```
+///
 ///
 /// ### Region Health Check Http Full
 ///
@@ -1063,7 +1088,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1093,7 +1118,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1101,7 +1126,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "http-region-health-check" {
+/// resource "gcp_compute_region_health_check" "http-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "http-region-health-check"
 ///   description         = "Health check via http"
 ///   timeout_sec         = 1
@@ -1180,6 +1208,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///         response: I AM HEALTHY
 /// ```
 ///
+///
 /// ### Region Health Check Https
 ///
 ///
@@ -1234,7 +1263,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1256,7 +1285,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1264,7 +1293,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "https-region-health-check" {
+/// resource "gcp_compute_region_health_check" "https-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "https-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -1318,6 +1350,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       httpsHealthCheck:
 ///         port: '443'
 /// ```
+///
 ///
 /// ### Region Health Check Https Full
 ///
@@ -1397,7 +1430,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1427,7 +1460,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1435,7 +1468,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "https-region-health-check" {
+/// resource "gcp_compute_region_health_check" "https-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "https-region-health-check"
 ///   description         = "Health check via https"
 ///   timeout_sec         = 1
@@ -1514,6 +1550,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///         response: I AM HEALTHY
 /// ```
 ///
+///
 /// ### Region Health Check Http2
 ///
 ///
@@ -1568,7 +1605,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1590,7 +1627,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1598,7 +1635,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "http2-region-health-check" {
+/// resource "gcp_compute_region_health_check" "http2-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http2-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -1652,6 +1692,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       http2HealthCheck:
 ///         port: '443'
 /// ```
+///
 ///
 /// ### Region Health Check Http2 Full
 ///
@@ -1731,7 +1772,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1761,7 +1802,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1769,7 +1810,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "http2-region-health-check" {
+/// resource "gcp_compute_region_health_check" "http2-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "http2-region-health-check"
 ///   description         = "Health check via http2"
 ///   timeout_sec         = 1
@@ -1848,6 +1892,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///         response: I AM HEALTHY
 /// ```
 ///
+///
 /// ### Region Health Check Grpc
 ///
 ///
@@ -1902,7 +1947,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1924,7 +1969,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1932,7 +1977,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "grpc-region-health-check" {
+/// resource "gcp_compute_region_health_check" "grpc-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "grpc-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -1986,6 +2034,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       grpcHealthCheck:
 ///         port: '443'
 /// ```
+///
 ///
 /// ### Region Health Check Grpc Full
 ///
@@ -2047,7 +2096,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2071,7 +2120,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2079,7 +2128,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "grpc-region-health-check" {
+/// resource "gcp_compute_region_health_check" "grpc-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "grpc-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -2140,6 +2192,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///         grpcServiceName: testservice
 /// ```
 ///
+///
 /// ### Region Health Check Grpc With Tls
 ///
 ///
@@ -2194,7 +2247,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2216,7 +2269,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2224,7 +2277,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "grpc-with-tls-region-health-check" {
+/// resource "gcp_compute_region_health_check" "grpc-with-tls-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "grpc-with-tls-region-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -2278,6 +2334,7 @@ import 'region_health_check_tcp_health_check.dart';
 ///       grpcTlsHealthCheck:
 ///         port: '443'
 /// ```
+///
 ///
 /// ### Region Health Check Grpc With Tls Full
 ///
@@ -2348,7 +2405,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2375,7 +2432,7 @@ import 'region_health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2383,7 +2440,10 @@ import 'region_health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthcheck" "grpc-with-tls-region-health-check" {
+/// resource "gcp_compute_region_health_check" "grpc-with-tls-region-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "grpc-with-tls-region-health-check"
 ///   description         = "regional health check via GRPC with TLS"
 ///   timeout_sec         = 1
@@ -2555,7 +2615,7 @@ class RegionHealthCheck extends pulumi.CustomResource {
           'gcp:compute/regionHealthCheck:RegionHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');

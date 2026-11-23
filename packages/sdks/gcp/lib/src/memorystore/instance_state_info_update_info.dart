@@ -41,8 +41,8 @@ class InstanceStateInfoUpdateInfo {
     return InstanceStateInfoUpdateInfo(
       targetEngineVersion: (() { final guardedValue = map['targetEngineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetNodeType: (() { final guardedValue = map['targetNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetReplicaCount: (() { final guardedValue = map['targetReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetShardCount: (() { final guardedValue = map['targetShardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetReplicaCount: (() { final guardedValue = map['targetReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetShardCount: (() { final guardedValue = map['targetShardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

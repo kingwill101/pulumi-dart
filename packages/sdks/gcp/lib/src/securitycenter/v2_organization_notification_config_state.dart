@@ -7,6 +7,8 @@ import 'v2_organization_notification_config_streaming_config.dart';
 class V2OrganizationNotificationConfigState {
   /// This must be unique within the organization.
   final pulumi.Input<String?>? configId;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  final pulumi.Input<bool?>? deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -36,6 +38,7 @@ class V2OrganizationNotificationConfigState {
 
   /// Creates a new [V2OrganizationNotificationConfigState].
   /// [configId] This must be unique within the organization.
+  /// [deletionNotificationsEnabled] Indicates whether the notifications will be sent for deleted findings.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the notification config (max of 1024 characters).
   /// [location] location Id is provided by organization. If not provided, Use global as default.
@@ -46,6 +49,7 @@ class V2OrganizationNotificationConfigState {
   /// [streamingConfig] The config for triggering streaming-based notifications.
   const V2OrganizationNotificationConfigState({
     this.configId,
+    this.deletionNotificationsEnabled,
     this.deletionPolicy,
     this.description,
     this.location,
@@ -59,6 +63,7 @@ class V2OrganizationNotificationConfigState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configId': ?configId,
+      'deletionNotificationsEnabled': ?deletionNotificationsEnabled,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'location': ?location,
@@ -73,6 +78,7 @@ class V2OrganizationNotificationConfigState {
   factory V2OrganizationNotificationConfigState.fromMap(Map<String, dynamic> map) {
     return V2OrganizationNotificationConfigState(
       configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionNotificationsEnabled: (() { final guardedValue = map['deletionNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

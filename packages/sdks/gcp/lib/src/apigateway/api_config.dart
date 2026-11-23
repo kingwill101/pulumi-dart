@@ -17,6 +17,7 @@ import 'api_config_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -96,7 +97,7 @@ class ApiConfig extends pulumi.CustomResource {
           'gcp:apigateway/apiConfig:ApiConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     api = registerOutput<String>('api');

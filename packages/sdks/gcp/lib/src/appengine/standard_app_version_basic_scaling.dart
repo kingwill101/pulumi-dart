@@ -27,7 +27,7 @@ class StandardAppVersionBasicScaling {
   factory StandardAppVersionBasicScaling.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionBasicScaling(
       idleTimeout: (() { final guardedValue = map['idleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxInstances: pulumi.Input.fromValue((map['maxInstances'] as num).toInt()),
+      maxInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstances'])),
     );
   }
 }

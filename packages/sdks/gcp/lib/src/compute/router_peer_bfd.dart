@@ -52,9 +52,9 @@ class RouterPeerBfd {
 
   factory RouterPeerBfd.fromMap(Map<String, dynamic> map) {
     return RouterPeerBfd(
-      minReceiveInterval: (() { final guardedValue = map['minReceiveInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minTransmitInterval: (() { final guardedValue = map['minTransmitInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      multiplier: (() { final guardedValue = map['multiplier']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minReceiveInterval: (() { final guardedValue = map['minReceiveInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minTransmitInterval: (() { final guardedValue = map['minTransmitInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      multiplier: (() { final guardedValue = map['multiplier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sessionInitializationMode: pulumi.Input.fromValue(map['sessionInitializationMode'] as String),
     );
   }

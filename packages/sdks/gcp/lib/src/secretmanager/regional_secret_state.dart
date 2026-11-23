@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regional_secret_customer_managed_encryption.dart';
+import 'regional_secret_policy_member.dart';
 import 'regional_secret_rotation.dart';
 import 'regional_secret_topic.dart';
 
@@ -63,6 +64,10 @@ class RegionalSecretState {
   /// The resource name of the regional secret. Format:
   /// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
   final pulumi.Input<String?>? name;
+  /// An object containing a unique resource identity tied to the regional secret. This identity can be
+  /// granted the permissions required by features such as managed rotation.
+  /// Structure is documented below.
+  final pulumi.Input<List<RegionalSecretPolicyMember>?>? policyMembers;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -71,11 +76,23 @@ class RegionalSecretState {
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
   /// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-  /// set to configure rotation.
+  /// set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
   /// Structure is documented below.
   final pulumi.Input<RegionalSecretRotation?>? rotation;
   /// This must be unique within the project.
   final pulumi.Input<String?>? secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  /// Supported values are:
+  /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+  /// credentials. Managed rotation can be enabled on these secrets using the
+  /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+  /// be added manually to secrets of this type.
+  /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+  /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+  /// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+  /// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
+  final pulumi.Input<String?>? secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -114,10 +131,12 @@ class RegionalSecretState {
   /// [labels] The labels assigned to this regional secret.
   /// [location] The location of the regional secret. eg us-central1
   /// [name] The resource name of the regional secret. Format:
+  /// [policyMembers] An object containing a unique resource identity tied to the regional secret. This identity can be
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rotation] The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
   /// [secretId] This must be unique within the project.
+  /// [secretType] This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
@@ -135,10 +154,12 @@ class RegionalSecretState {
     this.labels,
     this.location,
     this.name,
+    this.policyMembers,
     this.project,
     this.pulumiLabels,
     this.rotation,
     this.secretId,
+    this.secretType,
     this.tags,
     this.topics,
     this.ttl,
@@ -159,10 +180,12 @@ class RegionalSecretState {
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
+      'policyMembers': ?pulumi.Input.mapOptionalInputValue<List<RegionalSecretPolicyMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<RegionalSecretPolicyMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'rotation': ?pulumi.Input.mapOptionalInputValue<RegionalSecretRotation, Map<String, dynamic>>(rotation, (value) => value.toMap()),
       'secretId': ?secretId,
+      'secretType': ?secretType,
       'tags': ?tags,
       'topics': ?pulumi.Input.mapOptionalInputValue<List<RegionalSecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<RegionalSecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ttl': ?ttl,
@@ -184,10 +207,12 @@ class RegionalSecretState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionalSecretPolicyMember>(guardedValue, (value) => RegionalSecretPolicyMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       rotation: (() { final guardedValue = map['rotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secretId: (() { final guardedValue = map['secretId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretType: (() { final guardedValue = map['secretType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

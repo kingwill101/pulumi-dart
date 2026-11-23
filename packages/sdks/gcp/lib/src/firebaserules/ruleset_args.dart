@@ -18,6 +18,7 @@ class RulesetArgs {
   /// The project for the resource
   final pulumi.Input<String?>? project;
   /// `Source` for the `Ruleset`.
+  /// Structure is documented below.
   final pulumi.Input<RulesetSource> source;
 
   /// Creates a new [RulesetArgs].

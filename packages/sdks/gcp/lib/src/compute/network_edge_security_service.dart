@@ -1,17 +1,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_edge_security_service_args.dart';
+import 'network_edge_security_service_params.dart';
 import 'network_edge_security_service_state.dart';
 
 /// Google Cloud Armor network edge security service resource.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about NetworkEdgeSecurityService, see:
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkEdgeSecurityServices)
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/armor/docs/advanced-network-ddos)
+///
 ///
 /// ## Example Usage
 ///
@@ -59,7 +59,7 @@ import 'network_edge_security_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'network_edge_security_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +86,10 @@ import 'network_edge_security_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkedgesecurityservice" "default" {
+/// resource "gcp_compute_network_edge_security_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-edge-security-service"
 ///   region      = "us-east1"
 ///   description = "My basic resource"
@@ -168,6 +171,9 @@ class NetworkEdgeSecurityService extends pulumi.CustomResource {
   late final pulumi.Output<String> fingerprint;
   /// Name of the resource. Provided by the client when the resource is created.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<NetworkEdgeSecurityServiceParams?> params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -194,13 +200,14 @@ class NetworkEdgeSecurityService extends pulumi.CustomResource {
           'gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
+    params = registerOutput<NetworkEdgeSecurityServiceParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEdgeSecurityServiceParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     securityPolicy = registerOutput<String?>('securityPolicy');
@@ -238,6 +245,7 @@ class NetworkEdgeSecurityService extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
+    params = registerOutput<NetworkEdgeSecurityServiceParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEdgeSecurityServiceParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     securityPolicy = registerOutput<String?>('securityPolicy');
@@ -260,6 +268,7 @@ class NetworkEdgeSecurityService extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
+    params = registerOutput<NetworkEdgeSecurityServiceParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEdgeSecurityServiceParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     securityPolicy = registerOutput<String?>('securityPolicy');

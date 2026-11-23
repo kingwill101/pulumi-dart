@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tenant_oauth_idp_config_args.dart';
+import 'tenant_oauth_idp_config_response_type.dart';
 import 'tenant_oauth_idp_config_state.dart';
 
 /// OIDC IdP configuration for a Identity Toolkit project within a tenant.
@@ -7,6 +8,7 @@ import 'tenant_oauth_idp_config_state.dart';
 /// You must enable the
 /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
 /// the marketplace prior to using this resource.
+///
 ///
 ///
 ///
@@ -29,6 +31,10 @@ import 'tenant_oauth_idp_config_state.dart';
 ///     issuer: "issuer",
 ///     enabled: true,
 ///     clientSecret: "secret",
+///     responseType: {
+///         idToken: true,
+///         code: false,
+///     },
 /// });
 /// ```
 /// ```python
@@ -43,7 +49,11 @@ import 'tenant_oauth_idp_config_state.dart';
 ///     client_id="client-id",
 ///     issuer="issuer",
 ///     enabled=True,
-///     client_secret="secret")
+///     client_secret="secret",
+///     response_type={
+///         "id_token": True,
+///         "code": False,
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,6 +77,11 @@ import 'tenant_oauth_idp_config_state.dart';
 ///         Issuer = "issuer",
 ///         Enabled = true,
 ///         ClientSecret = "secret",
+///         ResponseType = new Gcp.IdentityPlatform.Inputs.TenantOauthIdpConfigResponseTypeArgs
+///         {
+///             IdToken = true,
+///             Code = false,
+///         },
 ///     });
 ///
 /// });
@@ -75,7 +90,7 @@ import 'tenant_oauth_idp_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,6 +110,10 @@ import 'tenant_oauth_idp_config_state.dart';
 /// 			Issuer:       pulumi.String("issuer"),
 /// 			Enabled:      pulumi.Bool(true),
 /// 			ClientSecret: pulumi.String("secret"),
+/// 			ResponseType: &identityplatform.TenantOauthIdpConfigResponseTypeArgs{
+/// 				IdToken: pulumi.Bool(true),
+/// 				Code:    pulumi.Bool(false),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -104,7 +123,7 @@ import 'tenant_oauth_idp_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,9 +132,15 @@ import 'tenant_oauth_idp_config_state.dart';
 /// }
 ///
 /// resource "gcp_identityplatform_tenant" "tenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tenant"
 /// }
-/// resource "gcp_identityplatform_tenantoauthidpconfig" "tenant_oauth_idp_config" {
+/// resource "gcp_identityplatform_tenant_oauth_idp_config" "tenant_oauth_idp_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "oidc.oauth-idp-config"
 ///   tenant        = gcp_identityplatform_tenant.tenant.name
 ///   display_name  = "Display Name"
@@ -123,6 +148,10 @@ import 'tenant_oauth_idp_config_state.dart';
 ///   issuer        = "issuer"
 ///   enabled       = true
 ///   client_secret = "secret"
+///   response_type = {
+///     id_token = true
+///     code     = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -135,6 +164,7 @@ import 'tenant_oauth_idp_config_state.dart';
 /// import com.pulumi.gcp.identityplatform.TenantArgs;
 /// import com.pulumi.gcp.identityplatform.TenantOauthIdpConfig;
 /// import com.pulumi.gcp.identityplatform.TenantOauthIdpConfigArgs;
+/// import com.pulumi.gcp.identityplatform.inputs.TenantOauthIdpConfigResponseTypeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -160,6 +190,10 @@ import 'tenant_oauth_idp_config_state.dart';
 ///             .issuer("issuer")
 ///             .enabled(true)
 ///             .clientSecret("secret")
+///             .responseType(TenantOauthIdpConfigResponseTypeArgs.builder()
+///                 .idToken(true)
+///                 .code(false)
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -182,6 +216,9 @@ import 'tenant_oauth_idp_config_state.dart';
 ///       issuer: issuer
 ///       enabled: true
 ///       clientSecret: secret
+///       responseType:
+///         idToken: true
+///         code: false
 /// ```
 ///
 ///
@@ -224,6 +261,11 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The response type to request for in the OAuth authorization flow.
+  /// You can set either idToken or code to true, but not both.
+  /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+  /// Structure is documented below.
+  late final pulumi.Output<TenantOauthIdpConfigResponseType> responseType;
   /// The name of the tenant where this OIDC IDP configuration resource exists
   late final pulumi.Output<String> tenant;
 
@@ -239,7 +281,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
           'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
@@ -249,6 +291,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    responseType = registerOutput<TenantOauthIdpConfigResponseType>('responseType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantOauthIdpConfigResponseType.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenant = registerOutput<String>('tenant');
   }
 
@@ -284,6 +327,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    responseType = registerOutput<TenantOauthIdpConfigResponseType>('responseType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantOauthIdpConfigResponseType.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenant = registerOutput<String>('tenant');
   }
 
@@ -304,6 +348,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    responseType = registerOutput<TenantOauthIdpConfigResponseType>('responseType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantOauthIdpConfigResponseType.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenant = registerOutput<String>('tenant');
   }
 }

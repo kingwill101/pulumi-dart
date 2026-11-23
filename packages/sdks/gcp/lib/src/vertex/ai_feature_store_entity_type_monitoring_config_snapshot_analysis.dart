@@ -42,8 +42,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
     return AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       monitoringInterval: (() { final guardedValue = map['monitoringInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monitoringIntervalDays: (() { final guardedValue = map['monitoringIntervalDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      stalenessDays: (() { final guardedValue = map['stalenessDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      monitoringIntervalDays: (() { final guardedValue = map['monitoringIntervalDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      stalenessDays: (() { final guardedValue = map['stalenessDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

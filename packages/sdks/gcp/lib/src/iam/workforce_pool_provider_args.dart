@@ -118,7 +118,9 @@ class WorkforcePoolProviderArgs {
   /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
   /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
   /// attribute mapping for authorization checks
-  /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+  /// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+  /// attribute mapping for authorization checks
+  /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
   final pulumi.Input<String?>? scimUsage;
   /// The ID to use for the pool, which becomes the final component of the resource name.
   /// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.

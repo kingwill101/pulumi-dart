@@ -9,6 +9,7 @@ import 'index_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vectorsearch Index Basic
@@ -20,12 +21,12 @@ import 'index_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// // NOTE: For most workloads we recommend creating the Collection and the Index
-/// // in *separate* Terraform configurations (i.e. create and apply the Collection
+/// // in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// // first, ingest data via importDataObjects, and only then create the Index in a
 /// // second configuration). Once an Index exists on a Collection you can no longer
 /// // run importDataObjects for bulk ingestion of data objects on that Collection --
 /// // you are limited to creating data objects one at a time or in small online
-/// // batches. Defining both resources in the same Terraform file (as shown below)
+/// // batches. Defining both resources in the same Pulumi file (as shown below)
 /// // is convenient for a quick start, but locks you into the online / batched
 /// // create path for any subsequent data ingestion.
 /// const parent = new gcp.vectorsearch.Collection("parent", {
@@ -75,12 +76,12 @@ import 'index_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// parent = gcp.vectorsearch.Collection("parent",
@@ -132,12 +133,12 @@ import 'index_state.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     // NOTE: For most workloads we recommend creating the Collection and the Index
-///     // in *separate* Terraform configurations (i.e. create and apply the Collection
+///     // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///     // first, ingest data via importDataObjects, and only then create the Index in a
 ///     // second configuration). Once an Index exists on a Collection you can no longer
 ///     // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///     // you are limited to creating data objects one at a time or in small online
-///     // batches. Defining both resources in the same Terraform file (as shown below)
+///     // batches. Defining both resources in the same Pulumi file (as shown below)
 ///     // is convenient for a quick start, but locks you into the online / batched
 ///     // create path for any subsequent data ingestion.
 ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
@@ -198,19 +199,19 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// NOTE: For most workloads we recommend creating the Collection and the Index
-/// 		// in *separate* Terraform configurations (i.e. create and apply the Collection
+/// 		// in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// 		// first, ingest data via importDataObjects, and only then create the Index in a
 /// 		// second configuration). Once an Index exists on a Collection you can no longer
 /// 		// run importDataObjects for bulk ingestion of data objects on that Collection --
 /// 		// you are limited to creating data objects one at a time or in small online
-/// 		// batches. Defining both resources in the same Terraform file (as shown below)
+/// 		// batches. Defining both resources in the same Pulumi file (as shown below)
 /// 		// is convenient for a quick start, but locks you into the online / batched
 /// 		// create path for any subsequent data ingestion.
 /// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
@@ -267,7 +268,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -276,20 +277,36 @@ import 'index_state.dart';
 /// }
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-collection"
 ///   display_name  = "My Awesome Collection"
 ///   description   = "This collection stores important data."
-///   data_schema   = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"plot\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -303,6 +320,9 @@ import 'index_state.dart';
 ///   }
 /// }
 /// resource "gcp_vectorsearch_index" "example-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   collection_id   = gcp_vectorsearch_collection.parent.collection_id
 ///   index_id        = "example-index"
@@ -343,12 +363,12 @@ import 'index_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         // NOTE: For most workloads we recommend creating the Collection and the Index
-///         // in *separate* Terraform configurations (i.e. create and apply the Collection
+///         // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///         // first, ingest data via importDataObjects, and only then create the Index in a
 ///         // second configuration). Once an Index exists on a Collection you can no longer
 ///         // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///         // you are limited to creating data objects one at a time or in small online
-///         // batches. Defining both resources in the same Terraform file (as shown below)
+///         // batches. Defining both resources in the same Pulumi file (as shown below)
 ///         // is convenient for a quick start, but locks you into the online / batched
 ///         // create path for any subsequent data ingestion.
 ///         var parent = new Collection("parent", CollectionArgs.builder()
@@ -401,12 +421,12 @@ import 'index_state.dart';
 /// ```yaml
 /// resources:
 ///   # NOTE: For most workloads we recommend creating the Collection and the Index
-///   # in *separate* Terraform configurations (i.e. create and apply the Collection
+///   # in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///   # first, ingest data via importDataObjects, and only then create the Index in a
 ///   # second configuration). Once an Index exists on a Collection you can no longer
 ///   # run importDataObjects for bulk ingestion of data objects on that Collection --
 ///   # you are limited to creating data objects one at a time or in small online
-///   # batches. Defining both resources in the same Terraform file (as shown below)
+///   # batches. Defining both resources in the same Pulumi file (as shown below)
 ///   # is convenient for a quick start, but locks you into the online / batched
 ///   # create path for any subsequent data ingestion.
 ///   parent:
@@ -450,6 +470,7 @@ import 'index_state.dart';
 ///         featureNormType: UNIT_L2_NORM
 /// ```
 ///
+///
 /// ### Vectorsearch Index Dedicated
 ///
 ///
@@ -459,12 +480,12 @@ import 'index_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// // NOTE: For most workloads we recommend creating the Collection and the Index
-/// // in *separate* Terraform configurations (i.e. create and apply the Collection
+/// // in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// // first, ingest data via importDataObjects, and only then create the Index in a
 /// // second configuration). Once an Index exists on a Collection you can no longer
 /// // run importDataObjects for bulk ingestion of data objects on that Collection --
 /// // you are limited to creating data objects one at a time or in small online
-/// // batches. Defining both resources in the same Terraform file (as shown below)
+/// // batches. Defining both resources in the same Pulumi file (as shown below)
 /// // is convenient for a quick start, but locks you into the online / batched
 /// // create path for any subsequent data ingestion.
 /// const parent = new gcp.vectorsearch.Collection("parent", {
@@ -523,12 +544,12 @@ import 'index_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// parent = gcp.vectorsearch.Collection("parent",
@@ -589,12 +610,12 @@ import 'index_state.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     // NOTE: For most workloads we recommend creating the Collection and the Index
-///     // in *separate* Terraform configurations (i.e. create and apply the Collection
+///     // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///     // first, ingest data via importDataObjects, and only then create the Index in a
 ///     // second configuration). Once an Index exists on a Collection you can no longer
 ///     // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///     // you are limited to creating data objects one at a time or in small online
-///     // batches. Defining both resources in the same Terraform file (as shown below)
+///     // batches. Defining both resources in the same Pulumi file (as shown below)
 ///     // is convenient for a quick start, but locks you into the online / batched
 ///     // create path for any subsequent data ingestion.
 ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
@@ -672,19 +693,19 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// NOTE: For most workloads we recommend creating the Collection and the Index
-/// 		// in *separate* Terraform configurations (i.e. create and apply the Collection
+/// 		// in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// 		// first, ingest data via importDataObjects, and only then create the Index in a
 /// 		// second configuration). Once an Index exists on a Collection you can no longer
 /// 		// run importDataObjects for bulk ingestion of data objects on that Collection --
 /// 		// you are limited to creating data objects one at a time or in small online
-/// 		// batches. Defining both resources in the same Terraform file (as shown below)
+/// 		// batches. Defining both resources in the same Pulumi file (as shown below)
 /// 		// is convenient for a quick start, but locks you into the online / batched
 /// 		// create path for any subsequent data ingestion.
 /// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
@@ -754,7 +775,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -763,20 +784,36 @@ import 'index_state.dart';
 /// }
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-dedicated-collection"
 ///   display_name  = "My Awesome Collection"
 ///   description   = "Parent collection for a dedicated-infrastructure index."
-///   data_schema   = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"category\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"category\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -790,6 +827,9 @@ import 'index_state.dart';
 ///   }
 /// }
 /// resource "gcp_vectorsearch_index" "example-dedicated-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   collection_id   = gcp_vectorsearch_collection.parent.collection_id
 ///   index_id        = "example-dedicated-index"
@@ -841,12 +881,12 @@ import 'index_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         // NOTE: For most workloads we recommend creating the Collection and the Index
-///         // in *separate* Terraform configurations (i.e. create and apply the Collection
+///         // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///         // first, ingest data via importDataObjects, and only then create the Index in a
 ///         // second configuration). Once an Index exists on a Collection you can no longer
 ///         // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///         // you are limited to creating data objects one at a time or in small online
-///         // batches. Defining both resources in the same Terraform file (as shown below)
+///         // batches. Defining both resources in the same Pulumi file (as shown below)
 ///         // is convenient for a quick start, but locks you into the online / batched
 ///         // create path for any subsequent data ingestion.
 ///         var parent = new Collection("parent", CollectionArgs.builder()
@@ -908,12 +948,12 @@ import 'index_state.dart';
 /// ```yaml
 /// resources:
 ///   # NOTE: For most workloads we recommend creating the Collection and the Index
-///   # in *separate* Terraform configurations (i.e. create and apply the Collection
+///   # in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///   # first, ingest data via importDataObjects, and only then create the Index in a
 ///   # second configuration). Once an Index exists on a Collection you can no longer
 ///   # run importDataObjects for bulk ingestion of data objects on that Collection --
 ///   # you are limited to creating data objects one at a time or in small online
-///   # batches. Defining both resources in the same Terraform file (as shown below)
+///   # batches. Defining both resources in the same Pulumi file (as shown below)
 ///   # is convenient for a quick start, but locks you into the online / batched
 ///   # create path for any subsequent data ingestion.
 ///   parent:
@@ -964,6 +1004,451 @@ import 'index_state.dart';
 ///         autoscalingSpec:
 ///           minReplicaCount: 2
 ///           maxReplicaCount: 5
+/// ```
+///
+///
+/// ### Vectorsearch Index Skip Wait
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// // Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+/// // can take many hours; setting skip_wait = true returns as soon as the create
+/// // request has been accepted so short-lived credentials in your Pulumi runner
+/// // do not have to be extended to the full build duration. The index continues to
+/// // build asynchronously on the backend; subsequent pulumi up invocations
+/// // refresh state from the API.
+/// const parent = new gcp.vectorsearch.Collection("parent", {
+///     location: "us-central1",
+///     collectionId: "example-skip-wait-collection",
+///     displayName: "Collection for a skip_wait ANN index",
+///     description: "Parent collection for the skip_wait index example.",
+///     dataSchema: `{
+///   \\"type\\": \\"object\\",
+///   \\"properties\\": {
+///     \\"title\\": {
+///       \\"type\\": \\"string\\"
+///     },
+///     \\"plot\\": {
+///       \\"type\\": \\"string\\"
+///     }
+///   }
+/// }
+/// `,
+///     vectorSchemas: [{
+///         fieldName: "text_embedding",
+///         denseVector: {
+///             dimensions: 768,
+///             vertexEmbeddingConfig: {
+///                 modelId: "textembedding-gecko@003",
+///                 taskType: "RETRIEVAL_DOCUMENT",
+///                 textTemplate: "Title: {title} ---- Plot: {plot}",
+///             },
+///         },
+///     }],
+/// });
+/// const example_skip_wait_index = new gcp.vectorsearch.Index("example-skip-wait-index", {
+///     location: "us-central1",
+///     collectionId: parent.collectionId,
+///     indexId: "example-skip-wait-index",
+///     displayName: "Skip-wait ANN index",
+///     description: "ScaNN index over text_embedding, created without waiting for the build to finish.",
+///     indexField: "text_embedding",
+///     distanceMetric: "DOT_PRODUCT",
+///     denseScann: {
+///         featureNormType: "UNIT_L2_NORM",
+///     },
+///     skipWait: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// # Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+/// # can take many hours; setting skip_wait = true returns as soon as the create
+/// # request has been accepted so short-lived credentials in your Pulumi runner
+/// # do not have to be extended to the full build duration. The index continues to
+/// # build asynchronously on the backend; subsequent pulumi up invocations
+/// # refresh state from the API.
+/// parent = gcp.vectorsearch.Collection("parent",
+///     location="us-central1",
+///     collection_id="example-skip-wait-collection",
+///     display_name="Collection for a skip_wait ANN index",
+///     description="Parent collection for the skip_wait index example.",
+///     data_schema="""{
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// """,
+///     vector_schemas=[{
+///         "field_name": "text_embedding",
+///         "dense_vector": {
+///             "dimensions": 768,
+///             "vertex_embedding_config": {
+///                 "model_id": "textembedding-gecko@003",
+///                 "task_type": "RETRIEVAL_DOCUMENT",
+///                 "text_template": "Title: {title} ---- Plot: {plot}",
+///             },
+///         },
+///     }])
+/// example_skip_wait_index = gcp.vectorsearch.Index("example-skip-wait-index",
+///     location="us-central1",
+///     collection_id=parent.collection_id,
+///     index_id="example-skip-wait-index",
+///     display_name="Skip-wait ANN index",
+///     description="ScaNN index over text_embedding, created without waiting for the build to finish.",
+///     index_field="text_embedding",
+///     distance_metric="DOT_PRODUCT",
+///     dense_scann={
+///         "feature_norm_type": "UNIT_L2_NORM",
+///     },
+///     skip_wait=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     // Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+///     // can take many hours; setting skip_wait = true returns as soon as the create
+///     // request has been accepted so short-lived credentials in your Pulumi runner
+///     // do not have to be extended to the full build duration. The index continues to
+///     // build asynchronously on the backend; subsequent pulumi up invocations
+///     // refresh state from the API.
+///     var parent = new Gcp.VectorSearch.Collection("parent", new()
+///     {
+///         Location = "us-central1",
+///         CollectionId = "example-skip-wait-collection",
+///         DisplayName = "Collection for a skip_wait ANN index",
+///         Description = "Parent collection for the skip_wait index example.",
+///         DataSchema = @"{
+///   \""type\"": \""object\"",
+///   \""properties\"": {
+///     \""title\"": {
+///       \""type\"": \""string\""
+///     },
+///     \""plot\"": {
+///       \""type\"": \""string\""
+///     }
+///   }
+/// }
+/// ",
+///         VectorSchemas = new[]
+///         {
+///             new Gcp.VectorSearch.Inputs.CollectionVectorSchemaArgs
+///             {
+///                 FieldName = "text_embedding",
+///                 DenseVector = new Gcp.VectorSearch.Inputs.CollectionVectorSchemaDenseVectorArgs
+///                 {
+///                     Dimensions = 768,
+///                     VertexEmbeddingConfig = new Gcp.VectorSearch.Inputs.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs
+///                     {
+///                         ModelId = "textembedding-gecko@003",
+///                         TaskType = "RETRIEVAL_DOCUMENT",
+///                         TextTemplate = "Title: {title} ---- Plot: {plot}",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var example_skip_wait_index = new Gcp.VectorSearch.Index("example-skip-wait-index", new()
+///     {
+///         Location = "us-central1",
+///         CollectionId = parent.CollectionId,
+///         IndexId = "example-skip-wait-index",
+///         DisplayName = "Skip-wait ANN index",
+///         Description = "ScaNN index over text_embedding, created without waiting for the build to finish.",
+///         IndexField = "text_embedding",
+///         DistanceMetric = "DOT_PRODUCT",
+///         DenseScann = new Gcp.VectorSearch.Inputs.IndexDenseScannArgs
+///         {
+///             FeatureNormType = "UNIT_L2_NORM",
+///         },
+///         SkipWait = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		// Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+/// 		// can take many hours; setting skip_wait = true returns as soon as the create
+/// 		// request has been accepted so short-lived credentials in your Pulumi runner
+/// 		// do not have to be extended to the full build duration. The index continues to
+/// 		// build asynchronously on the backend; subsequent pulumi up invocations
+/// 		// refresh state from the API.
+/// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
+/// 			Location:     pulumi.String("us-central1"),
+/// 			CollectionId: pulumi.String("example-skip-wait-collection"),
+/// 			DisplayName:  pulumi.String("Collection for a skip_wait ANN index"),
+/// 			Description:  pulumi.String("Parent collection for the skip_wait index example."),
+/// 			DataSchema: pulumi.String(`{
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// `),
+/// 			VectorSchemas: vectorsearch.CollectionVectorSchemaArray{
+/// 				&vectorsearch.CollectionVectorSchemaArgs{
+/// 					FieldName: pulumi.String("text_embedding"),
+/// 					DenseVector: &vectorsearch.CollectionVectorSchemaDenseVectorArgs{
+/// 						Dimensions: pulumi.Int(768),
+/// 						VertexEmbeddingConfig: &vectorsearch.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs{
+/// 							ModelId:      pulumi.String("textembedding-gecko@003"),
+/// 							TaskType:     pulumi.String("RETRIEVAL_DOCUMENT"),
+/// 							TextTemplate: pulumi.String("Title: {title} ---- Plot: {plot}"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vectorsearch.NewIndex(ctx, "example-skip-wait-index", &vectorsearch.IndexArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			CollectionId:   parent.CollectionId,
+/// 			IndexId:        pulumi.String("example-skip-wait-index"),
+/// 			DisplayName:    pulumi.String("Skip-wait ANN index"),
+/// 			Description:    pulumi.String("ScaNN index over text_embedding, created without waiting for the build to finish."),
+/// 			IndexField:     pulumi.String("text_embedding"),
+/// 			DistanceMetric: pulumi.String("DOT_PRODUCT"),
+/// 			DenseScann: &vectorsearch.IndexDenseScannArgs{
+/// 				FeatureNormType: pulumi.String("UNIT_L2_NORM"),
+/// 			},
+/// 			SkipWait: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+/// # can take many hours; setting skip_wait = true returns as soon as the create
+/// # request has been accepted so short-lived credentials in your Pulumi runner
+/// # do not have to be extended to the full build duration. The index continues to
+/// # build asynchronously on the backend; subsequent pulumi up invocations
+/// # refresh state from the API.
+/// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location      = "us-central1"
+///   collection_id = "example-skip-wait-collection"
+///   display_name  = "Collection for a skip_wait ANN index"
+///   description   = "Parent collection for the skip_wait index example."
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
+///   vector_schemas {
+///     field_name = "text_embedding"
+///     dense_vector = {
+///       dimensions = 768
+///       vertex_embedding_config = {
+///         model_id      = "textembedding-gecko@003"
+///         task_type     = "RETRIEVAL_DOCUMENT"
+///         text_template = "Title: {title} ---- Plot: {plot}"
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_vectorsearch_index" "example-skip-wait-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location        = "us-central1"
+///   collection_id   = gcp_vectorsearch_collection.parent.collection_id
+///   index_id        = "example-skip-wait-index"
+///   display_name    = "Skip-wait ANN index"
+///   description     = "ScaNN index over text_embedding, created without waiting for the build to finish."
+///   index_field     = "text_embedding"
+///   distance_metric = "DOT_PRODUCT"
+///   dense_scann = {
+///     feature_norm_type = "UNIT_L2_NORM"
+///   }
+///   skip_wait = true
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vectorsearch.Collection;
+/// import com.pulumi.gcp.vectorsearch.CollectionArgs;
+/// import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaArgs;
+/// import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaDenseVectorArgs;
+/// import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs;
+/// import com.pulumi.gcp.vectorsearch.Index;
+/// import com.pulumi.gcp.vectorsearch.IndexArgs;
+/// import com.pulumi.gcp.vectorsearch.inputs.IndexDenseScannArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         // Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+///         // can take many hours; setting skip_wait = true returns as soon as the create
+///         // request has been accepted so short-lived credentials in your Pulumi runner
+///         // do not have to be extended to the full build duration. The index continues to
+///         // build asynchronously on the backend; subsequent pulumi up invocations
+///         // refresh state from the API.
+///         var parent = new Collection("parent", CollectionArgs.builder()
+///             .location("us-central1")
+///             .collectionId("example-skip-wait-collection")
+///             .displayName("Collection for a skip_wait ANN index")
+///             .description("Parent collection for the skip_wait index example.")
+///             .dataSchema("""
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+///             """)
+///             .vectorSchemas(CollectionVectorSchemaArgs.builder()
+///                 .fieldName("text_embedding")
+///                 .denseVector(CollectionVectorSchemaDenseVectorArgs.builder()
+///                     .dimensions(768)
+///                     .vertexEmbeddingConfig(CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs.builder()
+///                         .modelId("textembedding-gecko@003")
+///                         .taskType("RETRIEVAL_DOCUMENT")
+///                         .textTemplate("Title: {title} ---- Plot: {plot}")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var example_skip_wait_index = new Index("example-skip-wait-index", IndexArgs.builder()
+///             .location("us-central1")
+///             .collectionId(parent.collectionId())
+///             .indexId("example-skip-wait-index")
+///             .displayName("Skip-wait ANN index")
+///             .description("ScaNN index over text_embedding, created without waiting for the build to finish.")
+///             .indexField("text_embedding")
+///             .distanceMetric("DOT_PRODUCT")
+///             .denseScann(IndexDenseScannArgs.builder()
+///                 .featureNormType("UNIT_L2_NORM")
+///                 .build())
+///             .skipWait(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   # Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+///   # can take many hours; setting skip_wait = true returns as soon as the create
+///   # request has been accepted so short-lived credentials in your Pulumi runner
+///   # do not have to be extended to the full build duration. The index continues to
+///   # build asynchronously on the backend; subsequent pulumi up invocations
+///   # refresh state from the API.
+///   parent:
+///     type: gcp:vectorsearch:Collection
+///     properties:
+///       location: us-central1
+///       collectionId: example-skip-wait-collection
+///       displayName: Collection for a skip_wait ANN index
+///       description: Parent collection for the skip_wait index example.
+///       dataSchema: |
+///         {
+///           \"type\": \"object\",
+///           \"properties\": {
+///             \"title\": {
+///               \"type\": \"string\"
+///             },
+///             \"plot\": {
+///               \"type\": \"string\"
+///             }
+///           }
+///         }
+///       vectorSchemas:
+///         - fieldName: text_embedding
+///           denseVector:
+///             dimensions: 768
+///             vertexEmbeddingConfig:
+///               modelId: textembedding-gecko@003
+///               taskType: RETRIEVAL_DOCUMENT
+///               textTemplate: 'Title: {title} ---- Plot: {plot}'
+///   example-skip-wait-index:
+///     type: gcp:vectorsearch:Index
+///     properties:
+///       location: us-central1
+///       collectionId: ${parent.collectionId}
+///       indexId: example-skip-wait-index
+///       displayName: Skip-wait ANN index
+///       description: ScaNN index over text_embedding, created without waiting for the build to finish.
+///       indexField: text_embedding
+///       distanceMetric: DOT_PRODUCT
+///       denseScann:
+///         featureNormType: UNIT_L2_NORM
+///       skipWait: true
 /// ```
 ///
 ///
@@ -1040,6 +1525,16 @@ class Index extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// Whether to skip waiting for the index to be created. Building an ANN
+  /// index over a large collection can take several hours; setting `skipWait`
+  /// to `true` causes Terraform to return as soon as the creation request is
+  /// accepted rather than blocking until the long-running build completes
+  /// (which can exceed CI/CD timeouts or short-lived Terraform runner
+  /// credentials). Leave this set to `false` (the default) if downstream
+  /// resources or workloads depend on the index being ready to serve queries
+  /// immediately after `pulumi up`, or if you want Terraform to fail
+  /// synchronously when an asynchronous index build fails.
+  late final pulumi.Output<bool?> skipWait;
   /// The fields to push into the index to enable inline data retrieval.
   late final pulumi.Output<List<String>?> storeFields;
   /// [Output only] Update time stamp
@@ -1057,7 +1552,7 @@ class Index extends pulumi.CustomResource {
           'gcp:vectorsearch/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     collectionId = registerOutput<String>('collectionId');
@@ -1077,6 +1572,7 @@ class Index extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    skipWait = registerOutput<bool?>('skipWait');
     storeFields = registerOutput<List<String>?>('storeFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -1122,6 +1618,7 @@ class Index extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    skipWait = registerOutput<bool?>('skipWait');
     storeFields = registerOutput<List<String>?>('storeFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -1153,6 +1650,7 @@ class Index extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    skipWait = registerOutput<bool?>('skipWait');
     storeFields = registerOutput<List<String>?>('storeFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }

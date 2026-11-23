@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'tenant_oauth_idp_config_response_type.dart';
 
 /// {@template pulumi_identityplatform_tenant_oauth_idp_config_tenant_oauth_idp_config_args_doc}
 /// The set of arguments for TenantOauthIdpConfig.
@@ -29,6 +30,11 @@ class TenantOauthIdpConfigArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// The response type to request for in the OAuth authorization flow.
+  /// You can set either idToken or code to true, but not both.
+  /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+  /// Structure is documented below.
+  final pulumi.Input<TenantOauthIdpConfigResponseType?>? responseType;
   /// The name of the tenant where this OIDC IDP configuration resource exists
   final pulumi.Input<String> tenant;
 
@@ -41,6 +47,7 @@ class TenantOauthIdpConfigArgs {
   /// [issuer] For OIDC Idps, the issuer identifier.
   /// [name] The name of the OauthIdpConfig. Must start with `oidc.`.
   /// [project] The ID of the project in which the resource belongs.
+  /// [responseType] The response type to request for in the OAuth authorization flow.
   /// [tenant] The name of the tenant where this OIDC IDP configuration resource exists
   const TenantOauthIdpConfigArgs({
     required this.clientId,
@@ -51,6 +58,7 @@ class TenantOauthIdpConfigArgs {
     required this.issuer,
     this.name,
     this.project,
+    this.responseType,
     required this.tenant,
   });
 
@@ -64,6 +72,7 @@ class TenantOauthIdpConfigArgs {
       'issuer': issuer,
       'name': ?name,
       'project': ?project,
+      'responseType': ?pulumi.Input.mapOptionalInputValue<TenantOauthIdpConfigResponseType, Map<String, dynamic>>(responseType, (value) => value.toMap()),
       'tenant': tenant,
     };
   }
@@ -78,6 +87,7 @@ class TenantOauthIdpConfigArgs {
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseType: (() { final guardedValue = map['responseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TenantOauthIdpConfigResponseType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tenant: pulumi.Input.fromValue(map['tenant'] as String),
     );
   }

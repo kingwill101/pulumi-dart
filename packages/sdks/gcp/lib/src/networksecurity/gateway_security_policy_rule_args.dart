@@ -96,7 +96,7 @@ class GatewaySecurityPolicyRuleArgs {
       gatewaySecurityPolicy: pulumi.Input.fromValue(map['gatewaySecurityPolicy'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionMatcher: pulumi.Input.fromValue(map['sessionMatcher'] as String),
       tlsInspectionEnabled: (() { final guardedValue = map['tlsInspectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

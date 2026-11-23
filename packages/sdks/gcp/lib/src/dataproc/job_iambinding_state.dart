@@ -8,6 +8,9 @@ class JobIAMBindingState {
   final pulumi.Input<JobIAMBindingCondition?>? condition;
   /// (Computed) The etag of the jobs's IAM policy.
   final pulumi.Input<String?>? etag;
+  /// The name or relative resource id of the job to manage IAM policies for.
+  ///
+  /// For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
   final pulumi.Input<String?>? jobId;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -34,7 +37,7 @@ class JobIAMBindingState {
   /// Creates a new [JobIAMBindingState].
   /// [condition] Optional.
   /// [etag] (Computed) The etag of the jobs's IAM policy.
-  /// [jobId] Optional.
+  /// [jobId] The name or relative resource id of the job to manage IAM policies for.
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The project in which the job belongs. If it
   /// [region] The region in which the job belongs. If it

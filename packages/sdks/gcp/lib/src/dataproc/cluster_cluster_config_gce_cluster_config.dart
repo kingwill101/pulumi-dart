@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_cluster_config_gce_cluster_config_confidential_instance_config.dart';
+import 'cluster_cluster_config_gce_cluster_config_multi_zone_config.dart';
 import 'cluster_cluster_config_gce_cluster_config_node_group_affinity.dart';
 import 'cluster_cluster_config_gce_cluster_config_reservation_affinity.dart';
 import 'cluster_cluster_config_gce_cluster_config_shielded_instance_config.dart';
@@ -18,6 +19,11 @@ class ClusterClusterConfigGceClusterConfig {
   /// A map of the Compute Engine metadata entries to add to all instances
   /// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
   final pulumi.Input<Map<String, String>?>? metadata;
+  /// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+  /// Structure defined below.
+  ///
+  /// - - -
+  final pulumi.Input<ClusterClusterConfigGceClusterConfigMultiZoneConfig?>? multiZoneConfig;
   /// The name or selfLink of the Google Compute Engine
   /// network to the cluster will be part of. Conflicts with `subnetwork`.
   /// If neither is specified, this defaults to the "default" network.
@@ -40,8 +46,6 @@ class ClusterClusterConfigGceClusterConfig {
   /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
   final pulumi.Input<List<String>?>? serviceAccountScopes;
   /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-  ///
-  /// - - -
   final pulumi.Input<ClusterClusterConfigGceClusterConfigShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork the cluster will be part of. Conflicts with `network`.
@@ -62,6 +66,7 @@ class ClusterClusterConfigGceClusterConfig {
   /// [confidentialInstanceConfig] Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
   /// [internalIpOnly] By default, clusters are not restricted to internal IP addresses,
   /// [metadata] A map of the Compute Engine metadata entries to add to all instances
+  /// [multiZoneConfig] Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
   /// [network] The name or selfLink of the Google Compute Engine
   /// [nodeGroupAffinity] Node Group Affinity for sole-tenant clusters.
   /// [reservationAffinity] Reservation Affinity for consuming zonal reservation.
@@ -76,6 +81,7 @@ class ClusterClusterConfigGceClusterConfig {
     this.confidentialInstanceConfig,
     this.internalIpOnly,
     this.metadata,
+    this.multiZoneConfig,
     this.network,
     this.nodeGroupAffinity,
     this.reservationAffinity,
@@ -93,6 +99,7 @@ class ClusterClusterConfigGceClusterConfig {
       'confidentialInstanceConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfig, (value) => value.toMap()),
       'internalIpOnly': ?internalIpOnly,
       'metadata': ?metadata,
+      'multiZoneConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigGceClusterConfigMultiZoneConfig, Map<String, dynamic>>(multiZoneConfig, (value) => value.toMap()),
       'network': ?network,
       'nodeGroupAffinity': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigGceClusterConfigNodeGroupAffinity, Map<String, dynamic>>(nodeGroupAffinity, (value) => value.toMap()),
       'reservationAffinity': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigGceClusterConfigReservationAffinity, Map<String, dynamic>>(reservationAffinity, (value) => value.toMap()),
@@ -111,6 +118,7 @@ class ClusterClusterConfigGceClusterConfig {
       confidentialInstanceConfig: (() { final guardedValue = map['confidentialInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       internalIpOnly: (() { final guardedValue = map['internalIpOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      multiZoneConfig: (() { final guardedValue = map['multiZoneConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigGceClusterConfigMultiZoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeGroupAffinity: (() { final guardedValue = map['nodeGroupAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       reservationAffinity: (() { final guardedValue = map['reservationAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigGceClusterConfigReservationAffinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

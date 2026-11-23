@@ -11,7 +11,7 @@ class InstanceIamMemberState {
   final pulumi.Input<String?>? etag;
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
-  /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+  /// For `gcp.bigtable.InstanceIamPolicy` only:
   final pulumi.Input<String?>? instance;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:

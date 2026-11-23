@@ -53,9 +53,6 @@ class ReservationState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
-  /// (Output)
-  /// The number of reservation blocks associated with this reservation.
-  final pulumi.Input<int?>? reservationBlockCount;
   /// Sharing policy for reservations with Google Cloud managed services.
   /// Structure is documented below.
   final pulumi.Input<ReservationReservationSharingPolicy?>? reservationSharingPolicy;
@@ -95,7 +92,6 @@ class ReservationState {
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
-  /// [reservationBlockCount] (Output)
   /// [reservationSharingPolicy] Sharing policy for reservations with Google Cloud managed services.
   /// [resourceStatuses] Status information for Reservation resource.
   /// [satisfiesPzs] Reserved for future use.
@@ -119,7 +115,6 @@ class ReservationState {
     this.name,
     this.params,
     this.project,
-    this.reservationBlockCount,
     this.reservationSharingPolicy,
     this.resourceStatuses,
     this.satisfiesPzs,
@@ -146,7 +141,6 @@ class ReservationState {
       'name': ?name,
       'params': ?pulumi.Input.mapOptionalInputValue<ReservationParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
-      'reservationBlockCount': ?reservationBlockCount,
       'reservationSharingPolicy': ?pulumi.Input.mapOptionalInputValue<ReservationReservationSharingPolicy, Map<String, dynamic>>(reservationSharingPolicy, (value) => value.toMap()),
       'resourceStatuses': ?pulumi.Input.mapOptionalInputValue<List<ReservationResourceStatus>, List<Map<String, dynamic>>>(resourceStatuses, (value) => pulumi.Input.encodeList<ReservationResourceStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'satisfiesPzs': ?satisfiesPzs,
@@ -174,7 +168,6 @@ class ReservationState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservationBlockCount: (() { final guardedValue = map['reservationBlockCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reservationSharingPolicy: (() { final guardedValue = map['reservationSharingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceStatuses: (() { final guardedValue = map['resourceStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

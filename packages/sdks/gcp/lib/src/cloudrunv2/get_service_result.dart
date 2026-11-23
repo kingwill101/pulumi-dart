@@ -31,6 +31,7 @@ class GetServiceResult {
   final Map<String, String>? effectiveLabels;
   final String? etag;
   final String? expireTime;
+  final String? functionalType;
   final String? generation;
   final bool? iapEnabled;
   /// The provider-assigned unique ID for this managed resource.
@@ -50,6 +51,7 @@ class GetServiceResult {
   final Map<String, String>? pulumiLabels;
   final bool? reconciling;
   final List<GetServiceScaling>? scalings;
+  final bool? sshEnabled;
   final Map<String, String>? tags;
   final List<GetServiceTemplate>? templates;
   final List<GetServiceTerminalCondition>? terminalConditions;
@@ -79,6 +81,7 @@ class GetServiceResult {
   /// [effectiveLabels] Optional.
   /// [etag] Optional.
   /// [expireTime] Optional.
+  /// [functionalType] Optional.
   /// [generation] Optional.
   /// [iapEnabled] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -97,6 +100,7 @@ class GetServiceResult {
   /// [pulumiLabels] Optional.
   /// [reconciling] Optional.
   /// [scalings] Optional.
+  /// [sshEnabled] Optional.
   /// [tags] Optional.
   /// [templates] Optional.
   /// [terminalConditions] Optional.
@@ -125,6 +129,7 @@ class GetServiceResult {
     this.effectiveLabels,
     this.etag,
     this.expireTime,
+    this.functionalType,
     this.generation,
     this.iapEnabled,
     this.id,
@@ -143,6 +148,7 @@ class GetServiceResult {
     this.pulumiLabels,
     this.reconciling,
     this.scalings,
+    this.sshEnabled,
     this.tags,
     this.templates,
     this.terminalConditions,
@@ -174,6 +180,7 @@ class GetServiceResult {
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
       'expireTime': ?expireTime,
+      'functionalType': ?functionalType,
       'generation': ?generation,
       'iapEnabled': ?iapEnabled,
       'id': ?id,
@@ -192,6 +199,7 @@ class GetServiceResult {
       'pulumiLabels': ?pulumiLabels,
       'reconciling': ?reconciling,
       'scalings': ?(() { final guardedValue = scalings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceScaling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sshEnabled': ?sshEnabled,
       'tags': ?tags,
       'templates': ?(() { final guardedValue = templates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'terminalConditions': ?(() { final guardedValue = terminalConditions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceTerminalCondition, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -224,6 +232,7 @@ class GetServiceResult {
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      functionalType: (() { final guardedValue = map['functionalType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       iapEnabled: (() { final guardedValue = map['iapEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -242,6 +251,7 @@ class GetServiceResult {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       scalings: (() { final guardedValue = map['scalings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceScaling>(guardedValue, (value) => GetServiceScaling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sshEnabled: (() { final guardedValue = map['sshEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceTemplate>(guardedValue, (value) => GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
       terminalConditions: (() { final guardedValue = map['terminalConditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceTerminalCondition>(guardedValue, (value) => GetServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); })(),

@@ -93,7 +93,7 @@ class GetExternalAccessRuleResult {
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       sourceIpRanges: (() { final guardedValue = map['sourceIpRanges']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetExternalAccessRuleSourceIpRange>(guardedValue, (value) => GetExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>())); })(),
       sourcePorts: (() { final guardedValue = map['sourcePorts']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),

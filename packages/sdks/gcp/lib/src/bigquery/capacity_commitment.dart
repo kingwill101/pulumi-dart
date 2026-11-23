@@ -13,6 +13,7 @@ import 'capacity_commitment_state.dart';
 /// * How-to Guides
 /// * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Reservation Capacity Commitment Docs
@@ -65,7 +66,7 @@ import 'capacity_commitment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +87,7 @@ import 'capacity_commitment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,7 +95,10 @@ import 'capacity_commitment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_capacitycommitment" "example" {
+/// resource "gcp_bigquery_capacity_commitment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_commitment_id = "example-commitment"
 ///   location               = "us-west2"
 ///   slot_count             = 100
@@ -168,7 +172,7 @@ class CapacityCommitment extends pulumi.CustomResource {
   /// empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
   /// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
   /// or merged.
-  late final pulumi.Output<String?> capacityCommitmentId;
+  late final pulumi.Output<String> capacityCommitmentId;
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   late final pulumi.Output<String> commitmentEndTime;
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
@@ -213,9 +217,9 @@ class CapacityCommitment extends pulumi.CustomResource {
           'gcp:bigquery/capacityCommitment:CapacityCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
-    capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    capacityCommitmentId = registerOutput<String>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
     commitmentStartTime = registerOutput<String>('commitmentStartTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -254,7 +258,7 @@ class CapacityCommitment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    capacityCommitmentId = registerOutput<String>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
     commitmentStartTime = registerOutput<String>('commitmentStartTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -278,7 +282,7 @@ class CapacityCommitment extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    capacityCommitmentId = registerOutput<String>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
     commitmentStartTime = registerOutput<String>('commitmentStartTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

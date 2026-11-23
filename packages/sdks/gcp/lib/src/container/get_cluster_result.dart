@@ -45,6 +45,7 @@ import 'get_cluster_rbac_binding_config.dart';
 import 'get_cluster_release_channel.dart';
 import 'get_cluster_resource_usage_export_config.dart';
 import 'get_cluster_rollback_safe_upgrade.dart';
+import 'get_cluster_schedule_upgrade_config.dart';
 import 'get_cluster_secret_manager_config.dart';
 import 'get_cluster_secret_sync_config.dart';
 import 'get_cluster_security_posture_config.dart';
@@ -147,6 +148,7 @@ class GetClusterResult {
   final Map<String, String>? resourceLabels;
   final List<GetClusterResourceUsageExportConfig>? resourceUsageExportConfigs;
   final List<GetClusterRollbackSafeUpgrade>? rollbackSafeUpgrades;
+  final List<GetClusterScheduleUpgradeConfig>? scheduleUpgradeConfigs;
   final List<GetClusterSecretManagerConfig>? secretManagerConfigs;
   final List<GetClusterSecretSyncConfig>? secretSyncConfigs;
   final List<GetClusterSecurityPostureConfig>? securityPostureConfigs;
@@ -252,6 +254,7 @@ class GetClusterResult {
   /// [resourceLabels] Optional.
   /// [resourceUsageExportConfigs] Optional.
   /// [rollbackSafeUpgrades] Optional.
+  /// [scheduleUpgradeConfigs] Optional.
   /// [secretManagerConfigs] Optional.
   /// [secretSyncConfigs] Optional.
   /// [securityPostureConfigs] Optional.
@@ -356,6 +359,7 @@ class GetClusterResult {
     this.resourceLabels,
     this.resourceUsageExportConfigs,
     this.rollbackSafeUpgrades,
+    this.scheduleUpgradeConfigs,
     this.secretManagerConfigs,
     this.secretSyncConfigs,
     this.securityPostureConfigs,
@@ -463,6 +467,7 @@ class GetClusterResult {
       'resourceLabels': ?resourceLabels,
       'resourceUsageExportConfigs': ?(() { final guardedValue = resourceUsageExportConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterResourceUsageExportConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'rollbackSafeUpgrades': ?(() { final guardedValue = rollbackSafeUpgrades; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterRollbackSafeUpgrade, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'scheduleUpgradeConfigs': ?(() { final guardedValue = scheduleUpgradeConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterScheduleUpgradeConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'secretManagerConfigs': ?(() { final guardedValue = secretManagerConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterSecretManagerConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'secretSyncConfigs': ?(() { final guardedValue = secretSyncConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterSecretSyncConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'securityPostureConfigs': ?(() { final guardedValue = securityPostureConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterSecurityPostureConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -498,7 +503,7 @@ class GetClusterResult {
       databaseEncryptions: (() { final guardedValue = map['databaseEncryptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDatabaseEncryption>(guardedValue, (value) => GetClusterDatabaseEncryption.fromMap((value as Map).cast<String, dynamic>())); })(),
       datapathProvider: (() { final guardedValue = map['datapathProvider']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataplaneOptimizationMode: (() { final guardedValue = map['dataplaneOptimizationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       defaultSnatStatuses: (() { final guardedValue = map['defaultSnatStatuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDefaultSnatStatus>(guardedValue, (value) => GetClusterDefaultSnatStatus.fromMap((value as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -528,7 +533,7 @@ class GetClusterResult {
       identityServiceConfigs: (() { final guardedValue = map['identityServiceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterIdentityServiceConfig>(guardedValue, (value) => GetClusterIdentityServiceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       inTransitEncryptionConfig: (() { final guardedValue = map['inTransitEncryptionConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       ipAllocationPolicies: (() { final guardedValue = map['ipAllocationPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterIpAllocationPolicy>(guardedValue, (value) => GetClusterIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -571,6 +576,7 @@ class GetClusterResult {
       resourceLabels: (() { final guardedValue = map['resourceLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       resourceUsageExportConfigs: (() { final guardedValue = map['resourceUsageExportConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterResourceUsageExportConfig>(guardedValue, (value) => GetClusterResourceUsageExportConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       rollbackSafeUpgrades: (() { final guardedValue = map['rollbackSafeUpgrades']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterRollbackSafeUpgrade>(guardedValue, (value) => GetClusterRollbackSafeUpgrade.fromMap((value as Map).cast<String, dynamic>())); })(),
+      scheduleUpgradeConfigs: (() { final guardedValue = map['scheduleUpgradeConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterScheduleUpgradeConfig>(guardedValue, (value) => GetClusterScheduleUpgradeConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       secretManagerConfigs: (() { final guardedValue = map['secretManagerConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterSecretManagerConfig>(guardedValue, (value) => GetClusterSecretManagerConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       secretSyncConfigs: (() { final guardedValue = map['secretSyncConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterSecretSyncConfig>(guardedValue, (value) => GetClusterSecretSyncConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       securityPostureConfigs: (() { final guardedValue = map['securityPostureConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterSecurityPostureConfig>(guardedValue, (value) => GetClusterSecurityPostureConfig.fromMap((value as Map).cast<String, dynamic>())); })(),

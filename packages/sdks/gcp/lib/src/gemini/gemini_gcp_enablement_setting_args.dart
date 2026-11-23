@@ -21,17 +21,34 @@ class GeminiGcpEnablementSettingArgs {
   final pulumi.Input<bool?>? disableWebGrounding;
   /// Whether customer data sharing should be enabled.
   final pulumi.Input<bool?>? enableCustomerDataSharing;
+  /// The Cloud Storage bucket name allocated for this setting.
+  /// Note: Please make sure the cloudaicompanion service agent
+  /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+  /// has `storage.objects.get` and `storage.objects.create` permission to the
+  /// Cloud Storage bucket.
+  final pulumi.Input<String?>? gcsBucket;
+  /// The Gemini enterprise project for this setting.
+  /// Format: projects/{project}
+  /// The `{project}` segment can be the project ID or project number.
+  final pulumi.Input<String?>? geminiEnterpriseProject;
   /// Id of the Gemini Gcp Enablement setting.
   final pulumi.Input<String> geminiGcpEnablementSettingId;
+  /// Indicates whether custom instructions are defined.
+  final pulumi.Input<bool?>? hasCustomInstructions;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+  /// Whether resource mutations should be enabled.
+  final pulumi.Input<bool?>? mutationsEnabled;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
+  /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+  final pulumi.Input<String?>? releaseChannel;
   /// Web grounding type.
   /// Possible values:
   /// GROUNDING_WITH_GOOGLE_SEARCH
@@ -42,19 +59,29 @@ class GeminiGcpEnablementSettingArgs {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disableWebGrounding] (Optional, Deprecated)
   /// [enableCustomerDataSharing] Whether customer data sharing should be enabled.
+  /// [gcsBucket] The Cloud Storage bucket name allocated for this setting.
+  /// [geminiEnterpriseProject] The Gemini enterprise project for this setting.
   /// [geminiGcpEnablementSettingId] Id of the Gemini Gcp Enablement setting.
+  /// [hasCustomInstructions] Indicates whether custom instructions are defined.
   /// [labels] Labels as key value pairs.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [mutationsEnabled] Whether resource mutations should be enabled.
   /// [project] The ID of the project in which the resource belongs.
+  /// [releaseChannel] Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user.
   /// [webGroundingType] Web grounding type.
   const GeminiGcpEnablementSettingArgs({
     this.deletionPolicy,
     this.disableWebGrounding,
     this.enableCustomerDataSharing,
+    this.gcsBucket,
+    this.geminiEnterpriseProject,
     required this.geminiGcpEnablementSettingId,
+    this.hasCustomInstructions,
     this.labels,
     required this.location,
+    this.mutationsEnabled,
     this.project,
+    this.releaseChannel,
     this.webGroundingType,
   });
 
@@ -63,10 +90,15 @@ class GeminiGcpEnablementSettingArgs {
       'deletionPolicy': ?deletionPolicy,
       'disableWebGrounding': ?disableWebGrounding,
       'enableCustomerDataSharing': ?enableCustomerDataSharing,
+      'gcsBucket': ?gcsBucket,
+      'geminiEnterpriseProject': ?geminiEnterpriseProject,
       'geminiGcpEnablementSettingId': geminiGcpEnablementSettingId,
+      'hasCustomInstructions': ?hasCustomInstructions,
       'labels': ?labels,
       'location': location,
+      'mutationsEnabled': ?mutationsEnabled,
       'project': ?project,
+      'releaseChannel': ?releaseChannel,
       'webGroundingType': ?webGroundingType,
     };
   }
@@ -76,10 +108,15 @@ class GeminiGcpEnablementSettingArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableWebGrounding: (() { final guardedValue = map['disableWebGrounding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableCustomerDataSharing: (() { final guardedValue = map['enableCustomerDataSharing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      gcsBucket: (() { final guardedValue = map['gcsBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      geminiEnterpriseProject: (() { final guardedValue = map['geminiEnterpriseProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       geminiGcpEnablementSettingId: pulumi.Input.fromValue(map['geminiGcpEnablementSettingId'] as String),
+      hasCustomInstructions: (() { final guardedValue = map['hasCustomInstructions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      mutationsEnabled: (() { final guardedValue = map['mutationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webGroundingType: (() { final guardedValue = map['webGroundingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

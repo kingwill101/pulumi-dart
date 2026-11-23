@@ -8,7 +8,6 @@ import 'ai_reasoning_engine_traffic_config.dart';
 
 /// Input properties used for looking up and filtering AiReasoningEngine resources.
 class AiReasoningEngineState {
-  /// (Optional, Beta)
   /// Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// Structure is documented below.
   final pulumi.Input<AiReasoningEngineContextSpec?>? contextSpec;
@@ -68,7 +67,7 @@ class AiReasoningEngineState {
   final pulumi.Input<String?>? url;
 
   /// Creates a new [AiReasoningEngineState].
-  /// [contextSpec] (Optional, Beta)
+  /// [contextSpec] Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// [createTime] The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
   /// [deletionPolicy] Optional. The deletion policy for the reasoning engine.
   /// [description] The description of the ReasoningEngine.

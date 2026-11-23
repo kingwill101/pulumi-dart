@@ -3,17 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDesiredPscAutoConnection {
-  /// (Output)
-  /// Output only. The consumer network where the IP address resides, in the form of
+  /// Required. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
-  /// (Output)
-  /// Output only. The consumer projectId where the forwarding rule is created from.
+  /// Required. The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String> projectId;
 
   /// Creates a new [InstanceDesiredPscAutoConnection].
-  /// [network] (Output)
-  /// [projectId] (Output)
+  /// [network] Required. The consumer network where the IP address resides, in the form of
+  /// [projectId] Required. The consumer projectId where the forwarding rule is created from.
   const InstanceDesiredPscAutoConnection({
     required this.network,
     required this.projectId,

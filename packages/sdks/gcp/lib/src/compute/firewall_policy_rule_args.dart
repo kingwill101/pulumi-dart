@@ -121,7 +121,7 @@ class FirewallPolicyRuleArgs {
       enableLogging: (() { final guardedValue = map['enableLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       firewallPolicy: pulumi.Input.fromValue(map['firewallPolicy'] as String),
       match: pulumi.Input.fromValue(FirewallPolicyRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       securityProfileGroup: (() { final guardedValue = map['securityProfileGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetResources: (() { final guardedValue = map['targetResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetSecureTags: (() { final guardedValue = map['targetSecureTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => FirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -14,6 +14,9 @@ import 'router_state.dart';
 /// * How-to Guides
 /// * [Google Cloud Router](https://cloud.google.com/router/docs/)
 ///
+///
+///
+///
 /// ## Example Usage
 ///
 /// ### Router Basic
@@ -116,7 +119,7 @@ import 'router_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -156,7 +159,7 @@ import 'router_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -165,6 +168,9 @@ import 'router_state.dart';
 /// }
 ///
 /// resource "gcp_compute_router" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   network = gcp_compute_network.foobar.name
 ///   bgp = {
@@ -172,13 +178,16 @@ import 'router_state.dart';
 ///     advertise_mode    = "CUSTOM"
 ///     advertised_groups = ["ALL_SUBNETS"]
 ///     advertised_ip_ranges = [{
-///       "range" = "1.2.3.4"
+///       range = "1.2.3.4"
 ///       }, {
-///       "range" = "6.7.0.0/16"
+///       range = "6.7.0.0/16"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -256,6 +265,7 @@ import 'router_state.dart';
 ///       autoCreateSubnetworks: false
 /// ```
 ///
+///
 /// ### Compute Router Encrypted Interconnect
 ///
 ///
@@ -323,7 +333,7 @@ import 'router_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -352,7 +362,7 @@ import 'router_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -361,6 +371,9 @@ import 'router_state.dart';
 /// }
 ///
 /// resource "gcp_compute_router" "encrypted-interconnect-router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "test-router"
 ///   network                       = gcp_compute_network.network.name
 ///   encrypted_interconnect_router = true
@@ -369,6 +382,9 @@ import 'router_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -431,6 +447,7 @@ import 'router_state.dart';
 ///       autoCreateSubnetworks: false
 /// ```
 ///
+///
 /// ### Router Ncc Gw
 ///
 ///
@@ -444,7 +461,7 @@ import 'router_state.dart';
 ///     autoCreateSubnetworks: false,
 /// });
 /// const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
-///     name: "tf-test-subnet_37118",
+///     name: "tf-test-subnet_56529",
 ///     ipCidrRange: "10.0.0.0/28",
 ///     region: "us-central1",
 ///     network: network.selfLink,
@@ -499,7 +516,7 @@ import 'router_state.dart';
 ///     name="net-spoke",
 ///     auto_create_subnetworks=False)
 /// subnetwork = gcp.compute.Subnetwork("subnetwork",
-///     name="tf-test-subnet_37118",
+///     name="tf-test-subnet_56529",
 ///     ip_cidr_range="10.0.0.0/28",
 ///     region="us-central1",
 ///     network=network.self_link)
@@ -558,7 +575,7 @@ import 'router_state.dart';
 ///
 ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
 ///     {
-///         Name = "tf-test-subnet_37118",
+///         Name = "tf-test-subnet_56529",
 ///         IpCidrRange = "10.0.0.0/28",
 ///         Region = "us-central1",
 ///         Network = network.SelfLink,
@@ -631,8 +648,8 @@ import 'router_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -646,7 +663,7 @@ import 'router_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-subnet_37118"),
+/// 			Name:        pulumi.String("tf-test-subnet_56529"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Network:     network.SelfLink,
@@ -672,7 +689,7 @@ import 'router_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+/// 			Hub: basicHub.ID(),
 /// 			Gateway: &networkconnectivity.SpokeGatewayArgs{
 /// 				IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 /// 					&networkconnectivity.SpokeGatewayIpRangeReservationArgs{
@@ -703,7 +720,7 @@ import 'router_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			NccGateway: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			NccGateway: primary.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -713,7 +730,7 @@ import 'router_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -722,16 +739,25 @@ import 'router_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "net-spoke"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
-///   name          = "tf-test-subnet_37118"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = "tf-test-subnet_56529"
 ///   ip_cidr_range = "10.0.0.0/28"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.self_link
 /// }
 /// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "hub"
 ///   description = "A sample hub"
 ///   labels = {
@@ -740,6 +766,9 @@ import 'router_state.dart';
 ///   preset_topology = "HYBRID_INSPECTION"
 /// }
 /// resource "gcp_networkconnectivity_spoke" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-ncc-gw"
 ///   location    = "us-central1"
 ///   description = "A sample spoke of type Gateway"
@@ -749,22 +778,25 @@ import 'router_state.dart';
 ///   hub = gcp_networkconnectivity_hub.basic_hub.id
 ///   gateway = {
 ///     ip_range_reservations = [{
-///       "ipRange" = "10.0.0.0/23"
+///       ip_range = "10.0.0.0/23"
 ///     }]
 ///     capacity = "CAPACITY_1_GBPS"
 ///   }
 ///   group = "gateways"
 /// }
 /// resource "gcp_compute_router" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-router"
 ///   bgp = {
 ///     asn               = 64514
 ///     advertise_mode    = "CUSTOM"
 ///     advertised_groups = ["ALL_SUBNETS"]
 ///     advertised_ip_ranges = [{
-///       "range" = "1.2.3.4"
+///       range = "1.2.3.4"
 ///       }, {
-///       "range" = "6.7.0.0/16"
+///       range = "6.7.0.0/16"
 ///     }]
 ///   }
 ///   ncc_gateway = gcp_networkconnectivity_spoke.primary.id
@@ -809,7 +841,7 @@ import 'router_state.dart';
 ///             .build());
 ///
 ///         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-subnet_37118")
+///             .name("tf-test-subnet_56529")
 ///             .ipCidrRange("10.0.0.0/28")
 ///             .region("us-central1")
 ///             .network(network.selfLink())
@@ -867,7 +899,7 @@ import 'router_state.dart';
 ///   subnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     properties:
-///       name: tf-test-subnet_37118
+///       name: tf-test-subnet_56529
 ///       ipCidrRange: 10.0.0.0/28
 ///       region: us-central1
 ///       network: ${network.selfLink}
@@ -946,8 +978,11 @@ class Router extends pulumi.CustomResource {
   /// Indicates if a router is dedicated for use with encrypted VLAN
   /// attachments (interconnectAttachments).
   late final pulumi.Output<bool?> encryptedInterconnectRouter;
+  /// (Optional, Deprecated)
   /// Keys used for MD5 authentication.
   /// Structure is documented below.
+  ///
+  /// &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
   late final pulumi.Output<RouterMd5AuthenticationKeys?> md5AuthenticationKeys;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -968,6 +1003,8 @@ class Router extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Region where the router resides.
   late final pulumi.Output<String> region;
+  /// The unique identifier number for the resource. This identifier is defined by the server.
+  late final pulumi.Output<int> routerId;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -983,7 +1020,7 @@ class Router extends pulumi.CustomResource {
           'gcp:compute/router:Router',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     bgp = registerOutput<RouterBgp?>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -997,6 +1034,7 @@ class Router extends pulumi.CustomResource {
     params = registerOutput<RouterParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
+    routerId = registerOutput<int>('routerId');
     selfLink = registerOutput<String>('selfLink');
   }
 
@@ -1036,6 +1074,7 @@ class Router extends pulumi.CustomResource {
     params = registerOutput<RouterParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
+    routerId = registerOutput<int>('routerId');
     selfLink = registerOutput<String>('selfLink');
   }
 
@@ -1060,6 +1099,7 @@ class Router extends pulumi.CustomResource {
     params = registerOutput<RouterParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
+    routerId = registerOutput<int>('routerId');
     selfLink = registerOutput<String>('selfLink');
   }
 }

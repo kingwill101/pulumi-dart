@@ -18,6 +18,13 @@ class ApiState {
   final pulumi.Input<String?>? deletionPolicy;
   /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
   final pulumi.Input<String?>? detectMd5hash;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
+  /// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The id of the most recently created revision for this API proxy.
   final pulumi.Input<String?>? latestRevisionId;
   /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
@@ -29,6 +36,8 @@ class ApiState {
   final pulumi.Input<String?>? name;
   /// The Apigee Organization name associated with the Apigee instance.
   final pulumi.Input<String?>? orgId;
+  /// The combination of labels configured directly on the resource and default labels configured on the provider.
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// A list of revisions of this API proxy.
   final pulumi.Input<List<String>?>? revisions;
 
@@ -36,21 +45,27 @@ class ApiState {
   /// [configBundle] Path to the config zip bundle.
   /// [deletionPolicy] (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [detectMd5hash] (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// [labels] User labels applied to this API proxy. Changing only the labels does not create a new revision.
   /// [latestRevisionId] The id of the most recently created revision for this API proxy.
   /// [md5hash] (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
   /// [metaDatas] Metadata describing the API proxy.
   /// [name] The ID of the API proxy.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
+  /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [revisions] A list of revisions of this API proxy.
   const ApiState({
     this.configBundle,
     this.deletionPolicy,
     this.detectMd5hash,
+    this.effectiveLabels,
+    this.labels,
     this.latestRevisionId,
     this.md5hash,
     this.metaDatas,
     this.name,
     this.orgId,
+    this.pulumiLabels,
     this.revisions,
   });
 
@@ -59,11 +74,14 @@ class ApiState {
       'configBundle': ?configBundle,
       'deletionPolicy': ?deletionPolicy,
       'detectMd5hash': ?detectMd5hash,
+      'effectiveLabels': ?effectiveLabels,
+      'labels': ?labels,
       'latestRevisionId': ?latestRevisionId,
       'md5hash': ?md5hash,
       'metaDatas': ?pulumi.Input.mapOptionalInputValue<List<ApiMetaData>, List<Map<String, dynamic>>>(metaDatas, (value) => pulumi.Input.encodeList<ApiMetaData, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'orgId': ?orgId,
+      'pulumiLabels': ?pulumiLabels,
       'revisions': ?revisions,
     };
   }
@@ -73,11 +91,14 @@ class ApiState {
       configBundle: (() { final guardedValue = map['configBundle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       detectMd5hash: (() { final guardedValue = map['detectMd5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       latestRevisionId: (() { final guardedValue = map['latestRevisionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       md5hash: (() { final guardedValue = map['md5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metaDatas: (() { final guardedValue = map['metaDatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       revisions: (() { final guardedValue = map['revisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

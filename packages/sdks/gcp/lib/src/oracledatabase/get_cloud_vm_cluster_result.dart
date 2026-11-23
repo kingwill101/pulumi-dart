@@ -25,6 +25,7 @@ class GetCloudVmClusterResult {
   final String? location;
   final String? name;
   final String? network;
+  final String? odbDnsZone;
   final String? odbNetwork;
   final String? odbSubnet;
   final String? project;
@@ -50,6 +51,7 @@ class GetCloudVmClusterResult {
   /// [location] Optional.
   /// [name] Optional.
   /// [network] Optional.
+  /// [odbDnsZone] Optional.
   /// [odbNetwork] Optional.
   /// [odbSubnet] Optional.
   /// [project] Optional.
@@ -74,6 +76,7 @@ class GetCloudVmClusterResult {
     this.location,
     this.name,
     this.network,
+    this.odbDnsZone,
     this.odbNetwork,
     this.odbSubnet,
     this.project,
@@ -101,6 +104,7 @@ class GetCloudVmClusterResult {
       'location': ?location,
       'name': ?name,
       'network': ?network,
+      'odbDnsZone': ?odbDnsZone,
       'odbNetwork': ?odbNetwork,
       'odbSubnet': ?odbSubnet,
       'project': ?project,
@@ -129,6 +133,7 @@ class GetCloudVmClusterResult {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      odbDnsZone: (() { final guardedValue = map['odbDnsZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       odbNetwork: (() { final guardedValue = map['odbNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
       odbSubnet: (() { final guardedValue = map['odbSubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),

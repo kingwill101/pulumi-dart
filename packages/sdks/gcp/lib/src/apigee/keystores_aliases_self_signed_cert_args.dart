@@ -81,7 +81,7 @@ class KeystoresAliasesSelfSignedCertArgs {
   factory KeystoresAliasesSelfSignedCertArgs.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
-      certValidityInDays: (() { final guardedValue = map['certValidityInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      certValidityInDays: (() { final guardedValue = map['certValidityInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
       keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -25,7 +25,7 @@ class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
 
   factory EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.fromMap(Map<String, dynamic> map) {
     return EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm(
-      ipHeaderIndex: pulumi.Input.fromValue((map['ipHeaderIndex'] as num).toInt()),
+      ipHeaderIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ipHeaderIndex'])),
       ipHeaderName: pulumi.Input.fromValue(map['ipHeaderName'] as String),
     );
   }

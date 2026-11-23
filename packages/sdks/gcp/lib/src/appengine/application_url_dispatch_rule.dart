@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationUrlDispatchRule {
+  /// Domain name to match against.
   final pulumi.Input<String?>? domain;
+  /// Pathname within the host.
   final pulumi.Input<String?>? path;
+  /// Resource ID of a service in this application that should serve the matched request.
   final pulumi.Input<String?>? service;
 
   /// Creates a new [ApplicationUrlDispatchRule].
-  /// [domain] Optional.
-  /// [path] Optional.
-  /// [service] Optional.
+  /// [domain] Domain name to match against.
+  /// [path] Pathname within the host.
+  /// [service] Resource ID of a service in this application that should serve the matched request.
   const ApplicationUrlDispatchRule({
     this.domain,
     this.path,

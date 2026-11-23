@@ -1,5 +1,16 @@
+export 'resourcemanager/boundary.dart';
+export 'resourcemanager/boundary_args.dart';
+export 'resourcemanager/boundary_config.dart';
+export 'resourcemanager/boundary_config_args.dart';
+export 'resourcemanager/boundary_config_state.dart';
+export 'resourcemanager/boundary_resource_filter.dart';
+export 'resourcemanager/boundary_resource_filter_tag_filter.dart';
+export 'resourcemanager/boundary_state.dart';
 export 'resourcemanager/capability.dart';
 export 'resourcemanager/capability_args.dart';
+export 'resourcemanager/capability_config.dart';
+export 'resourcemanager/capability_config_args.dart';
+export 'resourcemanager/capability_config_state.dart';
 export 'resourcemanager/capability_state.dart';
 export 'resourcemanager/lien.dart';
 export 'resourcemanager/lien_args.dart';

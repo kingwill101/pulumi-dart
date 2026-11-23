@@ -1,3 +1,7 @@
+export 'dataflow/config_store_setting.dart';
+export 'dataflow/config_store_setting_args.dart';
+export 'dataflow/config_store_setting_state.dart';
+export 'dataflow/config_store_setting_value.dart';
 export 'dataflow/flex_template_job.dart';
 export 'dataflow/flex_template_job_args.dart';
 export 'dataflow/flex_template_job_state.dart';

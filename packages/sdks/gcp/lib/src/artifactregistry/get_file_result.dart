@@ -91,7 +91,7 @@ class GetFileResult {
       overwrite: (() { final guardedValue = map['overwrite']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       repositoryId: (() { final guardedValue = map['repositoryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

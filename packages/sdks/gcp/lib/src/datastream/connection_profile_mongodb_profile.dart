@@ -21,6 +21,7 @@ class ConnectionProfileMongodbProfile {
   final pulumi.Input<String?>? replicaSet;
   /// A reference to a Secret Manager resource name storing the MongoDB
   /// connection password. Mutually exclusive with password.
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String?>? secretManagerStoredPassword;
   /// Srv connection format. Mutually exclusive with
   /// standard_connection_Format.

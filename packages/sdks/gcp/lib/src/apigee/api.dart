@@ -38,6 +38,13 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
   late final pulumi.Output<String> detectMd5hash;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
   /// The id of the most recently created revision for this API proxy.
   late final pulumi.Output<String> latestRevisionId;
   /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
@@ -49,6 +56,8 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The Apigee Organization name associated with the Apigee instance.
   late final pulumi.Output<String> orgId;
+  /// The combination of labels configured directly on the resource and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// A list of revisions of this API proxy.
   late final pulumi.Output<List<String>> revisions;
 
@@ -64,16 +73,20 @@ class Api extends pulumi.CustomResource {
           'gcp:apigee/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     configBundle = registerOutput<String>('configBundle');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String>('detectMd5hash');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
     metaDatas = registerOutput<List<ApiMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
@@ -104,11 +117,14 @@ class Api extends pulumi.CustomResource {
     configBundle = registerOutput<String>('configBundle');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String>('detectMd5hash');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
     metaDatas = registerOutput<List<ApiMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
@@ -119,16 +135,20 @@ class Api extends pulumi.CustomResource {
         pulumi.parseUrn(urn).urnName,
         const <String, pulumi.Input<dynamic>>{},
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         isResourceReference: true,
       ) {
     configBundle = registerOutput<String>('configBundle');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String>('detectMd5hash');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
     metaDatas = registerOutput<List<ApiMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -44,7 +44,7 @@ import 'get_dns_authorization_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -61,7 +61,7 @@ import 'get_dns_authorization_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -69,7 +69,7 @@ import 'get_dns_authorization_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_certificatemanager_getcertificatemap" "default" {
+/// data "gcp_certificatemanager_certificate_map" "default" {
 ///   name = "cert-map"
 /// }
 /// ```
@@ -166,15 +166,14 @@ pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["certificatesNames"] = @default.Apply(@default => .Select(cert =>
-///         {
+///         ["certificatesNames"] = @default.Apply(@default => .Select(cert => {
 ///             return cert.Name;
 ///         }).ToList()),
 ///     };
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -182,11 +181,11 @@ pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
 ///   }
 /// }
 ///
-/// data "gcp_certificatemanager_getcertificates" "default" {
+/// data "gcp_certificatemanager_certificates" "default" {
 /// }
 ///
 /// output "certificatesNames" {
-///   value = [for cert in data.gcp_certificatemanager_getcertificates.default.certificates : cert.name]
+///   value = [for cert in data.gcp_certificatemanager_certificates.default.certificates : cert.name]
 /// }
 /// ```
 ///
@@ -225,15 +224,14 @@ pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["certificatesNames"] = @default.Apply(@default => .Select(cert =>
-///         {
+///         ["certificatesNames"] = @default.Apply(@default => .Select(cert => {
 ///             return cert.Name;
 ///         }).ToList()),
 ///     };
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -241,12 +239,12 @@ pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
 ///   }
 /// }
 ///
-/// data "gcp_certificatemanager_getcertificates" "default" {
+/// data "gcp_certificatemanager_certificates" "default" {
 ///   filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*"
 /// }
 ///
 /// output "certificatesNames" {
-///   value = [for cert in data.gcp_certificatemanager_getcertificates.default.certificates : cert.name]
+///   value = [for cert in data.gcp_certificatemanager_certificates.default.certificates : cert.name]
 /// }
 /// ```
 ///
@@ -288,15 +286,14 @@ pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["certificatesNames"] = @default.Apply(@default => .Select(cert =>
-///         {
+///         ["certificatesNames"] = @default.Apply(@default => .Select(cert => {
 ///             return cert.Name;
 ///         }).ToList()),
 ///     };
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -304,13 +301,13 @@ pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
 ///   }
 /// }
 ///
-/// data "gcp_certificatemanager_getcertificates" "default" {
+/// data "gcp_certificatemanager_certificates" "default" {
 ///   region = "REGION"
 ///   filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*"
 /// }
 ///
 /// output "certificatesNames" {
-///   value = [for cert in data.gcp_certificatemanager_getcertificates.default.certificates : cert.name]
+///   value = [for cert in data.gcp_certificatemanager_certificates.default.certificates : cert.name]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_certificatemanager_get_certificates_get_certificates_args_doc}
@@ -380,7 +377,7 @@ pulumi.Output<GetCertificatesResult> getCertificatesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -398,7 +395,7 @@ pulumi.Output<GetCertificatesResult> getCertificatesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -406,7 +403,7 @@ pulumi.Output<GetCertificatesResult> getCertificatesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_certificatemanager_getdnsauthorization" "default" {
+/// data "gcp_certificatemanager_dns_authorization" "default" {
 ///   name     = "my-dns-auth"
 ///   location = "global"
 /// }

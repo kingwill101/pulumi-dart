@@ -12,6 +12,7 @@ import 'router_route_policy_term.dart';
 /// * How-to Guides
 /// * [Google Cloud Router](https://cloud.google.com/router/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Router Route Policy Export
@@ -145,7 +146,7 @@ import 'router_route_policy_term.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -160,7 +161,7 @@ import 'router_route_policy_term.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -170,7 +171,7 @@ import 'router_route_policy_term.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: net.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -202,7 +203,7 @@ import 'router_route_policy_term.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -211,21 +212,33 @@ import 'router_route_policy_term.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   network       = gcp_compute_network.net.id
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   region  = gcp_compute_subnetwork.subnet.region
 ///   network = gcp_compute_network.net.id
 /// }
-/// resource "gcp_compute_routerroutepolicy" "rp-export" {
+/// resource "gcp_compute_router_route_policy" "rp-export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   router = gcp_compute_router.router.name
 ///   region = gcp_compute_router.router.region
 ///   name   = "my-rp1"
@@ -342,6 +355,7 @@ import 'router_route_policy_term.dart';
 ///           actions:
 ///             - expression: accept()
 /// ```
+///
 ///
 /// ### Router Route Policy Import
 ///
@@ -474,7 +488,7 @@ import 'router_route_policy_term.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -489,7 +503,7 @@ import 'router_route_policy_term.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -499,7 +513,7 @@ import 'router_route_policy_term.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: net.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -531,7 +545,7 @@ import 'router_route_policy_term.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -540,21 +554,33 @@ import 'router_route_policy_term.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   network       = gcp_compute_network.net.id
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   region  = gcp_compute_subnetwork.subnet.region
 ///   network = gcp_compute_network.net.id
 /// }
-/// resource "gcp_compute_routerroutepolicy" "rp-import" {
+/// resource "gcp_compute_router_route_policy" "rp-import" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-rp2"
 ///   router = gcp_compute_router.router.name
 ///   region = gcp_compute_router.router.region
@@ -730,7 +756,7 @@ class RouterRoutePolicy extends pulumi.CustomResource {
           'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');

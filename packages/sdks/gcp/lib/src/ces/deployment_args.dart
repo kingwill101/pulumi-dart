@@ -2,6 +2,9 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_channel_profile.dart';
+import 'deployment_instagram_credentials.dart';
+import 'deployment_model_settings.dart';
+import 'deployment_whatsapp_credentials.dart';
 
 /// {@template pulumi_ces_deployment_deployment_args_doc}
 /// The set of arguments for Deployment.
@@ -27,11 +30,24 @@ class DeploymentArgs {
   final pulumi.Input<String?>? deletionPolicy;
   /// Display name of the deployment.
   final pulumi.Input<String> displayName;
+  /// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentInstagramCredentials?>? instagramCredentials;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+  /// The modality of the deployment.
+  /// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+  final pulumi.Input<String?>? modality;
+  /// Model settings for the deployment.
+  /// Overrides model settings configured at the app/agent levels.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentModelSettings?>? modelSettings;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentWhatsappCredentials?>? whatsappCredentials;
 
   /// Creates a new [DeploymentArgs].
   /// [app] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -39,16 +55,24 @@ class DeploymentArgs {
   /// [channelProfile] A ChannelProfile configures the agent's behavior for a specific communication
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Display name of the deployment.
+  /// [instagramCredentials] Ephemeral Meta credentials required when configuring an Instagram channel profile.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [modality] The modality of the deployment.
+  /// [modelSettings] Model settings for the deployment.
   /// [project] The ID of the project in which the resource belongs.
+  /// [whatsappCredentials] Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
   const DeploymentArgs({
     required this.app,
     required this.appVersion,
     required this.channelProfile,
     this.deletionPolicy,
     required this.displayName,
+    this.instagramCredentials,
     required this.location,
+    this.modality,
+    this.modelSettings,
     this.project,
+    this.whatsappCredentials,
   });
 
   Map<String, dynamic> toMap() {
@@ -58,8 +82,12 @@ class DeploymentArgs {
       'channelProfile': pulumi.Input.mapInputValue<DeploymentChannelProfile, Map<String, dynamic>>(channelProfile, (value) => value.toMap()),
       'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
+      'instagramCredentials': ?pulumi.Input.mapOptionalInputValue<DeploymentInstagramCredentials, Map<String, dynamic>>(instagramCredentials, (value) => value.toMap()),
       'location': location,
+      'modality': ?modality,
+      'modelSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentModelSettings, Map<String, dynamic>>(modelSettings, (value) => value.toMap()),
       'project': ?project,
+      'whatsappCredentials': ?pulumi.Input.mapOptionalInputValue<DeploymentWhatsappCredentials, Map<String, dynamic>>(whatsappCredentials, (value) => value.toMap()),
     };
   }
 
@@ -70,8 +98,12 @@ class DeploymentArgs {
       channelProfile: pulumi.Input.fromValue(DeploymentChannelProfile.fromMap((map['channelProfile']! as Map).cast<String, dynamic>())),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      instagramCredentials: (() { final guardedValue = map['instagramCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentInstagramCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      modality: (() { final guardedValue = map['modality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelSettings: (() { final guardedValue = map['modelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      whatsappCredentials: (() { final guardedValue = map['whatsappCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentWhatsappCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

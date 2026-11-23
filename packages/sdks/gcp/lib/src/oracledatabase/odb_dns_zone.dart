@@ -1,0 +1,334 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'odb_dns_zone_args.dart';
+import 'odb_dns_zone_state.dart';
+
+/// An OdbDnsZone resource which represents a custom DNS zone under an OdbNetwork.
+///
+///
+/// To get more information about OdbDnsZone, see:
+/// * How-to Guides
+/// * [OracleDatabase@Google Cloud](https://cloud.google.com/oracle/database/docs/overview)
+///
+///
+/// ## Example Usage
+///
+/// ### Oracledatabase Odbdnszone Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_odbdnszone = new gcp.oracledatabase.OdbDnsZone("my-odbdnszone", {
+///     odbDnsZoneId: "my-odbdnszone",
+///     location: "europe-west2",
+///     project: "my-project",
+///     odbnetwork: "my-odbnetwork",
+///     domain: "example.com",
+///     labels: {
+///         terraform_created: "true",
+///     },
+///     deletionProtection: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_odbdnszone = gcp.oracledatabase.OdbDnsZone("my-odbdnszone",
+///     odb_dns_zone_id="my-odbdnszone",
+///     location="europe-west2",
+///     project="my-project",
+///     odbnetwork="my-odbnetwork",
+///     domain="example.com",
+///     labels={
+///         "terraform_created": "true",
+///     },
+///     deletion_protection=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_odbdnszone = new Gcp.OracleDatabase.OdbDnsZone("my-odbdnszone", new()
+///     {
+///         OdbDnsZoneId = "my-odbdnszone",
+///         Location = "europe-west2",
+///         Project = "my-project",
+///         Odbnetwork = "my-odbnetwork",
+///         Domain = "example.com",
+///         Labels =
+///         {
+///             { "terraform_created", "true" },
+///         },
+///         DeletionProtection = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.NewOdbDnsZone(ctx, "my-odbdnszone", &oracledatabase.OdbDnsZoneArgs{
+/// 			OdbDnsZoneId: pulumi.String("my-odbdnszone"),
+/// 			Location:     pulumi.String("europe-west2"),
+/// 			Project:      pulumi.String("my-project"),
+/// 			Odbnetwork:   pulumi.String("my-odbnetwork"),
+/// 			Domain:       pulumi.String("example.com"),
+/// 			Labels: pulumi.StringMap{
+/// 				"terraform_created": pulumi.String("true"),
+/// 			},
+/// 			DeletionProtection: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_odb_dns_zone" "my-odbdnszone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   odb_dns_zone_id = "my-odbdnszone"
+///   location        = "europe-west2"
+///   project         = "my-project"
+///   odbnetwork      = "my-odbnetwork"
+///   domain          = "example.com"
+///   labels = {
+///     "terraform_created" = "true"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OdbDnsZone;
+/// import com.pulumi.gcp.oracledatabase.OdbDnsZoneArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var my_odbdnszone = new OdbDnsZone("my-odbdnszone", OdbDnsZoneArgs.builder()
+///             .odbDnsZoneId("my-odbdnszone")
+///             .location("europe-west2")
+///             .project("my-project")
+///             .odbnetwork("my-odbnetwork")
+///             .domain("example.com")
+///             .labels(Map.of("terraform_created", "true"))
+///             .deletionProtection(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   my-odbdnszone:
+///     type: gcp:oracledatabase:OdbDnsZone
+///     properties:
+///       odbDnsZoneId: my-odbdnszone
+///       location: europe-west2
+///       project: my-project
+///       odbnetwork: my-odbnetwork
+///       domain: example.com
+///       labels:
+///         terraform_created: 'true'
+///       deletionProtection: 'true'
+/// ```
+///
+///
+/// ## Import
+///
+/// OdbDnsZone can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbDnsZones/{{odb_dns_zone_id}}`
+/// * `{{project}}/{{location}}/{{odbnetwork}}/{{odb_dns_zone_id}}`
+/// * `{{location}}/{{odbnetwork}}/{{odb_dns_zone_id}}`
+///
+///
+/// When using the `pulumi import` command, OdbDnsZone can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:oracledatabase/odbDnsZone:OdbDnsZone default projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbDnsZones/{{odb_dns_zone_id}}
+/// $ pulumi import gcp:oracledatabase/odbDnsZone:OdbDnsZone default {{project}}/{{location}}/{{odbnetwork}}/{{odb_dns_zone_id}}
+/// $ pulumi import gcp:oracledatabase/odbDnsZone:OdbDnsZone default {{location}}/{{odbnetwork}}/{{odb_dns_zone_id}}
+/// ```
+class OdbDnsZone extends pulumi.CustomResource {
+  /// The date and time that the OdbDnsZone was created.
+  late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+  late final pulumi.Output<bool?> deletionProtection;
+  /// The DNS suffix for the zone.
+  /// Ex: abc.example.com.
+  late final pulumi.Output<String> domain;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Labels or tags associated with the resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  late final pulumi.Output<String> location;
+  /// Identifier. The name of the OdbDnsZone resource in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+  late final pulumi.Output<String> name;
+  /// The ID of the OdbDnsZone to create. This value is restricted
+  /// to (^a-z?$) and must be a maximum of 63
+  /// characters in length. The value must start with a letter and end with
+  /// a letter or a number.
+  late final pulumi.Output<String> odbDnsZoneId;
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  late final pulumi.Output<String> odbnetwork;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// State of the ODB DNS Zone.
+  /// Possible values:
+  /// STATE_UNSPECIFIED
+  /// PROVISIONING
+  /// AVAILABLE
+  /// INACTIVE
+  /// TERMINATING
+  /// FAILED
+  late final pulumi.Output<String> state;
+
+  /// Creates a new [OdbDnsZone].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [OdbDnsZone]. {@macro pulumi_oracledatabase_odb_dns_zone_odb_dns_zone_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  OdbDnsZone(
+    String name, {
+    OdbDnsZoneArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:oracledatabase/odbDnsZone:OdbDnsZone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    domain = registerOutput<String>('domain');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    odbDnsZoneId = registerOutput<String>('odbDnsZoneId');
+    odbnetwork = registerOutput<String>('odbnetwork');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
+  }
+
+  /// Gets an existing [OdbDnsZone] resource's state with the given [name] and [id].
+  static OdbDnsZone get(
+    String name,
+    pulumi.Input<String> id, {
+    OdbDnsZoneState? state,
+    pulumi.CustomResourceOptions? options,
+  }) {
+    return OdbDnsZone._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
+    );
+  }
+
+  OdbDnsZone._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:oracledatabase/odbDnsZone:OdbDnsZone',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    domain = registerOutput<String>('domain');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    odbDnsZoneId = registerOutput<String>('odbDnsZoneId');
+    odbnetwork = registerOutput<String>('odbnetwork');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [OdbDnsZone] resource.
+  OdbDnsZone.reference(String urn)
+    : super(
+        'gcp:oracledatabase/odbDnsZone:OdbDnsZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    domain = registerOutput<String>('domain');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    odbDnsZoneId = registerOutput<String>('odbDnsZoneId');
+    odbnetwork = registerOutput<String>('odbnetwork');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
+  }
+}

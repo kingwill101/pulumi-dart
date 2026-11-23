@@ -9,6 +9,9 @@ import 'job_iambinding_condition.dart';
 /// {@macro pulumi_dataproc_job_iambinding_job_iambinding_args_doc}
 class JobIAMBindingArgs {
   final pulumi.Input<JobIAMBindingCondition?>? condition;
+  /// The name or relative resource id of the job to manage IAM policies for.
+  ///
+  /// For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
   final pulumi.Input<String> jobId;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -34,7 +37,7 @@ class JobIAMBindingArgs {
 
   /// Creates a new [JobIAMBindingArgs].
   /// [condition] Optional.
-  /// [jobId] Required.
+  /// [jobId] The name or relative resource id of the job to manage IAM policies for.
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The project in which the job belongs. If it
   /// [region] The region in which the job belongs. If it

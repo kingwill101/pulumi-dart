@@ -12,6 +12,7 @@ import 'backup_plan_association_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Backup Dr Bpa
@@ -36,7 +37,7 @@ import 'backup_plan_association_state.dart';
 ///     zone: "us-central1-a",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///             labels: {
 ///                 my_label: "value",
 ///             },
@@ -100,7 +101,7 @@ import 'backup_plan_association_state.dart';
 ///     zone="us-central1-a",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///             "labels": {
 ///                 "my_label": "value",
 ///             },
@@ -177,7 +178,7 @@ import 'backup_plan_association_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///                 Labels =
 ///                 {
 ///                     { "my_label", "value" },
@@ -251,9 +252,9 @@ import 'backup_plan_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -280,7 +281,7 @@ import 'backup_plan_association_state.dart';
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 					Labels: pulumi.StringMap{
 /// 						"my_label": pulumi.String("value"),
 /// 					},
@@ -314,7 +315,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			BackupPlanId: pulumi.String("bp-bpa-test"),
 /// 			ResourceType: pulumi.String("compute.googleapis.com/Instance"),
-/// 			BackupVault:  bv1.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:  bv1.ID(),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 /// 					RuleId:              pulumi.String("rule-1"),
@@ -338,7 +339,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:                pulumi.String("us-central1"),
 /// 			ResourceType:            pulumi.String("compute.googleapis.com/Instance"),
 /// 			BackupPlanAssociationId: pulumi.String("my-bpa"),
-/// 			Resource:                myinstance.ID().ToIDOutput().ToStringOutput(),
+/// 			Resource:                myinstance.ID(),
 /// 			BackupPlan:              bp1.Name,
 /// 		})
 /// 		if err != nil {
@@ -349,7 +350,7 @@ import 'backup_plan_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,10 +359,16 @@ import 'backup_plan_association_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "mySA" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-custom"
 ///   display_name = "Custom SA for VM Instance"
 /// }
 /// resource "gcp_compute_instance" "myinstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -372,7 +379,7 @@ import 'backup_plan_association_state.dart';
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///       labels = {
 ///         "my_label" = "value"
 ///       }
@@ -386,17 +393,23 @@ import 'backup_plan_association_state.dart';
 ///     scopes = ["cloud-platform"]
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupvault" "bv1" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "bv1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "bv-bpa"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 ///   force_delete                               = "true"
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "bp1" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "bp1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   backup_plan_id = "bp-bpa-test"
 ///   resource_type  = "compute.googleapis.com/Instance"
-///   backup_vault   = gcp_backupdisasterrecovery_backupvault.bv1.id
+///   backup_vault   = gcp_backupdisasterrecovery_backup_vault.bv1.id
 ///   backup_rules {
 ///     rule_id               = "rule-1"
 ///     backup_retention_days = 2
@@ -411,12 +424,15 @@ import 'backup_plan_association_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplanassociation" "my-backup-plan-association" {
+/// resource "gcp_backupdisasterrecovery_backup_plan_association" "my-backup-plan-association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                   = "us-central1"
 ///   resource_type              = "compute.googleapis.com/Instance"
 ///   backup_plan_association_id = "my-bpa"
 ///   resource                   = gcp_compute_instance.myinstance.id
-///   backup_plan                = gcp_backupdisasterrecovery_backupplan.bp1.name
+///   backup_plan                = gcp_backupdisasterrecovery_backup_plan.bp1.name
 /// }
 /// ```
 /// ```java
@@ -473,7 +489,7 @@ import 'backup_plan_association_state.dart';
 ///             .zone("us-central1-a")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .labels(Map.of("my_label", "value"))
 ///                     .build())
 ///                 .build())
@@ -543,7 +559,7 @@ import 'backup_plan_association_state.dart';
 ///       zone: us-central1-a
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///           labels:
 ///             my_label: value
 ///       scratchDisks:
@@ -585,6 +601,7 @@ import 'backup_plan_association_state.dart';
 ///       resource: ${myinstance.id}
 ///       backupPlan: ${bp1.name}
 /// ```
+///
 ///
 /// ### Backup Dr Bpa Filestore
 ///
@@ -767,8 +784,8 @@ import 'backup_plan_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -807,7 +824,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			BackupPlanId: pulumi.String("bp-bpa-filestore"),
 /// 			ResourceType: pulumi.String("file.googleapis.com/Instance"),
-/// 			BackupVault:  myBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:  myBackupVault.ID(),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 /// 					RuleId:              pulumi.String("rule-1"),
@@ -831,7 +848,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:                pulumi.String("us-central1"),
 /// 			ResourceType:            pulumi.String("file.googleapis.com/Instance"),
 /// 			BackupPlanAssociationId: pulumi.String("my-bpa-filestore"),
-/// 			Resource:                myFilestoreInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			Resource:                myFilestoreInstance.ID(),
 /// 			BackupPlan:              myBackupPlan.Name,
 /// 		})
 /// 		if err != nil {
@@ -842,7 +859,7 @@ import 'backup_plan_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -851,6 +868,9 @@ import 'backup_plan_association_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "my_filestore_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance-bpa"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -863,17 +883,23 @@ import 'backup_plan_association_state.dart';
 ///     modes   = ["MODE_IPV4"]
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupvault" "my_backup_vault" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "bv-bpa-filestore"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 ///   force_delete                               = true
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "my_backup_plan" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my_backup_plan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   backup_plan_id = "bp-bpa-filestore"
 ///   resource_type  = "file.googleapis.com/Instance"
-///   backup_vault   = gcp_backupdisasterrecovery_backupvault.my_backup_vault.id
+///   backup_vault   = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
 ///   backup_rules {
 ///     rule_id               = "rule-1"
 ///     backup_retention_days = 5
@@ -888,12 +914,15 @@ import 'backup_plan_association_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplanassociation" "my-backup-plan-association-filestore" {
+/// resource "gcp_backupdisasterrecovery_backup_plan_association" "my-backup-plan-association-filestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                   = "us-central1"
 ///   resource_type              = "file.googleapis.com/Instance"
 ///   backup_plan_association_id = "my-bpa-filestore"
 ///   resource                   = gcp_filestore_instance.my_filestore_instance.id
-///   backup_plan                = gcp_backupdisasterrecovery_backupplan.my_backup_plan.name
+///   backup_plan                = gcp_backupdisasterrecovery_backup_plan.my_backup_plan.name
 /// }
 /// ```
 /// ```java
@@ -1033,6 +1062,530 @@ import 'backup_plan_association_state.dart';
 /// ```
 ///
 ///
+/// ### Backup Dr Bpa Netapp
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getNetwork({
+///     name: "test-network-bpa",
+/// });
+/// const defaultStoragePool = new gcp.netapp.StoragePool("default", {
+///     name: "test-pool-bpa",
+///     location: "us-central1-a",
+///     serviceLevel: "FLEX",
+///     type: "UNIFIED",
+///     capacityGib: "1024",
+///     network: _default.then(_default => _default.id),
+/// });
+/// const myVolume = new gcp.netapp.Volume("my_volume", {
+///     location: "us-central1-a",
+///     name: "test-volume-bpa",
+///     capacityGib: "100",
+///     shareName: "test-volume-bpa",
+///     storagePool: defaultStoragePool.name,
+///     protocols: ["NFSV3"],
+///     deletionPolicy: "FORCE",
+/// });
+/// const myBackupVault = new gcp.backupdisasterrecovery.BackupVault("my_backup_vault", {
+///     location: "us-central1",
+///     backupVaultId: "bv-bpa-netapp",
+///     backupMinimumEnforcedRetentionDuration: "100000s",
+///     forceDelete: true,
+/// });
+/// const myBackupPlan = new gcp.backupdisasterrecovery.BackupPlan("my_backup_plan", {
+///     location: "us-central1",
+///     backupPlanId: "bp-bpa-netapp",
+///     resourceType: "netapp.googleapis.com/Volume",
+///     backupVault: myBackupVault.id,
+///     backupRules: [{
+///         ruleId: "rule-1",
+///         backupRetentionDays: 5,
+///         standardSchedule: {
+///             recurrenceType: "HOURLY",
+///             hourlyFrequency: 6,
+///             timeZone: "UTC",
+///             backupWindow: {
+///                 startHourOfDay: 0,
+///                 endHourOfDay: 6,
+///             },
+///         },
+///     }],
+/// });
+/// const my_backup_plan_association_netapp = new gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-netapp", {
+///     location: "us-central1",
+///     resourceType: "netapp.googleapis.com/Volume",
+///     backupPlanAssociationId: "my-bpa-netapp",
+///     resource: myVolume.id,
+///     backupPlan: myBackupPlan.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_network(name="test-network-bpa")
+/// default_storage_pool = gcp.netapp.StoragePool("default",
+///     name="test-pool-bpa",
+///     location="us-central1-a",
+///     service_level="FLEX",
+///     type="UNIFIED",
+///     capacity_gib="1024",
+///     network=default.id)
+/// my_volume = gcp.netapp.Volume("my_volume",
+///     location="us-central1-a",
+///     name="test-volume-bpa",
+///     capacity_gib="100",
+///     share_name="test-volume-bpa",
+///     storage_pool=default_storage_pool.name,
+///     protocols=["NFSV3"],
+///     deletion_policy="FORCE")
+/// my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+///     location="us-central1",
+///     backup_vault_id="bv-bpa-netapp",
+///     backup_minimum_enforced_retention_duration="100000s",
+///     force_delete=True)
+/// my_backup_plan = gcp.backupdisasterrecovery.BackupPlan("my_backup_plan",
+///     location="us-central1",
+///     backup_plan_id="bp-bpa-netapp",
+///     resource_type="netapp.googleapis.com/Volume",
+///     backup_vault=my_backup_vault.id,
+///     backup_rules=[{
+///         "rule_id": "rule-1",
+///         "backup_retention_days": 5,
+///         "standard_schedule": {
+///             "recurrence_type": "HOURLY",
+///             "hourly_frequency": 6,
+///             "time_zone": "UTC",
+///             "backup_window": {
+///                 "start_hour_of_day": 0,
+///                 "end_hour_of_day": 6,
+///             },
+///         },
+///     }])
+/// my_backup_plan_association_netapp = gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-netapp",
+///     location="us-central1",
+///     resource_type="netapp.googleapis.com/Volume",
+///     backup_plan_association_id="my-bpa-netapp",
+///     resource=my_volume.id,
+///     backup_plan=my_backup_plan.name)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
+///     {
+///         Name = "test-network-bpa",
+///     });
+///
+///     var defaultStoragePool = new Gcp.Netapp.StoragePool("default", new()
+///     {
+///         Name = "test-pool-bpa",
+///         Location = "us-central1-a",
+///         ServiceLevel = "FLEX",
+///         Type = "UNIFIED",
+///         CapacityGib = "1024",
+///         Network = @default.Apply(@default => @default.Apply(getNetworkResult => getNetworkResult.Id)),
+///     });
+///
+///     var myVolume = new Gcp.Netapp.Volume("my_volume", new()
+///     {
+///         Location = "us-central1-a",
+///         Name = "test-volume-bpa",
+///         CapacityGib = "100",
+///         ShareName = "test-volume-bpa",
+///         StoragePool = defaultStoragePool.Name,
+///         Protocols = new[]
+///         {
+///             "NFSV3",
+///         },
+///         DeletionPolicy = "FORCE",
+///     });
+///
+///     var myBackupVault = new Gcp.BackupDisasterRecovery.BackupVault("my_backup_vault", new()
+///     {
+///         Location = "us-central1",
+///         BackupVaultId = "bv-bpa-netapp",
+///         BackupMinimumEnforcedRetentionDuration = "100000s",
+///         ForceDelete = true,
+///     });
+///
+///     var myBackupPlan = new Gcp.BackupDisasterRecovery.BackupPlan("my_backup_plan", new()
+///     {
+///         Location = "us-central1",
+///         BackupPlanId = "bp-bpa-netapp",
+///         ResourceType = "netapp.googleapis.com/Volume",
+///         BackupVault = myBackupVault.Id,
+///         BackupRules = new[]
+///         {
+///             new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleArgs
+///             {
+///                 RuleId = "rule-1",
+///                 BackupRetentionDays = 5,
+///                 StandardSchedule = new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleStandardScheduleArgs
+///                 {
+///                     RecurrenceType = "HOURLY",
+///                     HourlyFrequency = 6,
+///                     TimeZone = "UTC",
+///                     BackupWindow = new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs
+///                     {
+///                         StartHourOfDay = 0,
+///                         EndHourOfDay = 6,
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var my_backup_plan_association_netapp = new Gcp.BackupDisasterRecovery.BackupPlanAssociation("my-backup-plan-association-netapp", new()
+///     {
+///         Location = "us-central1",
+///         ResourceType = "netapp.googleapis.com/Volume",
+///         BackupPlanAssociationId = "my-bpa-netapp",
+///         Resource = myVolume.Id,
+///         BackupPlan = myBackupPlan.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+/// 			Name: pulumi.StringRef("test-network-bpa"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultStoragePool, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
+/// 			Name:         pulumi.String("test-pool-bpa"),
+/// 			Location:     pulumi.String("us-central1-a"),
+/// 			ServiceLevel: pulumi.String("FLEX"),
+/// 			Type:         pulumi.String("UNIFIED"),
+/// 			CapacityGib:  pulumi.String("1024"),
+/// 			Network:      pulumi.String(_default.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		myVolume, err := netapp.NewVolume(ctx, "my_volume", &netapp.VolumeArgs{
+/// 			Location:    pulumi.String("us-central1-a"),
+/// 			Name:        pulumi.String("test-volume-bpa"),
+/// 			CapacityGib: pulumi.String("100"),
+/// 			ShareName:   pulumi.String("test-volume-bpa"),
+/// 			StoragePool: defaultStoragePool.Name,
+/// 			Protocols: pulumi.StringArray{
+/// 				pulumi.String("NFSV3"),
+/// 			},
+/// 			DeletionPolicy: pulumi.String("FORCE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		myBackupVault, err := backupdisasterrecovery.NewBackupVault(ctx, "my_backup_vault", &backupdisasterrecovery.BackupVaultArgs{
+/// 			Location:                               pulumi.String("us-central1"),
+/// 			BackupVaultId:                          pulumi.String("bv-bpa-netapp"),
+/// 			BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+/// 			ForceDelete:                            pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		myBackupPlan, err := backupdisasterrecovery.NewBackupPlan(ctx, "my_backup_plan", &backupdisasterrecovery.BackupPlanArgs{
+/// 			Location:     pulumi.String("us-central1"),
+/// 			BackupPlanId: pulumi.String("bp-bpa-netapp"),
+/// 			ResourceType: pulumi.String("netapp.googleapis.com/Volume"),
+/// 			BackupVault:  myBackupVault.ID(),
+/// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
+/// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
+/// 					RuleId:              pulumi.String("rule-1"),
+/// 					BackupRetentionDays: pulumi.Int(5),
+/// 					StandardSchedule: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleArgs{
+/// 						RecurrenceType:  pulumi.String("HOURLY"),
+/// 						HourlyFrequency: pulumi.Int(6),
+/// 						TimeZone:        pulumi.String("UTC"),
+/// 						BackupWindow: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleBackupWindowArgs{
+/// 							StartHourOfDay: pulumi.Int(0),
+/// 							EndHourOfDay:   pulumi.Int(6),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = backupdisasterrecovery.NewBackupPlanAssociation(ctx, "my-backup-plan-association-netapp", &backupdisasterrecovery.BackupPlanAssociationArgs{
+/// 			Location:                pulumi.String("us-central1"),
+/// 			ResourceType:            pulumi.String("netapp.googleapis.com/Volume"),
+/// 			BackupPlanAssociationId: pulumi.String("my-bpa-netapp"),
+/// 			Resource:                myVolume.ID(),
+/// 			BackupPlan:              myBackupPlan.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_network" "default" {
+///   name = "test-network-bpa"
+/// }
+///
+/// resource "gcp_netapp_storage_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = "test-pool-bpa"
+///   location      = "us-central1-a"
+///   service_level = "FLEX"
+///   type          = "UNIFIED"
+///   capacity_gib  = "1024"
+///   network       = data.gcp_compute_network.default.id
+/// }
+/// resource "gcp_netapp_volume" "my_volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location        = "us-central1-a"
+///   name            = "test-volume-bpa"
+///   capacity_gib    = "100"
+///   share_name      = "test-volume-bpa"
+///   storage_pool    = gcp_netapp_storage_pool.default.name
+///   protocols       = ["NFSV3"]
+///   deletion_policy = "FORCE"
+/// }
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                                   = "us-central1"
+///   backup_vault_id                            = "bv-bpa-netapp"
+///   backup_minimum_enforced_retention_duration = "100000s"
+///   force_delete                               = true
+/// }
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my_backup_plan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location       = "us-central1"
+///   backup_plan_id = "bp-bpa-netapp"
+///   resource_type  = "netapp.googleapis.com/Volume"
+///   backup_vault   = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
+///   backup_rules {
+///     rule_id               = "rule-1"
+///     backup_retention_days = 5
+///     standard_schedule = {
+///       recurrence_type  = "HOURLY"
+///       hourly_frequency = 6
+///       time_zone        = "UTC"
+///       backup_window = {
+///         start_hour_of_day = 0
+///         end_hour_of_day   = 6
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_backupdisasterrecovery_backup_plan_association" "my-backup-plan-association-netapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                   = "us-central1"
+///   resource_type              = "netapp.googleapis.com/Volume"
+///   backup_plan_association_id = "my-bpa-netapp"
+///   resource                   = gcp_netapp_volume.my_volume.id
+///   backup_plan                = gcp_backupdisasterrecovery_backup_plan.my_backup_plan.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+/// import com.pulumi.gcp.netapp.StoragePool;
+/// import com.pulumi.gcp.netapp.StoragePoolArgs;
+/// import com.pulumi.gcp.netapp.Volume;
+/// import com.pulumi.gcp.netapp.VolumeArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupPlan;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupPlanAssociation;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupPlanAssociationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+///             .name("test-network-bpa")
+///             .build());
+///
+///         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
+///             .name("test-pool-bpa")
+///             .location("us-central1-a")
+///             .serviceLevel("FLEX")
+///             .type("UNIFIED")
+///             .capacityGib("1024")
+///             .network(default_.id())
+///             .build());
+///
+///         var myVolume = new Volume("myVolume", VolumeArgs.builder()
+///             .location("us-central1-a")
+///             .name("test-volume-bpa")
+///             .capacityGib("100")
+///             .shareName("test-volume-bpa")
+///             .storagePool(defaultStoragePool.name())
+///             .protocols("NFSV3")
+///             .deletionPolicy("FORCE")
+///             .build());
+///
+///         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
+///             .location("us-central1")
+///             .backupVaultId("bv-bpa-netapp")
+///             .backupMinimumEnforcedRetentionDuration("100000s")
+///             .forceDelete(true)
+///             .build());
+///
+///         var myBackupPlan = new BackupPlan("myBackupPlan", BackupPlanArgs.builder()
+///             .location("us-central1")
+///             .backupPlanId("bp-bpa-netapp")
+///             .resourceType("netapp.googleapis.com/Volume")
+///             .backupVault(myBackupVault.id())
+///             .backupRules(BackupPlanBackupRuleArgs.builder()
+///                 .ruleId("rule-1")
+///                 .backupRetentionDays(5)
+///                 .standardSchedule(BackupPlanBackupRuleStandardScheduleArgs.builder()
+///                     .recurrenceType("HOURLY")
+///                     .hourlyFrequency(6)
+///                     .timeZone("UTC")
+///                     .backupWindow(BackupPlanBackupRuleStandardScheduleBackupWindowArgs.builder()
+///                         .startHourOfDay(0)
+///                         .endHourOfDay(6)
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var my_backup_plan_association_netapp = new BackupPlanAssociation("my-backup-plan-association-netapp", BackupPlanAssociationArgs.builder()
+///             .location("us-central1")
+///             .resourceType("netapp.googleapis.com/Volume")
+///             .backupPlanAssociationId("my-bpa-netapp")
+///             .resource(myVolume.id())
+///             .backupPlan(myBackupPlan.name())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   defaultStoragePool:
+///     type: gcp:netapp:StoragePool
+///     name: default
+///     properties:
+///       name: test-pool-bpa
+///       location: us-central1-a
+///       serviceLevel: FLEX
+///       type: UNIFIED
+///       capacityGib: '1024'
+///       network: ${default.id}
+///   myVolume:
+///     type: gcp:netapp:Volume
+///     name: my_volume
+///     properties:
+///       location: us-central1-a
+///       name: test-volume-bpa
+///       capacityGib: '100'
+///       shareName: test-volume-bpa
+///       storagePool: ${defaultStoragePool.name}
+///       protocols:
+///         - NFSV3
+///       deletionPolicy: FORCE
+///   myBackupVault:
+///     type: gcp:backupdisasterrecovery:BackupVault
+///     name: my_backup_vault
+///     properties:
+///       location: us-central1
+///       backupVaultId: bv-bpa-netapp
+///       backupMinimumEnforcedRetentionDuration: 100000s
+///       forceDelete: true
+///   myBackupPlan:
+///     type: gcp:backupdisasterrecovery:BackupPlan
+///     name: my_backup_plan
+///     properties:
+///       location: us-central1
+///       backupPlanId: bp-bpa-netapp
+///       resourceType: netapp.googleapis.com/Volume
+///       backupVault: ${myBackupVault.id}
+///       backupRules:
+///         - ruleId: rule-1
+///           backupRetentionDays: 5
+///           standardSchedule:
+///             recurrenceType: HOURLY
+///             hourlyFrequency: 6
+///             timeZone: UTC
+///             backupWindow:
+///               startHourOfDay: 0
+///               endHourOfDay: 6
+///   my-backup-plan-association-netapp:
+///     type: gcp:backupdisasterrecovery:BackupPlanAssociation
+///     properties:
+///       location: us-central1
+///       resourceType: netapp.googleapis.com/Volume
+///       backupPlanAssociationId: my-bpa-netapp
+///       resource: ${myVolume.id}
+///       backupPlan: ${myBackupPlan.name}
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getNetwork
+///       arguments:
+///         name: test-network-bpa
+/// ```
+///
+///
 /// ## Import
 ///
 /// BackupPlanAssociation can be imported using any of these accepted formats:
@@ -1050,12 +1603,16 @@ import 'backup_plan_association_state.dart';
 /// $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
 /// ```
 class BackupPlanAssociation extends pulumi.CustomResource {
+  /// (Beta)
+  /// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+  late final pulumi.Output<String> autoProtectionPolicyBinding;
   /// The BP with which resource needs to be created
   /// Note:
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
   /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
   /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+  /// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
   late final pulumi.Output<String> backupPlan;
   /// The id of backupplan association
   late final pulumi.Output<String> backupPlanAssociationId;
@@ -1080,7 +1637,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
   /// The resource for which BPA needs to be created
   late final pulumi.Output<String> resource;
   /// The resource type of workload on which backupplan is applied.
-  /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+  /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
   late final pulumi.Output<String> resourceType;
   /// Message for rules config info
   /// Structure is documented below.
@@ -1100,8 +1657,9 @@ class BackupPlanAssociation extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
+    autoProtectionPolicyBinding = registerOutput<String>('autoProtectionPolicyBinding');
     backupPlan = registerOutput<String>('backupPlan');
     backupPlanAssociationId = registerOutput<String>('backupPlanAssociationId');
     createTime = registerOutput<String>('createTime');
@@ -1140,6 +1698,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoProtectionPolicyBinding = registerOutput<String>('autoProtectionPolicyBinding');
     backupPlan = registerOutput<String>('backupPlan');
     backupPlanAssociationId = registerOutput<String>('backupPlanAssociationId');
     createTime = registerOutput<String>('createTime');
@@ -1163,6 +1722,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
+    autoProtectionPolicyBinding = registerOutput<String>('autoProtectionPolicyBinding');
     backupPlan = registerOutput<String>('backupPlan');
     backupPlanAssociationId = registerOutput<String>('backupPlanAssociationId');
     createTime = registerOutput<String>('createTime');

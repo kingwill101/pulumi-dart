@@ -9,6 +9,7 @@ import 'workload_workload_reference.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -82,7 +83,7 @@ class Workload extends pulumi.CustomResource {
           'gcp:apphub/workload:Workload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<WorkloadAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -140,7 +140,7 @@ class GetTableExternalDataConfiguration {
       ignoreUnknownValues: pulumi.Input.fromValue(map['ignoreUnknownValues'] as bool),
       jsonExtension: pulumi.Input.fromValue(map['jsonExtension'] as String),
       jsonOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetTableExternalDataConfigurationJsonOption>(map['jsonOptions']!, (value) => GetTableExternalDataConfigurationJsonOption.fromMap((value as Map).cast<String, dynamic>()))),
-      maxBadRecords: pulumi.Input.fromValue((map['maxBadRecords'] as num).toInt()),
+      maxBadRecords: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxBadRecords'])),
       metadataCacheMode: pulumi.Input.fromValue(map['metadataCacheMode'] as String),
       objectMetadata: pulumi.Input.fromValue(map['objectMetadata'] as String),
       parquetOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetTableExternalDataConfigurationParquetOption>(map['parquetOptions']!, (value) => GetTableExternalDataConfigurationParquetOption.fromMap((value as Map).cast<String, dynamic>()))),

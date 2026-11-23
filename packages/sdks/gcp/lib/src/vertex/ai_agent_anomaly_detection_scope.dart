@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_agent_anomaly_detection_scope_args.dart';
+import 'ai_agent_anomaly_detection_scope_encryption_spec.dart';
 import 'ai_agent_anomaly_detection_scope_state.dart';
 
 /// An Agent Anomaly Detection (AAD) scope defines the Cloud Logging and
@@ -15,6 +16,7 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.agentAnomalyDetectionScopes)
 /// * How-to Guides
 /// * [Agent Anomaly Detection](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/)
+///
 ///
 /// ## Example Usage
 ///
@@ -38,8 +40,12 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///     region: "us",
 ///     agentAnomalyDetectionScopeId: "agent-anomaly-detection-scope",
 ///     displayName: "Basic AAD scope",
+///     autoEnroll: true,
 ///     logBuckets: [aad_log_bucket.id],
 ///     observabilityBuckets: [project.then(project => `projects/${project.projectId}/locations/us/buckets/_Trace/datasets/Spans`)],
+///     encryptionSpec: {
+///         kmsKeyName: "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+///     },
 /// });
 /// ```
 /// ```python
@@ -57,8 +63,12 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///     region="us",
 ///     agent_anomaly_detection_scope_id="agent-anomaly-detection-scope",
 ///     display_name="Basic AAD scope",
+///     auto_enroll=True,
 ///     log_buckets=[aad_log_bucket.id],
-///     observability_buckets=[f"projects/{project.project_id}/locations/us/buckets/_Trace/datasets/Spans"])
+///     observability_buckets=[f"projects/{project.project_id}/locations/us/buckets/_Trace/datasets/Spans"],
+///     encryption_spec={
+///         "kms_key_name": "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -84,6 +94,7 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///         Region = "us",
 ///         AgentAnomalyDetectionScopeId = "agent-anomaly-detection-scope",
 ///         DisplayName = "Basic AAD scope",
+///         AutoEnroll = true,
 ///         LogBuckets = new[]
 ///         {
 ///             aad_log_bucket.Id,
@@ -91,6 +102,10 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///         ObservabilityBuckets = new[]
 ///         {
 ///             $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us/buckets/_Trace/datasets/Spans",
+///         },
+///         EncryptionSpec = new Gcp.Vertex.Inputs.AiAgentAnomalyDetectionScopeEncryptionSpecArgs
+///         {
+///             KmsKeyName = "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
 ///         },
 ///     });
 ///
@@ -100,9 +115,9 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -126,11 +141,15 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// 			Region:                       pulumi.String("us"),
 /// 			AgentAnomalyDetectionScopeId: pulumi.String("agent-anomaly-detection-scope"),
 /// 			DisplayName:                  pulumi.String("Basic AAD scope"),
+/// 			AutoEnroll:                   pulumi.Bool(true),
 /// 			LogBuckets: pulumi.StringArray{
-/// 				aad_log_bucket.ID().ToIDOutput().ToStringOutput(),
+/// 				aad_log_bucket.ID(),
 /// 			},
 /// 			ObservabilityBuckets: pulumi.StringArray{
 /// 				pulumi.Sprintf("projects/%v/locations/us/buckets/_Trace/datasets/Spans", project.ProjectId),
+/// 			},
+/// 			EncryptionSpec: &vertex.AiAgentAnomalyDetectionScopeEncryptionSpecArgs{
+/// 				KmsKeyName: pulumi.String("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -141,7 +160,7 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -149,22 +168,32 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "aad-log-bucket" {
-///   project          = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_logging_project_bucket_config" "aad-log-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project          = data.gcp_organizations_project.project.project_id
 ///   location         = "us"
 ///   retention_days   = 30
 ///   bucket_id        = "aad-log-bucket"
 ///   enable_analytics = true
 /// }
-/// resource "gcp_vertex_aiagentanomalydetectionscope" "scope" {
+/// resource "gcp_vertex_ai_agent_anomaly_detection_scope" "scope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                           = "us"
 ///   agent_anomaly_detection_scope_id = "agent-anomaly-detection-scope"
 ///   display_name                     = "Basic AAD scope"
-///   log_buckets                      = [gcp_logging_projectbucketconfig.aad-log-bucket.id]
-///   observability_buckets            = ["projects/${data.gcp_organizations_getproject.project.project_id}/locations/us/buckets/_Trace/datasets/Spans"]
+///   auto_enroll                      = true
+///   log_buckets                      = [gcp_logging_project_bucket_config.aad-log-bucket.id]
+///   observability_buckets            = ["projects/${data.gcp_organizations_project.project.project_id}/locations/us/buckets/_Trace/datasets/Spans"]
+///   encryption_spec = {
+///     kms_key_name = "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key"
+///   }
 /// }
 /// ```
 /// ```java
@@ -179,6 +208,7 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 /// import com.pulumi.gcp.vertex.AiAgentAnomalyDetectionScope;
 /// import com.pulumi.gcp.vertex.AiAgentAnomalyDetectionScopeArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiAgentAnomalyDetectionScopeEncryptionSpecArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -207,8 +237,12 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///             .region("us")
 ///             .agentAnomalyDetectionScopeId("agent-anomaly-detection-scope")
 ///             .displayName("Basic AAD scope")
+///             .autoEnroll(true)
 ///             .logBuckets(aad_log_bucket.id())
 ///             .observabilityBuckets(String.format("projects/%s/locations/us/buckets/_Trace/datasets/Spans", project.projectId()))
+///             .encryptionSpec(AiAgentAnomalyDetectionScopeEncryptionSpecArgs.builder()
+///                 .kmsKeyName("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -230,10 +264,13 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///       region: us
 ///       agentAnomalyDetectionScopeId: agent-anomaly-detection-scope
 ///       displayName: Basic AAD scope
+///       autoEnroll: true
 ///       logBuckets:
 ///         - ${["aad-log-bucket"].id}
 ///       observabilityBuckets:
 ///         - projects/${project.projectId}/locations/us/buckets/_Trace/datasets/Spans
+///       encryptionSpec:
+///         kmsKeyName: projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key
 /// variables:
 ///   project:
 ///     fn::invoke:
@@ -265,6 +302,12 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
   /// final component of the scope's resource name. This value should be 1-63
   /// characters and valid characters are /[a-z][0-9]-/.
   late final pulumi.Output<String> agentAnomalyDetectionScopeId;
+  /// When true, newly discovered agents that share log and observability
+  /// buckets with this scope are automatically enrolled as ACTIVE monitored
+  /// agents, up to the project's monitored agent quota. When false, newly
+  /// discovered agents are added as DISABLED monitored agents and must be
+  /// enabled explicitly.
+  late final pulumi.Output<bool?> autoEnroll;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -274,6 +317,12 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// User provided display name of the AgentAnomalyDetectionScope.
   late final pulumi.Output<String?> displayName;
+  /// Customer-managed encryption key spec for the scope. If set, this scope
+  /// and all sub-resources are secured by this key. The key must be a Cloud
+  /// KMS key co-located with the scope location (for example, `us` for a `us`
+  /// scope, `europe` for an `eu` scope, or matching single region).
+  /// Structure is documented below.
+  late final pulumi.Output<AiAgentAnomalyDetectionScopeEncryptionSpec?> encryptionSpec;
   /// Customer owned Cloud Logging bucket resource names attached to this scope.
   /// Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
   late final pulumi.Output<List<String>> logBuckets;
@@ -304,11 +353,13 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
           'gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     agentAnomalyDetectionScopeId = registerOutput<String>('agentAnomalyDetectionScopeId');
+    autoEnroll = registerOutput<bool?>('autoEnroll');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    encryptionSpec = registerOutput<AiAgentAnomalyDetectionScopeEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiAgentAnomalyDetectionScopeEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logBuckets = registerOutput<List<String>>('logBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     observabilityBuckets = registerOutput<List<String>>('observabilityBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -342,8 +393,10 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     agentAnomalyDetectionScopeId = registerOutput<String>('agentAnomalyDetectionScopeId');
+    autoEnroll = registerOutput<bool?>('autoEnroll');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    encryptionSpec = registerOutput<AiAgentAnomalyDetectionScopeEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiAgentAnomalyDetectionScopeEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logBuckets = registerOutput<List<String>>('logBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     observabilityBuckets = registerOutput<List<String>>('observabilityBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -362,8 +415,10 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     agentAnomalyDetectionScopeId = registerOutput<String>('agentAnomalyDetectionScopeId');
+    autoEnroll = registerOutput<bool?>('autoEnroll');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    encryptionSpec = registerOutput<AiAgentAnomalyDetectionScopeEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiAgentAnomalyDetectionScopeEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logBuckets = registerOutput<List<String>>('logBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     observabilityBuckets = registerOutput<List<String>>('observabilityBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

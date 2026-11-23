@@ -15,6 +15,7 @@ import 'ai_feature_online_store_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Feature Online Store
@@ -91,7 +92,7 @@ import 'ai_feature_online_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +120,7 @@ import 'ai_feature_online_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,7 +128,10 @@ import 'ai_feature_online_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "feature_online_store" {
+/// resource "gcp_vertex_ai_feature_online_store" "feature_online_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_online_store"
 ///   labels = {
 ///     "foo" = "bar"
@@ -198,215 +202,6 @@ import 'ai_feature_online_store_state.dart';
 ///           cpuUtilizationTarget: 50
 /// ```
 ///
-/// ### Vertex Ai Featureonlinestore With Optimized
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const project = gcp.organizations.getProject({});
-/// const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
-///     name: "example_feature_online_store_optimized",
-///     labels: {
-///         foo: "bar",
-///     },
-///     region: "us-central1",
-///     optimized: {},
-///     dedicatedServingEndpoint: {
-///         privateServiceConnectConfig: {
-///             enablePrivateServiceConnect: true,
-///             projectAllowlists: [project.then(project => project.number)],
-///         },
-///     },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// project = gcp.organizations.get_project()
-/// featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
-///     name="example_feature_online_store_optimized",
-///     labels={
-///         "foo": "bar",
-///     },
-///     region="us-central1",
-///     optimized={},
-///     dedicated_serving_endpoint={
-///         "private_service_connect_config": {
-///             "enable_private_service_connect": True,
-///             "project_allowlists": [project.number],
-///         },
-///     })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var project = Gcp.Organizations.GetProject.Invoke();
-///
-///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
-///     {
-///         Name = "example_feature_online_store_optimized",
-///         Labels =
-///         {
-///             { "foo", "bar" },
-///         },
-///         Region = "us-central1",
-///         Optimized = new() { },
-///         DedicatedServingEndpoint = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs
-///         {
-///             PrivateServiceConnectConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs
-///             {
-///                 EnablePrivateServiceConnect = true,
-///                 ProjectAllowlists = new[]
-///                 {
-///                     project.Apply(getProjectResult => getProjectResult.Number),
-///                 },
-///             },
-///         },
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
-/// 			Name: pulumi.String("example_feature_online_store_optimized"),
-/// 			Labels: pulumi.StringMap{
-/// 				"foo": pulumi.String("bar"),
-/// 			},
-/// 			Region:    pulumi.String("us-central1"),
-/// 			Optimized: &vertex.AiFeatureOnlineStoreOptimizedArgs{},
-/// 			DedicatedServingEndpoint: &vertex.AiFeatureOnlineStoreDedicatedServingEndpointArgs{
-/// 				PrivateServiceConnectConfig: &vertex.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{
-/// 					EnablePrivateServiceConnect: pulumi.Bool(true),
-/// 					ProjectAllowlists: pulumi.StringArray{
-/// 						pulumi.String(project.Number),
-/// 					},
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// data "gcp_organizations_getproject" "project" {
-/// }
-///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
-///   name = "example_feature_online_store_optimized"
-///   labels = {
-///     "foo" = "bar"
-///   }
-///   region    = "us-central1"
-///   optimized = {}
-///   dedicated_serving_endpoint = {
-///     private_service_connect_config = {
-///       enable_private_service_connect = true
-///       project_allowlists             = [data.gcp_organizations_getproject.project.number]
-///     }
-///   }
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
-/// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
-/// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreOptimizedArgs;
-/// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs;
-/// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-///             .build());
-///
-///         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
-///             .name("example_feature_online_store_optimized")
-///             .labels(Map.of("foo", "bar"))
-///             .region("us-central1")
-///             .optimized(AiFeatureOnlineStoreOptimizedArgs.builder()
-///                 .build())
-///             .dedicatedServingEndpoint(AiFeatureOnlineStoreDedicatedServingEndpointArgs.builder()
-///                 .privateServiceConnectConfig(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs.builder()
-///                     .enablePrivateServiceConnect(true)
-///                     .projectAllowlists(project.number())
-///                     .build())
-///                 .build())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   featureonlinestore:
-///     type: gcp:vertex:AiFeatureOnlineStore
-///     properties:
-///       name: example_feature_online_store_optimized
-///       labels:
-///         foo: bar
-///       region: us-central1
-///       optimized: {}
-///       dedicatedServingEndpoint:
-///         privateServiceConnectConfig:
-///           enablePrivateServiceConnect: true
-///           projectAllowlists:
-///             - ${project.number}
-/// variables:
-///   project:
-///     fn::invoke:
-///       function: gcp:organizations:getProject
-///       arguments: {}
-/// ```
 ///
 /// ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 ///
@@ -499,8 +294,8 @@ import 'ai_feature_online_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -536,7 +331,7 @@ import 'ai_feature_online_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -544,10 +339,13 @@ import 'ai_feature_online_store_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_online_store_beta_bigtable"
 ///   labels = {
 ///     "foo" = "bar"
@@ -695,7 +493,10 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
+  /// (Optional, Deprecated)
   /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+  ///
+  /// &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
   late final pulumi.Output<Map<String, dynamic>?> optimized;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -722,7 +523,7 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>()); });

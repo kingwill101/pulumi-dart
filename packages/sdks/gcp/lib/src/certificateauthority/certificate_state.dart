@@ -66,6 +66,10 @@ class CertificateState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
+  /// The requested notBeforeTime of this Certificate. This field may only be set
+  /// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+  /// issuing CaPool.
+  final pulumi.Input<String?>? requestedNotBeforeTime;
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is
   /// considered revoked if and only if this field is present.
   /// Structure is documented below.
@@ -93,6 +97,7 @@ class CertificateState {
   /// [pool] The name of the CaPool this Certificate belongs to.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [requestedNotBeforeTime] The requested notBeforeTime of this Certificate. This field may only be set
   /// [revocationDetails] Output only. Details regarding the revocation of this Certificate. This Certificate is
   /// [updateTime] Output only. The time at which this CertificateAuthority was updated.
   const CertificateState({
@@ -114,6 +119,7 @@ class CertificateState {
     this.pool,
     this.project,
     this.pulumiLabels,
+    this.requestedNotBeforeTime,
     this.revocationDetails,
     this.updateTime,
   });
@@ -138,6 +144,7 @@ class CertificateState {
       'pool': ?pool,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
+      'requestedNotBeforeTime': ?requestedNotBeforeTime,
       'revocationDetails': ?pulumi.Input.mapOptionalInputValue<List<CertificateRevocationDetail>, List<Map<String, dynamic>>>(revocationDetails, (value) => pulumi.Input.encodeList<CertificateRevocationDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
     };
@@ -163,6 +170,7 @@ class CertificateState {
       pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      requestedNotBeforeTime: (() { final guardedValue = map['requestedNotBeforeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationDetails: (() { final guardedValue = map['revocationDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateRevocationDetail>(guardedValue, (value) => CertificateRevocationDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

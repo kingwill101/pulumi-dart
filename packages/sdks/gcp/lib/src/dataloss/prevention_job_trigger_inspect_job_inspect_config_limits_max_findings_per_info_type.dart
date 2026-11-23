@@ -30,7 +30,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(
       infoType: (() { final guardedValue = map['infoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxFindings: (() { final guardedValue = map['maxFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxFindings: (() { final guardedValue = map['maxFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

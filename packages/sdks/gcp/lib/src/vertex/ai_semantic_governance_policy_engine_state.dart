@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ai_semantic_governance_policy_engine_gateway_config.dart';
 
 /// Input properties used for looking up and filtering AiSemanticGovernancePolicyEngine resources.
 class AiSemanticGovernancePolicyEngineState {
@@ -14,6 +15,12 @@ class AiSemanticGovernancePolicyEngineState {
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String?>? deletionPolicy;
+  /// Configurations for gateways, keyed by a user-defined gateway name. At most
+  /// 5 gateway configurations are allowed. Each gateway name must be 1-63
+  /// characters, start with a lowercase letter, contain only lowercase letters,
+  /// numbers and hyphens, and not end with a hyphen.
+  /// Structure is documented below.
+  final pulumi.Input<List<AiSemanticGovernancePolicyEngineGatewayConfig>?>? gatewayConfigs;
   /// The IP address allocated for the SGPE's managed PSC endpoint.
   final pulumi.Input<String?>? ipAddress;
   /// The resource name of the SemanticGovernancePolicyEngine, in the form
@@ -42,6 +49,7 @@ class AiSemanticGovernancePolicyEngineState {
   /// Creates a new [AiSemanticGovernancePolicyEngineState].
   /// [createTime] The time the SemanticGovernancePolicyEngine was created, in RFC3339
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [gatewayConfigs] Configurations for gateways, keyed by a user-defined gateway name. At most
   /// [ipAddress] The IP address allocated for the SGPE's managed PSC endpoint.
   /// [name] The resource name of the SemanticGovernancePolicyEngine, in the form
   /// [project] The ID of the project in which the resource belongs.
@@ -53,6 +61,7 @@ class AiSemanticGovernancePolicyEngineState {
   const AiSemanticGovernancePolicyEngineState({
     this.createTime,
     this.deletionPolicy,
+    this.gatewayConfigs,
     this.ipAddress,
     this.name,
     this.project,
@@ -67,6 +76,7 @@ class AiSemanticGovernancePolicyEngineState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
+      'gatewayConfigs': ?pulumi.Input.mapOptionalInputValue<List<AiSemanticGovernancePolicyEngineGatewayConfig>, List<Map<String, dynamic>>>(gatewayConfigs, (value) => pulumi.Input.encodeList<AiSemanticGovernancePolicyEngineGatewayConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAddress': ?ipAddress,
       'name': ?name,
       'project': ?project,
@@ -82,6 +92,7 @@ class AiSemanticGovernancePolicyEngineState {
     return AiSemanticGovernancePolicyEngineState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gatewayConfigs: (() { final guardedValue = map['gatewayConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiSemanticGovernancePolicyEngineGatewayConfig>(guardedValue, (value) => AiSemanticGovernancePolicyEngineGatewayConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

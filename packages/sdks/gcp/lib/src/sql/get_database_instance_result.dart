@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_database_instance_blue_green_deployment.dart';
 import 'get_database_instance_clone.dart';
 import 'get_database_instance_dns_name.dart';
 import 'get_database_instance_ip_address.dart';
@@ -15,13 +16,16 @@ import 'get_database_instance_setting.dart';
 class GetDatabaseInstanceResult {
   final List<String>? availableMaintenanceVersions;
   final String? backupdrBackup;
+  final List<GetDatabaseInstanceBlueGreenDeployment>? blueGreenDeployments;
   final List<GetDatabaseInstanceClone>? clones;
   final String? connectionName;
+  final String? databaseCenterIntegration;
   final String? databaseVersion;
   final String? deletionPolicy;
   final bool? deletionProtection;
   final String? dnsName;
   final List<GetDatabaseInstanceDnsName>? dnsNames;
+  final bool? encryptionConfidentialMode;
   final String? encryptionKeyName;
   final bool? enforceNewSqlNetworkArchitecture;
   final String? finalBackupDescription;
@@ -57,13 +61,16 @@ class GetDatabaseInstanceResult {
   /// Creates a new [GetDatabaseInstanceResult].
   /// [availableMaintenanceVersions] Optional.
   /// [backupdrBackup] Optional.
+  /// [blueGreenDeployments] Optional.
   /// [clones] Optional.
   /// [connectionName] Optional.
+  /// [databaseCenterIntegration] Optional.
   /// [databaseVersion] Optional.
   /// [deletionPolicy] Optional.
   /// [deletionProtection] Optional.
   /// [dnsName] Optional.
   /// [dnsNames] Optional.
+  /// [encryptionConfidentialMode] Optional.
   /// [encryptionKeyName] Optional.
   /// [enforceNewSqlNetworkArchitecture] Optional.
   /// [finalBackupDescription] Optional.
@@ -97,13 +104,16 @@ class GetDatabaseInstanceResult {
   const GetDatabaseInstanceResult({
     this.availableMaintenanceVersions,
     this.backupdrBackup,
+    this.blueGreenDeployments,
     this.clones,
     this.connectionName,
+    this.databaseCenterIntegration,
     this.databaseVersion,
     this.deletionPolicy,
     this.deletionProtection,
     this.dnsName,
     this.dnsNames,
+    this.encryptionConfidentialMode,
     this.encryptionKeyName,
     this.enforceNewSqlNetworkArchitecture,
     this.finalBackupDescription,
@@ -140,13 +150,16 @@ class GetDatabaseInstanceResult {
     return <String, dynamic>{
       'availableMaintenanceVersions': ?availableMaintenanceVersions,
       'backupdrBackup': ?backupdrBackup,
+      'blueGreenDeployments': ?(() { final guardedValue = blueGreenDeployments; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatabaseInstanceBlueGreenDeployment, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'clones': ?(() { final guardedValue = clones; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatabaseInstanceClone, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'connectionName': ?connectionName,
+      'databaseCenterIntegration': ?databaseCenterIntegration,
       'databaseVersion': ?databaseVersion,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'dnsName': ?dnsName,
       'dnsNames': ?(() { final guardedValue = dnsNames; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatabaseInstanceDnsName, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'encryptionConfidentialMode': ?encryptionConfidentialMode,
       'encryptionKeyName': ?encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': ?enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': ?finalBackupDescription,
@@ -184,13 +197,16 @@ class GetDatabaseInstanceResult {
     return GetDatabaseInstanceResult(
       availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       backupdrBackup: (() { final guardedValue = map['backupdrBackup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      blueGreenDeployments: (() { final guardedValue = map['blueGreenDeployments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseInstanceBlueGreenDeployment>(guardedValue, (value) => GetDatabaseInstanceBlueGreenDeployment.fromMap((value as Map).cast<String, dynamic>())); })(),
       clones: (() { final guardedValue = map['clones']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseInstanceClone>(guardedValue, (value) => GetDatabaseInstanceClone.fromMap((value as Map).cast<String, dynamic>())); })(),
       connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      databaseCenterIntegration: (() { final guardedValue = map['databaseCenterIntegration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       databaseVersion: (() { final guardedValue = map['databaseVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dnsNames: (() { final guardedValue = map['dnsNames']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseInstanceDnsName>(guardedValue, (value) => GetDatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); })(),
+      encryptionConfidentialMode: (() { final guardedValue = map['encryptionConfidentialMode']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       encryptionKeyName: (() { final guardedValue = map['encryptionKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enforceNewSqlNetworkArchitecture: (() { final guardedValue = map['enforceNewSqlNetworkArchitecture']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       finalBackupDescription: (() { final guardedValue = map['finalBackupDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -202,7 +218,7 @@ class GetDatabaseInstanceResult {
       maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       masterInstanceName: (() { final guardedValue = map['masterInstanceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       pointInTimeRestoreContexts: (() { final guardedValue = map['pointInTimeRestoreContexts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(guardedValue, (value) => GetDatabaseInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>())); })(),
       privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),

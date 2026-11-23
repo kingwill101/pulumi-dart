@@ -3,8 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_template_template_container.dart';
 import 'job_template_template_node_selector.dart';
+import 'job_template_template_sandboxes.dart';
 import 'job_template_template_volume.dart';
 import 'job_template_template_vpc_access.dart';
+import 'job_template_template_workload_identity_config.dart';
 
 class JobTemplateTemplate {
   /// Holds the single container that defines the unit of execution for this task.
@@ -22,6 +24,9 @@ class JobTemplateTemplate {
   /// Node Selector describes the hardware requirements of the resources.
   /// Structure is documented below.
   final pulumi.Input<JobTemplateTemplateNodeSelector?>? nodeSelector;
+  /// Configuration for sandboxes.
+  /// Structure is documented below.
+  final pulumi.Input<JobTemplateTemplateSandboxes?>? sandboxes;
   /// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
   final pulumi.Input<String?>? serviceAccount;
   /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -33,6 +38,11 @@ class JobTemplateTemplate {
   /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
   /// Structure is documented below.
   final pulumi.Input<JobTemplateTemplateVpcAccess?>? vpcAccess;
+  /// (Optional, Beta)
+  /// The Task's workload identity settings. Used to assign an
+  /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+  /// Structure is documented below.
+  final pulumi.Input<JobTemplateTemplateWorkloadIdentityConfig?>? workloadIdentityConfig;
 
   /// Creates a new [JobTemplateTemplate].
   /// [containers] Holds the single container that defines the unit of execution for this task.
@@ -41,10 +51,12 @@ class JobTemplateTemplate {
   /// [gpuZonalRedundancyDisabled] True if GPU zonal redundancy is disabled on this execution.
   /// [maxRetries] Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
   /// [nodeSelector] Node Selector describes the hardware requirements of the resources.
+  /// [sandboxes] Configuration for sandboxes.
   /// [serviceAccount] Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
   /// [timeout] Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccess] VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  /// [workloadIdentityConfig] (Optional, Beta)
   const JobTemplateTemplate({
     this.containers,
     this.encryptionKey,
@@ -52,10 +64,12 @@ class JobTemplateTemplate {
     this.gpuZonalRedundancyDisabled,
     this.maxRetries,
     this.nodeSelector,
+    this.sandboxes,
     this.serviceAccount,
     this.timeout,
     this.volumes,
     this.vpcAccess,
+    this.workloadIdentityConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -66,10 +80,12 @@ class JobTemplateTemplate {
       'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
       'maxRetries': ?maxRetries,
       'nodeSelector': ?pulumi.Input.mapOptionalInputValue<JobTemplateTemplateNodeSelector, Map<String, dynamic>>(nodeSelector, (value) => value.toMap()),
+      'sandboxes': ?pulumi.Input.mapOptionalInputValue<JobTemplateTemplateSandboxes, Map<String, dynamic>>(sandboxes, (value) => value.toMap()),
       'serviceAccount': ?serviceAccount,
       'timeout': ?timeout,
       'volumes': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<JobTemplateTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcAccess': ?pulumi.Input.mapOptionalInputValue<JobTemplateTemplateVpcAccess, Map<String, dynamic>>(vpcAccess, (value) => value.toMap()),
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<JobTemplateTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
     };
   }
 
@@ -79,12 +95,14 @@ class JobTemplateTemplate {
       encryptionKey: (() { final guardedValue = map['encryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionEnvironment: (() { final guardedValue = map['executionEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gpuZonalRedundancyDisabled: (() { final guardedValue = map['gpuZonalRedundancyDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeSelector: (() { final guardedValue = map['nodeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateTemplateNodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sandboxes: (() { final guardedValue = map['sandboxes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateTemplateSandboxes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobTemplateTemplateVolume>(guardedValue, (value) => JobTemplateTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpcAccess: (() { final guardedValue = map['vpcAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateTemplateVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

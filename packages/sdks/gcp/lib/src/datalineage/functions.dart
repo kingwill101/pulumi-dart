@@ -45,7 +45,7 @@ import 'get_config_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datalineage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datalineage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -63,7 +63,7 @@ import 'get_config_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -71,7 +71,7 @@ import 'get_config_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_datalineage_getconfig" "default" {
+/// data "gcp_datalineage_config" "default" {
 ///   parent   = "projects/my-project-name"
 ///   location = "global"
 /// }

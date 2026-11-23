@@ -7,8 +7,6 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
   /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
   /// Possible values are: `default`, `private`.
-  ///
-  /// &lt;a name="nestedDns64Config"&gt;&lt;/a&gt;The `dns64Config` block supports:
   final pulumi.Input<String?>? forwardingPath;
   /// IPv4 address to forward to.
   final pulumi.Input<String> ipv4Address;

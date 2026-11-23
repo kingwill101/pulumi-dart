@@ -101,22 +101,22 @@ class GetBucketLifecycleRuleCondition {
 
   factory GetBucketLifecycleRuleCondition.fromMap(Map<String, dynamic> map) {
     return GetBucketLifecycleRuleCondition(
-      age: pulumi.Input.fromValue((map['age'] as num).toInt()),
+      age: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['age'])),
       createdBefore: pulumi.Input.fromValue(map['createdBefore'] as String),
       customTimeBefore: pulumi.Input.fromValue(map['customTimeBefore'] as String),
-      daysSinceCustomTime: pulumi.Input.fromValue((map['daysSinceCustomTime'] as num).toInt()),
-      daysSinceNoncurrentTime: pulumi.Input.fromValue((map['daysSinceNoncurrentTime'] as num).toInt()),
+      daysSinceCustomTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysSinceCustomTime'])),
+      daysSinceNoncurrentTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysSinceNoncurrentTime'])),
       matchesPrefixes: pulumi.Input.fromValue((map['matchesPrefixes'] as List).cast<String>()),
       matchesStorageClasses: pulumi.Input.fromValue((map['matchesStorageClasses'] as List).cast<String>()),
       matchesSuffixes: pulumi.Input.fromValue((map['matchesSuffixes'] as List).cast<String>()),
       noncurrentTimeBefore: pulumi.Input.fromValue(map['noncurrentTimeBefore'] as String),
-      numNewerVersions: pulumi.Input.fromValue((map['numNewerVersions'] as num).toInt()),
+      numNewerVersions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numNewerVersions'])),
       sendAgeIfZero: pulumi.Input.fromValue(map['sendAgeIfZero'] as bool),
       sendDaysSinceCustomTimeIfZero: pulumi.Input.fromValue(map['sendDaysSinceCustomTimeIfZero'] as bool),
       sendDaysSinceNoncurrentTimeIfZero: pulumi.Input.fromValue(map['sendDaysSinceNoncurrentTimeIfZero'] as bool),
       sendNumNewerVersionsIfZero: pulumi.Input.fromValue(map['sendNumNewerVersionsIfZero'] as bool),
-      sizeAboveBytes: pulumi.Input.fromValue((map['sizeAboveBytes'] as num).toInt()),
-      sizeBelowBytes: pulumi.Input.fromValue((map['sizeBelowBytes'] as num).toInt()),
+      sizeAboveBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeAboveBytes'])),
+      sizeBelowBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeBelowBytes'])),
       withState: pulumi.Input.fromValue(map['withState'] as String),
     );
   }

@@ -10,6 +10,8 @@ import 'project_notification_config_streaming_config.dart';
 class ProjectNotificationConfigArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> configId;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  final pulumi.Input<bool?>? deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -31,6 +33,7 @@ class ProjectNotificationConfigArgs {
 
   /// Creates a new [ProjectNotificationConfigArgs].
   /// [configId] This must be unique within the organization.
+  /// [deletionNotificationsEnabled] Indicates whether the notifications will be sent for deleted findings.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the notification config (max of 1024 characters).
   /// [project] The ID of the project in which the resource belongs.
@@ -38,6 +41,7 @@ class ProjectNotificationConfigArgs {
   /// [streamingConfig] The config for triggering streaming-based notifications.
   const ProjectNotificationConfigArgs({
     required this.configId,
+    this.deletionNotificationsEnabled,
     this.deletionPolicy,
     this.description,
     this.project,
@@ -48,6 +52,7 @@ class ProjectNotificationConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configId': configId,
+      'deletionNotificationsEnabled': ?deletionNotificationsEnabled,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'project': ?project,
@@ -59,6 +64,7 @@ class ProjectNotificationConfigArgs {
   factory ProjectNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProjectNotificationConfigArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
+      deletionNotificationsEnabled: (() { final guardedValue = map['deletionNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

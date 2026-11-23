@@ -52,6 +52,10 @@ class GetTriggerBuildOption {
   ///
   /// This field is experimental.
   final pulumi.Input<String> workerPool;
+  /// Option to specify which release or release channel to use to run this build.
+  /// Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+  /// release version such as 'legacy'.
+  final pulumi.Input<String> workerRelease;
 
   /// Creates a new [GetTriggerBuildOption].
   /// [diskSizeGb] Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
@@ -66,6 +70,7 @@ class GetTriggerBuildOption {
   /// [substitutionOption] Option to specify behavior when there is an error in the substitution checks.
   /// [volumes] Global list of volumes to mount for ALL build steps
   /// [workerPool] Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+  /// [workerRelease] Option to specify which release or release channel to use to run this build.
   const GetTriggerBuildOption({
     required this.diskSizeGb,
     required this.dynamicSubstitutions,
@@ -79,6 +84,7 @@ class GetTriggerBuildOption {
     required this.substitutionOption,
     required this.volumes,
     required this.workerPool,
+    required this.workerRelease,
   });
 
   Map<String, dynamic> toMap() {
@@ -95,12 +101,13 @@ class GetTriggerBuildOption {
       'substitutionOption': substitutionOption,
       'volumes': pulumi.Input.mapInputValue<List<GetTriggerBuildOptionVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<GetTriggerBuildOptionVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workerPool': workerPool,
+      'workerRelease': workerRelease,
     };
   }
 
   factory GetTriggerBuildOption.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuildOption(
-      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       dynamicSubstitutions: pulumi.Input.fromValue(map['dynamicSubstitutions'] as bool),
       envs: pulumi.Input.fromValue((map['envs'] as List).cast<String>()),
       logStreamingOption: pulumi.Input.fromValue(map['logStreamingOption'] as String),
@@ -112,6 +119,7 @@ class GetTriggerBuildOption {
       substitutionOption: pulumi.Input.fromValue(map['substitutionOption'] as String),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetTriggerBuildOptionVolume>(map['volumes']!, (value) => GetTriggerBuildOptionVolume.fromMap((value as Map).cast<String, dynamic>()))),
       workerPool: pulumi.Input.fromValue(map['workerPool'] as String),
+      workerRelease: pulumi.Input.fromValue(map['workerRelease'] as String),
     );
   }
 }

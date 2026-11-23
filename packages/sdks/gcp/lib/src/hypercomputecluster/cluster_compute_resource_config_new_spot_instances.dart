@@ -7,6 +7,10 @@ class ClusterComputeResourceConfigNewSpotInstances {
   /// type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
   /// `n2-standard-2`.
   final pulumi.Input<String> machineType;
+  /// (Optional, Beta)
+  /// A list of network tags to attach to the VM instances.
+  /// A maximum of 64 network tags are allowed.
+  final pulumi.Input<List<String>?>? networkTags;
   /// Specifies the termination action of the instance
   /// Possible values:
   /// STOP
@@ -19,10 +23,12 @@ class ClusterComputeResourceConfigNewSpotInstances {
 
   /// Creates a new [ClusterComputeResourceConfigNewSpotInstances].
   /// [machineType] Name of the Compute Engine [machine
+  /// [networkTags] (Optional, Beta)
   /// [terminationAction] Specifies the termination action of the instance
   /// [zone] Name of the zone in which VM instances should run, e.g., `us-central1-a`.
   const ClusterComputeResourceConfigNewSpotInstances({
     required this.machineType,
+    this.networkTags,
     this.terminationAction,
     required this.zone,
   });
@@ -30,6 +36,7 @@ class ClusterComputeResourceConfigNewSpotInstances {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'machineType': machineType,
+      'networkTags': ?networkTags,
       'terminationAction': ?terminationAction,
       'zone': zone,
     };
@@ -38,6 +45,7 @@ class ClusterComputeResourceConfigNewSpotInstances {
   factory ClusterComputeResourceConfigNewSpotInstances.fromMap(Map<String, dynamic> map) {
     return ClusterComputeResourceConfigNewSpotInstances(
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
+      networkTags: (() { final guardedValue = map['networkTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       terminationAction: (() { final guardedValue = map['terminationAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

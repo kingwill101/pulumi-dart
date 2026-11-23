@@ -9,6 +9,7 @@ import 'template_template_metadata.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Modelarmor Template Basic
@@ -58,7 +59,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +79,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,6 +88,9 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   template_id       = "modelarmor1"
 ///   filter_config     = {}
@@ -139,6 +143,7 @@ import 'template_template_metadata.dart';
 ///       templateMetadata: {}
 /// ```
 ///
+///
 /// ### Modelarmor Template Filter Config
 ///
 ///
@@ -168,6 +173,37 @@ import 'template_template_metadata.dart';
 ///         },
 ///         maliciousUriFilterSettings: {
 ///             filterEnforcement: "ENABLED",
+///         },
+///         filterRuleSettings: {
+///             ruleSets: [{
+///                 filterTypes: [
+///                     "PROMPT_INJECTION_AND_JAILBREAK",
+///                     "RESPONSIBLE_AI",
+///                 ],
+///                 rules: [
+///                     {
+///                         exclusionRule: {
+///                             matchingScope: "MATCHING_SCOPE_PARTIAL_MATCH",
+///                             dictionary: {
+///                                 wordList: {
+///                                     words: [
+///                                         "allowphrase1",
+///                                         "allowphrase2",
+///                                     ],
+///                                 },
+///                             },
+///                         },
+///                     },
+///                     {
+///                         exclusionRule: {
+///                             matchingScope: "MATCHING_SCOPE_FULL_MATCH",
+///                             regex: {
+///                                 pattern: "^safe_pattern_[0-9]+$",
+///                             },
+///                         },
+///                     },
+///                 ],
+///             }],
 ///         },
 ///     },
 ///     templateMetadata: {
@@ -202,6 +238,37 @@ import 'template_template_metadata.dart';
 ///         },
 ///         "malicious_uri_filter_settings": {
 ///             "filter_enforcement": "ENABLED",
+///         },
+///         "filter_rule_settings": {
+///             "rule_sets": [{
+///                 "filter_types": [
+///                     "PROMPT_INJECTION_AND_JAILBREAK",
+///                     "RESPONSIBLE_AI",
+///                 ],
+///                 "rules": [
+///                     {
+///                         "exclusion_rule": {
+///                             "matching_scope": "MATCHING_SCOPE_PARTIAL_MATCH",
+///                             "dictionary": {
+///                                 "word_list": {
+///                                     "words": [
+///                                         "allowphrase1",
+///                                         "allowphrase2",
+///                                     ],
+///                                 },
+///                             },
+///                         },
+///                     },
+///                     {
+///                         "exclusion_rule": {
+///                             "matching_scope": "MATCHING_SCOPE_FULL_MATCH",
+///                             "regex": {
+///                                 "pattern": "^safe_pattern_[0-9]+$",
+///                             },
+///                         },
+///                     },
+///                 ],
+///             }],
 ///         },
 ///     },
 ///     template_metadata={
@@ -251,6 +318,52 @@ import 'template_template_metadata.dart';
 ///             {
 ///                 FilterEnforcement = "ENABLED",
 ///             },
+///             FilterRuleSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsArgs
+///             {
+///                 RuleSets = new[]
+///                 {
+///                     new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetArgs
+///                     {
+///                         FilterTypes = new[]
+///                         {
+///                             "PROMPT_INJECTION_AND_JAILBREAK",
+///                             "RESPONSIBLE_AI",
+///                         },
+///                         Rules = new[]
+///                         {
+///                             new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs
+///                             {
+///                                 ExclusionRule = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs
+///                                 {
+///                                     MatchingScope = "MATCHING_SCOPE_PARTIAL_MATCH",
+///                                     Dictionary = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs
+///                                     {
+///                                         WordList = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs
+///                                         {
+///                                             Words = new[]
+///                                             {
+///                                                 "allowphrase1",
+///                                                 "allowphrase2",
+///                                             },
+///                                         },
+///                                     },
+///                                 },
+///                             },
+///                             new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs
+///                             {
+///                                 ExclusionRule = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs
+///                                 {
+///                                     MatchingScope = "MATCHING_SCOPE_FULL_MATCH",
+///                                     Regex = new Gcp.ModelArmor.Inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs
+///                                     {
+///                                         Pattern = "^safe_pattern_[0-9]+$",
+///                                     },
+///                                 },
+///                             },
+///                         },
+///                     },
+///                 },
+///             },
 ///         },
 ///         TemplateMetadata = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataArgs
 ///         {
@@ -267,7 +380,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -297,6 +410,39 @@ import 'template_template_metadata.dart';
 /// 				MaliciousUriFilterSettings: &modelarmor.TemplateFilterConfigMaliciousUriFilterSettingsArgs{
 /// 					FilterEnforcement: pulumi.String("ENABLED"),
 /// 				},
+/// 				FilterRuleSettings: &modelarmor.TemplateFilterConfigFilterRuleSettingsArgs{
+/// 					RuleSets: modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetArray{
+/// 						&modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetArgs{
+/// 							FilterTypes: pulumi.StringArray{
+/// 								pulumi.String("PROMPT_INJECTION_AND_JAILBREAK"),
+/// 								pulumi.String("RESPONSIBLE_AI"),
+/// 							},
+/// 							Rules: modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArray{
+/// 								&modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{
+/// 									ExclusionRule: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{
+/// 										MatchingScope: pulumi.String("MATCHING_SCOPE_PARTIAL_MATCH"),
+/// 										Dictionary: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs{
+/// 											WordList: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs{
+/// 												Words: pulumi.StringArray{
+/// 													pulumi.String("allowphrase1"),
+/// 													pulumi.String("allowphrase2"),
+/// 												},
+/// 											},
+/// 										},
+/// 									},
+/// 								},
+/// 								&modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs{
+/// 									ExclusionRule: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs{
+/// 										MatchingScope: pulumi.String("MATCHING_SCOPE_FULL_MATCH"),
+/// 										Regex: &modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs{
+/// 											Pattern: pulumi.String("^safe_pattern_[0-9]+$"),
+/// 										},
+/// 									},
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 				},
 /// 			},
 /// 			TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
 /// 				MultiLanguageDetection: &modelarmor.TemplateTemplateMetadataMultiLanguageDetectionArgs{
@@ -312,7 +458,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -321,13 +467,16 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-filter-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor2"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "HATE_SPEECH"
-///         "confidenceLevel" = "HIGH"
+///         filter_type      = "HATE_SPEECH"
+///         confidence_level = "HIGH"
 ///       }]
 ///     }
 ///     sdp_settings = {
@@ -341,6 +490,28 @@ import 'template_template_metadata.dart';
 ///     }
 ///     malicious_uri_filter_settings = {
 ///       filter_enforcement = "ENABLED"
+///     }
+///     filter_rule_settings = {
+///       rule_sets = [{
+///         filter_types = ["PROMPT_INJECTION_AND_JAILBREAK", "RESPONSIBLE_AI"]
+///         rules = [{
+///           exclusion_rule = {
+///             matching_scope = "MATCHING_SCOPE_PARTIAL_MATCH"
+///             dictionary = {
+///               word_list = {
+///                 words = ["allowphrase1", "allowphrase2"]
+///               }
+///             }
+///           }
+///           }, {
+///           exclusion_rule = {
+///             matching_scope = "MATCHING_SCOPE_FULL_MATCH"
+///             regex = {
+///               pattern = "^safe_pattern_[0-9]+$"
+///             }
+///           }
+///         }]
+///       }]
 ///     }
 ///   }
 ///   template_metadata = {
@@ -365,6 +536,13 @@ import 'template_template_metadata.dart';
 /// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsBasicConfigArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigMaliciousUriFilterSettingsArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
 /// import java.util.ArrayList;
@@ -402,6 +580,34 @@ import 'template_template_metadata.dart';
 ///                 .maliciousUriFilterSettings(TemplateFilterConfigMaliciousUriFilterSettingsArgs.builder()
 ///                     .filterEnforcement("ENABLED")
 ///                     .build())
+///                 .filterRuleSettings(TemplateFilterConfigFilterRuleSettingsArgs.builder()
+///                     .ruleSets(TemplateFilterConfigFilterRuleSettingsRuleSetArgs.builder()
+///                         .filterTypes(
+///                             "PROMPT_INJECTION_AND_JAILBREAK",
+///                             "RESPONSIBLE_AI")
+///                         .rules(
+///                             TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs.builder()
+///                                 .exclusionRule(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs.builder()
+///                                     .matchingScope("MATCHING_SCOPE_PARTIAL_MATCH")
+///                                     .dictionary(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs.builder()
+///                                         .wordList(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs.builder()
+///                                             .words(
+///                                                 "allowphrase1",
+///                                                 "allowphrase2")
+///                                             .build())
+///                                         .build())
+///                                     .build())
+///                                 .build(),
+///                             TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs.builder()
+///                                 .exclusionRule(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs.builder()
+///                                     .matchingScope("MATCHING_SCOPE_FULL_MATCH")
+///                                     .regex(TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs.builder()
+///                                         .pattern("^safe_pattern_[0-9]+$")
+///                                         .build())
+///                                     .build())
+///                                 .build())
+///                         .build())
+///                     .build())
 ///                 .build())
 ///             .templateMetadata(TemplateTemplateMetadataArgs.builder()
 ///                 .multiLanguageDetection(TemplateTemplateMetadataMultiLanguageDetectionArgs.builder()
@@ -433,10 +639,28 @@ import 'template_template_metadata.dart';
 ///           confidenceLevel: MEDIUM_AND_ABOVE
 ///         maliciousUriFilterSettings:
 ///           filterEnforcement: ENABLED
+///         filterRuleSettings:
+///           ruleSets:
+///             - filterTypes:
+///                 - PROMPT_INJECTION_AND_JAILBREAK
+///                 - RESPONSIBLE_AI
+///               rules:
+///                 - exclusionRule:
+///                     matchingScope: MATCHING_SCOPE_PARTIAL_MATCH
+///                     dictionary:
+///                       wordList:
+///                         words:
+///                           - allowphrase1
+///                           - allowphrase2
+///                 - exclusionRule:
+///                     matchingScope: MATCHING_SCOPE_FULL_MATCH
+///                     regex:
+///                       pattern: ^safe_pattern_[0-9]+$
 ///       templateMetadata:
 ///         multiLanguageDetection:
 ///           enableMultiLanguageDetection: false
 /// ```
+///
 ///
 /// ### Modelarmor Template Template Metadata
 ///
@@ -447,7 +671,7 @@ import 'template_template_metadata.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const template_template_metadata = new gcp.modelarmor.Template("template-template-metadata", {
-///     location: "us-central1",
+///     location: "us",
 ///     templateId: "modelarmor3",
 ///     filterConfig: {
 ///         raiSettings: {
@@ -469,9 +693,14 @@ import 'template_template_metadata.dart';
 ///         customPromptSafetyErrorMessage: "This is a custom error message for prompt",
 ///         customLlmResponseSafetyErrorCode: 401,
 ///         enforcementType: "INSPECT_ONLY",
+///         modalities: [
+///             "MODALITY_TEXT",
+///             "MODALITY_IMAGE",
+///         ],
 ///         filterVersionSelector: {
 ///             alias: "FILTER_VERSION_ALIAS_LATEST",
 ///         },
+///         dataResidencyCompliant: true,
 ///     },
 /// });
 /// ```
@@ -480,7 +709,7 @@ import 'template_template_metadata.dart';
 /// import pulumi_gcp as gcp
 ///
 /// template_template_metadata = gcp.modelarmor.Template("template-template-metadata",
-///     location="us-central1",
+///     location="us",
 ///     template_id="modelarmor3",
 ///     filter_config={
 ///         "rai_settings": {
@@ -502,9 +731,14 @@ import 'template_template_metadata.dart';
 ///         "custom_prompt_safety_error_message": "This is a custom error message for prompt",
 ///         "custom_llm_response_safety_error_code": 401,
 ///         "enforcement_type": "INSPECT_ONLY",
+///         "modalities": [
+///             "MODALITY_TEXT",
+///             "MODALITY_IMAGE",
+///         ],
 ///         "filter_version_selector": {
 ///             "alias": "FILTER_VERSION_ALIAS_LATEST",
 ///         },
+///         "data_residency_compliant": True,
 ///     })
 /// ```
 /// ```csharp
@@ -517,7 +751,7 @@ import 'template_template_metadata.dart';
 /// {
 ///     var template_template_metadata = new Gcp.ModelArmor.Template("template-template-metadata", new()
 ///     {
-///         Location = "us-central1",
+///         Location = "us",
 ///         TemplateId = "modelarmor3",
 ///         FilterConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigArgs
 ///         {
@@ -547,10 +781,16 @@ import 'template_template_metadata.dart';
 ///             CustomPromptSafetyErrorMessage = "This is a custom error message for prompt",
 ///             CustomLlmResponseSafetyErrorCode = 401,
 ///             EnforcementType = "INSPECT_ONLY",
+///             Modalities = new[]
+///             {
+///                 "MODALITY_TEXT",
+///                 "MODALITY_IMAGE",
+///             },
 ///             FilterVersionSelector = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs
 ///             {
 ///                 Alias = "FILTER_VERSION_ALIAS_LATEST",
 ///             },
+///             DataResidencyCompliant = true,
 ///         },
 ///     });
 ///
@@ -560,14 +800,14 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := modelarmor.NewTemplate(ctx, "template-template-metadata", &modelarmor.TemplateArgs{
-/// 			Location:   pulumi.String("us-central1"),
+/// 			Location:   pulumi.String("us"),
 /// 			TemplateId: pulumi.String("modelarmor3"),
 /// 			FilterConfig: &modelarmor.TemplateFilterConfigArgs{
 /// 				RaiSettings: &modelarmor.TemplateFilterConfigRaiSettingsArgs{
@@ -591,9 +831,14 @@ import 'template_template_metadata.dart';
 /// 				CustomPromptSafetyErrorMessage:   pulumi.String("This is a custom error message for prompt"),
 /// 				CustomLlmResponseSafetyErrorCode: pulumi.Int(401),
 /// 				EnforcementType:                  pulumi.String("INSPECT_ONLY"),
+/// 				Modalities: pulumi.StringArray{
+/// 					pulumi.String("MODALITY_TEXT"),
+/// 					pulumi.String("MODALITY_IMAGE"),
+/// 				},
 /// 				FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
 /// 					Alias: pulumi.String("FILTER_VERSION_ALIAS_LATEST"),
 /// 				},
+/// 				DataResidencyCompliant: pulumi.Bool(true),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -604,7 +849,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -613,13 +858,16 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-template-metadata" {
-///   location    = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location    = "us"
 ///   template_id = "modelarmor3"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "HARASSMENT"
-///         "confidenceLevel" = "MEDIUM_AND_ABOVE"
+///         filter_type      = "HARASSMENT"
+///         confidence_level = "MEDIUM_AND_ABOVE"
 ///       }]
 ///     }
 ///   }
@@ -635,9 +883,11 @@ import 'template_template_metadata.dart';
 ///     custom_prompt_safety_error_message    = "This is a custom error message for prompt"
 ///     custom_llm_response_safety_error_code = 401
 ///     enforcement_type                      = "INSPECT_ONLY"
+///     modalities                            = ["MODALITY_TEXT", "MODALITY_IMAGE"]
 ///     filter_version_selector = {
 ///       alias = "FILTER_VERSION_ALIAS_LATEST"
 ///     }
+///     data_residency_compliant = true
 ///   }
 /// }
 /// ```
@@ -669,7 +919,7 @@ import 'template_template_metadata.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var template_template_metadata = new Template("template-template-metadata", TemplateArgs.builder()
-///             .location("us-central1")
+///             .location("us")
 ///             .templateId("modelarmor3")
 ///             .filterConfig(TemplateFilterConfigArgs.builder()
 ///                 .raiSettings(TemplateFilterConfigRaiSettingsArgs.builder()
@@ -691,9 +941,13 @@ import 'template_template_metadata.dart';
 ///                 .customPromptSafetyErrorMessage("This is a custom error message for prompt")
 ///                 .customLlmResponseSafetyErrorCode(401)
 ///                 .enforcementType("INSPECT_ONLY")
+///                 .modalities(
+///                     "MODALITY_TEXT",
+///                     "MODALITY_IMAGE")
 ///                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
 ///                     .alias("FILTER_VERSION_ALIAS_LATEST")
 ///                     .build())
+///                 .dataResidencyCompliant(true)
 ///                 .build())
 ///             .build());
 ///
@@ -705,7 +959,7 @@ import 'template_template_metadata.dart';
 ///   template-template-metadata:
 ///     type: gcp:modelarmor:Template
 ///     properties:
-///       location: us-central1
+///       location: us
 ///       templateId: modelarmor3
 ///       filterConfig:
 ///         raiSettings:
@@ -723,9 +977,14 @@ import 'template_template_metadata.dart';
 ///         customPromptSafetyErrorMessage: This is a custom error message for prompt
 ///         customLlmResponseSafetyErrorCode: 401
 ///         enforcementType: INSPECT_ONLY
+///         modalities:
+///           - MODALITY_TEXT
+///           - MODALITY_IMAGE
 ///         filterVersionSelector:
 ///           alias: FILTER_VERSION_ALIAS_LATEST
+///         dataResidencyCompliant: true
 /// ```
+///
 ///
 /// ### Modelarmor Template Filter Version Selector
 ///
@@ -748,7 +1007,7 @@ import 'template_template_metadata.dart';
 ///     },
 ///     templateMetadata: {
 ///         filterVersionSelector: {
-///             version: "v1",
+///             version: "v3",
 ///         },
 ///     },
 /// });
@@ -770,7 +1029,7 @@ import 'template_template_metadata.dart';
 ///     },
 ///     template_metadata={
 ///         "filter_version_selector": {
-///             "version": "v1",
+///             "version": "v3",
 ///         },
 ///     })
 /// ```
@@ -804,7 +1063,7 @@ import 'template_template_metadata.dart';
 ///         {
 ///             FilterVersionSelector = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs
 ///             {
-///                 Version = "v1",
+///                 Version = "v3",
 ///             },
 ///         },
 ///     });
@@ -815,7 +1074,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -836,7 +1095,7 @@ import 'template_template_metadata.dart';
 /// 			},
 /// 			TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
 /// 				FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
-/// 					Version: pulumi.String("v1"),
+/// 					Version: pulumi.String("v3"),
 /// 				},
 /// 			},
 /// 		})
@@ -848,7 +1107,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -857,19 +1116,22 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-filter-version-selector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor5"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "HATE_SPEECH"
-///         "confidenceLevel" = "HIGH"
+///         filter_type      = "HATE_SPEECH"
+///         confidence_level = "HIGH"
 ///       }]
 ///     }
 ///   }
 ///   template_metadata = {
 ///     filter_version_selector = {
-///       version = "v1"
+///       version = "v3"
 ///     }
 ///   }
 /// }
@@ -913,7 +1175,7 @@ import 'template_template_metadata.dart';
 ///                 .build())
 ///             .templateMetadata(TemplateTemplateMetadataArgs.builder()
 ///                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
-///                     .version("v1")
+///                     .version("v3")
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -935,8 +1197,9 @@ import 'template_template_metadata.dart';
 ///               confidenceLevel: HIGH
 ///       templateMetadata:
 ///         filterVersionSelector:
-///           version: v1
+///           version: v3
 /// ```
+///
 ///
 /// ### Modelarmor Template Label
 ///
@@ -1056,7 +1319,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1098,7 +1361,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1107,6 +1370,9 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-label-advanced-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor4"
 ///   labels = {
@@ -1115,8 +1381,8 @@ import 'template_template_metadata.dart';
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "DANGEROUS"
-///         "confidenceLevel" = "MEDIUM_AND_ABOVE"
+///         filter_type      = "DANGEROUS"
+///         confidence_level = "MEDIUM_AND_ABOVE"
 ///       }]
 ///     }
 ///     sdp_settings = {
@@ -1280,7 +1546,7 @@ class Template extends pulumi.CustomResource {
           'gcp:modelarmor/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -31,7 +31,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
   factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }

@@ -26,6 +26,7 @@ import 'volume_tiering_policy.dart';
 /// * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
 /// * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Netapp Volume Basic
@@ -118,8 +119,8 @@ import 'volume_tiering_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -160,7 +161,7 @@ import 'volume_tiering_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -168,23 +169,29 @@ import 'volume_tiering_policy.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name = "test-network"
 /// }
 ///
-/// resource "gcp_netapp_storagepool" "default" {
+/// resource "gcp_netapp_storage_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-pool"
 ///   location      = "us-west2"
 ///   service_level = "PREMIUM"
 ///   capacity_gib  = "2048"
-///   network       = data.gcp_compute_getnetwork.default.id
+///   network       = data.gcp_compute_network.default.id
 /// }
 /// resource "gcp_netapp_volume" "test_volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-west2"
 ///   name            = "test-volume"
 ///   capacity_gib    = "100"
 ///   share_name      = "test-volume"
-///   storage_pool    = gcp_netapp_storagepool.default.name
+///   storage_pool    = gcp_netapp_storage_pool.default.name
 ///   protocols       = ["NFSV3"]
 ///   deletion_policy = "DEFAULT"
 /// }
@@ -396,6 +403,9 @@ class Volume extends pulumi.CustomResource {
   /// Settings for volumes with SMB access.
   /// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
   late final pulumi.Output<List<String>> smbSettings;
+  /// Optional. Snap_reserve specifies percentage of volume storage reserved for
+  /// snapshot storage. Default is 0 percent.
+  late final pulumi.Output<double?> snapReserve;
   /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
   late final pulumi.Output<bool?> snapshotDirectory;
   /// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -432,7 +442,7 @@ class Volume extends pulumi.CustomResource {
           'gcp:netapp/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     activeDirectory = registerOutput<String>('activeDirectory');
@@ -472,6 +482,7 @@ class Volume extends pulumi.CustomResource {
     serviceLevel = registerOutput<String>('serviceLevel');
     shareName = registerOutput<String?>('shareName');
     smbSettings = registerOutput<List<String>>('smbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapReserve = registerOutput<double?>('snapReserve');
     snapshotDirectory = registerOutput<bool?>('snapshotDirectory');
     snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>('snapshotPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
@@ -545,6 +556,7 @@ class Volume extends pulumi.CustomResource {
     serviceLevel = registerOutput<String>('serviceLevel');
     shareName = registerOutput<String?>('shareName');
     smbSettings = registerOutput<List<String>>('smbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapReserve = registerOutput<double?>('snapReserve');
     snapshotDirectory = registerOutput<bool?>('snapshotDirectory');
     snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>('snapshotPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
@@ -604,6 +616,7 @@ class Volume extends pulumi.CustomResource {
     serviceLevel = registerOutput<String>('serviceLevel');
     shareName = registerOutput<String?>('shareName');
     smbSettings = registerOutput<List<String>>('smbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapReserve = registerOutput<double?>('snapReserve');
     snapshotDirectory = registerOutput<bool?>('snapshotDirectory');
     snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>('snapshotPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');

@@ -7,14 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_storage_pool_types_get_storage_pool_types_args_doc}
 class GetStoragePoolTypesArgs {
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Name of the storage pool type.
+  ///
+  ///
+  /// - - -
   final pulumi.Input<String> storagePoolType;
+  /// The name of the zone.
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetStoragePoolTypesArgs].
-  /// [project] Optional.
-  /// [storagePoolType] Required.
-  /// [zone] Required.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [storagePoolType] Name of the storage pool type.
+  /// [zone] The name of the zone.
   const GetStoragePoolTypesArgs({
     this.project,
     required this.storagePoolType,

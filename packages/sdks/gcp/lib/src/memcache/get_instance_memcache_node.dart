@@ -42,7 +42,7 @@ class GetInstanceMemcacheNode {
     return GetInstanceMemcacheNode(
       host: pulumi.Input.fromValue(map['host'] as String),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       state: pulumi.Input.fromValue(map['state'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

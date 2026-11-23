@@ -11,6 +11,7 @@ import 'data_table_row_state.dart';
 /// * How-to Guides
 /// * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Chronicle Data Table Row Basic
@@ -149,7 +150,7 @@ import 'data_table_row_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -199,7 +200,7 @@ import 'data_table_row_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -207,7 +208,10 @@ import 'data_table_row_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_datatable" "example_dt" {
+/// resource "gcp_chronicle_data_table" "example_dt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us"
 ///   instance      = "00000000-0000-0000-0000-000000000000"
 ///   data_table_id = "terraform_test"
@@ -223,27 +227,30 @@ import 'data_table_row_state.dart';
 ///     column_type     = "CIDR"
 ///   }
 /// }
-/// resource "gcp_chronicle_datatablerow" "example_row" {
+/// resource "gcp_chronicle_data_table_row" "example_row" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   instance         = "00000000-0000-0000-0000-000000000000"
-///   data_table_id    = gcp_chronicle_datatable.example_dt.data_table_id
+///   data_table_id    = gcp_chronicle_data_table.example_dt.data_table_id
 ///   values           = ["testuser", "192.168.1.1/32"]
 ///   row_time_to_live = "48h"
 /// }
 /// output "dataTableRowName" {
-///   value = gcp_chronicle_datatablerow.example_row.name
+///   value = gcp_chronicle_data_table_row.example_row.name
 /// }
 /// output "dataTableRowIdPart" {
-///   value = gcp_chronicle_datatablerow.example_row.data_table_row
+///   value = gcp_chronicle_data_table_row.example_row.data_table_row
 /// }
 /// output "dataTableRowValues" {
-///   value = gcp_chronicle_datatablerow.example_row.values
+///   value = gcp_chronicle_data_table_row.example_row.values
 /// }
 /// output "dataTableRowTtl" {
-///   value = gcp_chronicle_datatablerow.example_row.row_time_to_live
+///   value = gcp_chronicle_data_table_row.example_row.row_time_to_live
 /// }
 /// output "dataTableRowCreateTime" {
-///   value = gcp_chronicle_datatablerow.example_row.create_time
+///   value = gcp_chronicle_data_table_row.example_row.create_time
 /// }
 /// ```
 /// ```java
@@ -404,7 +411,7 @@ class DataTableRow extends pulumi.CustomResource {
           'gcp:chronicle/dataTableRow:DataTableRow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataTableId = registerOutput<String>('dataTableId');

@@ -61,6 +61,10 @@ class CloudVmClusterState {
   /// The name of the VPC network.
   /// Format: projects/{project}/global/networks/{network}
   final pulumi.Input<String?>? network;
+  /// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+  final pulumi.Input<String?>? odbDnsZone;
   /// The name of the OdbNetwork associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -99,6 +103,7 @@ class CloudVmClusterState {
   /// [location] Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
   /// [name] Identifier. The name of the VM Cluster resource with the format:
   /// [network] The name of the VPC network.
+  /// [odbDnsZone] The name of the OdbDnsZone for using custom domain name for the VM Cluster.
   /// [odbNetwork] The name of the OdbNetwork associated with the VM Cluster.
   /// [odbSubnet] The name of the OdbSubnet associated with the VM Cluster for
   /// [project] The ID of the project in which the resource belongs.
@@ -122,6 +127,7 @@ class CloudVmClusterState {
     this.location,
     this.name,
     this.network,
+    this.odbDnsZone,
     this.odbNetwork,
     this.odbSubnet,
     this.project,
@@ -148,6 +154,7 @@ class CloudVmClusterState {
       'location': ?location,
       'name': ?name,
       'network': ?network,
+      'odbDnsZone': ?odbDnsZone,
       'odbNetwork': ?odbNetwork,
       'odbSubnet': ?odbSubnet,
       'project': ?project,
@@ -175,6 +182,7 @@ class CloudVmClusterState {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      odbDnsZone: (() { final guardedValue = map['odbDnsZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       odbNetwork: (() { final guardedValue = map['odbNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       odbSubnet: (() { final guardedValue = map['odbSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

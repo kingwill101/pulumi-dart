@@ -58,7 +58,7 @@ class URLMapTest {
     return URLMapTest(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expectedOutputUrl: (() { final guardedValue = map['expectedOutputUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expectedRedirectResponseCode: (() { final guardedValue = map['expectedRedirectResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expectedRedirectResponseCode: (() { final guardedValue = map['expectedRedirectResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<URLMapTestHeader>(guardedValue, (value) => URLMapTestHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       host: pulumi.Input.fromValue(map['host'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),

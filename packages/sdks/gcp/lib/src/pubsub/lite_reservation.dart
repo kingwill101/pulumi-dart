@@ -13,6 +13,7 @@ import 'lite_reservation_state.dart';
 /// * How-to Guides
 /// * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Pubsub Lite Reservation Basic
@@ -63,8 +64,8 @@ import 'lite_reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +88,7 @@ import 'lite_reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,12 +96,15 @@ import 'lite_reservation_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_pubsub_litereservation" "example" {
+/// resource "gcp_pubsub_lite_reservation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-reservation"
-///   project             = data.gcp_organizations_getproject.project.number
+///   project             = data.gcp_organizations_project.project.number
 ///   throughput_capacity = 2
 /// }
 /// ```
@@ -187,7 +191,7 @@ class LiteReservation extends pulumi.CustomResource {
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// The region of the pubsub lite reservation.
-  late final pulumi.Output<String?> region;
+  late final pulumi.Output<String> region;
   /// The reserved throughput capacity. Every unit of throughput capacity is
   /// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
   /// messages.
@@ -205,12 +209,12 @@ class LiteReservation extends pulumi.CustomResource {
           'gcp:pubsub/liteReservation:LiteReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    region = registerOutput<String?>('region');
+    region = registerOutput<String>('region');
     throughputCapacity = registerOutput<int>('throughputCapacity');
   }
 
@@ -241,7 +245,7 @@ class LiteReservation extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    region = registerOutput<String?>('region');
+    region = registerOutput<String>('region');
     throughputCapacity = registerOutput<int>('throughputCapacity');
   }
 
@@ -257,7 +261,7 @@ class LiteReservation extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    region = registerOutput<String?>('region');
+    region = registerOutput<String>('region');
     throughputCapacity = registerOutput<int>('throughputCapacity');
   }
 }

@@ -5,12 +5,14 @@ import 'app_version_snapshot_app_audio_processing_config.dart';
 import 'app_version_snapshot_app_client_certificate_setting.dart';
 import 'app_version_snapshot_app_data_store_setting.dart';
 import 'app_version_snapshot_app_default_channel_profile.dart';
+import 'app_version_snapshot_app_error_handling_setting.dart';
 import 'app_version_snapshot_app_evaluation_metrics_threshold.dart';
 import 'app_version_snapshot_app_language_setting.dart';
 import 'app_version_snapshot_app_logging_setting.dart';
 import 'app_version_snapshot_app_model_setting.dart';
 import 'app_version_snapshot_app_time_zone_setting.dart';
 import 'app_version_snapshot_app_variable_declaration.dart';
+import 'app_version_snapshot_app_vpc_sc_setting.dart';
 
 class AppVersionSnapshotApp {
   /// (Output)
@@ -41,6 +43,10 @@ class AppVersionSnapshotApp {
   final pulumi.Input<String?>? description;
   /// The display name of the app version.
   final pulumi.Input<String?>? displayName;
+  /// (Output)
+  /// Settings to describe how errors should be handled in the app.
+  /// Structure is documented below.
+  final pulumi.Input<List<AppVersionSnapshotAppErrorHandlingSetting>?>? errorHandlingSettings;
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
@@ -96,6 +102,10 @@ class AppVersionSnapshotApp {
   /// The declarations of the variables.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotAppVariableDeclaration>?>? variableDeclarations;
+  /// (Output)
+  /// VPC-SC settings for the app.
+  /// Structure is documented below.
+  final pulumi.Input<List<AppVersionSnapshotAppVpcScSetting>?>? vpcScSettings;
 
   /// Creates a new [AppVersionSnapshotApp].
   /// [audioProcessingConfigs] (Output)
@@ -106,6 +116,7 @@ class AppVersionSnapshotApp {
   /// [deploymentCount] (Output)
   /// [description] The description of the app version.
   /// [displayName] The display name of the app version.
+  /// [errorHandlingSettings] (Output)
   /// [etag] (Output)
   /// [evaluationMetricsThresholds] (Output)
   /// [globalInstruction] (Output)
@@ -119,6 +130,7 @@ class AppVersionSnapshotApp {
   /// [timeZoneSettings] (Output)
   /// [updateTime] (Output)
   /// [variableDeclarations] (Output)
+  /// [vpcScSettings] (Output)
   const AppVersionSnapshotApp({
     this.audioProcessingConfigs,
     this.clientCertificateSettings,
@@ -128,6 +140,7 @@ class AppVersionSnapshotApp {
     this.deploymentCount,
     this.description,
     this.displayName,
+    this.errorHandlingSettings,
     this.etag,
     this.evaluationMetricsThresholds,
     this.globalInstruction,
@@ -141,6 +154,7 @@ class AppVersionSnapshotApp {
     this.timeZoneSettings,
     this.updateTime,
     this.variableDeclarations,
+    this.vpcScSettings,
   });
 
   Map<String, dynamic> toMap() {
@@ -153,6 +167,7 @@ class AppVersionSnapshotApp {
       'deploymentCount': ?deploymentCount,
       'description': ?description,
       'displayName': ?displayName,
+      'errorHandlingSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppErrorHandlingSetting>, List<Map<String, dynamic>>>(errorHandlingSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppErrorHandlingSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': ?etag,
       'evaluationMetricsThresholds': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppEvaluationMetricsThreshold>, List<Map<String, dynamic>>>(evaluationMetricsThresholds, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppEvaluationMetricsThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
       'globalInstruction': ?globalInstruction,
@@ -166,6 +181,7 @@ class AppVersionSnapshotApp {
       'timeZoneSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppTimeZoneSetting>, List<Map<String, dynamic>>>(timeZoneSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppTimeZoneSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
       'variableDeclarations': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppVariableDeclaration>, List<Map<String, dynamic>>>(variableDeclarations, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppVariableDeclaration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcScSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppVpcScSetting>, List<Map<String, dynamic>>>(vpcScSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppVpcScSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -176,9 +192,10 @@ class AppVersionSnapshotApp {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataStoreSettings: (() { final guardedValue = map['dataStoreSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSetting>(guardedValue, (value) => AppVersionSnapshotAppDataStoreSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultChannelProfiles: (() { final guardedValue = map['defaultChannelProfiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfile>(guardedValue, (value) => AppVersionSnapshotAppDefaultChannelProfile.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      deploymentCount: (() { final guardedValue = map['deploymentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deploymentCount: (() { final guardedValue = map['deploymentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorHandlingSettings: (() { final guardedValue = map['errorHandlingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppErrorHandlingSetting>(guardedValue, (value) => AppVersionSnapshotAppErrorHandlingSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evaluationMetricsThresholds: (() { final guardedValue = map['evaluationMetricsThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThreshold>(guardedValue, (value) => AppVersionSnapshotAppEvaluationMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))); })(),
       globalInstruction: (() { final guardedValue = map['globalInstruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -192,6 +209,7 @@ class AppVersionSnapshotApp {
       timeZoneSettings: (() { final guardedValue = map['timeZoneSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppTimeZoneSetting>(guardedValue, (value) => AppVersionSnapshotAppTimeZoneSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variableDeclarations: (() { final guardedValue = map['variableDeclarations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppVariableDeclaration>(guardedValue, (value) => AppVersionSnapshotAppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpcScSettings: (() { final guardedValue = map['vpcScSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppVpcScSetting>(guardedValue, (value) => AppVersionSnapshotAppVpcScSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

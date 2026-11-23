@@ -4,7 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_cluster_autoscaling_config.dart';
 
 class InstanceCluster {
-  /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+  /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+  ///
+  /// &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
   final pulumi.Input<InstanceClusterAutoscalingConfig?>? autoscalingConfig;
   /// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
   final pulumi.Input<String> clusterId;
@@ -20,6 +22,8 @@ class InstanceCluster {
   /// `clusterId`) will cause the provider to delete/recreate the entire
   /// `gcp.bigtable.Instance` resource. If these values are changing, use a new
   /// `clusterId`.
+  ///
+  /// -----
   final pulumi.Input<String?>? nodeScalingFactor;
   /// The number of nodes in the cluster.
   /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -35,7 +39,7 @@ class InstanceCluster {
   final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceCluster].
-  /// [autoscalingConfig] [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+  /// [autoscalingConfig] [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
   /// [clusterId] The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
   /// [nodeScalingFactor] The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
@@ -73,7 +77,7 @@ class InstanceCluster {
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeScalingFactor: (() { final guardedValue = map['nodeScalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numNodes: (() { final guardedValue = map['numNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numNodes: (() { final guardedValue = map['numNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

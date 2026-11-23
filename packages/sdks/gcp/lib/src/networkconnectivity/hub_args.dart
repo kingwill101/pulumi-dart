@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'hub_export_psc_config.dart';
 
 /// {@template pulumi_networkconnectivity_hub_hub_args_doc}
 /// The set of arguments for Hub.
@@ -18,6 +19,11 @@ class HubArgs {
   final pulumi.Input<String?>? description;
   /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
   final pulumi.Input<bool?>? exportPsc;
+  /// (Optional, Beta)
+  /// Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+  /// If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+  /// Structure is documented below.
+  final pulumi.Input<HubExportPscConfig?>? exportPscConfig;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -38,6 +44,7 @@ class HubArgs {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of the hub.
   /// [exportPsc] Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+  /// [exportPscConfig] (Optional, Beta)
   /// [labels] Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// [name] Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
   /// [policyMode] Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
@@ -47,6 +54,7 @@ class HubArgs {
     this.deletionPolicy,
     this.description,
     this.exportPsc,
+    this.exportPscConfig,
     this.labels,
     this.name,
     this.policyMode,
@@ -59,6 +67,7 @@ class HubArgs {
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'exportPsc': ?exportPsc,
+      'exportPscConfig': ?pulumi.Input.mapOptionalInputValue<HubExportPscConfig, Map<String, dynamic>>(exportPscConfig, (value) => value.toMap()),
       'labels': ?labels,
       'name': ?name,
       'policyMode': ?policyMode,
@@ -72,6 +81,7 @@ class HubArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportPsc: (() { final guardedValue = map['exportPsc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      exportPscConfig: (() { final guardedValue = map['exportPscConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HubExportPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyMode: (() { final guardedValue = map['policyMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -24,11 +24,11 @@ class ApplicationState {
   final pulumi.Input<String?>? defaultBucket;
   /// The default hostname for this app.
   final pulumi.Input<String?>? defaultHostname;
-  /// A block of optional settings to configure specific App Engine features:
+  /// A block of optional settings to configure specific App Engine features. Structure is documented below.
   final pulumi.Input<ApplicationFeatureSettings?>? featureSettings;
   /// The GCR domain used for storing managed Docker images for this app.
   final pulumi.Input<String?>? gcrDomain;
-  /// Settings for enabling Cloud Identity Aware Proxy
+  /// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
   final pulumi.Input<ApplicationIap?>? iap;
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
@@ -43,7 +43,7 @@ class ApplicationState {
   final pulumi.Input<String?>? servingStatus;
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
   final pulumi.Input<String?>? sslPolicy;
-  /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+  /// A list of dispatch rule blocks. Structure is documented below.
   final pulumi.Input<List<ApplicationUrlDispatchRule>?>? urlDispatchRules;
 
   /// Creates a new [ApplicationState].
@@ -53,15 +53,15 @@ class ApplicationState {
   /// [databaseType] The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// [defaultBucket] The GCS bucket content is being stored in for this app.
   /// [defaultHostname] The default hostname for this app.
-  /// [featureSettings] A block of optional settings to configure specific App Engine features:
+  /// [featureSettings] A block of optional settings to configure specific App Engine features. Structure is documented below.
   /// [gcrDomain] The GCR domain used for storing managed Docker images for this app.
-  /// [iap] Settings for enabling Cloud Identity Aware Proxy
+  /// [iap] Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
   /// [locationId] The [location](https://cloud.google.com/appengine/docs/locations)
   /// [name] Unique name of the app, usually `apps/{PROJECT_ID}`
   /// [project] The project ID to create the application under.
   /// [servingStatus] The serving status of the app.
   /// [sslPolicy] A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
-  /// [urlDispatchRules] A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+  /// [urlDispatchRules] A list of dispatch rule blocks. Structure is documented below.
   const ApplicationState({
     this.appId,
     this.authDomain,

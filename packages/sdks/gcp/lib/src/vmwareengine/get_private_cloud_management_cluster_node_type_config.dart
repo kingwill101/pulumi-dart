@@ -32,8 +32,8 @@ class GetPrivateCloudManagementClusterNodeTypeConfig {
 
   factory GetPrivateCloudManagementClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterNodeTypeConfig(
-      customCoreCount: pulumi.Input.fromValue((map['customCoreCount'] as num).toInt()),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      customCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customCoreCount'])),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
     );
   }

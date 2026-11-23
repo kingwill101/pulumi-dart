@@ -35,7 +35,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 
   factory V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateError.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateError(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail>(guardedValue, (value) => V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

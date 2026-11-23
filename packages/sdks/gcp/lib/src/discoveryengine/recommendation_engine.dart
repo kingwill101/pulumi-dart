@@ -13,6 +13,7 @@ import 'recommendation_engine_state.dart';
 /// * How-to Guides
 /// * [Create a Recommendation Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-generic-recommendations-app)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Discoveryengine Recommendationengine Generic
@@ -112,7 +113,7 @@ import 'recommendation_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -153,7 +154,7 @@ import 'recommendation_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -161,7 +162,10 @@ import 'recommendation_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "generic" {
+/// resource "gcp_discoveryengine_data_store" "generic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "recommendation-datastore-id"
 ///   display_name                 = "tf-test-structured-datastore"
@@ -171,11 +175,14 @@ import 'recommendation_engine_state.dart';
 ///   create_advanced_site_search  = false
 ///   skip_default_schema_creation = false
 /// }
-/// resource "gcp_discoveryengine_recommendationengine" "generic" {
+/// resource "gcp_discoveryengine_recommendation_engine" "generic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id         = "recommendation-engine-id"
-///   location          = gcp_discoveryengine_datastore.generic.location
+///   location          = gcp_discoveryengine_data_store.generic.location
 ///   display_name      = "Example Recommendation Engine"
-///   data_store_ids    = [gcp_discoveryengine_datastore.generic.data_store_id]
+///   data_store_ids    = [gcp_discoveryengine_data_store.generic.data_store_id]
 ///   industry_vertical = "GENERIC"
 ///   common_config = {
 ///     company_name = "test-company"
@@ -258,6 +265,7 @@ import 'recommendation_engine_state.dart';
 ///       commonConfig:
 ///         companyName: test-company
 /// ```
+///
 ///
 /// ### Discoveryengine Recommendationengine Media
 ///
@@ -389,7 +397,7 @@ import 'recommendation_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -440,7 +448,7 @@ import 'recommendation_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -448,7 +456,10 @@ import 'recommendation_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "media" {
+/// resource "gcp_discoveryengine_data_store" "media" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "recommendation-datastore-id"
 ///   display_name                 = "tf-test-structured-datastore"
@@ -458,11 +469,14 @@ import 'recommendation_engine_state.dart';
 ///   create_advanced_site_search  = false
 ///   skip_default_schema_creation = false
 /// }
-/// resource "gcp_discoveryengine_recommendationengine" "media" {
+/// resource "gcp_discoveryengine_recommendation_engine" "media" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id         = "recommendation-engine-id"
-///   location          = gcp_discoveryengine_datastore.media.location
+///   location          = gcp_discoveryengine_data_store.media.location
 ///   display_name      = "Example Media Recommendation Engine"
-///   data_store_ids    = [gcp_discoveryengine_datastore.media.data_store_id]
+///   data_store_ids    = [gcp_discoveryengine_data_store.media.data_store_id]
 ///   industry_vertical = "MEDIA"
 ///   media_recommendation_engine_config = {
 ///     type                   = "recommended-for-you"
@@ -645,7 +659,7 @@ class RecommendationEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/recommendationEngine:RecommendationEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

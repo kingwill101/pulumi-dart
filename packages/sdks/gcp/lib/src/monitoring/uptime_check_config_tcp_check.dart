@@ -28,7 +28,7 @@ class UptimeCheckConfigTcpCheck {
   factory UptimeCheckConfigTcpCheck.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigTcpCheck(
       pingConfig: (() { final guardedValue = map['pingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UptimeCheckConfigTcpCheckPingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

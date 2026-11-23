@@ -47,7 +47,7 @@ class MulticastDomainActivationTrafficSpec {
     return MulticastDomainActivationTrafficSpec(
       aggrEgressPps: (() { final guardedValue = map['aggrEgressPps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       aggrIngressPps: (() { final guardedValue = map['aggrIngressPps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      avgPacketSize: (() { final guardedValue = map['avgPacketSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      avgPacketSize: (() { final guardedValue = map['avgPacketSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxPerGroupIngressPps: (() { final guardedValue = map['maxPerGroupIngressPps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxPerGroupSubscribers: (() { final guardedValue = map['maxPerGroupSubscribers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

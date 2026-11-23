@@ -17,9 +17,11 @@ class SQuotaPreferenceState {
   final pulumi.Input<Map<String, String>?>? dimensions;
   /// The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
   final pulumi.Input<String?>? etag;
-  /// The list of quota safety checks to be ignored.
-  /// Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-  /// Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+  /// A comma-separated list of quota safety checks to be ignored, for example
+  /// `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+  /// values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+  /// `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+  /// be combined with other values.
   final pulumi.Input<String?>? ignoreSafetyChecks;
   /// The reason / justification for this quota preference.
   final pulumi.Input<String?>? justification;
@@ -46,7 +48,7 @@ class SQuotaPreferenceState {
   /// [createTime] Create time stamp.
   /// [dimensions] The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "networkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
   /// [etag] The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
-  /// [ignoreSafetyChecks] The list of quota safety checks to be ignored.
+  /// [ignoreSafetyChecks] A comma-separated list of quota safety checks to be ignored, for example
   /// [justification] The reason / justification for this quota preference.
   /// [name] The resource name of the quota preference. Required except in the CREATE requests.
   /// [parent] The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".

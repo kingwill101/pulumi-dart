@@ -71,7 +71,7 @@ class TableExternalDataConfigurationCsvOptions {
       encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fieldDelimiter: (() { final guardedValue = map['fieldDelimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       quote: pulumi.Input.fromValue(map['quote'] as String),
-      skipLeadingRows: (() { final guardedValue = map['skipLeadingRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      skipLeadingRows: (() { final guardedValue = map['skipLeadingRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceColumnMatch: (() { final guardedValue = map['sourceColumnMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -14,6 +14,7 @@ import 'control_folder_intelligence_config_trial_config.dart';
 /// &gt; **Warning:** Storage Intelligence Config is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence Config exist for each GCP Folder. Terraform does not create or destroy this resource.
 /// Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absense of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Control Folder Intelligence Config Basic
@@ -104,7 +105,7 @@ import 'control_folder_intelligence_config_trial_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -136,7 +137,7 @@ import 'control_folder_intelligence_config_trial_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -144,7 +145,10 @@ import 'control_folder_intelligence_config_trial_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_controlfolderintelligenceconfig" "example" {
+/// resource "gcp_storage_control_folder_intelligence_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "12345678"
 ///   edition_config = "STANDARD"
 ///   filter = {
@@ -263,7 +267,7 @@ class ControlFolderIntelligenceConfig extends pulumi.CustomResource {
           'gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     editionConfig = registerOutput<String>('editionConfig');
     effectiveIntelligenceConfigs = registerOutput<List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });

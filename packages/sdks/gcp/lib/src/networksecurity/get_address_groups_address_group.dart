@@ -35,7 +35,7 @@ class GetAddressGroupsAddressGroup {
 
   factory GetAddressGroupsAddressGroup.fromMap(Map<String, dynamic> map) {
     return GetAddressGroupsAddressGroup(
-      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),

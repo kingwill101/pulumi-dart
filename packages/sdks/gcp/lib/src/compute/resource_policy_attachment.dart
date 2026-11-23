@@ -11,6 +11,7 @@ import 'resource_policy_attachment_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Compute Resource Policy Attachment Basic
@@ -31,7 +32,7 @@ import 'resource_policy_attachment_state.dart';
 ///     zone: "us-central1-a",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 /// });
@@ -68,7 +69,7 @@ import 'resource_policy_attachment_state.dart';
 ///     zone="us-central1-a",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     })
 /// policy = gcp.compute.ResourcePolicy("policy",
@@ -116,7 +117,7 @@ import 'resource_policy_attachment_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///     });
@@ -152,7 +153,7 @@ import 'resource_policy_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -172,7 +173,7 @@ import 'resource_policy_attachment_state.dart';
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 		})
@@ -208,7 +209,7 @@ import 'resource_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -217,6 +218,9 @@ import 'resource_policy_attachment_state.dart';
 /// }
 ///
 /// resource "gcp_compute_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -227,11 +231,14 @@ import 'resource_policy_attachment_state.dart';
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_resourcepolicy" "policy" {
+/// resource "gcp_compute_resource_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-resource-policy"
 ///   region = "us-central1"
 ///   instance_schedule_policy = {
@@ -244,8 +251,11 @@ import 'resource_policy_attachment_state.dart';
 ///     time_zone = "America/New_York"
 ///   }
 /// }
-/// resource "gcp_compute_resourcepolicyattachment" "attachment" {
-///   name     = gcp_compute_resourcepolicy.policy.name
+/// resource "gcp_compute_resource_policy_attachment" "attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = gcp_compute_resource_policy.policy.name
 ///   instance = gcp_compute_instance.instance.name
 ///   zone     = "us-central1-a"
 /// }
@@ -293,7 +303,7 @@ import 'resource_policy_attachment_state.dart';
 ///             .zone("us-central1-a")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -335,7 +345,7 @@ import 'resource_policy_attachment_state.dart';
 ///       zone: us-central1-a
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///   policy:
 ///     type: gcp:compute:ResourcePolicy
 ///     properties:
@@ -405,7 +415,7 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');

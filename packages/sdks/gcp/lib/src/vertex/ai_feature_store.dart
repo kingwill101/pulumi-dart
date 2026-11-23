@@ -13,6 +13,7 @@ import 'ai_feature_store_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Featurestore
@@ -24,7 +25,7 @@ import 'ai_feature_store_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
-///     name: "terraform",
+///     name: "terraform_featurestore",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -43,7 +44,7 @@ import 'ai_feature_store_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// featurestore = gcp.vertex.AiFeatureStore("featurestore",
-///     name="terraform",
+///     name="terraform_featurestore",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -66,7 +67,7 @@ import 'ai_feature_store_state.dart';
 /// {
 ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
 ///     {
-///         Name = "terraform",
+///         Name = "terraform_featurestore",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -89,14 +90,14 @@ import 'ai_feature_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-/// 			Name: pulumi.String("terraform"),
+/// 			Name: pulumi.String("terraform_featurestore"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -117,7 +118,7 @@ import 'ai_feature_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,8 +126,11 @@ import 'ai_feature_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestore" "featurestore" {
-///   name = "terraform"
+/// resource "gcp_vertex_ai_feature_store" "featurestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "terraform_featurestore"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -164,7 +168,7 @@ import 'ai_feature_store_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
-///             .name("terraform")
+///             .name("terraform_featurestore")
 ///             .labels(Map.of("foo", "bar"))
 ///             .region("us-central1")
 ///             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -184,7 +188,7 @@ import 'ai_feature_store_state.dart';
 ///   featurestore:
 ///     type: gcp:vertex:AiFeatureStore
 ///     properties:
-///       name: terraform
+///       name: terraform_featurestore
 ///       labels:
 ///         foo: bar
 ///       region: us-central1
@@ -195,6 +199,7 @@ import 'ai_feature_store_state.dart';
 ///       forceDestroy: true
 /// ```
 ///
+///
 /// ### Vertex Ai Featurestore With Beta Fields
 ///
 ///
@@ -204,7 +209,7 @@ import 'ai_feature_store_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
-///     name: "terraform2",
+///     name: "terraform_featurestore_2",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -224,7 +229,7 @@ import 'ai_feature_store_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// featurestore = gcp.vertex.AiFeatureStore("featurestore",
-///     name="terraform2",
+///     name="terraform_featurestore_2",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -248,7 +253,7 @@ import 'ai_feature_store_state.dart';
 /// {
 ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
 ///     {
-///         Name = "terraform2",
+///         Name = "terraform_featurestore_2",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -272,14 +277,14 @@ import 'ai_feature_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-/// 			Name: pulumi.String("terraform2"),
+/// 			Name: pulumi.String("terraform_featurestore_2"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -301,7 +306,7 @@ import 'ai_feature_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -309,8 +314,11 @@ import 'ai_feature_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestore" "featurestore" {
-///   name = "terraform2"
+/// resource "gcp_vertex_ai_feature_store" "featurestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "terraform_featurestore_2"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -349,7 +357,7 @@ import 'ai_feature_store_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
-///             .name("terraform2")
+///             .name("terraform_featurestore_2")
 ///             .labels(Map.of("foo", "bar"))
 ///             .region("us-central1")
 ///             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -370,7 +378,7 @@ import 'ai_feature_store_state.dart';
 ///   featurestore:
 ///     type: gcp:vertex:AiFeatureStore
 ///     properties:
-///       name: terraform2
+///       name: terraform_featurestore_2
 ///       labels:
 ///         foo: bar
 ///       region: us-central1
@@ -382,6 +390,7 @@ import 'ai_feature_store_state.dart';
 ///       forceDestroy: true
 /// ```
 ///
+///
 /// ### Vertex Ai Featurestore Scaling
 ///
 ///
@@ -391,7 +400,7 @@ import 'ai_feature_store_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
-///     name: "terraform3",
+///     name: "terraform_featurestore_3",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -413,7 +422,7 @@ import 'ai_feature_store_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// featurestore = gcp.vertex.AiFeatureStore("featurestore",
-///     name="terraform3",
+///     name="terraform_featurestore_3",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -439,7 +448,7 @@ import 'ai_feature_store_state.dart';
 /// {
 ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
 ///     {
-///         Name = "terraform3",
+///         Name = "terraform_featurestore_3",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -466,14 +475,14 @@ import 'ai_feature_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-/// 			Name: pulumi.String("terraform3"),
+/// 			Name: pulumi.String("terraform_featurestore_3"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -497,7 +506,7 @@ import 'ai_feature_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -505,8 +514,11 @@ import 'ai_feature_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestore" "featurestore" {
-///   name = "terraform3"
+/// resource "gcp_vertex_ai_feature_store" "featurestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "terraform_featurestore_3"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -548,7 +560,7 @@ import 'ai_feature_store_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
-///             .name("terraform3")
+///             .name("terraform_featurestore_3")
 ///             .labels(Map.of("foo", "bar"))
 ///             .region("us-central1")
 ///             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -571,7 +583,7 @@ import 'ai_feature_store_state.dart';
 ///   featurestore:
 ///     type: gcp:vertex:AiFeatureStore
 ///     properties:
-///       name: terraform3
+///       name: terraform_featurestore_3
 ///       labels:
 ///         foo: bar
 ///       region: us-central1
@@ -658,7 +670,7 @@ class AiFeatureStore extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureStore:AiFeatureStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

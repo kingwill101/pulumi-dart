@@ -6,16 +6,14 @@ import 'policy_state.dart';
 
 /// A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about Policy, see:
 ///
-/// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/policies)
+/// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/policies)
 /// * How-to Guides
 /// * [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
 ///
-/// &gt; **Note:** This is available only in beta
+///
 /// ## Example Usage
 ///
 /// ### Cloudidentity Policy Basic
@@ -27,16 +25,21 @@ import 'policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const primary = new gcp.cloudidentity.Policy("primary", {
-///     customer: "customers/C01234567",
+///     customer: "customers/A01b123xz",
 ///     policyQuery: {
 ///         orgUnit: "orgUnits/03abcxyz",
-///         group: "groups/0123456789",
-///         query: "true",
 ///     },
 ///     setting: {
-///         type: "something.googleapis.com/SettingType",
+///         type: "settings/detector.word_list",
 ///         valueJson: JSON.stringify({
-///             enabled: true,
+///             displayName: "Project Sensitive Terms",
+///             description: "Detector for project-specific confidential keywords.",
+///             wordList: {
+///                 words: [
+///                     "confidential",
+///                     "top-secret",
+///                 ],
+///             },
 ///         }),
 ///     },
 /// });
@@ -47,16 +50,21 @@ import 'policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// primary = gcp.cloudidentity.Policy("primary",
-///     customer="customers/C01234567",
+///     customer="customers/A01b123xz",
 ///     policy_query={
 ///         "org_unit": "orgUnits/03abcxyz",
-///         "group": "groups/0123456789",
-///         "query": "true",
 ///     },
 ///     setting={
-///         "type": "something.googleapis.com/SettingType",
+///         "type": "settings/detector.word_list",
 ///         "value_json": json.dumps({
-///             "enabled": True,
+///             "displayName": "Project Sensitive Terms",
+///             "description": "Detector for project-specific confidential keywords.",
+///             "wordList": {
+///                 "words": [
+///                     "confidential",
+///                     "top-secret",
+///                 ],
+///             },
 ///         }),
 ///     })
 /// ```
@@ -71,19 +79,26 @@ import 'policy_state.dart';
 /// {
 ///     var primary = new Gcp.CloudIdentity.Policy("primary", new()
 ///     {
-///         Customer = "customers/C01234567",
+///         Customer = "customers/A01b123xz",
 ///         PolicyQuery = new Gcp.CloudIdentity.Inputs.PolicyPolicyQueryArgs
 ///         {
 ///             OrgUnit = "orgUnits/03abcxyz",
-///             Group = "groups/0123456789",
-///             Query = "true",
 ///         },
 ///         Setting = new Gcp.CloudIdentity.Inputs.PolicySettingArgs
 ///         {
-///             Type = "something.googleapis.com/SettingType",
+///             Type = "settings/detector.word_list",
 ///             ValueJson = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///             {
-///                 ["enabled"] = true,
+///                 ["displayName"] = "Project Sensitive Terms",
+///                 ["description"] = "Detector for project-specific confidential keywords.",
+///                 ["wordList"] = new Dictionary<string, object?>
+///                 {
+///                     ["words"] = new[]
+///                     {
+///                         "confidential",
+///                         "top-secret",
+///                     },
+///                 },
 ///             }),
 ///         },
 ///     });
@@ -96,28 +111,33 @@ import 'policy_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]bool{
-/// 			"enabled": true,
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"displayName": "Project Sensitive Terms",
+/// 			"description": "Detector for project-specific confidential keywords.",
+/// 			"wordList": map[string][]string{
+/// 				"words": []string{
+/// 					"confidential",
+/// 					"top-secret",
+/// 				},
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = cloudidentity.NewPolicy(ctx, "primary", &cloudidentity.PolicyArgs{
-/// 			Customer: pulumi.String("customers/C01234567"),
+/// 			Customer: pulumi.String("customers/A01b123xz"),
 /// 			PolicyQuery: &cloudidentity.PolicyPolicyQueryArgs{
 /// 				OrgUnit: pulumi.String("orgUnits/03abcxyz"),
-/// 				Group:   pulumi.String("groups/0123456789"),
-/// 				Query:   pulumi.String("true"),
 /// 			},
 /// 			Setting: &cloudidentity.PolicySettingArgs{
-/// 				Type:      pulumi.String("something.googleapis.com/SettingType"),
+/// 				Type:      pulumi.String("settings/detector.word_list"),
 /// 				ValueJson: pulumi.String(json0),
 /// 			},
 /// 		})
@@ -129,7 +149,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,16 +158,21 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_cloudidentity_policy" "primary" {
-///   customer = "customers/C01234567"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer = "customers/A01b123xz"
 ///   policy_query = {
 ///     org_unit = "orgUnits/03abcxyz"
-///     group    = "groups/0123456789"
-///     query    = "true"
 ///   }
 ///   setting = {
-///     type = "something.googleapis.com/SettingType"
+///     type = "settings/detector.word_list"
 ///     value_json = jsonencode({
-///       "enabled" = true
+///       "displayName" = "Project Sensitive Terms"
+///       "description" = "Detector for project-specific confidential keywords."
+///       "wordList" = {
+///         "words" = ["confidential", "top-secret"]
+///       }
 ///     })
 ///   }
 /// }
@@ -177,17 +202,22 @@ import 'policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var primary = new Policy("primary", PolicyArgs.builder()
-///             .customer("customers/C01234567")
+///             .customer("customers/A01b123xz")
 ///             .policyQuery(PolicyPolicyQueryArgs.builder()
 ///                 .orgUnit("orgUnits/03abcxyz")
-///                 .group("groups/0123456789")
-///                 .query("true")
 ///                 .build())
 ///             .setting(PolicySettingArgs.builder()
-///                 .type("something.googleapis.com/SettingType")
+///                 .type("settings/detector.word_list")
 ///                 .valueJson(serializeJson(
 ///                     jsonObject(
-///                         jsonProperty("enabled", true)
+///                         jsonProperty("displayName", "Project Sensitive Terms"),
+///                         jsonProperty("description", "Detector for project-specific confidential keywords."),
+///                         jsonProperty("wordList", jsonObject(
+///                             jsonProperty("words", jsonArray(
+///                                 "confidential",
+///                                 "top-secret"
+///                             ))
+///                         ))
 ///                     )))
 ///                 .build())
 ///             .build());
@@ -200,16 +230,19 @@ import 'policy_state.dart';
 ///   primary:
 ///     type: gcp:cloudidentity:Policy
 ///     properties:
-///       customer: customers/C01234567
+///       customer: customers/A01b123xz
 ///       policyQuery:
 ///         orgUnit: orgUnits/03abcxyz
-///         group: groups/0123456789
-///         query: 'true'
 ///       setting:
-///         type: something.googleapis.com/SettingType
+///         type: settings/detector.word_list
 ///         valueJson:
 ///           fn::toJSON:
-///             enabled: true
+///             displayName: Project Sensitive Terms
+///             description: Detector for project-specific confidential keywords.
+///             wordList:
+///               words:
+///                 - confidential
+///                 - top-secret
 /// ```
 ///
 ///
@@ -258,7 +291,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:cloudidentity/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     customer = registerOutput<String>('customer');
     deletionPolicy = registerOutput<String>('deletionPolicy');

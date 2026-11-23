@@ -15,6 +15,7 @@ import 'trust_config_trust_store.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Certificate Manager Trust Config
@@ -120,7 +121,7 @@ import 'trust_config_trust_store.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -169,7 +170,7 @@ import 'trust_config_trust_store.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -180,7 +181,10 @@ import 'trust_config_trust_store.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificatemanager_trustconfig" "default" {
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "trust-config"
 ///   description = "sample description for the trust config"
 ///   location    = "us-central1"
@@ -271,6 +275,7 @@ import 'trust_config_trust_store.dart';
 ///       labels:
 ///         foo: bar
 /// ```
+///
 ///
 /// ### Certificate Manager Trust Config Allowlisted Certificates
 ///
@@ -366,7 +371,7 @@ import 'trust_config_trust_store.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -409,7 +414,7 @@ import 'trust_config_trust_store.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -420,7 +425,10 @@ import 'trust_config_trust_store.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificatemanager_trustconfig" "default" {
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "trust-config"
 ///   description = "A sample trust config resource with allowlisted certificates"
 ///   location    = "global"
@@ -577,7 +585,7 @@ class TrustConfig extends pulumi.CustomResource {
           'gcp:certificatemanager/trustConfig:TrustConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowlistedCertificates = registerOutput<List<TrustConfigAllowlistedCertificate>?>('allowlistedCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustConfigAllowlistedCertificate>(guardedValue, (value) => TrustConfigAllowlistedCertificate.fromMap((value as Map).cast<String, dynamic>())); });

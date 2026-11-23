@@ -56,13 +56,13 @@ class GetReservationResourceStatusReservationMaintenance {
 
   factory GetReservationResourceStatusReservationMaintenance.fromMap(Map<String, dynamic> map) {
     return GetReservationResourceStatusReservationMaintenance(
-      instanceMaintenanceOngoingCount: pulumi.Input.fromValue((map['instanceMaintenanceOngoingCount'] as num).toInt()),
-      instanceMaintenancePendingCount: pulumi.Input.fromValue((map['instanceMaintenancePendingCount'] as num).toInt()),
-      maintenanceOngoingCount: pulumi.Input.fromValue((map['maintenanceOngoingCount'] as num).toInt()),
-      maintenancePendingCount: pulumi.Input.fromValue((map['maintenancePendingCount'] as num).toInt()),
+      instanceMaintenanceOngoingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceMaintenanceOngoingCount'])),
+      instanceMaintenancePendingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceMaintenancePendingCount'])),
+      maintenanceOngoingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maintenanceOngoingCount'])),
+      maintenancePendingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maintenancePendingCount'])),
       schedulingType: pulumi.Input.fromValue(map['schedulingType'] as String),
-      subblockInfraMaintenanceOngoingCount: pulumi.Input.fromValue((map['subblockInfraMaintenanceOngoingCount'] as num).toInt()),
-      subblockInfraMaintenancePendingCount: pulumi.Input.fromValue((map['subblockInfraMaintenancePendingCount'] as num).toInt()),
+      subblockInfraMaintenanceOngoingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subblockInfraMaintenanceOngoingCount'])),
+      subblockInfraMaintenancePendingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subblockInfraMaintenancePendingCount'])),
       upcomingGroupMaintenances: pulumi.Input.fromValue(pulumi.Input.decodeList<GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance>(map['upcomingGroupMaintenances']!, (value) => GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

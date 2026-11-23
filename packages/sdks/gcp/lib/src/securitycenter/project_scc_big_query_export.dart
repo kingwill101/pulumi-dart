@@ -16,6 +16,7 @@ import 'project_scc_big_query_export_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/security-command-center/docs/how-to-analyze-findings-in-big-query)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Scc Project Big Query Export Config Basic
@@ -106,8 +107,8 @@ import 'project_scc_big_query_export_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -131,7 +132,7 @@ import 'project_scc_big_query_export_state.dart';
 /// 			Name:             "my-export",
 /// 			BigQueryExportId: pulumi.String("my-export"),
 /// 			Project:          pulumi.String("my-project-name"),
-/// 			Dataset:          _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:          _default.ID(),
 /// 			Description:      pulumi.String("Cloud Security Command Center Findings Big Query Export Config"),
 /// 			Filter:           pulumi.String("state=\"ACTIVE\" AND NOT mute=\"MUTED\""),
 /// 		})
@@ -143,7 +144,7 @@ import 'project_scc_big_query_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -152,6 +153,9 @@ import 'project_scc_big_query_export_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                      = "my_dataset_id"
 ///   friendly_name                   = "test"
 ///   description                     = "This is a test description"
@@ -162,7 +166,10 @@ import 'project_scc_big_query_export_state.dart';
 ///     "env" = "default"
 ///   }
 /// }
-/// resource "gcp_securitycenter_projectsccbigqueryexport" "custom_big_query_export_config" {
+/// resource "gcp_securitycenter_project_scc_big_query_export" "custom_big_query_export_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-export"
 ///   big_query_export_id = "my-export"
 ///   project             = "my-project-name"
@@ -269,6 +276,8 @@ class ProjectSccBigQueryExport extends pulumi.CustomResource {
   /// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   late final pulumi.Output<String?> dataset;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  late final pulumi.Output<bool?> deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -327,11 +336,12 @@ class ProjectSccBigQueryExport extends pulumi.CustomResource {
           'gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');
@@ -369,6 +379,7 @@ class ProjectSccBigQueryExport extends pulumi.CustomResource {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');
@@ -391,6 +402,7 @@ class ProjectSccBigQueryExport extends pulumi.CustomResource {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');

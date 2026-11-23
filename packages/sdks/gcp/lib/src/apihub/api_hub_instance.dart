@@ -9,6 +9,7 @@ import 'api_hub_instance_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Apihub Api Hub Instance Basic
@@ -59,7 +60,7 @@ import 'api_hub_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apihub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apihub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -79,7 +80,7 @@ import 'api_hub_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,7 +88,10 @@ import 'api_hub_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apihub_apihubinstance" "apihub-instance-without-search" {
+/// resource "gcp_apihub_api_hub_instance" "apihub-instance-without-search" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   config = {
 ///     disable_search = true
@@ -135,6 +139,7 @@ import 'api_hub_instance_state.dart';
 ///       config:
 ///         disableSearch: true
 /// ```
+///
 ///
 /// ### Apihub Api Hub Instance Full
 ///
@@ -212,7 +217,7 @@ import 'api_hub_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apihub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apihub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +246,7 @@ import 'api_hub_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,7 +254,10 @@ import 'api_hub_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apihub_apihubinstance" "apihub-instance-search" {
+/// resource "gcp_apihub_api_hub_instance" "apihub-instance-search" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project             = "my-project"
 ///   api_hub_instance_id = "test-instance-full"
 ///   description         = "Test API hub instance"
@@ -400,7 +408,7 @@ class ApiHubInstance extends pulumi.CustomResource {
           'gcp:apihub/apiHubInstance:ApiHubInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     apiHubInstanceId = registerOutput<String?>('apiHubInstanceId');

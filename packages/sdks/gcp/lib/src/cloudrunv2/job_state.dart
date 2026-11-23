@@ -58,6 +58,15 @@ class JobState {
   final pulumi.Input<int?>? executionCount;
   /// For a deleted resource, the time after which it will be permanently deleted.
   final pulumi.Input<String?>? expireTime;
+  /// (Optional, Beta)
+  /// The functional type of the Job. Declares the primary purpose of the workload so that it can be
+  /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+  /// Once set, this field cannot be changed or unset.
+  /// Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+  /// A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+  /// `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+  /// Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+  final pulumi.Input<String?>? functionalType;
   /// A number that monotonically increases every time the user modifies the desired state.
   final pulumi.Input<String?>? generation;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
@@ -131,6 +140,7 @@ class JobState {
   /// [etag] A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
   /// [executionCount] Number of executions created for this job.
   /// [expireTime] For a deleted resource, the time after which it will be permanently deleted.
+  /// [functionalType] (Optional, Beta)
   /// [generation] A number that monotonically increases every time the user modifies the desired state.
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
   /// [lastModifier] Email address of the last authenticated modifier.
@@ -165,6 +175,7 @@ class JobState {
     this.etag,
     this.executionCount,
     this.expireTime,
+    this.functionalType,
     this.generation,
     this.labels,
     this.lastModifier,
@@ -202,6 +213,7 @@ class JobState {
       'etag': ?etag,
       'executionCount': ?executionCount,
       'expireTime': ?expireTime,
+      'functionalType': ?functionalType,
       'generation': ?generation,
       'labels': ?labels,
       'lastModifier': ?lastModifier,
@@ -238,8 +250,9 @@ class JobState {
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      executionCount: (() { final guardedValue = map['executionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      executionCount: (() { final guardedValue = map['executionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionalType: (() { final guardedValue = map['functionalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       lastModifier: (() { final guardedValue = map['lastModifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -16,6 +16,16 @@ class AssistantArgs {
   /// Customer policy for the assistant.
   /// Structure is documented below.
   final pulumi.Input<AssistantCustomerPolicy?>? customerPolicy;
+  /// This field controls the default web grounding toggle for end users if
+  /// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+  /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+  /// By default, this field is set to false. If `webGroundingType` is
+  /// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+  /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+  /// grounding enabled by default on UI. If true, grounding toggle will be
+  /// disabled by default on UI. End users can still enable web grounding in
+  /// the UI if web grounding is enabled.
+  final pulumi.Input<bool?>? defaultWebGroundingToggleOff;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -48,6 +58,7 @@ class AssistantArgs {
   /// [assistantId] The unique id of the assistant.
   /// [collectionId] The unique id of the collection.
   /// [customerPolicy] Customer policy for the assistant.
+  /// [defaultWebGroundingToggleOff] This field controls the default web grounding toggle for end users if
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description for additional information. Expected to be shown on the
   /// [displayName] The assistant display name.
@@ -60,6 +71,7 @@ class AssistantArgs {
     required this.assistantId,
     required this.collectionId,
     this.customerPolicy,
+    this.defaultWebGroundingToggleOff,
     this.deletionPolicy,
     this.description,
     required this.displayName,
@@ -75,6 +87,7 @@ class AssistantArgs {
       'assistantId': assistantId,
       'collectionId': collectionId,
       'customerPolicy': ?pulumi.Input.mapOptionalInputValue<AssistantCustomerPolicy, Map<String, dynamic>>(customerPolicy, (value) => value.toMap()),
+      'defaultWebGroundingToggleOff': ?defaultWebGroundingToggleOff,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
@@ -91,6 +104,7 @@ class AssistantArgs {
       assistantId: pulumi.Input.fromValue(map['assistantId'] as String),
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       customerPolicy: (() { final guardedValue = map['customerPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      defaultWebGroundingToggleOff: (() { final guardedValue = map['defaultWebGroundingToggleOff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),

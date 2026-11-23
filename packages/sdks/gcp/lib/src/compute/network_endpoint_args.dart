@@ -21,7 +21,10 @@ class NetworkEndpointArgs {
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
-  final pulumi.Input<String> ipAddress;
+  final pulumi.Input<String?>? ipAddress;
+  /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+  /// or empty if IPv6 is not used.
+  final pulumi.Input<String?>? ipv6Address;
   /// The network endpoint group this endpoint is part of.
   final pulumi.Input<String> networkEndpointGroup;
   /// Port number of network endpoint.
@@ -38,6 +41,7 @@ class NetworkEndpointArgs {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [instance] The name for a specific VM instance that the IP address belongs to.
   /// [ipAddress] IPv4 address of network endpoint. The IP address must belong
+  /// [ipv6Address] IPv6 address of network endpoint. The result of parsing the endpoint config,
   /// [networkEndpointGroup] The network endpoint group this endpoint is part of.
   /// [port] Port number of network endpoint.
   /// [project] The ID of the project in which the resource belongs.
@@ -45,7 +49,8 @@ class NetworkEndpointArgs {
   const NetworkEndpointArgs({
     this.deletionPolicy,
     this.instance,
-    required this.ipAddress,
+    this.ipAddress,
+    this.ipv6Address,
     required this.networkEndpointGroup,
     this.port,
     this.project,
@@ -56,7 +61,8 @@ class NetworkEndpointArgs {
     return <String, dynamic>{
       'deletionPolicy': ?deletionPolicy,
       'instance': ?instance,
-      'ipAddress': ipAddress,
+      'ipAddress': ?ipAddress,
+      'ipv6Address': ?ipv6Address,
       'networkEndpointGroup': networkEndpointGroup,
       'port': ?port,
       'project': ?project,
@@ -68,9 +74,10 @@ class NetworkEndpointArgs {
     return NetworkEndpointArgs(
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkEndpointGroup: pulumi.Input.fromValue(map['networkEndpointGroup'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

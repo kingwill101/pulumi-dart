@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_worker_pool_template_container.dart';
 import 'get_worker_pool_template_node_selector.dart';
+import 'get_worker_pool_template_sandbox.dart';
 import 'get_worker_pool_template_volume.dart';
 import 'get_worker_pool_template_vpc_access.dart';
 
@@ -40,6 +41,8 @@ class GetWorkerPoolTemplate {
   final pulumi.Input<List<GetWorkerPoolTemplateNodeSelector>> nodeSelectors;
   /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
   final pulumi.Input<String> revision;
+  /// Configuration for sandboxes.
+  final pulumi.Input<List<GetWorkerPoolTemplateSandbox>> sandboxes;
   /// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   final pulumi.Input<String> serviceAccount;
   /// A list of Volumes to make available to containers.
@@ -59,6 +62,7 @@ class GetWorkerPoolTemplate {
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
   /// [nodeSelectors] Node Selector describes the hardware requirements of the resources.
   /// [revision] The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
+  /// [sandboxes] Configuration for sandboxes.
   /// [serviceAccount] Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccesses] VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
@@ -74,6 +78,7 @@ class GetWorkerPoolTemplate {
     required this.labels,
     required this.nodeSelectors,
     required this.revision,
+    required this.sandboxes,
     required this.serviceAccount,
     required this.volumes,
     required this.vpcAccesses,
@@ -92,6 +97,7 @@ class GetWorkerPoolTemplate {
       'labels': labels,
       'nodeSelectors': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateNodeSelector>, List<Map<String, dynamic>>>(nodeSelectors, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateNodeSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'revision': revision,
+      'sandboxes': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateSandbox>, List<Map<String, dynamic>>>(sandboxes, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateSandbox, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceAccount': serviceAccount,
       'volumes': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcAccesses': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateVpcAccess>, List<Map<String, dynamic>>>(vpcAccesses, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateVpcAccess, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -111,6 +117,7 @@ class GetWorkerPoolTemplate {
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       nodeSelectors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateNodeSelector>(map['nodeSelectors']!, (value) => GetWorkerPoolTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))),
       revision: pulumi.Input.fromValue(map['revision'] as String),
+      sandboxes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateSandbox>(map['sandboxes']!, (value) => GetWorkerPoolTemplateSandbox.fromMap((value as Map).cast<String, dynamic>()))),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateVolume>(map['volumes']!, (value) => GetWorkerPoolTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))),
       vpcAccesses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateVpcAccess>(map['vpcAccesses']!, (value) => GetWorkerPoolTemplateVpcAccess.fromMap((value as Map).cast<String, dynamic>()))),

@@ -10,6 +10,7 @@ import 'sip_trunk_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.locations.sipTrunks)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dialogflow Sip Trunk Basic
@@ -59,7 +60,7 @@ import 'sip_trunk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -80,7 +81,7 @@ import 'sip_trunk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -88,7 +89,10 @@ import 'sip_trunk_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_siptrunk" "basic_trunk" {
+/// resource "gcp_diagflow_sip_trunk" "basic_trunk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name       = "basic-trunk"
 ///   location           = "europe-west3"
 ///   expected_hostnames = ["basic-trunk.example.com"]
@@ -184,7 +188,7 @@ class SipTrunk extends pulumi.CustomResource {
           'gcp:diagflow/sipTrunk:SipTrunk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     connections = registerOutput<List<SipTrunkConnection>>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SipTrunkConnection>(guardedValue, (value) => SipTrunkConnection.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

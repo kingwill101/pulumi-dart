@@ -11,6 +11,7 @@ import 'tunnel_dest_group_state.dart';
 /// * How-to Guides
 /// * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Iap Destgroup
@@ -23,7 +24,7 @@ import 'tunnel_dest_group_state.dart';
 ///
 /// const destGroup = new gcp.iap.TunnelDestGroup("dest_group", {
 ///     region: "us-central1",
-///     groupName: "testgroup_34534",
+///     groupName: "testgroup",
 ///     cidrs: [
 ///         "10.1.0.0/16",
 ///         "192.168.10.0/24",
@@ -36,7 +37,7 @@ import 'tunnel_dest_group_state.dart';
 ///
 /// dest_group = gcp.iap.TunnelDestGroup("dest_group",
 ///     region="us-central1",
-///     group_name="testgroup_34534",
+///     group_name="testgroup",
 ///     cidrs=[
 ///         "10.1.0.0/16",
 ///         "192.168.10.0/24",
@@ -53,7 +54,7 @@ import 'tunnel_dest_group_state.dart';
 ///     var destGroup = new Gcp.Iap.TunnelDestGroup("dest_group", new()
 ///     {
 ///         Region = "us-central1",
-///         GroupName = "testgroup_34534",
+///         GroupName = "testgroup",
 ///         Cidrs = new[]
 ///         {
 ///             "10.1.0.0/16",
@@ -67,7 +68,7 @@ import 'tunnel_dest_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +76,7 @@ import 'tunnel_dest_group_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := iap.NewTunnelDestGroup(ctx, "dest_group", &iap.TunnelDestGroupArgs{
 /// 			Region:    pulumi.String("us-central1"),
-/// 			GroupName: pulumi.String("testgroup_34534"),
+/// 			GroupName: pulumi.String("testgroup"),
 /// 			Cidrs: pulumi.StringArray{
 /// 				pulumi.String("10.1.0.0/16"),
 /// 				pulumi.String("192.168.10.0/24"),
@@ -89,7 +90,7 @@ import 'tunnel_dest_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -97,9 +98,12 @@ import 'tunnel_dest_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_tunneldestgroup" "dest_group" {
+/// resource "gcp_iap_tunnel_dest_group" "dest_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region     = "us-central1"
-///   group_name = "testgroup_34534"
+///   group_name = "testgroup"
 ///   cidrs      = ["10.1.0.0/16", "192.168.10.0/24"]
 /// }
 /// ```
@@ -126,7 +130,7 @@ import 'tunnel_dest_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var destGroup = new TunnelDestGroup("destGroup", TunnelDestGroupArgs.builder()
 ///             .region("us-central1")
-///             .groupName("testgroup_34534")
+///             .groupName("testgroup")
 ///             .cidrs(
 ///                 "10.1.0.0/16",
 ///                 "192.168.10.0/24")
@@ -142,7 +146,7 @@ import 'tunnel_dest_group_state.dart';
 ///     name: dest_group
 ///     properties:
 ///       region: us-central1
-///       groupName: testgroup_34534
+///       groupName: testgroup
 ///       cidrs:
 ///         - 10.1.0.0/16
 ///         - 192.168.10.0/24
@@ -205,7 +209,7 @@ class TunnelDestGroup extends pulumi.CustomResource {
           'gcp:iap/tunnelDestGroup:TunnelDestGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     cidrs = registerOutput<List<String>?>('cidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

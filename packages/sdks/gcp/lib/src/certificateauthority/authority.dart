@@ -21,6 +21,7 @@ import 'authority_user_defined_access_urls.dart';
 /// (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
 /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Privateca Certificate Authority Basic
@@ -150,7 +151,7 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +195,7 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,6 +204,9 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 ///
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority"
 ///   location                 = "us-central1"
@@ -300,6 +304,7 @@ import 'authority_user_defined_access_urls.dart';
 ///     }
 /// }
 /// ```
+///
 ///
 /// ### Privateca Certificate Authority Basic No Org
 ///
@@ -425,7 +430,7 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -468,7 +473,7 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -477,6 +482,9 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 ///
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority"
 ///   location                 = "us-central1"
@@ -572,6 +580,7 @@ import 'authority_user_defined_access_urls.dart';
 ///     }
 /// }
 /// ```
+///
 ///
 /// ### Privateca Certificate Authority Subordinate
 ///
@@ -818,7 +827,7 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -901,7 +910,7 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -910,6 +919,9 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 ///
 /// resource "gcp_certificateauthority_authority" "root-ca" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority-root"
 ///   location                 = "us-central1"
@@ -943,6 +955,9 @@ import 'authority_user_defined_access_urls.dart';
 ///   ignore_active_certificates_on_deletion = true
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority-sub"
 ///   location                 = "us-central1"
@@ -1144,6 +1159,7 @@ import 'authority_user_defined_access_urls.dart';
 ///         algorithm: RSA_PKCS1_2048_SHA256
 ///       type: SUBORDINATE
 /// ```
+///
 ///
 /// ### Privateca Certificate Authority Byo Key
 ///
@@ -1382,9 +1398,9 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1479,7 +1495,7 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1487,21 +1503,33 @@ import 'authority_user_defined_access_urls.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_projects_serviceidentity" "privateca_sa" {
+/// resource "gcp_projects_service_identity" "privateca_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "privateca.googleapis.com"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "privateca_sa_keyuser_signerverifier" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "privateca_sa_keyuser_signerverifier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
 ///   role          = "roles/cloudkms.signerVerifier"
-///   member        = gcp_projects_serviceidentity.privateca_sa.member
+///   member        = gcp_projects_service_identity.privateca_sa.member
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "privateca_sa_keyuser_viewer" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "privateca_sa_keyuser_viewer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
 ///   role          = "roles/viewer"
-///   member        = gcp_projects_serviceidentity.privateca_sa.member
+///   member        = gcp_projects_service_identity.privateca_sa.member
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
-///   depends_on               = [gcp_kms_cryptokeyiammember.privateca_sa_keyuser_signerverifier, gcp_kms_cryptokeyiammember.privateca_sa_keyuser_viewer]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.privateca_sa_keyuser_signerverifier, gcp_kms_crypto_key_i_a_m_member.privateca_sa_keyuser_viewer]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority"
 ///   location                 = "us-central1"
@@ -1710,6 +1738,7 @@ import 'authority_user_defined_access_urls.dart';
 ///         - ${privatecaSaKeyuserViewer}
 /// ```
 ///
+///
 /// ### Privateca Certificate Authority Custom Ski
 ///
 ///
@@ -1847,7 +1876,7 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1894,7 +1923,7 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1903,6 +1932,9 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 ///
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority"
 ///   location                 = "us-central1"
@@ -2005,6 +2037,7 @@ import 'authority_user_defined_access_urls.dart';
 ///     }
 /// }
 /// ```
+///
 ///
 /// ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
 ///
@@ -2166,7 +2199,7 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2220,7 +2253,7 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2229,6 +2262,9 @@ import 'authority_user_defined_access_urls.dart';
 /// }
 ///
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool                     = "ca-pool"
 ///   certificate_authority_id = "my-certificate-authority"
 ///   location                 = "us-central1"
@@ -2471,7 +2507,7 @@ class Authority extends pulumi.CustomResource {
           'gcp:certificateauthority/authority:Authority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessUrls = registerOutput<List<AuthorityAccessUrl>>('accessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorityAccessUrl>(guardedValue, (value) => AuthorityAccessUrl.fromMap((value as Map).cast<String, dynamic>())); });

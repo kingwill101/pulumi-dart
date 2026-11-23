@@ -10,6 +10,7 @@ import 'grpc_route_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.grpcRoutes)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Services Grpc Route Basic
@@ -128,7 +129,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -174,7 +175,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -182,7 +183,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-grpc-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -278,6 +282,7 @@ import 'grpc_route_state.dart';
 ///               numRetries: 1
 /// ```
 ///
+///
 /// ### Network Services Grpc Route Matches And Actions
 ///
 ///
@@ -310,6 +315,7 @@ import 'grpc_route_state.dart';
 ///                     grpcService: "foo",
 ///                     grpcMethod: "bar",
 ///                     caseSensitive: true,
+///                     type: "EXACT",
 ///                 },
 ///             },
 ///         ],
@@ -328,6 +334,7 @@ import 'grpc_route_state.dart';
 ///                 retryConditions: ["cancelled"],
 ///                 numRetries: 1,
 ///             },
+///             idleTimeout: "30s",
 ///         },
 ///     }],
 /// });
@@ -360,6 +367,7 @@ import 'grpc_route_state.dart';
 ///                     "grpc_service": "foo",
 ///                     "grpc_method": "bar",
 ///                     "case_sensitive": True,
+///                     "type": "EXACT",
 ///                 },
 ///             },
 ///         ],
@@ -378,6 +386,7 @@ import 'grpc_route_state.dart';
 ///                 "retry_conditions": ["cancelled"],
 ///                 "num_retries": 1,
 ///             },
+///             "idle_timeout": "30s",
 ///         },
 ///     }])
 /// ```
@@ -433,6 +442,7 @@ import 'grpc_route_state.dart';
 ///                             GrpcService = "foo",
 ///                             GrpcMethod = "bar",
 ///                             CaseSensitive = true,
+///                             Type = "EXACT",
 ///                         },
 ///                     },
 ///                 },
@@ -459,6 +469,7 @@ import 'grpc_route_state.dart';
 ///                         },
 ///                         NumRetries = 1,
 ///                     },
+///                     IdleTimeout = "30s",
 ///                 },
 ///             },
 ///         },
@@ -470,7 +481,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -507,6 +518,7 @@ import 'grpc_route_state.dart';
 /// 								GrpcService:   pulumi.String("foo"),
 /// 								GrpcMethod:    pulumi.String("bar"),
 /// 								CaseSensitive: pulumi.Bool(true),
+/// 								Type:          pulumi.String("EXACT"),
 /// 							},
 /// 						},
 /// 					},
@@ -527,6 +539,7 @@ import 'grpc_route_state.dart';
 /// 							},
 /// 							NumRetries: pulumi.Int(1),
 /// 						},
+/// 						IdleTimeout: pulumi.String("30s"),
 /// 					},
 /// 				},
 /// 			},
@@ -539,7 +552,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -547,7 +560,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-grpc-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -570,6 +586,7 @@ import 'grpc_route_state.dart';
 ///         grpc_service   = "foo"
 ///         grpc_method    = "bar"
 ///         case_sensitive = true
+///         type           = "EXACT"
 ///       }
 ///     }
 ///     action = {
@@ -587,6 +604,7 @@ import 'grpc_route_state.dart';
 ///         retry_conditions = ["cancelled"]
 ///         num_retries      = 1
 ///       }
+///       idle_timeout = "30s"
 ///     }
 ///   }
 /// }
@@ -643,6 +661,7 @@ import 'grpc_route_state.dart';
 ///                             .grpcService("foo")
 ///                             .grpcMethod("bar")
 ///                             .caseSensitive(true)
+///                             .type("EXACT")
 ///                             .build())
 ///                         .build())
 ///                 .action(GrpcRouteRuleActionArgs.builder()
@@ -660,6 +679,7 @@ import 'grpc_route_state.dart';
 ///                         .retryConditions("cancelled")
 ///                         .numRetries(1)
 ///                         .build())
+///                     .idleTimeout("30s")
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -690,6 +710,7 @@ import 'grpc_route_state.dart';
 ///                 grpcService: foo
 ///                 grpcMethod: bar
 ///                 caseSensitive: true
+///                 type: EXACT
 ///           action:
 ///             faultInjectionPolicy:
 ///               delay:
@@ -702,7 +723,9 @@ import 'grpc_route_state.dart';
 ///               retryConditions:
 ///                 - cancelled
 ///               numRetries: 1
+///             idleTimeout: 30s
 /// ```
+///
 ///
 /// ### Network Services Grpc Route Actions
 ///
@@ -827,7 +850,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -873,7 +896,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -881,7 +904,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-grpc-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -989,6 +1015,7 @@ import 'grpc_route_state.dart';
 ///               numRetries: 1
 /// ```
 ///
+///
 /// ### Network Services Grpc Route Location
 ///
 ///
@@ -1095,7 +1122,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1138,7 +1165,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1146,7 +1173,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "my-grpc-route"
 ///   location  = "global"
 ///   hostnames = ["example"]
@@ -1307,7 +1337,7 @@ class GrpcRoute extends pulumi.CustomResource {
           'gcp:networkservices/grpcRoute:GrpcRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

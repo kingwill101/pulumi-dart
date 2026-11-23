@@ -14,10 +14,6 @@ import 'node_group_state.dart';
 /// * How-to Guides
 /// * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 ///
-/// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
-/// number of nodes in a node group and changes to node group size either
-/// through provider config or through external changes will cause
-/// the provider to delete and recreate the node group.
 ///
 /// ## Example Usage
 ///
@@ -87,7 +83,7 @@ import 'node_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -106,7 +102,7 @@ import 'node_group_state.dart';
 /// 			Zone:         pulumi.String("us-central1-c"),
 /// 			Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 /// 			InitialSize:  pulumi.Int(1),
-/// 			NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
+/// 			NodeTemplate: soletenant_tmpl.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,7 +112,7 @@ import 'node_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -124,17 +120,23 @@ import 'node_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+/// resource "gcp_compute_node_template" "soletenant-tmpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-tmpl"
 ///   region    = "us-central1"
 ///   node_type = "c2-node-60-240"
 /// }
-/// resource "gcp_compute_nodegroup" "nodes" {
+/// resource "gcp_compute_node_group" "nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "soletenant-group"
 ///   zone          = "us-central1-c"
 ///   description   = "example google_compute_node_group for Terraform Google Provider"
 ///   initial_size  = 1
-///   node_template = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   node_template = gcp_compute_node_template.soletenant-tmpl.id
 /// }
 /// ```
 /// ```java
@@ -195,10 +197,6 @@ import 'node_group_state.dart';
 ///       nodeTemplate: ${["soletenant-tmpl"].id}
 /// ```
 ///
-/// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
-/// number of nodes in a node group and changes to node group size either
-/// through provider config or through external changes will cause
-/// the provider to delete and recreate the node group.
 ///
 /// ### Node Group Maintenance Interval
 ///
@@ -269,7 +267,7 @@ import 'node_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -288,7 +286,7 @@ import 'node_group_state.dart';
 /// 			Zone:                pulumi.String("us-central1-c"),
 /// 			Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 /// 			InitialSize:         pulumi.Int(1),
-/// 			NodeTemplate:        soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
+/// 			NodeTemplate:        soletenant_tmpl.ID(),
 /// 			MaintenanceInterval: pulumi.String("RECURRENT"),
 /// 		})
 /// 		if err != nil {
@@ -299,7 +297,7 @@ import 'node_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -307,17 +305,23 @@ import 'node_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+/// resource "gcp_compute_node_template" "soletenant-tmpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-tmpl"
 ///   region    = "us-central1"
 ///   node_type = "c2-node-60-240"
 /// }
-/// resource "gcp_compute_nodegroup" "nodes" {
+/// resource "gcp_compute_node_group" "nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "soletenant-group"
 ///   zone                 = "us-central1-c"
 ///   description          = "example google_compute_node_group for Terraform Google Provider"
 ///   initial_size         = 1
-///   node_template        = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   node_template        = gcp_compute_node_template.soletenant-tmpl.id
 ///   maintenance_interval = "RECURRENT"
 /// }
 /// ```
@@ -381,10 +385,6 @@ import 'node_group_state.dart';
 ///       maintenanceInterval: RECURRENT
 /// ```
 ///
-/// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
-/// number of nodes in a node group and changes to node group size either
-/// through provider config or through external changes will cause
-/// the provider to delete and recreate the node group.
 ///
 /// ### Node Group Autoscaling Policy
 ///
@@ -481,7 +481,7 @@ import 'node_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -504,7 +504,7 @@ import 'node_group_state.dart';
 /// 				StartTime: pulumi.String("08:00"),
 /// 			},
 /// 			InitialSize:  pulumi.Int(1),
-/// 			NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
+/// 			NodeTemplate: soletenant_tmpl.ID(),
 /// 			AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
 /// 				Mode:     pulumi.String("ONLY_SCALE_OUT"),
 /// 				MinNodes: pulumi.Int(1),
@@ -519,7 +519,7 @@ import 'node_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -527,12 +527,18 @@ import 'node_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+/// resource "gcp_compute_node_template" "soletenant-tmpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-tmpl"
 ///   region    = "us-central1"
 ///   node_type = "c2-node-60-240"
 /// }
-/// resource "gcp_compute_nodegroup" "nodes" {
+/// resource "gcp_compute_node_group" "nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "soletenant-group"
 ///   zone               = "us-central1-a"
 ///   description        = "example google_compute_node_group for Google Provider"
@@ -541,7 +547,7 @@ import 'node_group_state.dart';
 ///     start_time = "08:00"
 ///   }
 ///   initial_size  = 1
-///   node_template = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   node_template = gcp_compute_node_template.soletenant-tmpl.id
 ///   autoscaling_policy = {
 ///     mode      = "ONLY_SCALE_OUT"
 ///     min_nodes = 1
@@ -624,6 +630,7 @@ import 'node_group_state.dart';
 ///         minNodes: 1
 ///         maxNodes: 10
 /// ```
+///
 ///
 /// ### Node Group Share Settings
 ///
@@ -736,8 +743,8 @@ import 'node_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -765,7 +772,7 @@ import 'node_group_state.dart';
 /// 			Zone:         pulumi.String("us-central1-a"),
 /// 			Description:  pulumi.String("example google_compute_node_group for Google Provider"),
 /// 			InitialSize:  pulumi.Int(1),
-/// 			NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
+/// 			NodeTemplate: soletenant_tmpl.ID(),
 /// 			ShareSettings: &compute.NodeGroupShareSettingsArgs{
 /// 				ShareType: pulumi.String("SPECIFIC_PROJECTS"),
 /// 				ProjectMaps: compute.NodeGroupShareSettingsProjectMapArray{
@@ -784,7 +791,7 @@ import 'node_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -793,27 +800,36 @@ import 'node_group_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "guest_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-id"
 ///   name            = "project-name"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+/// resource "gcp_compute_node_template" "soletenant-tmpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-tmpl"
 ///   region    = "us-central1"
 ///   node_type = "c2-node-60-240"
 /// }
-/// resource "gcp_compute_nodegroup" "nodes" {
+/// resource "gcp_compute_node_group" "nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "soletenant-group"
 ///   zone          = "us-central1-a"
 ///   description   = "example google_compute_node_group for Google Provider"
 ///   initial_size  = 1
-///   node_template = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   node_template = gcp_compute_node_template.soletenant-tmpl.id
 ///   share_settings = {
 ///     share_type = "SPECIFIC_PROJECTS"
 ///     project_maps = [{
-///       "id"        = gcp_organizations_project.guest_project.project_id
-///       "projectId" = gcp_organizations_project.guest_project.project_id
+///       id         = gcp_organizations_project.guest_project.project_id
+///       project_id = gcp_organizations_project.guest_project.project_id
 ///     }]
 ///   }
 /// }
@@ -985,7 +1001,7 @@ class NodeGroup extends pulumi.CustomResource {
           'gcp:compute/nodeGroup:NodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

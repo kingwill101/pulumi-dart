@@ -14,6 +14,7 @@ import 'workstation_cluster_state.dart';
 /// * How-to Guides
 /// * [Workstations](https://cloud.google.com/workstations/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Workstation Cluster Basic
@@ -31,14 +32,14 @@ import 'workstation_cluster_state.dart';
 /// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
 ///     name: "workstation-cluster",
 ///     ipCidrRange: "10.0.0.0/24",
-///     region: "us-central1",
+///     region: "us-west4",
 ///     network: defaultNetwork.name,
 /// });
 /// const _default = new gcp.workstations.WorkstationCluster("default", {
 ///     workstationClusterId: "workstation-cluster",
 ///     network: defaultNetwork.id,
 ///     subnetwork: defaultSubnetwork.id,
-///     location: "us-central1",
+///     location: "us-west4",
 ///     labels: {
 ///         label: "key",
 ///     },
@@ -58,13 +59,13 @@ import 'workstation_cluster_state.dart';
 /// default_subnetwork = gcp.compute.Subnetwork("default",
 ///     name="workstation-cluster",
 ///     ip_cidr_range="10.0.0.0/24",
-///     region="us-central1",
+///     region="us-west4",
 ///     network=default_network.name)
 /// default = gcp.workstations.WorkstationCluster("default",
 ///     workstation_cluster_id="workstation-cluster",
 ///     network=default_network.id,
 ///     subnetwork=default_subnetwork.id,
-///     location="us-central1",
+///     location="us-west4",
 ///     labels={
 ///         "label": "key",
 ///     },
@@ -91,7 +92,7 @@ import 'workstation_cluster_state.dart';
 ///     {
 ///         Name = "workstation-cluster",
 ///         IpCidrRange = "10.0.0.0/24",
-///         Region = "us-central1",
+///         Region = "us-west4",
 ///         Network = defaultNetwork.Name,
 ///     });
 ///
@@ -100,7 +101,7 @@ import 'workstation_cluster_state.dart';
 ///         WorkstationClusterId = "workstation-cluster",
 ///         Network = defaultNetwork.Id,
 ///         Subnetwork = defaultSubnetwork.Id,
-///         Location = "us-central1",
+///         Location = "us-west4",
 ///         Labels =
 ///         {
 ///             { "label", "key" },
@@ -119,9 +120,9 @@ import 'workstation_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +138,7 @@ import 'workstation_cluster_state.dart';
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("workstation-cluster"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west4"),
 /// 			Network:     defaultNetwork.Name,
 /// 		})
 /// 		if err != nil {
@@ -145,9 +146,9 @@ import 'workstation_cluster_state.dart';
 /// 		}
 /// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 /// 			WorkstationClusterId: pulumi.String("workstation-cluster"),
-/// 			Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Location:             pulumi.String("us-central1"),
+/// 			Network:              defaultNetwork.ID(),
+/// 			Subnetwork:           defaultSubnetwork.ID(),
+/// 			Location:             pulumi.String("us-west4"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label": pulumi.String("key"),
 /// 			},
@@ -167,7 +168,7 @@ import 'workstation_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -175,14 +176,17 @@ import 'workstation_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
-///   location               = "us-central1"
+///   location               = "us-west4"
 ///   labels = {
 ///     "label" = "key"
 ///   }
@@ -191,13 +195,19 @@ import 'workstation_cluster_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
-///   region        = "us-central1"
+///   region        = "us-west4"
 ///   network       = gcp_compute_network.default.name
 /// }
 /// ```
@@ -236,7 +246,7 @@ import 'workstation_cluster_state.dart';
 ///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
 ///             .name("workstation-cluster")
 ///             .ipCidrRange("10.0.0.0/24")
-///             .region("us-central1")
+///             .region("us-west4")
 ///             .network(defaultNetwork.name())
 ///             .build());
 ///
@@ -244,7 +254,7 @@ import 'workstation_cluster_state.dart';
 ///             .workstationClusterId("workstation-cluster")
 ///             .network(defaultNetwork.id())
 ///             .subnetwork(defaultSubnetwork.id())
-///             .location("us-central1")
+///             .location("us-west4")
 ///             .labels(Map.of("label", "key"))
 ///             .annotations(Map.of("label-one", "value-one"))
 ///             .build());
@@ -263,7 +273,7 @@ import 'workstation_cluster_state.dart';
 ///       workstationClusterId: workstation-cluster
 ///       network: ${defaultNetwork.id}
 ///       subnetwork: ${defaultSubnetwork.id}
-///       location: us-central1
+///       location: us-west4
 ///       labels:
 ///         label: key
 ///       annotations:
@@ -280,7 +290,7 @@ import 'workstation_cluster_state.dart';
 ///     properties:
 ///       name: workstation-cluster
 ///       ipCidrRange: 10.0.0.0/24
-///       region: us-central1
+///       region: us-west4
 ///       network: ${defaultNetwork.name}
 /// variables:
 ///   project:
@@ -288,620 +298,9 @@ import 'workstation_cluster_state.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Workstation Cluster Private
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const defaultNetwork = new gcp.compute.Network("default", {
-///     name: "workstation-cluster-private",
-///     autoCreateSubnetworks: false,
-/// });
-/// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
-///     name: "workstation-cluster-private",
-///     ipCidrRange: "10.0.0.0/24",
-///     region: "us-central1",
-///     network: defaultNetwork.name,
-/// });
-/// const _default = new gcp.workstations.WorkstationCluster("default", {
-///     workstationClusterId: "workstation-cluster-private",
-///     network: defaultNetwork.id,
-///     subnetwork: defaultSubnetwork.id,
-///     location: "us-central1",
-///     privateClusterConfig: {
-///         enablePrivateEndpoint: true,
-///     },
-///     labels: {
-///         label: "key",
-///     },
-///     annotations: {
-///         "label-one": "value-one",
-///     },
-/// });
-/// const project = gcp.organizations.getProject({});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_network = gcp.compute.Network("default",
-///     name="workstation-cluster-private",
-///     auto_create_subnetworks=False)
-/// default_subnetwork = gcp.compute.Subnetwork("default",
-///     name="workstation-cluster-private",
-///     ip_cidr_range="10.0.0.0/24",
-///     region="us-central1",
-///     network=default_network.name)
-/// default = gcp.workstations.WorkstationCluster("default",
-///     workstation_cluster_id="workstation-cluster-private",
-///     network=default_network.id,
-///     subnetwork=default_subnetwork.id,
-///     location="us-central1",
-///     private_cluster_config={
-///         "enable_private_endpoint": True,
-///     },
-///     labels={
-///         "label": "key",
-///     },
-///     annotations={
-///         "label-one": "value-one",
-///     })
-/// project = gcp.organizations.get_project()
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-///     {
-///         Name = "workstation-cluster-private",
-///         AutoCreateSubnetworks = false,
-///     });
-///
-///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-///     {
-///         Name = "workstation-cluster-private",
-///         IpCidrRange = "10.0.0.0/24",
-///         Region = "us-central1",
-///         Network = defaultNetwork.Name,
-///     });
-///
-///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-///     {
-///         WorkstationClusterId = "workstation-cluster-private",
-///         Network = defaultNetwork.Id,
-///         Subnetwork = defaultSubnetwork.Id,
-///         Location = "us-central1",
-///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
-///         {
-///             EnablePrivateEndpoint = true,
-///         },
-///         Labels =
-///         {
-///             { "label", "key" },
-///         },
-///         Annotations =
-///         {
-///             { "label-one", "value-one" },
-///         },
-///     });
-///
-///     var project = Gcp.Organizations.GetProject.Invoke();
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("workstation-cluster-private"),
-/// 			AutoCreateSubnetworks: pulumi.Bool(false),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("workstation-cluster-private"),
-/// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.Name,
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-/// 			WorkstationClusterId: pulumi.String("workstation-cluster-private"),
-/// 			Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Location:             pulumi.String("us-central1"),
-/// 			PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
-/// 				EnablePrivateEndpoint: pulumi.Bool(true),
-/// 			},
-/// 			Labels: pulumi.StringMap{
-/// 				"label": pulumi.String("key"),
-/// 			},
-/// 			Annotations: pulumi.StringMap{
-/// 				"label-one": pulumi.String("value-one"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// data "gcp_organizations_getproject" "project" {
-/// }
-///
-/// resource "gcp_workstations_workstationcluster" "default" {
-///   workstation_cluster_id = "workstation-cluster-private"
-///   network                = gcp_compute_network.default.id
-///   subnetwork             = gcp_compute_subnetwork.default.id
-///   location               = "us-central1"
-///   private_cluster_config = {
-///     enable_private_endpoint = true
-///   }
-///   labels = {
-///     "label" = "key"
-///   }
-///   annotations = {
-///     "label-one" = "value-one"
-///   }
-/// }
-/// resource "gcp_compute_network" "default" {
-///   name                    = "workstation-cluster-private"
-///   auto_create_subnetworks = false
-/// }
-/// resource "gcp_compute_subnetwork" "default" {
-///   name          = "workstation-cluster-private"
-///   ip_cidr_range = "10.0.0.0/24"
-///   region        = "us-central1"
-///   network       = gcp_compute_network.default.name
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
-/// import com.pulumi.gcp.compute.Subnetwork;
-/// import com.pulumi.gcp.compute.SubnetworkArgs;
-/// import com.pulumi.gcp.workstations.WorkstationCluster;
-/// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
-/// import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-///             .name("workstation-cluster-private")
-///             .autoCreateSubnetworks(false)
-///             .build());
-///
-///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
-///             .name("workstation-cluster-private")
-///             .ipCidrRange("10.0.0.0/24")
-///             .region("us-central1")
-///             .network(defaultNetwork.name())
-///             .build());
-///
-///         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
-///             .workstationClusterId("workstation-cluster-private")
-///             .network(defaultNetwork.id())
-///             .subnetwork(defaultSubnetwork.id())
-///             .location("us-central1")
-///             .privateClusterConfig(WorkstationClusterPrivateClusterConfigArgs.builder()
-///                 .enablePrivateEndpoint(true)
-///                 .build())
-///             .labels(Map.of("label", "key"))
-///             .annotations(Map.of("label-one", "value-one"))
-///             .build());
-///
-///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   default:
-///     type: gcp:workstations:WorkstationCluster
-///     properties:
-///       workstationClusterId: workstation-cluster-private
-///       network: ${defaultNetwork.id}
-///       subnetwork: ${defaultSubnetwork.id}
-///       location: us-central1
-///       privateClusterConfig:
-///         enablePrivateEndpoint: true
-///       labels:
-///         label: key
-///       annotations:
-///         label-one: value-one
-///   defaultNetwork:
-///     type: gcp:compute:Network
-///     name: default
-///     properties:
-///       name: workstation-cluster-private
-///       autoCreateSubnetworks: false
-///   defaultSubnetwork:
-///     type: gcp:compute:Subnetwork
-///     name: default
-///     properties:
-///       name: workstation-cluster-private
-///       ipCidrRange: 10.0.0.0/24
-///       region: us-central1
-///       network: ${defaultNetwork.name}
-/// variables:
-///   project:
-///     fn::invoke:
-///       function: gcp:organizations:getProject
-///       arguments: {}
-/// ```
-///
-/// ### Workstation Cluster Custom Domain
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const defaultNetwork = new gcp.compute.Network("default", {
-///     name: "workstation-cluster-custom-domain",
-///     autoCreateSubnetworks: false,
-/// });
-/// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
-///     name: "workstation-cluster-custom-domain",
-///     ipCidrRange: "10.0.0.0/24",
-///     region: "us-central1",
-///     network: defaultNetwork.name,
-/// });
-/// const _default = new gcp.workstations.WorkstationCluster("default", {
-///     workstationClusterId: "workstation-cluster-custom-domain",
-///     network: defaultNetwork.id,
-///     subnetwork: defaultSubnetwork.id,
-///     location: "us-central1",
-///     privateClusterConfig: {
-///         enablePrivateEndpoint: true,
-///     },
-///     domainConfig: {
-///         domain: "workstations.example.com",
-///     },
-///     labels: {
-///         label: "key",
-///     },
-///     annotations: {
-///         "label-one": "value-one",
-///     },
-/// });
-/// const project = gcp.organizations.getProject({});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_network = gcp.compute.Network("default",
-///     name="workstation-cluster-custom-domain",
-///     auto_create_subnetworks=False)
-/// default_subnetwork = gcp.compute.Subnetwork("default",
-///     name="workstation-cluster-custom-domain",
-///     ip_cidr_range="10.0.0.0/24",
-///     region="us-central1",
-///     network=default_network.name)
-/// default = gcp.workstations.WorkstationCluster("default",
-///     workstation_cluster_id="workstation-cluster-custom-domain",
-///     network=default_network.id,
-///     subnetwork=default_subnetwork.id,
-///     location="us-central1",
-///     private_cluster_config={
-///         "enable_private_endpoint": True,
-///     },
-///     domain_config={
-///         "domain": "workstations.example.com",
-///     },
-///     labels={
-///         "label": "key",
-///     },
-///     annotations={
-///         "label-one": "value-one",
-///     })
-/// project = gcp.organizations.get_project()
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-///     {
-///         Name = "workstation-cluster-custom-domain",
-///         AutoCreateSubnetworks = false,
-///     });
-///
-///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-///     {
-///         Name = "workstation-cluster-custom-domain",
-///         IpCidrRange = "10.0.0.0/24",
-///         Region = "us-central1",
-///         Network = defaultNetwork.Name,
-///     });
-///
-///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-///     {
-///         WorkstationClusterId = "workstation-cluster-custom-domain",
-///         Network = defaultNetwork.Id,
-///         Subnetwork = defaultSubnetwork.Id,
-///         Location = "us-central1",
-///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
-///         {
-///             EnablePrivateEndpoint = true,
-///         },
-///         DomainConfig = new Gcp.Workstations.Inputs.WorkstationClusterDomainConfigArgs
-///         {
-///             Domain = "workstations.example.com",
-///         },
-///         Labels =
-///         {
-///             { "label", "key" },
-///         },
-///         Annotations =
-///         {
-///             { "label-one", "value-one" },
-///         },
-///     });
-///
-///     var project = Gcp.Organizations.GetProject.Invoke();
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("workstation-cluster-custom-domain"),
-/// 			AutoCreateSubnetworks: pulumi.Bool(false),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("workstation-cluster-custom-domain"),
-/// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.Name,
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-/// 			WorkstationClusterId: pulumi.String("workstation-cluster-custom-domain"),
-/// 			Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Location:             pulumi.String("us-central1"),
-/// 			PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
-/// 				EnablePrivateEndpoint: pulumi.Bool(true),
-/// 			},
-/// 			DomainConfig: &workstations.WorkstationClusterDomainConfigArgs{
-/// 				Domain: pulumi.String("workstations.example.com"),
-/// 			},
-/// 			Labels: pulumi.StringMap{
-/// 				"label": pulumi.String("key"),
-/// 			},
-/// 			Annotations: pulumi.StringMap{
-/// 				"label-one": pulumi.String("value-one"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// data "gcp_organizations_getproject" "project" {
-/// }
-///
-/// resource "gcp_workstations_workstationcluster" "default" {
-///   workstation_cluster_id = "workstation-cluster-custom-domain"
-///   network                = gcp_compute_network.default.id
-///   subnetwork             = gcp_compute_subnetwork.default.id
-///   location               = "us-central1"
-///   private_cluster_config = {
-///     enable_private_endpoint = true
-///   }
-///   domain_config = {
-///     domain = "workstations.example.com"
-///   }
-///   labels = {
-///     "label" = "key"
-///   }
-///   annotations = {
-///     "label-one" = "value-one"
-///   }
-/// }
-/// resource "gcp_compute_network" "default" {
-///   name                    = "workstation-cluster-custom-domain"
-///   auto_create_subnetworks = false
-/// }
-/// resource "gcp_compute_subnetwork" "default" {
-///   name          = "workstation-cluster-custom-domain"
-///   ip_cidr_range = "10.0.0.0/24"
-///   region        = "us-central1"
-///   network       = gcp_compute_network.default.name
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
-/// import com.pulumi.gcp.compute.Subnetwork;
-/// import com.pulumi.gcp.compute.SubnetworkArgs;
-/// import com.pulumi.gcp.workstations.WorkstationCluster;
-/// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
-/// import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
-/// import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-///             .name("workstation-cluster-custom-domain")
-///             .autoCreateSubnetworks(false)
-///             .build());
-///
-///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
-///             .name("workstation-cluster-custom-domain")
-///             .ipCidrRange("10.0.0.0/24")
-///             .region("us-central1")
-///             .network(defaultNetwork.name())
-///             .build());
-///
-///         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
-///             .workstationClusterId("workstation-cluster-custom-domain")
-///             .network(defaultNetwork.id())
-///             .subnetwork(defaultSubnetwork.id())
-///             .location("us-central1")
-///             .privateClusterConfig(WorkstationClusterPrivateClusterConfigArgs.builder()
-///                 .enablePrivateEndpoint(true)
-///                 .build())
-///             .domainConfig(WorkstationClusterDomainConfigArgs.builder()
-///                 .domain("workstations.example.com")
-///                 .build())
-///             .labels(Map.of("label", "key"))
-///             .annotations(Map.of("label-one", "value-one"))
-///             .build());
-///
-///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   default:
-///     type: gcp:workstations:WorkstationCluster
-///     properties:
-///       workstationClusterId: workstation-cluster-custom-domain
-///       network: ${defaultNetwork.id}
-///       subnetwork: ${defaultSubnetwork.id}
-///       location: us-central1
-///       privateClusterConfig:
-///         enablePrivateEndpoint: true
-///       domainConfig:
-///         domain: workstations.example.com
-///       labels:
-///         label: key
-///       annotations:
-///         label-one: value-one
-///   defaultNetwork:
-///     type: gcp:compute:Network
-///     name: default
-///     properties:
-///       name: workstation-cluster-custom-domain
-///       autoCreateSubnetworks: false
-///   defaultSubnetwork:
-///     type: gcp:compute:Subnetwork
-///     name: default
-///     properties:
-///       name: workstation-cluster-custom-domain
-///       ipCidrRange: 10.0.0.0/24
-///       region: us-central1
-///       network: ${defaultNetwork.name}
-/// variables:
-///   project:
-///     fn::invoke:
-///       function: gcp:organizations:getProject
-///       arguments: {}
-/// ```
-///
-/// ### Workstation Cluster Tags
 ///
 ///
 ///
@@ -919,20 +318,35 @@ import 'workstation_cluster_state.dart';
 ///     shortName: "valuename",
 /// });
 /// const defaultNetwork = new gcp.compute.Network("default", {
-///     name: "workstation-cluster-tags",
+///     name: "workstation-cluster-private",
 ///     autoCreateSubnetworks: false,
 /// });
 /// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
-///     name: "workstation-cluster-tags",
+///     name: "workstation-cluster-private",
 ///     ipCidrRange: "10.0.0.0/24",
-///     region: "us-central1",
+///     region: "europe-west4",
 ///     network: defaultNetwork.name,
 /// });
 /// const _default = new gcp.workstations.WorkstationCluster("default", {
-///     workstationClusterId: "workstation-cluster-tags",
+///     workstationClusterId: "workstation-cluster-private",
 ///     network: defaultNetwork.id,
 ///     subnetwork: defaultSubnetwork.id,
-///     location: "us-central1",
+///     location: "europe-west4",
+///     displayName: "cluster-display-name",
+///     privateClusterConfig: {
+///         enablePrivateEndpoint: true,
+///     },
+///     domainConfig: {
+///         domain: "workstations.example.com",
+///     },
+///     workstationAuthorizationUrl: "https://console.cloud.google.com/workstations/auth",
+///     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
+///     labels: {
+///         label: "key",
+///     },
+///     annotations: {
+///         "label-one": "value-one",
+///     },
 ///     tags: pulumi.all([project, tagKey.shortName, tagValue.shortName]).apply(([project, tagKeyShortName, tagValueShortName]) => {
 ///         [`${project.projectId}/${tagKeyShortName}`]: tagValueShortName,
 ///     }),
@@ -950,18 +364,33 @@ import 'workstation_cluster_state.dart';
 ///     parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
 ///     short_name="valuename")
 /// default_network = gcp.compute.Network("default",
-///     name="workstation-cluster-tags",
+///     name="workstation-cluster-private",
 ///     auto_create_subnetworks=False)
 /// default_subnetwork = gcp.compute.Subnetwork("default",
-///     name="workstation-cluster-tags",
+///     name="workstation-cluster-private",
 ///     ip_cidr_range="10.0.0.0/24",
-///     region="us-central1",
+///     region="europe-west4",
 ///     network=default_network.name)
 /// default = gcp.workstations.WorkstationCluster("default",
-///     workstation_cluster_id="workstation-cluster-tags",
+///     workstation_cluster_id="workstation-cluster-private",
 ///     network=default_network.id,
 ///     subnetwork=default_subnetwork.id,
-///     location="us-central1",
+///     location="europe-west4",
+///     display_name="cluster-display-name",
+///     private_cluster_config={
+///         "enable_private_endpoint": True,
+///     },
+///     domain_config={
+///         "domain": "workstations.example.com",
+///     },
+///     workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
+///     workstation_launch_url="https://console.cloud.google.com/workstations/launch",
+///     labels={
+///         "label": "key",
+///     },
+///     annotations={
+///         "label-one": "value-one",
+///     },
 ///     tags=pulumi.Output.all(
 ///         tagKeyShort_name=tag_key.short_name,
 ///         tagValueShort_name=tag_value.short_name
@@ -994,24 +423,43 @@ import 'workstation_cluster_state.dart';
 ///
 ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
 ///     {
-///         Name = "workstation-cluster-tags",
+///         Name = "workstation-cluster-private",
 ///         AutoCreateSubnetworks = false,
 ///     });
 ///
 ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
 ///     {
-///         Name = "workstation-cluster-tags",
+///         Name = "workstation-cluster-private",
 ///         IpCidrRange = "10.0.0.0/24",
-///         Region = "us-central1",
+///         Region = "europe-west4",
 ///         Network = defaultNetwork.Name,
 ///     });
 ///
 ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
 ///     {
-///         WorkstationClusterId = "workstation-cluster-tags",
+///         WorkstationClusterId = "workstation-cluster-private",
 ///         Network = defaultNetwork.Id,
 ///         Subnetwork = defaultSubnetwork.Id,
-///         Location = "us-central1",
+///         Location = "europe-west4",
+///         DisplayName = "cluster-display-name",
+///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
+///         {
+///             EnablePrivateEndpoint = true,
+///         },
+///         DomainConfig = new Gcp.Workstations.Inputs.WorkstationClusterDomainConfigArgs
+///         {
+///             Domain = "workstations.example.com",
+///         },
+///         WorkstationAuthorizationUrl = "https://console.cloud.google.com/workstations/auth",
+///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
+///         Labels =
+///         {
+///             { "label", "key" },
+///         },
+///         Annotations =
+///         {
+///             { "label-one", "value-one" },
+///         },
 ///         Tags = Output.Tuple(project, tagKey.ShortName, tagValue.ShortName).Apply(values =>
 ///         {
 ///             var project = values.Item1;
@@ -1026,79 +474,8 @@ import 'workstation_cluster_state.dart';
 ///
 /// });
 /// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"fmt"
-///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-/// Parent: pulumi.Sprintf("projects/%v", project.Number),
-/// ShortName: pulumi.String("keyname"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-/// Parent: tagKey.Name.ApplyT(func(name string) (string, error) {
-/// return fmt.Sprintf("tagKeys/%v", name), nil
-/// }).(pulumi.StringOutput),
-/// ShortName: pulumi.String("valuename"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// Name: pulumi.String("workstation-cluster-tags"),
-/// AutoCreateSubnetworks: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-/// Name: pulumi.String("workstation-cluster-tags"),
-/// IpCidrRange: pulumi.String("10.0.0.0/24"),
-/// Region: pulumi.String("us-central1"),
-/// Network: defaultNetwork.Name,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-/// WorkstationClusterId: pulumi.String("workstation-cluster-tags"),
-/// Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-/// Location: pulumi.String("us-central1"),
-/// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-/// tagKeyShortName := _args[0].(string)
-/// tagValueShortName := _args[1].(string)
-/// return map[string]string{
-/// fmt.Sprintf("%v/%v", project.ProjectId, tagKeyShortName): tagValueShortName,
-/// }, nil
-/// }).(pulumi.Map[string]stringOutput),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1106,34 +483,64 @@ import 'workstation_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_tags_tagkey" "tag_key" {
-///   parent     ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_tags_tag_key" "tag_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     ="projects/${data.gcp_organizations_project.project.number}"
 ///   short_name = "keyname"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value" {
-///   parent     ="tagKeys/${gcp_tags_tagkey.tag_key.name}"
+/// resource "gcp_tags_tag_value" "tag_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     ="tagKeys/${gcp_tags_tag_key.tag_key.name}"
 ///   short_name = "valuename"
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
-///   workstation_cluster_id = "workstation-cluster-tags"
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workstation_cluster_id = "workstation-cluster-private"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
-///   location               = "us-central1"
+///   location               = "europe-west4"
+///   display_name           = "cluster-display-name"
+///   private_cluster_config = {
+///     enable_private_endpoint = true
+///   }
+///   domain_config = {
+///     domain = "workstations.example.com"
+///   }
+///   workstation_authorization_url = "https://console.cloud.google.com/workstations/auth"
+///   workstation_launch_url        = "https://console.cloud.google.com/workstations/launch"
+///   labels = {
+///     "label" = "key"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
 ///   tags = {
-///     "${data.gcp_organizations_getproject.project.project_id}/${gcp_tags_tagkey.tag_key.short_name}" = gcp_tags_tagvalue.tag_value.short_name
+///     "${data.gcp_organizations_project.project.project_id}/${gcp_tags_tag_key.tag_key.short_name}" = gcp_tags_tag_value.tag_value.short_name
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
-///   name                    = "workstation-cluster-tags"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                    = "workstation-cluster-private"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
-///   name          = "workstation-cluster-tags"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = "workstation-cluster-private"
 ///   ip_cidr_range = "10.0.0.0/24"
-///   region        = "us-central1"
+///   region        = "europe-west4"
 ///   network       = gcp_compute_network.default.name
 /// }
 /// ```
@@ -1155,6 +562,8 @@ import 'workstation_cluster_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.workstations.WorkstationCluster;
 /// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+/// import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
+/// import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1182,22 +591,33 @@ import 'workstation_cluster_state.dart';
 ///             .build());
 ///
 ///         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-///             .name("workstation-cluster-tags")
+///             .name("workstation-cluster-private")
 ///             .autoCreateSubnetworks(false)
 ///             .build());
 ///
 ///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
-///             .name("workstation-cluster-tags")
+///             .name("workstation-cluster-private")
 ///             .ipCidrRange("10.0.0.0/24")
-///             .region("us-central1")
+///             .region("europe-west4")
 ///             .network(defaultNetwork.name())
 ///             .build());
 ///
 ///         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
-///             .workstationClusterId("workstation-cluster-tags")
+///             .workstationClusterId("workstation-cluster-private")
 ///             .network(defaultNetwork.id())
 ///             .subnetwork(defaultSubnetwork.id())
-///             .location("us-central1")
+///             .location("europe-west4")
+///             .displayName("cluster-display-name")
+///             .privateClusterConfig(WorkstationClusterPrivateClusterConfigArgs.builder()
+///                 .enablePrivateEndpoint(true)
+///                 .build())
+///             .domainConfig(WorkstationClusterDomainConfigArgs.builder()
+///                 .domain("workstations.example.com")
+///                 .build())
+///             .workstationAuthorizationUrl("https://console.cloud.google.com/workstations/auth")
+///             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
+///             .labels(Map.of("label", "key"))
+///             .annotations(Map.of("label-one", "value-one"))
 ///             .tags(Output.tuple(tagKey.shortName(), tagValue.shortName()).applyValue(values -> {
 ///                 var tagKeyShortName = values.t1;
 ///                 var tagValueShortName = values.t2;
@@ -1225,25 +645,36 @@ import 'workstation_cluster_state.dart';
 ///   default:
 ///     type: gcp:workstations:WorkstationCluster
 ///     properties:
-///       workstationClusterId: workstation-cluster-tags
+///       workstationClusterId: workstation-cluster-private
 ///       network: ${defaultNetwork.id}
 ///       subnetwork: ${defaultSubnetwork.id}
-///       location: us-central1
+///       location: europe-west4
+///       displayName: cluster-display-name
+///       privateClusterConfig:
+///         enablePrivateEndpoint: true
+///       domainConfig:
+///         domain: workstations.example.com
+///       workstationAuthorizationUrl: https://console.cloud.google.com/workstations/auth
+///       workstationLaunchUrl: https://console.cloud.google.com/workstations/launch
+///       labels:
+///         label: key
+///       annotations:
+///         label-one: value-one
 ///       tags:
 ///         ${project.projectId}/${tagKey.shortName}: ${tagValue.shortName}
 ///   defaultNetwork:
 ///     type: gcp:compute:Network
 ///     name: default
 ///     properties:
-///       name: workstation-cluster-tags
+///       name: workstation-cluster-private
 ///       autoCreateSubnetworks: false
 ///   defaultSubnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     name: default
 ///     properties:
-///       name: workstation-cluster-tags
+///       name: workstation-cluster-private
 ///       ipCidrRange: 10.0.0.0/24
-///       region: us-central1
+///       region: europe-west4
 ///       network: ${defaultNetwork.name}
 /// variables:
 ///   project:
@@ -1252,255 +683,10 @@ import 'workstation_cluster_state.dart';
 ///       arguments: {}
 /// ```
 ///
-/// ### Workstation Cluster Custom Urls
 ///
+/// ## Regional Endpoint Policies
 ///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const defaultNetwork = new gcp.compute.Network("default", {
-///     name: "workstations-network",
-///     autoCreateSubnetworks: false,
-/// });
-/// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
-///     name: "workstations-network",
-///     ipCidrRange: "10.0.0.0/24",
-///     region: "us-central1",
-///     network: defaultNetwork.name,
-/// });
-/// const _default = new gcp.workstations.WorkstationCluster("default", {
-///     workstationClusterId: "custom-urls-cluster",
-///     network: defaultNetwork.id,
-///     subnetwork: defaultSubnetwork.id,
-///     location: "us-central1",
-///     workstationAuthorizationUrl: "https://console.cloud.google.com/workstations/auth",
-///     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
-/// });
-/// const project = gcp.organizations.getProject({});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_network = gcp.compute.Network("default",
-///     name="workstations-network",
-///     auto_create_subnetworks=False)
-/// default_subnetwork = gcp.compute.Subnetwork("default",
-///     name="workstations-network",
-///     ip_cidr_range="10.0.0.0/24",
-///     region="us-central1",
-///     network=default_network.name)
-/// default = gcp.workstations.WorkstationCluster("default",
-///     workstation_cluster_id="custom-urls-cluster",
-///     network=default_network.id,
-///     subnetwork=default_subnetwork.id,
-///     location="us-central1",
-///     workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
-///     workstation_launch_url="https://console.cloud.google.com/workstations/launch")
-/// project = gcp.organizations.get_project()
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-///     {
-///         Name = "workstations-network",
-///         AutoCreateSubnetworks = false,
-///     });
-///
-///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-///     {
-///         Name = "workstations-network",
-///         IpCidrRange = "10.0.0.0/24",
-///         Region = "us-central1",
-///         Network = defaultNetwork.Name,
-///     });
-///
-///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-///     {
-///         WorkstationClusterId = "custom-urls-cluster",
-///         Network = defaultNetwork.Id,
-///         Subnetwork = defaultSubnetwork.Id,
-///         Location = "us-central1",
-///         WorkstationAuthorizationUrl = "https://console.cloud.google.com/workstations/auth",
-///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
-///     });
-///
-///     var project = Gcp.Organizations.GetProject.Invoke();
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("workstations-network"),
-/// 			AutoCreateSubnetworks: pulumi.Bool(false),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("workstations-network"),
-/// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.Name,
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-/// 			WorkstationClusterId:        pulumi.String("custom-urls-cluster"),
-/// 			Network:                     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:                  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Location:                    pulumi.String("us-central1"),
-/// 			WorkstationAuthorizationUrl: pulumi.String("https://console.cloud.google.com/workstations/auth"),
-/// 			WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// data "gcp_organizations_getproject" "project" {
-/// }
-///
-/// resource "gcp_workstations_workstationcluster" "default" {
-///   workstation_cluster_id        = "custom-urls-cluster"
-///   network                       = gcp_compute_network.default.id
-///   subnetwork                    = gcp_compute_subnetwork.default.id
-///   location                      = "us-central1"
-///   workstation_authorization_url = "https://console.cloud.google.com/workstations/auth"
-///   workstation_launch_url        = "https://console.cloud.google.com/workstations/launch"
-/// }
-/// resource "gcp_compute_network" "default" {
-///   name                    = "workstations-network"
-///   auto_create_subnetworks = false
-/// }
-/// resource "gcp_compute_subnetwork" "default" {
-///   name          = "workstations-network"
-///   ip_cidr_range = "10.0.0.0/24"
-///   region        = "us-central1"
-///   network       = gcp_compute_network.default.name
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
-/// import com.pulumi.gcp.compute.Subnetwork;
-/// import com.pulumi.gcp.compute.SubnetworkArgs;
-/// import com.pulumi.gcp.workstations.WorkstationCluster;
-/// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-///             .name("workstations-network")
-///             .autoCreateSubnetworks(false)
-///             .build());
-///
-///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
-///             .name("workstations-network")
-///             .ipCidrRange("10.0.0.0/24")
-///             .region("us-central1")
-///             .network(defaultNetwork.name())
-///             .build());
-///
-///         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
-///             .workstationClusterId("custom-urls-cluster")
-///             .network(defaultNetwork.id())
-///             .subnetwork(defaultSubnetwork.id())
-///             .location("us-central1")
-///             .workstationAuthorizationUrl("https://console.cloud.google.com/workstations/auth")
-///             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
-///             .build());
-///
-///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   default:
-///     type: gcp:workstations:WorkstationCluster
-///     properties:
-///       workstationClusterId: custom-urls-cluster
-///       network: ${defaultNetwork.id}
-///       subnetwork: ${defaultSubnetwork.id}
-///       location: us-central1
-///       workstationAuthorizationUrl: https://console.cloud.google.com/workstations/auth
-///       workstationLaunchUrl: https://console.cloud.google.com/workstations/launch
-///   defaultNetwork:
-///     type: gcp:compute:Network
-///     name: default
-///     properties:
-///       name: workstations-network
-///       autoCreateSubnetworks: false
-///   defaultSubnetwork:
-///     type: gcp:compute:Subnetwork
-///     name: default
-///     properties:
-///       name: workstations-network
-///       ipCidrRange: 10.0.0.0/24
-///       region: us-central1
-///       network: ${defaultNetwork.name}
-/// variables:
-///   project:
-///     fn::invoke:
-///       function: gcp:organizations:getProject
-///       arguments: {}
-/// ```
-///
+/// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 ///
 /// ## Import
 ///
@@ -1604,7 +790,7 @@ class WorkstationCluster extends pulumi.CustomResource {
           'gcp:workstations/workstationCluster:WorkstationCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

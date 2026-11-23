@@ -51,7 +51,7 @@ import 'get_target_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -70,7 +70,7 @@ import 'get_target_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -78,7 +78,7 @@ import 'get_target_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_clouddeploy_getcustomtargettypeiampolicy" "policy" {
+/// data "gcp_clouddeploy_custom_target_type_iam_policy" "policy" {
 ///   project  = custom-target-type.project
 ///   location = custom-target-type.location
 ///   name     = custom-target-type.name
@@ -195,7 +195,7 @@ pulumi.Output<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -214,7 +214,7 @@ pulumi.Output<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -222,7 +222,7 @@ pulumi.Output<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicyOu
 ///   }
 /// }
 ///
-/// data "gcp_clouddeploy_getdeliverypipelineiampolicy" "policy" {
+/// data "gcp_clouddeploy_delivery_pipeline_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name
@@ -339,7 +339,7 @@ pulumi.Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -358,7 +358,7 @@ pulumi.Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -366,7 +366,7 @@ pulumi.Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyOu
 ///   }
 /// }
 ///
-/// data "gcp_clouddeploy_gettargetiampolicy" "policy" {
+/// data "gcp_clouddeploy_target_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name

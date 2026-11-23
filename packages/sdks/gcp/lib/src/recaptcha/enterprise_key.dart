@@ -84,7 +84,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +112,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,7 +120,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   android_settings = {
 ///     allow_all_package_names = true
@@ -263,7 +266,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -291,7 +294,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -299,7 +302,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   ios_settings = {
 ///     allow_all_bundle_ids = true
@@ -425,7 +431,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -448,7 +454,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -456,7 +462,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   web_settings = {
@@ -610,7 +619,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -645,7 +654,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -653,7 +662,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   testing_options = {
@@ -826,7 +838,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -857,7 +869,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -865,7 +877,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   testing_options = {
@@ -1023,7 +1038,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1053,7 +1068,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1061,7 +1076,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   testing_options = {
@@ -1137,6 +1155,286 @@ import 'enterprise_key_web_settings.dart';
 ///         label-one: value-one
 /// ```
 ///
+/// ### Express_key
+/// A basic test of recaptcha enterprise key that can be used by reCAPTCHA Express
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+///     displayName: "display-name-one",
+///     project: "my-project-name",
+///     expressSettings: {},
+///     labels: {
+///         "label-one": "value-one",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.recaptcha.EnterpriseKey("primary",
+///     display_name="display-name-one",
+///     project="my-project-name",
+///     express_settings={},
+///     labels={
+///         "label-one": "value-one",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+///     {
+///         DisplayName = "display-name-one",
+///         Project = "my-project-name",
+///         ExpressSettings = new() { },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+/// 			DisplayName:     pulumi.String("display-name-one"),
+/// 			Project:         pulumi.String("my-project-name"),
+/// 			ExpressSettings: &recaptcha.EnterpriseKeyExpressSettingsArgs{},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   display_name     = "display-name-one"
+///   project          = "my-project-name"
+///   express_settings = {}
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.recaptcha.EnterpriseKey;
+/// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+/// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyExpressSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
+///             .displayName("display-name-one")
+///             .project("my-project-name")
+///             .expressSettings(EnterpriseKeyExpressSettingsArgs.builder()
+///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:recaptcha:EnterpriseKey
+///     properties:
+///       displayName: display-name-one
+///       project: my-project-name
+///       expressSettings: {}
+///       labels:
+///         label-one: value-one
+/// ```
+///
+/// ### Universal_key
+/// A basic test of recaptcha enterprise key that can be used by universal frontend integrations
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+///     displayName: "display-name-one",
+///     project: "my-project-name",
+///     universalSettings: {},
+///     labels: {
+///         "label-one": "value-one",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.recaptcha.EnterpriseKey("primary",
+///     display_name="display-name-one",
+///     project="my-project-name",
+///     universal_settings={},
+///     labels={
+///         "label-one": "value-one",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+///     {
+///         DisplayName = "display-name-one",
+///         Project = "my-project-name",
+///         UniversalSettings = new() { },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+/// 			DisplayName:       pulumi.String("display-name-one"),
+/// 			Project:           pulumi.String("my-project-name"),
+/// 			UniversalSettings: &recaptcha.EnterpriseKeyUniversalSettingsArgs{},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   display_name       = "display-name-one"
+///   project            = "my-project-name"
+///   universal_settings = {}
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.recaptcha.EnterpriseKey;
+/// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+/// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyUniversalSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new EnterpriseKey("primary", EnterpriseKeyArgs.builder()
+///             .displayName("display-name-one")
+///             .project("my-project-name")
+///             .universalSettings(EnterpriseKeyUniversalSettingsArgs.builder()
+///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:recaptcha:EnterpriseKey
+///     properties:
+///       displayName: display-name-one
+///       project: my-project-name
+///       universalSettings: {}
+///       labels:
+///         label-one: value-one
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -1173,6 +1471,8 @@ class EnterpriseKey extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Settings for keys that can be used by reCAPTCHA Express.
+  late final pulumi.Output<Map<String, dynamic>?> expressSettings;
   /// Settings for keys that can be used by iOS apps.
   late final pulumi.Output<EnterpriseKeyIosSettings?> iosSettings;
   /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -1188,6 +1488,8 @@ class EnterpriseKey extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Options for user acceptance testing.
   late final pulumi.Output<EnterpriseKeyTestingOptions?> testingOptions;
+  /// Settings for keys that can be used by universal frontend integrations.
+  late final pulumi.Output<Map<String, dynamic>?> universalSettings;
   /// Settings specific to keys that can be used for WAF (Web Application Firewall).
   late final pulumi.Output<EnterpriseKeyWafSettings?> wafSettings;
   /// Settings for keys that can be used by websites.
@@ -1205,7 +1507,7 @@ class EnterpriseKey extends pulumi.CustomResource {
           'gcp:recaptcha/enterpriseKey:EnterpriseKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1213,12 +1515,14 @@ class EnterpriseKey extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    expressSettings = registerOutput<Map<String, dynamic>?>('expressSettings');
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyTestingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    universalSettings = registerOutput<Map<String, dynamic>?>('universalSettings');
     wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWafSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWebSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1252,12 +1556,14 @@ class EnterpriseKey extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    expressSettings = registerOutput<Map<String, dynamic>?>('expressSettings');
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyTestingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    universalSettings = registerOutput<Map<String, dynamic>?>('universalSettings');
     wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWafSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWebSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1277,12 +1583,14 @@ class EnterpriseKey extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    expressSettings = registerOutput<Map<String, dynamic>?>('expressSettings');
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyTestingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    universalSettings = registerOutput<Map<String, dynamic>?>('universalSettings');
     wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWafSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWebSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

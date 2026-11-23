@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_database_instances_instance_blue_green_deployment.dart';
 import 'get_database_instances_instance_clone.dart';
 import 'get_database_instances_instance_dns_name.dart';
 import 'get_database_instances_instance_ip_address.dart';
@@ -16,10 +17,14 @@ class GetDatabaseInstancesInstance {
   final pulumi.Input<List<String>> availableMaintenanceVersions;
   /// The name of the BackupDR backup to restore from.
   final pulumi.Input<String> backupdrBackup;
+  /// Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+  final pulumi.Input<List<GetDatabaseInstancesInstanceBlueGreenDeployment>> blueGreenDeployments;
   /// Configuration for creating a new instance as a clone of another instance.
   final pulumi.Input<List<GetDatabaseInstancesInstanceClone>> clones;
   /// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
   final pulumi.Input<String> connectionName;
+  /// The Database Center integration control.
+  final pulumi.Input<String> databaseCenterIntegration;
   /// To filter out the Cloud SQL instances which are of the specified database version.
   final pulumi.Input<String> databaseVersion;
   /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
@@ -35,6 +40,8 @@ class GetDatabaseInstancesInstance {
   final pulumi.Input<String> dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   final pulumi.Input<List<GetDatabaseInstancesInstanceDnsName>> dnsNames;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+  final pulumi.Input<bool> encryptionConfidentialMode;
   final pulumi.Input<String> encryptionKeyName;
   /// Whether to enforce the new SQL network architecture.
   final pulumi.Input<bool> enforceNewSqlNetworkArchitecture;
@@ -94,13 +101,16 @@ class GetDatabaseInstancesInstance {
   /// Creates a new [GetDatabaseInstancesInstance].
   /// [availableMaintenanceVersions] Available Maintenance versions.
   /// [backupdrBackup] The name of the BackupDR backup to restore from.
+  /// [blueGreenDeployments] Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
   /// [clones] Configuration for creating a new instance as a clone of another instance.
   /// [connectionName] The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+  /// [databaseCenterIntegration] The Database Center integration control.
   /// [databaseVersion] To filter out the Cloud SQL instances which are of the specified database version.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [deletionProtection] Used to block Terraform from deleting a SQL Instance. Defaults to true.
   /// [dnsName] The instance-level dns name of the instance for PSC instances or public IP CAS instances.
   /// [dnsNames] The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+  /// [encryptionConfidentialMode] Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
   /// [encryptionKeyName] Required.
   /// [enforceNewSqlNetworkArchitecture] Whether to enforce the new SQL network architecture.
   /// [finalBackupDescription] The description of final backup if instance enable create final backup during instance deletion.
@@ -133,13 +143,16 @@ class GetDatabaseInstancesInstance {
   const GetDatabaseInstancesInstance({
     required this.availableMaintenanceVersions,
     required this.backupdrBackup,
+    required this.blueGreenDeployments,
     required this.clones,
     required this.connectionName,
+    required this.databaseCenterIntegration,
     required this.databaseVersion,
     required this.deletionPolicy,
     required this.deletionProtection,
     required this.dnsName,
     required this.dnsNames,
+    required this.encryptionConfidentialMode,
     required this.encryptionKeyName,
     required this.enforceNewSqlNetworkArchitecture,
     required this.finalBackupDescription,
@@ -175,13 +188,16 @@ class GetDatabaseInstancesInstance {
     return <String, dynamic>{
       'availableMaintenanceVersions': availableMaintenanceVersions,
       'backupdrBackup': backupdrBackup,
+      'blueGreenDeployments': pulumi.Input.mapInputValue<List<GetDatabaseInstancesInstanceBlueGreenDeployment>, List<Map<String, dynamic>>>(blueGreenDeployments, (value) => pulumi.Input.encodeList<GetDatabaseInstancesInstanceBlueGreenDeployment, Map<String, dynamic>>(value, (value) => value.toMap())),
       'clones': pulumi.Input.mapInputValue<List<GetDatabaseInstancesInstanceClone>, List<Map<String, dynamic>>>(clones, (value) => pulumi.Input.encodeList<GetDatabaseInstancesInstanceClone, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectionName': connectionName,
+      'databaseCenterIntegration': databaseCenterIntegration,
       'databaseVersion': databaseVersion,
       'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'dnsName': dnsName,
       'dnsNames': pulumi.Input.mapInputValue<List<GetDatabaseInstancesInstanceDnsName>, List<Map<String, dynamic>>>(dnsNames, (value) => pulumi.Input.encodeList<GetDatabaseInstancesInstanceDnsName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'encryptionConfidentialMode': encryptionConfidentialMode,
       'encryptionKeyName': encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': finalBackupDescription,
@@ -218,13 +234,16 @@ class GetDatabaseInstancesInstance {
     return GetDatabaseInstancesInstance(
       availableMaintenanceVersions: pulumi.Input.fromValue((map['availableMaintenanceVersions'] as List).cast<String>()),
       backupdrBackup: pulumi.Input.fromValue(map['backupdrBackup'] as String),
+      blueGreenDeployments: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceBlueGreenDeployment>(map['blueGreenDeployments']!, (value) => GetDatabaseInstancesInstanceBlueGreenDeployment.fromMap((value as Map).cast<String, dynamic>()))),
       clones: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceClone>(map['clones']!, (value) => GetDatabaseInstancesInstanceClone.fromMap((value as Map).cast<String, dynamic>()))),
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      databaseCenterIntegration: pulumi.Input.fromValue(map['databaseCenterIntegration'] as String),
       databaseVersion: pulumi.Input.fromValue(map['databaseVersion'] as String),
       deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
       dnsNames: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceDnsName>(map['dnsNames']!, (value) => GetDatabaseInstancesInstanceDnsName.fromMap((value as Map).cast<String, dynamic>()))),
+      encryptionConfidentialMode: pulumi.Input.fromValue(map['encryptionConfidentialMode'] as bool),
       encryptionKeyName: pulumi.Input.fromValue(map['encryptionKeyName'] as String),
       enforceNewSqlNetworkArchitecture: pulumi.Input.fromValue(map['enforceNewSqlNetworkArchitecture'] as bool),
       finalBackupDescription: pulumi.Input.fromValue(map['finalBackupDescription'] as String),
@@ -235,7 +254,7 @@ class GetDatabaseInstancesInstance {
       maintenanceVersion: pulumi.Input.fromValue(map['maintenanceVersion'] as String),
       masterInstanceName: pulumi.Input.fromValue(map['masterInstanceName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       pointInTimeRestoreContexts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstancePointInTimeRestoreContext>(map['pointInTimeRestoreContexts']!, (value) => GetDatabaseInstancesInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>()))),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),

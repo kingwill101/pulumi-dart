@@ -61,7 +61,7 @@ class GetServiceStatus {
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceStatusCondition>(map['conditions']!, (value) => GetServiceStatusCondition.fromMap((value as Map).cast<String, dynamic>()))),
       latestCreatedRevisionName: pulumi.Input.fromValue(map['latestCreatedRevisionName'] as String),
       latestReadyRevisionName: pulumi.Input.fromValue(map['latestReadyRevisionName'] as String),
-      observedGeneration: pulumi.Input.fromValue((map['observedGeneration'] as num).toInt()),
+      observedGeneration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['observedGeneration'])),
       traffics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceStatusTraffic>(map['traffics']!, (value) => GetServiceStatusTraffic.fromMap((value as Map).cast<String, dynamic>()))),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

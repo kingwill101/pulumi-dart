@@ -35,8 +35,8 @@ class AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile {
 
   factory AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile.fromMap(Map<String, dynamic> map) {
     return AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile(
-      columnsCount: (() { final guardedValue = map['columnsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      rowCount: (() { final guardedValue = map['rowCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      columnsCount: (() { final guardedValue = map['columnsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rowCount: (() { final guardedValue = map['rowCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       signedUris: (() { final guardedValue = map['signedUris']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri>(guardedValue, (value) => AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

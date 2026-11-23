@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_pool_args.dart';
 import 'node_pool_autoscaling.dart';
+import 'node_pool_best_effort_provisioning.dart';
 import 'node_pool_maintenance_policy.dart';
 import 'node_pool_management.dart';
 import 'node_pool_network_config.dart';
@@ -31,8 +32,6 @@ import 'node_pool_upgrade_settings.dart';
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "my-gke-cluster",
 ///     location: "us-central1",
-///     removeDefaultNodePool: true,
-///     initialNodeCount: 1,
 /// });
 /// const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
 ///     name: "my-node-pool",
@@ -55,9 +54,7 @@ import 'node_pool_upgrade_settings.dart';
 ///     display_name="Service Account")
 /// primary = gcp.container.Cluster("primary",
 ///     name="my-gke-cluster",
-///     location="us-central1",
-///     remove_default_node_pool=True,
-///     initial_node_count=1)
+///     location="us-central1")
 /// primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
 ///     name="my-node-pool",
 ///     cluster=primary.id,
@@ -87,8 +84,6 @@ import 'node_pool_upgrade_settings.dart';
 ///     {
 ///         Name = "my-gke-cluster",
 ///         Location = "us-central1",
-///         RemoveDefaultNodePool = true,
-///         InitialNodeCount = 1,
 ///     });
 ///
 ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()
@@ -114,8 +109,8 @@ import 'node_pool_upgrade_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,17 +124,15 @@ import 'node_pool_upgrade_settings.dart';
 /// 			return err
 /// 		}
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:                  pulumi.String("my-gke-cluster"),
-/// 			Location:              pulumi.String("us-central1"),
-/// 			RemoveDefaultNodePool: pulumi.Bool(true),
-/// 			InitialNodeCount:      pulumi.Int(1),
+/// 			Name:     pulumi.String("my-gke-cluster"),
+/// 			Location: pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = container.NewNodePool(ctx, "primary_preemptible_nodes", &container.NodePoolArgs{
 /// 			Name:      pulumi.String("my-node-pool"),
-/// 			Cluster:   primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:   primary.ID(),
 /// 			NodeCount: pulumi.Int(1),
 /// 			NodeConfig: &container.NodePoolNodeConfigArgs{
 /// 				Preemptible:    pulumi.Bool(true),
@@ -158,7 +151,7 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -167,16 +160,23 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
-///   name                     = "my-gke-cluster"
-///   location                 = "us-central1"
-///   remove_default_node_pool = true
-///   initial_node_count       = 1
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "my-gke-cluster"
+///   location = "us-central1"
 /// }
-/// resource "gcp_container_nodepool" "primary_preemptible_nodes" {
+/// resource "gcp_container_node_pool" "primary_preemptible_nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-node-pool"
 ///   cluster    = gcp_container_cluster.primary.id
 ///   node_count = 1
@@ -222,8 +222,6 @@ import 'node_pool_upgrade_settings.dart';
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("my-gke-cluster")
 ///             .location("us-central1")
-///             .removeDefaultNodePool(true)
-///             .initialNodeCount(1)
 ///             .build());
 ///
 ///         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()
@@ -253,8 +251,6 @@ import 'node_pool_upgrade_settings.dart';
 ///     properties:
 ///       name: my-gke-cluster
 ///       location: us-central1
-///       removeDefaultNodePool: true
-///       initialNodeCount: 1
 ///   primaryPreemptibleNodes:
 ///     type: gcp:container:NodePool
 ///     name: primary_preemptible_nodes
@@ -397,8 +393,8 @@ import 'node_pool_upgrade_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -436,7 +432,7 @@ import 'node_pool_upgrade_settings.dart';
 /// 		}
 /// 		_, err = container.NewNodePool(ctx, "np", &container.NodePoolArgs{
 /// 			Name:    pulumi.String("my-node-pool"),
-/// 			Cluster: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster: primary.ID(),
 /// 			NodeConfig: &container.NodePoolNodeConfigArgs{
 /// 				MachineType:    pulumi.String("e2-medium"),
 /// 				ServiceAccount: _default.Email,
@@ -453,7 +449,7 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -462,10 +458,16 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
-/// resource "gcp_container_nodepool" "np" {
+/// resource "gcp_container_node_pool" "np" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-node-pool"
 ///   cluster = gcp_container_cluster.primary.id
 ///   node_config = {
@@ -475,6 +477,9 @@ import 'node_pool_upgrade_settings.dart';
 ///   }
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "marcellus-wallace"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 3
@@ -483,8 +488,8 @@ import 'node_pool_upgrade_settings.dart';
 ///     service_account = gcp_serviceaccount_account.default.email
 ///     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
 ///     guest_accelerators = [{
-///       "type"  = "nvidia-tesla-k80"
-///       "count" = 1
+///       type  = "nvidia-tesla-k80"
+///       count = 1
 ///     }]
 ///   }
 /// }
@@ -605,6 +610,10 @@ class NodePool extends pulumi.CustomResource {
   /// Configuration required by cluster autoscaler to adjust
   /// the size of the node pool to the current cluster usage. Structure is documented below.
   late final pulumi.Output<NodePoolAutoscaling?> autoscaling;
+  /// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+  ///
+  /// &lt;a name="nestedAutoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+  late final pulumi.Output<NodePoolBestEffortProvisioning?> bestEffortProvisioning;
   /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
   ///
   /// - - -
@@ -615,8 +624,6 @@ class NodePool extends pulumi.CustomResource {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  ///
-  /// &lt;a name="nestedAutoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
   late final pulumi.Output<String> deletionPolicy;
   /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
   late final pulumi.Output<bool?> ignoreNodeCountChanges;
@@ -651,7 +658,14 @@ class NodePool extends pulumi.CustomResource {
   /// auto-generate a unique name.
   late final pulumi.Output<String> name;
   /// Creates a unique name for the node pool beginning
-  /// with the specified prefix. Conflicts with `name`.
+  /// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+  /// Prefixes with lengths longer than 14 characters will use a shortened
+  /// UUID that will be more prone to collisions.
+  ///
+  /// Resulting name for a `namePrefix` &lt;= 14 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 15 - 31 characters:
+  /// `namePrefix` + 9 random lowercase alphanumeric characters
   late final pulumi.Output<String> namePrefix;
   /// The network configuration of the pool. Such as
   /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -706,9 +720,10 @@ class NodePool extends pulumi.CustomResource {
           'gcp:container/nodePool:NodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bestEffortProvisioning = registerOutput<NodePoolBestEffortProvisioning?>('bestEffortProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolBestEffortProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
@@ -759,6 +774,7 @@ class NodePool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bestEffortProvisioning = registerOutput<NodePoolBestEffortProvisioning?>('bestEffortProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolBestEffortProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
@@ -794,6 +810,7 @@ class NodePool extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bestEffortProvisioning = registerOutput<NodePoolBestEffortProvisioning?>('bestEffortProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolBestEffortProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');

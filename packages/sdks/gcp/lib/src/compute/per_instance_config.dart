@@ -13,6 +13,7 @@ import 'per_instance_config_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Stateful Igm
@@ -24,7 +25,7 @@ import 'per_instance_config_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
@@ -66,7 +67,7 @@ import 'per_instance_config_state.dart';
 ///     name: "my-disk-name",
 ///     type: "pd-ssd",
 ///     zone: igm.zone,
-///     image: "debian-11-bullseye-v20220719",
+///     image: "debian-13-trixie-v20260827",
 ///     physicalBlockSizeBytes: 4096,
 /// });
 /// const withDisk = new gcp.compute.PerInstanceConfig("with_disk", {
@@ -90,7 +91,7 @@ import 'per_instance_config_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// igm_basic = gcp.compute.InstanceTemplate("igm-basic",
 ///     name="my-template",
@@ -129,7 +130,7 @@ import 'per_instance_config_state.dart';
 ///     name="my-disk-name",
 ///     type="pd-ssd",
 ///     zone=igm["zone"],
-///     image="debian-11-bullseye-v20220719",
+///     image="debian-13-trixie-v20260827",
 ///     physical_block_size_bytes=4096)
 /// with_disk = gcp.compute.PerInstanceConfig("with_disk",
 ///     zone=igm["zone"],
@@ -157,7 +158,7 @@ import 'per_instance_config_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -220,7 +221,7 @@ import 'per_instance_config_state.dart';
 ///         Name = "my-disk-name",
 ///         Type = "pd-ssd",
 ///         Zone = igm.Zone,
-///         Image = "debian-11-bullseye-v20220719",
+///         Image = "debian-13-trixie-v20260827",
 ///         PhysicalBlockSizeBytes = 4096,
 ///     });
 ///
@@ -254,14 +255,14 @@ import 'per_instance_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -318,7 +319,7 @@ import 'per_instance_config_state.dart';
 /// 			Name:                   pulumi.String("my-disk-name"),
 /// 			Type:                   pulumi.String("pd-ssd"),
 /// 			Zone:                   pulumi.Any(igm.Zone),
-/// 			Image:                  pulumi.String("debian-11-bullseye-v20220719"),
+/// 			Image:                  pulumi.String("debian-13-trixie-v20260827"),
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
 /// 		})
 /// 		if err != nil {
@@ -336,7 +337,7 @@ import 'per_instance_config_state.dart';
 /// 				Disks: compute.PerInstanceConfigPreservedStateDiskArray{
 /// 					&compute.PerInstanceConfigPreservedStateDiskArgs{
 /// 						DeviceName: pulumi.String("my-stateful-disk"),
-/// 						Source:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 						Source:     _default.ID(),
 /// 						Mode:       pulumi.String("READ_ONLY"),
 /// 					},
 /// 				},
@@ -350,7 +351,7 @@ import 'per_instance_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,18 +359,21 @@ import 'per_instance_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "igm-basic" {
+/// resource "gcp_compute_instance_template" "igm-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-template"
 ///   machine_type   = "e2-medium"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -380,37 +384,46 @@ import 'per_instance_config_state.dart';
 ///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "igm-no-tp" {
+/// resource "gcp_compute_instance_group_manager" "igm-no-tp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Test instance group manager"
 ///   name        = "my-igm"
 ///   versions {
 ///     name              = "prod"
-///     instance_template = gcp_compute_instancetemplate.igm-basic.self_link
+///     instance_template = gcp_compute_instance_template.igm-basic.self_link
 ///   }
 ///   base_instance_name = "igm-no-tp"
 ///   zone               = "us-central1-c"
 ///   target_size        = 2
 /// }
 /// resource "gcp_compute_disk" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-disk-name"
 ///   type                      = "pd-ssd"
 ///   zone                      = igm.zone
-///   image                     = "debian-11-bullseye-v20220719"
+///   image                     = "debian-13-trixie-v20260827"
 ///   physical_block_size_bytes = 4096
 /// }
-/// resource "gcp_compute_perinstanceconfig" "with_disk" {
+/// resource "gcp_compute_per_instance_config" "with_disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone                   = igm.zone
 ///   instance_group_manager = igm.name
 ///   name                   = "instance-1"
 ///   preserved_state = {
 ///     metadata = {
 ///       "foo"               = "bar"
-///       "instance_template" = gcp_compute_instancetemplate.igm-basic.self_link
+///       "instance_template" = gcp_compute_instance_template.igm-basic.self_link
 ///     }
 ///     disks = [{
-///       "deviceName" = "my-stateful-disk"
-///       "source"     = gcp_compute_disk.default.id
-///       "mode"       = "READ_ONLY"
+///       device_name = "my-stateful-disk"
+///       source      = gcp_compute_disk.default.id
+///       mode        = "READ_ONLY"
 ///     }]
 ///   }
 /// }
@@ -451,7 +464,7 @@ import 'per_instance_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -494,7 +507,7 @@ import 'per_instance_config_state.dart';
 ///             .name("my-disk-name")
 ///             .type("pd-ssd")
 ///             .zone(igm.get("zone"))
-///             .image("debian-11-bullseye-v20220719")
+///             .image("debian-13-trixie-v20260827")
 ///             .physicalBlockSizeBytes(4096)
 ///             .build());
 ///
@@ -557,7 +570,7 @@ import 'per_instance_config_state.dart';
 ///       name: my-disk-name
 ///       type: pd-ssd
 ///       zone: ${igm.zone}
-///       image: debian-11-bullseye-v20220719
+///       image: debian-13-trixie-v20260827
 ///       physicalBlockSizeBytes: 4096
 ///   withDisk:
 ///     type: gcp:compute:PerInstanceConfig
@@ -579,7 +592,7 @@ import 'per_instance_config_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -603,6 +616,16 @@ import 'per_instance_config_state.dart';
 /// $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
 /// ```
 class PerInstanceConfig extends pulumi.CustomResource {
+  /// Beta The list of allowed actions to perform on the instance during an update.
+  /// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+  /// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+  /// Possible values are:
+  /// * REPLACE
+  /// * RESTART
+  /// * RESTART_IN_PLACE
+  /// * REFRESH
+  /// * NONE
+  late final pulumi.Output<List<String>?> allowedActions;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -656,8 +679,9 @@ class PerInstanceConfig extends pulumi.CustomResource {
           'gcp:compute/perInstanceConfig:PerInstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
+    allowedActions = registerOutput<List<String>?>('allowedActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     minimalAction = registerOutput<String?>('minimalAction');
@@ -694,6 +718,7 @@ class PerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowedActions = registerOutput<List<String>?>('allowedActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     minimalAction = registerOutput<String?>('minimalAction');
@@ -715,6 +740,7 @@ class PerInstanceConfig extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
+    allowedActions = registerOutput<List<String>?>('allowedActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     minimalAction = registerOutput<String?>('minimalAction');

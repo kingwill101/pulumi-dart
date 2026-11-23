@@ -190,7 +190,7 @@ class BucketObjectState {
       detectMd5hash: (() { final guardedValue = map['detectMd5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventBasedHold: (() { final guardedValue = map['eventBasedHold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       forceEmptyContentType: (() { final guardedValue = map['forceEmptyContentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       md5hash: (() { final guardedValue = map['md5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       md5hexhash: (() { final guardedValue = map['md5hexhash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

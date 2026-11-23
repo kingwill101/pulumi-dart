@@ -1,3 +1,16 @@
+export 'apihub/addon.dart';
+export 'apihub/addon_args.dart';
+export 'apihub/addon_config.dart';
+export 'apihub/addon_config_all_data_addon_config.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config_apigee_edge_config.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config_apigee_edge_config_environment_filter.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config_apigee_opdk_config.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config_apigee_opdk_config_environment_filter.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config_apigee_xhybrid_config.dart';
+export 'apihub/addon_config_gateway_plugin_addon_config_gateway_plugin_config_apigee_xhybrid_config_environment_filter.dart';
+export 'apihub/addon_state.dart';
 export 'apihub/api_hub_instance.dart';
 export 'apihub/api_hub_instance_args.dart';
 export 'apihub/api_hub_instance_config.dart';

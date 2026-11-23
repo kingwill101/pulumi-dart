@@ -26,7 +26,8 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
   /// * REGION_CODE: The country/region from which the request originates.
   /// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-  /// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+  /// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+  /// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
   final pulumi.Input<String> enforceOnKey;
   /// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
   /// You can specify up to 3 enforceOnKeyConfigs.
@@ -77,7 +78,7 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
 
   factory GetRegionSecurityPolicyRuleRateLimitOption.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleRateLimitOption(
-      banDurationSec: pulumi.Input.fromValue((map['banDurationSec'] as num).toInt()),
+      banDurationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['banDurationSec'])),
       banThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>(map['banThresholds']!, (value) => GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap((value as Map).cast<String, dynamic>()))),
       conformAction: pulumi.Input.fromValue(map['conformAction'] as String),
       enforceOnKey: pulumi.Input.fromValue(map['enforceOnKey'] as String),

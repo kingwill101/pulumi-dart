@@ -5,7 +5,7 @@ import 'transfer_job_transfer_spec_azure_blob_storage_data_source_azure_credenti
 import 'transfer_job_transfer_spec_azure_blob_storage_data_source_federated_identity_config.dart';
 
 class TransferJobTransferSpecAzureBlobStorageDataSource {
-  /// ) Credentials used to authenticate API requests to Azure block.
+  /// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
   final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials?>? azureCredentials;
   /// The container to transfer from the Azure Storage account.`
   final pulumi.Input<String> container;
@@ -21,7 +21,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource {
   final pulumi.Input<String> storageAccount;
 
   /// Creates a new [TransferJobTransferSpecAzureBlobStorageDataSource].
-  /// [azureCredentials] ) Credentials used to authenticate API requests to Azure block.
+  /// [azureCredentials] ) Credentials used to authenticate API requests to Azure block. Structure documented below.
   /// [container] The container to transfer from the Azure Storage account.`
   /// [credentialsSecret] ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
   /// [federatedIdentityConfig] Federated identity config of a user registered Azure application. Structure documented below.

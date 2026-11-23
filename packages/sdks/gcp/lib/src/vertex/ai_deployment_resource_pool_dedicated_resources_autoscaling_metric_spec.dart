@@ -26,7 +26,7 @@ class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec {
   factory AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec(
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
-      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

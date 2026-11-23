@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_pool_autoscaling.dart';
+import 'node_pool_best_effort_provisioning.dart';
 import 'node_pool_maintenance_policy.dart';
 import 'node_pool_management.dart';
 import 'node_pool_network_config.dart';
@@ -19,6 +20,10 @@ class NodePoolArgs {
   /// Configuration required by cluster autoscaler to adjust
   /// the size of the node pool to the current cluster usage. Structure is documented below.
   final pulumi.Input<NodePoolAutoscaling?>? autoscaling;
+  /// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+  ///
+  /// &lt;a name="nestedAutoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+  final pulumi.Input<NodePoolBestEffortProvisioning?>? bestEffortProvisioning;
   /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
   ///
   /// - - -
@@ -29,8 +34,6 @@ class NodePoolArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  ///
-  /// &lt;a name="nestedAutoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
   final pulumi.Input<String?>? deletionPolicy;
   /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
   final pulumi.Input<bool?>? ignoreNodeCountChanges;
@@ -61,7 +64,14 @@ class NodePoolArgs {
   /// auto-generate a unique name.
   final pulumi.Input<String?>? name;
   /// Creates a unique name for the node pool beginning
-  /// with the specified prefix. Conflicts with `name`.
+  /// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+  /// Prefixes with lengths longer than 14 characters will use a shortened
+  /// UUID that will be more prone to collisions.
+  ///
+  /// Resulting name for a `namePrefix` &lt;= 14 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 15 - 31 characters:
+  /// `namePrefix` + 9 random lowercase alphanumeric characters
   final pulumi.Input<String?>? namePrefix;
   /// The network configuration of the pool. Such as
   /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -105,6 +115,7 @@ class NodePoolArgs {
 
   /// Creates a new [NodePoolArgs].
   /// [autoscaling] Configuration required by cluster autoscaler to adjust
+  /// [bestEffortProvisioning] Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
   /// [cluster] The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [ignoreNodeCountChanges] Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
@@ -127,6 +138,7 @@ class NodePoolArgs {
   /// [version] The Kubernetes version for the nodes in this pool. Note that if this field
   const NodePoolArgs({
     this.autoscaling,
+    this.bestEffortProvisioning,
     required this.cluster,
     this.deletionPolicy,
     this.ignoreNodeCountChanges,
@@ -152,6 +164,7 @@ class NodePoolArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscaling': ?pulumi.Input.mapOptionalInputValue<NodePoolAutoscaling, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
+      'bestEffortProvisioning': ?pulumi.Input.mapOptionalInputValue<NodePoolBestEffortProvisioning, Map<String, dynamic>>(bestEffortProvisioning, (value) => value.toMap()),
       'cluster': cluster,
       'deletionPolicy': ?deletionPolicy,
       'ignoreNodeCountChanges': ?ignoreNodeCountChanges,
@@ -178,19 +191,20 @@ class NodePoolArgs {
   factory NodePoolArgs.fromMap(Map<String, dynamic> map) {
     return NodePoolArgs(
       autoscaling: (() { final guardedValue = map['autoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      bestEffortProvisioning: (() { final guardedValue = map['bestEffortProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolBestEffortProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodePoolMaintenancePolicy>(guardedValue, (value) => NodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeDrainConfigs: (() { final guardedValue = map['nodeDrainConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodePoolNodeDrainConfig>(guardedValue, (value) => NodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       nodeLocations: (() { final guardedValue = map['nodeLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       placementPolicy: (() { final guardedValue = map['placementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

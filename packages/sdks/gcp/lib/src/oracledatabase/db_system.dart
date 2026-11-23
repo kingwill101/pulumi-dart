@@ -7,6 +7,7 @@ import 'db_system_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Oracledatabase Db System Basic
@@ -45,6 +46,9 @@ import 'db_system_state.dart';
 ///             },
 ///         },
 ///     },
+///     labels: {
+///         "label-one": "value-one",
+///     },
 ///     deletionProtection: true,
 /// });
 /// ```
@@ -79,6 +83,9 @@ import 'db_system_state.dart';
 ///                 "db_unique_name": "db",
 ///             },
 ///         },
+///     },
+///     labels={
+///         "label-one": "value-one",
 ///     },
 ///     deletion_protection=True)
 /// ```
@@ -126,6 +133,10 @@ import 'db_system_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
 ///         DeletionProtection = true,
 ///     });
 ///
@@ -135,7 +146,7 @@ import 'db_system_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -171,6 +182,9 @@ import 'db_system_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
 /// 			DeletionProtection: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -181,7 +195,7 @@ import 'db_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -189,7 +203,10 @@ import 'db_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_dbsystem" "my_db_system" {
+/// resource "gcp_oracledatabase_db_system" "my_db_system" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_system_id = "my-instance"
 ///   display_name = "my-instance displayname"
 ///   location     = "europe-west2"
@@ -216,6 +233,9 @@ import 'db_system_state.dart';
 ///         db_unique_name = "db"
 ///       }
 ///     }
+///   }
+///   labels = {
+///     "label-one" = "value-one"
 ///   }
 ///   deletion_protection = "true"
 /// }
@@ -273,6 +293,7 @@ import 'db_system_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
 ///             .deletionProtection(true)
 ///             .build());
 ///
@@ -309,8 +330,11 @@ import 'db_system_state.dart';
 ///             databaseId: mydb
 ///             dbName: db
 ///             dbUniqueName: db
+///       labels:
+///         label-one: value-one
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Db System Full
 ///
@@ -449,7 +473,7 @@ import 'db_system_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -499,7 +523,7 @@ import 'db_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -507,7 +531,10 @@ import 'db_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_dbsystem" "my_db_system" {
+/// resource "gcp_oracledatabase_db_system" "my_db_system" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_system_id = "my-instance"
 ///   display_name = "my-instance displayname"
 ///   location     = "europe-west2"
@@ -729,7 +756,7 @@ class DbSystem extends pulumi.CustomResource {
           'gcp:oracledatabase/dbSystem:DbSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

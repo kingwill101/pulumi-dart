@@ -7,6 +7,9 @@ class ListingSubscriptionLinkedDatasetMap {
   /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
   final pulumi.Input<String?>? linkedDataset;
   /// (Output)
+  /// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+  final pulumi.Input<String?>? linkedPubsubSubscription;
+  /// (Output)
   /// Output only. Listing for which linked resource is created.
   final pulumi.Input<String?>? listing;
   /// (Required) The identifier for this object. Format specified above.
@@ -14,10 +17,12 @@ class ListingSubscriptionLinkedDatasetMap {
 
   /// Creates a new [ListingSubscriptionLinkedDatasetMap].
   /// [linkedDataset] (Output)
+  /// [linkedPubsubSubscription] (Output)
   /// [listing] (Output)
   /// [resourceName] (Required) The identifier for this object. Format specified above.
   const ListingSubscriptionLinkedDatasetMap({
     this.linkedDataset,
+    this.linkedPubsubSubscription,
     this.listing,
     required this.resourceName,
   });
@@ -25,6 +30,7 @@ class ListingSubscriptionLinkedDatasetMap {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'linkedDataset': ?linkedDataset,
+      'linkedPubsubSubscription': ?linkedPubsubSubscription,
       'listing': ?listing,
       'resourceName': resourceName,
     };
@@ -33,6 +39,7 @@ class ListingSubscriptionLinkedDatasetMap {
   factory ListingSubscriptionLinkedDatasetMap.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionLinkedDatasetMap(
       linkedDataset: (() { final guardedValue = map['linkedDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedPubsubSubscription: (() { final guardedValue = map['linkedPubsubSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       listing: (() { final guardedValue = map['listing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );

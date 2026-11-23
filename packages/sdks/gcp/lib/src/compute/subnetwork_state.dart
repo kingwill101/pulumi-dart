@@ -25,7 +25,9 @@ class SubnetworkState {
   /// you create the resource. This field can be set only at resource
   /// creation time.
   final pulumi.Input<String?>? description;
-  /// The range of external IPv6 addresses that are owned by this subnetwork.
+  /// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+  /// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+  /// field at any other time forces recreation of the subnetwork.
   final pulumi.Input<String?>? externalIpv6Prefix;
   /// Fingerprint of this resource. This field is used internally during updates of this resource.
   final pulumi.Input<String?>? fingerprint;
@@ -42,7 +44,10 @@ class SubnetworkState {
   final pulumi.Input<String?>? ipCidrRange;
   /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
   /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-  /// mode. Use one of the following formats to specify a sub-PDP when creating
+  /// mode. It's immutable and can only be specified during creation or the first
+  /// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+  /// any other time forces recreation of the subnetwork.
+  /// Use one of the following formats to specify a sub-PDP when creating
   /// a dual stack or IPv6-only subnetwork using BYOIP:
   /// Full resource URL, as in:
   /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -52,7 +57,7 @@ class SubnetworkState {
   final pulumi.Input<String?>? ipCollection;
   /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
   /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-  /// cannot enable direct path.
+  /// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final pulumi.Input<String?>? ipv6AccessType;
   /// The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -91,12 +96,13 @@ class SubnetworkState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
-  /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+  /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
   /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
   /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
   /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
   /// A subnetwork with purpose set to `PEER_MIGRATION` is a user created subnetwork that is reserved for migrating resources from one peered network to another.
   /// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+  /// A subnetwork with purpose set to `CUSTOM_HARDWARE_LINK` is used by Custom Hardware Link.
   /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
   /// If unspecified, the purpose defaults to `PRIVATE`.
   final pulumi.Input<String?>? purpose;
@@ -109,7 +115,7 @@ class SubnetworkState {
   /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
   final pulumi.Input<String?>? resolveSubnetMask;
   /// The role of subnetwork.
-  /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+  /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
   /// The value can be set to `ACTIVE` or `BACKUP`.
   /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
   /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -147,7 +153,7 @@ class SubnetworkState {
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
-  /// [externalIpv6Prefix] The range of external IPv6 addresses that are owned by this subnetwork.
+  /// [externalIpv6Prefix] The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
   /// [fingerprint] Fingerprint of this resource. This field is used internally during updates of this resource.
   /// [gatewayAddress] The gateway address for default routes to reach destination addresses
   /// [internalIpv6Prefix] The internal IPv6 address range that is assigned to this subnetwork.
@@ -163,7 +169,7 @@ class SubnetworkState {
   /// [privateIpGoogleAccess] When enabled, VMs in this subnetwork without external IP addresses can
   /// [privateIpv6GoogleAccess] The private IPv6 google access type for the VMs in this subnet.
   /// [project] The ID of the project in which the resource belongs.
-  /// [purpose] The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
+  /// [purpose] The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION`, `PRIVATE_NAT`(Beta) or `CUSTOM_HARDWARE_LINK`(Beta).
   /// [region] The GCP region for this subnetwork.
   /// [reservedInternalRange] The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
   /// [resolveSubnetMask] 'Configures subnet mask resolution for this subnetwork.'
@@ -276,7 +282,7 @@ class SubnetworkState {
       sendSecondaryIpRangeIfEmpty: (() { final guardedValue = map['sendSecondaryIpRangeIfEmpty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stackType: (() { final guardedValue = map['stackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      subnetworkId: (() { final guardedValue = map['subnetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      subnetworkId: (() { final guardedValue = map['subnetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

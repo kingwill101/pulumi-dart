@@ -11,6 +11,7 @@ import 'environment_addons_config_state.dart';
 /// * How-to Guides
 /// * [Enable Analytics Add-On](https://cloud.google.com/apigee/docs/api-platform/reference/manage-analytics-add-on)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -44,7 +45,7 @@ class EnvironmentAddonsConfig extends pulumi.CustomResource {
           'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
     envId = registerOutput<String>('envId');

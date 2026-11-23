@@ -13,6 +13,8 @@ class DataTransferConfigScheduleOptions {
   /// scheduled at or after the end time. The end time can be changed at any
   /// moment. The time when a data transfer can be triggered manually is not
   /// limited by this option.
+  ///
+  /// &lt;a name="nestedScheduleOptionsV2"&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
   final pulumi.Input<String?>? endTime;
   /// Specifies time to start scheduling transfer runs. The first run will be
   /// scheduled at or after the start time according to a recurrence pattern

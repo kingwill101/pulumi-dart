@@ -35,10 +35,10 @@ class DashboardChartChartLayout {
 
   factory DashboardChartChartLayout.fromMap(Map<String, dynamic> map) {
     return DashboardChartChartLayout(
-      spanX: pulumi.Input.fromValue((map['spanX'] as num).toInt()),
-      spanY: pulumi.Input.fromValue((map['spanY'] as num).toInt()),
-      startX: (() { final guardedValue = map['startX']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      startY: (() { final guardedValue = map['startY']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      spanX: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['spanX'])),
+      spanY: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['spanY'])),
+      startX: (() { final guardedValue = map['startX']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      startY: (() { final guardedValue = map['startY']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

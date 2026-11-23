@@ -34,6 +34,7 @@ class ProjectsPolicyBindingState {
   /// The exact variables and functions that may be referenced within an expression are
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
+  /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
   /// Structure is documented below.
   final pulumi.Input<ProjectsPolicyBindingCondition?>? condition;
   /// Output only. The time when the policy binding was created.
@@ -69,6 +70,8 @@ class ProjectsPolicyBindingState {
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+  /// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+  /// `resource` (for access policy bindings) must be set.
   /// Structure is documented below.
   final pulumi.Input<ProjectsPolicyBindingTarget?>? target;
   /// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.

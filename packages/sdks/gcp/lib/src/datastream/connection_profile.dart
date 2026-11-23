@@ -23,6 +23,7 @@ import 'connection_profile_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Datastream Connection Profile Basic
@@ -82,7 +83,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,7 +106,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,7 +114,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profile"
@@ -170,6 +174,7 @@ import 'connection_profile_state.dart';
 ///         bucket: my-bucket
 ///         rootPath: /path
 /// ```
+///
 ///
 /// ### Datastream Connection Profile Postgresql Private Connection
 ///
@@ -574,9 +579,9 @@ import 'connection_profile_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -594,7 +599,7 @@ import 'connection_profile_state.dart';
 /// 			Name:        pulumi.String("my-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -604,7 +609,7 @@ import 'connection_profile_state.dart';
 /// 			Location:            pulumi.String("us-central1"),
 /// 			PrivateConnectionId: pulumi.String("my-connection"),
 /// 			VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-/// 				Vpc:    _default.ID().ToIDOutput().ToStringOutput(),
+/// 				Vpc:    _default.ID(),
 /// 				Subnet: pulumi.String("10.0.0.0/29"),
 /// 			},
 /// 		})
@@ -737,7 +742,7 @@ import 'connection_profile_state.dart';
 /// 				Port:     pulumi.Int(5432),
 /// 			},
 /// 			PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
-/// 				PrivateConnection: privateConnection.ID().ToIDOutput().ToStringOutput(),
+/// 				PrivateConnection: privateConnection.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -748,7 +753,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -760,16 +765,25 @@ import 'connection_profile_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   ip_cidr_range = "10.1.0.0/16"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_datastream_privateconnection" "private_connection" {
+/// resource "gcp_datastream_private_connection" "private_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Private connection"
 ///   location              = "us-central1"
 ///   private_connection_id = "my-connection"
@@ -778,7 +792,10 @@ import 'connection_profile_state.dart';
 ///     subnet = "10.0.0.0/29"
 ///   }
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "POSTGRES_14"
 ///   region           = "us-central1"
@@ -786,29 +803,44 @@ import 'connection_profile_state.dart';
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = gcp_compute_address.nat_vm_ip.address
+///         value = gcp_compute_address.nat_vm_ip.address
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = random_password.pwd.result
 /// }
 /// resource "gcp_compute_address" "nat_vm_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "nat-vm-ip"
 /// }
 /// resource "gcp_compute_instance" "nat_vm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "nat-vm"
 ///   machine_type   = "e2-medium"
 ///   zone           = "us-central1-a"
@@ -819,15 +851,16 @@ import 'connection_profile_state.dart';
 ///     }
 ///   }
 ///   network_interfaces {
-///     network    = gcp_datastream_privateconnection.private_connection.vpc_peering_config.vpc
+///     network    = gcp_datastream_private_connection.private_connection.vpc_peering_config.vpc
 ///     subnetwork = gcp_compute_subnetwork.default.self_link
 ///     access_configs {
 ///       nat_ip = gcp_compute_address.nat_vm_ip.address
 ///     }
 ///   }
-///   metadata_startup_script ="#! /bin/bash
+///   metadata_startup_script = <<EOT
+/// #! /bin/bash
 /// # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
-/// export DB_ADDR=${gcp_sql_databaseinstance.instance.public_ip_address}
+/// export DB_ADDR=${gcp_sql_database_instance.instance.public_ip_address}
 /// export DB_PORT=5432
 /// echo 1 > /proc/sys/net/ipv4/ip_forward
 /// md_url_prefix=\"http://169.254.169.254/computeMetadata/v1/instance\"
@@ -842,20 +875,27 @@ import 'connection_profile_state.dart';
 ///      -j SNAT \\
 ///      --to-source $vm_nic_ip
 /// iptables-save
-/// "
+/// EOT
+///
 /// }
 /// resource "gcp_compute_firewall" "rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ingress-rule"
-///   network     = gcp_datastream_privateconnection.private_connection.vpc_peering_config.vpc
+///   network     = gcp_datastream_private_connection.private_connection.vpc_peering_config.vpc
 ///   description = "Allow traffic into NAT VM"
 ///   direction   = "INGRESS"
 ///   allows {
 ///     protocol = "tcp"
 ///     ports    = ["5432"]
 ///   }
-///   source_ranges = [gcp_datastream_privateconnection.private_connection.vpc_peering_config.subnet]
+///   source_ranges = [gcp_datastream_private_connection.private_connection.vpc_peering_config.subnet]
 /// }
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profile"
@@ -867,7 +907,7 @@ import 'connection_profile_state.dart';
 ///     port     = 5432
 ///   }
 ///   private_connectivity = {
-///     private_connection = gcp_datastream_privateconnection.private_connection.id
+///     private_connection = gcp_datastream_private_connection.private_connection.id
 ///   }
 /// }
 /// ```
@@ -1171,6 +1211,7 @@ import 'connection_profile_state.dart';
 ///         privateConnection: ${privateConnection.id}
 /// ```
 ///
+///
 /// ### Datastream Connection Profile Full
 ///
 ///
@@ -1238,7 +1279,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1264,7 +1305,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1272,7 +1313,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profile"
@@ -1335,6 +1379,7 @@ import 'connection_profile_state.dart';
 ///       labels:
 ///         key: value
 /// ```
+///
 ///
 /// ### Datastream Connection Profile Postgres
 ///
@@ -1537,8 +1582,8 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1617,7 +1662,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1628,7 +1673,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "POSTGRES_14"
 ///   region           = "us-central1"
@@ -1636,39 +1684,51 @@ import 'connection_profile_state.dart';
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profile"
 ///   postgresql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///     database = gcp_sql_database.db.name
@@ -1813,6 +1873,7 @@ import 'connection_profile_state.dart';
 ///         password: ${user.password}
 ///         database: ${db.name}
 /// ```
+///
 ///
 /// ### Datastream Connection Profile Sql Server
 ///
@@ -2005,8 +2066,8 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2079,7 +2140,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2087,7 +2148,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "sql-server"
 ///   database_version    = "SQLSERVER_2022_STANDARD"
 ///   region              = "us-central1"
@@ -2097,34 +2161,43 @@ import 'connection_profile_state.dart';
 ///     tier = "db-custom-2-4096"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 /// }
 /// resource "gcp_sql_database" "db" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "db"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = "password"
 /// }
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "SQL Server Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   sql_server_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     port     = 1433
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
@@ -2262,6 +2335,7 @@ import 'connection_profile_state.dart';
 ///         password: ${user.password}
 ///         database: ${db.name}
 /// ```
+///
 ///
 /// ### Datastream Stream Postgresql Sslconfig Server And Client Verification
 ///
@@ -2481,7 +2555,7 @@ import 'connection_profile_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2496,22 +2570,25 @@ import 'connection_profile_state.dart';
 /// }
 ///
 /// data "std_format" "invoke_0" {
-///   for_each = toset(entries(data.gcp_datastream_getstaticips.datastreamIps.static_ips))
+///   for_each = toset(entries(data.gcp_datastream_static_ips.datastreamIps.static_ips))
 ///   input    = "datastream-%d"
 ///   args     = [each.value.key]
 /// }
-/// data "gcp_datastream_getstaticips" "datastreamIps" {
+/// data "gcp_datastream_static_ips" "datastreamIps" {
 ///   location = "us-central1"
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "POSTGRES_15"
 ///   region           = "us-central1"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
-///       authorized_networks = [for entry in entries(data.gcp_datastream_getstaticips.datastreamIps.static_ips) : {
+///       authorized_networks = [for entry in entries(data.gcp_datastream_static_ips.datastreamIps.static_ips) : {
 ///         "name"  = data.std_format.invoke_0[entry].result
 ///         "value" = entry.value
 ///       } ]
@@ -2522,42 +2599,58 @@ import 'connection_profile_state.dart';
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_sql_sslcert" "client_cert" {
+/// resource "gcp_sql_ssl_cert" "client_cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name = "client-name"
-///   instance    = gcp_sql_databaseinstance.instance.name
+///   instance    = gcp_sql_database_instance.instance.name
 /// }
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection Profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "profile-id"
 ///   postgresql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     port     = 5432
 ///     username = "user"
 ///     password = random_password.pwd.result
 ///     database = gcp_sql_database.db.name
 ///     ssl_config = {
 ///       server_and_client_verification = {
-///         client_certificate = gcp_sql_sslcert.client_cert.cert
-///         client_key         = gcp_sql_sslcert.client_cert.private_key
-///         ca_certificate     = gcp_sql_sslcert.client_cert.server_ca_cert
+///         client_certificate = gcp_sql_ssl_cert.client_cert.cert
+///         client_key         = gcp_sql_ssl_cert.client_cert.private_key
+///         ca_certificate     = gcp_sql_ssl_cert.client_cert.server_ca_cert
 ///       }
 ///     }
 ///   }
 /// }
 /// ```
+///
 ///
 /// ### Datastream Connection Profile Salesforce
 ///
@@ -2632,7 +2725,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2660,7 +2753,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2668,7 +2761,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name              = "Salesforce Source"
 ///   location                  = "us-central1"
 ///   connection_profile_id     = "source-profile"
@@ -2741,6 +2837,7 @@ import 'connection_profile_state.dart';
 ///           secretManagerStoredSecurityToken: fake-token
 /// ```
 ///
+///
 /// ### Datastream Connection Profile Spanner
 ///
 ///
@@ -2801,7 +2898,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2825,7 +2922,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2833,7 +2930,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name              = "Spanner Source"
 ///   location                  = "us-central1"
 ///   connection_profile_id     = "source-profile"
@@ -2893,6 +2993,7 @@ import 'connection_profile_state.dart';
 ///         database: projects/example-project/instances/example-instance/databases/example-database
 ///         host: https://spanner.example-region.rep.googleapis.com
 /// ```
+///
 ///
 /// ### Datastream Connection Profile Postgres Secret Manager
 ///
@@ -2963,7 +3064,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2990,7 +3091,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2998,7 +3099,10 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name              = "Postgres Source With Secret Manager"
 ///   location                  = "us-central1"
 ///   connection_profile_id     = "source-profile"
@@ -3067,6 +3171,7 @@ import 'connection_profile_state.dart';
 ///         secretManagerStoredPassword: projects/fake-project/secrets/fake-secret/versions/1
 ///         database: fake-database
 /// ```
+///
 ///
 /// ### Datastream Connection Profile Mongodb
 ///
@@ -3160,7 +3265,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3195,7 +3300,7 @@ import 'connection_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3203,14 +3308,17 @@ import 'connection_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "default" {
+/// resource "gcp_datastream_connection_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Mongodb Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   mongodb_profile = {
 ///     host_addresses = [{
-///       "hostname" = "mongodb-primary.example.com"
-///       "port"     = 27017
+///       hostname = "mongodb-primary.example.com"
+///       port     = 27017
 ///     }]
 ///     replica_set                = "myReplicaSet"
 ///     username                   = "mongoUser"
@@ -3386,7 +3494,7 @@ class ConnectionProfile extends pulumi.CustomResource {
           'gcp:datastream/connectionProfile:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');

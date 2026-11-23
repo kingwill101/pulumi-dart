@@ -10,7 +10,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
   final pulumi.Input<int?>? auditIntervalSeconds;
   /// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
   final pulumi.Input<int?>? constraintViolationLimit;
-  /// Map of deployment configs to deployments ("admission", "audit", "mutation").
+  /// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
   final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>?>? deploymentConfigs;
   /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
   final pulumi.Input<List<String>?>? exemptableNamespaces;
@@ -30,7 +30,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfig].
   /// [auditIntervalSeconds] Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
   /// [constraintViolationLimit] The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
-  /// [deploymentConfigs] Map of deployment configs to deployments ("admission", "audit", "mutation").
+  /// [deploymentConfigs] Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
   /// [exemptableNamespaces] The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
   /// [installSpec] Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
   /// [logDeniesEnabled] Logs all denies and dry run failures.
@@ -68,8 +68,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfig.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfig(
-      auditIntervalSeconds: (() { final guardedValue = map['auditIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      constraintViolationLimit: (() { final guardedValue = map['constraintViolationLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      auditIntervalSeconds: (() { final guardedValue = map['auditIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      constraintViolationLimit: (() { final guardedValue = map['constraintViolationLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deploymentConfigs: (() { final guardedValue = map['deploymentConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(guardedValue, (value) => FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       exemptableNamespaces: (() { final guardedValue = map['exemptableNamespaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       installSpec: (() { final guardedValue = map['installSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

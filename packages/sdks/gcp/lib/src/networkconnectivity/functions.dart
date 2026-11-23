@@ -44,7 +44,7 @@ import 'get_hub_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -62,7 +62,7 @@ import 'get_hub_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -70,7 +70,7 @@ import 'get_hub_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_networkconnectivity_gethubiampolicy" "policy" {
+/// data "gcp_networkconnectivity_hub_iam_policy" "policy" {
 ///   project = primary.project
 ///   hub     = primary.name
 /// }

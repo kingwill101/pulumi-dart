@@ -32,7 +32,7 @@ class GetFunctionBuildConfigSourceStorageSource {
   factory GetFunctionBuildConfigSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return GetFunctionBuildConfigSourceStorageSource(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: pulumi.Input.fromValue((map['generation'] as num).toInt()),
+      generation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['generation'])),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }

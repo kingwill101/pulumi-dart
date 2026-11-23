@@ -51,11 +51,11 @@ class GoldengateDeploymentPropertiesMaintenanceConfig {
 
   factory GoldengateDeploymentPropertiesMaintenanceConfig.fromMap(Map<String, dynamic> map) {
     return GoldengateDeploymentPropertiesMaintenanceConfig(
-      bundleReleaseUpgradePeriodDays: (() { final guardedValue = map['bundleReleaseUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      interimReleaseUpgradePeriodDays: (() { final guardedValue = map['interimReleaseUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bundleReleaseUpgradePeriodDays: (() { final guardedValue = map['bundleReleaseUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      interimReleaseUpgradePeriodDays: (() { final guardedValue = map['interimReleaseUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       isInterimReleaseAutoUpgradeEnabled: (() { final guardedValue = map['isInterimReleaseAutoUpgradeEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      majorReleaseUpgradePeriodDays: (() { final guardedValue = map['majorReleaseUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      securityPatchUpgradePeriodDays: (() { final guardedValue = map['securityPatchUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      majorReleaseUpgradePeriodDays: (() { final guardedValue = map['majorReleaseUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      securityPatchUpgradePeriodDays: (() { final guardedValue = map['securityPatchUpgradePeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

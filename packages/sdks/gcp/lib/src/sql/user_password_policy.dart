@@ -12,6 +12,7 @@ class UserPasswordPolicy {
   final pulumi.Input<bool?>? enablePasswordVerification;
   /// Password expiration duration with one week grace period.
   final pulumi.Input<String?>? passwordExpirationDuration;
+  /// The password status of the user. Structure is documented below.
   final pulumi.Input<List<UserPasswordPolicyStatus>?>? statuses;
 
   /// Creates a new [UserPasswordPolicy].
@@ -19,7 +20,7 @@ class UserPasswordPolicy {
   /// [enableFailedAttemptsCheck] If true, the check that will lock user after too many failed login attempts will be enabled.
   /// [enablePasswordVerification] If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   /// [passwordExpirationDuration] Password expiration duration with one week grace period.
-  /// [statuses] Optional.
+  /// [statuses] The password status of the user. Structure is documented below.
   const UserPasswordPolicy({
     this.allowedFailedAttempts,
     this.enableFailedAttemptsCheck,
@@ -40,7 +41,7 @@ class UserPasswordPolicy {
 
   factory UserPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPasswordPolicy(
-      allowedFailedAttempts: (() { final guardedValue = map['allowedFailedAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allowedFailedAttempts: (() { final guardedValue = map['allowedFailedAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableFailedAttemptsCheck: (() { final guardedValue = map['enableFailedAttemptsCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePasswordVerification: (() { final guardedValue = map['enablePasswordVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       passwordExpirationDuration: (() { final guardedValue = map['passwordExpirationDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

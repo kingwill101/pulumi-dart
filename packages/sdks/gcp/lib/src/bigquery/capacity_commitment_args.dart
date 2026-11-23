@@ -82,7 +82,7 @@ class CapacityCommitmentArgs {
       plan: pulumi.Input.fromValue(map['plan'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       renewalPlan: (() { final guardedValue = map['renewalPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      slotCount: pulumi.Input.fromValue((map['slotCount'] as num).toInt()),
+      slotCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['slotCount'])),
     );
   }
 }

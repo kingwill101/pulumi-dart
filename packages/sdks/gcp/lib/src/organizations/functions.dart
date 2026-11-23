@@ -63,7 +63,7 @@ import 'get_sresult.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'get_sresult.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,7 +89,7 @@ import 'get_sresult.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getactivefolder" "department1" {
+/// data "gcp_organizations_active_folder" "department1" {
 ///   display_name = "Department 1"
 ///   parent       = "organizations/1234567"
 /// }
@@ -216,7 +216,7 @@ pulumi.Output<GetActiveFolderResult> getActiveFolderOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -243,7 +243,7 @@ pulumi.Output<GetActiveFolderResult> getActiveFolderOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -251,16 +251,19 @@ pulumi.Output<GetActiveFolderResult> getActiveFolderOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "acct" {
+/// data "gcp_organizations_billing_account" "acct" {
 ///   display_name = "My Billing Account"
 ///   open         = true
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "My Project"
 ///   project_id      = "your-project-id"
 ///   org_id          = "1234567"
-///   billing_account = data.gcp_organizations_getbillingaccount.acct.id
+///   billing_account = data.gcp_organizations_billing_account.acct.id
 /// }
 /// ```
 /// ```java
@@ -387,7 +390,7 @@ pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -403,7 +406,7 @@ pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -411,11 +414,11 @@ pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// output "project" {
-///   value = data.gcp_organizations_getclientconfig.current.project
+///   value = data.gcp_organizations_client_config.current.project
 /// }
 /// ```
 /// ```java
@@ -459,8 +462,70 @@ pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
 /// ### Configure Kubernetes Provider With OAuth2 Access Token
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.organizations.getClientConfig({});
+/// const myCluster = gcp.container.getCluster({
+///     name: "my-cluster",
+///     zone: "us-east1-a",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.organizations.get_client_config()
+/// my_cluster = gcp.container.get_cluster(name="my-cluster",
+///     zone="us-east1-a")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
+///
+///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+///     {
+///         Name = "my-cluster",
+///         Zone = "us-east1-a",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = container.LookupCluster(ctx, &container.LookupClusterArgs{
+/// 			Name: "my-cluster",
+/// 			Zone: "us-east1-a",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -468,11 +533,43 @@ pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "default" {
+/// data "gcp_organizations_client_config" "default" {
 /// }
-/// data "gcp_container_getcluster" "myCluster" {
+/// data "gcp_container_cluster" "myCluster" {
 ///   name = "my-cluster"
 ///   zone = "us-east1-a"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.container.ContainerFunctions;
+/// import com.pulumi.gcp.container.inputs.GetClusterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+///             .name("my-cluster")
+///             .zone("us-east1-a")
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -568,7 +665,7 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -584,7 +681,7 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -592,11 +689,11 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// data "gcp_organizations_client_open_id_user_info" "me" {
 /// }
 ///
 /// output "my-email" {
-///   value = data.gcp_organizations_getclientopeniduserinfo.me.email
+///   value = data.gcp_organizations_client_open_id_user_info.me.email
 /// }
 /// ```
 /// ```java
@@ -639,8 +736,160 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 /// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as kubernetes from "@pulumi/kubernetes";
+///
+/// const providerIdentity = gcp.organizations.getClientOpenIdUserInfo({});
+/// const provider = gcp.organizations.getClientConfig({});
+/// const myCluster = gcp.container.getCluster({
+///     name: "my-cluster",
+///     zone: "us-east1-a",
+/// });
+/// const user = new kubernetes.index.ClusterRoleBinding("user", {
+///     metadata: [{
+///         name: "provider-user-admin",
+///     }],
+///     roleRef: [{
+///         apiGroup: "rbac.authorization.k8s.io",
+///         kind: "ClusterRole",
+///         name: "cluster-admin",
+///     }],
+///     subject: [{
+///         kind: "User",
+///         name: providerIdentity.email,
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_kubernetes as kubernetes
+///
+/// provider_identity = gcp.organizations.get_client_open_id_user_info()
+/// provider = gcp.organizations.get_client_config()
+/// my_cluster = gcp.container.get_cluster(name="my-cluster",
+///     zone="us-east1-a")
+/// user = kubernetes.ClusterRoleBinding("user",
+///     metadata=[{
+///         name: provider-user-admin,
+///     }],
+///     role_ref=[{
+///         apiGroup: rbac.authorization.k8s.io,
+///         kind: ClusterRole,
+///         name: cluster-admin,
+///     }],
+///     subject=[{
+///         kind: User,
+///         name: provider_identity.email,
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Kubernetes = Pulumi.Kubernetes;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var providerIdentity = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+///
+///     var provider = Gcp.Organizations.GetClientConfig.Invoke();
+///
+///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+///     {
+///         Name = "my-cluster",
+///         Zone = "us-east1-a",
+///     });
+///
+///     var user = new Kubernetes.ClusterRoleBinding("user", new()
+///     {
+///         Metadata = new[]
+///         {
+///
+///             {
+///                 { "name", "provider-user-admin" },
+///             },
+///         },
+///         RoleRef = new[]
+///         {
+///
+///             {
+///                 { "apiGroup", "rbac.authorization.k8s.io" },
+///                 { "kind", "ClusterRole" },
+///                 { "name", "cluster-admin" },
+///             },
+///         },
+///         Subject = new[]
+///         {
+///
+///             {
+///                 { "kind", "User" },
+///                 { "name", providerIdentity.Apply(getClientOpenIdUserInfoResult => getClientOpenIdUserInfoResult.Email) },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		providerIdentity, err := organizations.GetClientOpenIdUserInfo(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = container.LookupCluster(ctx, &container.LookupClusterArgs{
+/// 			Name: "my-cluster",
+/// 			Zone: "us-east1-a",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = kubernetes.NewClusterRoleBinding(ctx, "user", &kubernetes.ClusterRoleBindingArgs{
+/// 			Metadata: []map[string]string{
+/// 				{
+/// 					"name": "provider-user-admin",
+/// 				},
+/// 			},
+/// 			RoleRef: []map[string]string{
+/// 				{
+/// 					"apiGroup": "rbac.authorization.k8s.io",
+/// 					"kind":     "ClusterRole",
+/// 					"name":     "cluster-admin",
+/// 				},
+/// 			},
+/// 			Subject: []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"kind": "User",
+/// 					"name": providerIdentity.Email,
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -651,16 +900,19 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientopeniduserinfo" "providerIdentity" {
+/// data "gcp_organizations_client_open_id_user_info" "providerIdentity" {
 /// }
-/// data "gcp_organizations_getclientconfig" "provider" {
+/// data "gcp_organizations_client_config" "provider" {
 /// }
-/// data "gcp_container_getcluster" "myCluster" {
+/// data "gcp_container_cluster" "myCluster" {
 ///   name = "my-cluster"
 ///   zone = "us-east1-a"
 /// }
 ///
-/// resource "kubernetes_clusterrolebinding" "user" {
+/// resource "kubernetes_cluster_role_binding" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = [{
 ///     "name" = "provider-user-admin"
 ///   }]
@@ -671,8 +923,57 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 ///   }]
 ///   subject = [{
 ///     "kind" = "User"
-///     "name" = data.gcp_organizations_getclientopeniduserinfo.providerIdentity.email
+///     "name" = data.gcp_organizations_client_open_id_user_info.providerIdentity.email
 ///   }]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.container.ContainerFunctions;
+/// import com.pulumi.gcp.container.inputs.GetClusterArgs;
+/// import com.pulumi.kubernetes.ClusterRoleBinding;
+/// import com.pulumi.kubernetes.ClusterRoleBindingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///         final var provider = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+///             .name("my-cluster")
+///             .zone("us-east1-a")
+///             .build());
+///
+///         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+///             .metadata(Arrays.asList(Map.of("name", "provider-user-admin")))
+///             .roleRef(Arrays.asList(Map.ofEntries(
+///                 Map.entry("apiGroup", "rbac.authorization.k8s.io"),
+///                 Map.entry("kind", "ClusterRole"),
+///                 Map.entry("name", "cluster-admin")
+///             )))
+///             .subject(Arrays.asList(Map.ofEntries(
+///                 Map.entry("kind", "User"),
+///                 Map.entry("name", providerIdentity.email())
+///             )))
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -787,7 +1088,7 @@ pulumi.Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -813,7 +1114,7 @@ pulumi.Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -821,19 +1122,19 @@ pulumi.Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getfolder" "myFolder1" {
+/// data "gcp_organizations_folder" "myFolder1" {
 ///   folder              = "folders/12345"
 ///   lookup_organization = true
 /// }
-/// data "gcp_organizations_getfolder" "myFolder2" {
+/// data "gcp_organizations_folder" "myFolder2" {
 ///   folder = "folders/23456"
 /// }
 ///
 /// output "myFolder1Organization" {
-///   value = data.gcp_organizations_getfolder.myFolder1.organization
+///   value = data.gcp_organizations_folder.myFolder1.organization
 /// }
 /// output "myFolder2Parent" {
-///   value = data.gcp_organizations_getfolder.myFolder2.parent
+///   value = data.gcp_organizations_folder.myFolder2.parent
 /// }
 /// ```
 /// ```java
@@ -967,7 +1268,7 @@ pulumi.Output<GetFolderResult> getFolderOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -990,7 +1291,7 @@ pulumi.Output<GetFolderResult> getFolderOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -998,11 +1299,11 @@ pulumi.Output<GetFolderResult> getFolderOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getfolders" "my-org-folders" {
+/// data "gcp_organizations_folders" "my-org-folders" {
 ///   parent_id ="organizations/${organizationId}"
 /// }
-/// data "gcp_organizations_getfolder" "first-folder" {
-///   folder = data.gcp_organizations_getfolders.my-org-folders.folders[0].name
+/// data "gcp_organizations_folder" "first-folder" {
+///   folder = data.gcp_organizations_folders.my-org-folders.folders[0].name
 /// }
 /// ```
 /// ```java
@@ -1162,8 +1463,8 @@ pulumi.Output<GetIAMPolicyResult> getIAMPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1189,7 +1490,7 @@ pulumi.Output<GetIAMPolicyResult> getIAMPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1197,14 +1498,17 @@ pulumi.Output<GetIAMPolicyResult> getIAMPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiamcustomrole" "example" {
+/// data "gcp_organizations_iam_custom_role" "example" {
 ///   org_id  = "1234567890"
 ///   role_id = "your-role-id"
 /// }
 ///
-/// resource "gcp_projects_iammember" "project" {
+/// resource "gcp_projects_i_a_m_member" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "your-project-id"
-///   role    = data.gcp_organizations_getiamcustomrole.example.name
+///   role    = data.gcp_organizations_iam_custom_role.example.name
 ///   member  = "user:jane@example.com"
 /// }
 /// ```
@@ -1332,7 +1636,7 @@ pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1351,7 +1655,7 @@ pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1359,7 +1663,7 @@ pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiamcustomroles" "example" {
+/// data "gcp_organizations_iam_custom_roles" "example" {
 ///   org_id       = "1234567890"
 ///   show_deleted = true
 ///   view         = "FULL"
@@ -1480,7 +1784,7 @@ pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1504,7 +1808,7 @@ pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1512,13 +1816,16 @@ pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getorganization" "org" {
+/// data "gcp_organizations_organization" "org" {
 ///   domain = "example.com"
 /// }
 ///
 /// resource "gcp_organizations_folder" "sales" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Sales"
-///   parent       = data.gcp_organizations_getorganization.org.name
+///   parent       = data.gcp_organizations_organization.org.name
 /// }
 /// ```
 /// ```java
@@ -1637,7 +1944,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1653,7 +1960,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1661,11 +1968,11 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// output "projectNumber" {
-///   value = data.gcp_organizations_getproject.project.number
+///   value = data.gcp_organizations_project.project.number
 /// }
 /// ```
 /// ```java
@@ -1771,7 +2078,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1788,7 +2095,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1796,7 +2103,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_gets" "example" {
+/// data "gcp_organizations_s" "example" {
 ///   filter = "domain:example.com"
 /// }
 /// ```

@@ -181,7 +181,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -229,7 +229,7 @@ import 'instance_group_manager_version.dart';
 /// 				},
 /// 			},
 /// 			AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
-/// 				HealthCheck:     autohealing.ID().ToIDOutput().ToStringOutput(),
+/// 				HealthCheck:     autohealing.ID(),
 /// 				InitialDelaySec: pulumi.Int(300),
 /// 			},
 /// 		})
@@ -241,7 +241,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,7 +249,10 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "autohealing" {
+/// resource "gcp_compute_health_check" "autohealing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "autohealing-health-check"
 ///   check_interval_sec  = 5
 ///   timeout_sec         = 5
@@ -260,7 +263,10 @@ import 'instance_group_manager_version.dart';
 ///     port         = "8080"
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "appserver" {
+/// resource "gcp_compute_instance_group_manager" "appserver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "appserver-igm"
 ///   base_instance_name = "app"
 ///   zone               = "us-central1-a"
@@ -282,7 +288,7 @@ import 'instance_group_manager_version.dart';
 ///     port = 8888
 ///   }
 ///   auto_healing_policies = {
-///     health_check      = gcp_compute_healthcheck.autohealing.id
+///     health_check      = gcp_compute_health_check.autohealing.id
 ///     initial_delay_sec = 300
 ///   }
 /// }
@@ -480,7 +486,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -513,7 +519,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -521,7 +527,10 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroupmanager" "appserver" {
+/// resource "gcp_compute_instance_group_manager" "appserver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "appserver-igm"
 ///   base_instance_name = "app"
 ///   zone               = "us-central1-a"
@@ -684,7 +693,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -716,7 +725,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -724,7 +733,10 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroupmanager" "igm-sr" {
+/// resource "gcp_compute_instance_group_manager" "igm-sr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-sr-igm"
 ///   base_instance_name = "tf-sr-igm-instance"
 ///   zone               = "us-central1-a"
@@ -1001,7 +1013,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1080,7 +1092,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1088,25 +1100,31 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "workload_policy" {
+/// resource "gcp_compute_resource_policy" "workload_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-test-gce-policy"
 ///   region = "us-central1"
 ///   workload_policy = {
 ///     type = "HIGH_THROUGHPUT"
 ///   }
 /// }
-/// resource "gcp_compute_instancetemplate" "igm-basic" {
+/// resource "gcp_compute_instance_template" "igm-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "igm-instance-template"
 ///   machine_type   = "a4-highgpu-8g"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///     disk_type    = "hyperdisk-balanced"
@@ -1118,18 +1136,21 @@ import 'instance_group_manager_version.dart';
 ///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "igm-workload-policy" {
+/// resource "gcp_compute_instance_group_manager" "igm-workload-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Terraform test instance group manager"
 ///   name        = "igm-basic-workload-policy"
 ///   versions {
 ///     name              = "prod"
-///     instance_template = gcp_compute_instancetemplate.igm-basic.self_link
+///     instance_template = gcp_compute_instance_template.igm-basic.self_link
 ///   }
 ///   base_instance_name = "tf-test-igm-no-tp"
 ///   zone               = "us-central1-b"
 ///   target_size        = 0
 ///   resource_policies = {
-///     workload_policy = gcp_compute_resourcepolicy.workload_policy.self_link
+///     workload_policy = gcp_compute_resource_policy.workload_policy.self_link
 ///   }
 /// }
 /// ```
@@ -1318,7 +1339,8 @@ class InstanceGroupManager extends pulumi.CustomResource {
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
-  /// When set to "DELETE", deleting the resource is allowed.
+  /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+  /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
   ///
   /// - - -
   late final pulumi.Output<String> deletionPolicy;
@@ -1331,7 +1353,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
   late final pulumi.Output<String> instanceGroup;
   /// The unique identifier number for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> instanceGroupManagerId;
-  /// The instance lifecycle policy for this managed instance group.
+  /// The instance lifecycle policy for this managed instance group. Structure is documented below.
   late final pulumi.Output<InstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicy;
   /// Pagination behavior of the `listManagedInstances` API
   /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -1358,6 +1380,8 @@ class InstanceGroupManager extends pulumi.CustomResource {
   late final pulumi.Output<InstanceGroupManagerResourcePolicies?> resourcePolicies;
   /// The URL of the created resource.
   late final pulumi.Output<String> selfLink;
+  /// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+  late final pulumi.Output<String> serviceAccount;
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   late final pulumi.Output<InstanceGroupManagerStandbyPolicy> standbyPolicy;
   /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -1416,7 +1440,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
           'gcp:compute/instanceGroupManager:InstanceGroupManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     allInstancesConfig = registerOutput<InstanceGroupManagerAllInstancesConfig?>('allInstancesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerAllInstancesConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoHealingPolicies = registerOutput<InstanceGroupManagerAutoHealingPolicies?>('autoHealingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1436,6 +1460,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     resourcePolicies = registerOutput<InstanceGroupManagerResourcePolicies?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
+    serviceAccount = registerOutput<String>('serviceAccount');
     standbyPolicy = registerOutput<InstanceGroupManagerStandbyPolicy>('standbyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statefulDisks = registerOutput<List<InstanceGroupManagerStatefulDisk>?>('statefulDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerStatefulDisk>(guardedValue, (value) => InstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); });
     statefulExternalIps = registerOutput<List<InstanceGroupManagerStatefulExternalIp>?>('statefulExternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); });
@@ -1495,6 +1520,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     resourcePolicies = registerOutput<InstanceGroupManagerResourcePolicies?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
+    serviceAccount = registerOutput<String>('serviceAccount');
     standbyPolicy = registerOutput<InstanceGroupManagerStandbyPolicy>('standbyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statefulDisks = registerOutput<List<InstanceGroupManagerStatefulDisk>?>('statefulDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerStatefulDisk>(guardedValue, (value) => InstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); });
     statefulExternalIps = registerOutput<List<InstanceGroupManagerStatefulExternalIp>?>('statefulExternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); });
@@ -1539,6 +1565,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     resourcePolicies = registerOutput<InstanceGroupManagerResourcePolicies?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
+    serviceAccount = registerOutput<String>('serviceAccount');
     standbyPolicy = registerOutput<InstanceGroupManagerStandbyPolicy>('standbyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statefulDisks = registerOutput<List<InstanceGroupManagerStatefulDisk>?>('statefulDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerStatefulDisk>(guardedValue, (value) => InstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); });
     statefulExternalIps = registerOutput<List<InstanceGroupManagerStatefulExternalIp>?>('statefulExternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); });

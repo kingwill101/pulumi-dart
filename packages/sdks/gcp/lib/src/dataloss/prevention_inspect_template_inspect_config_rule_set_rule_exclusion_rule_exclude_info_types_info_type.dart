@@ -4,18 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_exclude_info_types_info_type_sensitivity_score.dart';
 
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
-  /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-  /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+  /// Name of the information type.
   final pulumi.Input<String> name;
-  /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+  /// Optional custom sensitivity for this InfoType.
   /// Structure is documented below.
   final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore?>? sensitivityScore;
   /// Version name for this InfoType.
   final pulumi.Input<String?>? version;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType].
-  /// [name] Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-  /// [sensitivityScore] Optional custom sensitivity for this InfoType. This only applies to data profiling.
+  /// [name] Name of the information type.
+  /// [sensitivityScore] Optional custom sensitivity for this InfoType.
   /// [version] Version name for this InfoType.
   const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType({
     required this.name,

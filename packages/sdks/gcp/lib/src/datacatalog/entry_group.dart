@@ -13,6 +13,7 @@ import 'entry_group_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Data Catalog Entry Group Basic
@@ -50,7 +51,7 @@ import 'entry_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -67,7 +68,7 @@ import 'entry_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -75,7 +76,10 @@ import 'entry_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_entrygroup" "basic_entry_group" {
+/// resource "gcp_datacatalog_entry_group" "basic_entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_group"
 /// }
 /// ```
@@ -115,6 +119,7 @@ import 'entry_group_state.dart';
 ///     properties:
 ///       entryGroupId: my_group
 /// ```
+///
 ///
 /// ### Data Catalog Entry Group Full
 ///
@@ -160,7 +165,7 @@ import 'entry_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -179,7 +184,7 @@ import 'entry_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -187,7 +192,10 @@ import 'entry_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_entrygroup" "basic_entry_group" {
+/// resource "gcp_datacatalog_entry_group" "basic_entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_group"
 ///   display_name   = "entry group"
 ///   description    = "example entry group"
@@ -282,7 +290,7 @@ class EntryGroup extends pulumi.CustomResource {
           'gcp:datacatalog/entryGroup:EntryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

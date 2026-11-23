@@ -47,7 +47,7 @@ class GetSubscriptionDeadLetterPolicy {
   factory GetSubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionDeadLetterPolicy(
       deadLetterTopic: pulumi.Input.fromValue(map['deadLetterTopic'] as String),
-      maxDeliveryAttempts: pulumi.Input.fromValue((map['maxDeliveryAttempts'] as num).toInt()),
+      maxDeliveryAttempts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDeliveryAttempts'])),
     );
   }
 }

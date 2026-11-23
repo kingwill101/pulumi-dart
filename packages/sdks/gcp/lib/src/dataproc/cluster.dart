@@ -12,7 +12,7 @@ import 'cluster_virtual_cluster_config.dart';
 ///
 ///
 /// &gt; **Warning:** Due to limitations of the API, all arguments except
-/// `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+/// `labels`, `cluster_config.worker_config.num_instances`, `cluster_config.preemptible_worker_config.num_instances`, `cluster_config.worker_flexible_config.num_instances` and `cluster_config.secondary_worker_flexible_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
 /// whole cluster!
 ///
 /// ## Example Usage
@@ -57,7 +57,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,6 +84,9 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 ///
 /// resource "gcp_dataproc_cluster" "simplecluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "simplecluster"
 ///   region = "us-central1"
 /// }
@@ -336,8 +339,8 @@ import 'cluster_virtual_cluster_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -412,7 +415,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,10 +424,16 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_dataproc_cluster" "mycluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "mycluster"
 ///   region                        = "us-central1"
 ///   graceful_decommission_timeout = "120s"
@@ -466,8 +475,8 @@ import 'cluster_virtual_cluster_config.dart';
 ///       service_account_scopes = ["cloud-platform"]
 ///     }
 ///     initialization_actions = [{
-///       "script"     = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
-///       "timeoutSec" = 500
+///       script      = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
+///       timeout_sec = 500
 ///     }]
 ///   }
 /// }
@@ -608,6 +617,266 @@ import 'cluster_virtual_cluster_config.dart';
 /// ```
 ///
 ///
+/// ### High Obtainability (HO) Mode
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const hoCluster = new gcp.dataproc.Cluster("ho_cluster", {
+///     name: "my-ho-cluster",
+///     region: "us-central1",
+///     clusterConfig: {
+///         masterFlexibleConfig: {
+///             numInstances: 1,
+///             coreCount: 4,
+///             hardwareClass: "STANDARD",
+///             bootDiskSizeGb: 100,
+///         },
+///         workerFlexibleConfig: {
+///             numInstances: 2,
+///             coreCount: 8,
+///             hardwareClass: "STANDARD",
+///             bootDiskSizeGb: 100,
+///         },
+///         secondaryWorkerFlexibleConfig: {
+///             numInstances: 2,
+///             coreCount: 8,
+///             hardwareClass: "PERFORMANCE",
+///             bootDiskSizeGb: 100,
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ho_cluster = gcp.dataproc.Cluster("ho_cluster",
+///     name="my-ho-cluster",
+///     region="us-central1",
+///     cluster_config={
+///         "master_flexible_config": {
+///             "num_instances": 1,
+///             "core_count": 4,
+///             "hardware_class": "STANDARD",
+///             "boot_disk_size_gb": 100,
+///         },
+///         "worker_flexible_config": {
+///             "num_instances": 2,
+///             "core_count": 8,
+///             "hardware_class": "STANDARD",
+///             "boot_disk_size_gb": 100,
+///         },
+///         "secondary_worker_flexible_config": {
+///             "num_instances": 2,
+///             "core_count": 8,
+///             "hardware_class": "PERFORMANCE",
+///             "boot_disk_size_gb": 100,
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var hoCluster = new Gcp.Dataproc.Cluster("ho_cluster", new()
+///     {
+///         Name = "my-ho-cluster",
+///         Region = "us-central1",
+///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+///         {
+///             MasterFlexibleConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterFlexibleConfigArgs
+///             {
+///                 NumInstances = 1,
+///                 CoreCount = 4,
+///                 HardwareClass = "STANDARD",
+///                 BootDiskSizeGb = 100,
+///             },
+///             WorkerFlexibleConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerFlexibleConfigArgs
+///             {
+///                 NumInstances = 2,
+///                 CoreCount = 8,
+///                 HardwareClass = "STANDARD",
+///                 BootDiskSizeGb = 100,
+///             },
+///             SecondaryWorkerFlexibleConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs
+///             {
+///                 NumInstances = 2,
+///                 CoreCount = 8,
+///                 HardwareClass = "PERFORMANCE",
+///                 BootDiskSizeGb = 100,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dataproc.NewCluster(ctx, "ho_cluster", &dataproc.ClusterArgs{
+/// 			Name:   pulumi.String("my-ho-cluster"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+/// 				MasterFlexibleConfig: &dataproc.ClusterClusterConfigMasterFlexibleConfigArgs{
+/// 					NumInstances:   pulumi.Int(1),
+/// 					CoreCount:      pulumi.Int(4),
+/// 					HardwareClass:  pulumi.String("STANDARD"),
+/// 					BootDiskSizeGb: pulumi.Int(100),
+/// 				},
+/// 				WorkerFlexibleConfig: &dataproc.ClusterClusterConfigWorkerFlexibleConfigArgs{
+/// 					NumInstances:   pulumi.Int(2),
+/// 					CoreCount:      pulumi.Int(8),
+/// 					HardwareClass:  pulumi.String("STANDARD"),
+/// 					BootDiskSizeGb: pulumi.Int(100),
+/// 				},
+/// 				SecondaryWorkerFlexibleConfig: &dataproc.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs{
+/// 					NumInstances:   pulumi.Int(2),
+/// 					CoreCount:      pulumi.Int(8),
+/// 					HardwareClass:  pulumi.String("PERFORMANCE"),
+/// 					BootDiskSizeGb: pulumi.Int(100),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_cluster" "ho_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "my-ho-cluster"
+///   region = "us-central1"
+///   cluster_config = {
+///     master_flexible_config = {
+///       num_instances     = 1
+///       core_count        = 4
+///       hardware_class    = "STANDARD"
+///       boot_disk_size_gb = 100
+///     }
+///     worker_flexible_config = {
+///       num_instances     = 2
+///       core_count        = 8
+///       hardware_class    = "STANDARD"
+///       boot_disk_size_gb = 100
+///     }
+///     secondary_worker_flexible_config = {
+///       num_instances     = 2
+///       core_count        = 8
+///       hardware_class    = "PERFORMANCE"
+///       boot_disk_size_gb = 100
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dataproc.Cluster;
+/// import com.pulumi.gcp.dataproc.ClusterArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterFlexibleConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerFlexibleConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var hoCluster = new Cluster("hoCluster", ClusterArgs.builder()
+///             .name("my-ho-cluster")
+///             .region("us-central1")
+///             .clusterConfig(ClusterClusterConfigArgs.builder()
+///                 .masterFlexibleConfig(ClusterClusterConfigMasterFlexibleConfigArgs.builder()
+///                     .numInstances(1)
+///                     .coreCount(4)
+///                     .hardwareClass("STANDARD")
+///                     .bootDiskSizeGb(100)
+///                     .build())
+///                 .workerFlexibleConfig(ClusterClusterConfigWorkerFlexibleConfigArgs.builder()
+///                     .numInstances(2)
+///                     .coreCount(8)
+///                     .hardwareClass("STANDARD")
+///                     .bootDiskSizeGb(100)
+///                     .build())
+///                 .secondaryWorkerFlexibleConfig(ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs.builder()
+///                     .numInstances(2)
+///                     .coreCount(8)
+///                     .hardwareClass("PERFORMANCE")
+///                     .bootDiskSizeGb(100)
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   hoCluster:
+///     type: gcp:dataproc:Cluster
+///     name: ho_cluster
+///     properties:
+///       name: my-ho-cluster
+///       region: us-central1
+///       clusterConfig:
+///         masterFlexibleConfig:
+///           numInstances: 1
+///           coreCount: 4
+///           hardwareClass: STANDARD
+///           bootDiskSizeGb: 100
+///         workerFlexibleConfig:
+///           numInstances: 2
+///           coreCount: 8
+///           hardwareClass: STANDARD
+///           bootDiskSizeGb: 100
+///         secondaryWorkerFlexibleConfig:
+///           numInstances: 2
+///           coreCount: 8
+///           hardwareClass: PERFORMANCE
+///           bootDiskSizeGb: 100
+/// ```
+///
+///
+/// &gt; **Tip:** When an autoscaling policy is attached to an HO cluster, use `lifecycle { ignoreChanges = [cluster_config[0].worker_flexible_config[0].num_instances, cluster_config[0].secondary_worker_flexible_config[0].num_instances] }` to avoid fighting the autoscaler.
+///
 /// ### Using A GPU Accelerator
 ///
 ///
@@ -688,7 +957,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -719,7 +988,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -728,6 +997,9 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 ///
 /// resource "gcp_dataproc_cluster" "accelerated_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-cluster-with-gpu"
 ///   region = "us-central1"
 ///   cluster_config = {
@@ -736,8 +1008,8 @@ import 'cluster_virtual_cluster_config.dart';
 ///     }
 ///     master_config = {
 ///       accelerators = [{
-///         "acceleratorType"  = "nvidia-tesla-k80"
-///         "acceleratorCount" = "1"
+///         accelerator_type  = "nvidia-tesla-k80"
+///         accelerator_count = "1"
 ///       }]
 ///     }
 ///   }
@@ -867,7 +1139,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:dataproc/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

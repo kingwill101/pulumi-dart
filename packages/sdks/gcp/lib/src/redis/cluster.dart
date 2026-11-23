@@ -101,6 +101,7 @@ import 'cluster_zone_distribution_config.dart';
 /// * Manually update `crossClusterReplicationConfig` field in the configuration file(s) for those clusters with the latest value from the state.
 /// * Execute `pulumi preview` once again. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Redis Cluster Ha With Labels
@@ -118,12 +119,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "my basic service connection policy",
 ///     network: consumerNet.id,
@@ -133,7 +134,7 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const cluster_ha_with_labels = new gcp.redis.Cluster("cluster-ha-with-labels", {
 ///     name: "ha-cluster",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     labels: {
 ///         my_key: "my_val",
 ///         other_key: "other_val",
@@ -141,7 +142,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     replicaCount: 1,
 ///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -178,11 +179,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="my basic service connection policy",
 ///     network=consumer_net.id,
@@ -191,7 +192,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// cluster_ha_with_labels = gcp.redis.Cluster("cluster-ha-with-labels",
 ///     name="ha-cluster",
-///     shard_count=3,
+///     shard_count=1,
 ///     labels={
 ///         "my_key": "my_val",
 ///         "other_key": "other_val",
@@ -199,7 +200,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     replica_count=1,
 ///     node_type="REDIS_SHARED_CORE_NANO",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -242,14 +243,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "my basic service connection policy",
 ///         Network = consumerNet.Id,
@@ -265,7 +266,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var cluster_ha_with_labels = new Gcp.Redis.Cluster("cluster-ha-with-labels", new()
 ///     {
 ///         Name = "ha-cluster",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         Labels =
 ///         {
 ///             { "my_key", "my_val" },
@@ -278,7 +279,7 @@ import 'cluster_zone_distribution_config.dart';
 ///                 Network = consumerNet.Id,
 ///             },
 ///         },
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         ReplicaCount = 1,
 ///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -323,9 +324,9 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -341,21 +342,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -364,17 +365,17 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "cluster-ha-with-labels", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("ha-cluster"),
-/// 			ShardCount: pulumi.Int(3),
+/// 			ShardCount: pulumi.Int(1),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_key":    pulumi.String("my_val"),
 /// 				"other_key": pulumi.String("other_val"),
 /// 			},
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
-/// 			Region:                pulumi.String("us-central1"),
+/// 			Region:                pulumi.String("northamerica-south1"),
 /// 			ReplicaCount:          pulumi.Int(1),
 /// 			NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -410,7 +411,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,9 +420,12 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 ///
 /// resource "gcp_redis_cluster" "cluster-ha-with-labels" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ha-cluster"
-///   shard_count = 3
+///   shard_count = 1
 ///   labels = {
 ///     "my_key"    = "my_val"
 ///     "other_key" = "other_val"
@@ -429,7 +433,7 @@ import 'cluster_zone_distribution_config.dart';
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
-///   region                  = "us-central1"
+///   region                  = "northamerica-south1"
 ///   replica_count           = 1
 ///   node_type               = "REDIS_SHARED_CORE_NANO"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
@@ -443,19 +447,22 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -464,12 +471,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -516,13 +529,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("my basic service connection policy")
 ///             .network(consumerNet.id())
@@ -533,7 +546,7 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var cluster_ha_with_labels = new Cluster("cluster-ha-with-labels", ClusterArgs.builder()
 ///             .name("ha-cluster")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .labels(Map.ofEntries(
 ///                 Map.entry("my_key", "my_val"),
 ///                 Map.entry("other_key", "other_val")
@@ -541,7 +554,7 @@ import 'cluster_zone_distribution_config.dart';
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .replicaCount(1)
 ///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -575,13 +588,13 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: ha-cluster
-///       shardCount: 3
+///       shardCount: 1
 ///       labels:
 ///         my_key: my_val
 ///         other_key: other_val
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
-///       region: us-central1
+///       region: northamerica-south1
 ///       replicaCount: 1
 ///       nodeType: REDIS_SHARED_CORE_NANO
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_DISABLED
@@ -606,7 +619,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: my basic service connection policy
 ///       network: ${consumerNet.id}
@@ -619,7 +632,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -628,6 +641,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       name: my-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Redis Cluster Ha
 ///
@@ -644,12 +658,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "my basic service connection policy",
 ///     network: consumerNet.id,
@@ -659,11 +673,11 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const cluster_ha = new gcp.redis.Cluster("cluster-ha", {
 ///     name: "ha-cluster",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     replicaCount: 1,
 ///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -700,11 +714,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="my basic service connection policy",
 ///     network=consumer_net.id,
@@ -713,11 +727,11 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// cluster_ha = gcp.redis.Cluster("cluster-ha",
 ///     name="ha-cluster",
-///     shard_count=3,
+///     shard_count=1,
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     replica_count=1,
 ///     node_type="REDIS_SHARED_CORE_NANO",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -760,14 +774,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "my basic service connection policy",
 ///         Network = consumerNet.Id,
@@ -783,7 +797,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var cluster_ha = new Gcp.Redis.Cluster("cluster-ha", new()
 ///     {
 ///         Name = "ha-cluster",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -791,7 +805,7 @@ import 'cluster_zone_distribution_config.dart';
 ///                 Network = consumerNet.Id,
 ///             },
 ///         },
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         ReplicaCount = 1,
 ///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -836,9 +850,9 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -854,21 +868,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -877,13 +891,13 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "cluster-ha", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("ha-cluster"),
-/// 			ShardCount: pulumi.Int(3),
+/// 			ShardCount: pulumi.Int(1),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
-/// 			Region:                pulumi.String("us-central1"),
+/// 			Region:                pulumi.String("northamerica-south1"),
 /// 			ReplicaCount:          pulumi.Int(1),
 /// 			NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -919,7 +933,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -928,13 +942,16 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 ///
 /// resource "gcp_redis_cluster" "cluster-ha" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ha-cluster"
-///   shard_count = 3
+///   shard_count = 1
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
-///   region                  = "us-central1"
+///   region                  = "northamerica-south1"
 ///   replica_count           = 1
 ///   node_type               = "REDIS_SHARED_CORE_NANO"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
@@ -948,19 +965,22 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -969,12 +989,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1021,13 +1047,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("my basic service connection policy")
 ///             .network(consumerNet.id())
@@ -1038,11 +1064,11 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var cluster_ha = new Cluster("cluster-ha", ClusterArgs.builder()
 ///             .name("ha-cluster")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .replicaCount(1)
 ///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -1076,10 +1102,10 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: ha-cluster
-///       shardCount: 3
+///       shardCount: 1
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
-///       region: us-central1
+///       region: northamerica-south1
 ///       replicaCount: 1
 ///       nodeType: REDIS_SHARED_CORE_NANO
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_DISABLED
@@ -1104,7 +1130,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: my basic service connection policy
 ///       network: ${consumerNet.id}
@@ -1117,7 +1143,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -1126,6 +1152,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       name: my-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Redis Cluster Ha Single Zone
 ///
@@ -1142,12 +1169,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "my basic service connection policy",
 ///     network: consumerNet.id,
@@ -1157,14 +1184,15 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const cluster_ha_single_zone = new gcp.redis.Cluster("cluster-ha-single-zone", {
 ///     name: "ha-cluster-single-zone",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
-///     region: "us-central1",
+///     region: "northamerica-south1",
+///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     zoneDistributionConfig: {
 ///         mode: "SINGLE_ZONE",
-///         zone: "us-central1-f",
+///         zone: "northamerica-south1-a",
 ///     },
 ///     maintenancePolicy: {
 ///         weeklyMaintenanceWindows: [{
@@ -1192,11 +1220,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="my basic service connection policy",
 ///     network=consumer_net.id,
@@ -1205,14 +1233,15 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
 ///     name="ha-cluster-single-zone",
-///     shard_count=3,
+///     shard_count=1,
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
-///     region="us-central1",
+///     region="northamerica-south1",
+///     node_type="REDIS_SHARED_CORE_NANO",
 ///     zone_distribution_config={
 ///         "mode": "SINGLE_ZONE",
-///         "zone": "us-central1-f",
+///         "zone": "northamerica-south1-a",
 ///     },
 ///     maintenance_policy={
 ///         "weekly_maintenance_windows": [{
@@ -1246,14 +1275,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "my basic service connection policy",
 ///         Network = consumerNet.Id,
@@ -1269,7 +1298,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var cluster_ha_single_zone = new Gcp.Redis.Cluster("cluster-ha-single-zone", new()
 ///     {
 ///         Name = "ha-cluster-single-zone",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -1277,11 +1306,12 @@ import 'cluster_zone_distribution_config.dart';
 ///                 Network = consumerNet.Id,
 ///             },
 ///         },
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
+///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
 ///         {
 ///             Mode = "SINGLE_ZONE",
-///             Zone = "us-central1-f",
+///             Zone = "northamerica-south1-a",
 ///         },
 ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
 ///         {
@@ -1315,9 +1345,9 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1333,21 +1363,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1356,16 +1386,17 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "cluster-ha-single-zone", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("ha-cluster-single-zone"),
-/// 			ShardCount: pulumi.Int(3),
+/// 			ShardCount: pulumi.Int(1),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
-/// 			Region: pulumi.String("us-central1"),
+/// 			Region:   pulumi.String("northamerica-south1"),
+/// 			NodeType: pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 /// 				Mode: pulumi.String("SINGLE_ZONE"),
-/// 				Zone: pulumi.String("us-central1-f"),
+/// 				Zone: pulumi.String("northamerica-south1-a"),
 /// 			},
 /// 			MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
 /// 				WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -1392,7 +1423,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1401,33 +1432,40 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 ///
 /// resource "gcp_redis_cluster" "cluster-ha-single-zone" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ha-cluster-single-zone"
-///   shard_count = 3
+///   shard_count = 1
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
-///   region = "us-central1"
+///   region    = "northamerica-south1"
+///   node_type = "REDIS_SHARED_CORE_NANO"
 ///   zone_distribution_config = {
 ///     mode = "SINGLE_ZONE"
-///     zone = "us-central1-f"
+///     zone = "northamerica-south1-a"
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
 ///   deletion_protection_enabled = true
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -1436,12 +1474,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1488,13 +1532,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("my basic service connection policy")
 ///             .network(consumerNet.id())
@@ -1505,14 +1549,15 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var cluster_ha_single_zone = new Cluster("cluster-ha-single-zone", ClusterArgs.builder()
 ///             .name("ha-cluster-single-zone")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
-///             .region("us-central1")
+///             .region("northamerica-south1")
+///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
 ///                 .mode("SINGLE_ZONE")
-///                 .zone("us-central1-f")
+///                 .zone("northamerica-south1-a")
 ///                 .build())
 ///             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
 ///                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
@@ -1539,13 +1584,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: ha-cluster-single-zone
-///       shardCount: 3
+///       shardCount: 1
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
-///       region: us-central1
+///       region: northamerica-south1
+///       nodeType: REDIS_SHARED_CORE_NANO
 ///       zoneDistributionConfig:
 ///         mode: SINGLE_ZONE
-///         zone: us-central1-f
+///         zone: northamerica-south1-a
 ///       maintenancePolicy:
 ///         weeklyMaintenanceWindows:
 ///           - day: MONDAY
@@ -1562,7 +1608,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: my basic service connection policy
 ///       network: ${consumerNet.id}
@@ -1575,7 +1621,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -1584,6 +1630,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       name: my-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Redis Cluster Secondary
 ///
@@ -1600,12 +1647,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const primaryClusterConsumerSubnet = new gcp.compute.Subnetwork("primary_cluster_consumer_subnet", {
 ///     name: "mysubnet-primary-cluster",
 ///     ipCidrRange: "10.0.1.0/29",
-///     region: "us-east1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const primaryClusterRegionScp = new gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", {
 ///     name: "mypolicy-primary-cluster",
-///     location: "us-east1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "Primary cluster service connection policy",
 ///     network: consumerNet.id,
@@ -1616,17 +1663,17 @@ import 'cluster_zone_distribution_config.dart';
 /// // Primary cluster
 /// const primaryCluster = new gcp.redis.Cluster("primary_cluster", {
 ///     name: "my-primary-cluster",
-///     region: "us-east1",
+///     region: "northamerica-south1",
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
 ///     authorizationMode: "AUTH_MODE_DISABLED",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     redisConfigs: {
 ///         "maxmemory-policy": "volatile-ttl",
 ///     },
-///     nodeType: "REDIS_HIGHMEM_MEDIUM",
+///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     persistenceConfig: {
 ///         mode: "RDB",
 ///         rdbConfig: {
@@ -1678,11 +1725,11 @@ import 'cluster_zone_distribution_config.dart';
 ///     }],
 ///     authorizationMode: "AUTH_MODE_DISABLED",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     redisConfigs: {
 ///         "maxmemory-policy": "volatile-ttl",
 ///     },
-///     nodeType: "REDIS_HIGHMEM_MEDIUM",
+///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     persistenceConfig: {
 ///         mode: "RDB",
 ///         rdbConfig: {
@@ -1693,7 +1740,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     zoneDistributionConfig: {
 ///         mode: "MULTI_ZONE",
 ///     },
-///     replicaCount: 2,
+///     replicaCount: 1,
 ///     maintenancePolicy: {
 ///         weeklyMaintenanceWindows: [{
 ///             day: "WEDNESDAY",
@@ -1726,11 +1773,11 @@ import 'cluster_zone_distribution_config.dart';
 /// primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
 ///     name="mysubnet-primary-cluster",
 ///     ip_cidr_range="10.0.1.0/29",
-///     region="us-east1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
 ///     name="mypolicy-primary-cluster",
-///     location="us-east1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="Primary cluster service connection policy",
 ///     network=consumer_net.id,
@@ -1740,17 +1787,17 @@ import 'cluster_zone_distribution_config.dart';
 /// # Primary cluster
 /// primary_cluster = gcp.redis.Cluster("primary_cluster",
 ///     name="my-primary-cluster",
-///     region="us-east1",
+///     region="northamerica-south1",
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
 ///     authorization_mode="AUTH_MODE_DISABLED",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-///     shard_count=3,
+///     shard_count=1,
 ///     redis_configs={
 ///         "maxmemory-policy": "volatile-ttl",
 ///     },
-///     node_type="REDIS_HIGHMEM_MEDIUM",
+///     node_type="REDIS_SHARED_CORE_NANO",
 ///     persistence_config={
 ///         "mode": "RDB",
 ///         "rdb_config": {
@@ -1798,11 +1845,11 @@ import 'cluster_zone_distribution_config.dart';
 ///     }],
 ///     authorization_mode="AUTH_MODE_DISABLED",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-///     shard_count=3,
+///     shard_count=1,
 ///     redis_configs={
 ///         "maxmemory-policy": "volatile-ttl",
 ///     },
-///     node_type="REDIS_HIGHMEM_MEDIUM",
+///     node_type="REDIS_SHARED_CORE_NANO",
 ///     persistence_config={
 ///         "mode": "RDB",
 ///         "rdb_config": {
@@ -1813,7 +1860,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     zone_distribution_config={
 ///         "mode": "MULTI_ZONE",
 ///     },
-///     replica_count=2,
+///     replica_count=1,
 ///     maintenance_policy={
 ///         "weekly_maintenance_windows": [{
 ///             "day": "WEDNESDAY",
@@ -1852,14 +1899,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "mysubnet-primary-cluster",
 ///         IpCidrRange = "10.0.1.0/29",
-///         Region = "us-east1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var primaryClusterRegionScp = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", new()
 ///     {
 ///         Name = "mypolicy-primary-cluster",
-///         Location = "us-east1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "Primary cluster service connection policy",
 ///         Network = consumerNet.Id,
@@ -1876,7 +1923,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var primaryCluster = new Gcp.Redis.Cluster("primary_cluster", new()
 ///     {
 ///         Name = "my-primary-cluster",
-///         Region = "us-east1",
+///         Region = "northamerica-south1",
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -1886,12 +1933,12 @@ import 'cluster_zone_distribution_config.dart';
 ///         },
 ///         AuthorizationMode = "AUTH_MODE_DISABLED",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         RedisConfigs =
 ///         {
 ///             { "maxmemory-policy", "volatile-ttl" },
 ///         },
-///         NodeType = "REDIS_HIGHMEM_MEDIUM",
+///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
 ///         {
 ///             Mode = "RDB",
@@ -1970,12 +2017,12 @@ import 'cluster_zone_distribution_config.dart';
 ///         },
 ///         AuthorizationMode = "AUTH_MODE_DISABLED",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         RedisConfigs =
 ///         {
 ///             { "maxmemory-policy", "volatile-ttl" },
 ///         },
-///         NodeType = "REDIS_HIGHMEM_MEDIUM",
+///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
 ///         {
 ///             Mode = "RDB",
@@ -1989,7 +2036,7 @@ import 'cluster_zone_distribution_config.dart';
 ///         {
 ///             Mode = "MULTI_ZONE",
 ///         },
-///         ReplicaCount = 2,
+///         ReplicaCount = 1,
 ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
 ///         {
 ///             WeeklyMaintenanceWindows = new[]
@@ -2030,9 +2077,9 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2048,21 +2095,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		primaryClusterConsumerSubnet, err := compute.NewSubnetwork(ctx, "primary_cluster_consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("mysubnet-primary-cluster"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/29"),
-/// 			Region:      pulumi.String("us-east1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		primaryClusterRegionScp, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "primary_cluster_region_scp", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("mypolicy-primary-cluster"),
-/// 			Location:     pulumi.String("us-east1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("Primary cluster service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					primaryClusterConsumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					primaryClusterConsumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2072,19 +2119,19 @@ import 'cluster_zone_distribution_config.dart';
 /// 		// Primary cluster
 /// 		primaryCluster, err := redis.NewCluster(ctx, "primary_cluster", &redis.ClusterArgs{
 /// 			Name:   pulumi.String("my-primary-cluster"),
-/// 			Region: pulumi.String("us-east1"),
+/// 			Region: pulumi.String("northamerica-south1"),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
 /// 			AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-/// 			ShardCount:            pulumi.Int(3),
+/// 			ShardCount:            pulumi.Int(1),
 /// 			RedisConfigs: pulumi.StringMap{
 /// 				"maxmemory-policy": pulumi.String("volatile-ttl"),
 /// 			},
-/// 			NodeType: pulumi.String("REDIS_HIGHMEM_MEDIUM"),
+/// 			NodeType: pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
 /// 				Mode: pulumi.String("RDB"),
 /// 				RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
@@ -2120,7 +2167,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("mysubnet-secondary-cluster"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/29"),
 /// 			Region:      pulumi.String("europe-west1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2130,10 +2177,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("europe-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("Secondary cluster service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					secondaryClusterConsumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					secondaryClusterConsumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2146,16 +2193,16 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Region: pulumi.String("europe-west1"),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
 /// 			AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-/// 			ShardCount:            pulumi.Int(3),
+/// 			ShardCount:            pulumi.Int(1),
 /// 			RedisConfigs: pulumi.StringMap{
 /// 				"maxmemory-policy": pulumi.String("volatile-ttl"),
 /// 			},
-/// 			NodeType: pulumi.String("REDIS_HIGHMEM_MEDIUM"),
+/// 			NodeType: pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
 /// 				Mode: pulumi.String("RDB"),
 /// 				RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
@@ -2166,7 +2213,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 /// 				Mode: pulumi.String("MULTI_ZONE"),
 /// 			},
-/// 			ReplicaCount: pulumi.Int(2),
+/// 			ReplicaCount: pulumi.Int(1),
 /// 			MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
 /// 				WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
 /// 					&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
@@ -2184,7 +2231,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			CrossClusterReplicationConfig: &redis.ClusterCrossClusterReplicationConfigArgs{
 /// 				ClusterRole: pulumi.String("SECONDARY"),
 /// 				PrimaryCluster: &redis.ClusterCrossClusterReplicationConfigPrimaryClusterArgs{
-/// 					Cluster: primaryCluster.ID().ToIDOutput().ToStringOutput(),
+/// 					Cluster: primaryCluster.ID(),
 /// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -2198,7 +2245,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2208,19 +2255,22 @@ import 'cluster_zone_distribution_config.dart';
 ///
 /// // Primary cluster
 /// resource "gcp_redis_cluster" "primary_cluster" {
-///   depends_on = [gcp_networkconnectivity_serviceconnectionpolicy.primary_cluster_region_scp]
-///   name       = "my-primary-cluster"
-///   region     = "us-east1"
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.primary_cluster_region_scp]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "my-primary-cluster"
+///   region = "northamerica-south1"
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
 ///   authorization_mode      = "AUTH_MODE_DISABLED"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
-///   shard_count             = 3
+///   shard_count             = 1
 ///   redis_configs = {
 ///     "maxmemory-policy" = "volatile-ttl"
 ///   }
-///   node_type = "REDIS_HIGHMEM_MEDIUM"
+///   node_type = "REDIS_SHARED_CORE_NANO"
 ///   persistence_config = {
 ///     mode = "RDB"
 ///     rdb_config = {
@@ -2234,12 +2284,12 @@ import 'cluster_zone_distribution_config.dart';
 ///   replica_count = 1
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -2247,19 +2297,22 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// // Secondary cluster
 /// resource "gcp_redis_cluster" "secondary_cluster" {
-///   depends_on = [gcp_networkconnectivity_serviceconnectionpolicy.secondary_cluster_region_scp]
-///   name       = "my-secondary-cluster"
-///   region     = "europe-west1"
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.secondary_cluster_region_scp]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "my-secondary-cluster"
+///   region = "europe-west1"
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
 ///   authorization_mode      = "AUTH_MODE_DISABLED"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
-///   shard_count             = 3
+///   shard_count             = 1
 ///   redis_configs = {
 ///     "maxmemory-policy" = "volatile-ttl"
 ///   }
-///   node_type = "REDIS_HIGHMEM_MEDIUM"
+///   node_type = "REDIS_SHARED_CORE_NANO"
 ///   persistence_config = {
 ///     mode = "RDB"
 ///     rdb_config = {
@@ -2270,15 +2323,15 @@ import 'cluster_zone_distribution_config.dart';
 ///   zone_distribution_config = {
 ///     mode = "MULTI_ZONE"
 ///   }
-///   replica_count = 2
+///   replica_count = 1
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "WEDNESDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "WEDNESDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -2291,9 +2344,12 @@ import 'cluster_zone_distribution_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "primary_cluster_region_scp" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "primary_cluster_region_scp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "mypolicy-primary-cluster"
-///   location      = "us-east1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "Primary cluster service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -2302,12 +2358,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "primary_cluster_consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "mysubnet-primary-cluster"
 ///   ip_cidr_range = "10.0.1.0/29"
-///   region        = "us-east1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "secondary_cluster_region_scp" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "secondary_cluster_region_scp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "mypolicy-secondary-cluster"
 ///   location      = "europe-west1"
 ///   service_class = "gcp-memorystore-redis"
@@ -2318,12 +2380,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "secondary_cluster_consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "mysubnet-secondary-cluster"
 ///   ip_cidr_range = "10.0.2.0/29"
 ///   region        = "europe-west1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "mynetwork"
 ///   auto_create_subnetworks = false
 /// }
@@ -2374,13 +2442,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var primaryClusterConsumerSubnet = new Subnetwork("primaryClusterConsumerSubnet", SubnetworkArgs.builder()
 ///             .name("mysubnet-primary-cluster")
 ///             .ipCidrRange("10.0.1.0/29")
-///             .region("us-east1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var primaryClusterRegionScp = new ServiceConnectionPolicy("primaryClusterRegionScp", ServiceConnectionPolicyArgs.builder()
 ///             .name("mypolicy-primary-cluster")
-///             .location("us-east1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("Primary cluster service connection policy")
 ///             .network(consumerNet.id())
@@ -2392,15 +2460,15 @@ import 'cluster_zone_distribution_config.dart';
 ///         // Primary cluster
 ///         var primaryCluster = new Cluster("primaryCluster", ClusterArgs.builder()
 ///             .name("my-primary-cluster")
-///             .region("us-east1")
+///             .region("northamerica-south1")
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
 ///             .authorizationMode("AUTH_MODE_DISABLED")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
-///             .nodeType("REDIS_HIGHMEM_MEDIUM")
+///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
 ///                 .mode("RDB")
 ///                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
@@ -2455,9 +2523,9 @@ import 'cluster_zone_distribution_config.dart';
 ///                 .build())
 ///             .authorizationMode("AUTH_MODE_DISABLED")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
-///             .nodeType("REDIS_HIGHMEM_MEDIUM")
+///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
 ///                 .mode("RDB")
 ///                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
@@ -2468,7 +2536,7 @@ import 'cluster_zone_distribution_config.dart';
 ///             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
 ///                 .mode("MULTI_ZONE")
 ///                 .build())
-///             .replicaCount(2)
+///             .replicaCount(1)
 ///             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
 ///                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
 ///                     .day("WEDNESDAY")
@@ -2502,15 +2570,15 @@ import 'cluster_zone_distribution_config.dart';
 ///     name: primary_cluster
 ///     properties:
 ///       name: my-primary-cluster
-///       region: us-east1
+///       region: northamerica-south1
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
 ///       authorizationMode: AUTH_MODE_DISABLED
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_DISABLED
-///       shardCount: 3
+///       shardCount: 1
 ///       redisConfigs:
 ///         maxmemory-policy: volatile-ttl
-///       nodeType: REDIS_HIGHMEM_MEDIUM
+///       nodeType: REDIS_SHARED_CORE_NANO
 ///       persistenceConfig:
 ///         mode: RDB
 ///         rdbConfig:
@@ -2542,10 +2610,10 @@ import 'cluster_zone_distribution_config.dart';
 ///         - network: ${consumerNet.id}
 ///       authorizationMode: AUTH_MODE_DISABLED
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_DISABLED
-///       shardCount: 3
+///       shardCount: 1
 ///       redisConfigs:
 ///         maxmemory-policy: volatile-ttl
-///       nodeType: REDIS_HIGHMEM_MEDIUM
+///       nodeType: REDIS_SHARED_CORE_NANO
 ///       persistenceConfig:
 ///         mode: RDB
 ///         rdbConfig:
@@ -2553,7 +2621,7 @@ import 'cluster_zone_distribution_config.dart';
 ///           rdbSnapshotStartTime: 2024-10-02T15:01:23Z
 ///       zoneDistributionConfig:
 ///         mode: MULTI_ZONE
-///       replicaCount: 2
+///       replicaCount: 1
 ///       maintenancePolicy:
 ///         weeklyMaintenanceWindows:
 ///           - day: WEDNESDAY
@@ -2575,7 +2643,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     name: primary_cluster_region_scp
 ///     properties:
 ///       name: mypolicy-primary-cluster
-///       location: us-east1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: Primary cluster service connection policy
 ///       network: ${consumerNet.id}
@@ -2588,7 +2656,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: mysubnet-primary-cluster
 ///       ipCidrRange: 10.0.1.0/29
-///       region: us-east1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   secondaryClusterRegionScp:
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
@@ -2618,6 +2686,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       autoCreateSubnetworks: false
 /// ```
 ///
+///
 /// ### Redis Cluster Rdb
 ///
 ///
@@ -2633,12 +2702,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "my basic service connection policy",
 ///     network: consumerNet.id,
@@ -2648,11 +2717,11 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const cluster_rdb = new gcp.redis.Cluster("cluster-rdb", {
 ///     name: "rdb-cluster",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     replicaCount: 0,
 ///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2696,11 +2765,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="my basic service connection policy",
 ///     network=consumer_net.id,
@@ -2709,11 +2778,11 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// cluster_rdb = gcp.redis.Cluster("cluster-rdb",
 ///     name="rdb-cluster",
-///     shard_count=3,
+///     shard_count=1,
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     replica_count=0,
 ///     node_type="REDIS_SHARED_CORE_NANO",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2763,14 +2832,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "my basic service connection policy",
 ///         Network = consumerNet.Id,
@@ -2786,7 +2855,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var cluster_rdb = new Gcp.Redis.Cluster("cluster-rdb", new()
 ///     {
 ///         Name = "rdb-cluster",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -2794,7 +2863,7 @@ import 'cluster_zone_distribution_config.dart';
 ///                 Network = consumerNet.Id,
 ///             },
 ///         },
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         ReplicaCount = 0,
 ///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -2848,9 +2917,9 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2866,21 +2935,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2889,13 +2958,13 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "cluster-rdb", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("rdb-cluster"),
-/// 			ShardCount: pulumi.Int(3),
+/// 			ShardCount: pulumi.Int(1),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
-/// 			Region:                pulumi.String("us-central1"),
+/// 			Region:                pulumi.String("northamerica-south1"),
 /// 			ReplicaCount:          pulumi.Int(0),
 /// 			NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -2938,7 +3007,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2947,13 +3016,16 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 ///
 /// resource "gcp_redis_cluster" "cluster-rdb" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "rdb-cluster"
-///   shard_count = 3
+///   shard_count = 1
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
-///   region                  = "us-central1"
+///   region                  = "northamerica-south1"
 ///   replica_count           = 0
 ///   node_type               = "REDIS_SHARED_CORE_NANO"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
@@ -2967,12 +3039,12 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -2984,9 +3056,12 @@ import 'cluster_zone_distribution_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -2995,12 +3070,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -3049,13 +3130,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("my basic service connection policy")
 ///             .network(consumerNet.id())
@@ -3066,11 +3147,11 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var cluster_rdb = new Cluster("cluster-rdb", ClusterArgs.builder()
 ///             .name("rdb-cluster")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .replicaCount(0)
 ///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -3111,10 +3192,10 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: rdb-cluster
-///       shardCount: 3
+///       shardCount: 1
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
-///       region: us-central1
+///       region: northamerica-south1
 ///       replicaCount: 0
 ///       nodeType: REDIS_SHARED_CORE_NANO
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_DISABLED
@@ -3144,7 +3225,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: my basic service connection policy
 ///       network: ${consumerNet.id}
@@ -3157,7 +3238,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -3166,6 +3247,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       name: my-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Redis Cluster Aof
 ///
@@ -3182,12 +3264,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "my basic service connection policy",
 ///     network: consumerNet.id,
@@ -3197,11 +3279,11 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const cluster_aof = new gcp.redis.Cluster("cluster-aof", {
 ///     name: "aof-cluster",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     replicaCount: 0,
 ///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -3244,11 +3326,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="my basic service connection policy",
 ///     network=consumer_net.id,
@@ -3257,11 +3339,11 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// cluster_aof = gcp.redis.Cluster("cluster-aof",
 ///     name="aof-cluster",
-///     shard_count=3,
+///     shard_count=1,
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     replica_count=0,
 ///     node_type="REDIS_SHARED_CORE_NANO",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -3310,14 +3392,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "my basic service connection policy",
 ///         Network = consumerNet.Id,
@@ -3333,7 +3415,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var cluster_aof = new Gcp.Redis.Cluster("cluster-aof", new()
 ///     {
 ///         Name = "aof-cluster",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -3341,7 +3423,7 @@ import 'cluster_zone_distribution_config.dart';
 ///                 Network = consumerNet.Id,
 ///             },
 ///         },
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         ReplicaCount = 0,
 ///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -3394,9 +3476,9 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3412,21 +3494,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -3435,13 +3517,13 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "cluster-aof", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("aof-cluster"),
-/// 			ShardCount: pulumi.Int(3),
+/// 			ShardCount: pulumi.Int(1),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
-/// 			Region:                pulumi.String("us-central1"),
+/// 			Region:                pulumi.String("northamerica-south1"),
 /// 			ReplicaCount:          pulumi.Int(0),
 /// 			NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -3483,7 +3565,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3492,13 +3574,16 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 ///
 /// resource "gcp_redis_cluster" "cluster-aof" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "aof-cluster"
-///   shard_count = 3
+///   shard_count = 1
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
-///   region                  = "us-central1"
+///   region                  = "northamerica-south1"
 ///   replica_count           = 0
 ///   node_type               = "REDIS_SHARED_CORE_NANO"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
@@ -3512,12 +3597,12 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -3528,9 +3613,12 @@ import 'cluster_zone_distribution_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -3539,12 +3627,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -3593,13 +3687,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("my basic service connection policy")
 ///             .network(consumerNet.id())
@@ -3610,11 +3704,11 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var cluster_aof = new Cluster("cluster-aof", ClusterArgs.builder()
 ///             .name("aof-cluster")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .replicaCount(0)
 ///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -3654,10 +3748,10 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: aof-cluster
-///       shardCount: 3
+///       shardCount: 1
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
-///       region: us-central1
+///       region: northamerica-south1
 ///       replicaCount: 0
 ///       nodeType: REDIS_SHARED_CORE_NANO
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_DISABLED
@@ -3686,7 +3780,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: my basic service connection policy
 ///       network: ${consumerNet.id}
@@ -3699,7 +3793,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -3708,6 +3802,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       name: my-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Redis Cluster Cmek
 ///
@@ -3724,12 +3819,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     description: "my basic service connection policy",
 ///     network: consumerNet.id,
@@ -3739,12 +3834,13 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const cluster_cmek = new gcp.redis.Cluster("cluster-cmek", {
 ///     name: "cmek-cluster",
-///     shardCount: 3,
+///     shardCount: 1,
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
 ///     kmsKey: "my-key",
-///     region: "us-central1",
+///     region: "northamerica-south1",
+///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     deletionProtectionEnabled: true,
 /// }, {
 ///     dependsOn: [_default],
@@ -3761,11 +3857,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     description="my basic service connection policy",
 ///     network=consumer_net.id,
@@ -3774,12 +3870,13 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// cluster_cmek = gcp.redis.Cluster("cluster-cmek",
 ///     name="cmek-cluster",
-///     shard_count=3,
+///     shard_count=1,
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
 ///     kms_key="my-key",
-///     region="us-central1",
+///     region="northamerica-south1",
+///     node_type="REDIS_SHARED_CORE_NANO",
 ///     deletion_protection_enabled=True,
 ///     opts = pulumi.ResourceOptions(depends_on=[default]))
 /// project = gcp.organizations.get_project()
@@ -3802,14 +3899,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Description = "my basic service connection policy",
 ///         Network = consumerNet.Id,
@@ -3825,7 +3922,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var cluster_cmek = new Gcp.Redis.Cluster("cluster-cmek", new()
 ///     {
 ///         Name = "cmek-cluster",
-///         ShardCount = 3,
+///         ShardCount = 1,
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -3834,7 +3931,8 @@ import 'cluster_zone_distribution_config.dart';
 ///             },
 ///         },
 ///         KmsKey = "my-key",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
+///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         DeletionProtectionEnabled = true,
 ///     }, new CustomResourceOptions
 ///     {
@@ -3852,10 +3950,10 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3871,21 +3969,21 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -3894,14 +3992,15 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "cluster-cmek", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("cmek-cluster"),
-/// 			ShardCount: pulumi.Int(3),
+/// 			ShardCount: pulumi.Int(1),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
 /// 			KmsKey:                    pulumi.String("my-key"),
-/// 			Region:                    pulumi.String("us-central1"),
+/// 			Region:                    pulumi.String("northamerica-south1"),
+/// 			NodeType:                  pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			DeletionProtectionEnabled: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			_default,
@@ -3918,7 +4017,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3926,23 +4025,30 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_redis_cluster" "cluster-cmek" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "cmek-cluster"
-///   shard_count = 3
+///   shard_count = 1
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
 ///   kms_key                     = "my-key"
-///   region                      = "us-central1"
+///   region                      = "northamerica-south1"
+///   node_type                   = "REDIS_SHARED_CORE_NANO"
 ///   deletion_protection_enabled = true
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.consumer_net.id
@@ -3951,12 +4057,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -4001,13 +4113,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .description("my basic service connection policy")
 ///             .network(consumerNet.id())
@@ -4018,12 +4130,13 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var cluster_cmek = new Cluster("cluster-cmek", ClusterArgs.builder()
 ///             .name("cmek-cluster")
-///             .shardCount(3)
+///             .shardCount(1)
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
 ///             .kmsKey("my-key")
-///             .region("us-central1")
+///             .region("northamerica-south1")
+///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .deletionProtectionEnabled(true)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(default_)
@@ -4041,11 +4154,12 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: cmek-cluster
-///       shardCount: 3
+///       shardCount: 1
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
 ///       kmsKey: my-key
-///       region: us-central1
+///       region: northamerica-south1
+///       nodeType: REDIS_SHARED_CORE_NANO
 ///       deletionProtectionEnabled: true
 ///     options:
 ///       dependsOn:
@@ -4054,7 +4168,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       description: my basic service connection policy
 ///       network: ${consumerNet.id}
@@ -4067,7 +4181,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -4082,6 +4196,7 @@ import 'cluster_zone_distribution_config.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Redis Cluster Flexible Ca
 ///
 ///
@@ -4092,13 +4207,13 @@ import 'cluster_zone_distribution_config.dart';
 ///
 /// const _default = new gcp.certificateauthority.CaPool("default", {
 ///     name: "ca-pool",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     tier: "ENTERPRISE",
 /// });
 /// const defaultAuthority = new gcp.certificateauthority.Authority("default", {
 ///     pool: _default.name,
 ///     certificateAuthorityId: "ca-auth",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     config: {
 ///         subjectConfig: {
 ///             subject: {
@@ -4135,12 +4250,12 @@ import 'cluster_zone_distribution_config.dart';
 /// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
 ///     name: "ca-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "northamerica-south1",
 ///     network: consumerNet.id,
 /// });
 /// const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "ca-policy",
-///     location: "us-central1",
+///     location: "northamerica-south1",
 ///     serviceClass: "gcp-memorystore-redis",
 ///     network: consumerNet.id,
 ///     pscConfig: {
@@ -4149,8 +4264,9 @@ import 'cluster_zone_distribution_config.dart';
 /// });
 /// const test_cluster = new gcp.redis.Cluster("test-cluster", {
 ///     name: "ca-cluster",
-///     shardCount: 3,
-///     region: "us-central1",
+///     shardCount: 1,
+///     region: "northamerica-south1",
+///     nodeType: "REDIS_SHARED_CORE_NANO",
 ///     pscConfigs: [{
 ///         network: consumerNet.id,
 ///     }],
@@ -4171,12 +4287,12 @@ import 'cluster_zone_distribution_config.dart';
 ///
 /// default = gcp.certificateauthority.CaPool("default",
 ///     name="ca-pool",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     tier="ENTERPRISE")
 /// default_authority = gcp.certificateauthority.Authority("default",
 ///     pool=default.name,
 ///     certificate_authority_id="ca-auth",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     config={
 ///         "subject_config": {
 ///             "subject": {
@@ -4211,11 +4327,11 @@ import 'cluster_zone_distribution_config.dart';
 /// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
 ///     name="ca-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="northamerica-south1",
 ///     network=consumer_net.id)
 /// default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="ca-policy",
-///     location="us-central1",
+///     location="northamerica-south1",
 ///     service_class="gcp-memorystore-redis",
 ///     network=consumer_net.id,
 ///     psc_config={
@@ -4223,8 +4339,9 @@ import 'cluster_zone_distribution_config.dart';
 ///     })
 /// test_cluster = gcp.redis.Cluster("test-cluster",
 ///     name="ca-cluster",
-///     shard_count=3,
-///     region="us-central1",
+///     shard_count=1,
+///     region="northamerica-south1",
+///     node_type="REDIS_SHARED_CORE_NANO",
 ///     psc_configs=[{
 ///         "network": consumer_net.id,
 ///     }],
@@ -4248,7 +4365,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
 ///     {
 ///         Name = "ca-pool",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         Tier = "ENTERPRISE",
 ///     });
 ///
@@ -4256,7 +4373,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Pool = @default.Name,
 ///         CertificateAuthorityId = "ca-auth",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
 ///         {
 ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -4306,14 +4423,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     {
 ///         Name = "ca-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "northamerica-south1",
 ///         Network = consumerNet.Id,
 ///     });
 ///
 ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "ca-policy",
-///         Location = "us-central1",
+///         Location = "northamerica-south1",
 ///         ServiceClass = "gcp-memorystore-redis",
 ///         Network = consumerNet.Id,
 ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
@@ -4328,8 +4445,9 @@ import 'cluster_zone_distribution_config.dart';
 ///     var test_cluster = new Gcp.Redis.Cluster("test-cluster", new()
 ///     {
 ///         Name = "ca-cluster",
-///         ShardCount = 3,
-///         Region = "us-central1",
+///         ShardCount = 1,
+///         Region = "northamerica-south1",
+///         NodeType = "REDIS_SHARED_CORE_NANO",
 ///         PscConfigs = new[]
 ///         {
 ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
@@ -4356,10 +4474,10 @@ import 'cluster_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4367,7 +4485,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 /// 			Name:     pulumi.String("ca-pool"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("northamerica-south1"),
 /// 			Tier:     pulumi.String("ENTERPRISE"),
 /// 		})
 /// 		if err != nil {
@@ -4376,7 +4494,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 		defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 /// 			Pool:                   _default.Name,
 /// 			CertificateAuthorityId: pulumi.String("ca-auth"),
-/// 			Location:               pulumi.String("us-central1"),
+/// 			Location:               pulumi.String("northamerica-south1"),
 /// 			Config: &certificateauthority.AuthorityConfigArgs{
 /// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 /// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -4419,20 +4537,20 @@ import 'cluster_zone_distribution_config.dart';
 /// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("ca-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("northamerica-south1"),
+/// 			Network:     consumerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("ca-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("northamerica-south1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
-/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      consumerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					consumerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -4441,16 +4559,17 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		_, err = redis.NewCluster(ctx, "test-cluster", &redis.ClusterArgs{
 /// 			Name:       pulumi.String("ca-cluster"),
-/// 			ShardCount: pulumi.Int(3),
-/// 			Region:     pulumi.String("us-central1"),
+/// 			ShardCount: pulumi.Int(1),
+/// 			Region:     pulumi.String("northamerica-south1"),
+/// 			NodeType:   pulumi.String("REDIS_SHARED_CORE_NANO"),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: consumerNet.ID(),
 /// 				},
 /// 			},
 /// 			TransitEncryptionMode:     pulumi.String("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"),
 /// 			ServerCaMode:              pulumi.String("SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"),
-/// 			ServerCaPool:              _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerCaPool:              _default.ID(),
 /// 			DeletionProtectionEnabled: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultServiceConnectionPolicy,
@@ -4464,7 +4583,7 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4473,27 +4592,37 @@ import 'cluster_zone_distribution_config.dart';
 /// }
 ///
 /// resource "gcp_redis_cluster" "test-cluster" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default, gcp_certificateauthority_authority.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default, gcp_certificateauthority_authority.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ca-cluster"
-///   shard_count = 3
-///   region      = "us-central1"
+///   shard_count = 1
+///   region      = "northamerica-south1"
+///   node_type   = "REDIS_SHARED_CORE_NANO"
 ///   psc_configs {
 ///     network = gcp_compute_network.consumer_net.id
 ///   }
 ///   transit_encryption_mode     = "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
 ///   server_ca_mode              = "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"
-///   server_ca_pool              = gcp_certificateauthority_capool.default.id
+///   server_ca_pool              = gcp_certificateauthority_ca_pool.default.id
 ///   deletion_protection_enabled = true
 /// }
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
-///   location = "us-central1"
+///   location = "northamerica-south1"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "ca-auth"
-///   location                 = "us-central1"
+///   location                 = "northamerica-south1"
 ///   config = {
 ///     subject_config = {
 ///       subject = {
@@ -4523,9 +4652,12 @@ import 'cluster_zone_distribution_config.dart';
 ///   deletion_protection                    = false
 ///   skip_grace_period                      = true
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "ca-policy"
-///   location      = "us-central1"
+///   location      = "northamerica-south1"
 ///   service_class = "gcp-memorystore-redis"
 ///   network       = gcp_compute_network.consumer_net.id
 ///   psc_config = {
@@ -4533,12 +4665,18 @@ import 'cluster_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "ca-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "northamerica-south1"
 ///   network       = gcp_compute_network.consumer_net.id
 /// }
 /// resource "gcp_compute_network" "consumer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "ca-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -4588,14 +4726,14 @@ import 'cluster_zone_distribution_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var default_ = new CaPool("default", CaPoolArgs.builder()
 ///             .name("ca-pool")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .tier("ENTERPRISE")
 ///             .build());
 ///
 ///         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
 ///             .pool(default_.name())
 ///             .certificateAuthorityId("ca-auth")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .config(AuthorityConfigArgs.builder()
 ///                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
 ///                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -4634,13 +4772,13 @@ import 'cluster_zone_distribution_config.dart';
 ///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
 ///             .name("ca-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("northamerica-south1")
 ///             .network(consumerNet.id())
 ///             .build());
 ///
 ///         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
 ///             .name("ca-policy")
-///             .location("us-central1")
+///             .location("northamerica-south1")
 ///             .serviceClass("gcp-memorystore-redis")
 ///             .network(consumerNet.id())
 ///             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
@@ -4650,8 +4788,9 @@ import 'cluster_zone_distribution_config.dart';
 ///
 ///         var test_cluster = new Cluster("test-cluster", ClusterArgs.builder()
 ///             .name("ca-cluster")
-///             .shardCount(3)
-///             .region("us-central1")
+///             .shardCount(1)
+///             .region("northamerica-south1")
+///             .nodeType("REDIS_SHARED_CORE_NANO")
 ///             .pscConfigs(ClusterPscConfigArgs.builder()
 ///                 .network(consumerNet.id())
 ///                 .build())
@@ -4674,8 +4813,9 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:redis:Cluster
 ///     properties:
 ///       name: ca-cluster
-///       shardCount: 3
-///       region: us-central1
+///       shardCount: 1
+///       region: northamerica-south1
+///       nodeType: REDIS_SHARED_CORE_NANO
 ///       pscConfigs:
 ///         - network: ${consumerNet.id}
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
@@ -4690,7 +4830,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     type: gcp:certificateauthority:CaPool
 ///     properties:
 ///       name: ca-pool
-///       location: us-central1
+///       location: northamerica-south1
 ///       tier: ENTERPRISE
 ///   defaultAuthority:
 ///     type: gcp:certificateauthority:Authority
@@ -4698,7 +4838,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       pool: ${default.name}
 ///       certificateAuthorityId: ca-auth
-///       location: us-central1
+///       location: northamerica-south1
 ///       config:
 ///         subjectConfig:
 ///           subject:
@@ -4723,7 +4863,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     name: default
 ///     properties:
 ///       name: ca-policy
-///       location: us-central1
+///       location: northamerica-south1
 ///       serviceClass: gcp-memorystore-redis
 ///       network: ${consumerNet.id}
 ///       pscConfig:
@@ -4735,7 +4875,7 @@ import 'cluster_zone_distribution_config.dart';
 ///     properties:
 ///       name: ca-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: northamerica-south1
 ///       network: ${consumerNet.id}
 ///   consumerNet:
 ///     type: gcp:compute:Network
@@ -4769,7 +4909,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> aclPolicy;
   /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
   /// Default value is `AUTH_MODE_DISABLED`.
-  /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+  /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
   late final pulumi.Output<String?> authorizationMode;
   /// The automated backup config for a instance.
   /// Structure is documented below.
@@ -4909,7 +5049,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:redis/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aclPolicy = registerOutput<String?>('aclPolicy');

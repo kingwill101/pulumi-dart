@@ -10,6 +10,7 @@ import 'tenant_default_supported_idp_config_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Identity Platform Tenant Default Supported Idp Config Basic
@@ -69,7 +70,7 @@ import 'tenant_default_supported_idp_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -96,7 +97,7 @@ import 'tenant_default_supported_idp_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,9 +106,15 @@ import 'tenant_default_supported_idp_config_state.dart';
 /// }
 ///
 /// resource "gcp_identityplatform_tenant" "tenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tenant"
 /// }
-/// resource "gcp_identityplatform_tenantdefaultsupportedidpconfig" "idp_config" {
+/// resource "gcp_identityplatform_tenant_default_supported_idp_config" "idp_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled       = true
 ///   tenant        = gcp_identityplatform_tenant.tenant.name
 ///   idp_id        = "playgames.google.com"
@@ -233,7 +240,7 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
           'gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');

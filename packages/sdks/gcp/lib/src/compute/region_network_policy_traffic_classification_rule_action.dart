@@ -40,7 +40,7 @@ class RegionNetworkPolicyTrafficClassificationRuleAction {
   factory RegionNetworkPolicyTrafficClassificationRuleAction.fromMap(Map<String, dynamic> map) {
     return RegionNetworkPolicyTrafficClassificationRuleAction(
       dscpMode: (() { final guardedValue = map['dscpMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dscpValue: (() { final guardedValue = map['dscpValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dscpValue: (() { final guardedValue = map['dscpValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trafficClass: (() { final guardedValue = map['trafficClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

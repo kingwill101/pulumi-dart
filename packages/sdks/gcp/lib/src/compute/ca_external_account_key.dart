@@ -21,6 +21,7 @@ import 'ca_external_account_key_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Public Ca External Account Key
@@ -58,7 +59,7 @@ import 'ca_external_account_key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +76,7 @@ import 'ca_external_account_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -83,7 +84,10 @@ import 'ca_external_account_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_caexternalaccountkey" "prod" {
+/// resource "gcp_compute_ca_external_account_key" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 /// }
 /// ```
@@ -165,7 +169,7 @@ class CaExternalAccountKey extends pulumi.CustomResource {
           'gcp:compute/caExternalAccountKey:CaExternalAccountKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['b64MacKey', 'b64urlMacKey', 'keyId', 'macKey'],
         ) {
     b64MacKey = registerOutput<String>('b64MacKey', isSecret: true);

@@ -8,7 +8,7 @@ class InstanceSchedulingGracefulShutdown {
   final pulumi.Input<bool> enabled;
   /// The time allotted for the instance to gracefully shut down.
   /// If the graceful shutdown isn't complete after this time, then the instance
-  /// transitions to the STOPPING state. Structure is documented below:
+  /// transitions to the STOPPING state. Structure is documented below.
   final pulumi.Input<InstanceSchedulingGracefulShutdownMaxDuration?>? maxDuration;
 
   /// Creates a new [InstanceSchedulingGracefulShutdown].

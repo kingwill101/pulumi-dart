@@ -12,12 +12,17 @@ import 'connection_log_config.dart';
 import 'connection_node_config.dart';
 import 'connection_ssl_config.dart';
 import 'connection_status.dart';
+import 'connection_traffic_shaping_config.dart';
 
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
+  /// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+  final pulumi.Input<bool?>? asyncOperationsEnabled;
   /// authConfig for the connection.
   /// Structure is documented below.
   final pulumi.Input<ConnectionAuthConfig?>? authConfig;
+  /// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+  final pulumi.Input<bool?>? authOverrideEnabled;
   /// Config Variables for the connection.
   /// Structure is documented below.
   final pulumi.Input<List<ConnectionConfigVariable>?>? configVariables;
@@ -95,11 +100,16 @@ class ConnectionState {
   final pulumi.Input<String?>? subscriptionType;
   /// Suspended indicates if a user has suspended a connection or not.
   final pulumi.Input<bool?>? suspended;
+  /// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+  /// Structure is documented below.
+  final pulumi.Input<List<ConnectionTrafficShapingConfig>?>? trafficShapingConfigs;
   /// Time the Namespace was updated in UTC.
   final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ConnectionState].
+  /// [asyncOperationsEnabled] Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
   /// [authConfig] authConfig for the connection.
+  /// [authOverrideEnabled] Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
   /// [configVariables] Config Variables for the connection.
   /// [connectionRevision] Connection revision. This field is only updated when the connection is created or updated by User.
   /// [connectorVersion] connectorVersion of the Connector.
@@ -127,9 +137,12 @@ class ConnectionState {
   /// [statuses] (Output)
   /// [subscriptionType] This subscription type enum states the subscription type of the project.
   /// [suspended] Suspended indicates if a user has suspended a connection or not.
+  /// [trafficShapingConfigs] Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
   /// [updateTime] Time the Namespace was updated in UTC.
   const ConnectionState({
+    this.asyncOperationsEnabled,
     this.authConfig,
+    this.authOverrideEnabled,
     this.configVariables,
     this.connectionRevision,
     this.connectorVersion,
@@ -157,12 +170,15 @@ class ConnectionState {
     this.statuses,
     this.subscriptionType,
     this.suspended,
+    this.trafficShapingConfigs,
     this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'asyncOperationsEnabled': ?asyncOperationsEnabled,
       'authConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'authOverrideEnabled': ?authOverrideEnabled,
       'configVariables': ?pulumi.Input.mapOptionalInputValue<List<ConnectionConfigVariable>, List<Map<String, dynamic>>>(configVariables, (value) => pulumi.Input.encodeList<ConnectionConfigVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectionRevision': ?connectionRevision,
       'connectorVersion': ?connectorVersion,
@@ -190,13 +206,16 @@ class ConnectionState {
       'statuses': ?pulumi.Input.mapOptionalInputValue<List<ConnectionStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<ConnectionStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subscriptionType': ?subscriptionType,
       'suspended': ?suspended,
+      'trafficShapingConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConnectionTrafficShapingConfig>, List<Map<String, dynamic>>>(trafficShapingConfigs, (value) => pulumi.Input.encodeList<ConnectionTrafficShapingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
     };
   }
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
+      asyncOperationsEnabled: (() { final guardedValue = map['asyncOperationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       authConfig: (() { final guardedValue = map['authConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      authOverrideEnabled: (() { final guardedValue = map['authOverrideEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       configVariables: (() { final guardedValue = map['configVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionConfigVariable>(guardedValue, (value) => ConnectionConfigVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectionRevision: (() { final guardedValue = map['connectionRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectorVersion: (() { final guardedValue = map['connectorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -224,6 +243,7 @@ class ConnectionState {
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionStatus>(guardedValue, (value) => ConnectionStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       subscriptionType: (() { final guardedValue = map['subscriptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       suspended: (() { final guardedValue = map['suspended']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      trafficShapingConfigs: (() { final guardedValue = map['trafficShapingConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionTrafficShapingConfig>(guardedValue, (value) => ConnectionTrafficShapingConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

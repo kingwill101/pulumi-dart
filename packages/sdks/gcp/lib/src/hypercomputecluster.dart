@@ -29,6 +29,7 @@ export 'hypercomputecluster/cluster_storage_resource_config.dart';
 export 'hypercomputecluster/cluster_storage_resource_config_existing_bucket.dart';
 export 'hypercomputecluster/cluster_storage_resource_config_existing_filestore.dart';
 export 'hypercomputecluster/cluster_storage_resource_config_existing_lustre.dart';
+export 'hypercomputecluster/cluster_storage_resource_config_existing_nfs.dart';
 export 'hypercomputecluster/cluster_storage_resource_config_new_bucket.dart';
 export 'hypercomputecluster/cluster_storage_resource_config_new_bucket_autoclass.dart';
 export 'hypercomputecluster/cluster_storage_resource_config_new_bucket_hierarchical_namespace.dart';

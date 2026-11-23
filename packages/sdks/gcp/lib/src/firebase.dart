@@ -73,6 +73,8 @@ export 'firebase/app_hosting_traffic_args.dart';
 export 'firebase/app_hosting_traffic_current.dart';
 export 'firebase/app_hosting_traffic_current_split.dart';
 export 'firebase/app_hosting_traffic_rollout_policy.dart';
+export 'firebase/app_hosting_traffic_rollout_policy_ignored_path.dart';
+export 'firebase/app_hosting_traffic_rollout_policy_required_path.dart';
 export 'firebase/app_hosting_traffic_state.dart';
 export 'firebase/app_hosting_traffic_target.dart';
 export 'firebase/app_hosting_traffic_target_split.dart';

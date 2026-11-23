@@ -58,7 +58,7 @@ class DataTableColumnInfo {
 
   factory DataTableColumnInfo.fromMap(Map<String, dynamic> map) {
     return DataTableColumnInfo(
-      columnIndex: pulumi.Input.fromValue((map['columnIndex'] as num).toInt()),
+      columnIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['columnIndex'])),
       columnType: (() { final guardedValue = map['columnType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyColumn: (() { final guardedValue = map['keyColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mappedColumnPath: (() { final guardedValue = map['mappedColumnPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

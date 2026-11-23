@@ -14,6 +14,7 @@ import 'insights_report_config_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Insights Report Config
@@ -39,6 +40,9 @@ import 'insights_report_config_state.dart';
 /// const config = new gcp.storage.InsightsReportConfig("config", {
 ///     displayName: "Test Report Config",
 ///     location: "us-central1",
+///     labels: {
+///         key: "value",
+///     },
 ///     frequencyOptions: {
 ///         frequency: "WEEKLY",
 ///         startDate: {
@@ -92,6 +96,9 @@ import 'insights_report_config_state.dart';
 /// config = gcp.storage.InsightsReportConfig("config",
 ///     display_name="Test Report Config",
 ///     location="us-central1",
+///     labels={
+///         "key": "value",
+///     },
 ///     frequency_options={
 ///         "frequency": "WEEKLY",
 ///         "start_date": {
@@ -155,6 +162,10 @@ import 'insights_report_config_state.dart';
 ///     {
 ///         DisplayName = "Test Report Config",
 ///         Location = "us-central1",
+///         Labels =
+///         {
+///             { "key", "value" },
+///         },
 ///         FrequencyOptions = new Gcp.Storage.Inputs.InsightsReportConfigFrequencyOptionsArgs
 ///         {
 ///             Frequency = "WEEKLY",
@@ -210,8 +221,8 @@ import 'insights_report_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,6 +252,9 @@ import 'insights_report_config_state.dart';
 /// 		_, err = storage.NewInsightsReportConfig(ctx, "config", &storage.InsightsReportConfigArgs{
 /// 			DisplayName: pulumi.String("Test Report Config"),
 /// 			Location:    pulumi.String("us-central1"),
+/// 			Labels: pulumi.StringMap{
+/// 				"key": pulumi.String("value"),
+/// 			},
 /// 			FrequencyOptions: &storage.InsightsReportConfigFrequencyOptionsArgs{
 /// 				Frequency: pulumi.String("WEEKLY"),
 /// 				StartDate: &storage.InsightsReportConfigFrequencyOptionsStartDateArgs{
@@ -284,7 +298,7 @@ import 'insights_report_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -292,13 +306,19 @@ import 'insights_report_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_storage_insightsreportconfig" "config" {
-///   depends_on   = [gcp_storage_bucketiammember.admin]
+/// resource "gcp_storage_insights_report_config" "config" {
+///   depends_on = [gcp_storage_bucket_i_a_m_member.admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Test Report Config"
 ///   location     = "us-central1"
+///   labels = {
+///     "key" = "value"
+///   }
 ///   frequency_options = {
 ///     frequency = "WEEKLY"
 ///     start_date = {
@@ -329,15 +349,21 @@ import 'insights_report_config_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "report_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketiammember" "admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.report_bucket.name
 ///   role   = "roles/storage.admin"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -394,6 +420,7 @@ import 'insights_report_config_state.dart';
 ///         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()
 ///             .displayName("Test Report Config")
 ///             .location("us-central1")
+///             .labels(Map.of("key", "value"))
 ///             .frequencyOptions(InsightsReportConfigFrequencyOptionsArgs.builder()
 ///                 .frequency("WEEKLY")
 ///                 .startDate(InsightsReportConfigFrequencyOptionsStartDateArgs.builder()
@@ -441,6 +468,8 @@ import 'insights_report_config_state.dart';
 ///     properties:
 ///       displayName: Test Report Config
 ///       location: us-central1
+///       labels:
+///         key: value
 ///       frequencyOptions:
 ///         frequency: WEEKLY
 ///         startDate:
@@ -519,11 +548,18 @@ class InsightsReportConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   late final pulumi.Output<String?> displayName;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// If set, all the inventory report details associated with this report configuration are deleted.
   late final pulumi.Output<bool?> forceDestroy;
   /// Options for configuring how inventory reports are generated.
   /// Structure is documented below.
   late final pulumi.Output<InsightsReportConfigFrequencyOptions?> frequencyOptions;
+  /// Labels as key value pairs. Have a character limit of 64 per key and value.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// must be in the same location.
   late final pulumi.Output<String> location;
@@ -537,6 +573,9 @@ class InsightsReportConfig extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Creates a new [InsightsReportConfig].
   /// [name] The Pulumi resource name.
@@ -550,18 +589,22 @@ class InsightsReportConfig extends pulumi.CustomResource {
           'gcp:storage/insightsReportConfig:InsightsReportConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceDestroy = registerOutput<bool?>('forceDestroy');
     frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     objectMetadataReportOptions = registerOutput<InsightsReportConfigObjectMetadataReportOptions?>('objectMetadataReportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parquetOptions = registerOutput<Map<String, dynamic>?>('parquetOptions');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 
   /// Gets an existing [InsightsReportConfig] resource's state with the given [name] and [id].
@@ -591,13 +634,16 @@ class InsightsReportConfig extends pulumi.CustomResource {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceDestroy = registerOutput<bool?>('forceDestroy');
     frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     objectMetadataReportOptions = registerOutput<InsightsReportConfigObjectMetadataReportOptions?>('objectMetadataReportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parquetOptions = registerOutput<Map<String, dynamic>?>('parquetOptions');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 
   /// Creates a typed reference to an existing [InsightsReportConfig] resource.
@@ -607,17 +653,21 @@ class InsightsReportConfig extends pulumi.CustomResource {
         pulumi.parseUrn(urn).urnName,
         const <String, pulumi.Input<dynamic>>{},
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         isResourceReference: true,
       ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceDestroy = registerOutput<bool?>('forceDestroy');
     frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     objectMetadataReportOptions = registerOutput<InsightsReportConfigObjectMetadataReportOptions?>('objectMetadataReportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parquetOptions = registerOutput<Map<String, dynamic>?>('parquetOptions');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 }

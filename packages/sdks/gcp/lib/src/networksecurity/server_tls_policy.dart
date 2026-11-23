@@ -13,6 +13,7 @@ import 'server_tls_policy_state.dart';
 /// * How-to Guides
 /// * [Use ServerTlsPolicy](https://cloud.google.com/load-balancing/docs/mtls)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Security Server Tls Policy Basic
@@ -113,7 +114,7 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +150,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,7 +158,10 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-server-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -171,8 +175,8 @@ import 'server_tls_policy_state.dart';
 ///   }
 ///   mtls_policy = {
 ///     client_validation_cas = [{
-///       "grpcEndpoint" = {
-///         "targetUri" = "unix:mypath"
+///       grpc_endpoint = {
+///         target_uri = "unix:mypath"
 ///       }
 ///     }]
 ///   }
@@ -245,6 +249,7 @@ import 'server_tls_policy_state.dart';
 ///               targetUri: unix:mypath
 /// ```
 ///
+///
 /// ### Network Security Server Tls Policy Advanced
 ///
 ///
@@ -312,7 +317,7 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -338,7 +343,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -346,7 +351,10 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-server-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -409,6 +417,7 @@ import 'server_tls_policy_state.dart';
 ///       mtlsPolicy:
 ///         clientValidationMode: ALLOW_INVALID_OR_MISSING_CLIENT_CERT
 /// ```
+///
 ///
 /// ### Network Security Server Tls Policy Server Cert
 ///
@@ -484,7 +493,7 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -512,7 +521,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -520,7 +529,10 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-server-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -590,6 +602,7 @@ import 'server_tls_policy_state.dart';
 ///           targetUri: unix:mypath
 /// ```
 ///
+///
 /// ### Network Security Server Tls Policy Mtls
 ///
 ///
@@ -599,7 +612,6 @@ import 'server_tls_policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 /// import * as std from "@pulumi/std";
 ///
-/// const project = gcp.organizations.getProject({});
 /// const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
 ///     name: "my-trust-config",
 ///     description: "sample trust config description",
@@ -627,7 +639,7 @@ import 'server_tls_policy_state.dart';
 ///     allowOpen: false,
 ///     mtlsPolicy: {
 ///         clientValidationMode: "REJECT_INVALID",
-///         clientValidationTrustConfig: pulumi.all([project, defaultTrustConfig.name]).apply(([project, name]) => `projects/${project.number}/locations/global/trustConfigs/${name}`),
+///         clientValidationTrustConfig: defaultTrustConfig.id,
 ///     },
 ///     labels: {
 ///         foo: "bar",
@@ -639,7 +651,6 @@ import 'server_tls_policy_state.dart';
 /// import pulumi_gcp as gcp
 /// import pulumi_std as std
 ///
-/// project = gcp.organizations.get_project()
 /// default_trust_config = gcp.certificatemanager.TrustConfig("default",
 ///     name="my-trust-config",
 ///     description="sample trust config description",
@@ -662,7 +673,7 @@ import 'server_tls_policy_state.dart';
 ///     allow_open=False,
 ///     mtls_policy={
 ///         "client_validation_mode": "REJECT_INVALID",
-///         "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+///         "client_validation_trust_config": default_trust_config.id,
 ///     },
 ///     labels={
 ///         "foo": "bar",
@@ -677,8 +688,6 @@ import 'server_tls_policy_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var project = Gcp.Organizations.GetProject.Invoke();
-///
 ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
 ///     {
 ///         Name = "my-trust-config",
@@ -725,12 +734,7 @@ import 'server_tls_policy_state.dart';
 ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
 ///         {
 ///             ClientValidationMode = "REJECT_INVALID",
-///             ClientValidationTrustConfig = Output.Tuple(project, defaultTrustConfig.Name).Apply(values =>
-///             {
-///                 var project = values.Item1;
-///                 var name = values.Item2;
-///                 return $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}/locations/global/trustConfigs/{name}";
-///             }),
+///             ClientValidationTrustConfig = defaultTrustConfig.Id,
 ///         },
 ///         Labels =
 ///         {
@@ -744,21 +748,14 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		invokeFile, err := std.File(ctx, &std.FileArgs{
 /// 			Input: "test-fixtures/ca_cert.pem",
 /// 		}, nil)
@@ -802,10 +799,8 @@ import 'server_tls_policy_state.dart';
 /// 			Location:    pulumi.String("global"),
 /// 			AllowOpen:   pulumi.Bool(false),
 /// 			MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
-/// 				ClientValidationMode: pulumi.String("REJECT_INVALID"),
-/// 				ClientValidationTrustConfig: defaultTrustConfig.Name.ApplyT(func(name string) (string, error) {
-/// 					return fmt.Sprintf("projects/%v/locations/global/trustConfigs/%v", project.Number, name), nil
-/// 				}).(pulumi.StringOutput),
+/// 				ClientValidationMode:        pulumi.String("REJECT_INVALID"),
+/// 				ClientValidationTrustConfig: defaultTrustConfig.ID(),
 /// 			},
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -819,7 +814,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -830,23 +825,26 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
-/// }
-///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-server-tls-policy"
 ///   description = "my description"
 ///   location    = "global"
 ///   allow_open  = "false"
 ///   mtls_policy = {
 ///     client_validation_mode         = "REJECT_INVALID"
-///     client_validation_trust_config ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/trustConfigs/${gcp_certificatemanager_trustconfig.default.name}"
+///     client_validation_trust_config = gcp_certificatemanager_trust_config.default.id
 ///   }
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_certificatemanager_trustconfig" "default" {
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-trust-config"
 ///   description = "sample trust config description"
 ///   location    = "global"
@@ -869,8 +867,6 @@ import 'server_tls_policy_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.certificatemanager.TrustConfig;
 /// import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
@@ -894,9 +890,6 @@ import 'server_tls_policy_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-///             .build());
-///
 ///         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
 ///             .name("my-trust-config")
 ///             .description("sample trust config description")
@@ -923,7 +916,7 @@ import 'server_tls_policy_state.dart';
 ///             .allowOpen(false)
 ///             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
 ///                 .clientValidationMode("REJECT_INVALID")
-///                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(_name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.number(),_name)))
+///                 .clientValidationTrustConfig(defaultTrustConfig.id())
 ///                 .build())
 ///             .labels(Map.of("foo", "bar"))
 ///             .build());
@@ -942,7 +935,7 @@ import 'server_tls_policy_state.dart';
 ///       allowOpen: 'false'
 ///       mtlsPolicy:
 ///         clientValidationMode: REJECT_INVALID
-///         clientValidationTrustConfig: projects/${project.number}/locations/global/trustConfigs/${defaultTrustConfig.name}
+///         clientValidationTrustConfig: ${defaultTrustConfig.id}
 ///       labels:
 ///         foo: bar
 ///   defaultTrustConfig:
@@ -969,11 +962,398 @@ import 'server_tls_policy_state.dart';
 ///                   return: result
 ///       labels:
 ///         foo: bar
-/// variables:
-///   project:
-///     fn::invoke:
-///       function: gcp:organizations:getProject
-///       arguments: {}
+/// ```
+///
+///
+/// ### Network Security Server Tls Policy Mtls Validation Relaxations
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
+///     name: "my-trust-config",
+///     description: "sample trust config description",
+///     location: "global",
+///     trustStores: [{
+///         trustAnchors: [{
+///             pemCertificate: std.file({
+///                 input: "test-fixtures/ca_cert.pem",
+///             }).then(invoke => invoke.result),
+///         }],
+///         intermediateCas: [{
+///             pemCertificate: std.file({
+///                 input: "test-fixtures/ca_cert.pem",
+///             }).then(invoke => invoke.result),
+///         }],
+///     }],
+///     labels: {
+///         foo: "bar",
+///     },
+/// });
+/// const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+///     name: "my-server-tls-policy",
+///     description: "ServerTlsPolicy with mTLS validation relaxations",
+///     location: "global",
+///     allowOpen: false,
+///     mtlsPolicy: {
+///         clientValidationMode: "ALLOW_VALIDATION_RELAXATIONS",
+///         clientValidationRelaxations: [
+///             "ALLOW_MISSING_EKU",
+///             "ALLOW_SHA1_HASHING",
+///             "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+///         ],
+///         clientValidationTrustConfig: defaultTrustConfig.id,
+///     },
+///     labels: {
+///         foo: "bar",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// default_trust_config = gcp.certificatemanager.TrustConfig("default",
+///     name="my-trust-config",
+///     description="sample trust config description",
+///     location="global",
+///     trust_stores=[{
+///         "trust_anchors": [{
+///             "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
+///         }],
+///         "intermediate_cas": [{
+///             "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
+///         }],
+///     }],
+///     labels={
+///         "foo": "bar",
+///     })
+/// default = gcp.networksecurity.ServerTlsPolicy("default",
+///     name="my-server-tls-policy",
+///     description="ServerTlsPolicy with mTLS validation relaxations",
+///     location="global",
+///     allow_open=False,
+///     mtls_policy={
+///         "client_validation_mode": "ALLOW_VALIDATION_RELAXATIONS",
+///         "client_validation_relaxations": [
+///             "ALLOW_MISSING_EKU",
+///             "ALLOW_SHA1_HASHING",
+///             "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+///         ],
+///         "client_validation_trust_config": default_trust_config.id,
+///     },
+///     labels={
+///         "foo": "bar",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
+///     {
+///         Name = "my-trust-config",
+///         Description = "sample trust config description",
+///         Location = "global",
+///         TrustStores = new[]
+///         {
+///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
+///             {
+///                 TrustAnchors = new[]
+///                 {
+///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
+///                     {
+///                         PemCertificate = Std.File.Invoke(new()
+///                         {
+///                             Input = "test-fixtures/ca_cert.pem",
+///                         }).Apply(invoke => invoke.Result),
+///                     },
+///                 },
+///                 IntermediateCas = new[]
+///                 {
+///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
+///                     {
+///                         PemCertificate = Std.File.Invoke(new()
+///                         {
+///                             Input = "test-fixtures/ca_cert.pem",
+///                         }).Apply(invoke => invoke.Result),
+///                     },
+///                 },
+///             },
+///         },
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///     });
+///
+///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
+///     {
+///         Name = "my-server-tls-policy",
+///         Description = "ServerTlsPolicy with mTLS validation relaxations",
+///         Location = "global",
+///         AllowOpen = false,
+///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
+///         {
+///             ClientValidationMode = "ALLOW_VALIDATION_RELAXATIONS",
+///             ClientValidationRelaxations = new[]
+///             {
+///                 "ALLOW_MISSING_EKU",
+///                 "ALLOW_SHA1_HASHING",
+///                 "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+///             },
+///             ClientValidationTrustConfig = defaultTrustConfig.Id,
+///         },
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		invokeFile, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/ca_cert.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFile1, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/ca_cert.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultTrustConfig, err := certificatemanager.NewTrustConfig(ctx, "default", &certificatemanager.TrustConfigArgs{
+/// 			Name:        pulumi.String("my-trust-config"),
+/// 			Description: pulumi.String("sample trust config description"),
+/// 			Location:    pulumi.String("global"),
+/// 			TrustStores: certificatemanager.TrustConfigTrustStoreArray{
+/// 				&certificatemanager.TrustConfigTrustStoreArgs{
+/// 					TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
+/// 						&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
+/// 							PemCertificate: pulumi.String(invokeFile.Result),
+/// 						},
+/// 					},
+/// 					IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
+/// 						&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
+/// 							PemCertificate: pulumi.String(invokeFile1.Result),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+/// 			Name:        pulumi.String("my-server-tls-policy"),
+/// 			Description: pulumi.String("ServerTlsPolicy with mTLS validation relaxations"),
+/// 			Location:    pulumi.String("global"),
+/// 			AllowOpen:   pulumi.Bool(false),
+/// 			MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
+/// 				ClientValidationMode: pulumi.String("ALLOW_VALIDATION_RELAXATIONS"),
+/// 				ClientValidationRelaxations: pulumi.StringArray{
+/// 					pulumi.String("ALLOW_MISSING_EKU"),
+/// 					pulumi.String("ALLOW_SHA1_HASHING"),
+/// 					pulumi.String("ALLOW_EXPIRED_LEAF_CERTIFICATE"),
+/// 				},
+/// 				ClientValidationTrustConfig: defaultTrustConfig.ID(),
+/// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "my-server-tls-policy"
+///   description = "ServerTlsPolicy with mTLS validation relaxations"
+///   location    = "global"
+///   allow_open  = "false"
+///   mtls_policy = {
+///     client_validation_mode         = "ALLOW_VALIDATION_RELAXATIONS"
+///     client_validation_relaxations  = ["ALLOW_MISSING_EKU", "ALLOW_SHA1_HASHING", "ALLOW_EXPIRED_LEAF_CERTIFICATE"]
+///     client_validation_trust_config = gcp_certificatemanager_trust_config.default.id
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "my-trust-config"
+///   description = "sample trust config description"
+///   location    = "global"
+///   trust_stores {
+///     trust_anchors {
+///       pem_certificate = file("test-fixtures/ca_cert.pem")
+///     }
+///     intermediate_cas {
+///       pem_certificate = file("test-fixtures/ca_cert.pem")
+///     }
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.certificatemanager.TrustConfig;
+/// import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreTrustAnchorArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreIntermediateCaArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
+/// import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
+/// import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
+///             .name("my-trust-config")
+///             .description("sample trust config description")
+///             .location("global")
+///             .trustStores(TrustConfigTrustStoreArgs.builder()
+///                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
+///                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                         .input("test-fixtures/ca_cert.pem")
+///                         .build()).result())
+///                     .build())
+///                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
+///                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                         .input("test-fixtures/ca_cert.pem")
+///                         .build()).result())
+///                     .build())
+///                 .build())
+///             .labels(Map.of("foo", "bar"))
+///             .build());
+///
+///         var default_ = new ServerTlsPolicy("default", ServerTlsPolicyArgs.builder()
+///             .name("my-server-tls-policy")
+///             .description("ServerTlsPolicy with mTLS validation relaxations")
+///             .location("global")
+///             .allowOpen(false)
+///             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
+///                 .clientValidationMode("ALLOW_VALIDATION_RELAXATIONS")
+///                 .clientValidationRelaxations(
+///                     "ALLOW_MISSING_EKU",
+///                     "ALLOW_SHA1_HASHING",
+///                     "ALLOW_EXPIRED_LEAF_CERTIFICATE")
+///                 .clientValidationTrustConfig(defaultTrustConfig.id())
+///                 .build())
+///             .labels(Map.of("foo", "bar"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:networksecurity:ServerTlsPolicy
+///     properties:
+///       name: my-server-tls-policy
+///       description: ServerTlsPolicy with mTLS validation relaxations
+///       location: global
+///       allowOpen: 'false'
+///       mtlsPolicy:
+///         clientValidationMode: ALLOW_VALIDATION_RELAXATIONS
+///         clientValidationRelaxations:
+///           - ALLOW_MISSING_EKU
+///           - ALLOW_SHA1_HASHING
+///           - ALLOW_EXPIRED_LEAF_CERTIFICATE
+///         clientValidationTrustConfig: ${defaultTrustConfig.id}
+///       labels:
+///         foo: bar
+///   defaultTrustConfig:
+///     type: gcp:certificatemanager:TrustConfig
+///     name: default
+///     properties:
+///       name: my-trust-config
+///       description: sample trust config description
+///       location: global
+///       trustStores:
+///         - trustAnchors:
+///             - pemCertificate:
+///                 fn::invoke:
+///                   function: std:file
+///                   arguments:
+///                     input: test-fixtures/ca_cert.pem
+///                   return: result
+///           intermediateCas:
+///             - pemCertificate:
+///                 fn::invoke:
+///                   function: std:file
+///                   arguments:
+///                     input: test-fixtures/ca_cert.pem
+///                   return: result
+///       labels:
+///         foo: bar
 /// ```
 ///
 ///
@@ -1048,7 +1428,7 @@ class ServerTlsPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowOpen = registerOutput<bool?>('allowOpen');

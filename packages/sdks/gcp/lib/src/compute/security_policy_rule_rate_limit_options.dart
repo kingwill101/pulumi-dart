@@ -29,7 +29,8 @@ class SecurityPolicyRuleRateLimitOptions {
   /// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-  /// Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+  /// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+  /// Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
   final pulumi.Input<String?>? enforceOnKey;
   /// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
   /// You can specify up to 3 enforceOnKeyConfigs.
@@ -88,7 +89,7 @@ class SecurityPolicyRuleRateLimitOptions {
 
   factory SecurityPolicyRuleRateLimitOptions.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptions(
-      banDurationSec: (() { final guardedValue = map['banDurationSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      banDurationSec: (() { final guardedValue = map['banDurationSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       banThreshold: (() { final guardedValue = map['banThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleRateLimitOptionsBanThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conformAction: (() { final guardedValue = map['conformAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforceOnKey: (() { final guardedValue = map['enforceOnKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

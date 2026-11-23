@@ -39,7 +39,8 @@ class InstanceGroupManagerState {
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
-  /// When set to "DELETE", deleting the resource is allowed.
+  /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+  /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
   ///
   /// - - -
   final pulumi.Input<String?>? deletionPolicy;
@@ -52,7 +53,7 @@ class InstanceGroupManagerState {
   final pulumi.Input<String?>? instanceGroup;
   /// The unique identifier number for the resource. This identifier is defined by the server.
   final pulumi.Input<int?>? instanceGroupManagerId;
-  /// The instance lifecycle policy for this managed instance group.
+  /// The instance lifecycle policy for this managed instance group. Structure is documented below.
   final pulumi.Input<InstanceGroupManagerInstanceLifecyclePolicy?>? instanceLifecyclePolicy;
   /// Pagination behavior of the `listManagedInstances` API
   /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -79,6 +80,8 @@ class InstanceGroupManagerState {
   final pulumi.Input<InstanceGroupManagerResourcePolicies?>? resourcePolicies;
   /// The URL of the created resource.
   final pulumi.Input<String?>? selfLink;
+  /// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+  final pulumi.Input<String?>? serviceAccount;
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   final pulumi.Input<InstanceGroupManagerStandbyPolicy?>? standbyPolicy;
   /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -135,7 +138,7 @@ class InstanceGroupManagerState {
   /// [fingerprint] The fingerprint of the instance group manager.
   /// [instanceGroup] The full URL of the instance group created by the manager.
   /// [instanceGroupManagerId] The unique identifier number for the resource. This identifier is defined by the server.
-  /// [instanceLifecyclePolicy] The instance lifecycle policy for this managed instance group.
+  /// [instanceLifecyclePolicy] The instance lifecycle policy for this managed instance group. Structure is documented below.
   /// [listManagedInstancesResults] Pagination behavior of the `listManagedInstances` API
   /// [name] The name of the instance group manager. Must be 1-63
   /// [namedPorts] The named port configuration. See the section below
@@ -144,6 +147,7 @@ class InstanceGroupManagerState {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [resourcePolicies] Resource policies for this managed instance group. Structure is documented below.
   /// [selfLink] The URL of the created resource.
+  /// [serviceAccount] ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
   /// [standbyPolicy] The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   /// [statefulDisks] Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
   /// [statefulExternalIps] External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -178,6 +182,7 @@ class InstanceGroupManagerState {
     this.project,
     this.resourcePolicies,
     this.selfLink,
+    this.serviceAccount,
     this.standbyPolicy,
     this.statefulDisks,
     this.statefulExternalIps,
@@ -215,6 +220,7 @@ class InstanceGroupManagerState {
       'project': ?project,
       'resourcePolicies': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerResourcePolicies, Map<String, dynamic>>(resourcePolicies, (value) => value.toMap()),
       'selfLink': ?selfLink,
+      'serviceAccount': ?serviceAccount,
       'standbyPolicy': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerStandbyPolicy, Map<String, dynamic>>(standbyPolicy, (value) => value.toMap()),
       'statefulDisks': ?pulumi.Input.mapOptionalInputValue<List<InstanceGroupManagerStatefulDisk>, List<Map<String, dynamic>>>(statefulDisks, (value) => pulumi.Input.encodeList<InstanceGroupManagerStatefulDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulExternalIps': ?pulumi.Input.mapOptionalInputValue<List<InstanceGroupManagerStatefulExternalIp>, List<Map<String, dynamic>>>(statefulExternalIps, (value) => pulumi.Input.encodeList<InstanceGroupManagerStatefulExternalIp, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -243,7 +249,7 @@ class InstanceGroupManagerState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceGroup: (() { final guardedValue = map['instanceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceGroupManagerId: (() { final guardedValue = map['instanceGroupManagerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceGroupManagerId: (() { final guardedValue = map['instanceGroupManagerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceLifecyclePolicy: (() { final guardedValue = map['instanceLifecyclePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       listManagedInstancesResults: (() { final guardedValue = map['listManagedInstancesResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -253,16 +259,17 @@ class InstanceGroupManagerState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       standbyPolicy: (() { final guardedValue = map['standbyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statefulDisks: (() { final guardedValue = map['statefulDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerStatefulDisk>(guardedValue, (value) => InstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulExternalIps: (() { final guardedValue = map['statefulExternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulInternalIps: (() { final guardedValue = map['statefulInternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerStatus>(guardedValue, (value) => InstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetPools: (() { final guardedValue = map['targetPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetSizePolicies: (() { final guardedValue = map['targetSizePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => InstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerVersion>(guardedValue, (value) => InstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>()))); })(),
       waitForInstances: (() { final guardedValue = map['waitForInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

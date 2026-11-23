@@ -5,21 +5,21 @@ import 'organization_policy_list_policy_allow.dart';
 import 'organization_policy_list_policy_deny.dart';
 
 class OrganizationPolicyListPolicy {
-  /// or `deny` - (Optional) One or the other must be set.
+  /// Exactly one of `allow` or `deny` must be set. Structure is documented below.
   final pulumi.Input<OrganizationPolicyListPolicyAllow?>? allow;
-  /// One or the other must be set.
+  /// Exactly one of `allow` or `deny` must be set. Structure is documented below.
   final pulumi.Input<OrganizationPolicyListPolicyDeny?>? deny;
   /// If set to true, the values from the effective Policy of the parent resource
   /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
   ///
-  /// The `allow` or `deny` blocks support:
+  /// &lt;a name="nestedAllowOrDeny"&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
   final pulumi.Input<bool?>? inheritFromParent;
   /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
   final pulumi.Input<String?>? suggestedValue;
 
   /// Creates a new [OrganizationPolicyListPolicy].
-  /// [allow] or `deny` - (Optional) One or the other must be set.
-  /// [deny] One or the other must be set.
+  /// [allow] Exactly one of `allow` or `deny` must be set. Structure is documented below.
+  /// [deny] Exactly one of `allow` or `deny` must be set. Structure is documented below.
   /// [inheritFromParent] If set to true, the values from the effective Policy of the parent resource
   /// [suggestedValue] The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
   const OrganizationPolicyListPolicy({

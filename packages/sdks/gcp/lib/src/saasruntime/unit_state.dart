@@ -17,6 +17,12 @@ class UnitState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>?>? annotations;
+  /// Reference to the App Hub Application this Unit belongs to, in the format
+  /// `projects/{project}/locations/{location}/applications/{application}`.
+  /// All resources deployed in this Unit are associated with the specified
+  /// Application. If empty, the service sets it during any UnitOperation
+  /// when the UnitKind has `app_params.group` and App Hub is enabled.
+  final pulumi.Input<String?>? application;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
@@ -127,6 +133,7 @@ class UnitState {
 
   /// Creates a new [UnitState].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
+  /// [application] Reference to the App Hub Application this Unit belongs to, in the format
   /// [conditions] A set of conditions which indicate the various conditions this resource can
   /// [createTime] The timestamp when the resource was created.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -157,6 +164,7 @@ class UnitState {
   /// [updateTime] The timestamp when the resource was last updated. Any
   const UnitState({
     this.annotations,
+    this.application,
     this.conditions,
     this.createTime,
     this.deletionPolicy,
@@ -190,6 +198,7 @@ class UnitState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'application': ?application,
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<UnitCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<UnitCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
@@ -224,6 +233,7 @@ class UnitState {
   factory UnitState.fromMap(Map<String, dynamic> map) {
     return UnitState(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      application: (() { final guardedValue = map['application']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

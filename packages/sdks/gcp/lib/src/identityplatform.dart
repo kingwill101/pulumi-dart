@@ -52,5 +52,6 @@ export 'identityplatform/tenant_inbound_saml_config_sp_config_sp_certificate.dar
 export 'identityplatform/tenant_inbound_saml_config_state.dart';
 export 'identityplatform/tenant_oauth_idp_config.dart';
 export 'identityplatform/tenant_oauth_idp_config_args.dart';
+export 'identityplatform/tenant_oauth_idp_config_response_type.dart';
 export 'identityplatform/tenant_oauth_idp_config_state.dart';
 export 'identityplatform/tenant_state.dart';

@@ -21,6 +21,7 @@ import 'runtime_template_state.dart';
 /// * How-to Guides
 /// * [Create a runtime template](https://cloud.google.com/colab/docs/create-runtime-template)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Colab Runtime Template Basic
@@ -87,7 +88,7 @@ import 'runtime_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +113,7 @@ import 'runtime_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,7 +121,10 @@ import 'runtime_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "runtime-template" {
+/// resource "gcp_colab_runtime_template" "runtime-template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "colab-runtime-template"
 ///   display_name = "Runtime template basic"
 ///   location     = "us-central1"
@@ -183,6 +187,7 @@ import 'runtime_template_state.dart';
 ///       networkSpec:
 ///         enableInternetAccess: true
 /// ```
+///
 ///
 /// ### Colab Runtime Template No Name
 ///
@@ -248,7 +253,7 @@ import 'runtime_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -273,7 +278,7 @@ import 'runtime_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -281,7 +286,10 @@ import 'runtime_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "runtime-template" {
+/// resource "gcp_colab_runtime_template" "runtime-template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Runtime template no name"
 ///   location     = "us-central1"
 ///   machine_spec = {
@@ -346,6 +354,7 @@ import 'runtime_template_state.dart';
 ///         enableInternetAccess: true
 ///       softwareConfig: {}
 /// ```
+///
 ///
 /// ### Colab Runtime Template Full
 ///
@@ -583,8 +592,8 @@ import 'runtime_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -599,7 +608,7 @@ import 'runtime_template_state.dart';
 /// 		}
 /// 		mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("colab-test-default"),
-/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     myNetwork.ID(),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -622,8 +631,8 @@ import 'runtime_template_state.dart';
 /// 			},
 /// 			NetworkSpec: &colab.RuntimeTemplateNetworkSpecArgs{
 /// 				EnableInternetAccess: pulumi.Bool(true),
-/// 				Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 				Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				Network:              myNetwork.ID(),
+/// 				Subnetwork:           mySubnetwork.ID(),
 /// 			},
 /// 			Labels: pulumi.StringMap{
 /// 				"k": pulumi.String("val"),
@@ -669,7 +678,7 @@ import 'runtime_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -678,16 +687,25 @@ import 'runtime_template_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "colab-test-default"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "colab-test-default"
 ///   network       = gcp_compute_network.my_network.id
 ///   region        = "us-central1"
 ///   ip_cidr_range = "10.0.1.0/24"
 /// }
-/// resource "gcp_colab_runtimetemplate" "runtime-template" {
+/// resource "gcp_colab_runtime_template" "runtime-template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "colab-runtime-template"
 ///   display_name = "Runtime template full"
 ///   location     = "us-central1"
@@ -724,8 +742,8 @@ import 'runtime_template_state.dart';
 ///   }
 ///   software_config = {
 ///     envs = [{
-///       "name"  = "TEST"
-///       "value" = 1
+///       name  = "TEST"
+///       value = 1
 ///     }]
 ///     post_startup_script_config = {
 ///       post_startup_script          = "echo 'hello world'"
@@ -983,7 +1001,7 @@ class RuntimeTemplate extends pulumi.CustomResource {
           'gcp:colab/runtimeTemplate:RuntimeTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataPersistentDiskSpec = registerOutput<RuntimeTemplateDataPersistentDiskSpec>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

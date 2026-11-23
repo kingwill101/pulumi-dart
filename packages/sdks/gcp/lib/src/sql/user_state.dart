@@ -43,6 +43,7 @@ class UserState {
   /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
   /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
   final pulumi.Input<String?>? password;
+  /// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
   final pulumi.Input<UserPasswordPolicy?>? passwordPolicy;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password for the user. Can be updated. For Postgres
@@ -57,13 +58,15 @@ class UserState {
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// (read only) SQL Server specific user details. Structure is documented below.
   final pulumi.Input<List<UserSqlServerUserDetail>?>? sqlServerUserDetails;
   /// The user type. It determines the method to authenticate the
   /// user during login. The default is the database's built-in user type. Flags
   /// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
   /// "CLOUD_IAM_GROUP_USER" and "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" for
   /// [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
-  /// and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+  /// and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype),
+  /// and "BUILT_IN" and "ENTRAID_USER" for [SQL Server](https://cloud.google.com/sql/docs/sqlserver/admin-api/rest/v1beta4/users#sqlusertype).
   final pulumi.Input<String?>? type;
 
   /// Creates a new [UserState].
@@ -74,11 +77,11 @@ class UserState {
   /// [instance] The name of the Cloud SQL instance. Changing this
   /// [name] The name of the user. Changing this forces a new resource
   /// [password] The password for the user. Can be updated. For Postgres
-  /// [passwordPolicy] Optional.
+  /// [passwordPolicy] The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
   /// [passwordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [passwordWoVersion] An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
   /// [project] The ID of the project in which the resource belongs. If it
-  /// [sqlServerUserDetails] Optional.
+  /// [sqlServerUserDetails] (read only) SQL Server specific user details. Structure is documented below.
   /// [type] The user type. It determines the method to authenticate the
   const UserState({
     this.databaseRoles,
@@ -125,7 +128,7 @@ class UserState {
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordPolicy: (() { final guardedValue = map['passwordPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       passwordWo: (() { final guardedValue = map['passwordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlServerUserDetails: (() { final guardedValue = map['sqlServerUserDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserSqlServerUserDetail>(guardedValue, (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authz_policy_network_rule_from_not_source_ip_block.dart';
 import 'authz_policy_network_rule_from_not_source_principal.dart';
+import 'authz_policy_network_rule_from_not_source_resource.dart';
 
 class AuthzPolicyNetworkRuleFromNotSource {
   /// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
@@ -12,19 +13,26 @@ class AuthzPolicyNetworkRuleFromNotSource {
   /// Limited to 5 principals.
   /// Structure is documented below.
   final pulumi.Input<List<AuthzPolicyNetworkRuleFromNotSourcePrincipal>?>? principals;
+  /// A list of resources to match against the resource of the source VM of a request.
+  /// Limited to 5 resources.
+  /// Structure is documented below.
+  final pulumi.Input<List<AuthzPolicyNetworkRuleFromNotSourceResource>?>? resources;
 
   /// Creates a new [AuthzPolicyNetworkRuleFromNotSource].
   /// [ipBlocks] A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
   /// [principals] A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+  /// [resources] A list of resources to match against the resource of the source VM of a request.
   const AuthzPolicyNetworkRuleFromNotSource({
     this.ipBlocks,
     this.principals,
+    this.resources,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ipBlocks': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyNetworkRuleFromNotSourceIpBlock>, List<Map<String, dynamic>>>(ipBlocks, (value) => pulumi.Input.encodeList<AuthzPolicyNetworkRuleFromNotSourceIpBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'principals': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyNetworkRuleFromNotSourcePrincipal>, List<Map<String, dynamic>>>(principals, (value) => pulumi.Input.encodeList<AuthzPolicyNetworkRuleFromNotSourcePrincipal, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyNetworkRuleFromNotSourceResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<AuthzPolicyNetworkRuleFromNotSourceResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -32,6 +40,7 @@ class AuthzPolicyNetworkRuleFromNotSource {
     return AuthzPolicyNetworkRuleFromNotSource(
       ipBlocks: (() { final guardedValue = map['ipBlocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuthzPolicyNetworkRuleFromNotSourceIpBlock>(guardedValue, (value) => AuthzPolicyNetworkRuleFromNotSourceIpBlock.fromMap((value as Map).cast<String, dynamic>()))); })(),
       principals: (() { final guardedValue = map['principals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuthzPolicyNetworkRuleFromNotSourcePrincipal>(guardedValue, (value) => AuthzPolicyNetworkRuleFromNotSourcePrincipal.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuthzPolicyNetworkRuleFromNotSourceResource>(guardedValue, (value) => AuthzPolicyNetworkRuleFromNotSourceResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

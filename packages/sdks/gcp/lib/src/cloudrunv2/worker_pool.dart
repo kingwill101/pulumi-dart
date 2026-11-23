@@ -18,6 +18,7 @@ import 'worker_pool_terminal_condition.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/run/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudrunv2 Worker Pool Basic
@@ -84,7 +85,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +111,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,13 +119,16 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
 ///     }]
 ///   }
 /// }
@@ -178,6 +182,7 @@ import 'worker_pool_terminal_condition.dart';
 ///         containers:
 ///           - image: us-docker.pkg.dev/cloudrun/container/worker-pool
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Basic Depends On
 ///
@@ -298,7 +303,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -341,7 +346,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -349,26 +354,29 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "name"       = "foo-1"
-///       "image"      = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "dependsOns" = ["foo-2"]
+///       name        = "foo-1"
+///       image       = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       depends_ons = ["foo-2"]
 ///       }, {
-///       "name"  = "foo-2"
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "startupProbe" = {
-///         "httpGet" = {
-///           "path" = "/healthz"
-///           "port" = 8080
+///       name  = "foo-2"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       startup_probe = {
+///         http_get = {
+///           path = "/healthz"
+///           port = 8080
 ///         }
-///         "periodSeconds"    = 5
-///         "timeoutSeconds"   = 2
-///         "failureThreshold" = 3
+///         period_seconds    = 5
+///         timeout_seconds   = 2
+///         failure_threshold = 3
 ///       }
 ///     }]
 ///   }
@@ -454,6 +462,7 @@ import 'worker_pool_terminal_condition.dart';
 ///               failureThreshold: 3
 /// ```
 ///
+///
 /// ### Cloudrunv2 Worker Pool Limits
 ///
 ///
@@ -538,7 +547,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -570,7 +579,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -578,15 +587,18 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "resources" = {
-///         "limits" = {
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       resources = {
+///         limits = {
 ///           "cpu"    = "2"
 ///           "memory" = "1024Mi"
 ///         }
@@ -655,6 +667,7 @@ import 'worker_pool_terminal_condition.dart';
 ///                 cpu: '2'
 ///                 memory: 1024Mi
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Sql
 ///
@@ -928,10 +941,10 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1024,7 +1037,7 @@ import 'worker_pool_terminal_condition.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1038,7 +1051,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1046,38 +1059,41 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
-///   depends_on          = [gcp_secretmanager_secretversion.secret-version-data]
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   depends_on = [gcp_secretmanager_secret_version.secret-version-data]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     volumes = [{
-///       "name" = "cloudsql"
-///       "cloudSqlInstance" = {
-///         "instances" = [gcp_sql_databaseinstance.instance.connection_name]
+///       name = "cloudsql"
+///       cloud_sql_instance = {
+///         instances = [gcp_sql_database_instance.instance.connection_name]
 ///       }
 ///     }]
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "envs" = [{
-///         "name"  = "FOO"
-///         "value" = "bar"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       envs = [{
+///         name  = "FOO"
+///         value = "bar"
 ///         }, {
-///         "name" = "SECRET_ENV_VAR"
-///         "valueSource" = {
-///           "secretKeyRef" = {
-///             "secret"  = gcp_secretmanager_secret.secret.secret_id
-///             "version" = "1"
+///         name = "SECRET_ENV_VAR"
+///         value_source = {
+///           secret_key_ref = {
+///             secret  = gcp_secretmanager_secret.secret.secret_id
+///             version = "1"
 ///           }
 ///         }
 ///       }]
-///       "volumeMounts" = [{
-///         "name"      = "cloudsql"
-///         "mountPath" = "/cloudsql"
+///       volume_mounts = [{
+///         name       = "cloudsql"
+///         mount_path = "/cloudsql"
 ///       }]
 ///     }]
 ///   }
@@ -1087,22 +1103,34 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-1"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-data" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.name
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
 ///   depends_on = [gcp_secretmanager_secret.secret]
-///   secret_id  = gcp_secretmanager_secret.secret.id
-///   role       = "roles/secretmanager.secretAccessor"
-///   member     ="serviceAccount:${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = gcp_secretmanager_secret.secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:${data.gcp_organizations_project.project.number}-compute@developer.gserviceaccount.com"
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "cloudrun-sql"
 ///   region           = "us-central1"
 ///   database_version = "MYSQL_5_7"
@@ -1303,6 +1331,7 @@ import 'worker_pool_terminal_condition.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Cloudrunv2 Worker Pool Directvpc
 ///
 ///
@@ -1406,7 +1435,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1445,7 +1474,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1453,19 +1482,22 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
 ///     }]
 ///     vpc_access = {
 ///       network_interfaces = [{
-///         "network"    = "default"
-///         "subnetwork" = "default"
-///         "tags"       = ["tag1", "tag2", "tag3"]
+///         network    = "default"
+///         subnetwork = "default"
+///         tags       = ["tag1", "tag2", "tag3"]
 ///       }]
 ///     }
 ///   }
@@ -1540,6 +1572,7 @@ import 'worker_pool_terminal_condition.dart';
 ///                 - tag2
 ///                 - tag3
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Gpu
 ///
@@ -1641,7 +1674,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1678,7 +1711,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1686,15 +1719,18 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "resources" = {
-///         "limits" = {
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       resources = {
+///         limits = {
 ///           "cpu"            = "4"
 ///           "memory"         = "16Gi"
 ///           "nvidia.com/gpu" = "1"
@@ -1778,6 +1814,7 @@ import 'worker_pool_terminal_condition.dart';
 ///           accelerator: nvidia-l4
 ///         gpuZonalRedundancyDisabled: true
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Secret
 ///
@@ -1975,9 +2012,9 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2043,7 +2080,7 @@ import 'worker_pool_terminal_condition.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -2057,7 +2094,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2065,51 +2102,63 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
-///   depends_on          = [gcp_secretmanager_secretversion.secret-version-data]
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   depends_on = [gcp_secretmanager_secret_version.secret-version-data]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     volumes = [{
-///       "name" = "a-volume"
-///       "secret" = {
-///         "secret"      = gcp_secretmanager_secret.secret.secret_id
-///         "defaultMode" = 292
-///         "items" = [{
-///           "version" = "1"
-///           "path"    = "my-secret"
-///           "mode"    = 444
+///       name = "a-volume"
+///       secret = {
+///         secret       = gcp_secretmanager_secret.secret.secret_id
+///         default_mode = 292
+///         items = [{
+///           version = "1"
+///           path    = "my-secret"
+///           mode    = 444
 ///         }]
 ///       }
 ///     }]
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "volumeMounts" = [{
-///         "name"      = "a-volume"
-///         "mountPath" = "/secrets"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       volume_mounts = [{
+///         name       = "a-volume"
+///         mount_path = "/secrets"
 ///       }]
 ///     }]
 ///   }
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-1"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-data" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.name
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
 ///   depends_on = [gcp_secretmanager_secret.secret]
-///   secret_id  = gcp_secretmanager_secret.secret.id
-///   role       = "roles/secretmanager.secretAccessor"
-///   member     ="serviceAccount:${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = gcp_secretmanager_secret.secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:${data.gcp_organizations_project.project.number}-compute@developer.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2259,6 +2308,7 @@ import 'worker_pool_terminal_condition.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Cloudrunv2 Worker Pool Multicontainer
 ///
 ///
@@ -2385,7 +2435,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2431,7 +2481,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2439,27 +2489,30 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "name"  = "hello-1"
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "volumeMounts" = [{
-///         "name"      = "empty-dir-volume"
-///         "mountPath" = "/mnt"
+///       name  = "hello-1"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       volume_mounts = [{
+///         name       = "empty-dir-volume"
+///         mount_path = "/mnt"
 ///       }]
 ///       }, {
-///       "name"  = "hello-2"
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       name  = "hello-2"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
 ///     }]
 ///     volumes = [{
-///       "name" = "empty-dir-volume"
-///       "emptyDir" = {
-///         "medium"    = "MEMORY"
-///         "sizeLimit" = "256Mi"
+///       name = "empty-dir-volume"
+///       empty_dir = {
+///         medium     = "MEMORY"
+///         size_limit = "256Mi"
 ///       }
 ///     }]
 ///   }
@@ -2545,6 +2598,7 @@ import 'worker_pool_terminal_condition.dart';
 ///               medium: MEMORY
 ///               sizeLimit: 256Mi
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Mount Gcs
 ///
@@ -2668,8 +2722,8 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2718,7 +2772,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2726,28 +2780,34 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "volumeMounts" = [{
-///         "name"      = "bucket"
-///         "mountPath" = "/var/www"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       volume_mounts = [{
+///         name       = "bucket"
+///         mount_path = "/var/www"
 ///       }]
 ///     }]
 ///     volumes = [{
-///       "name" = "bucket"
-///       "gcs" = {
-///         "bucket"   = gcp_storage_bucket.default.name
-///         "readOnly" = false
+///       name = "bucket"
+///       gcs = {
+///         bucket    = gcp_storage_bucket.default.name
+///         read_only = false
 ///       }
 ///     }]
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "cloudrun-worker-pool"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
@@ -2839,6 +2899,7 @@ import 'worker_pool_terminal_condition.dart';
 ///       location: US
 ///       uniformBucketLevelAccess: true
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Emptydir Disk
 ///
@@ -2949,7 +3010,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2991,7 +3052,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2999,24 +3060,27 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   launch_stage        = "BETA"
 ///   deletion_protection = "true"
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool"
-///       "volumeMounts" = [{
-///         "name"      = "empty-dir-volume"
-///         "mountPath" = "/mnt"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool"
+///       volume_mounts = [{
+///         name       = "empty-dir-volume"
+///         mount_path = "/mnt"
 ///       }]
 ///     }]
 ///     volumes = [{
-///       "name" = "empty-dir-volume"
-///       "emptyDir" = {
-///         "medium"    = "DISK"
-///         "sizeLimit" = "10Gi"
+///       name = "empty-dir-volume"
+///       empty_dir = {
+///         medium     = "DISK"
+///         size_limit = "10Gi"
 ///       }
 ///     }]
 ///   }
@@ -3095,6 +3159,7 @@ import 'worker_pool_terminal_condition.dart';
 ///               medium: DISK
 ///               sizeLimit: 10Gi
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Mount Nfs
 ///
@@ -3276,8 +3341,8 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3349,7 +3414,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3357,35 +3422,41 @@ import 'worker_pool_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/worker-pool:latest"
-///       "volumeMounts" = [{
-///         "name"      = "nfs"
-///         "mountPath" = "/mnt/nfs/filestore"
+///       image = "us-docker.pkg.dev/cloudrun/container/worker-pool:latest"
+///       volume_mounts = [{
+///         name       = "nfs"
+///         mount_path = "/mnt/nfs/filestore"
 ///       }]
 ///     }]
 ///     vpc_access = {
 ///       network_interfaces = [{
-///         "network"    = "default"
-///         "subnetwork" = "default"
+///         network    = "default"
+///         subnetwork = "default"
 ///       }]
 ///     }
 ///     volumes = [{
-///       "name" = "nfs"
-///       "nfs" = {
-///         "server"   = gcp_filestore_instance.default.networks[0].ip_addresses[0]
-///         "path"     = "/share1"
-///         "readOnly" = false
+///       name = "nfs"
+///       nfs = {
+///         server    = gcp_filestore_instance.default.networks[0].ip_addresses[0]
+///         path      = "/share1"
+///         read_only = false
 ///       }
 ///     }]
 ///   }
 /// }
 /// resource "gcp_filestore_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-worker-pool"
 ///   location = "us-central1-b"
 ///   tier     = "BASIC_HDD"
@@ -3516,6 +3587,7 @@ import 'worker_pool_terminal_condition.dart';
 ///           modes:
 ///             - MODE_IPV4
 /// ```
+///
 ///
 /// ### Cloudrunv2 Worker Pool Startup Liveness Probe
 ///
@@ -3697,10 +3769,10 @@ import 'worker_pool_terminal_condition.dart';
 ///                             Port = 8080,
 ///                             HttpHeaders = new[]
 ///                             {
-///
+///                                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs
 ///                                 {
-///                                     { "name", "TEST-HEADER" },
-///                                     { "value", "test-value" },
+///                                     Name = "TEST-HEADER",
+///                                     Value = "test-value",
 ///                                 },
 ///                             },
 ///                         },
@@ -3728,8 +3800,8 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3746,7 +3818,7 @@ import 'worker_pool_terminal_condition.dart';
 /// 			Name:        pulumi.String("wp-subnet"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     customTest.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     customTest.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3780,10 +3852,10 @@ import 'worker_pool_terminal_condition.dart';
 /// 							HttpGet: &cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{
 /// 								Path: pulumi.String("/"),
 /// 								Port: pulumi.Int(8080),
-/// 								HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{
-/// 									map[string]string{
-/// 										"name":  "TEST-HEADER",
-/// 										"value": "test-value",
+/// 								HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{
+/// 									&cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{
+/// 										Name:  pulumi.String("TEST-HEADER"),
+/// 										Value: pulumi.String("test-value"),
 /// 									},
 /// 								},
 /// 							},
@@ -3793,8 +3865,8 @@ import 'worker_pool_terminal_condition.dart';
 /// 				VpcAccess: &cloudrunv2.WorkerPoolTemplateVpcAccessArgs{
 /// 					NetworkInterfaces: cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterfaceArray{
 /// 						&cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs{
-/// 							Network:    customTest.ID().ToIDOutput().ToStringOutput(),
-/// 							Subnetwork: customTestSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 							Network:    customTest.ID(),
+/// 							Subnetwork: customTestSubnetwork.ID(),
 /// 							Tags:       pulumi.StringArray{},
 /// 						},
 /// 					},
@@ -3809,7 +3881,7 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3818,16 +3890,25 @@ import 'worker_pool_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "custom_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "wp-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "custom_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "wp-subnet"
 ///   ip_cidr_range = "10.2.0.0/28"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.custom_test.id
 /// }
-/// resource "gcp_cloudrunv2_workerpool" "default" {
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-worker-pool"
 ///   location            = "us-central1"
 ///   deletion_protection = false
@@ -3835,38 +3916,38 @@ import 'worker_pool_terminal_condition.dart';
 ///     annotations = {}
 ///     labels      = {}
 ///     containers = [{
-///       "image"    = "us-docker.pkg.dev/cloudrun/container/hello"
-///       "commands" = []
-///       "args"     = []
-///       "startupProbe" = {
-///         "initialDelaySeconds" = 0
-///         "timeoutSeconds"      = 1
-///         "periodSeconds"       = 3
-///         "failureThreshold"    = 3
-///         "tcpSocket" = {
-///           "port" = 8080
+///       image    = "us-docker.pkg.dev/cloudrun/container/hello"
+///       commands = []
+///       args     = []
+///       startup_probe = {
+///         initial_delay_seconds = 0
+///         timeout_seconds       = 1
+///         period_seconds        = 3
+///         failure_threshold     = 3
+///         tcp_socket = {
+///           port = 8080
 ///         }
 ///       }
-///       "livenessProbe" = {
-///         "initialDelaySeconds" = 0
-///         "timeoutSeconds"      = 1
-///         "periodSeconds"       = 10
-///         "failureThreshold"    = 3
-///         "httpGet" = {
-///           "path" = "/"
-///           "port" = 8080
-///           "httpHeaders" = [{
-///             "name"  = "TEST-HEADER"
-///             "value" = "test-value"
+///       liveness_probe = {
+///         initial_delay_seconds = 0
+///         timeout_seconds       = 1
+///         period_seconds        = 10
+///         failure_threshold     = 3
+///         http_get = {
+///           path = "/"
+///           port = 8080
+///           http_headers = [{
+///             name  = "TEST-HEADER"
+///             value = "test-value"
 ///           }]
 ///         }
 ///       }
 ///     }]
 ///     vpc_access = {
 ///       network_interfaces = [{
-///         "network"    = gcp_compute_network.custom_test.id
-///         "subnetwork" = gcp_compute_subnetwork.custom_test.id
-///         "tags"       = []
+///         network    = gcp_compute_network.custom_test.id
+///         subnetwork = gcp_compute_subnetwork.custom_test.id
+///         tags       = []
 ///       }]
 ///     }
 ///   }
@@ -3890,6 +3971,7 @@ import 'worker_pool_terminal_condition.dart';
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeTcpSocketArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs;
 /// import java.util.ArrayList;
@@ -3947,7 +4029,7 @@ import 'worker_pool_terminal_condition.dart';
 ///                         .httpGet(WorkerPoolTemplateContainerLivenessProbeHttpGetArgs.builder()
 ///                             .path("/")
 ///                             .port(8080)
-///                             .httpHeaders(com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs.builder()
+///                             .httpHeaders(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs.builder()
 ///                                 .name("TEST-HEADER")
 ///                                 .value("test-value")
 ///                                 .build())
@@ -4022,6 +4104,232 @@ import 'worker_pool_terminal_condition.dart';
 /// ```
 ///
 ///
+/// ### Cloudrunv2 Worker Pool Sandbox Templates
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.WorkerPool("default", {
+///     name: "cloudrun-example",
+///     location: "us-west1",
+///     deletionProtection: false,
+///     launchStage: "BETA",
+///     template: {
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///             sandboxLauncher: true,
+///         }],
+///         sandboxes: {
+///             templates: [{
+///                 name: "hello",
+///                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+///             }],
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.WorkerPool("default",
+///     name="cloudrun-example",
+///     location="us-west1",
+///     deletion_protection=False,
+///     launch_stage="BETA",
+///     template={
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///             "sandbox_launcher": True,
+///         }],
+///         "sandboxes": {
+///             "templates": [{
+///                 "name": "hello",
+///                 "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///             }],
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.WorkerPool("default", new()
+///     {
+///         Name = "cloudrun-example",
+///         Location = "us-west1",
+///         DeletionProtection = false,
+///         LaunchStage = "BETA",
+///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
+///         {
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                     SandboxLauncher = true,
+///                 },
+///             },
+///             Sandboxes = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateSandboxesArgs
+///             {
+///                 Templates = new[]
+///                 {
+///                     new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateSandboxesTemplateArgs
+///                     {
+///                         Name = "hello",
+///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewWorkerPool(ctx, "default", &cloudrunv2.WorkerPoolArgs{
+/// 			Name:               pulumi.String("cloudrun-example"),
+/// 			Location:           pulumi.String("us-west1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			LaunchStage:        pulumi.String("BETA"),
+/// 			Template: &cloudrunv2.WorkerPoolTemplateArgs{
+/// 				Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
+/// 					&cloudrunv2.WorkerPoolTemplateContainerArgs{
+/// 						Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 						SandboxLauncher: pulumi.Bool(true),
+/// 					},
+/// 				},
+/// 				Sandboxes: &cloudrunv2.WorkerPoolTemplateSandboxesArgs{
+/// 					Templates: cloudrunv2.WorkerPoolTemplateSandboxesTemplateArray{
+/// 						&cloudrunv2.WorkerPoolTemplateSandboxesTemplateArgs{
+/// 							Name:  pulumi.String("hello"),
+/// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_worker_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = "cloudrun-example"
+///   location            = "us-west1"
+///   deletion_protection = false
+///   launch_stage        = "BETA"
+///   template = {
+///     containers = [{
+///       image            = "us-docker.pkg.dev/cloudrun/container/hello"
+///       sandbox_launcher = true
+///     }]
+///     sandboxes = {
+///       templates = [{
+///         name  = "hello"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
+///       }]
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.WorkerPool;
+/// import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateSandboxesArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateSandboxesTemplateArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new WorkerPool("default", WorkerPoolArgs.builder()
+///             .name("cloudrun-example")
+///             .location("us-west1")
+///             .deletionProtection(false)
+///             .launchStage("BETA")
+///             .template(WorkerPoolTemplateArgs.builder()
+///                 .containers(WorkerPoolTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .sandboxLauncher(true)
+///                     .build())
+///                 .sandboxes(WorkerPoolTemplateSandboxesArgs.builder()
+///                     .templates(WorkerPoolTemplateSandboxesTemplateArgs.builder()
+///                         .name("hello")
+///                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:WorkerPool
+///     properties:
+///       name: cloudrun-example
+///       location: us-west1
+///       deletionProtection: false
+///       launchStage: BETA
+///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+///             sandboxLauncher: true
+///         sandboxes:
+///           templates:
+///             - name: hello
+///               image: us-docker.pkg.dev/cloudrun/container/hello
+/// ```
+///
+///
 /// ## Import
 ///
 /// WorkerPool can be imported using any of these accepted formats:
@@ -4060,12 +4368,6 @@ class WorkerPool extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Email address of the authenticated creator.
   late final pulumi.Output<String> creator;
-  /// (Optional, Deprecated)
-  /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-  /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-  ///
-  /// &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-  late final pulumi.Output<List<String>?> customAudiences;
   /// The deletion time.
   late final pulumi.Output<String> deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -4161,7 +4463,7 @@ class WorkerPool extends pulumi.CustomResource {
           'gcp:cloudrunv2/workerPool:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -4171,7 +4473,6 @@ class WorkerPool extends pulumi.CustomResource {
     conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -4232,7 +4533,6 @@ class WorkerPool extends pulumi.CustomResource {
     conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -4279,7 +4579,6 @@ class WorkerPool extends pulumi.CustomResource {
     conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');

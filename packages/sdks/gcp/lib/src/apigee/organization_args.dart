@@ -52,7 +52,7 @@ class OrganizationArgs {
   /// operation completes. During this period, the Organization may be restored to its last known state.
   /// After this period, the Organization will no longer be able to be restored.
   /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-  /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+  /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
   final pulumi.Input<String?>? retention;
   /// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
   /// Update is not allowed after the organization is created.

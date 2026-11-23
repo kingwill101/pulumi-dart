@@ -13,6 +13,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dlp Job Trigger Basic
@@ -150,7 +151,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -198,7 +199,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -206,7 +207,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "basic" {
+/// resource "gcp_dataloss_prevention_job_trigger" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -218,11 +222,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
@@ -326,6 +330,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             fileSet:
 ///               url: gs://mybucket/directory/
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Bigquery Row Limit
 ///
@@ -474,7 +479,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -526,7 +531,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -534,7 +539,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "bigquery_row_limit" {
+/// resource "gcp_dataloss_prevention_job_trigger" "bigquery_row_limit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -546,11 +554,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
@@ -667,6 +675,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             rowsLimit: 1000
 ///             sampleMethod: RANDOM_START
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Bigquery Row Limit Percentage
 ///
@@ -815,7 +824,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -867,7 +876,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -875,7 +884,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "bigquery_row_limit_percentage" {
+/// resource "gcp_dataloss_prevention_job_trigger" "bigquery_row_limit_percentage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -887,11 +899,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
@@ -1009,6 +1021,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             sampleMethod: RANDOM_START
 /// ```
 ///
+///
 /// ### Dlp Job Trigger Job Notification Emails
 ///
 ///
@@ -1120,7 +1133,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1161,7 +1174,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1169,7 +1182,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "job_notification_emails" {
+/// resource "gcp_dataloss_prevention_job_trigger" "job_notification_emails" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description for the job_trigger created by terraform"
 ///   display_name = "TerraformDisplayName"
@@ -1181,7 +1197,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "sample-inspect-template"
 ///     actions = [{
-///       "jobNotificationEmails" = {}
+///       job_notification_emails = {}
 ///     }]
 ///     storage_config = {
 ///       cloud_storage_options = {
@@ -1271,6 +1287,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             fileSet:
 ///               url: gs://mybucket/directory/
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Deidentify
 ///
@@ -1555,8 +1572,8 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1657,7 +1674,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1665,7 +1682,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "deidentify" {
+/// resource "gcp_dataloss_prevention_job_trigger" "deidentify" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description for the job_trigger created by terraform"
 ///   display_name = "TerraformDisplayName"
@@ -1677,20 +1697,20 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "sample-inspect-template"
 ///     actions = [{
-///       "deidentify" = {
-///         "cloudStorageOutput"    = "gs://samplebucket/dir/"
-///         "fileTypesToTransforms" = ["CSV", "TSV"]
-///         "transformationDetailsStorageConfig" = {
-///           "table" = {
-///             "projectId" = "my-project-name"
-///             "datasetId" = gcp_bigquery_dataset.default.dataset_id
-///             "tableId"   = gcp_bigquery_table.default.table_id
+///       deidentify = {
+///         cloud_storage_output     = "gs://samplebucket/dir/"
+///         file_types_to_transforms = ["CSV", "TSV"]
+///         transformation_details_storage_config = {
+///           table = {
+///             project_id = "my-project-name"
+///             dataset_id = gcp_bigquery_dataset.default.dataset_id
+///             table_id   = gcp_bigquery_table.default.table_id
 ///           }
 ///         }
-///         "transformationConfig" = {
-///           "deidentifyTemplate"           = "sample-deidentify-template"
-///           "imageRedactTemplate"          = "sample-image-redact-template"
-///           "structuredDeidentifyTemplate" = "sample-structured-deidentify-template"
+///         transformation_config = {
+///           deidentify_template            = "sample-deidentify-template"
+///           image_redact_template          = "sample-image-redact-template"
+///           structured_deidentify_template = "sample-structured-deidentify-template"
 ///         }
 ///       }
 ///     }]
@@ -1704,6 +1724,9 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "tf_test"
 ///   friendly_name               = "terraform-test"
 ///   description                 = "Description for the dataset created by terraform"
@@ -1714,6 +1737,9 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_table" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id          = gcp_bigquery_dataset.default.dataset_id
 ///   table_id            = "tf_test"
 ///   deletion_protection = false
@@ -1723,7 +1749,23 @@ import 'prevention_job_trigger_trigger.dart';
 ///   labels = {
 ///     "env" = "default"
 ///   }
-///   schema = "    [\n    {\n      \\\"name\\\": \\\"quantity\\\",\n      \\\"type\\\": \\\"NUMERIC\\\",\n      \\\"mode\\\": \\\"NULLABLE\\\",\n      \\\"description\\\": \\\"The quantity\\\"\n    },\n    {\n      \\\"name\\\": \\\"name\\\",\n      \\\"type\\\": \\\"STRING\\\",\n      \\\"mode\\\": \\\"NULLABLE\\\",\n      \\\"description\\\": \\\"Name of the object\\\"\n    }\n    ]\n"
+///   schema = <<EOF
+///     [
+///     {
+///       \"name\": \"quantity\",
+///       \"type\": \"NUMERIC\",
+///       \"mode\": \"NULLABLE\",
+///       \"description\": \"The quantity\"
+///     },
+///     {
+///       \"name\": \"name\",
+///       \"type\": \"STRING\",
+///       \"mode\": \"NULLABLE\",
+///       \"description\": \"Name of the object\"
+///     }
+///     ]
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1912,6 +1954,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             ]
 /// ```
 ///
+///
 /// ### Dlp Job Trigger Hybrid
 ///
 ///
@@ -2063,7 +2106,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2118,7 +2161,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2126,7 +2169,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "hybrid_trigger" {
+/// resource "gcp_dataloss_prevention_job_trigger" "hybrid_trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "projects/my-project-name"
 ///   triggers {
 ///     manual = {}
@@ -2134,11 +2180,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
@@ -2152,7 +2198,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///         }
 ///         table_options = {
 ///           identifying_fields = [{
-///             "name" = "booking_id"
+///             name = "booking_id"
 ///           }]
 ///         }
 ///       }
@@ -2256,6 +2302,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///               identifyingFields:
 ///                 - name: booking_id
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Inspect
 ///
@@ -2585,7 +2632,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2697,7 +2744,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2705,7 +2752,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "inspect" {
+/// resource "gcp_dataloss_prevention_job_trigger" "inspect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -2717,11 +2767,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
@@ -2735,44 +2785,44 @@ import 'prevention_job_trigger_trigger.dart';
 ///     }
 ///     inspect_config = {
 ///       custom_info_types = [{
-///         "infoType" = {
-///           "name" = "MY_CUSTOM_TYPE"
+///         info_type = {
+///           name = "MY_CUSTOM_TYPE"
 ///         }
-///         "likelihood" = "UNLIKELY"
-///         "regex" = {
-///           "pattern" = "test*"
+///         likelihood = "UNLIKELY"
+///         regex = {
+///           pattern = "test*"
 ///         }
 ///       }]
 ///       info_types = [{
-///         "name" = "EMAIL_ADDRESS"
+///         name = "EMAIL_ADDRESS"
 ///       }]
 ///       min_likelihood = "UNLIKELY"
 ///       rule_sets = [{
-///         "infoTypes" = [{
-///           "name" = "EMAIL_ADDRESS"
+///         info_types = [{
+///           name = "EMAIL_ADDRESS"
 ///         }]
-///         "rules" = [{
-///           "exclusionRule" = {
-///             "regex" = {
-///               "pattern" = ".+@example.com"
+///         rules = [{
+///           exclusion_rule = {
+///             regex = {
+///               pattern = ".+@example.com"
 ///             }
-///             "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///             matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///           }
 ///         }]
 ///         }, {
-///         "infoTypes" = [{
-///           "name" = "MY_CUSTOM_TYPE"
+///         info_types = [{
+///           name = "MY_CUSTOM_TYPE"
 ///         }]
-///         "rules" = [{
-///           "hotwordRule" = {
-///             "hotwordRegex" = {
-///               "pattern" = "example*"
+///         rules = [{
+///           hotword_rule = {
+///             hotword_regex = {
+///               pattern = "example*"
 ///             }
-///             "proximity" = {
-///               "windowBefore" = 50
+///             proximity = {
+///               window_before = 50
 ///             }
-///             "likelihoodAdjustment" = {
-///               "fixedLikelihood" = "VERY_LIKELY"
+///             likelihood_adjustment = {
+///               fixed_likelihood = "VERY_LIKELY"
 ///             }
 ///           }
 ///         }]
@@ -2972,6 +3022,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             maxFindingsPerRequest: 50
 /// ```
 ///
+///
 /// ### Dlp Job Trigger Publish To Stackdriver
 ///
 ///
@@ -3083,7 +3134,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3124,7 +3175,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3132,7 +3183,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "publish_to_stackdriver" {
+/// resource "gcp_dataloss_prevention_job_trigger" "publish_to_stackdriver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description for the job_trigger created by terraform"
 ///   display_name = "TerraformDisplayName"
@@ -3144,7 +3198,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "sample-inspect-template"
 ///     actions = [{
-///       "publishToStackdriver" = {}
+///       publish_to_stackdriver = {}
 ///     }]
 ///     storage_config = {
 ///       cloud_storage_options = {
@@ -3234,6 +3288,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             fileSet:
 ///               url: gs://mybucket/directory/
 /// ```
+///
 ///
 /// ### Dlp Job Trigger With Id
 ///
@@ -3373,7 +3428,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3422,7 +3477,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3430,7 +3485,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "with_trigger_id" {
+/// resource "gcp_dataloss_prevention_job_trigger" "with_trigger_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Starting description"
 ///   display_name = "display"
@@ -3443,11 +3501,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset123"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset123"
 ///           }
 ///         }
 ///       }
@@ -3554,6 +3612,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             fileSet:
 ///               url: gs://mybucket/directory/
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Multiple Actions
 ///
@@ -3711,7 +3770,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3764,7 +3823,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3772,7 +3831,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "basic" {
+/// resource "gcp_dataloss_prevention_job_trigger" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -3784,17 +3846,17 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
 ///       }, {
-///       "pubSub" = {
-///         "topic" = "projects/project/topics/topic-name"
+///       pub_sub = {
+///         topic = "projects/project/topics/topic-name"
 ///       }
 ///     }]
 ///     storage_config = {
@@ -3905,6 +3967,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             fileSet:
 ///               url: gs://mybucket/directory/
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
 ///
@@ -4051,7 +4114,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4102,7 +4165,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4110,7 +4173,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "basic" {
+/// resource "gcp_dataloss_prevention_job_trigger" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -4122,11 +4188,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///   inspect_job = {
 ///     inspect_template_name = "fake"
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "dataset"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "dataset"
 ///           }
 ///         }
 ///       }
@@ -4239,6 +4305,7 @@ import 'prevention_job_trigger_trigger.dart';
 ///             fileSet:
 ///               url: gs://mybucket/directory/
 /// ```
+///
 ///
 /// ### Dlp Job Trigger Timespan Config Big Query
 ///
@@ -4404,7 +4471,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4461,7 +4528,7 @@ import 'prevention_job_trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4469,7 +4536,10 @@ import 'prevention_job_trigger_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionjobtrigger" "timespan_config_big_query" {
+/// resource "gcp_dataloss_prevention_job_trigger" "timespan_config_big_query" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "BigQuery DLP Job Trigger with timespan config and row limit"
 ///   display_name = "bigquery-dlp-job-trigger-limit-timespan"
@@ -4497,11 +4567,11 @@ import 'prevention_job_trigger_trigger.dart';
 ///       }
 ///     }
 ///     actions = [{
-///       "saveFindings" = {
-///         "outputConfig" = {
-///           "table" = {
-///             "projectId" = "project"
-///             "datasetId" = "output"
+///       save_findings = {
+///         output_config = {
+///           table = {
+///             project_id = "project"
+///             dataset_id = "output"
 ///           }
 ///         }
 ///       }
@@ -4683,7 +4753,7 @@ class PreventionJobTrigger extends pulumi.CustomResource {
           'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

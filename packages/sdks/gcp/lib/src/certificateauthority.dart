@@ -52,6 +52,8 @@ export 'certificateauthority/ca_pool_issuance_policy_baseline_values_name_constr
 export 'certificateauthority/ca_pool_issuance_policy_baseline_values_policy_id.dart';
 export 'certificateauthority/ca_pool_issuance_policy_identity_constraints.dart';
 export 'certificateauthority/ca_pool_issuance_policy_identity_constraints_cel_expression.dart';
+export 'certificateauthority/ca_pool_issuance_policy_passthrough_extensions.dart';
+export 'certificateauthority/ca_pool_issuance_policy_passthrough_extensions_additional_extension.dart';
 export 'certificateauthority/ca_pool_publishing_options.dart';
 export 'certificateauthority/ca_pool_state.dart';
 export 'certificateauthority/certificate.dart';

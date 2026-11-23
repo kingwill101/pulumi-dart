@@ -9,6 +9,10 @@ class GlobalForwardingRuleState {
   /// (Optional, Beta)
   /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
   final pulumi.Input<bool?>? allowPscGlobalAccess;
+  /// Identifies the backend service to which the forwarding rule sends traffic.
+  /// Required for Global External Passthrough Network Load Balancing;
+  /// must be omitted for all other load balancer types.
+  final pulumi.Input<String?>? backendService;
   /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
   final pulumi.Input<String?>? baseForwardingRule;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -76,6 +80,10 @@ class GlobalForwardingRuleState {
   /// When reading an `IPAddress`, the API always returns the IP
   /// address number.
   final pulumi.Input<String?>? ipAddress;
+  /// IP addresses for which this forwarding rule accepts traffic, ordered by
+  /// Availability Group 0 followed by Availability Group 1. Specify literal
+  /// IP addresses (for example, `google_compute_global_address.example.address`).
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// The IP protocol to which this rule applies.
   /// For protocol forwarding, valid
   /// options are `TCP`, `UDP`, `ESP`,
@@ -100,8 +108,8 @@ class GlobalForwardingRuleState {
   /// Specifies the forwarding rule type.
   /// For more information about forwarding rules, refer to
   /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-  /// Default value is `EXTERNAL`.
-  /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+  /// Default value is `EXTERNAL_MANAGED`.
+  /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
   final pulumi.Input<String?>? loadBalancingScheme;
   /// Opaque filter criteria used by Loadbalancer to restrict routing
   /// configuration to a limited set xDS compliant clients. In their xDS
@@ -210,6 +218,7 @@ class GlobalForwardingRuleState {
 
   /// Creates a new [GlobalForwardingRuleState].
   /// [allowPscGlobalAccess] (Optional, Beta)
+  /// [backendService] Identifies the backend service to which the forwarding rule sends traffic.
   /// [baseForwardingRule] [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
@@ -218,6 +227,7 @@ class GlobalForwardingRuleState {
   /// [externalManagedBackendBucketMigrationTestingPercentage] Determines the fraction of requests to backend buckets that should be processed by the Global
   /// [forwardingRuleId] The unique identifier number for the resource. This identifier is defined by the server.
   /// [ipAddress] IP address for which this forwarding rule accepts traffic. When a client
+  /// [ipAddresses] IP addresses for which this forwarding rule accepts traffic, ordered by
   /// [ipProtocol] The IP protocol to which this rule applies.
   /// [ipVersion] The IP Version that will be used by this global forwarding rule.
   /// [labelFingerprint] The fingerprint used for optimistic locking of this resource.  Used
@@ -240,6 +250,7 @@ class GlobalForwardingRuleState {
   /// [target] The URL of the target resource to receive the matched traffic.  For
   const GlobalForwardingRuleState({
     this.allowPscGlobalAccess,
+    this.backendService,
     this.baseForwardingRule,
     this.deletionPolicy,
     this.description,
@@ -248,6 +259,7 @@ class GlobalForwardingRuleState {
     this.externalManagedBackendBucketMigrationTestingPercentage,
     this.forwardingRuleId,
     this.ipAddress,
+    this.ipAddresses,
     this.ipProtocol,
     this.ipVersion,
     this.labelFingerprint,
@@ -273,6 +285,7 @@ class GlobalForwardingRuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowPscGlobalAccess': ?allowPscGlobalAccess,
+      'backendService': ?backendService,
       'baseForwardingRule': ?baseForwardingRule,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
@@ -281,6 +294,7 @@ class GlobalForwardingRuleState {
       'externalManagedBackendBucketMigrationTestingPercentage': ?externalManagedBackendBucketMigrationTestingPercentage,
       'forwardingRuleId': ?forwardingRuleId,
       'ipAddress': ?ipAddress,
+      'ipAddresses': ?ipAddresses,
       'ipProtocol': ?ipProtocol,
       'ipVersion': ?ipVersion,
       'labelFingerprint': ?labelFingerprint,
@@ -307,14 +321,16 @@ class GlobalForwardingRuleState {
   factory GlobalForwardingRuleState.fromMap(Map<String, dynamic> map) {
     return GlobalForwardingRuleState(
       allowPscGlobalAccess: (() { final guardedValue = map['allowPscGlobalAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       baseForwardingRule: (() { final guardedValue = map['baseForwardingRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       externalManagedBackendBucketMigrationState: (() { final guardedValue = map['externalManagedBackendBucketMigrationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalManagedBackendBucketMigrationTestingPercentage: (() { final guardedValue = map['externalManagedBackendBucketMigrationTestingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

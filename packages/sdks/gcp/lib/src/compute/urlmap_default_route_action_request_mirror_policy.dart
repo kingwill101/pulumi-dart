@@ -5,14 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class URLMapDefaultRouteActionRequestMirrorPolicy {
   /// The full or partial URL to the BackendService resource being mirrored to.
   final pulumi.Input<String> backendService;
-  /// (Optional, Beta)
   /// The percentage of requests to be mirrored to backendService.
   /// The value must be between 0.0 and 100.0 inclusive.
   final pulumi.Input<double?>? mirrorPercent;
 
   /// Creates a new [URLMapDefaultRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the BackendService resource being mirrored to.
-  /// [mirrorPercent] (Optional, Beta)
+  /// [mirrorPercent] The percentage of requests to be mirrored to backendService.
   const URLMapDefaultRouteActionRequestMirrorPolicy({
     required this.backendService,
     this.mirrorPercent,

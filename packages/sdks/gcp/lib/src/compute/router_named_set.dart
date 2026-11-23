@@ -13,6 +13,7 @@ import 'router_named_set_state.dart';
 /// * How-to Guides
 /// * [Google Cloud Router](https://cloud.google.com/router/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Router Named Set Route Policy
@@ -204,7 +205,7 @@ import 'router_named_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -280,7 +281,7 @@ import 'router_named_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -289,10 +290,16 @@ import 'router_named_set_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_router" "my_router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   network = gcp_compute_network.my_network.name
 ///   region  = "us-central1"
@@ -300,7 +307,10 @@ import 'router_named_set_state.dart';
 ///     asn = 64514
 ///   }
 /// }
-/// resource "gcp_compute_routernamedset" "my_prefix_set" {
+/// resource "gcp_compute_router_named_set" "my_prefix_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "prefix-set-name"
 ///   router      = gcp_compute_router.my_router.name
 ///   region      = gcp_compute_router.my_router.region
@@ -318,7 +328,10 @@ import 'router_named_set_state.dart';
 ///     title      = "or-longer-example"
 ///   }
 /// }
-/// resource "gcp_compute_routerroutepolicy" "my_route_policy" {
+/// resource "gcp_compute_router_route_policy" "my_route_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "policy-name"
 ///   router = gcp_compute_router.my_router.name
 ///   region = gcp_compute_router.my_router.region
@@ -326,7 +339,7 @@ import 'router_named_set_state.dart';
 ///   terms {
 ///     priority = 1
 ///     match = {
-///       expression ="destination.inAnyRange(prefixSets('${gcp_compute_routernamedset.my_prefix_set.name}'))"
+///       expression ="destination.inAnyRange(prefixSets('${gcp_compute_router_named_set.my_prefix_set.name}'))"
 ///     }
 ///     actions {
 ///       expression = "accept()"
@@ -467,6 +480,7 @@ import 'router_named_set_state.dart';
 ///             - expression: accept()
 /// ```
 ///
+///
 /// ### Router Named Set Prefix
 ///
 ///
@@ -582,7 +596,7 @@ import 'router_named_set_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -629,7 +643,7 @@ import 'router_named_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -638,15 +652,24 @@ import 'router_named_set_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   network = gcp_compute_network.net.name
 ///   region  = "us-central1"
 /// }
-/// resource "gcp_compute_routernamedset" "prefix_set" {
+/// resource "gcp_compute_router_named_set" "prefix_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-prefix-set"
 ///   router      = gcp_compute_router.router.name
 ///   region      = "us-central1"
@@ -751,6 +774,7 @@ import 'router_named_set_state.dart';
 ///           title: seventeen-two-slash-sixteen
 /// ```
 ///
+///
 /// ### Router Named Set Community
 ///
 ///
@@ -849,7 +873,7 @@ import 'router_named_set_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -892,7 +916,7 @@ import 'router_named_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -901,15 +925,24 @@ import 'router_named_set_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   network = gcp_compute_network.net.name
 ///   region  = "us-central1"
 /// }
-/// resource "gcp_compute_routernamedset" "community_set" {
+/// resource "gcp_compute_router_named_set" "community_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-community-set"
 ///   router      = gcp_compute_router.router.name
 ///   region      = "us-central1"
@@ -1064,7 +1097,7 @@ class RouterNamedSet extends pulumi.CustomResource {
           'gcp:compute/routerNamedSet:RouterNamedSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

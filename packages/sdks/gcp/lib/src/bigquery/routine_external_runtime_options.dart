@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'routine_external_runtime_options_volume_mount.dart';
 
 class RoutineExternalRuntimeOptions {
   /// Amount of CPU provisioned for a Python UDF container instance. For more
@@ -26,6 +27,12 @@ class RoutineExternalRuntimeOptions {
   final pulumi.Input<String?>? runtimeConnection;
   /// Language runtime version. Example: `python-3.11`.
   final pulumi.Input<String?>? runtimeVersion;
+  /// List of volume mounts for the Python UDF container that executes the
+  /// managed function. When volume mounts are set, `runtimeConnection` must
+  /// also be set. For more information, see [Create a Python UDF with volume
+  /// mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
+  /// Structure is documented below.
+  final pulumi.Input<List<RoutineExternalRuntimeOptionsVolumeMount>?>? volumeMounts;
 
   /// Creates a new [RoutineExternalRuntimeOptions].
   /// [containerCpu] Amount of CPU provisioned for a Python UDF container instance. For more
@@ -34,6 +41,7 @@ class RoutineExternalRuntimeOptions {
   /// [maxBatchingRows] Maximum number of rows in each batch sent to the external runtime. If
   /// [runtimeConnection] Fully qualified name of the connection whose service account will be used
   /// [runtimeVersion] Language runtime version. Example: `python-3.11`.
+  /// [volumeMounts] List of volume mounts for the Python UDF container that executes the
   const RoutineExternalRuntimeOptions({
     this.containerCpu,
     this.containerMemory,
@@ -41,6 +49,7 @@ class RoutineExternalRuntimeOptions {
     this.maxBatchingRows,
     this.runtimeConnection,
     this.runtimeVersion,
+    this.volumeMounts,
   });
 
   Map<String, dynamic> toMap() {
@@ -51,6 +60,7 @@ class RoutineExternalRuntimeOptions {
       'maxBatchingRows': ?maxBatchingRows,
       'runtimeConnection': ?runtimeConnection,
       'runtimeVersion': ?runtimeVersion,
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<RoutineExternalRuntimeOptionsVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<RoutineExternalRuntimeOptionsVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -62,6 +72,7 @@ class RoutineExternalRuntimeOptions {
       maxBatchingRows: (() { final guardedValue = map['maxBatchingRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runtimeConnection: (() { final guardedValue = map['runtimeConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RoutineExternalRuntimeOptionsVolumeMount>(guardedValue, (value) => RoutineExternalRuntimeOptionsVolumeMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

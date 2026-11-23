@@ -68,7 +68,7 @@ import 'variable_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'variable_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,10 +103,16 @@ import 'variable_state.dart';
 /// }
 ///
 /// resource "gcp_runtimeconfig_config" "my-runtime-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service-runtime-config"
 ///   description = "Runtime configuration values for my service"
 /// }
 /// resource "gcp_runtimeconfig_variable" "environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = gcp_runtimeconfig_config.my-runtime-config.name
 ///   name   = "prod-variables/hostname"
 ///   text   = "example.com"
@@ -232,7 +238,7 @@ import 'variable_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -265,7 +271,7 @@ import 'variable_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -277,10 +283,16 @@ import 'variable_state.dart';
 /// }
 ///
 /// resource "gcp_runtimeconfig_config" "my-runtime-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service-runtime-config"
 ///   description = "Runtime configuration values for my service"
 /// }
 /// resource "gcp_runtimeconfig_variable" "my-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = gcp_runtimeconfig_config.my-runtime-config.name
 ///   name   = "secret"
 ///   value  = filebase64("my-encrypted-secret.dat")
@@ -380,17 +392,15 @@ class Variable extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// or `value` - (Required) The content to associate with the variable.
-  /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
-  /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-  /// is specified, it must be base64 encoded and less than 4096 bytes in length.
-  ///
-  /// - - -
+  /// The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
   late final pulumi.Output<String?> text;
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds, representing when the variable was last updated.
   /// Example: "2016-10-09T12:33:37.578138407Z".
   late final pulumi.Output<String> updateTime;
+  /// The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+  ///
+  /// - - -
   late final pulumi.Output<String?> value;
 
   /// Creates a new [Variable].
@@ -405,7 +415,7 @@ class Variable extends pulumi.CustomResource {
           'gcp:runtimeconfig/variable:Variable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['text', 'value'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

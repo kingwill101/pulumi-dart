@@ -15,6 +15,7 @@ import 'remote_config_remote_config_version.dart';
 /// * How-to Guides
 /// * [Remote Config Introduction](https://firebase.google.com/docs/remote-config)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase Remote Config Basic
@@ -177,7 +178,7 @@ import 'remote_config_remote_config_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -238,7 +239,7 @@ import 'remote_config_remote_config_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -246,7 +247,10 @@ import 'remote_config_remote_config_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_remoteconfigremoteconfig" "basic" {
+/// resource "gcp_firebase_remote_config_remote_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   conditions {
 ///     name       = "ios_en"
 ///     expression = "device.os == 'ios' && device.country in ['us']"
@@ -443,7 +447,7 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
           'gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     conditions = registerOutput<List<RemoteConfigRemoteConfigCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigCondition>(guardedValue, (value) => RemoteConfigRemoteConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

@@ -83,8 +83,8 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +115,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,16 +123,19 @@ import 'v2_organization_source_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2organizationsourceiampolicy" "policy" {
+/// resource "gcp_securitycenter_v2_organization_source_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source      = customSource.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -239,7 +242,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -260,7 +263,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,7 +271,10 @@ import 'v2_organization_source_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2organizationsourceiambinding" "binding" {
+/// resource "gcp_securitycenter_v2_organization_source_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source  = customSource.name
 ///   role    = "roles/viewer"
 ///   members = ["user:jane@example.com"]
@@ -359,7 +365,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -378,7 +384,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -386,7 +392,10 @@ import 'v2_organization_source_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2organizationsourceiammember" "member" {
+/// resource "gcp_securitycenter_v2_organization_source_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = customSource.name
 ///   role   = "roles/viewer"
 ///   member = "user:jane@example.com"
@@ -521,8 +530,8 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -553,7 +562,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -561,16 +570,19 @@ import 'v2_organization_source_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2organizationsourceiampolicy" "policy" {
+/// resource "gcp_securitycenter_v2_organization_source_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source      = customSource.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -677,7 +689,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -698,7 +710,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -706,7 +718,10 @@ import 'v2_organization_source_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2organizationsourceiambinding" "binding" {
+/// resource "gcp_securitycenter_v2_organization_source_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source  = customSource.name
 ///   role    = "roles/viewer"
 ///   members = ["user:jane@example.com"]
@@ -797,7 +812,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -816,7 +831,7 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -824,7 +839,10 @@ import 'v2_organization_source_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2organizationsourceiammember" "member" {
+/// resource "gcp_securitycenter_v2_organization_source_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = customSource.name
 ///   role   = "roles/viewer"
 ///   member = "user:jane@example.com"
@@ -917,6 +935,9 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<List<String>> members;
+  /// The organization whose Cloud Security Command Center the Source
+  /// lives in.
+  /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> organization;
   /// The role that should be applied. Only one
   /// `gcp.securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -937,7 +958,7 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     condition = registerOutput<V2OrganizationSourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationSourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

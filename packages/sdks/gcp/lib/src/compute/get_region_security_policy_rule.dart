@@ -86,7 +86,7 @@ class GetRegionSecurityPolicyRule {
       networkMatches: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRuleNetworkMatch>(map['networkMatches']!, (value) => GetRegionSecurityPolicyRuleNetworkMatch.fromMap((value as Map).cast<String, dynamic>()))),
       preconfiguredWafConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfig>(map['preconfiguredWafConfigs']!, (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((value as Map).cast<String, dynamic>()))),
       preview: pulumi.Input.fromValue(map['preview'] as bool),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       rateLimitOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOption>(map['rateLimitOptions']!, (value) => GetRegionSecurityPolicyRuleRateLimitOption.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

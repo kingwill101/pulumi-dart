@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'unit_kind_app_params.dart';
+import 'unit_kind_application_template_component.dart';
 import 'unit_kind_args.dart';
 import 'unit_kind_dependency.dart';
 import 'unit_kind_input_variable_mapping.dart';
@@ -7,8 +9,7 @@ import 'unit_kind_state.dart';
 
 /// A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
+///
 ///
 ///
 /// ## Example Usage
@@ -43,14 +44,6 @@ import 'unit_kind_state.dart';
 ///         alias: "cluster",
 ///     }],
 /// });
-/// const exampleRelease = new gcp.saasruntime.Release("example_release", {
-///     location: "us-east1",
-///     releaseId: "example-release",
-///     unitKind: clusterUnitKind.id,
-///     blueprint: {
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
-///     },
-/// });
 /// ```
 /// ```python
 /// import pulumi
@@ -75,13 +68,6 @@ import 'unit_kind_state.dart';
 ///         "unit_kind": cluster_unit_kind.id,
 ///         "alias": "cluster",
 ///     }])
-/// example_release = gcp.saasruntime.Release("example_release",
-///     location="us-east1",
-///     release_id="example-release",
-///     unit_kind=cluster_unit_kind.id,
-///     blueprint={
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
-///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -127,24 +113,13 @@ import 'unit_kind_state.dart';
 ///         },
 ///     });
 ///
-///     var exampleRelease = new Gcp.SaaSRuntime.Release("example_release", new()
-///     {
-///         Location = "us-east1",
-///         ReleaseId = "example-release",
-///         UnitKind = clusterUnitKind.Id,
-///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
-///         {
-///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
-///         },
-///     });
-///
 /// });
 /// ```
 /// ```go
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -165,7 +140,7 @@ import 'unit_kind_state.dart';
 /// 		clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
 /// 			Location:       pulumi.String("us-east1"),
 /// 			UnitKindId:     pulumi.String("cluster-unitkind"),
-/// 			Saas:           exampleSaas.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:           exampleSaas.ID(),
 /// 			DefaultRelease: pulumi.String("projects/my-project-name/locations/us-east1/releases/example-release"),
 /// 		})
 /// 		if err != nil {
@@ -174,23 +149,12 @@ import 'unit_kind_state.dart';
 /// 		_, err = saasruntime.NewUnitKind(ctx, "example", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("us-east1"),
 /// 			UnitKindId: pulumi.String("app-unitkind"),
-/// 			Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:       exampleSaas.ID(),
 /// 			Dependencies: saasruntime.UnitKindDependencyArray{
 /// 				&saasruntime.UnitKindDependencyArgs{
-/// 					UnitKind: clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
+/// 					UnitKind: clusterUnitKind.ID(),
 /// 					Alias:    pulumi.String("cluster"),
 /// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
-/// 			Location:  pulumi.String("us-east1"),
-/// 			ReleaseId: pulumi.String("example-release"),
-/// 			UnitKind:  clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
-/// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
-/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -201,7 +165,7 @@ import 'unit_kind_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,34 +173,35 @@ import 'unit_kind_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "us-east1"
 ///   locations {
 ///     name = "us-east1"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "cluster_unit_kind" {
+/// resource "gcp_saasruntime_unit_kind" "cluster_unit_kind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-east1"
 ///   unit_kind_id    = "cluster-unitkind"
-///   saas            = gcp_saasruntime_saas.example_saas.id
+///   saas            = gcp_saasruntime_saa_s.example_saas.id
 ///   default_release = "projects/my-project-name/locations/us-east1/releases/example-release"
 /// }
-/// resource "gcp_saasruntime_unitkind" "example" {
+/// resource "gcp_saasruntime_unit_kind" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-east1"
 ///   unit_kind_id = "app-unitkind"
-///   saas         = gcp_saasruntime_saas.example_saas.id
+///   saas         = gcp_saasruntime_saa_s.example_saas.id
 ///   dependencies {
-///     unit_kind = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///     unit_kind = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 ///     alias     = "cluster"
-///   }
-/// }
-/// resource "gcp_saasruntime_release" "example_release" {
-///   location   = "us-east1"
-///   release_id = "example-release"
-///   unit_kind  = gcp_saasruntime_unitkind.cluster_unit_kind.id
-///   blueprint = {
-///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
 ///   }
 /// }
 /// ```
@@ -252,9 +217,6 @@ import 'unit_kind_state.dart';
 /// import com.pulumi.gcp.saasruntime.UnitKind;
 /// import com.pulumi.gcp.saasruntime.UnitKindArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.UnitKindDependencyArgs;
-/// import com.pulumi.gcp.saasruntime.Release;
-/// import com.pulumi.gcp.saasruntime.ReleaseArgs;
-/// import com.pulumi.gcp.saasruntime.inputs.ReleaseBlueprintArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -293,15 +255,6 @@ import 'unit_kind_state.dart';
 ///                 .build())
 ///             .build());
 ///
-///         var exampleRelease = new Release("exampleRelease", ReleaseArgs.builder()
-///             .location("us-east1")
-///             .releaseId("example-release")
-///             .unitKind(clusterUnitKind.id())
-///             .blueprint(ReleaseBlueprintArgs.builder()
-///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee")
-///                 .build())
-///             .build());
-///
 ///     }
 /// }
 /// ```
@@ -332,15 +285,6 @@ import 'unit_kind_state.dart';
 ///       dependencies:
 ///         - unitKind: ${clusterUnitKind.id}
 ///           alias: cluster
-///   exampleRelease:
-///     type: gcp:saasruntime:Release
-///     name: example_release
-///     properties:
-///       location: us-east1
-///       releaseId: example-release
-///       unitKind: ${clusterUnitKind.id}
-///       blueprint:
-///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee
 /// ```
 ///
 ///
@@ -368,6 +312,14 @@ class UnitKind extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+  /// Parameters for creating an App Hub Application for the Units of this
+  /// UnitKind.
+  /// Structure is documented below.
+  late final pulumi.Output<UnitKindAppParams?> appParams;
+  /// Reference to a component and revision in a composite Application Design
+  /// Center ApplicationTemplate.
+  /// Structure is documented below.
+  late final pulumi.Output<UnitKindApplicationTemplateComponent?> applicationTemplateComponent;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
   /// A reference to the Release object to use as default for creating new units
@@ -449,10 +401,12 @@ class UnitKind extends pulumi.CustomResource {
           'gcp:saasruntime/unitKind:UnitKind',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appParams = registerOutput<UnitKindAppParams?>('appParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitKindAppParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationTemplateComponent = registerOutput<UnitKindApplicationTemplateComponent?>('applicationTemplateComponent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitKindApplicationTemplateComponent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     defaultRelease = registerOutput<String?>('defaultRelease');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -498,6 +452,8 @@ class UnitKind extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appParams = registerOutput<UnitKindAppParams?>('appParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitKindAppParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationTemplateComponent = registerOutput<UnitKindApplicationTemplateComponent?>('applicationTemplateComponent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitKindApplicationTemplateComponent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     defaultRelease = registerOutput<String?>('defaultRelease');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -529,6 +485,8 @@ class UnitKind extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appParams = registerOutput<UnitKindAppParams?>('appParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitKindAppParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationTemplateComponent = registerOutput<UnitKindApplicationTemplateComponent?>('applicationTemplateComponent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitKindApplicationTemplateComponent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     defaultRelease = registerOutput<String?>('defaultRelease');
     deletionPolicy = registerOutput<String>('deletionPolicy');

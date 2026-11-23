@@ -7,11 +7,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_serviceaccount_get_iam_policy_get_iam_policy_args_doc}
 class GetIamPolicyArgs {
-  /// The fully-qualified name of the service account to apply policy to.
+  /// The fully-qualified name of the service account, in the form
+  /// `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
   final pulumi.Input<String> serviceAccountId;
 
   /// Creates a new [GetIamPolicyArgs].
-  /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
+  /// [serviceAccountId] The fully-qualified name of the service account, in the form
   const GetIamPolicyArgs({
     required this.serviceAccountId,
   });

@@ -20,12 +20,18 @@ class MetastoreServiceState {
   /// Default value is `MYSQL`.
   /// Possible values are: `MYSQL`, `SPANNER`.
   final pulumi.Input<String?>? databaseType;
-  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+  /// the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+  /// service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+  ///
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
-  /// When set to "DELETE", deleting the resource is allowed.
+  /// When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+  /// subnetworks will be deleted asynchronously by the API.
+  ///
+  /// Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
   final pulumi.Input<String?>? deletionPolicy;
   /// Indicates if the dataproc metastore should be protected against accidental deletions.
   final pulumi.Input<bool?>? deletionProtection;
@@ -108,7 +114,7 @@ class MetastoreServiceState {
   /// [artifactGcsUri] A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
   /// [createTime] Output only. The time when the metastore service was created.
   /// [databaseType] The database type that the Metastore service stores its data.
-  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionPolicy] The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
   /// [deletionProtection] Indicates if the dataproc metastore should be protected against accidental deletions.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [encryptionConfig] Information used to configure the Dataproc Metastore service to encrypt
@@ -221,7 +227,7 @@ class MetastoreServiceState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

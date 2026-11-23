@@ -52,6 +52,10 @@ class TriggerBuildOptions {
   /// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
   /// This field is experimental.
   final pulumi.Input<String?>? workerPool;
+  /// Option to specify which release or release channel to use to run this build.
+  /// Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+  /// release version such as `legacy`.
+  final pulumi.Input<String?>? workerRelease;
 
   /// Creates a new [TriggerBuildOptions].
   /// [diskSizeGb] Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
@@ -66,6 +70,7 @@ class TriggerBuildOptions {
   /// [substitutionOption] Option to specify behavior when there is an error in the substitution checks.
   /// [volumes] Global list of volumes to mount for ALL build steps
   /// [workerPool] Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+  /// [workerRelease] Option to specify which release or release channel to use to run this build.
   const TriggerBuildOptions({
     this.diskSizeGb,
     this.dynamicSubstitutions,
@@ -79,6 +84,7 @@ class TriggerBuildOptions {
     this.substitutionOption,
     this.volumes,
     this.workerPool,
+    this.workerRelease,
   });
 
   Map<String, dynamic> toMap() {
@@ -95,12 +101,13 @@ class TriggerBuildOptions {
       'substitutionOption': ?substitutionOption,
       'volumes': ?pulumi.Input.mapOptionalInputValue<List<TriggerBuildOptionsVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<TriggerBuildOptionsVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workerPool': ?workerPool,
+      'workerRelease': ?workerRelease,
     };
   }
 
   factory TriggerBuildOptions.fromMap(Map<String, dynamic> map) {
     return TriggerBuildOptions(
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dynamicSubstitutions: (() { final guardedValue = map['dynamicSubstitutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       logStreamingOption: (() { final guardedValue = map['logStreamingOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -112,6 +119,7 @@ class TriggerBuildOptions {
       substitutionOption: (() { final guardedValue = map['substitutionOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TriggerBuildOptionsVolume>(guardedValue, (value) => TriggerBuildOptionsVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
       workerPool: (() { final guardedValue = map['workerPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workerRelease: (() { final guardedValue = map['workerRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

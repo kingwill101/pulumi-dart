@@ -42,7 +42,7 @@ class ClusterNodeConfigGuestAccelerator {
 
   factory ClusterNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigGuestAccelerator(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       gpuDriverInstallationConfig: (() { final guardedValue = map['gpuDriverInstallationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gpuPartitionSize: (() { final guardedValue = map['gpuPartitionSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gpuSharingConfig: (() { final guardedValue = map['gpuSharingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

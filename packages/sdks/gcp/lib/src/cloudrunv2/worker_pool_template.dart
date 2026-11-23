@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_pool_template_container.dart';
 import 'worker_pool_template_node_selector.dart';
+import 'worker_pool_template_sandboxes.dart';
 import 'worker_pool_template_volume.dart';
 import 'worker_pool_template_vpc_access.dart';
 
@@ -39,6 +40,9 @@ class WorkerPoolTemplate {
   final pulumi.Input<WorkerPoolTemplateNodeSelector?>? nodeSelector;
   /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
   final pulumi.Input<String?>? revision;
+  /// Configuration for sandboxes.
+  /// Structure is documented below.
+  final pulumi.Input<WorkerPoolTemplateSandboxes?>? sandboxes;
   /// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   final pulumi.Input<String?>? serviceAccount;
   /// A list of Volumes to make available to containers.
@@ -60,6 +64,7 @@ class WorkerPoolTemplate {
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
   /// [nodeSelector] Node Selector describes the hardware requirements of the resources.
   /// [revision] The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
+  /// [sandboxes] Configuration for sandboxes.
   /// [serviceAccount] Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccess] VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
@@ -75,6 +80,7 @@ class WorkerPoolTemplate {
     this.labels,
     this.nodeSelector,
     this.revision,
+    this.sandboxes,
     this.serviceAccount,
     this.volumes,
     this.vpcAccess,
@@ -93,6 +99,7 @@ class WorkerPoolTemplate {
       'labels': ?labels,
       'nodeSelector': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateNodeSelector, Map<String, dynamic>>(nodeSelector, (value) => value.toMap()),
       'revision': ?revision,
+      'sandboxes': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateSandboxes, Map<String, dynamic>>(sandboxes, (value) => value.toMap()),
       'serviceAccount': ?serviceAccount,
       'volumes': ?pulumi.Input.mapOptionalInputValue<List<WorkerPoolTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<WorkerPoolTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcAccess': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateVpcAccess, Map<String, dynamic>>(vpcAccess, (value) => value.toMap()),
@@ -112,6 +119,7 @@ class WorkerPoolTemplate {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       nodeSelector: (() { final guardedValue = map['nodeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateNodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sandboxes: (() { final guardedValue = map['sandboxes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateSandboxes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerPoolTemplateVolume>(guardedValue, (value) => WorkerPoolTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpcAccess: (() { final guardedValue = map['vpcAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -25,8 +25,8 @@ class LiteTopicPartitionConfigCapacity {
 
   factory LiteTopicPartitionConfigCapacity.fromMap(Map<String, dynamic> map) {
     return LiteTopicPartitionConfigCapacity(
-      publishMibPerSec: pulumi.Input.fromValue((map['publishMibPerSec'] as num).toInt()),
-      subscribeMibPerSec: pulumi.Input.fromValue((map['subscribeMibPerSec'] as num).toInt()),
+      publishMibPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['publishMibPerSec'])),
+      subscribeMibPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subscribeMibPerSec'])),
     );
   }
 }

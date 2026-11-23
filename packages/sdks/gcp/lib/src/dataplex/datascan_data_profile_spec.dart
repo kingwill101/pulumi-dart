@@ -16,6 +16,9 @@ class DatascanDataProfileSpec {
   /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataProfileSpecIncludeFields?>? includeFields;
+  /// The execution mode for the profile scan.
+  /// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+  final pulumi.Input<String?>? mode;
   /// Actions to take upon job completion.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataProfileSpecPostScanActions?>? postScanActions;
@@ -30,6 +33,7 @@ class DatascanDataProfileSpec {
   /// [catalogPublishingEnabled] If set, the latest DataScan job result will be published to Dataplex Catalog.
   /// [excludeFields] The fields to exclude from data profile.
   /// [includeFields] The fields to include in data profile.
+  /// [mode] The execution mode for the profile scan.
   /// [postScanActions] Actions to take upon job completion.
   /// [rowFilter] A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
   /// [samplingPercent] The percentage of the records to be selected from the dataset for DataScan.
@@ -37,6 +41,7 @@ class DatascanDataProfileSpec {
     this.catalogPublishingEnabled,
     this.excludeFields,
     this.includeFields,
+    this.mode,
     this.postScanActions,
     this.rowFilter,
     this.samplingPercent,
@@ -47,6 +52,7 @@ class DatascanDataProfileSpec {
       'catalogPublishingEnabled': ?catalogPublishingEnabled,
       'excludeFields': ?pulumi.Input.mapOptionalInputValue<DatascanDataProfileSpecExcludeFields, Map<String, dynamic>>(excludeFields, (value) => value.toMap()),
       'includeFields': ?pulumi.Input.mapOptionalInputValue<DatascanDataProfileSpecIncludeFields, Map<String, dynamic>>(includeFields, (value) => value.toMap()),
+      'mode': ?mode,
       'postScanActions': ?pulumi.Input.mapOptionalInputValue<DatascanDataProfileSpecPostScanActions, Map<String, dynamic>>(postScanActions, (value) => value.toMap()),
       'rowFilter': ?rowFilter,
       'samplingPercent': ?samplingPercent,
@@ -58,6 +64,7 @@ class DatascanDataProfileSpec {
       catalogPublishingEnabled: (() { final guardedValue = map['catalogPublishingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       excludeFields: (() { final guardedValue = map['excludeFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataProfileSpecExcludeFields.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       includeFields: (() { final guardedValue = map['includeFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataProfileSpecIncludeFields.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       postScanActions: (() { final guardedValue = map['postScanActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataProfileSpecPostScanActions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rowFilter: (() { final guardedValue = map['rowFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       samplingPercent: (() { final guardedValue = map['samplingPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),

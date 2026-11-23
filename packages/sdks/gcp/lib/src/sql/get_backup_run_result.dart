@@ -52,7 +52,7 @@ class GetBackupRunResult {
 
   factory GetBackupRunResult.fromMap(Map<String, dynamic> map) {
     return GetBackupRunResult(
-      backupId: (() { final guardedValue = map['backupId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      backupId: (() { final guardedValue = map['backupId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),

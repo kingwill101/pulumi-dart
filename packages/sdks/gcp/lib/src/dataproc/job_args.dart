@@ -28,24 +28,26 @@ class JobArgs {
   /// Dataproc. Setting this to true, and calling destroy, will ensure that the
   /// job is first cancelled before issuing the delete.
   final pulumi.Input<bool?>? forceDelete;
-  /// The config of Hadoop job
+  /// Submits a Hadoop job to the cluster. Structure is documented below.
   final pulumi.Input<JobHadoopConfig?>? hadoopConfig;
-  /// The config of hive job
+  /// Submits a Hive job to the cluster. Structure is documented below.
   final pulumi.Input<JobHiveConfig?>? hiveConfig;
   /// The list of labels (key/value pairs) to add to the job.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>?>? labels;
-  /// The config of pag job.
+  /// Submits a Pig job to the cluster. Structure is documented below.
   final pulumi.Input<JobPigConfig?>? pigConfig;
   /// The config of job placement.
   final pulumi.Input<JobPlacement> placement;
-  /// The config of presto job
+  /// Submits a Presto job to the cluster. Structure is documented below.
+  ///
+  /// - - -
   final pulumi.Input<JobPrestoConfig?>? prestoConfig;
   /// The project in which the `cluster` can be found and jobs
   /// subsequently run against. If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
-  /// The config of pySpark job.
+  /// Submits a PySpark job to the cluster. Structure is documented below.
   final pulumi.Input<JobPysparkConfig?>? pysparkConfig;
   /// The reference of the job
   final pulumi.Input<JobReference?>? reference;
@@ -54,9 +56,9 @@ class JobArgs {
   final pulumi.Input<String?>? region;
   /// Optional. Job scheduling configuration.
   final pulumi.Input<JobScheduling?>? scheduling;
-  /// The config of the Spark job.
+  /// Submits a Spark job to the cluster. Structure is documented below.
   final pulumi.Input<JobSparkConfig?>? sparkConfig;
-  /// The config of SparkSql job
+  /// Submits a Spark SQL job to the cluster. Structure is documented below.
   final pulumi.Input<JobSparksqlConfig?>? sparksqlConfig;
   /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
   final pulumi.Input<bool?>? waitForCompletion;
@@ -64,19 +66,19 @@ class JobArgs {
   /// Creates a new [JobArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [forceDelete] By default, you can only delete inactive jobs within
-  /// [hadoopConfig] The config of Hadoop job
-  /// [hiveConfig] The config of hive job
+  /// [hadoopConfig] Submits a Hadoop job to the cluster. Structure is documented below.
+  /// [hiveConfig] Submits a Hive job to the cluster. Structure is documented below.
   /// [labels] The list of labels (key/value pairs) to add to the job.
-  /// [pigConfig] The config of pag job.
+  /// [pigConfig] Submits a Pig job to the cluster. Structure is documented below.
   /// [placement] The config of job placement.
-  /// [prestoConfig] The config of presto job
+  /// [prestoConfig] Submits a Presto job to the cluster. Structure is documented below.
   /// [project] The project in which the `cluster` can be found and jobs
-  /// [pysparkConfig] The config of pySpark job.
+  /// [pysparkConfig] Submits a PySpark job to the cluster. Structure is documented below.
   /// [reference] The reference of the job
   /// [region] The Cloud Dataproc region. This essentially determines which clusters are available
   /// [scheduling] Optional. Job scheduling configuration.
-  /// [sparkConfig] The config of the Spark job.
-  /// [sparksqlConfig] The config of SparkSql job
+  /// [sparkConfig] Submits a Spark job to the cluster. Structure is documented below.
+  /// [sparksqlConfig] Submits a Spark SQL job to the cluster. Structure is documented below.
   /// [waitForCompletion] If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
   const JobArgs({
     this.deletionPolicy,

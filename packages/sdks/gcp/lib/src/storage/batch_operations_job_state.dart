@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batch_operations_job_bucket_list.dart';
 import 'batch_operations_job_delete_object.dart';
+import 'batch_operations_job_logging_config.dart';
 import 'batch_operations_job_put_metadata.dart';
 import 'batch_operations_job_put_object_hold.dart';
 import 'batch_operations_job_rewrite_object.dart';
@@ -30,8 +31,13 @@ class BatchOperationsJobState {
   final pulumi.Input<String?>? deletionPolicy;
   /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
   final pulumi.Input<String?>? description;
+  /// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+  final pulumi.Input<bool?>? dryRun;
   /// The ID of the job.
   final pulumi.Input<String?>? jobId;
+  /// Logging configuration.
+  /// Structure is documented below.
+  final pulumi.Input<BatchOperationsJobLoggingConfig?>? loggingConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -59,7 +65,9 @@ class BatchOperationsJobState {
   /// [deleteProtection] If set to `true`, the storage batch operation job will not be deleted and new job will be created.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+  /// [dryRun] If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
   /// [jobId] The ID of the job.
+  /// [loggingConfig] Logging configuration.
   /// [project] The ID of the project in which the resource belongs.
   /// [putMetadata] allows batch operations to update metadata for objects in bucket
   /// [putObjectHold] allows to update temporary hold or eventBased hold for objects in bucket.
@@ -75,7 +83,9 @@ class BatchOperationsJobState {
     this.deleteProtection,
     this.deletionPolicy,
     this.description,
+    this.dryRun,
     this.jobId,
+    this.loggingConfig,
     this.project,
     this.putMetadata,
     this.putObjectHold,
@@ -94,7 +104,9 @@ class BatchOperationsJobState {
       'deleteProtection': ?deleteProtection,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'dryRun': ?dryRun,
       'jobId': ?jobId,
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<BatchOperationsJobLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'project': ?project,
       'putMetadata': ?pulumi.Input.mapOptionalInputValue<BatchOperationsJobPutMetadata, Map<String, dynamic>>(putMetadata, (value) => value.toMap()),
       'putObjectHold': ?pulumi.Input.mapOptionalInputValue<BatchOperationsJobPutObjectHold, Map<String, dynamic>>(putObjectHold, (value) => value.toMap()),
@@ -114,7 +126,9 @@ class BatchOperationsJobState {
       deleteProtection: (() { final guardedValue = map['deleteProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       jobId: (() { final guardedValue = map['jobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchOperationsJobLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       putMetadata: (() { final guardedValue = map['putMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchOperationsJobPutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       putObjectHold: (() { final guardedValue = map['putObjectHold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchOperationsJobPutObjectHold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

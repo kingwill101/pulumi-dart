@@ -8,13 +8,13 @@ class RegionInstanceTemplateSchedulingNodeAffinity {
   /// The operator. Can be `IN` for node-affinities
   /// or `NOT_IN` for anti-affinities.
   final pulumi.Input<String> operator;
-  /// Corresponds to the label values of a reservation resource.
+  /// The values for the node affinity label.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [RegionInstanceTemplateSchedulingNodeAffinity].
   /// [key] The key for the node affinity label.
   /// [operator] The operator. Can be `IN` for node-affinities
-  /// [values] Corresponds to the label values of a reservation resource.
+  /// [values] The values for the node affinity label.
   const RegionInstanceTemplateSchedulingNodeAffinity({
     required this.key,
     required this.operator,

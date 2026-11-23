@@ -67,7 +67,7 @@ import 'get_management_server_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +87,7 @@ import 'get_management_server_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,7 +95,7 @@ import 'get_management_server_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getbackup" "foo" {
+/// data "gcp_backupdisasterrecovery_backup" "foo" {
 ///   location        = "us-central1"
 ///   project         = "project-test"
 ///   data_source_id  = "ds-test"
@@ -237,7 +237,7 @@ pulumi.Output<GetBackupPlanResult> getBackupPlanOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -255,7 +255,7 @@ pulumi.Output<GetBackupPlanResult> getBackupPlanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -263,7 +263,7 @@ pulumi.Output<GetBackupPlanResult> getBackupPlanOutput(
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getbackupplanassociation" "my-backupplan-association" {
+/// data "gcp_backupdisasterrecovery_backup_plan_association" "my-backupplan-association" {
 ///   location                   = "us-central1"
 ///   backup_plan_association_id = "bpa-id"
 /// }
@@ -370,7 +370,7 @@ pulumi.Output<GetBackupPlanAssociationResult> getBackupPlanAssociationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -387,7 +387,7 @@ pulumi.Output<GetBackupPlanAssociationResult> getBackupPlanAssociationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -395,7 +395,7 @@ pulumi.Output<GetBackupPlanAssociationResult> getBackupPlanAssociationOutput(
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getbackupplanassociations" "allAssociations" {
+/// data "gcp_backupdisasterrecovery_backup_plan_associations" "allAssociations" {
 ///   location = "us-central1"
 /// }
 /// ```
@@ -502,7 +502,7 @@ pulumi.Output<GetBackupPlanAssociationsResult> getBackupPlanAssociationsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -520,7 +520,7 @@ pulumi.Output<GetBackupPlanAssociationsResult> getBackupPlanAssociationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -528,7 +528,7 @@ pulumi.Output<GetBackupPlanAssociationsResult> getBackupPlanAssociationsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getbackupvault" "my-backup-vault" {
+/// data "gcp_backupdisasterrecovery_backup_vault" "my-backup-vault" {
 ///   location        = "us-central1"
 ///   backup_vault_id = "bv-1"
 /// }
@@ -644,7 +644,7 @@ pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -664,7 +664,7 @@ pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -672,7 +672,7 @@ pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getdatasource" "foo" {
+/// data "gcp_backupdisasterrecovery_data_source" "foo" {
 ///   location        = "us-central1"
 ///   project         = "project-test"
 ///   data_source_id  = "ds-test"
@@ -845,7 +845,7 @@ pulumi.Output<GetDataSourceReferencesResult> getDataSourceReferencesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -864,7 +864,7 @@ pulumi.Output<GetDataSourceReferencesResult> getDataSourceReferencesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -872,7 +872,7 @@ pulumi.Output<GetDataSourceReferencesResult> getDataSourceReferencesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getdatasources" "foo" {
+/// data "gcp_backupdisasterrecovery_data_sources" "foo" {
 ///   location        = "us-central1"
 ///   project         = "project-test"
 ///   backup_vault_id = "bv-test"
@@ -985,7 +985,7 @@ pulumi.Output<GetDataSourcesResult> getDataSourcesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1002,7 +1002,7 @@ pulumi.Output<GetDataSourcesResult> getDataSourcesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1010,7 +1010,7 @@ pulumi.Output<GetDataSourcesResult> getDataSourcesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_backupdisasterrecovery_getmanagementserver" "my-backup-dr-management-server" {
+/// data "gcp_backupdisasterrecovery_management_server" "my-backup-dr-management-server" {
 ///   location = "us-central1"
 /// }
 /// ```

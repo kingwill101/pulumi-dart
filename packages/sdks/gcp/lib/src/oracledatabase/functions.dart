@@ -27,6 +27,8 @@ import 'get_goldengate_deployment_types_args.dart';
 import 'get_goldengate_deployment_types_result.dart';
 import 'get_goldengate_deployment_versions_args.dart';
 import 'get_goldengate_deployment_versions_result.dart';
+import 'get_odb_dns_zone_args.dart';
+import 'get_odb_dns_zone_result.dart';
 import 'get_odb_network_args.dart';
 import 'get_odb_network_result.dart';
 import 'get_odb_subnet_args.dart';
@@ -76,7 +78,7 @@ import 'get_odb_subnet_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +96,7 @@ import 'get_odb_subnet_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -102,7 +104,7 @@ import 'get_odb_subnet_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getautonomousdatabase" "my-instance" {
+/// data "gcp_oracledatabase_autonomous_database" "my-instance" {
 ///   location               = "us-east4"
 ///   autonomous_database_id = "autonomous_database_id"
 /// }
@@ -212,7 +214,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -229,7 +231,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -237,7 +239,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getautonomousdatabases" "my-adbs" {
+/// data "gcp_oracledatabase_autonomous_databases" "my-adbs" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -347,7 +349,7 @@ pulumi.Output<GetAutonomousDatabasesResult> getAutonomousDatabasesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -365,7 +367,7 @@ pulumi.Output<GetAutonomousDatabasesResult> getAutonomousDatabasesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -373,7 +375,7 @@ pulumi.Output<GetAutonomousDatabasesResult> getAutonomousDatabasesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getcloudexadatainfrastructure" "my-instance" {
+/// data "gcp_oracledatabase_cloud_exadata_infrastructure" "my-instance" {
 ///   location                        = "us-east4"
 ///   cloud_exadata_infrastructure_id = "exadata-id"
 /// }
@@ -483,7 +485,7 @@ pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -500,7 +502,7 @@ pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -508,7 +510,7 @@ pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getcloudexadatainfrastructures" "myExadatas" {
+/// data "gcp_oracledatabase_cloud_exadata_infrastructures" "myExadatas" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -618,7 +620,7 @@ pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructur
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -636,7 +638,7 @@ pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructur
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -644,7 +646,7 @@ pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructur
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getcloudvmcluster" "my-vmcluster" {
+/// data "gcp_oracledatabase_cloud_vm_cluster" "my-vmcluster" {
 ///   location            = "us-east4"
 ///   cloud_vm_cluster_id = "vmcluster-id"
 /// }
@@ -754,7 +756,7 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -771,7 +773,7 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -779,7 +781,7 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getcloudvmclusters" "myVmclusters" {
+/// data "gcp_oracledatabase_cloud_vm_clusters" "myVmclusters" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -889,7 +891,7 @@ pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -907,7 +909,7 @@ pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -915,7 +917,7 @@ pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getdbnodes" "myDbNodes" {
+/// data "gcp_oracledatabase_db_nodes" "myDbNodes" {
 ///   location         = "us-east4"
 ///   cloud_vm_cluster = "vmcluster-id"
 /// }
@@ -1069,7 +1071,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1087,7 +1089,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1095,7 +1097,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getdbservers" "myDbServers" {
+/// data "gcp_oracledatabase_db_servers" "myDbServers" {
 ///   location                     = "us-east4"
 ///   cloud_exadata_infrastructure = "exadata-id"
 /// }
@@ -1249,7 +1251,7 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1267,7 +1269,7 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1275,7 +1277,7 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getexascaledbstoragevault" "my-vault" {
+/// data "gcp_oracledatabase_exascale_db_storage_vault" "my-vault" {
 ///   location                     = "us-east4"
 ///   exascale_db_storage_vault_id = "vault-id"
 /// }
@@ -1385,7 +1387,7 @@ pulumi.Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVaultOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1402,7 +1404,7 @@ pulumi.Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVaultOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1410,7 +1412,7 @@ pulumi.Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVaultOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getexascaledbstoragevaults" "myVaults" {
+/// data "gcp_oracledatabase_exascale_db_storage_vaults" "myVaults" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -1517,7 +1519,7 @@ pulumi.Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaultsOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1534,7 +1536,7 @@ pulumi.Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaultsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1542,7 +1544,7 @@ pulumi.Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaultsOutput
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getgoldengateconnectiontypes" "myConnectionTypes" {
+/// data "gcp_oracledatabase_goldengate_connection_types" "myConnectionTypes" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -1664,7 +1666,7 @@ pulumi.Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypesOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1681,7 +1683,7 @@ pulumi.Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypesOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1689,7 +1691,7 @@ pulumi.Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypesOu
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getgoldengatedeploymentenvironments" "myEnvironments" {
+/// data "gcp_oracledatabase_goldengate_deployment_environments" "myEnvironments" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -1827,7 +1829,7 @@ pulumi.Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeployment
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1844,7 +1846,7 @@ pulumi.Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeployment
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1852,7 +1854,7 @@ pulumi.Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeployment
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getgoldengatedeploymenttypes" "myDeploymentTypes" {
+/// data "gcp_oracledatabase_goldengate_deployment_types" "myDeploymentTypes" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -1990,7 +1992,7 @@ pulumi.Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2007,7 +2009,7 @@ pulumi.Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2015,7 +2017,7 @@ pulumi.Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesOu
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getgoldengatedeploymentversions" "myDeploymentVersions" {
+/// data "gcp_oracledatabase_goldengate_deployment_versions" "myDeploymentVersions" {
 ///   location = "us-east4"
 /// }
 /// ```
@@ -2110,6 +2112,153 @@ pulumi.Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVers
   ).apply(GetGoldengateDeploymentVersionsResult.fromMap);
 }
 
+/// Get information about an ODB DNS Zone.
+///
+/// For more information see the
+/// * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbDnsZones)
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_zone = gcp.oracledatabase.getOdbDnsZone({
+///     location: "europe-west2",
+///     odbnetwork: "my-network-id",
+///     odbDnsZoneId: "my-dns-zone-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_zone = gcp.oracledatabase.get_odb_dns_zone(location="europe-west2",
+///     odbnetwork="my-network-id",
+///     odb_dns_zone_id="my-dns-zone-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_zone = Gcp.OracleDatabase.GetOdbDnsZone.Invoke(new()
+///     {
+///         Location = "europe-west2",
+///         Odbnetwork = "my-network-id",
+///         OdbDnsZoneId = "my-dns-zone-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.LookupOdbDnsZone(ctx, &oracledatabase.LookupOdbDnsZoneArgs{
+/// 			Location:     pulumi.StringRef("europe-west2"),
+/// 			Odbnetwork:   "my-network-id",
+/// 			OdbDnsZoneId: "my-dns-zone-id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_odb_dns_zone" "my-zone" {
+///   location        = "europe-west2"
+///   odbnetwork      = "my-network-id"
+///   odb_dns_zone_id = "my-dns-zone-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetOdbDnsZoneArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var my-zone = OracledatabaseFunctions.getOdbDnsZone(GetOdbDnsZoneArgs.builder()
+///             .location("europe-west2")
+///             .odbnetwork("my-network-id")
+///             .odbDnsZoneId("my-dns-zone-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   my-zone:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getOdbDnsZone
+///       arguments:
+///         location: europe-west2
+///         odbnetwork: my-network-id
+///         odbDnsZoneId: my-dns-zone-id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_odb_dns_zone_get_odb_dns_zone_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetOdbDnsZoneResult> getOdbDnsZone(
+  GetOdbDnsZoneArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getOdbDnsZone:getOdbDnsZone',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetOdbDnsZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetOdbDnsZoneResult> getOdbDnsZoneOutput(
+  GetOdbDnsZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getOdbDnsZone:getOdbDnsZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOdbDnsZoneResult.fromMap);
+}
+
 /// Get information about an ODB Network.
 ///
 /// For more information see the
@@ -2154,7 +2303,7 @@ pulumi.Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVers
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2172,7 +2321,7 @@ pulumi.Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVers
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2180,7 +2329,7 @@ pulumi.Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVers
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getodbnetwork" "my-network" {
+/// data "gcp_oracledatabase_odb_network" "my-network" {
 ///   location       = "us-east4"
 ///   odb_network_id = "my-network-id"
 /// }
@@ -2302,7 +2451,7 @@ pulumi.Output<GetOdbNetworkResult> getOdbNetworkOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2321,7 +2470,7 @@ pulumi.Output<GetOdbNetworkResult> getOdbNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2329,7 +2478,7 @@ pulumi.Output<GetOdbNetworkResult> getOdbNetworkOutput(
 ///   }
 /// }
 ///
-/// data "gcp_oracledatabase_getodbsubnet" "my-subnet" {
+/// data "gcp_oracledatabase_odb_subnet" "my-subnet" {
 ///   location      = "us-east4"
 ///   odbnetwork    = "my-network-id"
 ///   odb_subnet_id = "my-subnet-id"

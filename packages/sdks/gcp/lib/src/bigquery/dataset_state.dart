@@ -47,6 +47,15 @@ class DatasetState {
   /// creating or updating a partitioned table, that value takes precedence
   /// over the default partition expiration time indicated by this property.
   final pulumi.Input<int?>? defaultPartitionExpirationMs;
+  /// Defines the default rounding mode specification of new tables created
+  /// within this dataset. During table creation, if this field is specified,
+  /// the table within this dataset will inherit the default rounding mode of
+  /// the dataset. Setting the default rounding mode on a table overrides this
+  /// specification. Existing tables in the dataset are unaffected. If columns
+  /// are defined during that table creation, they will immediately inherit the
+  /// table's default rounding mode, unless otherwise specified.
+  /// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+  final pulumi.Input<String?>? defaultRoundingMode;
   /// The default lifetime of all tables in the dataset, in milliseconds.
   /// The minimum value is 3600000 milliseconds (one hour).
   /// Once this property is set, all newly-created tables in the dataset
@@ -136,6 +145,7 @@ class DatasetState {
   /// [defaultCollation] Defines the default collation specification of future tables created
   /// [defaultEncryptionConfiguration] The default encryption key for all tables in the dataset. Once this property is set,
   /// [defaultPartitionExpirationMs] The default partition expiration for all partitioned tables in
+  /// [defaultRoundingMode] Defines the default rounding mode specification of new tables created
   /// [defaultTableExpirationMs] The default lifetime of all tables in the dataset, in milliseconds.
   /// [deleteContentsOnDestroy] If set to `true`, delete all the tables in the
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -162,6 +172,7 @@ class DatasetState {
     this.defaultCollation,
     this.defaultEncryptionConfiguration,
     this.defaultPartitionExpirationMs,
+    this.defaultRoundingMode,
     this.defaultTableExpirationMs,
     this.deleteContentsOnDestroy,
     this.deletionPolicy,
@@ -191,6 +202,7 @@ class DatasetState {
       'defaultCollation': ?defaultCollation,
       'defaultEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<DatasetDefaultEncryptionConfiguration, Map<String, dynamic>>(defaultEncryptionConfiguration, (value) => value.toMap()),
       'defaultPartitionExpirationMs': ?defaultPartitionExpirationMs,
+      'defaultRoundingMode': ?defaultRoundingMode,
       'defaultTableExpirationMs': ?defaultTableExpirationMs,
       'deleteContentsOnDestroy': ?deleteContentsOnDestroy,
       'deletionPolicy': ?deletionPolicy,
@@ -216,12 +228,13 @@ class DatasetState {
   factory DatasetState.fromMap(Map<String, dynamic> map) {
     return DatasetState(
       accesses: (() { final guardedValue = map['accesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultCollation: (() { final guardedValue = map['defaultCollation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultEncryptionConfiguration: (() { final guardedValue = map['defaultEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      defaultRoundingMode: (() { final guardedValue = map['defaultRoundingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deleteContentsOnDestroy: (() { final guardedValue = map['deleteContentsOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -232,7 +245,7 @@ class DatasetState {
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isCaseInsensitive: (() { final guardedValue = map['isCaseInsensitive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxTimeTravelHours: (() { final guardedValue = map['maxTimeTravelHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

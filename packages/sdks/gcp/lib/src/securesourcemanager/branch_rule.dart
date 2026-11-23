@@ -11,6 +11,7 @@ import 'branch_rule_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Secure Source Manager Branch Rule Basic
@@ -32,7 +33,7 @@ import 'branch_rule_state.dart';
 ///     instance: instance.name,
 ///     deletionPolicy: "PREVENT",
 /// });
-/// const basic = new gcp.securesourcemanager.BranchRule("basic", {
+/// const _default = new gcp.securesourcemanager.BranchRule("default", {
 ///     branchRuleId: "my-basic-branchrule",
 ///     repositoryId: repository.repositoryId,
 ///     location: repository.location,
@@ -52,7 +53,7 @@ import 'branch_rule_state.dart';
 ///     location=instance.location,
 ///     instance=instance.name,
 ///     deletion_policy="PREVENT")
-/// basic = gcp.securesourcemanager.BranchRule("basic",
+/// default = gcp.securesourcemanager.BranchRule("default",
 ///     branch_rule_id="my-basic-branchrule",
 ///     repository_id=repository.repository_id,
 ///     location=repository.location,
@@ -81,7 +82,7 @@ import 'branch_rule_state.dart';
 ///         DeletionPolicy = "PREVENT",
 ///     });
 ///
-///     var basic = new Gcp.SecureSourceManager.BranchRule("basic", new()
+///     var @default = new Gcp.SecureSourceManager.BranchRule("default", new()
 ///     {
 ///         BranchRuleId = "my-basic-branchrule",
 ///         RepositoryId = repository.RepositoryId,
@@ -95,7 +96,7 @@ import 'branch_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +119,7 @@ import 'branch_rule_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = securesourcemanager.NewBranchRule(ctx, "basic", &securesourcemanager.BranchRuleArgs{
+/// 		_, err = securesourcemanager.NewBranchRule(ctx, "default", &securesourcemanager.BranchRuleArgs{
 /// 			BranchRuleId:   pulumi.String("my-basic-branchrule"),
 /// 			RepositoryId:   repository.RepositoryId,
 /// 			Location:       repository.Location,
@@ -132,7 +133,7 @@ import 'branch_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -141,17 +142,26 @@ import 'branch_rule_state.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-basic-instance"
 ///   deletion_policy = "PREVENT"
 /// }
 /// resource "gcp_securesourcemanager_repository" "repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_id   = "my-basic-repository"
 ///   location        = gcp_securesourcemanager_instance.instance.location
 ///   instance        = gcp_securesourcemanager_instance.instance.name
 ///   deletion_policy = "PREVENT"
 /// }
-/// resource "gcp_securesourcemanager_branchrule" "basic" {
+/// resource "gcp_securesourcemanager_branch_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   branch_rule_id  = "my-basic-branchrule"
 ///   repository_id   = gcp_securesourcemanager_repository.repository.repository_id
 ///   location        = gcp_securesourcemanager_repository.repository.location
@@ -196,7 +206,7 @@ import 'branch_rule_state.dart';
 ///             .deletionPolicy("PREVENT")
 ///             .build());
 ///
-///         var basic = new BranchRule("basic", BranchRuleArgs.builder()
+///         var default_ = new BranchRule("default", BranchRuleArgs.builder()
 ///             .branchRuleId("my-basic-branchrule")
 ///             .repositoryId(repository.repositoryId())
 ///             .location(repository.location())
@@ -221,7 +231,7 @@ import 'branch_rule_state.dart';
 ///       location: ${instance.location}
 ///       instance: ${instance.name}
 ///       deletionPolicy: PREVENT
-///   basic:
+///   default:
 ///     type: gcp:securesourcemanager:BranchRule
 ///     properties:
 ///       branchRuleId: my-basic-branchrule
@@ -229,6 +239,7 @@ import 'branch_rule_state.dart';
 ///       location: ${repository.location}
 ///       includePattern: main
 /// ```
+///
 ///
 /// ### Secure Source Manager Branch Rule With Fields
 ///
@@ -240,17 +251,17 @@ import 'branch_rule_state.dart';
 ///
 /// const instance = new gcp.securesourcemanager.Instance("instance", {
 ///     location: "us-central1",
-///     instanceId: "my-initial-instance",
+///     instanceId: "my-basic-instance",
 ///     deletionPolicy: "PREVENT",
 /// });
 /// const repository = new gcp.securesourcemanager.Repository("repository", {
-///     repositoryId: "my-initial-repository",
+///     repositoryId: "my-basic-repository",
 ///     instance: instance.name,
 ///     location: instance.location,
 ///     deletionPolicy: "PREVENT",
 /// });
 /// const _default = new gcp.securesourcemanager.BranchRule("default", {
-///     branchRuleId: "my-initial-branchrule",
+///     branchRuleId: "my-basic-branchrule",
 ///     location: repository.location,
 ///     repositoryId: repository.repositoryId,
 ///     includePattern: "test",
@@ -269,15 +280,15 @@ import 'branch_rule_state.dart';
 ///
 /// instance = gcp.securesourcemanager.Instance("instance",
 ///     location="us-central1",
-///     instance_id="my-initial-instance",
+///     instance_id="my-basic-instance",
 ///     deletion_policy="PREVENT")
 /// repository = gcp.securesourcemanager.Repository("repository",
-///     repository_id="my-initial-repository",
+///     repository_id="my-basic-repository",
 ///     instance=instance.name,
 ///     location=instance.location,
 ///     deletion_policy="PREVENT")
 /// default = gcp.securesourcemanager.BranchRule("default",
-///     branch_rule_id="my-initial-branchrule",
+///     branch_rule_id="my-basic-branchrule",
 ///     location=repository.location,
 ///     repository_id=repository.repository_id,
 ///     include_pattern="test",
@@ -300,13 +311,13 @@ import 'branch_rule_state.dart';
 ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
 ///     {
 ///         Location = "us-central1",
-///         InstanceId = "my-initial-instance",
+///         InstanceId = "my-basic-instance",
 ///         DeletionPolicy = "PREVENT",
 ///     });
 ///
 ///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
 ///     {
-///         RepositoryId = "my-initial-repository",
+///         RepositoryId = "my-basic-repository",
 ///         Instance = instance.Name,
 ///         Location = instance.Location,
 ///         DeletionPolicy = "PREVENT",
@@ -314,7 +325,7 @@ import 'branch_rule_state.dart';
 ///
 ///     var @default = new Gcp.SecureSourceManager.BranchRule("default", new()
 ///     {
-///         BranchRuleId = "my-initial-branchrule",
+///         BranchRuleId = "my-basic-branchrule",
 ///         Location = repository.Location,
 ///         RepositoryId = repository.RepositoryId,
 ///         IncludePattern = "test",
@@ -333,7 +344,7 @@ import 'branch_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -341,14 +352,14 @@ import 'branch_rule_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
 /// 			Location:       pulumi.String("us-central1"),
-/// 			InstanceId:     pulumi.String("my-initial-instance"),
+/// 			InstanceId:     pulumi.String("my-basic-instance"),
 /// 			DeletionPolicy: pulumi.String("PREVENT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
-/// 			RepositoryId:   pulumi.String("my-initial-repository"),
+/// 			RepositoryId:   pulumi.String("my-basic-repository"),
 /// 			Instance:       instance.Name,
 /// 			Location:       instance.Location,
 /// 			DeletionPolicy: pulumi.String("PREVENT"),
@@ -357,7 +368,7 @@ import 'branch_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = securesourcemanager.NewBranchRule(ctx, "default", &securesourcemanager.BranchRuleArgs{
-/// 			BranchRuleId:            pulumi.String("my-initial-branchrule"),
+/// 			BranchRuleId:            pulumi.String("my-basic-branchrule"),
 /// 			Location:                repository.Location,
 /// 			RepositoryId:            repository.RepositoryId,
 /// 			IncludePattern:          pulumi.String("test"),
@@ -377,7 +388,7 @@ import 'branch_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -386,18 +397,27 @@ import 'branch_rule_state.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
-///   instance_id     = "my-initial-instance"
+///   instance_id     = "my-basic-instance"
 ///   deletion_policy = "PREVENT"
 /// }
 /// resource "gcp_securesourcemanager_repository" "repository" {
-///   repository_id   = "my-initial-repository"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   repository_id   = "my-basic-repository"
 ///   instance        = gcp_securesourcemanager_instance.instance.name
 ///   location        = gcp_securesourcemanager_instance.instance.location
 ///   deletion_policy = "PREVENT"
 /// }
-/// resource "gcp_securesourcemanager_branchrule" "default" {
-///   branch_rule_id            = "my-initial-branchrule"
+/// resource "gcp_securesourcemanager_branch_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   branch_rule_id            = "my-basic-branchrule"
 ///   location                  = gcp_securesourcemanager_repository.repository.location
 ///   repository_id             = gcp_securesourcemanager_repository.repository.repository_id
 ///   include_pattern           = "test"
@@ -437,19 +457,19 @@ import 'branch_rule_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .location("us-central1")
-///             .instanceId("my-initial-instance")
+///             .instanceId("my-basic-instance")
 ///             .deletionPolicy("PREVENT")
 ///             .build());
 ///
 ///         var repository = new Repository("repository", RepositoryArgs.builder()
-///             .repositoryId("my-initial-repository")
+///             .repositoryId("my-basic-repository")
 ///             .instance(instance.name())
 ///             .location(instance.location())
 ///             .deletionPolicy("PREVENT")
 ///             .build());
 ///
 ///         var default_ = new BranchRule("default", BranchRuleArgs.builder()
-///             .branchRuleId("my-initial-branchrule")
+///             .branchRuleId("my-basic-branchrule")
 ///             .location(repository.location())
 ///             .repositoryId(repository.repositoryId())
 ///             .includePattern("test")
@@ -471,19 +491,19 @@ import 'branch_rule_state.dart';
 ///     type: gcp:securesourcemanager:Instance
 ///     properties:
 ///       location: us-central1
-///       instanceId: my-initial-instance
+///       instanceId: my-basic-instance
 ///       deletionPolicy: PREVENT
 ///   repository:
 ///     type: gcp:securesourcemanager:Repository
 ///     properties:
-///       repositoryId: my-initial-repository
+///       repositoryId: my-basic-repository
 ///       instance: ${instance.name}
 ///       location: ${instance.location}
 ///       deletionPolicy: PREVENT
 ///   default:
 ///     type: gcp:securesourcemanager:BranchRule
 ///     properties:
-///       branchRuleId: my-initial-branchrule
+///       branchRuleId: my-basic-branchrule
 ///       location: ${repository.location}
 ///       repositoryId: ${repository.repositoryId}
 ///       includePattern: test
@@ -569,7 +589,7 @@ class BranchRule extends pulumi.CustomResource {
           'gcp:securesourcemanager/branchRule:BranchRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');

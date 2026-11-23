@@ -9,6 +9,7 @@ import 'iceberg_table_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Biglake Iceberg Table Basic
@@ -204,8 +205,8 @@ import 'iceberg_table_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +283,7 @@ import 'iceberg_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -291,45 +292,57 @@ import 'iceberg_table_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_namespace"
 /// }
-/// resource "gcp_biglake_icebergtable" "my_iceberg_table" {
-///   catalog   = gcp_biglake_icebergcatalog.catalog.name
-///   namespace = gcp_biglake_icebergnamespace.namespace.namespace_id
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
 ///   name      = "my_table"
-///   location  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_biglake_icebergnamespace.namespace.namespace_id}/my_table"
+///   location  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_biglake_iceberg_namespace.namespace.namespace_id}/my_table"
 ///   schema = {
 ///     type = "struct"
 ///     fields = [{
-///       "id"       = 1
-///       "name"     = "id"
-///       "type"     = "long"
-///       "required" = true
-///       "doc"      = "The ID of the record"
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
+///       doc      = "The ID of the record"
 ///       }, {
-///       "id"       = 2
-///       "name"     = "name"
-///       "type"     = "string"
-///       "required" = false
+///       id       = 2
+///       name     = "name"
+///       type     = "string"
+///       required = false
 ///     }]
 ///     identifier_field_ids = [1]
 ///   }
 ///   partition_spec = {
 ///     fields = [{
-///       "name"      = "id_partition"
-///       "sourceId"  = 1
-///       "transform" = "identity"
+///       name      = "id_partition"
+///       source_id = 1
+///       transform = "identity"
 ///     }]
 ///   }
 /// }
@@ -468,6 +481,7 @@ import 'iceberg_table_state.dart';
 ///             sourceId: 1
 ///             transform: identity
 /// ```
+///
 ///
 /// ### Biglake Iceberg Table Sort Order
 ///
@@ -619,8 +633,8 @@ import 'iceberg_table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -683,7 +697,7 @@ import 'iceberg_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -692,38 +706,50 @@ import 'iceberg_table_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_namespace"
 /// }
-/// resource "gcp_biglake_icebergtable" "my_iceberg_table" {
-///   catalog   = gcp_biglake_icebergcatalog.catalog.name
-///   namespace = gcp_biglake_icebergnamespace.namespace.namespace_id
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
 ///   name      = "my_table"
 ///   schema = {
 ///     type = "struct"
 ///     fields = [{
-///       "id"       = 1
-///       "name"     = "id"
-///       "type"     = "long"
-///       "required" = true
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
 ///     }]
 ///   }
 ///   sort_order = {
 ///     fields = [{
-///       "sourceId"  = 1
-///       "transform" = "identity"
-///       "direction" = "asc"
-///       "nullOrder" = "nulls-first"
+///       source_id  = 1
+///       transform  = "identity"
+///       direction  = "asc"
+///       null_order = "nulls-first"
 ///     }]
 ///   }
 /// }
@@ -842,6 +868,673 @@ import 'iceberg_table_state.dart';
 ///             direction: asc
 ///             nullOrder: nulls-first
 /// ```
+///
+///
+/// ### Biglake Iceberg Table Nested Types
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const bucket = new gcp.storage.Bucket("bucket", {
+///     name: "my-bucket",
+///     location: "us-central1",
+///     forceDestroy: true,
+///     uniformBucketLevelAccess: true,
+/// });
+/// const catalog = new gcp.biglake.IcebergCatalog("catalog", {
+///     name: bucket.name,
+///     catalogType: "CATALOG_TYPE_GCS_BUCKET",
+/// });
+/// const namespace = new gcp.biglake.IcebergNamespace("namespace", {
+///     catalog: catalog.name,
+///     namespaceId: "my_namespace",
+/// });
+/// const myIcebergTable = new gcp.biglake.IcebergTable("my_iceberg_table", {
+///     catalog: catalog.name,
+///     namespace: namespace.namespaceId,
+///     name: "my_table",
+///     schema: {
+///         type: "struct",
+///         fields: [
+///             {
+///                 id: 1,
+///                 name: "id",
+///                 type: "long",
+///                 required: true,
+///             },
+///             {
+///                 id: 2,
+///                 name: "tags",
+///                 type: JSON.stringify({
+///                     type: "list",
+///                     "element-id": 5,
+///                     element: "string",
+///                     "element-required": false,
+///                 }),
+///                 required: false,
+///             },
+///             {
+///                 id: 3,
+///                 name: "attributes",
+///                 type: JSON.stringify({
+///                     type: "map",
+///                     "key-id": 6,
+///                     key: "string",
+///                     "value-id": 7,
+///                     value: "long",
+///                     "value-required": false,
+///                 }),
+///                 required: false,
+///             },
+///             {
+///                 id: 4,
+///                 name: "address",
+///                 type: JSON.stringify({
+///                     type: "struct",
+///                     fields: [
+///                         {
+///                             id: 8,
+///                             name: "street",
+///                             type: "string",
+///                             required: false,
+///                         },
+///                         {
+///                             id: 9,
+///                             name: "city",
+///                             type: "string",
+///                             required: false,
+///                         },
+///                     ],
+///                 }),
+///                 required: false,
+///             },
+///         ],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// bucket = gcp.storage.Bucket("bucket",
+///     name="my-bucket",
+///     location="us-central1",
+///     force_destroy=True,
+///     uniform_bucket_level_access=True)
+/// catalog = gcp.biglake.IcebergCatalog("catalog",
+///     name=bucket.name,
+///     catalog_type="CATALOG_TYPE_GCS_BUCKET")
+/// namespace = gcp.biglake.IcebergNamespace("namespace",
+///     catalog=catalog.name,
+///     namespace_id="my_namespace")
+/// my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
+///     catalog=catalog.name,
+///     namespace=namespace.namespace_id,
+///     name="my_table",
+///     schema={
+///         "type": "struct",
+///         "fields": [
+///             {
+///                 "id": 1,
+///                 "name": "id",
+///                 "type": "long",
+///                 "required": True,
+///             },
+///             {
+///                 "id": 2,
+///                 "name": "tags",
+///                 "type": json.dumps({
+///                     "type": "list",
+///                     "element-id": 5,
+///                     "element": "string",
+///                     "element-required": False,
+///                 }),
+///                 "required": False,
+///             },
+///             {
+///                 "id": 3,
+///                 "name": "attributes",
+///                 "type": json.dumps({
+///                     "type": "map",
+///                     "key-id": 6,
+///                     "key": "string",
+///                     "value-id": 7,
+///                     "value": "long",
+///                     "value-required": False,
+///                 }),
+///                 "required": False,
+///             },
+///             {
+///                 "id": 4,
+///                 "name": "address",
+///                 "type": json.dumps({
+///                     "type": "struct",
+///                     "fields": [
+///                         {
+///                             "id": 8,
+///                             "name": "street",
+///                             "type": "string",
+///                             "required": False,
+///                         },
+///                         {
+///                             "id": 9,
+///                             "name": "city",
+///                             "type": "string",
+///                             "required": False,
+///                         },
+///                     ],
+///                 }),
+///                 "required": False,
+///             },
+///         ],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+///     {
+///         Name = "my-bucket",
+///         Location = "us-central1",
+///         ForceDestroy = true,
+///         UniformBucketLevelAccess = true,
+///     });
+///
+///     var catalog = new Gcp.BigLake.IcebergCatalog("catalog", new()
+///     {
+///         Name = bucket.Name,
+///         CatalogType = "CATALOG_TYPE_GCS_BUCKET",
+///     });
+///
+///     var @namespace = new Gcp.BigLake.IcebergNamespace("namespace", new()
+///     {
+///         Catalog = catalog.Name,
+///         NamespaceId = "my_namespace",
+///     });
+///
+///     var myIcebergTable = new Gcp.BigLake.IcebergTable("my_iceberg_table", new()
+///     {
+///         Catalog = catalog.Name,
+///         Namespace = @namespace.NamespaceId,
+///         Name = "my_table",
+///         Schema = new Gcp.BigLake.Inputs.IcebergTableSchemaArgs
+///         {
+///             Type = "struct",
+///             Fields = new[]
+///             {
+///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+///                 {
+///                     Id = 1,
+///                     Name = "id",
+///                     Type = "long",
+///                     Required = true,
+///                 },
+///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+///                 {
+///                     Id = 2,
+///                     Name = "tags",
+///                     Type = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                     {
+///                         ["type"] = "list",
+///                         ["element-id"] = 5,
+///                         ["element"] = "string",
+///                         ["element-required"] = false,
+///                     }),
+///                     Required = false,
+///                 },
+///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+///                 {
+///                     Id = 3,
+///                     Name = "attributes",
+///                     Type = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                     {
+///                         ["type"] = "map",
+///                         ["key-id"] = 6,
+///                         ["key"] = "string",
+///                         ["value-id"] = 7,
+///                         ["value"] = "long",
+///                         ["value-required"] = false,
+///                     }),
+///                     Required = false,
+///                 },
+///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+///                 {
+///                     Id = 4,
+///                     Name = "address",
+///                     Type = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                     {
+///                         ["type"] = "struct",
+///                         ["fields"] = new[]
+///                         {
+///                             new Dictionary<string, object?>
+///                             {
+///                                 ["id"] = 8,
+///                                 ["name"] = "street",
+///                                 ["type"] = "string",
+///                                 ["required"] = false,
+///                             },
+///                             new Dictionary<string, object?>
+///                             {
+///                                 ["id"] = 9,
+///                                 ["name"] = "city",
+///                                 ["type"] = "string",
+///                                 ["required"] = false,
+///                             },
+///                         },
+///                     }),
+///                     Required = false,
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+/// 			Name:                     pulumi.String("my-bucket"),
+/// 			Location:                 pulumi.String("us-central1"),
+/// 			ForceDestroy:             pulumi.Bool(true),
+/// 			UniformBucketLevelAccess: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		catalog, err := biglake.NewIcebergCatalog(ctx, "catalog", &biglake.IcebergCatalogArgs{
+/// 			Name:        bucket.Name,
+/// 			CatalogType: pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		namespace, err := biglake.NewIcebergNamespace(ctx, "namespace", &biglake.IcebergNamespaceArgs{
+/// 			Catalog:     catalog.Name,
+/// 			NamespaceId: pulumi.String("my_namespace"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"type":             "list",
+/// 			"element-id":       5,
+/// 			"element":          "string",
+/// 			"element-required": false,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 			"type":           "map",
+/// 			"key-id":         6,
+/// 			"key":            "string",
+/// 			"value-id":       7,
+/// 			"value":          "long",
+/// 			"value-required": false,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json1 := string(tmpJSON1)
+/// 		tmpJSON2, err := json.Marshal(map[string]interface{}{
+/// 			"type": "struct",
+/// 			"fields": []interface{}{
+/// 				map[string]interface{}{
+/// 					"id":       8,
+/// 					"name":     "street",
+/// 					"type":     "string",
+/// 					"required": false,
+/// 				},
+/// 				map[string]interface{}{
+/// 					"id":       9,
+/// 					"name":     "city",
+/// 					"type":     "string",
+/// 					"required": false,
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json2 := string(tmpJSON2)
+/// 		_, err = biglake.NewIcebergTable(ctx, "my_iceberg_table", &biglake.IcebergTableArgs{
+/// 			Catalog:   catalog.Name,
+/// 			Namespace: namespace.NamespaceId,
+/// 			Name:      pulumi.String("my_table"),
+/// 			Schema: &biglake.IcebergTableSchemaArgs{
+/// 				Type: pulumi.String("struct"),
+/// 				Fields: biglake.IcebergTableSchemaFieldArray{
+/// 					&biglake.IcebergTableSchemaFieldArgs{
+/// 						Id:       pulumi.Int(1),
+/// 						Name:     pulumi.String("id"),
+/// 						Type:     pulumi.String("long"),
+/// 						Required: pulumi.Bool(true),
+/// 					},
+/// 					&biglake.IcebergTableSchemaFieldArgs{
+/// 						Id:       pulumi.Int(2),
+/// 						Name:     pulumi.String("tags"),
+/// 						Type:     pulumi.String(json0),
+/// 						Required: pulumi.Bool(false),
+/// 					},
+/// 					&biglake.IcebergTableSchemaFieldArgs{
+/// 						Id:       pulumi.Int(3),
+/// 						Name:     pulumi.String("attributes"),
+/// 						Type:     pulumi.String(json1),
+/// 						Required: pulumi.Bool(false),
+/// 					},
+/// 					&biglake.IcebergTableSchemaFieldArgs{
+/// 						Id:       pulumi.Int(4),
+/// 						Name:     pulumi.String("address"),
+/// 						Type:     pulumi.String(json2),
+/// 						Required: pulumi.Bool(false),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        = "my-bucket"
+///   location                    = "us-central1"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         = gcp_storage_bucket.bucket.name
+///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
+/// }
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace_id = "my_namespace"
+/// }
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
+///   name      = "my_table"
+///   schema = {
+///     type = "struct"
+///     fields = [{
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
+///       }, {
+///       id   = 2
+///       name = "tags"
+///       type = jsonencode({
+///         "type"             = "list"
+///         "element-id"       = 5
+///         "element"          = "string"
+///         "element-required" = false
+///       })
+///       required = false
+///       }, {
+///       id   = 3
+///       name = "attributes"
+///       type = jsonencode({
+///         "type"           = "map"
+///         "key-id"         = 6
+///         "key"            = "string"
+///         "value-id"       = 7
+///         "value"          = "long"
+///         "value-required" = false
+///       })
+///       required = false
+///       }, {
+///       id   = 4
+///       name = "address"
+///       type = jsonencode({
+///         "type" = "struct"
+///         "fields" = [{
+///           "id"       = 8
+///           "name"     = "street"
+///           "type"     = "string"
+///           "required" = false
+///           }, {
+///           "id"       = 9
+///           "name"     = "city"
+///           "type"     = "string"
+///           "required" = false
+///         }]
+///       })
+///       required = false
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.biglake.IcebergCatalog;
+/// import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+/// import com.pulumi.gcp.biglake.IcebergNamespace;
+/// import com.pulumi.gcp.biglake.IcebergNamespaceArgs;
+/// import com.pulumi.gcp.biglake.IcebergTable;
+/// import com.pulumi.gcp.biglake.IcebergTableArgs;
+/// import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaArgs;
+/// import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaFieldArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var bucket = new Bucket("bucket", BucketArgs.builder()
+///             .name("my-bucket")
+///             .location("us-central1")
+///             .forceDestroy(true)
+///             .uniformBucketLevelAccess(true)
+///             .build());
+///
+///         var catalog = new IcebergCatalog("catalog", IcebergCatalogArgs.builder()
+///             .name(bucket.name())
+///             .catalogType("CATALOG_TYPE_GCS_BUCKET")
+///             .build());
+///
+///         var namespace = new IcebergNamespace("namespace", IcebergNamespaceArgs.builder()
+///             .catalog(catalog.name())
+///             .namespaceId("my_namespace")
+///             .build());
+///
+///         var myIcebergTable = new IcebergTable("myIcebergTable", IcebergTableArgs.builder()
+///             .catalog(catalog.name())
+///             .namespace(namespace.namespaceId())
+///             .name("my_table")
+///             .schema(IcebergTableSchemaArgs.builder()
+///                 .type("struct")
+///                 .fields(
+///                     IcebergTableSchemaFieldArgs.builder()
+///                         .id(1)
+///                         .name("id")
+///                         .type("long")
+///                         .required(true)
+///                         .build(),
+///                     IcebergTableSchemaFieldArgs.builder()
+///                         .id(2)
+///                         .name("tags")
+///                         .type(serializeJson(
+///                             jsonObject(
+///                                 jsonProperty("type", "list"),
+///                                 jsonProperty("element-id", 5),
+///                                 jsonProperty("element", "string"),
+///                                 jsonProperty("element-required", false)
+///                             )))
+///                         .required(false)
+///                         .build(),
+///                     IcebergTableSchemaFieldArgs.builder()
+///                         .id(3)
+///                         .name("attributes")
+///                         .type(serializeJson(
+///                             jsonObject(
+///                                 jsonProperty("type", "map"),
+///                                 jsonProperty("key-id", 6),
+///                                 jsonProperty("key", "string"),
+///                                 jsonProperty("value-id", 7),
+///                                 jsonProperty("value", "long"),
+///                                 jsonProperty("value-required", false)
+///                             )))
+///                         .required(false)
+///                         .build(),
+///                     IcebergTableSchemaFieldArgs.builder()
+///                         .id(4)
+///                         .name("address")
+///                         .type(serializeJson(
+///                             jsonObject(
+///                                 jsonProperty("type", "struct"),
+///                                 jsonProperty("fields", jsonArray(
+///                                     jsonObject(
+///                                         jsonProperty("id", 8),
+///                                         jsonProperty("name", "street"),
+///                                         jsonProperty("type", "string"),
+///                                         jsonProperty("required", false)
+///                                     ),
+///                                     jsonObject(
+///                                         jsonProperty("id", 9),
+///                                         jsonProperty("name", "city"),
+///                                         jsonProperty("type", "string"),
+///                                         jsonProperty("required", false)
+///                                     )
+///                                 ))
+///                             )))
+///                         .required(false)
+///                         .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   bucket:
+///     type: gcp:storage:Bucket
+///     properties:
+///       name: my-bucket
+///       location: us-central1
+///       forceDestroy: true
+///       uniformBucketLevelAccess: true
+///   catalog:
+///     type: gcp:biglake:IcebergCatalog
+///     properties:
+///       name: ${bucket.name}
+///       catalogType: CATALOG_TYPE_GCS_BUCKET
+///   namespace:
+///     type: gcp:biglake:IcebergNamespace
+///     properties:
+///       catalog: ${catalog.name}
+///       namespaceId: my_namespace
+///   myIcebergTable:
+///     type: gcp:biglake:IcebergTable
+///     name: my_iceberg_table
+///     properties:
+///       catalog: ${catalog.name}
+///       namespace: ${namespace.namespaceId}
+///       name: my_table
+///       schema:
+///         type: struct
+///         fields:
+///           - id: 1
+///             name: id
+///             type: long
+///             required: true
+///           - id: 2
+///             name: tags
+///             type:
+///               fn::toJSON:
+///                 type: list
+///                 element-id: 5
+///                 element: string
+///                 element-required: false
+///             required: false
+///           - id: 3
+///             name: attributes
+///             type:
+///               fn::toJSON:
+///                 type: map
+///                 key-id: 6
+///                 key: string
+///                 value-id: 7
+///                 value: long
+///                 value-required: false
+///             required: false
+///           - id: 4
+///             name: address
+///             type:
+///               fn::toJSON:
+///                 type: struct
+///                 fields:
+///                   - id: 8
+///                     name: street
+///                     type: string
+///                     required: false
+///                   - id: 9
+///                     name: city
+///                     type: string
+///                     required: false
+///             required: false
+/// ```
+///
 ///
 /// ### Biglake Iceberg Table Update
 ///
@@ -974,8 +1667,8 @@ import 'iceberg_table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1031,7 +1724,7 @@ import 'iceberg_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1040,30 +1733,42 @@ import 'iceberg_table_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_namespace"
 /// }
-/// resource "gcp_biglake_icebergtable" "my_iceberg_table" {
-///   catalog   = gcp_biglake_icebergcatalog.catalog.name
-///   namespace = gcp_biglake_icebergnamespace.namespace.namespace_id
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
 ///   name      = "my_table"
 ///   schema = {
 ///     type = "struct"
 ///     fields = [{
-///       "id"       = 1
-///       "name"     = "id"
-///       "type"     = "long"
-///       "required" = true
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
 ///     }]
 ///   }
 ///   properties = {
@@ -1233,7 +1938,7 @@ class IcebergTable extends pulumi.CustomResource {
           'gcp:biglake/icebergTable:IcebergTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     deletionPolicy = registerOutput<String>('deletionPolicy');

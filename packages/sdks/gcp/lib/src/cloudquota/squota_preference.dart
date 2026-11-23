@@ -12,6 +12,7 @@ import 'squota_preference_state.dart';
 /// * How-to Guides
 /// * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudquotas Quota Preference Basic
@@ -84,7 +85,7 @@ import 'squota_preference_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +112,7 @@ import 'squota_preference_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +120,10 @@ import 'squota_preference_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudquota_squotapreference" "preference" {
+/// resource "gcp_cloudquota_s_quota_preference" "preference" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "projects/my-project-name"
 ///   name   = "compute_googleapis_com-CPUS-per-project_us-east1"
 ///   dimensions = {
@@ -212,9 +216,11 @@ class SQuotaPreference extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> dimensions;
   /// The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
   late final pulumi.Output<String> etag;
-  /// The list of quota safety checks to be ignored.
-  /// Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-  /// Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+  /// A comma-separated list of quota safety checks to be ignored, for example
+  /// `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+  /// values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+  /// `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+  /// be combined with other values.
   late final pulumi.Output<String?> ignoreSafetyChecks;
   /// The reason / justification for this quota preference.
   late final pulumi.Output<String?> justification;
@@ -248,7 +254,7 @@ class SQuotaPreference extends pulumi.CustomResource {
           'gcp:cloudquota/sQuotaPreference:SQuotaPreference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     contactEmail = registerOutput<String?>('contactEmail');
     createTime = registerOutput<String>('createTime');

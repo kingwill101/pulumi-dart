@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_audio_processing_config_ambient_sound_config.dart';
 import 'app_audio_processing_config_barge_in_config.dart';
+import 'app_audio_processing_config_custom_voice_sample.dart';
 import 'app_audio_processing_config_synthesize_speech_config.dart';
 
 class AppAudioProcessingConfig {
@@ -13,6 +14,9 @@ class AppAudioProcessingConfig {
   /// Configuration for how the user barge-in activities should be handled.
   /// Structure is documented below.
   final pulumi.Input<AppAudioProcessingConfigBargeInConfig?>? bargeInConfig;
+  /// Configures custom voice samples for voice cloning.
+  /// Structure is documented below.
+  final pulumi.Input<List<AppAudioProcessingConfigCustomVoiceSample>?>? customVoiceSamples;
   /// The duration of user inactivity (no speech or interaction) before the agent
   /// prompts the user for reengagement. If not set, the agent will not prompt
   /// the user for reengagement.
@@ -30,11 +34,13 @@ class AppAudioProcessingConfig {
   /// Creates a new [AppAudioProcessingConfig].
   /// [ambientSoundConfig] Configuration for the ambient sound to be played with the synthesized agent
   /// [bargeInConfig] Configuration for how the user barge-in activities should be handled.
+  /// [customVoiceSamples] Configures custom voice samples for voice cloning.
   /// [inactivityTimeout] The duration of user inactivity (no speech or interaction) before the agent
   /// [synthesizeSpeechConfigs] Configuration of how the agent response should be synthesized, mapping from
   const AppAudioProcessingConfig({
     this.ambientSoundConfig,
     this.bargeInConfig,
+    this.customVoiceSamples,
     this.inactivityTimeout,
     this.synthesizeSpeechConfigs,
   });
@@ -43,6 +49,7 @@ class AppAudioProcessingConfig {
     return <String, dynamic>{
       'ambientSoundConfig': ?pulumi.Input.mapOptionalInputValue<AppAudioProcessingConfigAmbientSoundConfig, Map<String, dynamic>>(ambientSoundConfig, (value) => value.toMap()),
       'bargeInConfig': ?pulumi.Input.mapOptionalInputValue<AppAudioProcessingConfigBargeInConfig, Map<String, dynamic>>(bargeInConfig, (value) => value.toMap()),
+      'customVoiceSamples': ?pulumi.Input.mapOptionalInputValue<List<AppAudioProcessingConfigCustomVoiceSample>, List<Map<String, dynamic>>>(customVoiceSamples, (value) => pulumi.Input.encodeList<AppAudioProcessingConfigCustomVoiceSample, Map<String, dynamic>>(value, (value) => value.toMap())),
       'inactivityTimeout': ?inactivityTimeout,
       'synthesizeSpeechConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppAudioProcessingConfigSynthesizeSpeechConfig>, List<Map<String, dynamic>>>(synthesizeSpeechConfigs, (value) => pulumi.Input.encodeList<AppAudioProcessingConfigSynthesizeSpeechConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -52,6 +59,7 @@ class AppAudioProcessingConfig {
     return AppAudioProcessingConfig(
       ambientSoundConfig: (() { final guardedValue = map['ambientSoundConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppAudioProcessingConfigAmbientSoundConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bargeInConfig: (() { final guardedValue = map['bargeInConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppAudioProcessingConfigBargeInConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customVoiceSamples: (() { final guardedValue = map['customVoiceSamples']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppAudioProcessingConfigCustomVoiceSample>(guardedValue, (value) => AppAudioProcessingConfigCustomVoiceSample.fromMap((value as Map).cast<String, dynamic>()))); })(),
       inactivityTimeout: (() { final guardedValue = map['inactivityTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       synthesizeSpeechConfigs: (() { final guardedValue = map['synthesizeSpeechConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppAudioProcessingConfigSynthesizeSpeechConfig>(guardedValue, (value) => AppAudioProcessingConfigSynthesizeSpeechConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

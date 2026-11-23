@@ -20,6 +20,7 @@ import 'deployment_target.dart';
 /// than actually deploying an in-preview deployment (i.e. `preview=true` to
 /// `preview=false`).
 ///
+///
 /// ## Example Usage
 ///
 /// ### Deployment Manager Deployment Basic
@@ -101,7 +102,7 @@ import 'deployment_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/deploymentmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/deploymentmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -136,7 +137,7 @@ import 'deployment_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -148,6 +149,9 @@ import 'deployment_target.dart';
 /// }
 ///
 /// resource "gcp_deploymentmanager_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-deployment"
 ///   target = {
 ///     config = {
@@ -222,6 +226,7 @@ import 'deployment_target.dart';
 ///         - key: foo
 ///           value: bar
 /// ```
+///
 ///
 /// ## Import
 ///
@@ -307,7 +312,7 @@ class DeploymentType extends pulumi.CustomResource {
           'gcp:deploymentmanager/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createPolicy = registerOutput<String?>('createPolicy');
     deletePolicy = registerOutput<String?>('deletePolicy');

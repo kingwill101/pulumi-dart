@@ -8,6 +8,8 @@ import 'get_machine_types_machine_type_deprecated.dart';
 class GetMachineTypesMachineType {
   /// A list of accelerator configurations assigned to this machine type. Structure is documented below.
   final pulumi.Input<List<GetMachineTypesMachineTypeAccelerator>> accelerators;
+  /// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+  final pulumi.Input<String> architecture;
   /// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
   final pulumi.Input<List<GetMachineTypesMachineTypeBundledLocalSsd>> bundledLocalSsds;
   /// The deprecation status associated with this machine type. Structure is documented below.
@@ -31,6 +33,7 @@ class GetMachineTypesMachineType {
 
   /// Creates a new [GetMachineTypesMachineType].
   /// [accelerators] A list of accelerator configurations assigned to this machine type. Structure is documented below.
+  /// [architecture] The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
   /// [bundledLocalSsds] (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
   /// [deprecateds] The deprecation status associated with this machine type. Structure is documented below.
   /// [description] A textual description of the machine type.
@@ -43,6 +46,7 @@ class GetMachineTypesMachineType {
   /// [selfLink] The server-defined URL for the machine type.
   const GetMachineTypesMachineType({
     required this.accelerators,
+    required this.architecture,
     required this.bundledLocalSsds,
     required this.deprecateds,
     required this.description,
@@ -58,6 +62,7 @@ class GetMachineTypesMachineType {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accelerators': pulumi.Input.mapInputValue<List<GetMachineTypesMachineTypeAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<GetMachineTypesMachineTypeAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'architecture': architecture,
       'bundledLocalSsds': pulumi.Input.mapInputValue<List<GetMachineTypesMachineTypeBundledLocalSsd>, List<Map<String, dynamic>>>(bundledLocalSsds, (value) => pulumi.Input.encodeList<GetMachineTypesMachineTypeBundledLocalSsd, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deprecateds': pulumi.Input.mapInputValue<List<GetMachineTypesMachineTypeDeprecated>, List<Map<String, dynamic>>>(deprecateds, (value) => pulumi.Input.encodeList<GetMachineTypesMachineTypeDeprecated, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
@@ -74,14 +79,15 @@ class GetMachineTypesMachineType {
   factory GetMachineTypesMachineType.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineType(
       accelerators: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMachineTypesMachineTypeAccelerator>(map['accelerators']!, (value) => GetMachineTypesMachineTypeAccelerator.fromMap((value as Map).cast<String, dynamic>()))),
+      architecture: pulumi.Input.fromValue(map['architecture'] as String),
       bundledLocalSsds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMachineTypesMachineTypeBundledLocalSsd>(map['bundledLocalSsds']!, (value) => GetMachineTypesMachineTypeBundledLocalSsd.fromMap((value as Map).cast<String, dynamic>()))),
       deprecateds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMachineTypesMachineTypeDeprecated>(map['deprecateds']!, (value) => GetMachineTypesMachineTypeDeprecated.fromMap((value as Map).cast<String, dynamic>()))),
       description: pulumi.Input.fromValue(map['description'] as String),
-      guestCpus: pulumi.Input.fromValue((map['guestCpus'] as num).toInt()),
+      guestCpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['guestCpus'])),
       isSharedCpus: pulumi.Input.fromValue(map['isSharedCpus'] as bool),
-      maximumPersistentDisks: pulumi.Input.fromValue((map['maximumPersistentDisks'] as num).toInt()),
-      maximumPersistentDisksSizeGb: pulumi.Input.fromValue((map['maximumPersistentDisksSizeGb'] as num).toInt()),
-      memoryMb: pulumi.Input.fromValue((map['memoryMb'] as num).toInt()),
+      maximumPersistentDisks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumPersistentDisks'])),
+      maximumPersistentDisksSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumPersistentDisksSizeGb'])),
+      memoryMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryMb'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
     );

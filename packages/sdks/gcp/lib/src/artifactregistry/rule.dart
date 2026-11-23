@@ -12,6 +12,7 @@ import 'rule_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/artifacts/rules)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Artifact Registry Rule Basic
@@ -99,7 +100,7 @@ import 'rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -134,7 +135,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -143,12 +144,18 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_artifactregistry_rule" "my-rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_id = gcp_artifactregistry_repository.default.repository_id
 ///   location      = gcp_artifactregistry_repository.default.location
 ///   rule_id       = "my-repo-rule-id"
@@ -230,6 +237,7 @@ import 'rule_state.dart';
 ///         title: Block legacy versions
 ///         description: Prevents downloading images with version IDs less than 2.0
 /// ```
+///
 ///
 /// ### Artifact Registry Rule Full
 ///
@@ -322,7 +330,7 @@ import 'rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -359,7 +367,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -368,12 +376,18 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_artifactregistry_rule" "my-rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_id = gcp_artifactregistry_repository.default.repository_id
 ///   location      = gcp_artifactregistry_repository.default.location
 ///   rule_id       = "my-repo-rule-full-id"
@@ -535,7 +549,7 @@ class Rule extends pulumi.CustomResource {
           'gcp:artifactregistry/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<RuleCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

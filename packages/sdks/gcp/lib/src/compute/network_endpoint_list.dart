@@ -23,6 +23,7 @@ import 'network_endpoint_list_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Endpoints
@@ -34,7 +35,7 @@ import 'network_endpoint_list_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const _default = new gcp.compute.Network("default", {
@@ -46,14 +47,20 @@ import 'network_endpoint_list_state.dart';
 ///     ipCidrRange: "10.0.0.1/16",
 ///     region: "us-central1",
 ///     network: _default.id,
+///     stackType: "IPV4_IPV6",
+///     ipv6AccessType: "EXTERNAL",
 /// });
 /// const endpoint_instance1 = new gcp.compute.Instance("endpoint-instance1", {
 ///     networkInterfaces: [{
 ///         accessConfigs: [{}],
 ///         subnetwork: defaultSubnetwork.id,
+///         stackType: "IPV4_IPV6",
+///         ipv6AccessConfigs: [{
+///             networkTier: "PREMIUM",
+///         }],
 ///     }],
 ///     name: "endpoint-instance1",
-///     machineType: "e2-medium",
+///     machineType: "e2-micro",
 ///     bootDisk: {
 ///         initializeParams: {
 ///             image: myImage.then(myImage => myImage.selfLink),
@@ -64,43 +71,57 @@ import 'network_endpoint_list_state.dart';
 ///     networkInterfaces: [{
 ///         accessConfigs: [{}],
 ///         subnetwork: defaultSubnetwork.id,
+///         stackType: "IPV4_IPV6",
+///         ipv6AccessConfigs: [{
+///             networkTier: "PREMIUM",
+///         }],
 ///     }],
 ///     name: "endpoint-instance2",
-///     machineType: "e2-medium",
+///     machineType: "e2-micro",
 ///     bootDisk: {
 ///         initializeParams: {
 ///             image: myImage.then(myImage => myImage.selfLink),
 ///         },
 ///     },
 /// });
-/// const default_endpoints = new gcp.compute.NetworkEndpointList("default-endpoints", {
-///     networkEndpointGroup: neg.name,
-///     networkEndpoints: [
-///         {
-///             instance: endpoint_instance1.name,
-///             port: Number(neg.defaultPort),
-///             ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
-///         },
-///         {
-///             instance: endpoint_instance2.name,
-///             port: Number(neg.defaultPort),
-///             ipAddress: endpoint_instance2.networkInterfaces[0].networkIp,
-///         },
-///     ],
-/// });
-/// const group = new gcp.compute.NetworkEndpointGroup("group", {
+/// const neg = new gcp.compute.NetworkEndpointGroup("neg", {
 ///     name: "my-lb-neg",
 ///     network: _default.id,
 ///     subnetwork: defaultSubnetwork.id,
 ///     defaultPort: 90,
 ///     zone: "us-central1-a",
 /// });
+/// const default_endpoints = new gcp.compute.NetworkEndpointList("default-endpoints", {
+///     networkEndpointGroup: neg.name,
+///     networkEndpoints: [
+///         {
+///             instance: endpoint_instance1.name,
+///             port: neg.defaultPort,
+///             ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
+///         },
+///         {
+///             instance: endpoint_instance1.name,
+///             port: neg.defaultPort,
+///             ipv6Address: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].ipv6AccessConfigs?.[0]?.externalIpv6),
+///         },
+///         {
+///             instance: endpoint_instance2.name,
+///             port: neg.defaultPort,
+///             ipAddress: endpoint_instance2.networkInterfaces[0].networkIp,
+///         },
+///         {
+///             instance: endpoint_instance2.name,
+///             port: neg.defaultPort,
+///             ipv6Address: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].ipv6AccessConfigs?.[0]?.externalIpv6),
+///         },
+///     ],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default = gcp.compute.Network("default",
 ///     name="neg-network",
@@ -109,14 +130,20 @@ import 'network_endpoint_list_state.dart';
 ///     name="neg-subnetwork",
 ///     ip_cidr_range="10.0.0.1/16",
 ///     region="us-central1",
-///     network=default.id)
+///     network=default.id,
+///     stack_type="IPV4_IPV6",
+///     ipv6_access_type="EXTERNAL")
 /// endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
 ///     network_interfaces=[{
 ///         "access_configs": [{}],
 ///         "subnetwork": default_subnetwork.id,
+///         "stack_type": "IPV4_IPV6",
+///         "ipv6_access_configs": [{
+///             "network_tier": "PREMIUM",
+///         }],
 ///     }],
 ///     name="endpoint-instance1",
-///     machine_type="e2-medium",
+///     machine_type="e2-micro",
 ///     boot_disk={
 ///         "initialize_params": {
 ///             "image": my_image.self_link,
@@ -126,34 +153,48 @@ import 'network_endpoint_list_state.dart';
 ///     network_interfaces=[{
 ///         "access_configs": [{}],
 ///         "subnetwork": default_subnetwork.id,
+///         "stack_type": "IPV4_IPV6",
+///         "ipv6_access_configs": [{
+///             "network_tier": "PREMIUM",
+///         }],
 ///     }],
 ///     name="endpoint-instance2",
-///     machine_type="e2-medium",
+///     machine_type="e2-micro",
 ///     boot_disk={
 ///         "initialize_params": {
 ///             "image": my_image.self_link,
 ///         },
 ///     })
-/// default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
-///     network_endpoint_group=neg["name"],
-///     network_endpoints=[
-///         {
-///             "instance": endpoint_instance1.name,
-///             "port": int(neg["defaultPort"]),
-///             "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
-///         },
-///         {
-///             "instance": endpoint_instance2.name,
-///             "port": int(neg["defaultPort"]),
-///             "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
-///         },
-///     ])
-/// group = gcp.compute.NetworkEndpointGroup("group",
+/// neg = gcp.compute.NetworkEndpointGroup("neg",
 ///     name="my-lb-neg",
 ///     network=default.id,
 ///     subnetwork=default_subnetwork.id,
 ///     default_port=90,
 ///     zone="us-central1-a")
+/// default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
+///     network_endpoint_group=neg.name,
+///     network_endpoints=[
+///         {
+///             "instance": endpoint_instance1.name,
+///             "port": neg.default_port,
+///             "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
+///         },
+///         {
+///             "instance": endpoint_instance1.name,
+///             "port": neg.default_port,
+///             "ipv6_address": endpoint_instance1.network_interfaces[0].ipv6_access_configs[0].external_ipv6,
+///         },
+///         {
+///             "instance": endpoint_instance2.name,
+///             "port": neg.default_port,
+///             "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
+///         },
+///         {
+///             "instance": endpoint_instance2.name,
+///             "port": neg.default_port,
+///             "ipv6_address": endpoint_instance2.network_interfaces[0].ipv6_access_configs[0].external_ipv6,
+///         },
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -165,7 +206,7 @@ import 'network_endpoint_list_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -181,6 +222,8 @@ import 'network_endpoint_list_state.dart';
 ///         IpCidrRange = "10.0.0.1/16",
 ///         Region = "us-central1",
 ///         Network = @default.Id,
+///         StackType = "IPV4_IPV6",
+///         Ipv6AccessType = "EXTERNAL",
 ///     });
 ///
 ///     var endpoint_instance1 = new Gcp.Compute.Instance("endpoint-instance1", new()
@@ -194,10 +237,18 @@ import 'network_endpoint_list_state.dart';
 ///                     null,
 ///                 },
 ///                 Subnetwork = defaultSubnetwork.Id,
+///                 StackType = "IPV4_IPV6",
+///                 Ipv6AccessConfigs = new[]
+///                 {
+///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs
+///                     {
+///                         NetworkTier = "PREMIUM",
+///                     },
+///                 },
 ///             },
 ///         },
 ///         Name = "endpoint-instance1",
-///         MachineType = "e2-medium",
+///         MachineType = "e2-micro",
 ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
@@ -218,10 +269,18 @@ import 'network_endpoint_list_state.dart';
 ///                     null,
 ///                 },
 ///                 Subnetwork = defaultSubnetwork.Id,
+///                 StackType = "IPV4_IPV6",
+///                 Ipv6AccessConfigs = new[]
+///                 {
+///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs
+///                     {
+///                         NetworkTier = "PREMIUM",
+///                     },
+///                 },
 ///             },
 ///         },
 ///         Name = "endpoint-instance2",
-///         MachineType = "e2-medium",
+///         MachineType = "e2-micro",
 ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
@@ -229,6 +288,15 @@ import 'network_endpoint_list_state.dart';
 ///                 Image = myImage.Apply(getImageResult => getImageResult.SelfLink),
 ///             },
 ///         },
+///     });
+///
+///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+///     {
+///         Name = "my-lb-neg",
+///         Network = @default.Id,
+///         Subnetwork = defaultSubnetwork.Id,
+///         DefaultPort = 90,
+///         Zone = "us-central1-a",
 ///     });
 ///
 ///     var default_endpoints = new Gcp.Compute.NetworkEndpointList("default-endpoints", new()
@@ -239,25 +307,28 @@ import 'network_endpoint_list_state.dart';
 ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
 ///             {
 ///                 Instance = endpoint_instance1.Name,
-///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
+///                 Port = neg.DefaultPort,
 ///                 IpAddress = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///             },
 ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
 ///             {
+///                 Instance = endpoint_instance1.Name,
+///                 Port = neg.DefaultPort,
+///                 Ipv6Address = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].Ipv6AccessConfigs[0]?.ExternalIpv6),
+///             },
+///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
+///             {
 ///                 Instance = endpoint_instance2.Name,
-///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
+///                 Port = neg.DefaultPort,
 ///                 IpAddress = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///             },
+///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
+///             {
+///                 Instance = endpoint_instance2.Name,
+///                 Port = neg.DefaultPort,
+///                 Ipv6Address = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].Ipv6AccessConfigs[0]?.ExternalIpv6),
+///             },
 ///         },
-///     });
-///
-///     var @group = new Gcp.Compute.NetworkEndpointGroup("group", new()
-///     {
-///         Name = "my-lb-neg",
-///         Network = @default.Id,
-///         Subnetwork = defaultSubnetwork.Id,
-///         DefaultPort = 90,
-///         Zone = "us-central1-a",
 ///     });
 ///
 /// });
@@ -266,14 +337,14 @@ import 'network_endpoint_list_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -287,10 +358,12 @@ import 'network_endpoint_list_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("neg-subnetwork"),
-/// 			IpCidrRange: pulumi.String("10.0.0.1/16"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:           pulumi.String("neg-subnetwork"),
+/// 			IpCidrRange:    pulumi.String("10.0.0.1/16"),
+/// 			Region:         pulumi.String("us-central1"),
+/// 			Network:        _default.ID(),
+/// 			StackType:      pulumi.String("IPV4_IPV6"),
+/// 			Ipv6AccessType: pulumi.String("EXTERNAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,11 +374,17 @@ import 'network_endpoint_list_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					StackType:  pulumi.String("IPV4_IPV6"),
+/// 					Ipv6AccessConfigs: compute.InstanceNetworkInterfaceIpv6AccessConfigArray{
+/// 						&compute.InstanceNetworkInterfaceIpv6AccessConfigArgs{
+/// 							NetworkTier: pulumi.String("PREMIUM"),
+/// 						},
+/// 					},
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance1"),
-/// 			MachineType: pulumi.String("e2-medium"),
+/// 			MachineType: pulumi.String("e2-micro"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 /// 					Image: pulumi.String(myImage.SelfLink),
@@ -321,11 +400,17 @@ import 'network_endpoint_list_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					StackType:  pulumi.String("IPV4_IPV6"),
+/// 					Ipv6AccessConfigs: compute.InstanceNetworkInterfaceIpv6AccessConfigArray{
+/// 						&compute.InstanceNetworkInterfaceIpv6AccessConfigArgs{
+/// 							NetworkTier: pulumi.String("PREMIUM"),
+/// 						},
+/// 					},
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance2"),
-/// 			MachineType: pulumi.String("e2-medium"),
+/// 			MachineType: pulumi.String("e2-micro"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 /// 					Image: pulumi.String(myImage.SelfLink),
@@ -335,34 +420,48 @@ import 'network_endpoint_list_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+/// 			Name:        pulumi.String("my-lb-neg"),
+/// 			Network:     _default.ID(),
+/// 			Subnetwork:  defaultSubnetwork.ID(),
+/// 			DefaultPort: pulumi.Int(90),
+/// 			Zone:        pulumi.String("us-central1-a"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		_, err = compute.NewNetworkEndpointList(ctx, "default-endpoints", &compute.NetworkEndpointListArgs{
-/// 			NetworkEndpointGroup: pulumi.Any(neg.Name),
+/// 			NetworkEndpointGroup: neg.Name,
 /// 			NetworkEndpoints: compute.NetworkEndpointListNetworkEndpointArray{
 /// 				&compute.NetworkEndpointListNetworkEndpointArgs{
 /// 					Instance: endpoint_instance1.Name,
-/// 					Port:     pulumi.Any(neg.DefaultPort),
+/// 					Port:     neg.DefaultPort,
 /// 					IpAddress: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 /// 						return networkInterfaces[0].NetworkIp, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 				},
 /// 				&compute.NetworkEndpointListNetworkEndpointArgs{
+/// 					Instance: endpoint_instance1.Name,
+/// 					Port:     neg.DefaultPort,
+/// 					Ipv6Address: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+/// 						return networkInterfaces[0].Ipv6AccessConfigs[0].ExternalIpv6, nil
+/// 					}).(pulumi.StringPtrOutput),
+/// 				},
+/// 				&compute.NetworkEndpointListNetworkEndpointArgs{
 /// 					Instance: endpoint_instance2.Name,
-/// 					Port:     pulumi.Any(neg.DefaultPort),
+/// 					Port:     neg.DefaultPort,
 /// 					IpAddress: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 /// 						return networkInterfaces[0].NetworkIp, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 				},
+/// 				&compute.NetworkEndpointListNetworkEndpointArgs{
+/// 					Instance: endpoint_instance2.Name,
+/// 					Port:     neg.DefaultPort,
+/// 					Ipv6Address: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+/// 						return networkInterfaces[0].Ipv6AccessConfigs[0].ExternalIpv6, nil
+/// 					}).(pulumi.StringPtrOutput),
+/// 				},
 /// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
-/// 			Name:        pulumi.String("my-lb-neg"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			DefaultPort: pulumi.Int(90),
-/// 			Zone:        pulumi.String("us-central1-a"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -372,7 +471,7 @@ import 'network_endpoint_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -380,53 +479,83 @@ import 'network_endpoint_list_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_networkendpointlist" "default-endpoints" {
-///   network_endpoint_group = neg.name
+/// resource "gcp_compute_network_endpoint_list" "default-endpoints" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_endpoint_group = gcp_compute_network_endpoint_group.neg.name
 ///   network_endpoints {
 ///     instance   = gcp_compute_instance.endpoint-instance1.name
-///     port       = neg.defaultPort
+///     port       = gcp_compute_network_endpoint_group.neg.default_port
 ///     ip_address = gcp_compute_instance.endpoint-instance1.network_interfaces[0].network_ip
 ///   }
 ///   network_endpoints {
+///     instance     = gcp_compute_instance.endpoint-instance1.name
+///     port         = gcp_compute_network_endpoint_group.neg.default_port
+///     ipv6_address = gcp_compute_instance.endpoint-instance1.network_interfaces[0].ipv6_access_configs[0].external_ipv6
+///   }
+///   network_endpoints {
 ///     instance   = gcp_compute_instance.endpoint-instance2.name
-///     port       = neg.defaultPort
+///     port       = gcp_compute_network_endpoint_group.neg.default_port
 ///     ip_address = gcp_compute_instance.endpoint-instance2.network_interfaces[0].network_ip
+///   }
+///   network_endpoints {
+///     instance     = gcp_compute_instance.endpoint-instance2.name
+///     port         = gcp_compute_network_endpoint_group.neg.default_port
+///     ipv6_address = gcp_compute_instance.endpoint-instance2.network_interfaces[0].ipv6_access_configs[0].external_ipv6
 ///   }
 /// }
 /// resource "gcp_compute_instance" "endpoint-instance1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
 ///     subnetwork = gcp_compute_subnetwork.default.id
+///     stack_type = "IPV4_IPV6"
+///     ipv6_access_configs {
+///       network_tier = "PREMIUM"
+///     }
 ///   }
 ///   name         = "endpoint-instance1"
-///   machine_type = "e2-medium"
+///   machine_type = "e2-micro"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_instance" "endpoint-instance2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
 ///     subnetwork = gcp_compute_subnetwork.default.id
+///     stack_type = "IPV4_IPV6"
+///     ipv6_access_configs {
+///       network_tier = "PREMIUM"
+///     }
 ///   }
 ///   name         = "endpoint-instance2"
-///   machine_type = "e2-medium"
+///   machine_type = "e2-micro"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_networkendpointgroup" "group" {
+/// resource "gcp_compute_network_endpoint_group" "neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-lb-neg"
 ///   network      = gcp_compute_network.default.id
 ///   subnetwork   = gcp_compute_subnetwork.default.id
@@ -434,14 +563,22 @@ import 'network_endpoint_list_state.dart';
 ///   zone         = "us-central1-a"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "neg-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
-///   name          = "neg-subnetwork"
-///   ip_cidr_range = "10.0.0.1/16"
-///   region        = "us-central1"
-///   network       = gcp_compute_network.default.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name             = "neg-subnetwork"
+///   ip_cidr_range    = "10.0.0.1/16"
+///   region           = "us-central1"
+///   network          = gcp_compute_network.default.id
+///   stack_type       = "IPV4_IPV6"
+///   ipv6_access_type = "EXTERNAL"
 /// }
 /// ```
 /// ```java
@@ -460,13 +597,14 @@ import 'network_endpoint_list_state.dart';
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+/// import com.pulumi.gcp.compute.NetworkEndpointGroup;
+/// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpointList;
 /// import com.pulumi.gcp.compute.NetworkEndpointListArgs;
 /// import com.pulumi.gcp.compute.inputs.NetworkEndpointListNetworkEndpointArgs;
-/// import com.pulumi.gcp.compute.NetworkEndpointGroup;
-/// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -481,7 +619,7 @@ import 'network_endpoint_list_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -495,6 +633,8 @@ import 'network_endpoint_list_state.dart';
 ///             .ipCidrRange("10.0.0.1/16")
 ///             .region("us-central1")
 ///             .network(default_.id())
+///             .stackType("IPV4_IPV6")
+///             .ipv6AccessType("EXTERNAL")
 ///             .build());
 ///
 ///         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()
@@ -502,9 +642,13 @@ import 'network_endpoint_list_state.dart';
 ///                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
 ///                     .build())
 ///                 .subnetwork(defaultSubnetwork.id())
+///                 .stackType("IPV4_IPV6")
+///                 .ipv6AccessConfigs(InstanceNetworkInterfaceIpv6AccessConfigArgs.builder()
+///                     .networkTier("PREMIUM")
+///                     .build())
 ///                 .build())
 ///             .name("endpoint-instance1")
-///             .machineType("e2-medium")
+///             .machineType("e2-micro")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
 ///                     .image(myImage.selfLink())
@@ -517,9 +661,13 @@ import 'network_endpoint_list_state.dart';
 ///                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
 ///                     .build())
 ///                 .subnetwork(defaultSubnetwork.id())
+///                 .stackType("IPV4_IPV6")
+///                 .ipv6AccessConfigs(InstanceNetworkInterfaceIpv6AccessConfigArgs.builder()
+///                     .networkTier("PREMIUM")
+///                     .build())
 ///                 .build())
 ///             .name("endpoint-instance2")
-///             .machineType("e2-medium")
+///             .machineType("e2-micro")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
 ///                     .image(myImage.selfLink())
@@ -527,27 +675,37 @@ import 'network_endpoint_list_state.dart';
 ///                 .build())
 ///             .build());
 ///
-///         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
-///             .networkEndpointGroup(neg.get("name"))
-///             .networkEndpoints(
-///                 NetworkEndpointListNetworkEndpointArgs.builder()
-///                     .instance(endpoint_instance1.name())
-///                     .port(((Number) neg.get("defaultPort")).intValue())
-///                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
-///                     .build(),
-///                 NetworkEndpointListNetworkEndpointArgs.builder()
-///                     .instance(endpoint_instance2.name())
-///                     .port(((Number) neg.get("defaultPort")).intValue())
-///                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
-///                     .build())
-///             .build());
-///
-///         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()
+///         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
 ///             .name("my-lb-neg")
 ///             .network(default_.id())
 ///             .subnetwork(defaultSubnetwork.id())
 ///             .defaultPort(90)
 ///             .zone("us-central1-a")
+///             .build());
+///
+///         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
+///             .networkEndpointGroup(neg.name())
+///             .networkEndpoints(
+///                 NetworkEndpointListNetworkEndpointArgs.builder()
+///                     .instance(endpoint_instance1.name())
+///                     .port(neg.defaultPort())
+///                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
+///                     .build(),
+///                 NetworkEndpointListNetworkEndpointArgs.builder()
+///                     .instance(endpoint_instance1.name())
+///                     .port(neg.defaultPort())
+///                     .ipv6Address(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).ipv6AccessConfigs().get(0).externalIpv6()))
+///                     .build(),
+///                 NetworkEndpointListNetworkEndpointArgs.builder()
+///                     .instance(endpoint_instance2.name())
+///                     .port(neg.defaultPort())
+///                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
+///                     .build(),
+///                 NetworkEndpointListNetworkEndpointArgs.builder()
+///                     .instance(endpoint_instance2.name())
+///                     .port(neg.defaultPort())
+///                     .ipv6Address(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).ipv6AccessConfigs().get(0).externalIpv6()))
+///                     .build())
 ///             .build());
 ///
 ///     }
@@ -563,9 +721,15 @@ import 'network_endpoint_list_state.dart';
 ///         - instance: ${["endpoint-instance1"].name}
 ///           port: ${neg.defaultPort}
 ///           ipAddress: ${["endpoint-instance1"].networkInterfaces[0].networkIp}
+///         - instance: ${["endpoint-instance1"].name}
+///           port: ${neg.defaultPort}
+///           ipv6Address: ${["endpoint-instance1"].networkInterfaces[0].ipv6AccessConfigs[0].externalIpv6}
 ///         - instance: ${["endpoint-instance2"].name}
 ///           port: ${neg.defaultPort}
 ///           ipAddress: ${["endpoint-instance2"].networkInterfaces[0].networkIp}
+///         - instance: ${["endpoint-instance2"].name}
+///           port: ${neg.defaultPort}
+///           ipv6Address: ${["endpoint-instance2"].networkInterfaces[0].ipv6AccessConfigs[0].externalIpv6}
 ///   endpoint-instance1:
 ///     type: gcp:compute:Instance
 ///     properties:
@@ -573,8 +737,11 @@ import 'network_endpoint_list_state.dart';
 ///         - accessConfigs:
 ///             - {}
 ///           subnetwork: ${defaultSubnetwork.id}
+///           stackType: IPV4_IPV6
+///           ipv6AccessConfigs:
+///             - networkTier: PREMIUM
 ///       name: endpoint-instance1
-///       machineType: e2-medium
+///       machineType: e2-micro
 ///       bootDisk:
 ///         initializeParams:
 ///           image: ${myImage.selfLink}
@@ -585,12 +752,15 @@ import 'network_endpoint_list_state.dart';
 ///         - accessConfigs:
 ///             - {}
 ///           subnetwork: ${defaultSubnetwork.id}
+///           stackType: IPV4_IPV6
+///           ipv6AccessConfigs:
+///             - networkTier: PREMIUM
 ///       name: endpoint-instance2
-///       machineType: e2-medium
+///       machineType: e2-micro
 ///       bootDisk:
 ///         initializeParams:
 ///           image: ${myImage.selfLink}
-///   group:
+///   neg:
 ///     type: gcp:compute:NetworkEndpointGroup
 ///     properties:
 ///       name: my-lb-neg
@@ -611,12 +781,14 @@ import 'network_endpoint_list_state.dart';
 ///       ipCidrRange: 10.0.0.1/16
 ///       region: us-central1
 ///       network: ${default.id}
+///       stackType: IPV4_IPV6
+///       ipv6AccessType: EXTERNAL
 /// variables:
 ///   myImage:
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -672,7 +844,7 @@ class NetworkEndpointList extends pulumi.CustomResource {
           'gcp:compute/networkEndpointList:NetworkEndpointList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');

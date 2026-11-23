@@ -46,7 +46,7 @@ import 'get_repository_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sourcerepo"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -63,7 +63,7 @@ import 'get_repository_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -71,7 +71,7 @@ import 'get_repository_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_sourcerepo_getrepository" "my-repo" {
+/// data "gcp_sourcerepo_repository" "my-repo" {
 ///   name = "my-repository"
 /// }
 /// ```
@@ -179,7 +179,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sourcerepo"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -197,7 +197,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -205,7 +205,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 ///   }
 /// }
 ///
-/// data "gcp_sourcerepo_getrepositoryiampolicy" "policy" {
+/// data "gcp_sourcerepo_repository_iam_policy" "policy" {
 ///   project    = my-repo.project
 ///   repository = my-repo.name
 /// }

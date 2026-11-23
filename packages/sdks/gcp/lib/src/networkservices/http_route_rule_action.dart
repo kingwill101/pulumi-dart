@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_rule_action_cors_policy.dart';
 import 'http_route_rule_action_destination.dart';
+import 'http_route_rule_action_direct_response.dart';
 import 'http_route_rule_action_fault_injection_policy.dart';
 import 'http_route_rule_action_redirect.dart';
 import 'http_route_rule_action_request_header_modifier.dart';
@@ -18,9 +19,15 @@ class HttpRouteRuleAction {
   /// The destination to which traffic should be forwarded.
   /// Structure is documented below.
   final pulumi.Input<List<HttpRouteRuleActionDestination>?>? destinations;
+  /// Static HTTP Response object to be returned regardless of the request.
+  /// Structure is documented below.
+  final pulumi.Input<HttpRouteRuleActionDirectResponse?>? directResponse;
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// Structure is documented below.
   final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicy?>? faultInjectionPolicy;
+  /// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+  /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+  final pulumi.Input<String?>? idleTimeout;
   /// If set, the request is directed as configured by this field.
   /// Structure is documented below.
   final pulumi.Input<HttpRouteRuleActionRedirect?>? redirect;
@@ -45,7 +52,9 @@ class HttpRouteRuleAction {
   /// Creates a new [HttpRouteRuleAction].
   /// [corsPolicy] The specification for allowing client side cross-origin requests.
   /// [destinations] The destination to which traffic should be forwarded.
+  /// [directResponse] Static HTTP Response object to be returned regardless of the request.
   /// [faultInjectionPolicy] The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+  /// [idleTimeout] Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
   /// [redirect] If set, the request is directed as configured by this field.
   /// [requestHeaderModifier] The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
   /// [requestMirrorPolicy] Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
@@ -56,7 +65,9 @@ class HttpRouteRuleAction {
   const HttpRouteRuleAction({
     this.corsPolicy,
     this.destinations,
+    this.directResponse,
     this.faultInjectionPolicy,
+    this.idleTimeout,
     this.redirect,
     this.requestHeaderModifier,
     this.requestMirrorPolicy,
@@ -70,7 +81,9 @@ class HttpRouteRuleAction {
     return <String, dynamic>{
       'corsPolicy': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionCorsPolicy, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
       'destinations': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteRuleActionDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<HttpRouteRuleActionDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'directResponse': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionDirectResponse, Map<String, dynamic>>(directResponse, (value) => value.toMap()),
       'faultInjectionPolicy': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionFaultInjectionPolicy, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
+      'idleTimeout': ?idleTimeout,
       'redirect': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionRedirect, Map<String, dynamic>>(redirect, (value) => value.toMap()),
       'requestHeaderModifier': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionRequestHeaderModifier, Map<String, dynamic>>(requestHeaderModifier, (value) => value.toMap()),
       'requestMirrorPolicy': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionRequestMirrorPolicy, Map<String, dynamic>>(requestMirrorPolicy, (value) => value.toMap()),
@@ -85,7 +98,9 @@ class HttpRouteRuleAction {
     return HttpRouteRuleAction(
       corsPolicy: (() { final guardedValue = map['corsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleActionCorsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HttpRouteRuleActionDestination>(guardedValue, (value) => HttpRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      directResponse: (() { final guardedValue = map['directResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleActionDirectResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       faultInjectionPolicy: (() { final guardedValue = map['faultInjectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleActionFaultInjectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      idleTimeout: (() { final guardedValue = map['idleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redirect: (() { final guardedValue = map['redirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleActionRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requestHeaderModifier: (() { final guardedValue = map['requestHeaderModifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleActionRequestHeaderModifier.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requestMirrorPolicy: (() { final guardedValue = map['requestMirrorPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleActionRequestMirrorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

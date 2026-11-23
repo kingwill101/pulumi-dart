@@ -12,7 +12,595 @@ import 'hook_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
+///
+/// ### Secure Source Manager Hook Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const instance = new gcp.securesourcemanager.Instance("instance", {
+///     location: "asia-east1",
+///     instanceId: "my-basic-instance",
+///     deletionPolicy: "PREVENT",
+/// });
+/// const repository = new gcp.securesourcemanager.Repository("repository", {
+///     repositoryId: "my-basic-repository",
+///     location: instance.location,
+///     instance: instance.name,
+///     deletionPolicy: "PREVENT",
+/// });
+/// const _default = new gcp.securesourcemanager.Hook("default", {
+///     hookId: "my-basic-hook",
+///     repositoryId: repository.repositoryId,
+///     location: repository.location,
+///     targetUri: "https://www.example.com",
+///     events: ["PUSH"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// instance = gcp.securesourcemanager.Instance("instance",
+///     location="asia-east1",
+///     instance_id="my-basic-instance",
+///     deletion_policy="PREVENT")
+/// repository = gcp.securesourcemanager.Repository("repository",
+///     repository_id="my-basic-repository",
+///     location=instance.location,
+///     instance=instance.name,
+///     deletion_policy="PREVENT")
+/// default = gcp.securesourcemanager.Hook("default",
+///     hook_id="my-basic-hook",
+///     repository_id=repository.repository_id,
+///     location=repository.location,
+///     target_uri="https://www.example.com",
+///     events=["PUSH"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+///     {
+///         Location = "asia-east1",
+///         InstanceId = "my-basic-instance",
+///         DeletionPolicy = "PREVENT",
+///     });
+///
+///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
+///     {
+///         RepositoryId = "my-basic-repository",
+///         Location = instance.Location,
+///         Instance = instance.Name,
+///         DeletionPolicy = "PREVENT",
+///     });
+///
+///     var @default = new Gcp.SecureSourceManager.Hook("default", new()
+///     {
+///         HookId = "my-basic-hook",
+///         RepositoryId = repository.RepositoryId,
+///         Location = repository.Location,
+///         TargetUri = "https://www.example.com",
+///         Events = new[]
+///         {
+///             "PUSH",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+/// 			Location:       pulumi.String("asia-east1"),
+/// 			InstanceId:     pulumi.String("my-basic-instance"),
+/// 			DeletionPolicy: pulumi.String("PREVENT"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
+/// 			RepositoryId:   pulumi.String("my-basic-repository"),
+/// 			Location:       instance.Location,
+/// 			Instance:       instance.Name,
+/// 			DeletionPolicy: pulumi.String("PREVENT"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = securesourcemanager.NewHook(ctx, "default", &securesourcemanager.HookArgs{
+/// 			HookId:       pulumi.String("my-basic-hook"),
+/// 			RepositoryId: repository.RepositoryId,
+/// 			Location:     repository.Location,
+/// 			TargetUri:    pulumi.String("https://www.example.com"),
+/// 			Events: pulumi.StringArray{
+/// 				pulumi.String("PUSH"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location        = "asia-east1"
+///   instance_id     = "my-basic-instance"
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_repository" "repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   repository_id   = "my-basic-repository"
+///   location        = gcp_securesourcemanager_instance.instance.location
+///   instance        = gcp_securesourcemanager_instance.instance.name
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_hook" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hook_id       = "my-basic-hook"
+///   repository_id = gcp_securesourcemanager_repository.repository.repository_id
+///   location      = gcp_securesourcemanager_repository.repository.location
+///   target_uri    = "https://www.example.com"
+///   events        = ["PUSH"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.securesourcemanager.Instance;
+/// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+/// import com.pulumi.gcp.securesourcemanager.Repository;
+/// import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+/// import com.pulumi.gcp.securesourcemanager.Hook;
+/// import com.pulumi.gcp.securesourcemanager.HookArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var instance = new Instance("instance", InstanceArgs.builder()
+///             .location("asia-east1")
+///             .instanceId("my-basic-instance")
+///             .deletionPolicy("PREVENT")
+///             .build());
+///
+///         var repository = new Repository("repository", RepositoryArgs.builder()
+///             .repositoryId("my-basic-repository")
+///             .location(instance.location())
+///             .instance(instance.name())
+///             .deletionPolicy("PREVENT")
+///             .build());
+///
+///         var default_ = new Hook("default", HookArgs.builder()
+///             .hookId("my-basic-hook")
+///             .repositoryId(repository.repositoryId())
+///             .location(repository.location())
+///             .targetUri("https://www.example.com")
+///             .events("PUSH")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   instance:
+///     type: gcp:securesourcemanager:Instance
+///     properties:
+///       location: asia-east1
+///       instanceId: my-basic-instance
+///       deletionPolicy: PREVENT
+///   repository:
+///     type: gcp:securesourcemanager:Repository
+///     properties:
+///       repositoryId: my-basic-repository
+///       location: ${instance.location}
+///       instance: ${instance.name}
+///       deletionPolicy: PREVENT
+///   default:
+///     type: gcp:securesourcemanager:Hook
+///     properties:
+///       hookId: my-basic-hook
+///       repositoryId: ${repository.repositoryId}
+///       location: ${repository.location}
+///       targetUri: https://www.example.com
+///       events:
+///         - PUSH
+/// ```
+///
+///
+/// ### Secure Source Manager Hook With Fields
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const instance = new gcp.securesourcemanager.Instance("instance", {
+///     location: "asia-east1",
+///     instanceId: "my-basic-instance",
+///     deletionPolicy: "PREVENT",
+/// });
+/// const sa = new gcp.serviceaccount.Account("sa", {
+///     accountId: "my-basic-sa",
+///     displayName: "Test Service Account",
+/// });
+/// const repository = new gcp.securesourcemanager.Repository("repository", {
+///     repositoryId: "my-basic-repository",
+///     instance: instance.name,
+///     location: instance.location,
+///     serviceAccount: sa.email,
+///     deletionPolicy: "PREVENT",
+/// });
+/// const _default = new gcp.securesourcemanager.Hook("default", {
+///     hookId: "my-basic-hook",
+///     location: repository.location,
+///     repositoryId: repository.repositoryId,
+///     targetUri: "https://www.example.com",
+///     sensitiveQueryString: "auth=fake_token",
+///     disabled: false,
+///     serviceAccountAuth: true,
+///     pushOption: {
+///         branchFilter: "main",
+///     },
+///     events: [
+///         "PUSH",
+///         "PULL_REQUEST",
+///         "PULL_REQUEST_COMMENT",
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// instance = gcp.securesourcemanager.Instance("instance",
+///     location="asia-east1",
+///     instance_id="my-basic-instance",
+///     deletion_policy="PREVENT")
+/// sa = gcp.serviceaccount.Account("sa",
+///     account_id="my-basic-sa",
+///     display_name="Test Service Account")
+/// repository = gcp.securesourcemanager.Repository("repository",
+///     repository_id="my-basic-repository",
+///     instance=instance.name,
+///     location=instance.location,
+///     service_account=sa.email,
+///     deletion_policy="PREVENT")
+/// default = gcp.securesourcemanager.Hook("default",
+///     hook_id="my-basic-hook",
+///     location=repository.location,
+///     repository_id=repository.repository_id,
+///     target_uri="https://www.example.com",
+///     sensitive_query_string="auth=fake_token",
+///     disabled=False,
+///     service_account_auth=True,
+///     push_option={
+///         "branch_filter": "main",
+///     },
+///     events=[
+///         "PUSH",
+///         "PULL_REQUEST",
+///         "PULL_REQUEST_COMMENT",
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+///     {
+///         Location = "asia-east1",
+///         InstanceId = "my-basic-instance",
+///         DeletionPolicy = "PREVENT",
+///     });
+///
+///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+///     {
+///         AccountId = "my-basic-sa",
+///         DisplayName = "Test Service Account",
+///     });
+///
+///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
+///     {
+///         RepositoryId = "my-basic-repository",
+///         Instance = instance.Name,
+///         Location = instance.Location,
+///         ServiceAccount = sa.Email,
+///         DeletionPolicy = "PREVENT",
+///     });
+///
+///     var @default = new Gcp.SecureSourceManager.Hook("default", new()
+///     {
+///         HookId = "my-basic-hook",
+///         Location = repository.Location,
+///         RepositoryId = repository.RepositoryId,
+///         TargetUri = "https://www.example.com",
+///         SensitiveQueryString = "auth=fake_token",
+///         Disabled = false,
+///         ServiceAccountAuth = true,
+///         PushOption = new Gcp.SecureSourceManager.Inputs.HookPushOptionArgs
+///         {
+///             BranchFilter = "main",
+///         },
+///         Events = new[]
+///         {
+///             "PUSH",
+///             "PULL_REQUEST",
+///             "PULL_REQUEST_COMMENT",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+/// 			Location:       pulumi.String("asia-east1"),
+/// 			InstanceId:     pulumi.String("my-basic-instance"),
+/// 			DeletionPolicy: pulumi.String("PREVENT"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+/// 			AccountId:   pulumi.String("my-basic-sa"),
+/// 			DisplayName: pulumi.String("Test Service Account"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
+/// 			RepositoryId:   pulumi.String("my-basic-repository"),
+/// 			Instance:       instance.Name,
+/// 			Location:       instance.Location,
+/// 			ServiceAccount: sa.Email,
+/// 			DeletionPolicy: pulumi.String("PREVENT"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = securesourcemanager.NewHook(ctx, "default", &securesourcemanager.HookArgs{
+/// 			HookId:               pulumi.String("my-basic-hook"),
+/// 			Location:             repository.Location,
+/// 			RepositoryId:         repository.RepositoryId,
+/// 			TargetUri:            pulumi.String("https://www.example.com"),
+/// 			SensitiveQueryString: pulumi.String("auth=fake_token"),
+/// 			Disabled:             pulumi.Bool(false),
+/// 			ServiceAccountAuth:   pulumi.Bool(true),
+/// 			PushOption: &securesourcemanager.HookPushOptionArgs{
+/// 				BranchFilter: pulumi.String("main"),
+/// 			},
+/// 			Events: pulumi.StringArray{
+/// 				pulumi.String("PUSH"),
+/// 				pulumi.String("PULL_REQUEST"),
+/// 				pulumi.String("PULL_REQUEST_COMMENT"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location        = "asia-east1"
+///   instance_id     = "my-basic-instance"
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id   = "my-basic-sa"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_securesourcemanager_repository" "repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   repository_id   = "my-basic-repository"
+///   instance        = gcp_securesourcemanager_instance.instance.name
+///   location        = gcp_securesourcemanager_instance.instance.location
+///   service_account = gcp_serviceaccount_account.sa.email
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_hook" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hook_id                = "my-basic-hook"
+///   location               = gcp_securesourcemanager_repository.repository.location
+///   repository_id          = gcp_securesourcemanager_repository.repository.repository_id
+///   target_uri             = "https://www.example.com"
+///   sensitive_query_string = "auth=fake_token"
+///   disabled               = false
+///   service_account_auth   = true
+///   push_option = {
+///     branch_filter = "main"
+///   }
+///   events = ["PUSH", "PULL_REQUEST", "PULL_REQUEST_COMMENT"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.securesourcemanager.Instance;
+/// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.securesourcemanager.Repository;
+/// import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+/// import com.pulumi.gcp.securesourcemanager.Hook;
+/// import com.pulumi.gcp.securesourcemanager.HookArgs;
+/// import com.pulumi.gcp.securesourcemanager.inputs.HookPushOptionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var instance = new Instance("instance", InstanceArgs.builder()
+///             .location("asia-east1")
+///             .instanceId("my-basic-instance")
+///             .deletionPolicy("PREVENT")
+///             .build());
+///
+///         var sa = new Account("sa", AccountArgs.builder()
+///             .accountId("my-basic-sa")
+///             .displayName("Test Service Account")
+///             .build());
+///
+///         var repository = new Repository("repository", RepositoryArgs.builder()
+///             .repositoryId("my-basic-repository")
+///             .instance(instance.name())
+///             .location(instance.location())
+///             .serviceAccount(sa.email())
+///             .deletionPolicy("PREVENT")
+///             .build());
+///
+///         var default_ = new Hook("default", HookArgs.builder()
+///             .hookId("my-basic-hook")
+///             .location(repository.location())
+///             .repositoryId(repository.repositoryId())
+///             .targetUri("https://www.example.com")
+///             .sensitiveQueryString("auth=fake_token")
+///             .disabled(false)
+///             .serviceAccountAuth(true)
+///             .pushOption(HookPushOptionArgs.builder()
+///                 .branchFilter("main")
+///                 .build())
+///             .events(
+///                 "PUSH",
+///                 "PULL_REQUEST",
+///                 "PULL_REQUEST_COMMENT")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   instance:
+///     type: gcp:securesourcemanager:Instance
+///     properties:
+///       location: asia-east1
+///       instanceId: my-basic-instance
+///       deletionPolicy: PREVENT
+///   sa:
+///     type: gcp:serviceaccount:Account
+///     properties:
+///       accountId: my-basic-sa
+///       displayName: Test Service Account
+///   repository:
+///     type: gcp:securesourcemanager:Repository
+///     properties:
+///       repositoryId: my-basic-repository
+///       instance: ${instance.name}
+///       location: ${instance.location}
+///       serviceAccount: ${sa.email}
+///       deletionPolicy: PREVENT
+///   default:
+///     type: gcp:securesourcemanager:Hook
+///     properties:
+///       hookId: my-basic-hook
+///       location: ${repository.location}
+///       repositoryId: ${repository.repositoryId}
+///       targetUri: https://www.example.com
+///       sensitiveQueryString: auth=fake_token
+///       disabled: false
+///       serviceAccountAuth: true
+///       pushOption:
+///         branchFilter: main
+///       events:
+///         - PUSH
+///         - PULL_REQUEST
+///         - PULL_REQUEST_COMMENT
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -66,6 +654,9 @@ class Hook extends pulumi.CustomResource {
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> sensitiveQueryString;
+  /// Determines if the hook uses the Repository Service Account to
+  /// generate an OIDC ID Token for webhook authentication.
+  late final pulumi.Output<bool?> serviceAccountAuth;
   /// The target URI to which the payloads will be delivered.
   late final pulumi.Output<String> targetUri;
   /// Unique identifier of the hook.
@@ -85,7 +676,7 @@ class Hook extends pulumi.CustomResource {
           'gcp:securesourcemanager/hook:Hook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['sensitiveQueryString'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -99,6 +690,7 @@ class Hook extends pulumi.CustomResource {
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    serviceAccountAuth = registerOutput<bool?>('serviceAccountAuth');
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -139,6 +731,7 @@ class Hook extends pulumi.CustomResource {
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    serviceAccountAuth = registerOutput<bool?>('serviceAccountAuth');
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -165,6 +758,7 @@ class Hook extends pulumi.CustomResource {
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    serviceAccountAuth = registerOutput<bool?>('serviceAccountAuth');
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

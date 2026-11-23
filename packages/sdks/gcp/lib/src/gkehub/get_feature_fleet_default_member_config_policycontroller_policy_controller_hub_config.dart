@@ -68,8 +68,8 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
 
   factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig(
-      auditIntervalSeconds: pulumi.Input.fromValue((map['auditIntervalSeconds'] as num).toInt()),
-      constraintViolationLimit: pulumi.Input.fromValue((map['constraintViolationLimit'] as num).toInt()),
+      auditIntervalSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['auditIntervalSeconds'])),
+      constraintViolationLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['constraintViolationLimit'])),
       deploymentConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(map['deploymentConfigs']!, (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>()))),
       exemptableNamespaces: pulumi.Input.fromValue((map['exemptableNamespaces'] as List).cast<String>()),
       installSpec: pulumi.Input.fromValue(map['installSpec'] as String),

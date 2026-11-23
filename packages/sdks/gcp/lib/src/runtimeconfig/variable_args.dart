@@ -23,13 +23,11 @@ class VariableArgs {
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
-  /// or `value` - (Required) The content to associate with the variable.
-  /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
-  /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-  /// is specified, it must be base64 encoded and less than 4096 bytes in length.
+  /// The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
+  final pulumi.Input<String?>? text;
+  /// The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
   ///
   /// - - -
-  final pulumi.Input<String?>? text;
   final pulumi.Input<String?>? value;
 
   /// Creates a new [VariableArgs].
@@ -37,8 +35,8 @@ class VariableArgs {
   /// [name] The name of the variable to manage. Note that variable
   /// [parent] The name of the RuntimeConfig resource containing this
   /// [project] The ID of the project in which the resource belongs. If it
-  /// [text] or `value` - (Required) The content to associate with the variable.
-  /// [value] Optional.
+  /// [text] The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
+  /// [value] The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
   const VariableArgs({
     this.deletionPolicy,
     this.name,

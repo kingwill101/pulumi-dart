@@ -5,12 +5,15 @@ import 'api_key_restrictions.dart';
 
 /// Input properties used for looking up and filtering ApiKey resources.
 class ApiKeyState {
+  /// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+  final pulumi.Input<String?>? checkExistingUsage;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
-  /// When set to "DELETE", deleting the resource is allowed.
+  /// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+  /// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
   final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable display name of this API key. Modifiable by user.
   final pulumi.Input<String?>? displayName;
@@ -32,6 +35,7 @@ class ApiKeyState {
   final pulumi.Input<String?>? uid;
 
   /// Creates a new [ApiKeyState].
+  /// [checkExistingUsage] Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [displayName] Human-readable display name of this API key. Modifiable by user.
   /// [keyString] Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
@@ -41,6 +45,7 @@ class ApiKeyState {
   /// [serviceAccountEmail] The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
   /// [uid] Output only. Unique id in UUID4 format.
   const ApiKeyState({
+    this.checkExistingUsage,
     this.deletionPolicy,
     this.displayName,
     this.keyString,
@@ -53,6 +58,7 @@ class ApiKeyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'checkExistingUsage': ?checkExistingUsage,
       'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'keyString': ?keyString,
@@ -66,6 +72,7 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
+      checkExistingUsage: (() { final guardedValue = map['checkExistingUsage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyString: (() { final guardedValue = map['keyString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

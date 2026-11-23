@@ -11,6 +11,7 @@ import 'service_state.dart';
 /// * How-to Guides
 /// * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Service Directory Service Basic
@@ -80,7 +81,7 @@ import 'service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +96,7 @@ import 'service_state.dart';
 /// 		}
 /// 		_, err = servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 /// 			ServiceId: pulumi.String("example-service"),
-/// 			Namespace: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Namespace: example.ID(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"stage":  pulumi.String("prod"),
 /// 				"region": pulumi.String("us-central1"),
@@ -109,7 +110,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,10 +119,16 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "gcp_servicedirectory_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id = "example-namespace"
 ///   location     = "us-central1"
 /// }
 /// resource "gcp_servicedirectory_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "example-service"
 ///   namespace  = gcp_servicedirectory_namespace.example.id
 ///   metadata = {
@@ -239,7 +246,7 @@ class Service extends pulumi.CustomResource {
           'gcp:servicedirectory/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

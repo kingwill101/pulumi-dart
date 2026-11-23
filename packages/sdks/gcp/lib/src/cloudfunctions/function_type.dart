@@ -41,7 +41,7 @@ import 'function_state.dart';
 /// const _function = new gcp.cloudfunctions.Function("function", {
 ///     name: "function-test",
 ///     description: "My function",
-///     runtime: "nodejs20",
+///     runtime: "nodejs22",
 ///     availableMemoryMb: 128,
 ///     sourceArchiveBucket: bucket.name,
 ///     sourceArchiveObject: archive.name,
@@ -71,7 +71,7 @@ import 'function_state.dart';
 /// function = gcp.cloudfunctions.Function("function",
 ///     name="function-test",
 ///     description="My function",
-///     runtime="nodejs20",
+///     runtime="nodejs22",
 ///     available_memory_mb=128,
 ///     source_archive_bucket=bucket.name,
 ///     source_archive_object=archive.name,
@@ -110,7 +110,7 @@ import 'function_state.dart';
 ///     {
 ///         Name = "function-test",
 ///         Description = "My function",
-///         Runtime = "nodejs20",
+///         Runtime = "nodejs22",
 ///         AvailableMemoryMb = 128,
 ///         SourceArchiveBucket = bucket.Name,
 ///         SourceArchiveObject = archive.Name,
@@ -134,8 +134,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -159,7 +159,7 @@ import 'function_state.dart';
 /// 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 /// 			Name:                pulumi.String("function-test"),
 /// 			Description:         pulumi.String("My function"),
-/// 			Runtime:             pulumi.String("nodejs20"),
+/// 			Runtime:             pulumi.String("nodejs22"),
 /// 			AvailableMemoryMb:   pulumi.Int(128),
 /// 			SourceArchiveBucket: bucket.Name,
 /// 			SourceArchiveObject: archive.Name,
@@ -185,7 +185,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -194,26 +194,38 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "archive" {
+/// resource "gcp_storage_bucket_object" "archive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "index.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./path/to/zip/file/which/contains/code")
+///   source = fileasset("./path/to/zip/file/which/contains/code")
 /// }
 /// resource "gcp_cloudfunctions_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "function-test"
 ///   description           = "My function"
-///   runtime               = "nodejs20"
+///   runtime               = "nodejs22"
 ///   available_memory_mb   = 128
 ///   source_archive_bucket = gcp_storage_bucket.bucket.name
-///   source_archive_object = gcp_storage_bucketobject.archive.name
+///   source_archive_object = gcp_storage_bucket_object.archive.name
 ///   trigger_http          = true
 ///   entry_point           = "helloGET"
 /// }
 /// # IAM entry for all users to invoke the function
-/// resource "gcp_cloudfunctions_functioniammember" "invoker" {
+/// resource "gcp_cloudfunctions_function_iam_member" "invoker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_cloudfunctions_function.function.project
 ///   region         = gcp_cloudfunctions_function.function.region
 ///   cloud_function = gcp_cloudfunctions_function.function.name
@@ -263,7 +275,7 @@ import 'function_state.dart';
 ///         var function = new Function("function", FunctionArgs.builder()
 ///             .name("function-test")
 ///             .description("My function")
-///             .runtime("nodejs20")
+///             .runtime("nodejs22")
 ///             .availableMemoryMb(128)
 ///             .sourceArchiveBucket(bucket.name())
 ///             .sourceArchiveObject(archive.name())
@@ -302,7 +314,7 @@ import 'function_state.dart';
 ///     properties:
 ///       name: function-test
 ///       description: My function
-///       runtime: nodejs20
+///       runtime: nodejs22
 ///       availableMemoryMb: 128
 ///       sourceArchiveBucket: ${bucket.name}
 ///       sourceArchiveObject: ${archive.name}
@@ -339,7 +351,7 @@ import 'function_state.dart';
 /// const _function = new gcp.cloudfunctions.Function("function", {
 ///     name: "function-test",
 ///     description: "My function",
-///     runtime: "nodejs20",
+///     runtime: "nodejs22",
 ///     availableMemoryMb: 128,
 ///     sourceArchiveBucket: bucket.name,
 ///     sourceArchiveObject: archive.name,
@@ -377,7 +389,7 @@ import 'function_state.dart';
 /// function = gcp.cloudfunctions.Function("function",
 ///     name="function-test",
 ///     description="My function",
-///     runtime="nodejs20",
+///     runtime="nodejs22",
 ///     available_memory_mb=128,
 ///     source_archive_bucket=bucket.name,
 ///     source_archive_object=archive.name,
@@ -424,7 +436,7 @@ import 'function_state.dart';
 ///     {
 ///         Name = "function-test",
 ///         Description = "My function",
-///         Runtime = "nodejs20",
+///         Runtime = "nodejs22",
 ///         AvailableMemoryMb = 128,
 ///         SourceArchiveBucket = bucket.Name,
 ///         SourceArchiveObject = archive.Name,
@@ -458,8 +470,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -483,7 +495,7 @@ import 'function_state.dart';
 /// 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 /// 			Name:                      pulumi.String("function-test"),
 /// 			Description:               pulumi.String("My function"),
-/// 			Runtime:                   pulumi.String("nodejs20"),
+/// 			Runtime:                   pulumi.String("nodejs22"),
 /// 			AvailableMemoryMb:         pulumi.Int(128),
 /// 			SourceArchiveBucket:       bucket.Name,
 /// 			SourceArchiveObject:       archive.Name,
@@ -517,7 +529,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -526,21 +538,30 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "archive" {
+/// resource "gcp_storage_bucket_object" "archive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "index.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./path/to/zip/file/which/contains/code")
+///   source = fileasset("./path/to/zip/file/which/contains/code")
 /// }
 /// resource "gcp_cloudfunctions_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "function-test"
 ///   description                  = "My function"
-///   runtime                      = "nodejs20"
+///   runtime                      = "nodejs22"
 ///   available_memory_mb          = 128
 ///   source_archive_bucket        = gcp_storage_bucket.bucket.name
-///   source_archive_object        = gcp_storage_bucketobject.archive.name
+///   source_archive_object        = gcp_storage_bucket_object.archive.name
 ///   trigger_http                 = true
 ///   https_trigger_security_level = "SECURE_ALWAYS"
 ///   timeout                      = 60
@@ -553,7 +574,10 @@ import 'function_state.dart';
 ///   }
 /// }
 /// # IAM entry for a single user to invoke the function
-/// resource "gcp_cloudfunctions_functioniammember" "invoker" {
+/// resource "gcp_cloudfunctions_function_iam_member" "invoker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_cloudfunctions_function.function.project
 ///   region         = gcp_cloudfunctions_function.function.region
 ///   cloud_function = gcp_cloudfunctions_function.function.name
@@ -603,7 +627,7 @@ import 'function_state.dart';
 ///         var function = new Function("function", FunctionArgs.builder()
 ///             .name("function-test")
 ///             .description("My function")
-///             .runtime("nodejs20")
+///             .runtime("nodejs22")
 ///             .availableMemoryMb(128)
 ///             .sourceArchiveBucket(bucket.name())
 ///             .sourceArchiveObject(archive.name())
@@ -646,7 +670,7 @@ import 'function_state.dart';
 ///     properties:
 ///       name: function-test
 ///       description: My function
-///       runtime: nodejs20
+///       runtime: nodejs22
 ///       availableMemoryMb: 128
 ///       sourceArchiveBucket: ${bucket.name}
 ///       sourceArchiveObject: ${archive.name}
@@ -748,7 +772,7 @@ class FunctionType extends pulumi.CustomResource {
   /// Region of function. If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
   /// The runtime in which the function is going to run.
-  /// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+  /// Eg. `"nodejs22"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
   ///
   /// - - -
   late final pulumi.Output<String> runtime;
@@ -790,7 +814,7 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctions/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     automaticUpdatePolicy = registerOutput<Map<String, dynamic>>('automaticUpdatePolicy');

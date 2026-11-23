@@ -41,7 +41,7 @@ class SubscriptionDeadLetterPolicy {
   factory SubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
     return SubscriptionDeadLetterPolicy(
       deadLetterTopic: (() { final guardedValue = map['deadLetterTopic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDeliveryAttempts: (() { final guardedValue = map['maxDeliveryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDeliveryAttempts: (() { final guardedValue = map['maxDeliveryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

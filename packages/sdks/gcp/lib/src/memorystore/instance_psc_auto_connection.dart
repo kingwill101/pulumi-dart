@@ -18,6 +18,9 @@ class InstancePscAutoConnection {
   /// (Output)
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   final pulumi.Input<String?>? ipAddress;
+  /// (Output, Beta)
+  /// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+  final pulumi.Input<String?>? ipVersion;
   /// (Output)
   /// Output only. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
@@ -46,6 +49,7 @@ class InstancePscAutoConnection {
   /// [connectionType] (Output)
   /// [forwardingRule] (Output)
   /// [ipAddress] (Output)
+  /// [ipVersion] (Output, Beta)
   /// [network] (Output)
   /// [port] (Output)
   /// [projectId] (Output)
@@ -56,6 +60,7 @@ class InstancePscAutoConnection {
     this.connectionType,
     this.forwardingRule,
     this.ipAddress,
+    this.ipVersion,
     this.network,
     this.port,
     this.projectId,
@@ -69,6 +74,7 @@ class InstancePscAutoConnection {
       'connectionType': ?connectionType,
       'forwardingRule': ?forwardingRule,
       'ipAddress': ?ipAddress,
+      'ipVersion': ?ipVersion,
       'network': ?network,
       'port': ?port,
       'projectId': ?projectId,
@@ -83,8 +89,9 @@ class InstancePscAutoConnection {
       connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forwardingRule: (() { final guardedValue = map['forwardingRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pscConnectionId: (() { final guardedValue = map['pscConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pscConnectionStatus: (() { final guardedValue = map['pscConnectionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

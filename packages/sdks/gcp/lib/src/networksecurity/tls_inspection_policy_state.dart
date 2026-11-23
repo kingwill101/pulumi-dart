@@ -6,6 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsInspectionPolicyState {
   /// A CA pool resource used to issue interception certificates.
   final pulumi.Input<String?>? caPool;
+  /// The mode used to issue certificates (local CA signing vs direct leaf).
+  /// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+  final pulumi.Input<String?>? certificateIssuanceMode;
   /// The timestamp when the resource was created.
   final pulumi.Input<String?>? createTime;
   /// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
@@ -43,6 +46,7 @@ class TlsInspectionPolicyState {
 
   /// Creates a new [TlsInspectionPolicyState].
   /// [caPool] A CA pool resource used to issue interception certificates.
+  /// [certificateIssuanceMode] The mode used to issue certificates (local CA signing vs direct leaf).
   /// [createTime] The timestamp when the resource was created.
   /// [customTlsFeatures] List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -57,6 +61,7 @@ class TlsInspectionPolicyState {
   /// [updateTime] The timestamp when the resource was updated.
   const TlsInspectionPolicyState({
     this.caPool,
+    this.certificateIssuanceMode,
     this.createTime,
     this.customTlsFeatures,
     this.deletionPolicy,
@@ -74,6 +79,7 @@ class TlsInspectionPolicyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caPool': ?caPool,
+      'certificateIssuanceMode': ?certificateIssuanceMode,
       'createTime': ?createTime,
       'customTlsFeatures': ?customTlsFeatures,
       'deletionPolicy': ?deletionPolicy,
@@ -92,6 +98,7 @@ class TlsInspectionPolicyState {
   factory TlsInspectionPolicyState.fromMap(Map<String, dynamic> map) {
     return TlsInspectionPolicyState(
       caPool: (() { final guardedValue = map['caPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateIssuanceMode: (() { final guardedValue = map['certificateIssuanceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customTlsFeatures: (() { final guardedValue = map['customTlsFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscription_bigquery_config.dart';
+import 'subscription_bigtable_config.dart';
 import 'subscription_cloud_storage_config.dart';
 import 'subscription_dead_letter_policy.dart';
 import 'subscription_expiration_policy.dart';
@@ -28,13 +29,18 @@ class SubscriptionState {
   /// will eventually redeliver the message.
   final pulumi.Input<int?>? ackDeadlineSeconds;
   /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-  /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-  /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+  /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+  /// If none of them are set, then the subscriber will pull and ack messages using API methods.
   /// Structure is documented below.
   final pulumi.Input<SubscriptionBigqueryConfig?>? bigqueryConfig;
+  /// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+  /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+  /// If none of them are set, then the subscriber will pull and ack messages using API methods.
+  /// Structure is documented below.
+  final pulumi.Input<SubscriptionBigtableConfig?>? bigtableConfig;
   /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-  /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-  /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+  /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+  /// If none of them are set, then the subscriber will pull and ack messages using API methods.
   /// Structure is documented below.
   final pulumi.Input<SubscriptionCloudStorageConfig?>? cloudStorageConfig;
   /// A policy that specifies the conditions for dead lettering messages in
@@ -138,6 +144,7 @@ class SubscriptionState {
   /// Creates a new [SubscriptionState].
   /// [ackDeadlineSeconds] This value is the maximum time after a subscriber receives a message
   /// [bigqueryConfig] If delivery to BigQuery is used with this subscription, this field is used to configure it.
+  /// [bigtableConfig] If delivery to Bigtable is used with this subscription, this field is used to configure it.
   /// [cloudStorageConfig] If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
   /// [deadLetterPolicy] A policy that specifies the conditions for dead lettering messages in
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -160,6 +167,7 @@ class SubscriptionState {
   const SubscriptionState({
     this.ackDeadlineSeconds,
     this.bigqueryConfig,
+    this.bigtableConfig,
     this.cloudStorageConfig,
     this.deadLetterPolicy,
     this.deletionPolicy,
@@ -185,6 +193,7 @@ class SubscriptionState {
     return <String, dynamic>{
       'ackDeadlineSeconds': ?ackDeadlineSeconds,
       'bigqueryConfig': ?pulumi.Input.mapOptionalInputValue<SubscriptionBigqueryConfig, Map<String, dynamic>>(bigqueryConfig, (value) => value.toMap()),
+      'bigtableConfig': ?pulumi.Input.mapOptionalInputValue<SubscriptionBigtableConfig, Map<String, dynamic>>(bigtableConfig, (value) => value.toMap()),
       'cloudStorageConfig': ?pulumi.Input.mapOptionalInputValue<SubscriptionCloudStorageConfig, Map<String, dynamic>>(cloudStorageConfig, (value) => value.toMap()),
       'deadLetterPolicy': ?pulumi.Input.mapOptionalInputValue<SubscriptionDeadLetterPolicy, Map<String, dynamic>>(deadLetterPolicy, (value) => value.toMap()),
       'deletionPolicy': ?deletionPolicy,
@@ -209,8 +218,9 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bigqueryConfig: (() { final guardedValue = map['bigqueryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionBigqueryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      bigtableConfig: (() { final guardedValue = map['bigtableConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionBigtableConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudStorageConfig: (() { final guardedValue = map['cloudStorageConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionCloudStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deadLetterPolicy: (() { final guardedValue = map['deadLetterPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionDeadLetterPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

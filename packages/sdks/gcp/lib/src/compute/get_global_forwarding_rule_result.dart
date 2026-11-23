@@ -7,6 +7,7 @@ import 'get_global_forwarding_rule_service_directory_registration.dart';
 /// Result data returned by getGlobalForwardingRule.
 class GetGlobalForwardingRuleResult {
   final bool? allowPscGlobalAccess;
+  final String? backendService;
   final String? baseForwardingRule;
   final String? deletionPolicy;
   final String? description;
@@ -17,6 +18,7 @@ class GetGlobalForwardingRuleResult {
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? ipAddress;
+  final List<String>? ipAddresses;
   final String? ipProtocol;
   final String? ipVersion;
   final String? labelFingerprint;
@@ -40,6 +42,7 @@ class GetGlobalForwardingRuleResult {
 
   /// Creates a new [GetGlobalForwardingRuleResult].
   /// [allowPscGlobalAccess] Optional.
+  /// [backendService] Optional.
   /// [baseForwardingRule] Optional.
   /// [deletionPolicy] Optional.
   /// [description] Optional.
@@ -49,6 +52,7 @@ class GetGlobalForwardingRuleResult {
   /// [forwardingRuleId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipAddress] Optional.
+  /// [ipAddresses] Optional.
   /// [ipProtocol] Optional.
   /// [ipVersion] Optional.
   /// [labelFingerprint] Optional.
@@ -71,6 +75,7 @@ class GetGlobalForwardingRuleResult {
   /// [target] Optional.
   const GetGlobalForwardingRuleResult({
     this.allowPscGlobalAccess,
+    this.backendService,
     this.baseForwardingRule,
     this.deletionPolicy,
     this.description,
@@ -80,6 +85,7 @@ class GetGlobalForwardingRuleResult {
     this.forwardingRuleId,
     this.id,
     this.ipAddress,
+    this.ipAddresses,
     this.ipProtocol,
     this.ipVersion,
     this.labelFingerprint,
@@ -105,6 +111,7 @@ class GetGlobalForwardingRuleResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowPscGlobalAccess': ?allowPscGlobalAccess,
+      'backendService': ?backendService,
       'baseForwardingRule': ?baseForwardingRule,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
@@ -114,6 +121,7 @@ class GetGlobalForwardingRuleResult {
       'forwardingRuleId': ?forwardingRuleId,
       'id': ?id,
       'ipAddress': ?ipAddress,
+      'ipAddresses': ?ipAddresses,
       'ipProtocol': ?ipProtocol,
       'ipVersion': ?ipVersion,
       'labelFingerprint': ?labelFingerprint,
@@ -140,15 +148,17 @@ class GetGlobalForwardingRuleResult {
   factory GetGlobalForwardingRuleResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleResult(
       allowPscGlobalAccess: (() { final guardedValue = map['allowPscGlobalAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return guardedValue as String; })(),
       baseForwardingRule: (() { final guardedValue = map['baseForwardingRule']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       externalManagedBackendBucketMigrationState: (() { final guardedValue = map['externalManagedBackendBucketMigrationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalManagedBackendBucketMigrationTestingPercentage: (() { final guardedValue = map['externalManagedBackendBucketMigrationTestingPercentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
-      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),

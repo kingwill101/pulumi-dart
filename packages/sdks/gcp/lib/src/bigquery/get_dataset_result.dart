@@ -14,6 +14,7 @@ class GetDatasetResult {
   final String? defaultCollation;
   final List<GetDatasetDefaultEncryptionConfiguration>? defaultEncryptionConfigurations;
   final int? defaultPartitionExpirationMs;
+  final String? defaultRoundingMode;
   final int? defaultTableExpirationMs;
   final bool? deleteContentsOnDestroy;
   final String? deletionPolicy;
@@ -43,6 +44,7 @@ class GetDatasetResult {
   /// [defaultCollation] Optional.
   /// [defaultEncryptionConfigurations] Optional.
   /// [defaultPartitionExpirationMs] Optional.
+  /// [defaultRoundingMode] Optional.
   /// [defaultTableExpirationMs] Optional.
   /// [deleteContentsOnDestroy] Optional.
   /// [deletionPolicy] Optional.
@@ -70,6 +72,7 @@ class GetDatasetResult {
     this.defaultCollation,
     this.defaultEncryptionConfigurations,
     this.defaultPartitionExpirationMs,
+    this.defaultRoundingMode,
     this.defaultTableExpirationMs,
     this.deleteContentsOnDestroy,
     this.deletionPolicy,
@@ -100,6 +103,7 @@ class GetDatasetResult {
       'defaultCollation': ?defaultCollation,
       'defaultEncryptionConfigurations': ?(() { final guardedValue = defaultEncryptionConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatasetDefaultEncryptionConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'defaultPartitionExpirationMs': ?defaultPartitionExpirationMs,
+      'defaultRoundingMode': ?defaultRoundingMode,
       'defaultTableExpirationMs': ?defaultTableExpirationMs,
       'deleteContentsOnDestroy': ?deleteContentsOnDestroy,
       'deletionPolicy': ?deletionPolicy,
@@ -126,12 +130,13 @@ class GetDatasetResult {
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
       accesses: (() { final guardedValue = map['accesses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatasetAccess>(guardedValue, (value) => GetDatasetAccess.fromMap((value as Map).cast<String, dynamic>())); })(),
-      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultCollation: (() { final guardedValue = map['defaultCollation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultEncryptionConfigurations: (() { final guardedValue = map['defaultEncryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatasetDefaultEncryptionConfiguration>(guardedValue, (value) => GetDatasetDefaultEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
-      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      defaultRoundingMode: (() { final guardedValue = map['defaultRoundingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       deleteContentsOnDestroy: (() { final guardedValue = map['deleteContentsOnDestroy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -143,7 +148,7 @@ class GetDatasetResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isCaseInsensitive: (() { final guardedValue = map['isCaseInsensitive']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maxTimeTravelHours: (() { final guardedValue = map['maxTimeTravelHours']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),

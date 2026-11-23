@@ -18,6 +18,7 @@ import 'database_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/firestore/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firestore Default Database
@@ -67,7 +68,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +88,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -96,6 +97,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   name        = "(default)"
 ///   location_id = "nam5"
@@ -143,6 +147,7 @@ import 'database_state.dart';
 ///       locationId: nam5
 ///       type: FIRESTORE_NATIVE
 /// ```
+///
 ///
 /// ### Firestore Database
 ///
@@ -206,7 +211,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -231,7 +236,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -240,6 +245,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                           = "my-project-name"
 ///   name                              = "database-id"
 ///   location_id                       = "nam5"
@@ -302,6 +310,7 @@ import 'database_state.dart';
 ///       deleteProtectionState: DELETE_PROTECTION_ENABLED
 ///       deletionPolicy: DELETE
 /// ```
+///
 ///
 /// ### Firestore Database With Tags
 ///
@@ -366,7 +375,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -391,7 +400,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -400,6 +409,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-with-tags-id"
 ///   location_id             = "nam5"
@@ -459,6 +471,7 @@ import 'database_state.dart';
 ///       tags:
 ///         keyname: valuename
 /// ```
+///
 ///
 /// ### Firestore Cmek Database
 ///
@@ -593,9 +606,9 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -614,14 +627,14 @@ import 'database_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("kms-key"),
-/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyRing.ID(),
 /// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		firestoreCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: cryptoKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number),
@@ -641,7 +654,7 @@ import 'database_state.dart';
 /// 			DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
 /// 			DeletionPolicy:                pulumi.String("DELETE"),
 /// 			CmekConfig: &firestore.DatabaseCmekConfigArgs{
-/// 				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 				KmsKeyName: cryptoKey.ID(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			firestoreCmekKeyuser,
@@ -654,7 +667,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -662,11 +675,14 @@ import 'database_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
-///   depends_on                        = [gcp_kms_cryptokeyiambinding.firestore_cmek_keyuser]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_binding.firestore_cmek_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                           = "my-project-name"
 ///   name                              = "cmek-database-id"
 ///   location_id                       = "nam5"
@@ -677,22 +693,31 @@ import 'database_state.dart';
 ///   delete_protection_state           = "DELETE_PROTECTION_ENABLED"
 ///   deletion_policy                   = "DELETE"
 ///   cmek_config = {
-///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///     kms_key_name = gcp_kms_crypto_key.crypto_key.id
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "kms-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 ///   purpose  = "ENCRYPT_DECRYPT"
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "kms-key-ring"
 ///   location = "us"
 /// }
-/// resource "gcp_kms_cryptokeyiambinding" "firestore_cmek_keyuser" {
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "firestore_cmek_keyuser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   members       = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-firestore.iam.gserviceaccount.com"]
+///   members       = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-firestore.iam.gserviceaccount.com"]
 /// }
 /// ```
 /// ```java
@@ -813,6 +838,7 @@ import 'database_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Firestore Default Database In Datastore Mode
 ///
 ///
@@ -860,7 +886,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -880,7 +906,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -889,6 +915,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "datastore_mode_database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   name        = "(default)"
 ///   location_id = "nam5"
@@ -937,6 +966,7 @@ import 'database_state.dart';
 ///       locationId: nam5
 ///       type: DATASTORE_MODE
 /// ```
+///
 ///
 /// ### Firestore Database In Datastore Mode
 ///
@@ -1000,7 +1030,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1025,7 +1055,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1034,6 +1064,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "datastore_mode_database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                           = "my-project-name"
 ///   name                              = "database-id"
 ///   location_id                       = "nam5"
@@ -1097,6 +1130,7 @@ import 'database_state.dart';
 ///       deleteProtectionState: DELETE_PROTECTION_ENABLED
 ///       deletionPolicy: DELETE
 /// ```
+///
 ///
 /// ### Firestore Cmek Database In Datastore Mode
 ///
@@ -1231,9 +1265,9 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1252,14 +1286,14 @@ import 'database_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("kms-key"),
-/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyRing.ID(),
 /// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		firestoreCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: cryptoKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number),
@@ -1279,7 +1313,7 @@ import 'database_state.dart';
 /// 			DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
 /// 			DeletionPolicy:                pulumi.String("DELETE"),
 /// 			CmekConfig: &firestore.DatabaseCmekConfigArgs{
-/// 				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 				KmsKeyName: cryptoKey.ID(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			firestoreCmekKeyuser,
@@ -1292,7 +1326,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1300,11 +1334,14 @@ import 'database_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
-///   depends_on                        = [gcp_kms_cryptokeyiambinding.firestore_cmek_keyuser]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_binding.firestore_cmek_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                           = "my-project-name"
 ///   name                              = "cmek-database-id"
 ///   location_id                       = "nam5"
@@ -1315,22 +1352,31 @@ import 'database_state.dart';
 ///   delete_protection_state           = "DELETE_PROTECTION_ENABLED"
 ///   deletion_policy                   = "DELETE"
 ///   cmek_config = {
-///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///     kms_key_name = gcp_kms_crypto_key.crypto_key.id
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "kms-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 ///   purpose  = "ENCRYPT_DECRYPT"
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "kms-key-ring"
 ///   location = "us"
 /// }
-/// resource "gcp_kms_cryptokeyiambinding" "firestore_cmek_keyuser" {
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "firestore_cmek_keyuser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   members       = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-firestore.iam.gserviceaccount.com"]
+///   members       = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-firestore.iam.gserviceaccount.com"]
 /// }
 /// ```
 /// ```java
@@ -1451,6 +1497,7 @@ import 'database_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Firestore Database Enterprise
 ///
 ///
@@ -1504,7 +1551,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1526,7 +1573,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1535,6 +1582,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "enterprise-db" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   name             = "database-id"
 ///   location_id      = "nam5"
@@ -1588,6 +1638,7 @@ import 'database_state.dart';
 ///       databaseEdition: ENTERPRISE
 ///       deletionPolicy: DELETE
 /// ```
+///
 ///
 /// ### Firestore Database Data Access
 ///
@@ -1648,7 +1699,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1672,7 +1723,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1681,6 +1732,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "firestore_access_database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                             = "my-project-name"
 ///   name                                = "data-access-database-id"
 ///   location_id                         = "nam5"
@@ -1870,7 +1924,7 @@ class Database extends pulumi.CustomResource {
           'gcp:firestore/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
     cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseCmekConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

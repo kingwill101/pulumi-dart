@@ -9,6 +9,7 @@ import 'unit_operation_upgrade.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Saas Runtime Unit Operation Basic
@@ -32,14 +33,13 @@ import 'unit_operation_upgrade.dart';
 ///     location: location,
 ///     unitKindId: "vm-unitkind",
 ///     saas: exampleSaas.id,
-///     defaultRelease: `projects/my-project-name/locations/${location}/releases/example-release`,
 /// });
 /// const exampleRelease = new gcp.saasruntime.Release("example_release", {
 ///     location: location,
 ///     releaseId: "example-release",
 ///     unitKind: clusterUnitKind.id,
 ///     blueprint: {
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
 ///     },
 /// });
 /// const exampleUnit = new gcp.saasruntime.Unit("example_unit", {
@@ -82,6 +82,12 @@ import 'unit_operation_upgrade.dart';
 ///     serviceAccountId: actuationServiceAccount.name,
 ///     role: "roles/iam.serviceAccountTokenCreator",
 ///     member: "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com",
+/// });
+/// // Infra Manager engine: actuation SA needs config.agent in the producer project.
+/// const producerConfigAgent = new gcp.projects.IAMMember("producer_config_agent", {
+///     project: "my-project-name",
+///     role: "roles/config.agent",
+///     member: pulumi.interpolate`serviceAccount:${actuationServiceAccount.email}`,
 /// });
 /// const provisionUnitOperation = new gcp.saasruntime.UnitOperation("provision_unit_operation", {
 ///     location: location,
@@ -131,6 +137,7 @@ import 'unit_operation_upgrade.dart';
 ///         tenantComputeAdmin,
 ///         actuationTokenCreator,
 ///         saasServices,
+///         producerConfigAgent,
 ///     ],
 /// });
 /// const noopUpgradeUnitOperation = new gcp.saasruntime.UnitOperation("noop_upgrade_unit_operation", {
@@ -196,14 +203,13 @@ import 'unit_operation_upgrade.dart';
 /// cluster_unit_kind = gcp.saasruntime.UnitKind("cluster_unit_kind",
 ///     location=location,
 ///     unit_kind_id="vm-unitkind",
-///     saas=example_saas.id,
-///     default_release=f"projects/my-project-name/locations/{location}/releases/example-release")
+///     saas=example_saas.id)
 /// example_release = gcp.saasruntime.Release("example_release",
 ///     location=location,
 ///     release_id="example-release",
 ///     unit_kind=cluster_unit_kind.id,
 ///     blueprint={
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
 ///     })
 /// example_unit = gcp.saasruntime.Unit("example_unit",
 ///     location=location,
@@ -238,6 +244,11 @@ import 'unit_operation_upgrade.dart';
 ///     service_account_id=actuation_service_account.name,
 ///     role="roles/iam.serviceAccountTokenCreator",
 ///     member="serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com")
+/// # Infra Manager engine: actuation SA needs config.agent in the producer project.
+/// producer_config_agent = gcp.projects.IAMMember("producer_config_agent",
+///     project="my-project-name",
+///     role="roles/config.agent",
+///     member=actuation_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
 /// provision_unit_operation = gcp.saasruntime.UnitOperation("provision_unit_operation",
 ///     location=location,
 ///     unit_operation_id="provision-unit-operation",
@@ -285,6 +296,7 @@ import 'unit_operation_upgrade.dart';
 ///             tenant_compute_admin,
 ///             actuation_token_creator,
 ///             saas_services,
+///             producer_config_agent,
 ///         ]))
 /// noop_upgrade_unit_operation = gcp.saasruntime.UnitOperation("noop_upgrade_unit_operation",
 ///     location=location,
@@ -360,7 +372,6 @@ import 'unit_operation_upgrade.dart';
 ///         Location = location,
 ///         UnitKindId = "vm-unitkind",
 ///         Saas = exampleSaas.Id,
-///         DefaultRelease = $"projects/my-project-name/locations/{location}/releases/example-release",
 ///     });
 ///
 ///     var exampleRelease = new Gcp.SaaSRuntime.Release("example_release", new()
@@ -370,7 +381,7 @@ import 'unit_operation_upgrade.dart';
 ///         UnitKind = clusterUnitKind.Id,
 ///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
 ///         {
-///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
 ///         },
 ///     });
 ///
@@ -429,6 +440,14 @@ import 'unit_operation_upgrade.dart';
 ///         ServiceAccountId = actuationServiceAccount.Name,
 ///         Role = "roles/iam.serviceAccountTokenCreator",
 ///         Member = "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com",
+///     });
+///
+///     // Infra Manager engine: actuation SA needs config.agent in the producer project.
+///     var producerConfigAgent = new Gcp.Projects.IAMMember("producer_config_agent", new()
+///     {
+///         Project = "my-project-name",
+///         Role = "roles/config.agent",
+///         Member = actuationServiceAccount.Email.Apply(email => $"serviceAccount:{email}"),
 ///     });
 ///
 ///     var provisionUnitOperation = new Gcp.SaaSRuntime.UnitOperation("provision_unit_operation", new()
@@ -491,6 +510,7 @@ import 'unit_operation_upgrade.dart';
 ///             tenantComputeAdmin,
 ///             actuationTokenCreator,
 ///             saasServices,
+///             producerConfigAgent,
 ///         },
 ///     });
 ///
@@ -568,10 +588,10 @@ import 'unit_operation_upgrade.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -592,10 +612,9 @@ import 'unit_operation_upgrade.dart';
 /// 			return err
 /// 		}
 /// 		clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
-/// 			Location:       pulumi.String(location),
-/// 			UnitKindId:     pulumi.String("vm-unitkind"),
-/// 			Saas:           exampleSaas.ID().ToIDOutput().ToStringOutput(),
-/// 			DefaultRelease: pulumi.Sprintf("projects/my-project-name/locations/%v/releases/example-release", location),
+/// 			Location:   pulumi.String(location),
+/// 			UnitKindId: pulumi.String("vm-unitkind"),
+/// 			Saas:       exampleSaas.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -603,9 +622,9 @@ import 'unit_operation_upgrade.dart';
 /// 		exampleRelease, err := saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String(location),
 /// 			ReleaseId: pulumi.String("example-release"),
-/// 			UnitKind:  clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind:  clusterUnitKind.ID(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
-/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
+/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -614,7 +633,7 @@ import 'unit_operation_upgrade.dart';
 /// 		exampleUnit, err := saasruntime.NewUnit(ctx, "example_unit", &saasruntime.UnitArgs{
 /// 			Location: pulumi.String(location),
 /// 			UnitId:   pulumi.String("example-unit"),
-/// 			UnitKind: clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind: clusterUnitKind.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -682,13 +701,24 @@ import 'unit_operation_upgrade.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		// Infra Manager engine: actuation SA needs config.agent in the producer project.
+/// 		producerConfigAgent, err := projects.NewIAMMember(ctx, "producer_config_agent", &projects.IAMMemberArgs{
+/// 			Project: pulumi.String("my-project-name"),
+/// 			Role:    pulumi.String("roles/config.agent"),
+/// 			Member: actuationServiceAccount.Email.ApplyT(func(email string) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:%v", email), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		provisionUnitOperation, err := saasruntime.NewUnitOperation(ctx, "provision_unit_operation", &saasruntime.UnitOperationArgs{
 /// 			Location:          pulumi.String(location),
 /// 			UnitOperationId:   pulumi.String("provision-unit-operation"),
-/// 			Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
+/// 			Unit:              exampleUnit.ID(),
 /// 			WaitForCompletion: pulumi.Bool(true),
 /// 			Provision: &saasruntime.UnitOperationProvisionArgs{
-/// 				Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
+/// 				Release: exampleRelease.ID(),
 /// 				InputVariables: saasruntime.UnitOperationProvisionInputVariableArray{
 /// 					&saasruntime.UnitOperationProvisionInputVariableArgs{
 /// 						Variable: pulumi.String("tenant_project_id"),
@@ -729,6 +759,7 @@ import 'unit_operation_upgrade.dart';
 /// 			tenantComputeAdmin,
 /// 			actuationTokenCreator,
 /// 			saasServices,
+/// 			producerConfigAgent,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -736,10 +767,10 @@ import 'unit_operation_upgrade.dart';
 /// 		noopUpgradeUnitOperation, err := saasruntime.NewUnitOperation(ctx, "noop_upgrade_unit_operation", &saasruntime.UnitOperationArgs{
 /// 			Location:          pulumi.String(location),
 /// 			UnitOperationId:   pulumi.String("upgrade-unit-operation"),
-/// 			Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
+/// 			Unit:              exampleUnit.ID(),
 /// 			WaitForCompletion: pulumi.Bool(true),
 /// 			Upgrade: &saasruntime.UnitOperationUpgradeArgs{
-/// 				Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
+/// 				Release: exampleRelease.ID(),
 /// 				InputVariables: saasruntime.UnitOperationUpgradeInputVariableArray{
 /// 					&saasruntime.UnitOperationUpgradeInputVariableArgs{
 /// 						Variable: pulumi.String("tenant_project_id"),
@@ -777,7 +808,7 @@ import 'unit_operation_upgrade.dart';
 /// 		_, err = saasruntime.NewUnitOperation(ctx, "deprovision_operation", &saasruntime.UnitOperationArgs{
 /// 			Location:          pulumi.String(location),
 /// 			UnitOperationId:   pulumi.String("deprovision-unit-operation"),
-/// 			Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
+/// 			Unit:              exampleUnit.ID(),
 /// 			WaitForCompletion: pulumi.Bool(true),
 /// 			Deprovision:       &saasruntime.UnitOperationDeprovisionArgs{},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -791,7 +822,7 @@ import 'unit_operation_upgrade.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -799,33 +830,47 @@ import 'unit_operation_upgrade.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = local.location
 ///   locations {
 ///     name = local.location
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "cluster_unit_kind" {
-///   location        = local.location
-///   unit_kind_id    = "vm-unitkind"
-///   saas            = gcp_saasruntime_saas.example_saas.id
-///   default_release ="projects/my-project-name/locations/${local.location}/releases/example-release"
+/// resource "gcp_saasruntime_unit_kind" "cluster_unit_kind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location     = local.location
+///   unit_kind_id = "vm-unitkind"
+///   saas         = gcp_saasruntime_saa_s.example_saas.id
 /// }
 /// resource "gcp_saasruntime_release" "example_release" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = local.location
 ///   release_id = "example-release"
-///   unit_kind  = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   unit_kind  = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 ///   blueprint = {
-///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680"
 ///   }
 /// }
 /// resource "gcp_saasruntime_unit" "example_unit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location  = local.location
 ///   unit_id   = "example-unit"
-///   unit_kind = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   unit_kind = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 /// }
 /// resource "gcp_organizations_project" "tenant_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = local.tenantProjectId
 ///   name            = local.tenantProjectId
 ///   billing_account = "000000-0000000-0000000-000000"
@@ -833,36 +878,66 @@ import 'unit_operation_upgrade.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "saas_services" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.tenant_project.project_id
 ///   service                    = "compute.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_serviceaccount_account" "actuation_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "actuator"
 ///   display_name = "SaaS Actuation Service Account"
 /// }
-/// resource "gcp_projects_iammember" "tenant_config_admin" {
+/// resource "gcp_projects_i_a_m_member" "tenant_config_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.tenant_project.project_id
 ///   role    = "roles/config.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "tenant_storage_admin" {
+/// resource "gcp_projects_i_a_m_member" "tenant_storage_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.tenant_project.project_id
 ///   role    = "roles/storage.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "tenant_compute_admin" {
+/// resource "gcp_projects_i_a_m_member" "tenant_compute_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.tenant_project.project_id
 ///   role    = "roles/compute.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
 /// }
-/// resource "gcp_serviceaccount_iammember" "actuation_token_creator" {
+/// resource "gcp_serviceaccount_i_a_m_member" "actuation_token_creator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.actuation_service_account.name
 ///   role               = "roles/iam.serviceAccountTokenCreator"
 ///   member             = "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_saasruntime_unitoperation" "provision_unit_operation" {
-///   depends_on          = [gcp_projects_iammember.tenant_config_admin, gcp_projects_iammember.tenant_storage_admin, gcp_projects_iammember.tenant_compute_admin, gcp_serviceaccount_iammember.actuation_token_creator, gcp_projects_service.saas_services]
+/// # Infra Manager engine: actuation SA needs config.agent in the producer project.
+/// resource "gcp_projects_i_a_m_member" "producer_config_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/config.agent"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
+/// }
+/// resource "gcp_saasruntime_unit_operation" "provision_unit_operation" {
+///   depends_on = [gcp_projects_i_a_m_member.tenant_config_admin, gcp_projects_i_a_m_member.tenant_storage_admin, gcp_projects_i_a_m_member.tenant_compute_admin, gcp_serviceaccount_i_a_m_member.actuation_token_creator, gcp_projects_service.saas_services, gcp_projects_i_a_m_member.producer_config_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = local.location
 ///   unit_operation_id   = "provision-unit-operation"
 ///   unit                = gcp_saasruntime_unit.example_unit.id
@@ -870,25 +945,25 @@ import 'unit_operation_upgrade.dart';
 ///   provision = {
 ///     release = gcp_saasruntime_release.example_release.id
 ///     input_variables = [{
-///       "variable" = "tenant_project_id"
-///       "value"    = gcp_organizations_project.tenant_project.project_id
-///       "type"     = "STRING"
+///       variable = "tenant_project_id"
+///       value    = gcp_organizations_project.tenant_project.project_id
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "tenant_project_number"
-///       "value"    = gcp_organizations_project.tenant_project.number
-///       "type"     = "INT"
+///       variable = "tenant_project_number"
+///       value    = gcp_organizations_project.tenant_project.number
+///       type     = "INT"
 ///       }, {
-///       "variable" = "zone"
-///       "value"    = "us-central1-a"
-///       "type"     = "STRING"
+///       variable = "zone"
+///       value    = "us-central1-a"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "instance_name"
-///       "value"    = "terraform-test-instance"
-///       "type"     = "STRING"
+///       variable = "instance_name"
+///       value    = "terraform-test-instance"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "actuation_sa"
-///       "value"    = gcp_serviceaccount_account.actuation_service_account.email
-///       "type"     = "STRING"
+///       variable = "actuation_sa"
+///       value    = gcp_serviceaccount_account.actuation_service_account.email
+///       type     = "STRING"
 ///     }]
 ///   }
 ///   labels = {
@@ -898,8 +973,11 @@ import 'unit_operation_upgrade.dart';
 ///     "annotation-one" = "bar"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitoperation" "noop_upgrade_unit_operation" {
-///   depends_on          = [gcp_saasruntime_unitoperation.provision_unit_operation]
+/// resource "gcp_saasruntime_unit_operation" "noop_upgrade_unit_operation" {
+///   depends_on = [gcp_saasruntime_unit_operation.provision_unit_operation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = local.location
 ///   unit_operation_id   = "upgrade-unit-operation"
 ///   unit                = gcp_saasruntime_unit.example_unit.id
@@ -907,30 +985,33 @@ import 'unit_operation_upgrade.dart';
 ///   upgrade = {
 ///     release = gcp_saasruntime_release.example_release.id
 ///     input_variables = [{
-///       "variable" = "tenant_project_id"
-///       "value"    = gcp_organizations_project.tenant_project.project_id
-///       "type"     = "STRING"
+///       variable = "tenant_project_id"
+///       value    = gcp_organizations_project.tenant_project.project_id
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "tenant_project_number"
-///       "value"    = gcp_organizations_project.tenant_project.number
-///       "type"     = "INT"
+///       variable = "tenant_project_number"
+///       value    = gcp_organizations_project.tenant_project.number
+///       type     = "INT"
 ///       }, {
-///       "variable" = "zone"
-///       "value"    = "us-central1-a"
-///       "type"     = "STRING"
+///       variable = "zone"
+///       value    = "us-central1-a"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "instance_name"
-///       "value"    = "terraform-test-instance"
-///       "type"     = "STRING"
+///       variable = "instance_name"
+///       value    = "terraform-test-instance"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "actuation_sa"
-///       "value"    = gcp_serviceaccount_account.actuation_service_account.email
-///       "type"     = "STRING"
+///       variable = "actuation_sa"
+///       value    = gcp_serviceaccount_account.actuation_service_account.email
+///       type     = "STRING"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitoperation" "deprovision_operation" {
-///   depends_on          = [gcp_saasruntime_unitoperation.noop_upgrade_unit_operation]
+/// resource "gcp_saasruntime_unit_operation" "deprovision_operation" {
+///   depends_on = [gcp_saasruntime_unit_operation.noop_upgrade_unit_operation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = local.location
 ///   unit_operation_id   = "deprovision-unit-operation"
 ///   unit                = gcp_saasruntime_unit.example_unit.id
@@ -1003,7 +1084,6 @@ import 'unit_operation_upgrade.dart';
 ///             .location(location)
 ///             .unitKindId("vm-unitkind")
 ///             .saas(exampleSaas.id())
-///             .defaultRelease(String.format("projects/my-project-name/locations/%s/releases/example-release", location))
 ///             .build());
 ///
 ///         var exampleRelease = new Release("exampleRelease", ReleaseArgs.builder()
@@ -1011,7 +1091,7 @@ import 'unit_operation_upgrade.dart';
 ///             .releaseId("example-release")
 ///             .unitKind(clusterUnitKind.id())
 ///             .blueprint(ReleaseBlueprintArgs.builder()
-///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee")
+///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680")
 ///                 .build())
 ///             .build());
 ///
@@ -1064,6 +1144,13 @@ import 'unit_operation_upgrade.dart';
 ///             .member("serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com")
 ///             .build());
 ///
+///         // Infra Manager engine: actuation SA needs config.agent in the producer project.
+///         var producerConfigAgent = new com.pulumi.gcp.projects.IAMMember("producerConfigAgent", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+///             .project("my-project-name")
+///             .role("roles/config.agent")
+///             .member(actuationServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+///             .build());
+///
 ///         var provisionUnitOperation = new UnitOperation("provisionUnitOperation", UnitOperationArgs.builder()
 ///             .location(location)
 ///             .unitOperationId("provision-unit-operation")
@@ -1106,7 +1193,8 @@ import 'unit_operation_upgrade.dart';
 ///                     tenantStorageAdmin,
 ///                     tenantComputeAdmin,
 ///                     actuationTokenCreator,
-///                     saasServices)
+///                     saasServices,
+///                     producerConfigAgent)
 ///                 .build());
 ///
 ///         var noopUpgradeUnitOperation = new UnitOperation("noopUpgradeUnitOperation", UnitOperationArgs.builder()
@@ -1178,7 +1266,6 @@ import 'unit_operation_upgrade.dart';
 ///       location: ${location}
 ///       unitKindId: vm-unitkind
 ///       saas: ${exampleSaas.id}
-///       defaultRelease: projects/my-project-name/locations/${location}/releases/example-release
 ///   exampleRelease:
 ///     type: gcp:saasruntime:Release
 ///     name: example_release
@@ -1187,7 +1274,7 @@ import 'unit_operation_upgrade.dart';
 ///       releaseId: example-release
 ///       unitKind: ${clusterUnitKind.id}
 ///       blueprint:
-///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee
+///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680
 ///   exampleUnit:
 ///     type: gcp:saasruntime:Unit
 ///     name: example_unit
@@ -1245,6 +1332,14 @@ import 'unit_operation_upgrade.dart';
 ///       serviceAccountId: ${actuationServiceAccount.name}
 ///       role: roles/iam.serviceAccountTokenCreator
 ///       member: serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com
+///   # Infra Manager engine: actuation SA needs config.agent in the producer project.
+///   producerConfigAgent:
+///     type: gcp:projects:IAMMember
+///     name: producer_config_agent
+///     properties:
+///       project: my-project-name
+///       role: roles/config.agent
+///       member: serviceAccount:${actuationServiceAccount.email}
 ///   provisionUnitOperation:
 ///     type: gcp:saasruntime:UnitOperation
 ///     name: provision_unit_operation
@@ -1282,6 +1377,7 @@ import 'unit_operation_upgrade.dart';
 ///         - ${tenantComputeAdmin}
 ///         - ${actuationTokenCreator}
 ///         - ${saasServices}
+///         - ${producerConfigAgent}
 ///   noopUpgradeUnitOperation:
 ///     type: gcp:saasruntime:UnitOperation
 ///     name: noop_upgrade_unit_operation
@@ -1456,7 +1552,7 @@ class UnitOperation extends pulumi.CustomResource {
           'gcp:saasruntime/unitOperation:UnitOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

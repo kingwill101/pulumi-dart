@@ -42,6 +42,7 @@ class GetRegionInstanceGroupManagerResult {
   final String? region;
   final List<GetRegionInstanceGroupManagerResourcePolicy>? resourcePolicies;
   final String? selfLink;
+  final String? serviceAccount;
   final List<GetRegionInstanceGroupManagerStandbyPolicy>? standbyPolicies;
   final List<GetRegionInstanceGroupManagerStatefulDisk>? statefulDisks;
   final List<GetRegionInstanceGroupManagerStatefulExternalIp>? statefulExternalIps;
@@ -80,6 +81,7 @@ class GetRegionInstanceGroupManagerResult {
   /// [region] Optional.
   /// [resourcePolicies] Optional.
   /// [selfLink] Optional.
+  /// [serviceAccount] Optional.
   /// [standbyPolicies] Optional.
   /// [statefulDisks] Optional.
   /// [statefulExternalIps] Optional.
@@ -117,6 +119,7 @@ class GetRegionInstanceGroupManagerResult {
     this.region,
     this.resourcePolicies,
     this.selfLink,
+    this.serviceAccount,
     this.standbyPolicies,
     this.statefulDisks,
     this.statefulExternalIps,
@@ -157,6 +160,7 @@ class GetRegionInstanceGroupManagerResult {
       'region': ?region,
       'resourcePolicies': ?(() { final guardedValue = resourcePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceGroupManagerResourcePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'selfLink': ?selfLink,
+      'serviceAccount': ?serviceAccount,
       'standbyPolicies': ?(() { final guardedValue = standbyPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceGroupManagerStandbyPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'statefulDisks': ?(() { final guardedValue = statefulDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatefulDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'statefulExternalIps': ?(() { final guardedValue = statefulExternalIps; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatefulExternalIp, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -188,7 +192,7 @@ class GetRegionInstanceGroupManagerResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceFlexibilityPolicies: (() { final guardedValue = map['instanceFlexibilityPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy>(guardedValue, (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       instanceGroup: (() { final guardedValue = map['instanceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      instanceGroupManagerId: (() { final guardedValue = map['instanceGroupManagerId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      instanceGroupManagerId: (() { final guardedValue = map['instanceGroupManagerId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       instanceLifecyclePolicies: (() { final guardedValue = map['instanceLifecyclePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceLifecyclePolicy>(guardedValue, (value) => GetRegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       listManagedInstancesResults: (() { final guardedValue = map['listManagedInstancesResults']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -198,16 +202,17 @@ class GetRegionInstanceGroupManagerResult {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerResourcePolicy>(guardedValue, (value) => GetRegionInstanceGroupManagerResourcePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       standbyPolicies: (() { final guardedValue = map['standbyPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerStandbyPolicy>(guardedValue, (value) => GetRegionInstanceGroupManagerStandbyPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       statefulDisks: (() { final guardedValue = map['statefulDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulDisk>(guardedValue, (value) => GetRegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
       statefulExternalIps: (() { final guardedValue = map['statefulExternalIps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => GetRegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); })(),
       statefulInternalIps: (() { final guardedValue = map['statefulInternalIps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => GetRegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>())); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatus>(guardedValue, (value) => GetRegionInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())); })(),
       targetPools: (() { final guardedValue = map['targetPools']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       targetSizePolicies: (() { final guardedValue = map['targetSizePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => GetRegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
-      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       updatePolicies: (() { final guardedValue = map['updatePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerUpdatePolicy>(guardedValue, (value) => GetRegionInstanceGroupManagerUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceGroupManagerVersion>(guardedValue, (value) => GetRegionInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>())); })(),
       waitForInstances: (() { final guardedValue = map['waitForInstances']; if (guardedValue == null) return null; return guardedValue as bool; })(),

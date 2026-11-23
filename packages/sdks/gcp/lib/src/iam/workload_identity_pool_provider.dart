@@ -15,6 +15,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// * How-to Guides
 /// * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Iam Workload Identity Pool Provider Aws Basic
@@ -75,7 +76,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -102,7 +103,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,11 +111,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   aws = {
 ///     account_id = "999999999999"
@@ -174,6 +181,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///       aws:
 ///         accountId: '999999999999'
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Provider Aws Full
 ///
@@ -261,7 +269,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -297,7 +305,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -305,11 +313,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   display_name                       = "Name of provider"
 ///   description                        = "AWS identity pool provider for automated test"
@@ -395,6 +409,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///       aws:
 ///         accountId: '999999999999'
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Provider Github Actions
 ///
@@ -497,7 +512,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -534,7 +549,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -542,16 +557,28 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   display_name                       = "Name of provider"
 ///   description                        = "GitHub Actions identity pool provider for automated test"
 ///   disabled                           = true
-///   attribute_condition                = "    assertion.repository_owner_id == \\\"123456789\\\" &&\n    attribute.repository == \\\"gh-org/gh-repo\\\" &&\n    assertion.ref == \\\"refs/heads/main\\\" &&\n    assertion.ref_type == \\\"branch\\\"\n"
+///   attribute_condition                = <<EOT
+///     assertion.repository_owner_id == \"123456789\" &&
+///     attribute.repository == \"gh-org/gh-repo\" &&
+///     assertion.ref == \"refs/heads/main\" &&
+///     assertion.ref_type == \"branch\"
+/// EOT
+///
 ///   attribute_mapping = {
 ///     "google.subject"       = "assertion.sub"
 ///     "attribute.actor"      = "assertion.actor"
@@ -645,6 +672,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///         issuerUri: https://token.actions.githubusercontent.com
 /// ```
 ///
+///
 /// ### Iam Workload Identity Pool Provider Oidc Basic
 ///
 ///
@@ -713,7 +741,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -743,7 +771,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -751,11 +779,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -822,6 +856,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///         issuerUri: https://sts.windows.net/azure-tenant-id
 /// ```
 ///
+///
 /// ### Iam Workload Identity Pool Provider Oidc Full
 ///
 ///
@@ -831,6 +866,16 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+/// const actor = new gcp.iam.WorkloadIdentityPoolProvider("actor", {
+///     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+///     workloadIdentityPoolProviderId: "actor-prvdr",
+///     attributeMapping: {
+///         "google.subject": "assertion.sub",
+///     },
+///     oidc: {
+///         issuerUri: "https://sts.windows.net/azure-tenant-id",
+///     },
+/// });
 /// const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
 ///     workloadIdentityPoolId: pool.workloadIdentityPoolId,
 ///     workloadIdentityPoolProviderId: "example-prvdr",
@@ -853,7 +898,9 @@ import 'workload_identity_pool_provider_x509.dart';
 ///             "example.com/gcp-oidc-federation",
 ///         ],
 ///         issuerUri: "https://sts.windows.net/azure-tenant-id",
+///         discoveryUri: "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration",
 ///     },
+///     actorProviders: [actor.id],
 /// });
 /// ```
 /// ```python
@@ -861,6 +908,15 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import pulumi_gcp as gcp
 ///
 /// pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+/// actor = gcp.iam.WorkloadIdentityPoolProvider("actor",
+///     workload_identity_pool_id=pool.workload_identity_pool_id,
+///     workload_identity_pool_provider_id="actor-prvdr",
+///     attribute_mapping={
+///         "google.subject": "assertion.sub",
+///     },
+///     oidc={
+///         "issuer_uri": "https://sts.windows.net/azure-tenant-id",
+///     })
 /// example = gcp.iam.WorkloadIdentityPoolProvider("example",
 ///     workload_identity_pool_id=pool.workload_identity_pool_id,
 ///     workload_identity_pool_provider_id="example-prvdr",
@@ -883,7 +939,9 @@ import 'workload_identity_pool_provider_x509.dart';
 ///             "example.com/gcp-oidc-federation",
 ///         ],
 ///         "issuer_uri": "https://sts.windows.net/azure-tenant-id",
-///     })
+///         "discovery_uri": "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration",
+///     },
+///     actor_providers=[actor.id])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -896,6 +954,20 @@ import 'workload_identity_pool_provider_x509.dart';
 ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
 ///     {
 ///         WorkloadIdentityPoolId = "example-pool",
+///     });
+///
+///     var actor = new Gcp.Iam.WorkloadIdentityPoolProvider("actor", new()
+///     {
+///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+///         WorkloadIdentityPoolProviderId = "actor-prvdr",
+///         AttributeMapping =
+///         {
+///             { "google.subject", "assertion.sub" },
+///         },
+///         Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+///         {
+///             IssuerUri = "https://sts.windows.net/azure-tenant-id",
+///         },
 ///     });
 ///
 ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
@@ -924,6 +996,11 @@ import 'workload_identity_pool_provider_x509.dart';
 ///                 "example.com/gcp-oidc-federation",
 ///             },
 ///             IssuerUri = "https://sts.windows.net/azure-tenant-id",
+///             DiscoveryUri = "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration",
+///         },
+///         ActorProviders = new[]
+///         {
+///             actor.Id,
 ///         },
 ///     });
 ///
@@ -933,7 +1010,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -941,6 +1018,19 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
 /// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		actor, err := iam.NewWorkloadIdentityPoolProvider(ctx, "actor", &iam.WorkloadIdentityPoolProviderArgs{
+/// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+/// 			WorkloadIdentityPoolProviderId: pulumi.String("actor-prvdr"),
+/// 			AttributeMapping: pulumi.StringMap{
+/// 				"google.subject": pulumi.String("assertion.sub"),
+/// 			},
+/// 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+/// 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -962,7 +1052,11 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 					pulumi.String("https://example.com/gcp-oidc-federation"),
 /// 					pulumi.String("example.com/gcp-oidc-federation"),
 /// 				},
-/// 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+/// 				IssuerUri:    pulumi.String("https://sts.windows.net/azure-tenant-id"),
+/// 				DiscoveryUri: pulumi.String("https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration"),
+/// 			},
+/// 			ActorProviders: pulumi.StringArray{
+/// 				actor.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -973,7 +1067,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -981,11 +1075,30 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "actor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "actor-prvdr"
+///   attribute_mapping = {
+///     "google.subject" = "assertion.sub"
+///   }
+///   oidc = {
+///     issuer_uri = "https://sts.windows.net/azure-tenant-id"
+///   }
+/// }
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   display_name                       = "Name of provider"
 ///   description                        = "OIDC identity pool provider for automated test"
@@ -994,12 +1107,20 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   attribute_mapping = {
 ///     "google.subject"                  = "\"azure::\" + assertion.tid + \"::\" + assertion.sub"
 ///     "attribute.tid"                   = "assertion.tid"
-///     "attribute.managed_identity_name" = "      {\n        \\\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\\":\\\"workload1\\\",\n        \\\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\\":\\\"workload2\\\"\n      }[assertion.oid]\n"
+///     "attribute.managed_identity_name" = <<EOT
+///       {
+///         \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",
+///         \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"
+///       }[assertion.oid]
+/// EOT
+///
 ///   }
 ///   oidc = {
 ///     allowed_audiences = ["https://example.com/gcp-oidc-federation", "example.com/gcp-oidc-federation"]
 ///     issuer_uri        = "https://sts.windows.net/azure-tenant-id"
+///     discovery_uri     = "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration"
 ///   }
+///   actor_providers = [gcp_iam_workload_identity_pool_provider.actor.id]
 /// }
 /// ```
 /// ```java
@@ -1030,6 +1151,15 @@ import 'workload_identity_pool_provider_x509.dart';
 ///             .workloadIdentityPoolId("example-pool")
 ///             .build());
 ///
+///         var actor = new WorkloadIdentityPoolProvider("actor", WorkloadIdentityPoolProviderArgs.builder()
+///             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+///             .workloadIdentityPoolProviderId("actor-prvdr")
+///             .attributeMapping(Map.of("google.subject", "assertion.sub"))
+///             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
+///                 .issuerUri("https://sts.windows.net/azure-tenant-id")
+///                 .build())
+///             .build());
+///
 ///         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
 ///             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
 ///             .workloadIdentityPoolProviderId("example-prvdr")
@@ -1052,7 +1182,9 @@ import 'workload_identity_pool_provider_x509.dart';
 ///                     "https://example.com/gcp-oidc-federation",
 ///                     "example.com/gcp-oidc-federation")
 ///                 .issuerUri("https://sts.windows.net/azure-tenant-id")
+///                 .discoveryUri("https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration")
 ///                 .build())
+///             .actorProviders(actor.id())
 ///             .build());
 ///
 ///     }
@@ -1064,6 +1196,15 @@ import 'workload_identity_pool_provider_x509.dart';
 ///     type: gcp:iam:WorkloadIdentityPool
 ///     properties:
 ///       workloadIdentityPoolId: example-pool
+///   actor:
+///     type: gcp:iam:WorkloadIdentityPoolProvider
+///     properties:
+///       workloadIdentityPoolId: ${pool.workloadIdentityPoolId}
+///       workloadIdentityPoolProviderId: actor-prvdr
+///       attributeMapping:
+///         google.subject: assertion.sub
+///       oidc:
+///         issuerUri: https://sts.windows.net/azure-tenant-id
 ///   example:
 ///     type: gcp:iam:WorkloadIdentityPoolProvider
 ///     properties:
@@ -1086,7 +1227,11 @@ import 'workload_identity_pool_provider_x509.dart';
 ///           - https://example.com/gcp-oidc-federation
 ///           - example.com/gcp-oidc-federation
 ///         issuerUri: https://sts.windows.net/azure-tenant-id
+///         discoveryUri: https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration
+///       actorProviders:
+///         - ${actor.id}
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Provider Saml Basic
 ///
@@ -1170,7 +1315,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1209,7 +1354,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1220,11 +1365,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject"        = "assertion.arn"
@@ -1307,6 +1458,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///               input: test-fixtures/metadata.xml
 ///             return: result
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Provider Saml Full
 ///
@@ -1399,7 +1551,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1441,7 +1593,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1452,11 +1604,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   display_name                       = "Name of provider"
 ///   description                        = "SAML 2.0 identity pool provider for automated test"
@@ -1548,6 +1706,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///               input: test-fixtures/metadata.xml
 ///             return: result
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Provider Oidc Upload Key
 ///
@@ -1663,7 +1822,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1704,7 +1863,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1712,11 +1871,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   display_name                       = "Name of provider"
 ///   description                        = "OIDC identity pool provider for automated test"
@@ -1725,7 +1890,13 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   attribute_mapping = {
 ///     "google.subject"                  = "\"azure::\" + assertion.tid + \"::\" + assertion.sub"
 ///     "attribute.tid"                   = "assertion.tid"
-///     "attribute.managed_identity_name" = "      {\n        \\\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\\":\\\"workload1\\\",\n        \\\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\\":\\\"workload2\\\"\n      }[assertion.oid]\n"
+///     "attribute.managed_identity_name" = <<EOT
+///       {
+///         \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",
+///         \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"
+///       }[assertion.oid]
+/// EOT
+///
 ///   }
 ///   oidc = {
 ///     allowed_audiences = ["https://example.com/gcp-oidc-federation", "example.com/gcp-oidc-federation"]
@@ -1822,6 +1993,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///         jwksJson: '{"keys":[{"kty":"RSA","alg":"RS256","kid":"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA","use":"sig","e":"AQAB","n":"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw"}]}'
 /// ```
 ///
+///
 /// ### Iam Workload Identity Pool Provider X509 Basic
 ///
 ///
@@ -1915,7 +2087,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1958,7 +2130,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1969,11 +2141,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.subject.dn.cn"
@@ -1981,7 +2159,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   x509 = {
 ///     trust_store = {
 ///       trust_anchors = [{
-///         "pemCertificate" = file("test-fixtures/trust_anchor.pem")
+///         pem_certificate = file("test-fixtures/trust_anchor.pem")
 ///       }]
 ///     }
 ///   }
@@ -2060,6 +2238,7 @@ import 'workload_identity_pool_provider_x509.dart';
 ///                     input: test-fixtures/trust_anchor.pem
 ///                   return: result
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Provider X509 Full
 ///
@@ -2181,7 +2360,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2238,7 +2417,7 @@ import 'workload_identity_pool_provider_x509.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2249,11 +2428,17 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
-/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
-///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id          = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_provider_id = "example-prvdr"
 ///   display_name                       = "Name of provider"
 ///   description                        = "X.509 identity pool provider for automated test"
@@ -2264,10 +2449,10 @@ import 'workload_identity_pool_provider_x509.dart';
 ///   x509 = {
 ///     trust_store = {
 ///       trust_anchors = [{
-///         "pemCertificate" = file("test-fixtures/trust_anchor.pem")
+///         pem_certificate = file("test-fixtures/trust_anchor.pem")
 ///       }]
 ///       intermediate_cas = [{
-///         "pemCertificate" = file("test-fixtures/intermediate_ca.pem")
+///         pem_certificate = file("test-fixtures/intermediate_ca.pem")
 ///       }]
 ///     }
 ///   }
@@ -2384,6 +2569,16 @@ import 'workload_identity_pool_provider_x509.dart';
 /// $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
 /// ```
 class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
+  /// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+  /// that are authorized to issue actor tokens for this provider. An actor token
+  /// represents the identity of the acting party to whom authority is delegated. At
+  /// most 3 actor providers can be specified. Actor providers are only supported for
+  /// OIDC providers.
+  /// Each entry must be formatted as
+  /// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+  /// where `{project}` matches the `project` configured on this resource (for example,
+  /// by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+  late final pulumi.Output<List<String>?> actorProviders;
   /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// plain text, to restrict what otherwise valid authentication credentials issued by the
   /// provider should not be accepted.
@@ -2504,8 +2699,9 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
+    actorProviders = registerOutput<List<String>?>('actorProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2547,6 +2743,7 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    actorProviders = registerOutput<List<String>?>('actorProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2573,6 +2770,7 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
+    actorProviders = registerOutput<List<String>?>('actorProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });

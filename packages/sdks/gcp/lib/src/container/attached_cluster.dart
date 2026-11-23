@@ -22,6 +22,7 @@ import 'attached_cluster_workload_identity_config.dart';
 /// * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
 /// * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Container Attached Cluster Basic
@@ -113,8 +114,8 @@ import 'attached_cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -153,7 +154,7 @@ import 'attached_cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -161,25 +162,28 @@ import 'attached_cluster_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_container_getattachedversions" "versions" {
+/// data "gcp_container_attached_versions" "versions" {
 ///   location = "us-west1"
-///   project  = data.gcp_organizations_getproject.project.project_id
+///   project  = data.gcp_organizations_project.project.project_id
 /// }
 ///
-/// resource "gcp_container_attachedcluster" "primary" {
+/// resource "gcp_container_attached_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "basic"
 ///   location     = "us-west1"
-///   project      = data.gcp_organizations_getproject.project.project_id
+///   project      = data.gcp_organizations_project.project.project_id
 ///   description  = "Test cluster"
 ///   distribution = "aks"
 ///   oidc_config = {
 ///     issuer_url = "https://oidc.issuer.url"
 ///   }
-///   platform_version = data.gcp_container_getattachedversions.versions.valid_versions[0]
+///   platform_version = data.gcp_container_attached_versions.versions.valid_versions[0]
 ///   fleet = {
-///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///     project ="projects/${data.gcp_organizations_project.project.number}"
 ///   }
 /// }
 /// ```
@@ -263,6 +267,7 @@ import 'attached_cluster_workload_identity_config.dart';
 ///         location: us-west1
 ///         project: ${project.projectId}
 /// ```
+///
 ///
 /// ### Container Attached Cluster Full
 ///
@@ -481,8 +486,8 @@ import 'attached_cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -564,7 +569,7 @@ import 'attached_cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -575,16 +580,19 @@ import 'attached_cluster_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_container_getattachedversions" "versions" {
+/// data "gcp_container_attached_versions" "versions" {
 ///   location = "us-west1"
-///   project  = data.gcp_organizations_getproject.project.project_id
+///   project  = data.gcp_organizations_project.project.project_id
 /// }
 ///
-/// resource "gcp_container_attachedcluster" "primary" {
+/// resource "gcp_container_attached_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "basic"
-///   project      = data.gcp_organizations_getproject.project.project_id
+///   project      = data.gcp_organizations_project.project.project_id
 ///   location     = "us-west1"
 ///   description  = "Test cluster"
 ///   distribution = "aks"
@@ -599,9 +607,9 @@ import 'attached_cluster_workload_identity_config.dart';
 ///     issuer_url = "https://oidc.issuer.url"
 ///     jwks       = base64encode("{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}")
 ///   }
-///   platform_version = data.gcp_container_getattachedversions.versions.valid_versions[0]
+///   platform_version = data.gcp_container_attached_versions.versions.valid_versions[0]
 ///   fleet = {
-///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///     project ="projects/${data.gcp_organizations_project.project.number}"
 ///   }
 ///   logging_config = {
 ///     component_config = {
@@ -777,6 +785,7 @@ import 'attached_cluster_workload_identity_config.dart';
 ///         project: ${project.projectId}
 /// ```
 ///
+///
 /// ### Container Attached Cluster Ignore Errors
 ///
 ///
@@ -869,8 +878,8 @@ import 'attached_cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -910,7 +919,7 @@ import 'attached_cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -918,25 +927,28 @@ import 'attached_cluster_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_container_getattachedversions" "versions" {
+/// data "gcp_container_attached_versions" "versions" {
 ///   location = "us-west1"
-///   project  = data.gcp_organizations_getproject.project.project_id
+///   project  = data.gcp_organizations_project.project.project_id
 /// }
 ///
-/// resource "gcp_container_attachedcluster" "primary" {
+/// resource "gcp_container_attached_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "basic"
 ///   location     = "us-west1"
-///   project      = data.gcp_organizations_getproject.project.project_id
+///   project      = data.gcp_organizations_project.project.project_id
 ///   description  = "Test cluster"
 ///   distribution = "aks"
 ///   oidc_config = {
 ///     issuer_url = "https://oidc.issuer.url"
 ///   }
-///   platform_version = data.gcp_container_getattachedversions.versions.valid_versions[0]
+///   platform_version = data.gcp_container_attached_versions.versions.valid_versions[0]
 ///   fleet = {
-///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///     project ="projects/${data.gcp_organizations_project.project.number}"
 ///   }
 ///   deletion_policy = "DELETE_IGNORE_ERRORS"
 /// }
@@ -1151,7 +1163,7 @@ class AttachedCluster extends pulumi.CustomResource {
           'gcp:container/attachedCluster:AttachedCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AttachedClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });

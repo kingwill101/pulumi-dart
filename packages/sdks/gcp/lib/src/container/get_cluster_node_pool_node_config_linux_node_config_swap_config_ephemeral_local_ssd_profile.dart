@@ -25,8 +25,8 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProf
 
   factory GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile(
-      swapSizeGib: pulumi.Input.fromValue((map['swapSizeGib'] as num).toInt()),
-      swapSizePercent: pulumi.Input.fromValue((map['swapSizePercent'] as num).toInt()),
+      swapSizeGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['swapSizeGib'])),
+      swapSizePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['swapSizePercent'])),
     );
   }
 }

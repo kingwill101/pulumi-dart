@@ -22,6 +22,7 @@ import 'vmware_cluster_vcenter.dart';
 ///
 /// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.vmwareClusters)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Gkeonprem Vmware Cluster Basic
@@ -200,7 +201,7 @@ import 'vmware_cluster_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -264,7 +265,7 @@ import 'vmware_cluster_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -272,7 +273,10 @@ import 'vmware_cluster_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwarecluster" "cluster-basic" {
+/// resource "gcp_gkeonprem_v_mware_cluster" "cluster-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "cluster-basic"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -298,15 +302,15 @@ import 'vmware_cluster_vcenter.dart';
 ///     }
 ///     metal_lb_config = {
 ///       address_pools = [{
-///         "pool"          = "ingress-ip"
-///         "manualAssign"  = "true"
-///         "addresses"     = ["10.251.135.19"]
-///         "avoidBuggyIps" = true
+///         pool            = "ingress-ip"
+///         manual_assign   = "true"
+///         addresses       = ["10.251.135.19"]
+///         avoid_buggy_ips = true
 ///         }, {
-///         "pool"          = "lb-test-ip"
-///         "manualAssign"  = "true"
-///         "addresses"     = ["10.251.135.19"]
-///         "avoidBuggyIps" = true
+///         pool            = "lb-test-ip"
+///         manual_assign   = "true"
+///         addresses       = ["10.251.135.19"]
+///         avoid_buggy_ips = true
 ///       }]
 ///     }
 ///   }
@@ -425,6 +429,7 @@ import 'vmware_cluster_vcenter.dart';
 ///                 - 10.251.135.19
 ///               avoidBuggyIps: true
 /// ```
+///
 ///
 /// ### Gkeonprem Vmware Cluster F5lb
 ///
@@ -684,7 +689,7 @@ import 'vmware_cluster_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -773,7 +778,7 @@ import 'vmware_cluster_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -781,7 +786,10 @@ import 'vmware_cluster_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwarecluster" "cluster-f5lb" {
+/// resource "gcp_gkeonprem_v_mware_cluster" "cluster-f5lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "cluster-f5lb"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -797,8 +805,8 @@ import 'vmware_cluster_vcenter.dart';
 ///     control_plane_v2_config = {
 ///       control_plane_ip_block = {
 ///         ips = [{
-///           "hostname" = "test-hostname"
-///           "ip"       = "10.0.0.1"
+///           hostname = "test-hostname"
+///           ip       = "10.0.0.1"
 ///         }]
 ///         netmask = "10.0.0.1/32"
 ///         gateway = "test-gateway"
@@ -835,7 +843,7 @@ import 'vmware_cluster_vcenter.dart';
 ///   disable_bundled_ingress = true
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "testuser@gmail.com"
+///       username = "testuser@gmail.com"
 ///     }]
 ///   }
 ///   anti_affinity_groups = {
@@ -1015,6 +1023,7 @@ import 'vmware_cluster_vcenter.dart';
 ///       storage:
 ///         vsphereCsiDisabled: true
 /// ```
+///
 ///
 /// ### Gkeonprem Vmware Cluster Manuallb
 ///
@@ -1379,7 +1388,7 @@ import 'vmware_cluster_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1504,7 +1513,7 @@ import 'vmware_cluster_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1512,7 +1521,10 @@ import 'vmware_cluster_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwarecluster" "cluster-manuallb" {
+/// resource "gcp_gkeonprem_v_mware_cluster" "cluster-manuallb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "cluster-manuallb"
 ///   skip_validations         = ["WORKSTATION", "CONFIG", "DOCKER"]
 ///   location                 = "us-west1"
@@ -1530,20 +1542,20 @@ import 'vmware_cluster_vcenter.dart';
 ///     }
 ///     static_ip_config = {
 ///       ip_blocks = [{
-///         "netmask" = "255.255.252.0"
-///         "gateway" = "10.251.31.254"
-///         "ips" = [{
-///           "ip"       = "10.251.30.153"
-///           "hostname" = "test-hostname1"
+///         netmask = "255.255.252.0"
+///         gateway = "10.251.31.254"
+///         ips = [{
+///           ip       = "10.251.30.153"
+///           hostname = "test-hostname1"
 ///           }, {
-///           "ip"       = "10.251.31.206"
-///           "hostname" = "test-hostname2"
+///           ip       = "10.251.31.206"
+///           hostname = "test-hostname2"
 ///           }, {
-///           "ip"       = "10.251.31.193"
-///           "hostname" = "test-hostname3"
+///           ip       = "10.251.31.193"
+///           hostname = "test-hostname3"
 ///           }, {
-///           "ip"       = "10.251.30.230"
-///           "hostname" = "test-hostname4"
+///           ip       = "10.251.30.230"
+///           hostname = "test-hostname4"
 ///         }]
 ///       }]
 ///     }
@@ -1590,7 +1602,7 @@ import 'vmware_cluster_vcenter.dart';
 ///   }
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "testuser@gmail.com"
+///       username = "testuser@gmail.com"
 ///     }]
 ///   }
 ///   anti_affinity_groups = {
@@ -1973,7 +1985,7 @@ class VMwareCluster extends pulumi.CustomResource {
           'gcp:gkeonprem/vMwareCluster:VMwareCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     adminClusterMembership = registerOutput<String>('adminClusterMembership');
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

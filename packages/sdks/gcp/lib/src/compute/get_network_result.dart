@@ -73,7 +73,7 @@ class GetNetworkResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       internalIpv6Range: (() { final guardedValue = map['internalIpv6Range']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       numericId: (() { final guardedValue = map['numericId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),

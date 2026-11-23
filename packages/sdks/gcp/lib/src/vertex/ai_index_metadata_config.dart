@@ -61,8 +61,8 @@ class AiIndexMetadataConfig {
   factory AiIndexMetadataConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfig(
       algorithmConfig: (() { final guardedValue = map['algorithmConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiIndexMetadataConfigAlgorithmConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      approximateNeighborsCount: (() { final guardedValue = map['approximateNeighborsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dimensions: pulumi.Input.fromValue((map['dimensions'] as num).toInt()),
+      approximateNeighborsCount: (() { final guardedValue = map['approximateNeighborsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dimensions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dimensions'])),
       distanceMeasureType: (() { final guardedValue = map['distanceMeasureType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       featureNormType: (() { final guardedValue = map['featureNormType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shardSize: (() { final guardedValue = map['shardSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

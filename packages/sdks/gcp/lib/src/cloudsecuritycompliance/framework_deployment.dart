@@ -13,6 +13,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///
 /// * [API documentation](https://docs.cloud.google.com/security-command-center/docs/reference/cloudsecuritycompliance/rest/v1/organizations.locations.frameworkDeployments)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudsecuritycompliance Framework Deployment Org Basic
@@ -23,72 +24,128 @@ import 'framework_deployment_target_resource_config.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const example = new gcp.cloudsecuritycompliance.Framework("example", {
+/// const example = new gcp.cloudsecuritycompliance.CloudControl("example", {
+///     parent: "organizations/123456789",
+///     location: "global",
+///     cloudControlId: "example-cloudcontrol",
+///     displayName: "TF test CloudControl Name",
+///     description: "A test cloud control for security compliance",
+///     categories: ["CC_CATEGORY_INFRASTRUCTURE"],
+///     severity: "HIGH",
+///     findingCategory: "SECURITY_POLICY",
+///     remediationSteps: "Review and update the security configuration according to best practices.",
+///     supportedCloudProviders: ["GCP"],
+///     rules: [{
+///         description: "Ensure compute instances have secure boot enabled",
+///         ruleActionTypes: ["RULE_ACTION_TYPE_DETECTIVE"],
+///         celExpression: {
+///             expression: "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+///             resourceTypesValues: {
+///                 values: ["compute.googleapis.com/Instance"],
+///             },
+///         },
+///     }],
+///     parameterSpecs: [
+///         {
+///             name: "enabled",
+///             valueType: "BOOLEAN",
+///             isRequired: true,
+///         },
+///         {
+///             name: "regions",
+///             valueType: "STRINGLIST",
+///             isRequired: true,
+///         },
+///         {
+///             name: "location",
+///             valueType: "STRING",
+///             isRequired: true,
+///         },
+///         {
+///             name: "oneof-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "test-oneof",
+///                     valueType: "STRING",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-test-oneof",
+///                     valueType: "STRING",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///         {
+///             name: "bool-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "bool-oneof",
+///                     valueType: "BOOLEAN",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-bool-oneof",
+///                     valueType: "BOOLEAN",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///         {
+///             name: "number-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "number-oneof",
+///                     valueType: "NUMBER",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-number-oneof",
+///                     valueType: "NUMBER",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///         {
+///             name: "string-list-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "string-list-oneof",
+///                     valueType: "STRINGLIST",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-string-list-oneof",
+///                     valueType: "STRINGLIST",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///     ],
+/// });
+/// const exampleFramework = new gcp.cloudsecuritycompliance.Framework("example", {
 ///     parent: "organizations/123456789",
 ///     location: "global",
 ///     frameworkId: "example-framework",
 ///     displayName: "Terraform Framework Name",
 ///     description: "An Terraform description for the framework",
 ///     cloudControlDetails: [{
-///         name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///         majorRevisionId: "2",
-///         parameters: [
-///             {
-///                 name: "location",
-///                 parameterValue: {
-///                     stringValue: "us-central1",
-///                 },
+///         name: example.name,
+///         majorRevisionId: "1",
+///         parameters: [{
+///             name: "enabled",
+///             parameterValue: {
+///                 boolValue: true,
 ///             },
-///             {
-///                 name: "oneof-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "test-oneof",
-///                         parameterValue: {
-///                             stringValue: "test-value",
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 name: "bool-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "bool-oneof",
-///                         parameterValue: {
-///                             boolValue: true,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 name: "number-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "number-oneof",
-///                         parameterValue: {
-///                             numberValue: 123.45,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 name: "string-list-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "string-list-oneof",
-///                         parameterValue: {
-///                             stringListValue: {
-///                                 values: [
-///                                     "value1",
-///                                     "value2",
-///                                 ],
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
-///         ],
+///         }],
 ///     }],
 /// });
 /// const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
@@ -97,7 +154,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///     frameworkDeploymentId: "example-deployment",
 ///     description: "A framework deployment for cloud security compliance",
 ///     framework: {
-///         framework: example.name,
+///         framework: exampleFramework.name,
 ///         majorRevisionId: "1",
 ///     },
 ///     targetResourceConfig: {
@@ -106,8 +163,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///     cloudControlMetadatas: [{
 ///         enforcementMode: "DETECTIVE",
 ///         cloudControlDetails: {
-///             name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///             majorRevisionId: "2",
+///             name: example.name,
+///             majorRevisionId: "1",
 ///             parameters: [
 ///                 {
 ///                     name: "enabled",
@@ -191,72 +248,127 @@ import 'framework_deployment_target_resource_config.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// example = gcp.cloudsecuritycompliance.Framework("example",
+/// example = gcp.cloudsecuritycompliance.CloudControl("example",
+///     parent="organizations/123456789",
+///     location="global",
+///     cloud_control_id="example-cloudcontrol",
+///     display_name="TF test CloudControl Name",
+///     description="A test cloud control for security compliance",
+///     categories=["CC_CATEGORY_INFRASTRUCTURE"],
+///     severity="HIGH",
+///     finding_category="SECURITY_POLICY",
+///     remediation_steps="Review and update the security configuration according to best practices.",
+///     supported_cloud_providers=["GCP"],
+///     rules=[{
+///         "description": "Ensure compute instances have secure boot enabled",
+///         "rule_action_types": ["RULE_ACTION_TYPE_DETECTIVE"],
+///         "cel_expression": {
+///             "expression": "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+///             "resource_types_values": {
+///                 "values": ["compute.googleapis.com/Instance"],
+///             },
+///         },
+///     }],
+///     parameter_specs=[
+///         {
+///             "name": "enabled",
+///             "value_type": "BOOLEAN",
+///             "is_required": True,
+///         },
+///         {
+///             "name": "regions",
+///             "value_type": "STRINGLIST",
+///             "is_required": True,
+///         },
+///         {
+///             "name": "location",
+///             "value_type": "STRING",
+///             "is_required": True,
+///         },
+///         {
+///             "name": "oneof-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "test-oneof",
+///                     "value_type": "STRING",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-test-oneof",
+///                     "value_type": "STRING",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///         {
+///             "name": "bool-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "bool-oneof",
+///                     "value_type": "BOOLEAN",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-bool-oneof",
+///                     "value_type": "BOOLEAN",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///         {
+///             "name": "number-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "number-oneof",
+///                     "value_type": "NUMBER",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-number-oneof",
+///                     "value_type": "NUMBER",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///         {
+///             "name": "string-list-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "string-list-oneof",
+///                     "value_type": "STRINGLIST",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-string-list-oneof",
+///                     "value_type": "STRINGLIST",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///     ])
+/// example_framework = gcp.cloudsecuritycompliance.Framework("example",
 ///     parent="organizations/123456789",
 ///     location="global",
 ///     framework_id="example-framework",
 ///     display_name="Terraform Framework Name",
 ///     description="An Terraform description for the framework",
 ///     cloud_control_details=[{
-///         "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///         "major_revision_id": "2",
-///         "parameters": [
-///             {
-///                 "name": "location",
-///                 "parameter_value": {
-///                     "string_value": "us-central1",
-///                 },
+///         "name": example.name,
+///         "major_revision_id": "1",
+///         "parameters": [{
+///             "name": "enabled",
+///             "parameter_value": {
+///                 "bool_value": True,
 ///             },
-///             {
-///                 "name": "oneof-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "test-oneof",
-///                         "parameter_value": {
-///                             "string_value": "test-value",
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 "name": "bool-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "bool-oneof",
-///                         "parameter_value": {
-///                             "bool_value": True,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 "name": "number-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "number-oneof",
-///                         "parameter_value": {
-///                             "number_value": 123.45,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 "name": "string-list-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "string-list-oneof",
-///                         "parameter_value": {
-///                             "string_list_value": {
-///                                 "values": [
-///                                     "value1",
-///                                     "value2",
-///                                 ],
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
-///         ],
+///         }],
 ///     }])
 /// example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
 ///     parent="organizations/123456789",
@@ -264,7 +376,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///     framework_deployment_id="example-deployment",
 ///     description="A framework deployment for cloud security compliance",
 ///     framework={
-///         "framework": example.name,
+///         "framework": example_framework.name,
 ///         "major_revision_id": "1",
 ///     },
 ///     target_resource_config={
@@ -273,8 +385,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///     cloud_control_metadatas=[{
 ///         "enforcement_mode": "DETECTIVE",
 ///         "cloud_control_details": {
-///             "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///             "major_revision_id": "2",
+///             "name": example.name,
+///             "major_revision_id": "1",
 ///             "parameters": [
 ///                 {
 ///                     "name": "enabled",
@@ -361,7 +473,154 @@ import 'framework_deployment_target_resource_config.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+///     var example = new Gcp.CloudSecurityCompliance.CloudControl("example", new()
+///     {
+///         Parent = "organizations/123456789",
+///         Location = "global",
+///         CloudControlId = "example-cloudcontrol",
+///         DisplayName = "TF test CloudControl Name",
+///         Description = "A test cloud control for security compliance",
+///         Categories = new[]
+///         {
+///             "CC_CATEGORY_INFRASTRUCTURE",
+///         },
+///         Severity = "HIGH",
+///         FindingCategory = "SECURITY_POLICY",
+///         RemediationSteps = "Review and update the security configuration according to best practices.",
+///         SupportedCloudProviders = new[]
+///         {
+///             "GCP",
+///         },
+///         Rules = new[]
+///         {
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleArgs
+///             {
+///                 Description = "Ensure compute instances have secure boot enabled",
+///                 RuleActionTypes = new[]
+///                 {
+///                     "RULE_ACTION_TYPE_DETECTIVE",
+///                 },
+///                 CelExpression = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionArgs
+///                 {
+///                     Expression = "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+///                     ResourceTypesValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs
+///                     {
+///                         Values = new[]
+///                         {
+///                             "compute.googleapis.com/Instance",
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///         ParameterSpecs = new[]
+///         {
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "enabled",
+///                 ValueType = "BOOLEAN",
+///                 IsRequired = true,
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "regions",
+///                 ValueType = "STRINGLIST",
+///                 IsRequired = true,
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "location",
+///                 ValueType = "STRING",
+///                 IsRequired = true,
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "oneof-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "test-oneof",
+///                         ValueType = "STRING",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-test-oneof",
+///                         ValueType = "STRING",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "bool-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "bool-oneof",
+///                         ValueType = "BOOLEAN",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-bool-oneof",
+///                         ValueType = "BOOLEAN",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "number-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "number-oneof",
+///                         ValueType = "NUMBER",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-number-oneof",
+///                         ValueType = "NUMBER",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "string-list-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "string-list-oneof",
+///                         ValueType = "STRINGLIST",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-string-list-oneof",
+///                         ValueType = "STRINGLIST",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var exampleFramework = new Gcp.CloudSecurityCompliance.Framework("example", new()
 ///     {
 ///         Parent = "organizations/123456789",
 ///         Location = "global",
@@ -372,83 +631,16 @@ import 'framework_deployment_target_resource_config.dart';
 ///         {
 ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
 ///             {
-///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///                 MajorRevisionId = "2",
+///                 Name = example.Name,
+///                 MajorRevisionId = "1",
 ///                 Parameters = new[]
 ///                 {
 ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
 ///                     {
-///                         Name = "location",
+///                         Name = "enabled",
 ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
 ///                         {
-///                             StringValue = "us-central1",
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "oneof-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "test-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     StringValue = "test-value",
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "bool-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "bool-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     BoolValue = true,
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "number-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "number-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     NumberValue = 123.45,
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "string-list-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "string-list-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs
-///                                     {
-///                                         Values = new[]
-///                                         {
-///                                             "value1",
-///                                             "value2",
-///                                         },
-///                                     },
-///                                 },
-///                             },
+///                             BoolValue = true,
 ///                         },
 ///                     },
 ///                 },
@@ -464,7 +656,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///         Description = "A framework deployment for cloud security compliance",
 ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
 ///         {
-///             Framework = example.Name,
+///             Framework = exampleFramework.Name,
 ///             MajorRevisionId = "1",
 ///         },
 ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
@@ -478,8 +670,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///                 EnforcementMode = "DETECTIVE",
 ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
 ///                 {
-///                     Name = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///                     MajorRevisionId = "2",
+///                     Name = example.Name,
+///                     MajorRevisionId = "1",
 ///                     Parameters = new[]
 ///                     {
 ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
@@ -593,13 +785,133 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+/// 		example, err := cloudsecuritycompliance.NewCloudControl(ctx, "example", &cloudsecuritycompliance.CloudControlArgs{
+/// 			Parent:         pulumi.String("organizations/123456789"),
+/// 			Location:       pulumi.String("global"),
+/// 			CloudControlId: pulumi.String("example-cloudcontrol"),
+/// 			DisplayName:    pulumi.String("TF test CloudControl Name"),
+/// 			Description:    pulumi.String("A test cloud control for security compliance"),
+/// 			Categories: pulumi.StringArray{
+/// 				pulumi.String("CC_CATEGORY_INFRASTRUCTURE"),
+/// 			},
+/// 			Severity:         pulumi.String("HIGH"),
+/// 			FindingCategory:  pulumi.String("SECURITY_POLICY"),
+/// 			RemediationSteps: pulumi.String("Review and update the security configuration according to best practices."),
+/// 			SupportedCloudProviders: pulumi.StringArray{
+/// 				pulumi.String("GCP"),
+/// 			},
+/// 			Rules: cloudsecuritycompliance.CloudControlRuleArray{
+/// 				&cloudsecuritycompliance.CloudControlRuleArgs{
+/// 					Description: pulumi.String("Ensure compute instances have secure boot enabled"),
+/// 					RuleActionTypes: pulumi.StringArray{
+/// 						pulumi.String("RULE_ACTION_TYPE_DETECTIVE"),
+/// 					},
+/// 					CelExpression: &cloudsecuritycompliance.CloudControlRuleCelExpressionArgs{
+/// 						Expression: pulumi.String("resource.data.shieldedInstanceConfig.enableSecureBoot == true"),
+/// 						ResourceTypesValues: &cloudsecuritycompliance.CloudControlRuleCelExpressionResourceTypesValuesArgs{
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String("compute.googleapis.com/Instance"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			ParameterSpecs: cloudsecuritycompliance.CloudControlParameterSpecArray{
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("enabled"),
+/// 					ValueType:  pulumi.String("BOOLEAN"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("regions"),
+/// 					ValueType:  pulumi.String("STRINGLIST"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("location"),
+/// 					ValueType:  pulumi.String("STRING"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("oneof-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("test-oneof"),
+/// 							ValueType:  pulumi.String("STRING"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-test-oneof"),
+/// 							ValueType:  pulumi.String("STRING"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("bool-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("bool-oneof"),
+/// 							ValueType:  pulumi.String("BOOLEAN"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-bool-oneof"),
+/// 							ValueType:  pulumi.String("BOOLEAN"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("number-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("number-oneof"),
+/// 							ValueType:  pulumi.String("NUMBER"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-number-oneof"),
+/// 							ValueType:  pulumi.String("NUMBER"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("string-list-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("string-list-oneof"),
+/// 							ValueType:  pulumi.String("STRINGLIST"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-string-list-oneof"),
+/// 							ValueType:  pulumi.String("STRINGLIST"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleFramework, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
 /// 			Parent:      pulumi.String("organizations/123456789"),
 /// 			Location:    pulumi.String("global"),
 /// 			FrameworkId: pulumi.String("example-framework"),
@@ -607,62 +919,13 @@ import 'framework_deployment_target_resource_config.dart';
 /// 			Description: pulumi.String("An Terraform description for the framework"),
 /// 			CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
 /// 				&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
-/// 					Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
-/// 					MajorRevisionId: pulumi.String("2"),
+/// 					Name:            example.Name,
+/// 					MajorRevisionId: pulumi.String("1"),
 /// 					Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 /// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("location"),
+/// 							Name: pulumi.String("enabled"),
 /// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								StringValue: pulumi.String("us-central1"),
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("oneof-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("test-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										StringValue: pulumi.String("test-value"),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("bool-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("bool-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										BoolValue: pulumi.Bool(true),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("number-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("number-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										NumberValue: pulumi.Float64(123.45),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("string-list-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("string-list-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{
-/// 											Values: pulumi.StringArray{
-/// 												pulumi.String("value1"),
-/// 												pulumi.String("value2"),
-/// 											},
-/// 										},
-/// 									},
-/// 								},
+/// 								BoolValue: pulumi.Bool(true),
 /// 							},
 /// 						},
 /// 					},
@@ -678,7 +941,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// 			FrameworkDeploymentId: pulumi.String("example-deployment"),
 /// 			Description:           pulumi.String("A framework deployment for cloud security compliance"),
 /// 			Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
-/// 				Framework:       example.Name,
+/// 				Framework:       exampleFramework.Name,
 /// 				MajorRevisionId: pulumi.String("1"),
 /// 			},
 /// 			TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
@@ -688,8 +951,8 @@ import 'framework_deployment_target_resource_config.dart';
 /// 				&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
 /// 					EnforcementMode: pulumi.String("DETECTIVE"),
 /// 					CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
-/// 						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
-/// 						MajorRevisionId: pulumi.String("2"),
+/// 						Name:            example.Name,
+/// 						MajorRevisionId: pulumi.String("1"),
 /// 						Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
 /// 							&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
 /// 								Name: pulumi.String("enabled"),
@@ -777,7 +1040,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -785,70 +1048,130 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
+/// resource "gcp_cloudsecuritycompliance_cloud_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                    = "organizations/123456789"
+///   location                  = "global"
+///   cloud_control_id          = "example-cloudcontrol"
+///   display_name              = "TF test CloudControl Name"
+///   description               = "A test cloud control for security compliance"
+///   categories                = ["CC_CATEGORY_INFRASTRUCTURE"]
+///   severity                  = "HIGH"
+///   finding_category          = "SECURITY_POLICY"
+///   remediation_steps         = "Review and update the security configuration according to best practices."
+///   supported_cloud_providers = ["GCP"]
+///   rules {
+///     description       = "Ensure compute instances have secure boot enabled"
+///     rule_action_types = ["RULE_ACTION_TYPE_DETECTIVE"]
+///     cel_expression = {
+///       expression = "resource.data.shieldedInstanceConfig.enableSecureBoot == true"
+///       resource_types_values = {
+///         values = ["compute.googleapis.com/Instance"]
+///       }
+///     }
+///   }
+///   parameter_specs {
+///     name        = "enabled"
+///     value_type  = "BOOLEAN"
+///     is_required = true
+///   }
+///   parameter_specs {
+///     name        = "regions"
+///     value_type  = "STRINGLIST"
+///     is_required = true
+///   }
+///   parameter_specs {
+///     name        = "location"
+///     value_type  = "STRING"
+///     is_required = true
+///   }
+///   parameter_specs {
+///     name        = "oneof-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "test-oneof"
+///       value_type  = "STRING"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-test-oneof"
+///       value_type  = "STRING"
+///       is_required = true
+///     }
+///   }
+///   parameter_specs {
+///     name        = "bool-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "bool-oneof"
+///       value_type  = "BOOLEAN"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-bool-oneof"
+///       value_type  = "BOOLEAN"
+///       is_required = true
+///     }
+///   }
+///   parameter_specs {
+///     name        = "number-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "number-oneof"
+///       value_type  = "NUMBER"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-number-oneof"
+///       value_type  = "NUMBER"
+///       is_required = true
+///     }
+///   }
+///   parameter_specs {
+///     name        = "string-list-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "string-list-oneof"
+///       value_type  = "STRINGLIST"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-string-list-oneof"
+///       value_type  = "STRINGLIST"
+///       is_required = true
+///     }
+///   }
+/// }
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
 ///   display_name = "Terraform Framework Name"
 ///   description  = "An Terraform description for the framework"
 ///   cloud_control_details {
-///     name              = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
-///     major_revision_id = "2"
+///     name              = gcp_cloudsecuritycompliance_cloud_control.example.name
+///     major_revision_id = "1"
 ///     parameters {
-///       name = "location"
+///       name = "enabled"
 ///       parameter_value = {
-///         string_value = "us-central1"
-///       }
-///     }
-///     parameters {
-///       name = "oneof-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "test-oneof"
-///           parameter_value = {
-///             string_value = "test-value"
-///           }
-///         }
-///       }
-///     }
-///     parameters {
-///       name = "bool-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "bool-oneof"
-///           parameter_value = {
-///             bool_value = true
-///           }
-///         }
-///       }
-///     }
-///     parameters {
-///       name = "number-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "number-oneof"
-///           parameter_value = {
-///             number_value = 123.45
-///           }
-///         }
-///       }
-///     }
-///     parameters {
-///       name = "string-list-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "string-list-oneof"
-///           parameter_value = {
-///             string_list_value = {
-///               values = ["value1", "value2"]
-///             }
-///           }
-///         }
+///         bool_value = true
 ///       }
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent                  = "organizations/123456789"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
@@ -863,63 +1186,63 @@ import 'framework_deployment_target_resource_config.dart';
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
-///       name              = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
-///       major_revision_id = "2"
+///       name              = gcp_cloudsecuritycompliance_cloud_control.example.name
+///       major_revision_id = "1"
 ///       parameters = [{
-///         "name" = "enabled"
-///         "parameterValue" = {
-///           "boolValue" = true
+///         name = "enabled"
+///         parameter_value = {
+///           bool_value = true
 ///         }
 ///         }, {
-///         "name" = "regions"
-///         "parameterValue" = {
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-west1", "us-east1"]
+///         name = "regions"
+///         parameter_value = {
+///           string_list_value = {
+///             values = ["us-central1", "us-west1", "us-east1"]
 ///           }
 ///         }
 ///         }, {
-///         "name" = "location"
-///         "parameterValue" = {
-///           "stringValue" = "us-central1"
+///         name = "location"
+///         parameter_value = {
+///           string_value = "us-central1"
 ///         }
 ///         }, {
-///         "name" = "oneof-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "test-oneof"
-///             "parameterValue" = {
-///               "stringValue" = "test-value"
+///         name = "oneof-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "test-oneof"
+///             parameter_value = {
+///               string_value = "test-value"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "bool-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "bool-oneof"
-///             "parameterValue" = {
-///               "boolValue" = true
+///         name = "bool-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "bool-oneof"
+///             parameter_value = {
+///               bool_value = true
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "number-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "number-oneof"
-///             "parameterValue" = {
-///               "numberValue" = 123.45
+///         name = "number-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "number-oneof"
+///             parameter_value = {
+///               number_value = 123.45
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "string-list-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "string-list-oneof"
-///             "parameterValue" = {
-///               "stringListValue" = {
-///                 "values" = ["value1", "value2"]
+///         name = "string-list-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "string-list-oneof"
+///             parameter_value = {
+///               string_list_value = {
+///                 values = ["value1", "value2"]
 ///               }
 ///             }
 ///           }
@@ -935,14 +1258,18 @@ import 'framework_deployment_target_resource_config.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudsecuritycompliance.CloudControl;
+/// import com.pulumi.gcp.cloudsecuritycompliance.CloudControlArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubParameterArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.Framework;
 /// import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
-/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs;
-/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs;
-/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
 /// import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
@@ -968,70 +1295,124 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new Framework("example", FrameworkArgs.builder()
+///         var example = new CloudControl("example", CloudControlArgs.builder()
+///             .parent("organizations/123456789")
+///             .location("global")
+///             .cloudControlId("example-cloudcontrol")
+///             .displayName("TF test CloudControl Name")
+///             .description("A test cloud control for security compliance")
+///             .categories("CC_CATEGORY_INFRASTRUCTURE")
+///             .severity("HIGH")
+///             .findingCategory("SECURITY_POLICY")
+///             .remediationSteps("Review and update the security configuration according to best practices.")
+///             .supportedCloudProviders("GCP")
+///             .rules(CloudControlRuleArgs.builder()
+///                 .description("Ensure compute instances have secure boot enabled")
+///                 .ruleActionTypes("RULE_ACTION_TYPE_DETECTIVE")
+///                 .celExpression(CloudControlRuleCelExpressionArgs.builder()
+///                     .expression("resource.data.shieldedInstanceConfig.enableSecureBoot == true")
+///                     .resourceTypesValues(CloudControlRuleCelExpressionResourceTypesValuesArgs.builder()
+///                         .values("compute.googleapis.com/Instance")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .parameterSpecs(
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("enabled")
+///                     .valueType("BOOLEAN")
+///                     .isRequired(true)
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("regions")
+///                     .valueType("STRINGLIST")
+///                     .isRequired(true)
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("location")
+///                     .valueType("STRING")
+///                     .isRequired(true)
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("oneof-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("test-oneof")
+///                             .valueType("STRING")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-test-oneof")
+///                             .valueType("STRING")
+///                             .isRequired(true)
+///                             .build())
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("bool-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("bool-oneof")
+///                             .valueType("BOOLEAN")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-bool-oneof")
+///                             .valueType("BOOLEAN")
+///                             .isRequired(true)
+///                             .build())
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("number-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("number-oneof")
+///                             .valueType("NUMBER")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-number-oneof")
+///                             .valueType("NUMBER")
+///                             .isRequired(true)
+///                             .build())
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("string-list-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("string-list-oneof")
+///                             .valueType("STRINGLIST")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-string-list-oneof")
+///                             .valueType("STRINGLIST")
+///                             .isRequired(true)
+///                             .build())
+///                     .build())
+///             .build());
+///
+///         var exampleFramework = new Framework("exampleFramework", FrameworkArgs.builder()
 ///             .parent("organizations/123456789")
 ///             .location("global")
 ///             .frameworkId("example-framework")
 ///             .displayName("Terraform Framework Name")
 ///             .description("An Terraform description for the framework")
 ///             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
-///                 .name("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown")
-///                 .majorRevisionId("2")
-///                 .parameters(
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("location")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .stringValue("us-central1")
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("oneof-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("test-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .stringValue("test-value")
-///                                     .build())
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("bool-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("bool-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .boolValue(true)
-///                                     .build())
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("number-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("number-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .numberValue(123.45)
-///                                     .build())
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("string-list-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("string-list-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .stringListValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs.builder()
-///                                         .values(
-///                                             "value1",
-///                                             "value2")
-///                                         .build())
-///                                     .build())
-///                                 .build())
-///                             .build())
+///                 .name(example.name())
+///                 .majorRevisionId("1")
+///                 .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+///                     .name("enabled")
+///                     .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+///                         .boolValue(true)
 ///                         .build())
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -1041,7 +1422,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///             .frameworkDeploymentId("example-deployment")
 ///             .description("A framework deployment for cloud security compliance")
 ///             .framework(FrameworkDeploymentFrameworkArgs.builder()
-///                 .framework(example.name())
+///                 .framework(exampleFramework.name())
 ///                 .majorRevisionId("1")
 ///                 .build())
 ///             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
@@ -1050,8 +1431,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
 ///                 .enforcementMode("DETECTIVE")
 ///                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
-///                     .name("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown")
-///                     .majorRevisionId("2")
+///                     .name(example.name())
+///                     .majorRevisionId("1")
 ///                     .parameters(
 ///                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
 ///                             .name("enabled")
@@ -1134,7 +1515,82 @@ import 'framework_deployment_target_resource_config.dart';
 /// ```yaml
 /// resources:
 ///   example:
+///     type: gcp:cloudsecuritycompliance:CloudControl
+///     properties:
+///       parent: organizations/123456789
+///       location: global
+///       cloudControlId: example-cloudcontrol
+///       displayName: TF test CloudControl Name
+///       description: A test cloud control for security compliance
+///       categories:
+///         - CC_CATEGORY_INFRASTRUCTURE
+///       severity: HIGH
+///       findingCategory: SECURITY_POLICY
+///       remediationSteps: Review and update the security configuration according to best practices.
+///       supportedCloudProviders:
+///         - GCP
+///       rules:
+///         - description: Ensure compute instances have secure boot enabled
+///           ruleActionTypes:
+///             - RULE_ACTION_TYPE_DETECTIVE
+///           celExpression:
+///             expression: resource.data.shieldedInstanceConfig.enableSecureBoot == true
+///             resourceTypesValues:
+///               values:
+///                 - compute.googleapis.com/Instance
+///       parameterSpecs:
+///         - name: enabled
+///           valueType: BOOLEAN
+///           isRequired: true
+///         - name: regions
+///           valueType: STRINGLIST
+///           isRequired: true
+///         - name: location
+///           valueType: STRING
+///           isRequired: true
+///         - name: oneof-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: test-oneof
+///               valueType: STRING
+///               isRequired: true
+///             - name: updated-test-oneof
+///               valueType: STRING
+///               isRequired: true
+///         - name: bool-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: bool-oneof
+///               valueType: BOOLEAN
+///               isRequired: true
+///             - name: updated-bool-oneof
+///               valueType: BOOLEAN
+///               isRequired: true
+///         - name: number-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: number-oneof
+///               valueType: NUMBER
+///               isRequired: true
+///             - name: updated-number-oneof
+///               valueType: NUMBER
+///               isRequired: true
+///         - name: string-list-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: string-list-oneof
+///               valueType: STRINGLIST
+///               isRequired: true
+///             - name: updated-string-list-oneof
+///               valueType: STRINGLIST
+///               isRequired: true
+///   exampleFramework:
 ///     type: gcp:cloudsecuritycompliance:Framework
+///     name: example
 ///     properties:
 ///       parent: organizations/123456789
 ///       location: global
@@ -1142,39 +1598,12 @@ import 'framework_deployment_target_resource_config.dart';
 ///       displayName: Terraform Framework Name
 ///       description: An Terraform description for the framework
 ///       cloudControlDetails:
-///         - name: organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown
-///           majorRevisionId: '2'
+///         - name: ${example.name}
+///           majorRevisionId: '1'
 ///           parameters:
-///             - name: location
+///             - name: enabled
 ///               parameterValue:
-///                 stringValue: us-central1
-///             - name: oneof-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: test-oneof
-///                   parameterValue:
-///                     stringValue: test-value
-///             - name: bool-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: bool-oneof
-///                   parameterValue:
-///                     boolValue: true
-///             - name: number-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: number-oneof
-///                   parameterValue:
-///                     numberValue: 123.45
-///             - name: string-list-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: string-list-oneof
-///                   parameterValue:
-///                     stringListValue:
-///                       values:
-///                         - value1
-///                         - value2
+///                 boolValue: true
 ///   exampleFrameworkDeployment:
 ///     type: gcp:cloudsecuritycompliance:FrameworkDeployment
 ///     name: example
@@ -1184,15 +1613,15 @@ import 'framework_deployment_target_resource_config.dart';
 ///       frameworkDeploymentId: example-deployment
 ///       description: A framework deployment for cloud security compliance
 ///       framework:
-///         framework: ${example.name}
+///         framework: ${exampleFramework.name}
 ///         majorRevisionId: '1'
 ///       targetResourceConfig:
 ///         existingTargetResource: organizations/123456789
 ///       cloudControlMetadatas:
 ///         - enforcementMode: DETECTIVE
 ///           cloudControlDetails:
-///             name: organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown
-///             majorRevisionId: '2'
+///             name: ${example.name}
+///             majorRevisionId: '1'
 ///             parameters:
 ///               - name: enabled
 ///                 parameterValue:
@@ -1236,6 +1665,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///                           - value2
 /// ```
 ///
+///
 /// ### Cloudsecuritycompliance Framework Deployment Project Basic
 ///
 ///
@@ -1245,72 +1675,128 @@ import 'framework_deployment_target_resource_config.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const project = gcp.organizations.getProject({});
-/// const example = new gcp.cloudsecuritycompliance.Framework("example", {
+/// const example = new gcp.cloudsecuritycompliance.CloudControl("example", {
+///     parent: project.then(project => `projects/${project.number}`),
+///     location: "global",
+///     cloudControlId: "example-cloudcontrol",
+///     displayName: "TF test CloudControl Name",
+///     description: "A test cloud control for security compliance",
+///     categories: ["CC_CATEGORY_INFRASTRUCTURE"],
+///     severity: "HIGH",
+///     findingCategory: "SECURITY_POLICY",
+///     remediationSteps: "Review and update the security configuration according to best practices.",
+///     supportedCloudProviders: ["GCP"],
+///     rules: [{
+///         description: "Ensure compute instances have secure boot enabled",
+///         ruleActionTypes: ["RULE_ACTION_TYPE_DETECTIVE"],
+///         celExpression: {
+///             expression: "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+///             resourceTypesValues: {
+///                 values: ["compute.googleapis.com/Instance"],
+///             },
+///         },
+///     }],
+///     parameterSpecs: [
+///         {
+///             name: "enabled",
+///             valueType: "BOOLEAN",
+///             isRequired: true,
+///         },
+///         {
+///             name: "regions",
+///             valueType: "STRINGLIST",
+///             isRequired: true,
+///         },
+///         {
+///             name: "location",
+///             valueType: "STRING",
+///             isRequired: true,
+///         },
+///         {
+///             name: "oneof-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "test-oneof",
+///                     valueType: "STRING",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-test-oneof",
+///                     valueType: "STRING",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///         {
+///             name: "bool-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "bool-oneof",
+///                     valueType: "BOOLEAN",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-bool-oneof",
+///                     valueType: "BOOLEAN",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///         {
+///             name: "number-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "number-oneof",
+///                     valueType: "NUMBER",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-number-oneof",
+///                     valueType: "NUMBER",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///         {
+///             name: "string-list-parameter",
+///             valueType: "ONEOF",
+///             isRequired: true,
+///             subParameters: [
+///                 {
+///                     name: "string-list-oneof",
+///                     valueType: "STRINGLIST",
+///                     isRequired: true,
+///                 },
+///                 {
+///                     name: "updated-string-list-oneof",
+///                     valueType: "STRINGLIST",
+///                     isRequired: true,
+///                 },
+///             ],
+///         },
+///     ],
+/// });
+/// const exampleFramework = new gcp.cloudsecuritycompliance.Framework("example", {
 ///     parent: project.then(project => `projects/${project.number}`),
 ///     location: "global",
 ///     frameworkId: "example-framework",
 ///     displayName: "Terraform Framework Name",
 ///     description: "An Terraform description for the framework",
 ///     cloudControlDetails: [{
-///         name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown`),
-///         majorRevisionId: "2",
-///         parameters: [
-///             {
-///                 name: "location",
-///                 parameterValue: {
-///                     stringValue: "us-central1",
-///                 },
+///         name: example.name,
+///         majorRevisionId: "1",
+///         parameters: [{
+///             name: "enabled",
+///             parameterValue: {
+///                 boolValue: true,
 ///             },
-///             {
-///                 name: "oneof-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "test-oneof",
-///                         parameterValue: {
-///                             stringValue: "test-value",
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 name: "bool-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "bool-oneof",
-///                         parameterValue: {
-///                             boolValue: true,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 name: "number-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "number-oneof",
-///                         parameterValue: {
-///                             numberValue: 123.45,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 name: "string-list-parameter",
-///                 parameterValue: {
-///                     oneofValue: {
-///                         name: "string-list-oneof",
-///                         parameterValue: {
-///                             stringListValue: {
-///                                 values: [
-///                                     "value1",
-///                                     "value2",
-///                                 ],
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
-///         ],
+///         }],
 ///     }],
 /// });
 /// const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
@@ -1319,7 +1805,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///     frameworkDeploymentId: "example-deployment",
 ///     description: "A framework deployment for cloud security compliance",
 ///     framework: {
-///         framework: example.name,
+///         framework: exampleFramework.name,
 ///         majorRevisionId: "1",
 ///     },
 ///     targetResourceConfig: {
@@ -1328,8 +1814,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///     cloudControlMetadatas: [{
 ///         enforcementMode: "DETECTIVE",
 ///         cloudControlDetails: {
-///             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown`),
-///             majorRevisionId: "2",
+///             name: example.name,
+///             majorRevisionId: "1",
 ///             parameters: [
 ///                 {
 ///                     name: "enabled",
@@ -1414,72 +1900,127 @@ import 'framework_deployment_target_resource_config.dart';
 /// import pulumi_gcp as gcp
 ///
 /// project = gcp.organizations.get_project()
-/// example = gcp.cloudsecuritycompliance.Framework("example",
+/// example = gcp.cloudsecuritycompliance.CloudControl("example",
+///     parent=f"projects/{project.number}",
+///     location="global",
+///     cloud_control_id="example-cloudcontrol",
+///     display_name="TF test CloudControl Name",
+///     description="A test cloud control for security compliance",
+///     categories=["CC_CATEGORY_INFRASTRUCTURE"],
+///     severity="HIGH",
+///     finding_category="SECURITY_POLICY",
+///     remediation_steps="Review and update the security configuration according to best practices.",
+///     supported_cloud_providers=["GCP"],
+///     rules=[{
+///         "description": "Ensure compute instances have secure boot enabled",
+///         "rule_action_types": ["RULE_ACTION_TYPE_DETECTIVE"],
+///         "cel_expression": {
+///             "expression": "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+///             "resource_types_values": {
+///                 "values": ["compute.googleapis.com/Instance"],
+///             },
+///         },
+///     }],
+///     parameter_specs=[
+///         {
+///             "name": "enabled",
+///             "value_type": "BOOLEAN",
+///             "is_required": True,
+///         },
+///         {
+///             "name": "regions",
+///             "value_type": "STRINGLIST",
+///             "is_required": True,
+///         },
+///         {
+///             "name": "location",
+///             "value_type": "STRING",
+///             "is_required": True,
+///         },
+///         {
+///             "name": "oneof-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "test-oneof",
+///                     "value_type": "STRING",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-test-oneof",
+///                     "value_type": "STRING",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///         {
+///             "name": "bool-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "bool-oneof",
+///                     "value_type": "BOOLEAN",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-bool-oneof",
+///                     "value_type": "BOOLEAN",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///         {
+///             "name": "number-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "number-oneof",
+///                     "value_type": "NUMBER",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-number-oneof",
+///                     "value_type": "NUMBER",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///         {
+///             "name": "string-list-parameter",
+///             "value_type": "ONEOF",
+///             "is_required": True,
+///             "sub_parameters": [
+///                 {
+///                     "name": "string-list-oneof",
+///                     "value_type": "STRINGLIST",
+///                     "is_required": True,
+///                 },
+///                 {
+///                     "name": "updated-string-list-oneof",
+///                     "value_type": "STRINGLIST",
+///                     "is_required": True,
+///                 },
+///             ],
+///         },
+///     ])
+/// example_framework = gcp.cloudsecuritycompliance.Framework("example",
 ///     parent=f"projects/{project.number}",
 ///     location="global",
 ///     framework_id="example-framework",
 ///     display_name="Terraform Framework Name",
 ///     description="An Terraform description for the framework",
 ///     cloud_control_details=[{
-///         "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///         "major_revision_id": "2",
-///         "parameters": [
-///             {
-///                 "name": "location",
-///                 "parameter_value": {
-///                     "string_value": "us-central1",
-///                 },
+///         "name": example.name,
+///         "major_revision_id": "1",
+///         "parameters": [{
+///             "name": "enabled",
+///             "parameter_value": {
+///                 "bool_value": True,
 ///             },
-///             {
-///                 "name": "oneof-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "test-oneof",
-///                         "parameter_value": {
-///                             "string_value": "test-value",
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 "name": "bool-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "bool-oneof",
-///                         "parameter_value": {
-///                             "bool_value": True,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 "name": "number-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "number-oneof",
-///                         "parameter_value": {
-///                             "number_value": 123.45,
-///                         },
-///                     },
-///                 },
-///             },
-///             {
-///                 "name": "string-list-parameter",
-///                 "parameter_value": {
-///                     "oneof_value": {
-///                         "name": "string-list-oneof",
-///                         "parameter_value": {
-///                             "string_list_value": {
-///                                 "values": [
-///                                     "value1",
-///                                     "value2",
-///                                 ],
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
-///         ],
+///         }],
 ///     }])
 /// example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
 ///     parent=f"projects/{project.number}",
@@ -1487,7 +2028,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///     framework_deployment_id="example-deployment",
 ///     description="A framework deployment for cloud security compliance",
 ///     framework={
-///         "framework": example.name,
+///         "framework": example_framework.name,
 ///         "major_revision_id": "1",
 ///     },
 ///     target_resource_config={
@@ -1496,8 +2037,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///     cloud_control_metadatas=[{
 ///         "enforcement_mode": "DETECTIVE",
 ///         "cloud_control_details": {
-///             "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///             "major_revision_id": "2",
+///             "name": example.name,
+///             "major_revision_id": "1",
 ///             "parameters": [
 ///                 {
 ///                     "name": "enabled",
@@ -1586,7 +2127,154 @@ import 'framework_deployment_target_resource_config.dart';
 /// {
 ///     var project = Gcp.Organizations.GetProject.Invoke();
 ///
-///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+///     var example = new Gcp.CloudSecurityCompliance.CloudControl("example", new()
+///     {
+///         Parent = $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}",
+///         Location = "global",
+///         CloudControlId = "example-cloudcontrol",
+///         DisplayName = "TF test CloudControl Name",
+///         Description = "A test cloud control for security compliance",
+///         Categories = new[]
+///         {
+///             "CC_CATEGORY_INFRASTRUCTURE",
+///         },
+///         Severity = "HIGH",
+///         FindingCategory = "SECURITY_POLICY",
+///         RemediationSteps = "Review and update the security configuration according to best practices.",
+///         SupportedCloudProviders = new[]
+///         {
+///             "GCP",
+///         },
+///         Rules = new[]
+///         {
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleArgs
+///             {
+///                 Description = "Ensure compute instances have secure boot enabled",
+///                 RuleActionTypes = new[]
+///                 {
+///                     "RULE_ACTION_TYPE_DETECTIVE",
+///                 },
+///                 CelExpression = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionArgs
+///                 {
+///                     Expression = "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+///                     ResourceTypesValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs
+///                     {
+///                         Values = new[]
+///                         {
+///                             "compute.googleapis.com/Instance",
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///         ParameterSpecs = new[]
+///         {
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "enabled",
+///                 ValueType = "BOOLEAN",
+///                 IsRequired = true,
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "regions",
+///                 ValueType = "STRINGLIST",
+///                 IsRequired = true,
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "location",
+///                 ValueType = "STRING",
+///                 IsRequired = true,
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "oneof-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "test-oneof",
+///                         ValueType = "STRING",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-test-oneof",
+///                         ValueType = "STRING",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "bool-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "bool-oneof",
+///                         ValueType = "BOOLEAN",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-bool-oneof",
+///                         ValueType = "BOOLEAN",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "number-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "number-oneof",
+///                         ValueType = "NUMBER",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-number-oneof",
+///                         ValueType = "NUMBER",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+///             {
+///                 Name = "string-list-parameter",
+///                 ValueType = "ONEOF",
+///                 IsRequired = true,
+///                 SubParameters = new[]
+///                 {
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "string-list-oneof",
+///                         ValueType = "STRINGLIST",
+///                         IsRequired = true,
+///                     },
+///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubParameterArgs
+///                     {
+///                         Name = "updated-string-list-oneof",
+///                         ValueType = "STRINGLIST",
+///                         IsRequired = true,
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var exampleFramework = new Gcp.CloudSecurityCompliance.Framework("example", new()
 ///     {
 ///         Parent = $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}",
 ///         Location = "global",
@@ -1597,83 +2285,16 @@ import 'framework_deployment_target_resource_config.dart';
 ///         {
 ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
 ///             {
-///                 Name = $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///                 MajorRevisionId = "2",
+///                 Name = example.Name,
+///                 MajorRevisionId = "1",
 ///                 Parameters = new[]
 ///                 {
 ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
 ///                     {
-///                         Name = "location",
+///                         Name = "enabled",
 ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
 ///                         {
-///                             StringValue = "us-central1",
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "oneof-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "test-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     StringValue = "test-value",
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "bool-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "bool-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     BoolValue = true,
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "number-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "number-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     NumberValue = 123.45,
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
-///                     {
-///                         Name = "string-list-parameter",
-///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
-///                         {
-///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
-///                             {
-///                                 Name = "string-list-oneof",
-///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
-///                                 {
-///                                     StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs
-///                                     {
-///                                         Values = new[]
-///                                         {
-///                                             "value1",
-///                                             "value2",
-///                                         },
-///                                     },
-///                                 },
-///                             },
+///                             BoolValue = true,
 ///                         },
 ///                     },
 ///                 },
@@ -1689,7 +2310,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///         Description = "A framework deployment for cloud security compliance",
 ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
 ///         {
-///             Framework = example.Name,
+///             Framework = exampleFramework.Name,
 ///             MajorRevisionId = "1",
 ///         },
 ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
@@ -1703,8 +2324,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///                 EnforcementMode = "DETECTIVE",
 ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
 ///                 {
-///                     Name = $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
-///                     MajorRevisionId = "2",
+///                     Name = example.Name,
+///                     MajorRevisionId = "1",
 ///                     Parameters = new[]
 ///                     {
 ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
@@ -1818,8 +2439,8 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1829,7 +2450,127 @@ import 'framework_deployment_target_resource_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+/// 		example, err := cloudsecuritycompliance.NewCloudControl(ctx, "example", &cloudsecuritycompliance.CloudControlArgs{
+/// 			Parent:         pulumi.Sprintf("projects/%v", project.Number),
+/// 			Location:       pulumi.String("global"),
+/// 			CloudControlId: pulumi.String("example-cloudcontrol"),
+/// 			DisplayName:    pulumi.String("TF test CloudControl Name"),
+/// 			Description:    pulumi.String("A test cloud control for security compliance"),
+/// 			Categories: pulumi.StringArray{
+/// 				pulumi.String("CC_CATEGORY_INFRASTRUCTURE"),
+/// 			},
+/// 			Severity:         pulumi.String("HIGH"),
+/// 			FindingCategory:  pulumi.String("SECURITY_POLICY"),
+/// 			RemediationSteps: pulumi.String("Review and update the security configuration according to best practices."),
+/// 			SupportedCloudProviders: pulumi.StringArray{
+/// 				pulumi.String("GCP"),
+/// 			},
+/// 			Rules: cloudsecuritycompliance.CloudControlRuleArray{
+/// 				&cloudsecuritycompliance.CloudControlRuleArgs{
+/// 					Description: pulumi.String("Ensure compute instances have secure boot enabled"),
+/// 					RuleActionTypes: pulumi.StringArray{
+/// 						pulumi.String("RULE_ACTION_TYPE_DETECTIVE"),
+/// 					},
+/// 					CelExpression: &cloudsecuritycompliance.CloudControlRuleCelExpressionArgs{
+/// 						Expression: pulumi.String("resource.data.shieldedInstanceConfig.enableSecureBoot == true"),
+/// 						ResourceTypesValues: &cloudsecuritycompliance.CloudControlRuleCelExpressionResourceTypesValuesArgs{
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String("compute.googleapis.com/Instance"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			ParameterSpecs: cloudsecuritycompliance.CloudControlParameterSpecArray{
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("enabled"),
+/// 					ValueType:  pulumi.String("BOOLEAN"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("regions"),
+/// 					ValueType:  pulumi.String("STRINGLIST"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("location"),
+/// 					ValueType:  pulumi.String("STRING"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("oneof-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("test-oneof"),
+/// 							ValueType:  pulumi.String("STRING"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-test-oneof"),
+/// 							ValueType:  pulumi.String("STRING"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("bool-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("bool-oneof"),
+/// 							ValueType:  pulumi.String("BOOLEAN"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-bool-oneof"),
+/// 							ValueType:  pulumi.String("BOOLEAN"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("number-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("number-oneof"),
+/// 							ValueType:  pulumi.String("NUMBER"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-number-oneof"),
+/// 							ValueType:  pulumi.String("NUMBER"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+/// 					Name:       pulumi.String("string-list-parameter"),
+/// 					ValueType:  pulumi.String("ONEOF"),
+/// 					IsRequired: pulumi.Bool(true),
+/// 					SubParameters: cloudsecuritycompliance.CloudControlParameterSpecSubParameterArray{
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("string-list-oneof"),
+/// 							ValueType:  pulumi.String("STRINGLIST"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 						&cloudsecuritycompliance.CloudControlParameterSpecSubParameterArgs{
+/// 							Name:       pulumi.String("updated-string-list-oneof"),
+/// 							ValueType:  pulumi.String("STRINGLIST"),
+/// 							IsRequired: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleFramework, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
 /// 			Parent:      pulumi.Sprintf("projects/%v", project.Number),
 /// 			Location:    pulumi.String("global"),
 /// 			FrameworkId: pulumi.String("example-framework"),
@@ -1837,62 +2578,13 @@ import 'framework_deployment_target_resource_config.dart';
 /// 			Description: pulumi.String("An Terraform description for the framework"),
 /// 			CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
 /// 				&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
-/// 					Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.Number),
-/// 					MajorRevisionId: pulumi.String("2"),
+/// 					Name:            example.Name,
+/// 					MajorRevisionId: pulumi.String("1"),
 /// 					Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 /// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("location"),
+/// 							Name: pulumi.String("enabled"),
 /// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								StringValue: pulumi.String("us-central1"),
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("oneof-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("test-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										StringValue: pulumi.String("test-value"),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("bool-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("bool-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										BoolValue: pulumi.Bool(true),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("number-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("number-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										NumberValue: pulumi.Float64(123.45),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
-/// 							Name: pulumi.String("string-list-parameter"),
-/// 							ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
-/// 								OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
-/// 									Name: pulumi.String("string-list-oneof"),
-/// 									ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
-/// 										StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{
-/// 											Values: pulumi.StringArray{
-/// 												pulumi.String("value1"),
-/// 												pulumi.String("value2"),
-/// 											},
-/// 										},
-/// 									},
-/// 								},
+/// 								BoolValue: pulumi.Bool(true),
 /// 							},
 /// 						},
 /// 					},
@@ -1908,7 +2600,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// 			FrameworkDeploymentId: pulumi.String("example-deployment"),
 /// 			Description:           pulumi.String("A framework deployment for cloud security compliance"),
 /// 			Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
-/// 				Framework:       example.Name,
+/// 				Framework:       exampleFramework.Name,
 /// 				MajorRevisionId: pulumi.String("1"),
 /// 			},
 /// 			TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
@@ -1918,8 +2610,8 @@ import 'framework_deployment_target_resource_config.dart';
 /// 				&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
 /// 					EnforcementMode: pulumi.String("DETECTIVE"),
 /// 					CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
-/// 						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.Number),
-/// 						MajorRevisionId: pulumi.String("2"),
+/// 						Name:            example.Name,
+/// 						MajorRevisionId: pulumi.String("1"),
 /// 						Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
 /// 							&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
 /// 								Name: pulumi.String("enabled"),
@@ -2007,7 +2699,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2015,74 +2707,134 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
+/// resource "gcp_cloudsecuritycompliance_cloud_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                    ="projects/${data.gcp_organizations_project.project.number}"
+///   location                  = "global"
+///   cloud_control_id          = "example-cloudcontrol"
+///   display_name              = "TF test CloudControl Name"
+///   description               = "A test cloud control for security compliance"
+///   categories                = ["CC_CATEGORY_INFRASTRUCTURE"]
+///   severity                  = "HIGH"
+///   finding_category          = "SECURITY_POLICY"
+///   remediation_steps         = "Review and update the security configuration according to best practices."
+///   supported_cloud_providers = ["GCP"]
+///   rules {
+///     description       = "Ensure compute instances have secure boot enabled"
+///     rule_action_types = ["RULE_ACTION_TYPE_DETECTIVE"]
+///     cel_expression = {
+///       expression = "resource.data.shieldedInstanceConfig.enableSecureBoot == true"
+///       resource_types_values = {
+///         values = ["compute.googleapis.com/Instance"]
+///       }
+///     }
+///   }
+///   parameter_specs {
+///     name        = "enabled"
+///     value_type  = "BOOLEAN"
+///     is_required = true
+///   }
+///   parameter_specs {
+///     name        = "regions"
+///     value_type  = "STRINGLIST"
+///     is_required = true
+///   }
+///   parameter_specs {
+///     name        = "location"
+///     value_type  = "STRING"
+///     is_required = true
+///   }
+///   parameter_specs {
+///     name        = "oneof-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "test-oneof"
+///       value_type  = "STRING"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-test-oneof"
+///       value_type  = "STRING"
+///       is_required = true
+///     }
+///   }
+///   parameter_specs {
+///     name        = "bool-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "bool-oneof"
+///       value_type  = "BOOLEAN"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-bool-oneof"
+///       value_type  = "BOOLEAN"
+///       is_required = true
+///     }
+///   }
+///   parameter_specs {
+///     name        = "number-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "number-oneof"
+///       value_type  = "NUMBER"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-number-oneof"
+///       value_type  = "NUMBER"
+///       is_required = true
+///     }
+///   }
+///   parameter_specs {
+///     name        = "string-list-parameter"
+///     value_type  = "ONEOF"
+///     is_required = true
+///     sub_parameters {
+///       name        = "string-list-oneof"
+///       value_type  = "STRINGLIST"
+///       is_required = true
+///     }
+///     sub_parameters {
+///       name        = "updated-string-list-oneof"
+///       value_type  = "STRINGLIST"
+///       is_required = true
+///     }
+///   }
+/// }
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
-///   parent       ="projects/${data.gcp_organizations_getproject.project.number}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       ="projects/${data.gcp_organizations_project.project.number}"
 ///   location     = "global"
 ///   framework_id = "example-framework"
 ///   display_name = "Terraform Framework Name"
 ///   description  = "An Terraform description for the framework"
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
-///     major_revision_id = "2"
+///     name              = gcp_cloudsecuritycompliance_cloud_control.example.name
+///     major_revision_id = "1"
 ///     parameters {
-///       name = "location"
+///       name = "enabled"
 ///       parameter_value = {
-///         string_value = "us-central1"
-///       }
-///     }
-///     parameters {
-///       name = "oneof-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "test-oneof"
-///           parameter_value = {
-///             string_value = "test-value"
-///           }
-///         }
-///       }
-///     }
-///     parameters {
-///       name = "bool-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "bool-oneof"
-///           parameter_value = {
-///             bool_value = true
-///           }
-///         }
-///       }
-///     }
-///     parameters {
-///       name = "number-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "number-oneof"
-///           parameter_value = {
-///             number_value = 123.45
-///           }
-///         }
-///       }
-///     }
-///     parameters {
-///       name = "string-list-parameter"
-///       parameter_value = {
-///         oneof_value = {
-///           name = "string-list-oneof"
-///           parameter_value = {
-///             string_list_value = {
-///               values = ["value1", "value2"]
-///             }
-///           }
-///         }
+///         bool_value = true
 ///       }
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
-///   parent                  ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                  ="projects/${data.gcp_organizations_project.project.number}"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
 ///   description             = "A framework deployment for cloud security compliance"
@@ -2091,68 +2843,68 @@ import 'framework_deployment_target_resource_config.dart';
 ///     major_revision_id = "1"
 ///   }
 ///   target_resource_config = {
-///     existing_target_resource ="projects/${data.gcp_organizations_getproject.project.project_id}"
+///     existing_target_resource ="projects/${data.gcp_organizations_project.project.project_id}"
 ///   }
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
-///       name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
-///       major_revision_id = "2"
+///       name              = gcp_cloudsecuritycompliance_cloud_control.example.name
+///       major_revision_id = "1"
 ///       parameters = [{
-///         "name" = "enabled"
-///         "parameterValue" = {
-///           "boolValue" = true
+///         name = "enabled"
+///         parameter_value = {
+///           bool_value = true
 ///         }
 ///         }, {
-///         "name" = "regions"
-///         "parameterValue" = {
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-west1", "us-east1"]
+///         name = "regions"
+///         parameter_value = {
+///           string_list_value = {
+///             values = ["us-central1", "us-west1", "us-east1"]
 ///           }
 ///         }
 ///         }, {
-///         "name" = "location"
-///         "parameterValue" = {
-///           "stringValue" = "us-central1"
+///         name = "location"
+///         parameter_value = {
+///           string_value = "us-central1"
 ///         }
 ///         }, {
-///         "name" = "oneof-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "test-oneof"
-///             "parameterValue" = {
-///               "stringValue" = "test-value"
+///         name = "oneof-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "test-oneof"
+///             parameter_value = {
+///               string_value = "test-value"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "bool-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "bool-oneof"
-///             "parameterValue" = {
-///               "boolValue" = true
+///         name = "bool-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "bool-oneof"
+///             parameter_value = {
+///               bool_value = true
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "number-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "number-oneof"
-///             "parameterValue" = {
-///               "numberValue" = 123.45
+///         name = "number-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "number-oneof"
+///             parameter_value = {
+///               number_value = 123.45
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "string-list-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "string-list-oneof"
-///             "parameterValue" = {
-///               "stringListValue" = {
-///                 "values" = ["value1", "value2"]
+///         name = "string-list-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "string-list-oneof"
+///             parameter_value = {
+///               string_list_value = {
+///                 values = ["value1", "value2"]
 ///               }
 ///             }
 ///           }
@@ -2170,14 +2922,18 @@ import 'framework_deployment_target_resource_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.CloudControl;
+/// import com.pulumi.gcp.cloudsecuritycompliance.CloudControlArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecArgs;
+/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubParameterArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.Framework;
 /// import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
-/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs;
-/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs;
-/// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
 /// import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
 /// import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
@@ -2206,70 +2962,124 @@ import 'framework_deployment_target_resource_config.dart';
 ///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
 ///             .build());
 ///
-///         var example = new Framework("example", FrameworkArgs.builder()
+///         var example = new CloudControl("example", CloudControlArgs.builder()
+///             .parent(String.format("projects/%s", project.number()))
+///             .location("global")
+///             .cloudControlId("example-cloudcontrol")
+///             .displayName("TF test CloudControl Name")
+///             .description("A test cloud control for security compliance")
+///             .categories("CC_CATEGORY_INFRASTRUCTURE")
+///             .severity("HIGH")
+///             .findingCategory("SECURITY_POLICY")
+///             .remediationSteps("Review and update the security configuration according to best practices.")
+///             .supportedCloudProviders("GCP")
+///             .rules(CloudControlRuleArgs.builder()
+///                 .description("Ensure compute instances have secure boot enabled")
+///                 .ruleActionTypes("RULE_ACTION_TYPE_DETECTIVE")
+///                 .celExpression(CloudControlRuleCelExpressionArgs.builder()
+///                     .expression("resource.data.shieldedInstanceConfig.enableSecureBoot == true")
+///                     .resourceTypesValues(CloudControlRuleCelExpressionResourceTypesValuesArgs.builder()
+///                         .values("compute.googleapis.com/Instance")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .parameterSpecs(
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("enabled")
+///                     .valueType("BOOLEAN")
+///                     .isRequired(true)
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("regions")
+///                     .valueType("STRINGLIST")
+///                     .isRequired(true)
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("location")
+///                     .valueType("STRING")
+///                     .isRequired(true)
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("oneof-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("test-oneof")
+///                             .valueType("STRING")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-test-oneof")
+///                             .valueType("STRING")
+///                             .isRequired(true)
+///                             .build())
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("bool-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("bool-oneof")
+///                             .valueType("BOOLEAN")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-bool-oneof")
+///                             .valueType("BOOLEAN")
+///                             .isRequired(true)
+///                             .build())
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("number-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("number-oneof")
+///                             .valueType("NUMBER")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-number-oneof")
+///                             .valueType("NUMBER")
+///                             .isRequired(true)
+///                             .build())
+///                     .build(),
+///                 CloudControlParameterSpecArgs.builder()
+///                     .name("string-list-parameter")
+///                     .valueType("ONEOF")
+///                     .isRequired(true)
+///                     .subParameters(
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("string-list-oneof")
+///                             .valueType("STRINGLIST")
+///                             .isRequired(true)
+///                             .build(),
+///                         CloudControlParameterSpecSubParameterArgs.builder()
+///                             .name("updated-string-list-oneof")
+///                             .valueType("STRINGLIST")
+///                             .isRequired(true)
+///                             .build())
+///                     .build())
+///             .build());
+///
+///         var exampleFramework = new Framework("exampleFramework", FrameworkArgs.builder()
 ///             .parent(String.format("projects/%s", project.number()))
 ///             .location("global")
 ///             .frameworkId("example-framework")
 ///             .displayName("Terraform Framework Name")
 ///             .description("An Terraform description for the framework")
 ///             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
-///                 .name(String.format("projects/%s/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.number()))
-///                 .majorRevisionId("2")
-///                 .parameters(
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("location")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .stringValue("us-central1")
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("oneof-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("test-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .stringValue("test-value")
-///                                     .build())
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("bool-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("bool-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .boolValue(true)
-///                                     .build())
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("number-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("number-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .numberValue(123.45)
-///                                     .build())
-///                                 .build())
-///                             .build())
-///                         .build(),
-///                     FrameworkCloudControlDetailParameterArgs.builder()
-///                         .name("string-list-parameter")
-///                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
-///                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
-///                                 .name("string-list-oneof")
-///                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
-///                                     .stringListValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs.builder()
-///                                         .values(
-///                                             "value1",
-///                                             "value2")
-///                                         .build())
-///                                     .build())
-///                                 .build())
-///                             .build())
+///                 .name(example.name())
+///                 .majorRevisionId("1")
+///                 .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+///                     .name("enabled")
+///                     .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+///                         .boolValue(true)
 ///                         .build())
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -2279,7 +3089,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///             .frameworkDeploymentId("example-deployment")
 ///             .description("A framework deployment for cloud security compliance")
 ///             .framework(FrameworkDeploymentFrameworkArgs.builder()
-///                 .framework(example.name())
+///                 .framework(exampleFramework.name())
 ///                 .majorRevisionId("1")
 ///                 .build())
 ///             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
@@ -2288,8 +3098,8 @@ import 'framework_deployment_target_resource_config.dart';
 ///             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
 ///                 .enforcementMode("DETECTIVE")
 ///                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
-///                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.number()))
-///                     .majorRevisionId("2")
+///                     .name(example.name())
+///                     .majorRevisionId("1")
 ///                     .parameters(
 ///                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
 ///                             .name("enabled")
@@ -2372,7 +3182,82 @@ import 'framework_deployment_target_resource_config.dart';
 /// ```yaml
 /// resources:
 ///   example:
+///     type: gcp:cloudsecuritycompliance:CloudControl
+///     properties:
+///       parent: projects/${project.number}
+///       location: global
+///       cloudControlId: example-cloudcontrol
+///       displayName: TF test CloudControl Name
+///       description: A test cloud control for security compliance
+///       categories:
+///         - CC_CATEGORY_INFRASTRUCTURE
+///       severity: HIGH
+///       findingCategory: SECURITY_POLICY
+///       remediationSteps: Review and update the security configuration according to best practices.
+///       supportedCloudProviders:
+///         - GCP
+///       rules:
+///         - description: Ensure compute instances have secure boot enabled
+///           ruleActionTypes:
+///             - RULE_ACTION_TYPE_DETECTIVE
+///           celExpression:
+///             expression: resource.data.shieldedInstanceConfig.enableSecureBoot == true
+///             resourceTypesValues:
+///               values:
+///                 - compute.googleapis.com/Instance
+///       parameterSpecs:
+///         - name: enabled
+///           valueType: BOOLEAN
+///           isRequired: true
+///         - name: regions
+///           valueType: STRINGLIST
+///           isRequired: true
+///         - name: location
+///           valueType: STRING
+///           isRequired: true
+///         - name: oneof-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: test-oneof
+///               valueType: STRING
+///               isRequired: true
+///             - name: updated-test-oneof
+///               valueType: STRING
+///               isRequired: true
+///         - name: bool-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: bool-oneof
+///               valueType: BOOLEAN
+///               isRequired: true
+///             - name: updated-bool-oneof
+///               valueType: BOOLEAN
+///               isRequired: true
+///         - name: number-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: number-oneof
+///               valueType: NUMBER
+///               isRequired: true
+///             - name: updated-number-oneof
+///               valueType: NUMBER
+///               isRequired: true
+///         - name: string-list-parameter
+///           valueType: ONEOF
+///           isRequired: true
+///           subParameters:
+///             - name: string-list-oneof
+///               valueType: STRINGLIST
+///               isRequired: true
+///             - name: updated-string-list-oneof
+///               valueType: STRINGLIST
+///               isRequired: true
+///   exampleFramework:
 ///     type: gcp:cloudsecuritycompliance:Framework
+///     name: example
 ///     properties:
 ///       parent: projects/${project.number}
 ///       location: global
@@ -2380,39 +3265,12 @@ import 'framework_deployment_target_resource_config.dart';
 ///       displayName: Terraform Framework Name
 ///       description: An Terraform description for the framework
 ///       cloudControlDetails:
-///         - name: projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown
-///           majorRevisionId: '2'
+///         - name: ${example.name}
+///           majorRevisionId: '1'
 ///           parameters:
-///             - name: location
+///             - name: enabled
 ///               parameterValue:
-///                 stringValue: us-central1
-///             - name: oneof-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: test-oneof
-///                   parameterValue:
-///                     stringValue: test-value
-///             - name: bool-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: bool-oneof
-///                   parameterValue:
-///                     boolValue: true
-///             - name: number-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: number-oneof
-///                   parameterValue:
-///                     numberValue: 123.45
-///             - name: string-list-parameter
-///               parameterValue:
-///                 oneofValue:
-///                   name: string-list-oneof
-///                   parameterValue:
-///                     stringListValue:
-///                       values:
-///                         - value1
-///                         - value2
+///                 boolValue: true
 ///   exampleFrameworkDeployment:
 ///     type: gcp:cloudsecuritycompliance:FrameworkDeployment
 ///     name: example
@@ -2422,15 +3280,15 @@ import 'framework_deployment_target_resource_config.dart';
 ///       frameworkDeploymentId: example-deployment
 ///       description: A framework deployment for cloud security compliance
 ///       framework:
-///         framework: ${example.name}
+///         framework: ${exampleFramework.name}
 ///         majorRevisionId: '1'
 ///       targetResourceConfig:
 ///         existingTargetResource: projects/${project.projectId}
 ///       cloudControlMetadatas:
 ///         - enforcementMode: DETECTIVE
 ///           cloudControlDetails:
-///             name: projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown
-///             majorRevisionId: '2'
+///             name: ${example.name}
+///             majorRevisionId: '1'
 ///             parameters:
 ///               - name: enabled
 ///                 parameterValue:
@@ -2478,6 +3336,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Framework Deployment Org Project Basic
 ///
@@ -2663,8 +3522,8 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2736,7 +3595,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2744,10 +3603,13 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -2764,7 +3626,10 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent                  = "organizations/123456789"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
@@ -2774,18 +3639,18 @@ import 'framework_deployment_target_resource_config.dart';
 ///     major_revision_id = "1"
 ///   }
 ///   target_resource_config = {
-///     existing_target_resource ="projects/${data.gcp_organizations_getproject.project.project_id}"
+///     existing_target_resource ="projects/${data.gcp_organizations_project.project.project_id}"
 ///   }
-///   # Using project_id ensures the API's response matches Terraform's state
+///   # Using project_id ensures the API's response matches Pulumi's state
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
 ///       name              = "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "location"
-///         "parameterValue" = {
-///           "numberValue" = 1
+///         name = "location"
+///         parameter_value = {
+///           number_value = 1
 ///         }
 ///       }]
 ///     }
@@ -2922,6 +3787,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Framework Deployment Project Application Basic
 ///
@@ -3140,9 +4006,9 @@ import 'framework_deployment_target_resource_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3227,7 +4093,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3235,11 +4101,14 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// # App Hub Application resource to act as the target
 /// resource "gcp_apphub_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   application_id = "example-app"
 ///   scope = {
@@ -3247,13 +4116,16 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
-///   parent       ="projects/${data.gcp_organizations_getproject.project.number}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       ="projects/${data.gcp_organizations_project.project.number}"
 ///   location     = "global"
 ///   framework_id = "example-framework"
 ///   display_name = "Terraform Framework Name"
 ///   description  = "A Terraform description for the framework"
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///     major_revision_id = "2"
 ///     parameters {
 ///       name = "location"
@@ -3263,8 +4135,11 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
-///   parent                  ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                  ="projects/${data.gcp_organizations_project.project.number}"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
 ///   description             = "A framework deployment with project parent targeting an application"
@@ -3273,19 +4148,19 @@ import 'framework_deployment_target_resource_config.dart';
 ///     major_revision_id = "1"
 ///   }
 ///   target_resource_config = {
-///     existing_target_resource ="projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/applications/${gcp_apphub_application.application.application_id}"
+///     existing_target_resource ="projects/${data.gcp_organizations_project.project.number}/locations/us-central1/applications/${gcp_apphub_application.application.application_id}"
 ///   }
 ///   # Target the App Hub Application's fully qualified ID
 ///   # e.g., projects/abc/locations/us-central1/applications/app-name
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
-///       name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
+///       name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "location"
-///         "parameterValue" = {
-///           "numberValue" = 1
+///         name = "location"
+///         parameter_value = {
+///           number_value = 1
 ///         }
 ///       }]
 ///     }
@@ -3442,6 +4317,7 @@ import 'framework_deployment_target_resource_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
 ///
@@ -3623,7 +4499,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3691,7 +4567,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3700,6 +4576,9 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization = "123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -3716,7 +4595,10 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization            = "123456789"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
@@ -3734,9 +4616,9 @@ import 'framework_deployment_target_resource_config.dart';
 ///       name              = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "enabled"
-///         "parameterValue" = {
-///           "boolValue" = true
+///         name = "enabled"
+///         parameter_value = {
+///           bool_value = true
 ///         }
 ///       }]
 ///     }
@@ -3975,7 +4857,7 @@ class FrameworkDeployment extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     cloudControlDeploymentReferences = registerOutput<List<FrameworkDeploymentCloudControlDeploymentReference>>('cloudControlDeploymentReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(guardedValue, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>())); });
     cloudControlMetadatas = registerOutput<List<FrameworkDeploymentCloudControlMetadata>>('cloudControlMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(guardedValue, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>())); });

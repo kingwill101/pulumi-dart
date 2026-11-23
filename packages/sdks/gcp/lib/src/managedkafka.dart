@@ -1,6 +1,9 @@
 export 'managedkafka/acl.dart';
 export 'managedkafka/acl_acl_entry.dart';
 export 'managedkafka/acl_args.dart';
+export 'managedkafka/acl_binding.dart';
+export 'managedkafka/acl_binding_args.dart';
+export 'managedkafka/acl_binding_state.dart';
 export 'managedkafka/acl_state.dart';
 export 'managedkafka/cluster.dart';
 export 'managedkafka/cluster_args.dart';
@@ -9,6 +12,8 @@ export 'managedkafka/cluster_capacity_config.dart';
 export 'managedkafka/cluster_gcp_config.dart';
 export 'managedkafka/cluster_gcp_config_access_config.dart';
 export 'managedkafka/cluster_gcp_config_access_config_network_config.dart';
+export 'managedkafka/cluster_gcp_config_access_config_public_cluster_config.dart';
+export 'managedkafka/cluster_public_cluster_detail.dart';
 export 'managedkafka/cluster_rebalance_config.dart';
 export 'managedkafka/cluster_state.dart';
 export 'managedkafka/cluster_tls_config.dart';
