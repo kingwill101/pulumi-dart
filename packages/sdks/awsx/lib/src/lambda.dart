@@ -1,0 +1,9 @@
+export 'lambda/web_function.dart';
+export 'lambda/web_function_args.dart';
+export 'lambda/web_function_auth_type.dart';
+export 'lambda/web_function_code.dart';
+export 'lambda/web_function_endpoint.dart';
+export 'lambda/web_function_endpoint_args.dart';
+export 'lambda/web_function_endpoint_type.dart';
+export 'lambda/web_function_revision_weight.dart';
+export 'lambda/web_function_runtime.dart';

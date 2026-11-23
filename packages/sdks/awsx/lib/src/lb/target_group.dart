@@ -79,7 +79,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 			Name:     pulumi.String("tf-example-lb-tg"),
 /// 			Port:     pulumi.Int(80),
 /// 			Protocol: pulumi.String("HTTP"),
-/// 			VpcId:    main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:    main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,7 +89,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,13 +97,19 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "test" {
+/// resource "aws_lb_target_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tf-example-lb-tg"
 ///   port     = 80
 ///   protocol = "HTTP"
 ///   vpc_id   = aws_ec2_vpc.main.id
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
@@ -234,7 +240,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 			Port:       pulumi.Int(80),
 /// 			Protocol:   pulumi.String("HTTP"),
 /// 			TargetType: pulumi.String("ip"),
-/// 			VpcId:      main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:      main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -244,7 +250,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -252,7 +258,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "ip-example" {
+/// resource "aws_lb_target_group" "ip-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-example-lb-tg"
 ///   port        = 80
 ///   protocol    = "HTTP"
@@ -260,6 +269,9 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   vpc_id      = aws_ec2_vpc.main.id
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
@@ -376,7 +388,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -384,7 +396,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "lambda-example" {
+/// resource "aws_lb_target_group" "lambda-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-example-lb-tg"
 ///   target_type = "lambda"
 /// }
@@ -498,7 +513,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -506,7 +521,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "alb-example" {
+/// resource "aws_lb_target_group" "alb-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-example-lb-alb-tg"
 ///   target_type = "alb"
 ///   port        = 80
@@ -540,7 +558,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///             .targetType("alb")
 ///             .port(80)
 ///             .protocol("TCP")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .build());
 ///
 ///     }
@@ -567,13 +585,13 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import * as aws from "@pulumi/aws";
 ///
 /// const tcp_example = new aws.lb.TargetGroup("tcp-example", {
+///     targetHealthStates: [{
+///         enableUnhealthyConnectionTermination: false,
+///     }],
 ///     name: "tf-example-lb-nlb-tg",
 ///     port: 25,
 ///     protocol: "TCP",
 ///     vpcId: main.id,
-///     targetHealthStates: [{
-///         enableUnhealthyConnectionTermination: false,
-///     }],
 /// });
 /// ```
 /// ```python
@@ -581,13 +599,13 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import pulumi_aws as aws
 ///
 /// tcp_example = aws.lb.TargetGroup("tcp-example",
+///     target_health_states=[{
+///         "enable_unhealthy_connection_termination": False,
+///     }],
 ///     name="tf-example-lb-nlb-tg",
 ///     port=25,
 ///     protocol="TCP",
-///     vpc_id=main["id"],
-///     target_health_states=[{
-///         "enable_unhealthy_connection_termination": False,
-///     }])
+///     vpc_id=main["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -599,10 +617,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// {
 ///     var tcp_example = new Aws.LB.TargetGroup("tcp-example", new()
 ///     {
-///         Name = "tf-example-lb-nlb-tg",
-///         Port = 25,
-///         Protocol = "TCP",
-///         VpcId = main.Id,
 ///         TargetHealthStates = new[]
 ///         {
 ///             new Aws.LB.Inputs.TargetGroupTargetHealthStateArgs
@@ -610,6 +624,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///                 EnableUnhealthyConnectionTermination = false,
 ///             },
 ///         },
+///         Name = "tf-example-lb-nlb-tg",
+///         Port = 25,
+///         Protocol = "TCP",
+///         VpcId = main.Id,
 ///     });
 ///
 /// });
@@ -625,15 +643,15 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.NewTargetGroup(ctx, "tcp-example", &lb.TargetGroupArgs{
-/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
-/// 			Port:     pulumi.Int(25),
-/// 			Protocol: pulumi.String("TCP"),
-/// 			VpcId:    pulumi.Any(main.Id),
 /// 			TargetHealthStates: lb.TargetGroupTargetHealthStateArray{
 /// 				&lb.TargetGroupTargetHealthStateArgs{
 /// 					EnableUnhealthyConnectionTermination: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
+/// 			Port:     pulumi.Int(25),
+/// 			Protocol: pulumi.String("TCP"),
+/// 			VpcId:    pulumi.Any(main.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -643,7 +661,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -651,14 +669,17 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "tcp-example" {
+/// resource "aws_lb_target_group" "tcp-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_health_state {
+///     enable_unhealthy_connection_termination = false
+///   }
 ///   name     = "tf-example-lb-nlb-tg"
 ///   port     = 25
 ///   protocol = "TCP"
 ///   vpc_id   = main.id
-///   target_health_states {
-///     enable_unhealthy_connection_termination = false
-///   }
 /// }
 /// ```
 /// ```java
@@ -684,13 +705,13 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///
 ///     public static void stack(Context ctx) {
 ///         var tcp_example = new TargetGroup("tcp-example", TargetGroupArgs.builder()
-///             .name("tf-example-lb-nlb-tg")
-///             .port(25)
-///             .protocol("TCP")
-///             .vpcId(main.id())
 ///             .targetHealthStates(TargetGroupTargetHealthStateArgs.builder()
 ///                 .enableUnhealthyConnectionTermination(false)
 ///                 .build())
+///             .name("tf-example-lb-nlb-tg")
+///             .port(25)
+///             .protocol("TCP")
+///             .vpcId(main.get("id"))
 ///             .build());
 ///
 ///     }
@@ -701,12 +722,12 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   tcp-example:
 ///     type: aws:lb:TargetGroup
 ///     properties:
+///       targetHealthStates:
+///         - enableUnhealthyConnectionTermination: false
 ///       name: tf-example-lb-nlb-tg
 ///       port: 25
 ///       protocol: TCP
 ///       vpcId: ${main.id}
-///       targetHealthStates:
-///         - enableUnhealthyConnectionTermination: false
 /// ```
 ///
 ///
@@ -718,10 +739,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import * as aws from "@pulumi/aws";
 ///
 /// const tcp_example = new aws.lb.TargetGroup("tcp-example", {
-///     name: "tf-example-lb-nlb-tg",
-///     port: 80,
-///     protocol: "TCP",
-///     vpcId: main.id,
 ///     targetGroupHealth: {
 ///         dnsFailover: {
 ///             minimumHealthyTargetsCount: "1",
@@ -732,6 +749,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///             minimumHealthyTargetsPercentage: "off",
 ///         },
 ///     },
+///     name: "tf-example-lb-nlb-tg",
+///     port: 80,
+///     protocol: "TCP",
+///     vpcId: main.id,
 /// });
 /// ```
 /// ```python
@@ -739,10 +760,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import pulumi_aws as aws
 ///
 /// tcp_example = aws.lb.TargetGroup("tcp-example",
-///     name="tf-example-lb-nlb-tg",
-///     port=80,
-///     protocol="TCP",
-///     vpc_id=main["id"],
 ///     target_group_health={
 ///         "dns_failover": {
 ///             "minimum_healthy_targets_count": "1",
@@ -752,7 +769,11 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///             "minimum_healthy_targets_count": 1,
 ///             "minimum_healthy_targets_percentage": "off",
 ///         },
-///     })
+///     },
+///     name="tf-example-lb-nlb-tg",
+///     port=80,
+///     protocol="TCP",
+///     vpc_id=main["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -764,10 +785,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// {
 ///     var tcp_example = new Aws.LB.TargetGroup("tcp-example", new()
 ///     {
-///         Name = "tf-example-lb-nlb-tg",
-///         Port = 80,
-///         Protocol = "TCP",
-///         VpcId = main.Id,
 ///         TargetGroupHealth = new Aws.LB.Inputs.TargetGroupTargetGroupHealthArgs
 ///         {
 ///             DnsFailover = new Aws.LB.Inputs.TargetGroupTargetGroupHealthDnsFailoverArgs
@@ -781,6 +798,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///                 MinimumHealthyTargetsPercentage = "off",
 ///             },
 ///         },
+///         Name = "tf-example-lb-nlb-tg",
+///         Port = 80,
+///         Protocol = "TCP",
+///         VpcId = main.Id,
 ///     });
 ///
 /// });
@@ -796,10 +817,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.NewTargetGroup(ctx, "tcp-example", &lb.TargetGroupArgs{
-/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
-/// 			Port:     pulumi.Int(80),
-/// 			Protocol: pulumi.String("TCP"),
-/// 			VpcId:    pulumi.Any(main.Id),
 /// 			TargetGroupHealth: &lb.TargetGroupTargetGroupHealthArgs{
 /// 				DnsFailover: &lb.TargetGroupTargetGroupHealthDnsFailoverArgs{
 /// 					MinimumHealthyTargetsCount:      pulumi.String("1"),
@@ -810,6 +827,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 					MinimumHealthyTargetsPercentage: pulumi.String("off"),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
+/// 			Port:     pulumi.Int(80),
+/// 			Protocol: pulumi.String("TCP"),
+/// 			VpcId:    pulumi.Any(main.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -819,7 +840,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -827,21 +848,24 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "tcp-example" {
-///   name     = "tf-example-lb-nlb-tg"
-///   port     = 80
-///   protocol = "TCP"
-///   vpc_id   = main.id
-///   target_group_health = {
-///     dns_failover = {
+/// resource "aws_lb_target_group" "tcp-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_group_health {
+///     dns_failover {
 ///       minimum_healthy_targets_count      = "1"
 ///       minimum_healthy_targets_percentage = "off"
 ///     }
-///     unhealthy_state_routing = {
+///     unhealthy_state_routing {
 ///       minimum_healthy_targets_count      = "1"
 ///       minimum_healthy_targets_percentage = "off"
 ///     }
 ///   }
+///   name     = "tf-example-lb-nlb-tg"
+///   port     = 80
+///   protocol = "TCP"
+///   vpc_id   = main.id
 /// }
 /// ```
 /// ```java
@@ -869,10 +893,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///
 ///     public static void stack(Context ctx) {
 ///         var tcp_example = new TargetGroup("tcp-example", TargetGroupArgs.builder()
-///             .name("tf-example-lb-nlb-tg")
-///             .port(80)
-///             .protocol("TCP")
-///             .vpcId(main.id())
 ///             .targetGroupHealth(TargetGroupTargetGroupHealthArgs.builder()
 ///                 .dnsFailover(TargetGroupTargetGroupHealthDnsFailoverArgs.builder()
 ///                     .minimumHealthyTargetsCount("1")
@@ -883,6 +903,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///                     .minimumHealthyTargetsPercentage("off")
 ///                     .build())
 ///                 .build())
+///             .name("tf-example-lb-nlb-tg")
+///             .port(80)
+///             .protocol("TCP")
+///             .vpcId(main.get("id"))
 ///             .build());
 ///
 ///     }
@@ -893,10 +917,6 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///   tcp-example:
 ///     type: aws:lb:TargetGroup
 ///     properties:
-///       name: tf-example-lb-nlb-tg
-///       port: 80
-///       protocol: TCP
-///       vpcId: ${main.id}
 ///       targetGroupHealth:
 ///         dnsFailover:
 ///           minimumHealthyTargetsCount: '1'
@@ -904,6 +924,10 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///         unhealthyStateRouting:
 ///           minimumHealthyTargetsCount: '1'
 ///           minimumHealthyTargetsPercentage: off
+///       name: tf-example-lb-nlb-tg
+///       port: 80
+///       protocol: TCP
+///       vpcId: ${main.id}
 /// ```
 ///
 ///
@@ -913,7 +937,7 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the target group.
+/// - `arn` (String) ARN of the target group.
 ///
 ///
 /// Using `pulumi import`, import Target Groups using their ARN. For example:
@@ -977,7 +1001,7 @@ class TargetGroup {
   ///
   /// Note that you can't specify targets for a target group using both instance IDs and IP addresses.
   ///
-  /// If the target type is `ip`, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
+  /// If the target type is `ip`, specify IP addresses from the subnets of the VPC for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
   ///
   /// Network Load Balancers do not support the `lambda` target type.
   ///
