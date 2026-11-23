@@ -19,6 +19,7 @@ import 'insights_dataset_config_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/storage/docs/insights/datasets)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Insights Dataset Config Includes
@@ -154,7 +155,7 @@ import 'insights_dataset_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +202,7 @@ import 'insights_dataset_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,7 +210,10 @@ import 'insights_dataset_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_insightsdatasetconfig" "config_includes" {
+/// resource "gcp_storage_insights_dataset_config" "config_includes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   dataset_config_id     = "my_config_includes"
 ///   retention_period_days = 1
@@ -227,9 +231,9 @@ import 'insights_dataset_config_state.dart';
 ///   }
 ///   include_cloud_storage_buckets = {
 ///     cloud_storage_buckets = [{
-///       "bucketName" = "sample-bucket"
+///       bucket_name = "sample-bucket"
 ///       }, {
-///       "bucketName" = "sample-regex"
+///       bucket_name = "sample-regex"
 ///     }]
 ///   }
 /// }
@@ -320,6 +324,7 @@ import 'insights_dataset_config_state.dart';
 ///           - bucketName: sample-bucket
 ///           - bucketName: sample-regex
 /// ```
+///
 ///
 /// ### Storage Insights Dataset Config Excludes
 ///
@@ -428,7 +433,7 @@ import 'insights_dataset_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -467,7 +472,7 @@ import 'insights_dataset_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -475,7 +480,10 @@ import 'insights_dataset_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_insightsdatasetconfig" "config_excludes" {
+/// resource "gcp_storage_insights_dataset_config" "config_excludes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "us-central1"
 ///   dataset_config_id                   = "my_config_excludes"
 ///   retention_period_days               = 1
@@ -489,9 +497,9 @@ import 'insights_dataset_config_state.dart';
 ///   }
 ///   exclude_cloud_storage_buckets = {
 ///     cloud_storage_buckets = [{
-///       "bucketName" = "sample-bucket"
+///       bucket_name = "sample-bucket"
 ///       }, {
-///       "bucketName" = "sample-regex"
+///       bucket_name = "sample-regex"
 ///     }]
 ///   }
 /// }
@@ -667,7 +675,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
           'gcp:storage/insightsDatasetConfig:InsightsDatasetConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     activityDataRetentionPeriodDays = registerOutput<int>('activityDataRetentionPeriodDays');
     createTime = registerOutput<String>('createTime');

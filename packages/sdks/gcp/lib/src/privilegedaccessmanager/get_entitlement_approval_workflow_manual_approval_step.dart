@@ -39,7 +39,7 @@ class GetEntitlementApprovalWorkflowManualApprovalStep {
 
   factory GetEntitlementApprovalWorkflowManualApprovalStep.fromMap(Map<String, dynamic> map) {
     return GetEntitlementApprovalWorkflowManualApprovalStep(
-      approvalsNeeded: pulumi.Input.fromValue((map['approvalsNeeded'] as num).toInt()),
+      approvalsNeeded: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['approvalsNeeded'])),
       approverEmailRecipients: pulumi.Input.fromValue((map['approverEmailRecipients'] as List).cast<String>()),
       approvers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApprovalStepApprover>(map['approvers']!, (value) => GetEntitlementApprovalWorkflowManualApprovalStepApprover.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),

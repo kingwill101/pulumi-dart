@@ -99,16 +99,16 @@ class GetRegionBackendServiceOutlierDetection {
   factory GetRegionBackendServiceOutlierDetection.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceOutlierDetection(
       baseEjectionTimes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceOutlierDetectionBaseEjectionTime>(map['baseEjectionTimes']!, (value) => GetRegionBackendServiceOutlierDetectionBaseEjectionTime.fromMap((value as Map).cast<String, dynamic>()))),
-      consecutiveErrors: pulumi.Input.fromValue((map['consecutiveErrors'] as num).toInt()),
-      consecutiveGatewayFailure: pulumi.Input.fromValue((map['consecutiveGatewayFailure'] as num).toInt()),
-      enforcingConsecutiveErrors: pulumi.Input.fromValue((map['enforcingConsecutiveErrors'] as num).toInt()),
-      enforcingConsecutiveGatewayFailure: pulumi.Input.fromValue((map['enforcingConsecutiveGatewayFailure'] as num).toInt()),
-      enforcingSuccessRate: pulumi.Input.fromValue((map['enforcingSuccessRate'] as num).toInt()),
+      consecutiveErrors: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['consecutiveErrors'])),
+      consecutiveGatewayFailure: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['consecutiveGatewayFailure'])),
+      enforcingConsecutiveErrors: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enforcingConsecutiveErrors'])),
+      enforcingConsecutiveGatewayFailure: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enforcingConsecutiveGatewayFailure'])),
+      enforcingSuccessRate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enforcingSuccessRate'])),
       intervals: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceOutlierDetectionInterval>(map['intervals']!, (value) => GetRegionBackendServiceOutlierDetectionInterval.fromMap((value as Map).cast<String, dynamic>()))),
-      maxEjectionPercent: pulumi.Input.fromValue((map['maxEjectionPercent'] as num).toInt()),
-      successRateMinimumHosts: pulumi.Input.fromValue((map['successRateMinimumHosts'] as num).toInt()),
-      successRateRequestVolume: pulumi.Input.fromValue((map['successRateRequestVolume'] as num).toInt()),
-      successRateStdevFactor: pulumi.Input.fromValue((map['successRateStdevFactor'] as num).toInt()),
+      maxEjectionPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxEjectionPercent'])),
+      successRateMinimumHosts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successRateMinimumHosts'])),
+      successRateRequestVolume: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successRateRequestVolume'])),
+      successRateStdevFactor: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successRateStdevFactor'])),
     );
   }
 }

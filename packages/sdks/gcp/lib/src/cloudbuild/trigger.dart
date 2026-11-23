@@ -24,6 +24,7 @@ import 'trigger_webhook_config.dart';
 ///
 /// &gt; **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudbuild Trigger Filename
@@ -93,7 +94,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +120,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -128,6 +129,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "filename-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   trigger_template = {
 ///     branch_name = "main"
@@ -192,6 +196,7 @@ import 'trigger_webhook_config.dart';
 ///         _BAZ: qux
 ///       filename: cloudbuild.yaml
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Build
 ///
@@ -564,7 +569,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -698,7 +703,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -707,6 +712,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "build-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-trigger"
 ///   location = "global"
 ///   trigger_template = {
@@ -715,13 +723,13 @@ import 'trigger_webhook_config.dart';
 ///   }
 ///   build = {
 ///     steps = [{
-///       "name"       = "gcr.io/cloud-builders/gcloud"
-///       "args"       = ["storage", "cp", "gs://mybucket/remotefile.zip", "localfile.zip"]
-///       "timeout"    = "120s"
-///       "secretEnvs" = ["MY_SECRET"]
+///       name        = "gcr.io/cloud-builders/gcloud"
+///       args        = ["storage", "cp", "gs://mybucket/remotefile.zip", "localfile.zip"]
+///       timeout     = "120s"
+///       secret_envs = ["MY_SECRET"]
 ///       }, {
-///       "name"   = "ubuntu"
-///       "script" = "echo hello"
+///       name   = "ubuntu"
+///       script = "echo hello"
 ///     }]
 ///     source = {
 ///       storage_source = {
@@ -737,15 +745,15 @@ import 'trigger_webhook_config.dart';
 ///     queue_ttl   = "20s"
 ///     logs_bucket = "gs://mybucket/logs"
 ///     secrets = [{
-///       "kmsKeyName" = "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"
-///       "secretEnv" = {
+///       kms_key_name = "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"
+///       secret_env = {
 ///         "PASSWORD" = "ZW5jcnlwdGVkLXBhc3N3b3JkCg=="
 ///       }
 ///     }]
 ///     available_secrets = {
 ///       secret_managers = [{
-///         "env"         = "MY_SECRET"
-///         "versionName" = "projects/myProject/secrets/mySecret/versions/latest"
+///         env          = "MY_SECRET"
+///         version_name = "projects/myProject/secrets/mySecret/versions/latest"
 ///       }]
 ///     }
 ///     artifacts = {
@@ -755,19 +763,19 @@ import 'trigger_webhook_config.dart';
 ///         paths    = ["path"]
 ///       }
 ///       npm_packages = [{
-///         "packagePath" = "package.json"
-///         "repository"  = "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo"
+///         package_path = "package.json"
+///         repository   = "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo"
 ///       }]
 ///       python_packages = [{
-///         "paths"      = ["dist/*"]
-///         "repository" = "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo"
+///         paths      = ["dist/*"]
+///         repository = "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo"
 ///       }]
 ///       maven_artifacts = [{
-///         "repository" = "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo"
-///         "path"       = "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar"
-///         "artifactId" = "my-app"
-///         "groupId"    = "com.mycompany.app"
-///         "version"    = "1.0"
+///         repository  = "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo"
+///         path        = "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar"
+///         artifact_id = "my-app"
+///         group_id    = "com.mycompany.app"
+///         version     = "1.0"
 ///       }]
 ///     }
 ///     options = {
@@ -783,8 +791,8 @@ import 'trigger_webhook_config.dart';
 ///       envs                     = ["ekey = evalue"]
 ///       secret_envs              = ["secretenv = svalue"]
 ///       volumes = [{
-///         "name" = "v1"
-///         "path" = "v1"
+///         name = "v1"
+///         path = "v1"
 ///       }]
 ///     }
 ///   }
@@ -1002,6 +1010,7 @@ import 'trigger_webhook_config.dart';
 ///               path: v1
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Service Account
 ///
 ///
@@ -1117,10 +1126,10 @@ import 'trigger_webhook_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1161,7 +1170,7 @@ import 'trigger_webhook_config.dart';
 /// 				BranchName: pulumi.String("main"),
 /// 				RepoName:   pulumi.String("my-repo"),
 /// 			},
-/// 			ServiceAccount: cloudbuildServiceAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceAccount: cloudbuildServiceAccount.ID(),
 /// 			Filename:       pulumi.String("cloudbuild.yaml"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			actAs,
@@ -1175,7 +1184,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1183,11 +1192,14 @@ import 'trigger_webhook_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "service-account-trigger" {
-///   depends_on = [gcp_projects_iammember.act_as, gcp_projects_iammember.logs_writer]
+///   depends_on = [gcp_projects_i_a_m_member.act_as, gcp_projects_i_a_m_member.logs_writer]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   trigger_template = {
 ///     branch_name = "main"
 ///     repo_name   = "my-repo"
@@ -1196,15 +1208,24 @@ import 'trigger_webhook_config.dart';
 ///   filename        = "cloudbuild.yaml"
 /// }
 /// resource "gcp_serviceaccount_account" "cloudbuild_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "cloud-sa"
 /// }
-/// resource "gcp_projects_iammember" "act_as" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "act_as" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/iam.serviceAccountUser"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.cloudbuild_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "logs_writer" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "logs_writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/logging.logWriter"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.cloudbuild_service_account.email}"
 /// }
@@ -1313,6 +1334,7 @@ import 'trigger_webhook_config.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Include Build Logs
 ///
 ///
@@ -1383,7 +1405,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1410,7 +1432,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1419,6 +1441,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "include-build-logs-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "include-build-logs-trigger"
 ///   filename = "cloudbuild.yaml"
@@ -1487,6 +1512,7 @@ import 'trigger_webhook_config.dart';
 ///           branch: ^main$
 ///       includeBuildLogs: INCLUDE_BUILD_LOGS_WITH_STATUS
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Pubsub Config
 ///
@@ -1597,8 +1623,8 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1615,7 +1641,7 @@ import 'trigger_webhook_config.dart';
 /// 			Name:        pulumi.String("pubsub-trigger"),
 /// 			Description: pulumi.String("acceptance test example pubsub build trigger"),
 /// 			PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
-/// 				Topic: mytopic.ID().ToIDOutput().ToStringOutput(),
+/// 				Topic: mytopic.ID(),
 /// 			},
 /// 			SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
 /// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
@@ -1641,7 +1667,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1650,9 +1676,15 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "mytopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
 /// resource "gcp_cloudbuild_trigger" "pubsub-config-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "pubsub-trigger"
 ///   description = "acceptance test example pubsub build trigger"
@@ -1758,6 +1790,7 @@ import 'trigger_webhook_config.dart';
 ///         _ACTION: $(body.message.data.action)
 ///       filter: _ACTION.matches('INSERT')
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Webhook Config
 ///
@@ -1942,9 +1975,9 @@ import 'trigger_webhook_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1966,7 +1999,7 @@ import 'trigger_webhook_config.dart';
 /// 			return err
 /// 		}
 /// 		webhookTriggerSecretKeyData, err := secretmanager.NewSecretVersion(ctx, "webhook_trigger_secret_key_data", &secretmanager.SecretVersionArgs{
-/// 			Secret:     webhookTriggerSecretKey.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     webhookTriggerSecretKey.ID(),
 /// 			SecretData: pulumi.String("secretkeygoeshere"),
 /// 		})
 /// 		if err != nil {
@@ -2001,7 +2034,7 @@ import 'trigger_webhook_config.dart';
 /// 			Name:        pulumi.String("webhook-trigger"),
 /// 			Description: pulumi.String("acceptance test example webhook build trigger"),
 /// 			WebhookConfig: &cloudbuild.TriggerWebhookConfigArgs{
-/// 				Secret: webhookTriggerSecretKeyData.ID().ToIDOutput().ToStringOutput(),
+/// 				Secret: webhookTriggerSecretKeyData.ID(),
 /// 			},
 /// 			SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
 /// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
@@ -2023,7 +2056,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2031,39 +2064,51 @@ import 'trigger_webhook_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_organizations_getiampolicy" "secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
-///     members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
+///     members = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
 ///   }
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "webhook_trigger_secret_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "webhook-trigger-secret-key"
 ///   replication = {
 ///     user_managed = {
 ///       replicas = [{
-///         "location" = "us-central1"
+///         location = "us-central1"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "webhook_trigger_secret_key_data" {
+/// resource "gcp_secretmanager_secret_version" "webhook_trigger_secret_key_data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.webhook_trigger_secret_key.id
 ///   secret_data = "secretkeygoeshere"
 /// }
-/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_secretmanager_secret.webhook_trigger_secret_key.project
 ///   secret_id   = gcp_secretmanager_secret.webhook_trigger_secret_key.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.secretAccessor.policy_data
 /// }
 /// resource "gcp_cloudbuild_trigger" "webhook-config-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "webhook-trigger"
 ///   description = "acceptance test example webhook build trigger"
 ///   webhook_config = {
-///     secret = gcp_secretmanager_secretversion.webhook_trigger_secret_key_data.id
+///     secret = gcp_secretmanager_secret_version.webhook_trigger_secret_key_data.id
 ///   }
 ///   source_to_build = {
 ///     uri       = "https://hashicorp/terraform-provider-google-beta"
@@ -2223,6 +2268,7 @@ import 'trigger_webhook_config.dart';
 ///               - serviceAccount:service-${project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Manual
 ///
 ///
@@ -2297,7 +2343,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2327,7 +2373,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2336,11 +2382,14 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "manual-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "manual-trigger"
 ///   build = {
 ///     steps = [{
-///       "name" = "gcr.io/cloud-builders/gcloud"
-///       "args" = ["version"]
+///       name = "gcr.io/cloud-builders/gcloud"
+///       args = ["version"]
 ///     }]
 ///   }
 ///   approval_config = {
@@ -2402,6 +2451,7 @@ import 'trigger_webhook_config.dart';
 ///       approvalConfig:
 ///         approvalRequired: true
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Manual Github Enterprise
 ///
@@ -2482,7 +2532,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2512,7 +2562,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2521,6 +2571,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "manual-ghe-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-trigger"
 ///   source_to_build = {
 ///     uri                      = "https://hashicorp/terraform-provider-google-beta"
@@ -2598,6 +2651,7 @@ import 'trigger_webhook_config.dart';
 ///         repoType: GITHUB
 ///         githubEnterpriseConfig: projects/myProject/locations/global/githubEnterpriseConfigs/configID
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Manual Bitbucket Server
 ///
@@ -2678,7 +2732,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2708,7 +2762,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2717,6 +2771,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "manual-bitbucket-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "terraform-manual-bbs-trigger"
 ///   source_to_build = {
 ///     uri                     = "https://bbs.com/scm/stag/test-repo.git"
@@ -2794,6 +2851,7 @@ import 'trigger_webhook_config.dart';
 ///         repoType: BITBUCKET_SERVER
 ///         bitbucketServerConfig: projects/myProject/locations/global/bitbucketServerConfigs/configID
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Repo
 ///
@@ -2905,8 +2963,8 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2927,7 +2985,7 @@ import 'trigger_webhook_config.dart';
 /// 		}
 /// 		my_repository, err := cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 /// 			Name:             pulumi.String("my-repo"),
-/// 			ParentConnection: my_connection.ID().ToIDOutput().ToStringOutput(),
+/// 			ParentConnection: my_connection.ID(),
 /// 			RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
 /// 		})
 /// 		if err != nil {
@@ -2936,7 +2994,7 @@ import 'trigger_webhook_config.dart';
 /// 		_, err = cloudbuild.NewTrigger(ctx, "repo-trigger", &cloudbuild.TriggerArgs{
 /// 			Location: pulumi.String("us-central1"),
 /// 			RepositoryEventConfig: &cloudbuild.TriggerRepositoryEventConfigArgs{
-/// 				Repository: my_repository.ID().ToIDOutput().ToStringOutput(),
+/// 				Repository: my_repository.ID(),
 /// 				Push: &cloudbuild.TriggerRepositoryEventConfigPushArgs{
 /// 					Branch: pulumi.String("feature-.*"),
 /// 				},
@@ -2951,7 +3009,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2960,6 +3018,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-connection"
 ///   github_config = {
@@ -2970,11 +3031,17 @@ import 'trigger_webhook_config.dart';
 ///   }
 /// }
 /// resource "gcp_cloudbuildv2_repository" "my-repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-repo"
 ///   parent_connection = gcp_cloudbuildv2_connection.my-connection.id
 ///   remote_uri        = "https://github.com/myuser/my-repo.git"
 /// }
 /// resource "gcp_cloudbuild_trigger" "repo-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   repository_event_config = {
 ///     repository = gcp_cloudbuildv2_repository.my-repository.id
@@ -3073,6 +3140,7 @@ import 'trigger_webhook_config.dart';
 ///       filename: cloudbuild.yaml
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Bitbucket Server Push
 ///
 ///
@@ -3146,7 +3214,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3174,7 +3242,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3183,6 +3251,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "bbs-push-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "bbs-push-trigger"
 ///   location = "us-central1"
 ///   bitbucket_server_trigger_config = {
@@ -3254,6 +3325,7 @@ import 'trigger_webhook_config.dart';
 ///           invertRegex: true
 ///       filename: cloudbuild.yaml
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Bitbucket Server Pull Request
 ///
@@ -3331,7 +3403,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3360,7 +3432,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3369,6 +3441,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "bbs-pull-request-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ghe-trigger"
 ///   location = "us-central1"
 ///   bitbucket_server_trigger_config = {
@@ -3444,6 +3519,7 @@ import 'trigger_webhook_config.dart';
 ///       filename: cloudbuild.yaml
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Github Enterprise
 ///
 ///
@@ -3514,7 +3590,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3541,7 +3617,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3550,6 +3626,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "ghe-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ghe-trigger"
 ///   location = "us-central1"
 ///   github = {
@@ -3618,6 +3697,7 @@ import 'trigger_webhook_config.dart';
 ///         enterpriseConfigResourceName: projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID
 ///       filename: cloudbuild.yaml
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Allow Failure
 ///
@@ -3901,7 +3981,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4003,7 +4083,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4012,6 +4092,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "allow-failure-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-trigger"
 ///   location = "global"
 ///   trigger_template = {
@@ -4020,9 +4103,9 @@ import 'trigger_webhook_config.dart';
 ///   }
 ///   build = {
 ///     steps = [{
-///       "name"         = "ubuntu"
-///       "args"         = ["-c", "exit 1"]
-///       "allowFailure" = true
+///       name          = "ubuntu"
+///       args          = ["-c", "exit 1"]
+///       allow_failure = true
 ///     }]
 ///     source = {
 ///       storage_source = {
@@ -4038,15 +4121,15 @@ import 'trigger_webhook_config.dart';
 ///     queue_ttl   = "20s"
 ///     logs_bucket = "gs://mybucket/logs"
 ///     secrets = [{
-///       "kmsKeyName" = "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"
-///       "secretEnv" = {
+///       kms_key_name = "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"
+///       secret_env = {
 ///         "PASSWORD" = "ZW5jcnlwdGVkLXBhc3N3b3JkCg=="
 ///       }
 ///     }]
 ///     available_secrets = {
 ///       secret_managers = [{
-///         "env"         = "MY_SECRET"
-///         "versionName" = "projects/myProject/secrets/mySecret/versions/latest"
+///         env          = "MY_SECRET"
+///         version_name = "projects/myProject/secrets/mySecret/versions/latest"
 ///       }]
 ///     }
 ///     artifacts = {
@@ -4069,8 +4152,8 @@ import 'trigger_webhook_config.dart';
 ///       envs                     = ["ekey = evalue"]
 ///       secret_envs              = ["secretenv = svalue"]
 ///       volumes = [{
-///         "name" = "v1"
-///         "path" = "v1"
+///         name = "v1"
+///         path = "v1"
 ///       }]
 ///     }
 ///   }
@@ -4242,6 +4325,7 @@ import 'trigger_webhook_config.dart';
 ///             - name: v1
 ///               path: v1
 /// ```
+///
 ///
 /// ### Cloudbuild Trigger Allow Exit Codes
 ///
@@ -4535,7 +4619,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4640,7 +4724,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4649,6 +4733,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "allow-exit-codes-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-trigger"
 ///   location = "global"
 ///   trigger_template = {
@@ -4657,9 +4744,9 @@ import 'trigger_webhook_config.dart';
 ///   }
 ///   build = {
 ///     steps = [{
-///       "name"           = "ubuntu"
-///       "args"           = ["-c", "exit 1"]
-///       "allowExitCodes" = [1, 3]
+///       name             = "ubuntu"
+///       args             = ["-c", "exit 1"]
+///       allow_exit_codes = [1, 3]
 ///     }]
 ///     source = {
 ///       storage_source = {
@@ -4675,15 +4762,15 @@ import 'trigger_webhook_config.dart';
 ///     queue_ttl   = "20s"
 ///     logs_bucket = "gs://mybucket/logs"
 ///     secrets = [{
-///       "kmsKeyName" = "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"
-///       "secretEnv" = {
+///       kms_key_name = "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"
+///       secret_env = {
 ///         "PASSWORD" = "ZW5jcnlwdGVkLXBhc3N3b3JkCg=="
 ///       }
 ///     }]
 ///     available_secrets = {
 ///       secret_managers = [{
-///         "env"         = "MY_SECRET"
-///         "versionName" = "projects/myProject/secrets/mySecret/versions/latest"
+///         env          = "MY_SECRET"
+///         version_name = "projects/myProject/secrets/mySecret/versions/latest"
 ///       }]
 ///     }
 ///     artifacts = {
@@ -4706,8 +4793,8 @@ import 'trigger_webhook_config.dart';
 ///       envs                     = ["ekey = evalue"]
 ///       secret_envs              = ["secretenv = svalue"]
 ///       volumes = [{
-///         "name" = "v1"
-///         "path" = "v1"
+///         name = "v1"
+///         path = "v1"
 ///       }]
 ///     }
 ///   }
@@ -4884,6 +4971,7 @@ import 'trigger_webhook_config.dart';
 ///               path: v1
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Pubsub With Repo
 ///
 ///
@@ -5026,9 +5114,9 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5049,7 +5137,7 @@ import 'trigger_webhook_config.dart';
 /// 		}
 /// 		my_repository, err := cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 /// 			Name:             pulumi.String("my-repo"),
-/// 			ParentConnection: my_connection.ID().ToIDOutput().ToStringOutput(),
+/// 			ParentConnection: my_connection.ID(),
 /// 			RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
 /// 		})
 /// 		if err != nil {
@@ -5065,16 +5153,16 @@ import 'trigger_webhook_config.dart';
 /// 			Name:     pulumi.String("pubsub-with-repo-trigger"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
-/// 				Topic: mytopic.ID().ToIDOutput().ToStringOutput(),
+/// 				Topic: mytopic.ID(),
 /// 			},
 /// 			SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
-/// 				Repository: my_repository.ID().ToIDOutput().ToStringOutput(),
+/// 				Repository: my_repository.ID(),
 /// 				Ref:        pulumi.String("refs/heads/main"),
 /// 				RepoType:   pulumi.String("GITHUB"),
 /// 			},
 /// 			GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
 /// 				Path:       pulumi.String("cloudbuild.yaml"),
-/// 				Repository: my_repository.ID().ToIDOutput().ToStringOutput(),
+/// 				Repository: my_repository.ID(),
 /// 				Revision:   pulumi.String("refs/heads/main"),
 /// 				RepoType:   pulumi.String("GITHUB"),
 /// 			},
@@ -5087,7 +5175,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5096,6 +5184,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-connection"
 ///   github_config = {
@@ -5106,14 +5197,23 @@ import 'trigger_webhook_config.dart';
 ///   }
 /// }
 /// resource "gcp_cloudbuildv2_repository" "my-repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-repo"
 ///   parent_connection = gcp_cloudbuildv2_connection.my-connection.id
 ///   remote_uri        = "https://github.com/myuser/my-repo.git"
 /// }
 /// resource "gcp_pubsub_topic" "mytopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
 /// resource "gcp_cloudbuild_trigger" "pubsub-with-repo-trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "pubsub-with-repo-trigger"
 ///   location = "us-central1"
 ///   pubsub_config = {
@@ -5246,6 +5346,7 @@ import 'trigger_webhook_config.dart';
 ///         repoType: GITHUB
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Developer Connect Pull
 ///
 ///
@@ -5313,7 +5414,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5339,7 +5440,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5348,6 +5449,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "developer-connect-trigger-pull" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   developer_connect_event_config = {
 ///     git_repository_link = "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1"
@@ -5414,6 +5518,7 @@ import 'trigger_webhook_config.dart';
 ///       filename: cloudbuild.yaml
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Developer Connect Push
 ///
 ///
@@ -5478,7 +5583,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5503,7 +5608,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5512,6 +5617,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "developer-connect-trigger-push" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   developer_connect_event_config = {
 ///     git_repository_link = "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1"
@@ -5575,6 +5683,7 @@ import 'trigger_webhook_config.dart';
 ///       filename: cloudbuild.yaml
 /// ```
 ///
+///
 /// ### Cloudbuild Trigger Developer Connect Push Branch
 ///
 ///
@@ -5636,7 +5745,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5660,7 +5769,7 @@ import 'trigger_webhook_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5669,6 +5778,9 @@ import 'trigger_webhook_config.dart';
 /// }
 ///
 /// resource "gcp_cloudbuild_trigger" "dc-trigger-regular-push-branch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   developer_connect_event_config = {
 ///     git_repository_link = "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1"
@@ -5867,7 +5979,7 @@ class Trigger extends pulumi.CustomResource {
           'gcp:cloudbuild/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     approvalConfig = registerOutput<TriggerApprovalConfig>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bitbucketServerTriggerConfig = registerOutput<TriggerBitbucketServerTriggerConfig?>('bitbucketServerTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerBitbucketServerTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

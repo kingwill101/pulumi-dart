@@ -46,7 +46,7 @@ class StreamDestinationConfigGcsDestinationConfig {
     return StreamDestinationConfigGcsDestinationConfig(
       avroFileFormat: (() { final guardedValue = map['avroFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       fileRotationInterval: (() { final guardedValue = map['fileRotationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fileRotationMb: (() { final guardedValue = map['fileRotationMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fileRotationMb: (() { final guardedValue = map['fileRotationMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       jsonFileFormat: (() { final guardedValue = map['jsonFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamDestinationConfigGcsDestinationConfigJsonFileFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

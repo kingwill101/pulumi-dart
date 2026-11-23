@@ -3,18 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStoragePoolTypesDeprecated {
+  /// (Output)
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
   /// This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String> deleted;
+  /// (Output)
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
   /// This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String> deprecated;
+  /// (Output)
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
   /// This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String> obsolete;
+  /// (Output)
   /// The URL of the suggested replacement for a deprecated resource.
   /// The suggested replacement resource must be the same kind of resource as the deprecated resource.
   final pulumi.Input<String> replacement;
+  /// (Output)
   /// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
   /// Operations which communicate the end of life date for an image, can use ACTIVE.
   /// Operations which create a new resource using a DEPRECATED resource will return successfully,
@@ -23,11 +28,11 @@ class GetStoragePoolTypesDeprecated {
   final pulumi.Input<String> state;
 
   /// Creates a new [GetStoragePoolTypesDeprecated].
-  /// [deleted] An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
-  /// [deprecated] An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
-  /// [obsolete] An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
-  /// [replacement] The URL of the suggested replacement for a deprecated resource.
-  /// [state] The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
+  /// [deleted] (Output)
+  /// [deprecated] (Output)
+  /// [obsolete] (Output)
+  /// [replacement] (Output)
+  /// [state] (Output)
   const GetStoragePoolTypesDeprecated({
     required this.deleted,
     required this.deprecated,

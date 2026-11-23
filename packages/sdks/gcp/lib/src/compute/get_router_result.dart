@@ -21,6 +21,7 @@ class GetRouterResult {
   final List<GetRouterParam>? params;
   final String? project;
   final String? region;
+  final int? routerId;
   final String? selfLink;
 
   /// Creates a new [GetRouterResult].
@@ -37,6 +38,7 @@ class GetRouterResult {
   /// [params] Optional.
   /// [project] Optional.
   /// [region] Optional.
+  /// [routerId] Optional.
   /// [selfLink] Optional.
   const GetRouterResult({
     this.bgps,
@@ -52,6 +54,7 @@ class GetRouterResult {
     this.params,
     this.project,
     this.region,
+    this.routerId,
     this.selfLink,
   });
 
@@ -70,6 +73,7 @@ class GetRouterResult {
       'params': ?(() { final guardedValue = params; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRouterParam, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
       'region': ?region,
+      'routerId': ?routerId,
       'selfLink': ?selfLink,
     };
   }
@@ -89,6 +93,7 @@ class GetRouterResult {
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRouterParam>(guardedValue, (value) => GetRouterParam.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      routerId: (() { final guardedValue = map['routerId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

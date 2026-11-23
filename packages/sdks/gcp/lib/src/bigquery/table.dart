@@ -200,7 +200,7 @@ import 'table_view.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -269,7 +269,7 @@ import 'table_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -278,6 +278,9 @@ import 'table_view.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "foo"
 ///   friendly_name               = "test"
 ///   description                 = "This is a test description"
@@ -288,6 +291,9 @@ import 'table_view.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_table" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.default.dataset_id
 ///   table_id   = "bar"
 ///   time_partitioning = {
@@ -296,9 +302,28 @@ import 'table_view.dart';
 ///   labels = {
 ///     "env" = "default"
 ///   }
-///   schema = "[\n  {\n    \\\"name\\\": \\\"permalink\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The Permalink\\\"\n  },\n  {\n    \\\"name\\\": \\\"state\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"State where the head office is located\\\"\n  }\n]\n"
+///   schema = <<EOF
+/// [
+///   {
+///     \"name\": \"permalink\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"The Permalink\"
+///   },
+///   {
+///     \"name\": \"state\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"State where the head office is located\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// resource "gcp_bigquery_table" "sheet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.default.dataset_id
 ///   table_id   = "sheet"
 ///   external_data_configuration = {
@@ -455,22 +480,6 @@ class Table extends pulumi.CustomResource {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  ///
-  /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-  ///
-  /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-  /// string will create a diff, even if the JSON itself hasn't changed.
-  /// If the API returns a different value for the same schema, e.g. it
-  /// switched the order of values or replaced a field data type (`STRUCT` with
-  /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-  /// the recurring diff this causes. As a workaround, we recommend using the
-  /// schema as returned by the API.
-  ///
-  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
-  /// documented below and do **not** set
-  /// `external_data_configuration.connection_id`, schemas must be specified
-  /// with `external_data_configuration.schema`. Otherwise, schemas must be
-  /// specified with this top-level field.
   late final pulumi.Output<String> deletionPolicy;
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -553,6 +562,20 @@ class Table extends pulumi.CustomResource {
   /// for more details.
   late final pulumi.Output<Map<String, String>?> resourceTags;
   /// A JSON schema for the table.
+  ///
+  /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+  /// string will create a diff, even if the JSON itself hasn't changed.
+  /// If the API returns a different value for the same schema, e.g. it
+  /// switched the order of values or replaced a field data type (`STRUCT` with
+  /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+  /// the recurring diff this causes. As a workaround, we recommend using the
+  /// schema as returned by the API.
+  ///
+  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+  /// documented below and do **not** set
+  /// `external_data_configuration.connection_id`, schemas must be specified
+  /// with `external_data_configuration.schema`. Otherwise, schemas must be
+  /// specified with this top-level field.
   late final pulumi.Output<String> schema;
   /// Specifies metadata of the foreign data
   /// type definition in field schema. Structure is documented below.
@@ -565,7 +588,10 @@ class Table extends pulumi.CustomResource {
   /// A unique ID for the resource.
   /// Changing this forces a new resource to be created.
   late final pulumi.Output<String> tableId;
-  /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+  /// Specifies the view that determines which
+  /// table information is returned. By default, basic table information and
+  /// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+  /// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
   late final pulumi.Output<String?> tableMetadataView;
   /// Replication info of a table created
   /// using "AS REPLICA" DDL like:
@@ -593,7 +619,7 @@ class Table extends pulumi.CustomResource {
           'gcp:bigquery/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     biglakeConfiguration = registerOutput<TableBiglakeConfiguration?>('biglakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBiglakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -18,6 +18,7 @@ import 'region_ssl_certificate_state.dart';
 /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `privateKeyWo`.
 /// Read more about Write-only Arguments.
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -75,7 +76,7 @@ class RegionSslCertificate extends pulumi.CustomResource {
   /// Resulting name for a `namePrefix` &lt;= 37 characters:
   /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `namePrefix` 38 - 54 characters:
-  /// `namePrefix` + YYmmdd + 3 digit incremental counter
+  /// `namePrefix` + 9 random lowercase alphanumeric characters
   late final pulumi.Output<String> namePrefix;
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -110,7 +111,7 @@ class RegionSslCertificate extends pulumi.CustomResource {
           'gcp:compute/regionSslCertificate:RegionSslCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['certificate', 'privateKey', 'privateKeyWo'],
         ) {
     certificate = registerOutput<String>('certificate', isSecret: true);

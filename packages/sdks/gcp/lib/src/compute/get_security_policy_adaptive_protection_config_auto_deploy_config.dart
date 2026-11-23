@@ -36,7 +36,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
   factory GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
       confidenceThreshold: pulumi.Input.fromValue((map['confidenceThreshold'] as num).toDouble()),
-      expirationSec: pulumi.Input.fromValue((map['expirationSec'] as num).toInt()),
+      expirationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expirationSec'])),
       impactedBaselineThreshold: pulumi.Input.fromValue((map['impactedBaselineThreshold'] as num).toDouble()),
       loadThreshold: pulumi.Input.fromValue((map['loadThreshold'] as num).toDouble()),
     );

@@ -27,7 +27,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
 
   factory ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(
-      daysInCycle: pulumi.Input.fromValue((map['daysInCycle'] as num).toInt()),
+      daysInCycle: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysInCycle'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }

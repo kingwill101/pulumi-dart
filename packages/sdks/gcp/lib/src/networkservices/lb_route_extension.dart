@@ -12,6 +12,7 @@ import 'lb_route_extension_state.dart';
 /// * How-to Guides
 /// * [Configure a route extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_route_extension)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -84,7 +85,7 @@ class LbRouteExtension extends pulumi.CustomResource {
           'gcp:networkservices/lbRouteExtension:LbRouteExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

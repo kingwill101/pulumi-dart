@@ -14,6 +14,7 @@ import 'resource_policy_workload_policy.dart';
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Resource Policy Basic
@@ -84,7 +85,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +111,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,7 +119,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "foo" {
+/// resource "gcp_compute_resource_policy" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   snapshot_schedule_policy = {
@@ -184,6 +188,7 @@ import 'resource_policy_workload_policy.dart';
 ///             daysInCycle: 1
 ///             startTime: 04:00
 /// ```
+///
 ///
 /// ### Resource Policy Full
 ///
@@ -289,7 +294,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -326,7 +331,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -334,7 +339,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   snapshot_schedule_policy = {
@@ -431,6 +439,7 @@ import 'resource_policy_workload_policy.dart';
 ///           guestFlush: true
 /// ```
 ///
+///
 /// ### Resource Policy Placement Policy
 ///
 ///
@@ -485,7 +494,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -507,7 +516,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -515,7 +524,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   group_placement_policy = {
@@ -569,6 +581,7 @@ import 'resource_policy_workload_policy.dart';
 ///         vmCount: 2
 ///         collocation: COLLOCATED
 /// ```
+///
 ///
 /// ### Resource Policy Placement Policy Max Distance
 ///
@@ -627,7 +640,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -650,7 +663,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -658,7 +671,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   group_placement_policy = {
@@ -715,6 +731,7 @@ import 'resource_policy_workload_policy.dart';
 ///         collocation: COLLOCATED
 ///         maxDistance: 2
 /// ```
+///
 ///
 /// ### Resource Policy Instance Schedule Policy
 ///
@@ -790,7 +807,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -818,7 +835,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -826,7 +843,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "hourly" {
+/// resource "gcp_compute_resource_policy" "hourly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gce-policy"
 ///   region      = "us-central1"
 ///   description = "Start and stop instances"
@@ -898,6 +918,7 @@ import 'resource_policy_workload_policy.dart';
 ///           schedule: 15 * * * *
 ///         timeZone: US/Central
 /// ```
+///
 ///
 /// ### Resource Policy Snapshot Schedule Chain Name
 ///
@@ -1009,7 +1030,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1048,7 +1069,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1056,7 +1077,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "hourly" {
+/// resource "gcp_compute_resource_policy" "hourly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gce-policy"
 ///   region      = "us-central1"
 ///   description = "chain name snapshot"
@@ -1159,6 +1183,7 @@ import 'resource_policy_workload_policy.dart';
 ///           chainName: test-schedule-chain-name
 /// ```
 ///
+///
 /// ### Resource Policy Consistency Group
 ///
 ///
@@ -1210,7 +1235,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1231,7 +1256,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1239,7 +1264,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "cgroup" {
+/// resource "gcp_compute_resource_policy" "cgroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   disk_consistency_group_policy = {
@@ -1290,6 +1318,7 @@ import 'resource_policy_workload_policy.dart';
 ///       diskConsistencyGroupPolicy:
 ///         enabled: true
 /// ```
+///
 ///
 /// ### Resource Policy Workload Policy
 ///
@@ -1342,7 +1371,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1363,7 +1392,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1371,7 +1400,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1422,6 +1454,7 @@ import 'resource_policy_workload_policy.dart';
 ///       workloadPolicy:
 ///         type: HIGH_AVAILABILITY
 /// ```
+///
 ///
 /// ### Resource Policy Workload Policy Accelerator Topology
 ///
@@ -1477,7 +1510,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1499,7 +1532,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1507,7 +1540,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1561,6 +1597,7 @@ import 'resource_policy_workload_policy.dart';
 ///         type: HIGH_THROUGHPUT
 ///         acceleratorTopology: 2x2
 /// ```
+///
 ///
 /// ### Resource Policy Workload Policy Accelerator Topology Mode
 ///
@@ -1619,7 +1656,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1642,7 +1679,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1650,7 +1687,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1708,6 +1748,7 @@ import 'resource_policy_workload_policy.dart';
 ///         acceleratorTopologyMode: AUTO_CONNECT
 /// ```
 ///
+///
 /// ### Resource Policy Workload Policy Max Topology Distance
 ///
 ///
@@ -1762,7 +1803,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1784,7 +1825,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1792,7 +1833,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1846,6 +1890,7 @@ import 'resource_policy_workload_policy.dart';
 ///         type: HIGH_THROUGHPUT
 ///         maxTopologyDistance: BLOCK
 /// ```
+///
 ///
 /// ### Resource Policy Placement Policy Gpu Topology
 ///
@@ -1901,7 +1946,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1923,7 +1968,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1931,7 +1976,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west9"
 ///   group_placement_policy = {
@@ -1985,6 +2033,7 @@ import 'resource_policy_workload_policy.dart';
 ///         collocation: COLLOCATED
 ///         gpuTopology: 1x72
 /// ```
+///
 ///
 /// ### Resource Policy Placement Policy Tpu Topology
 ///
@@ -2043,7 +2092,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2066,7 +2115,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2074,7 +2123,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   group_placement_policy = {
@@ -2204,7 +2256,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'gcp:compute/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

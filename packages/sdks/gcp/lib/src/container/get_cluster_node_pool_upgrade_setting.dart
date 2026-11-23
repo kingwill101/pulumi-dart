@@ -37,8 +37,8 @@ class GetClusterNodePoolUpgradeSetting {
   factory GetClusterNodePoolUpgradeSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolUpgradeSetting(
       blueGreenSettings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolUpgradeSettingBlueGreenSetting>(map['blueGreenSettings']!, (value) => GetClusterNodePoolUpgradeSettingBlueGreenSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      maxSurge: pulumi.Input.fromValue((map['maxSurge'] as num).toInt()),
-      maxUnavailable: pulumi.Input.fromValue((map['maxUnavailable'] as num).toInt()),
+      maxSurge: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSurge'])),
+      maxUnavailable: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnavailable'])),
       strategy: pulumi.Input.fromValue(map['strategy'] as String),
     );
   }

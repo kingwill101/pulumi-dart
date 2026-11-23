@@ -40,7 +40,7 @@ import 'get_account_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -57,7 +57,7 @@ import 'get_account_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -65,7 +65,7 @@ import 'get_account_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_billing_getaccountiampolicy" "policy" {
+/// data "gcp_billing_account_iam_policy" "policy" {
 ///   billing_account_id = "MEEP-MEEP-MEEP-MEEP-MEEP"
 /// }
 /// ```

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'release_application_template_component.dart';
 import 'release_blueprint.dart';
 import 'release_input_variable.dart';
 import 'release_input_variable_default.dart';
@@ -16,6 +17,11 @@ class ReleaseState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>?>? annotations;
+  /// Reference to a component and revision in a composite Application Design
+  /// Center ApplicationTemplate. Set by the service on Releases created by an
+  /// ApplicationTemplate import.
+  /// Structure is documented below.
+  final pulumi.Input<List<ReleaseApplicationTemplateComponent>?>? applicationTemplateComponents;
   /// Blueprints are OCI Images that contain all of the artifacts needed to
   /// provision a unit. Metadata such as, type of the engine used to actuate the
   /// blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -89,6 +95,7 @@ class ReleaseState {
 
   /// Creates a new [ReleaseState].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
+  /// [applicationTemplateComponents] Reference to a component and revision in a composite Application Design
   /// [blueprint] Blueprints are OCI Images that contain all of the artifacts needed to
   /// [createTime] The timestamp when the resource was created.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -110,6 +117,7 @@ class ReleaseState {
   /// [updateTime] The timestamp when the resource was last updated. Any
   const ReleaseState({
     this.annotations,
+    this.applicationTemplateComponents,
     this.blueprint,
     this.createTime,
     this.deletionPolicy,
@@ -134,6 +142,7 @@ class ReleaseState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'applicationTemplateComponents': ?pulumi.Input.mapOptionalInputValue<List<ReleaseApplicationTemplateComponent>, List<Map<String, dynamic>>>(applicationTemplateComponents, (value) => pulumi.Input.encodeList<ReleaseApplicationTemplateComponent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'blueprint': ?pulumi.Input.mapOptionalInputValue<ReleaseBlueprint, Map<String, dynamic>>(blueprint, (value) => value.toMap()),
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
@@ -159,6 +168,7 @@ class ReleaseState {
   factory ReleaseState.fromMap(Map<String, dynamic> map) {
     return ReleaseState(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      applicationTemplateComponents: (() { final guardedValue = map['applicationTemplateComponents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReleaseApplicationTemplateComponent>(guardedValue, (value) => ReleaseApplicationTemplateComponent.fromMap((value as Map).cast<String, dynamic>()))); })(),
       blueprint: (() { final guardedValue = map['blueprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReleaseBlueprint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

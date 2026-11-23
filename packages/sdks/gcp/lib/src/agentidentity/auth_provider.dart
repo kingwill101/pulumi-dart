@@ -12,6 +12,7 @@ import 'auth_provider_state.dart';
 /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `auth_provider_type_params.three_legged_oauth.client_secret_wo`, `auth_provider_type_params.two_legged_oauth.client_secret_wo`.
 /// Read more about Write-only Arguments.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Agent Identity Auth Provider Basic
@@ -72,7 +73,7 @@ import 'auth_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +96,7 @@ import 'auth_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,7 +104,10 @@ import 'auth_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_agentidentity_authprovider" "default" {
+/// resource "gcp_agentidentity_auth_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   auth_provider_id = "example-provider"
 ///   auth_provider_type_params = {
@@ -161,6 +165,746 @@ import 'auth_provider_state.dart';
 ///           apiKey: test-api-key-value
 /// ```
 ///
+///
+/// ### Agent Identity Auth Provider Connector Reference
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.agentidentity.AuthProvider("default", {
+///     location: "us-central1",
+///     authProviderId: "connref-provider",
+///     description: "Connector reference auth provider",
+///     authProviderTypeParams: {
+///         connectorReferenceAuthProvider: {
+///             connector: "salesforce-connector-prod",
+///             authorizationDetails: JSON.stringify([{
+///                 type: "oauth_authorization",
+///                 resource: "https://example.com/api",
+///             }]),
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.agentidentity.AuthProvider("default",
+///     location="us-central1",
+///     auth_provider_id="connref-provider",
+///     description="Connector reference auth provider",
+///     auth_provider_type_params={
+///         "connector_reference_auth_provider": {
+///             "connector": "salesforce-connector-prod",
+///             "authorization_details": json.dumps([{
+///                 "type": "oauth_authorization",
+///                 "resource": "https://example.com/api",
+///             }]),
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.AgentIdentity.AuthProvider("default", new()
+///     {
+///         Location = "us-central1",
+///         AuthProviderId = "connref-provider",
+///         Description = "Connector reference auth provider",
+///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+///         {
+///             ConnectorReferenceAuthProvider = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs
+///             {
+///                 Connector = "salesforce-connector-prod",
+///                 AuthorizationDetails = JsonSerializer.Serialize(new[]
+///                 {
+///                     new Dictionary<string, object?>
+///                     {
+///                         ["type"] = "oauth_authorization",
+///                         ["resource"] = "https://example.com/api",
+///                     },
+///                 }),
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		tmpJSON0, err := json.Marshal([]map[string]string{
+/// 			{
+/// 				"type":     "oauth_authorization",
+/// 				"resource": "https://example.com/api",
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			AuthProviderId: pulumi.String("connref-provider"),
+/// 			Description:    pulumi.String("Connector reference auth provider"),
+/// 			AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+/// 				ConnectorReferenceAuthProvider: &agentidentity.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs{
+/// 					Connector:            pulumi.String("salesforce-connector-prod"),
+/// 					AuthorizationDetails: pulumi.String(json0),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_agentidentity_auth_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "us-central1"
+///   auth_provider_id = "connref-provider"
+///   description      = "Connector reference auth provider"
+///   auth_provider_type_params = {
+///     connector_reference_auth_provider = {
+///       connector = "salesforce-connector-prod"
+///       authorization_details = jsonencode([{
+///         "type"     = "oauth_authorization"
+///         "resource" = "https://example.com/api"
+///       }])
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agentidentity.AuthProvider;
+/// import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new AuthProvider("default", AuthProviderArgs.builder()
+///             .location("us-central1")
+///             .authProviderId("connref-provider")
+///             .description("Connector reference auth provider")
+///             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+///                 .connectorReferenceAuthProvider(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs.builder()
+///                     .connector("salesforce-connector-prod")
+///                     .authorizationDetails(serializeJson(
+///                         jsonArray(jsonObject(
+///                             jsonProperty("type", "oauth_authorization"),
+///                             jsonProperty("resource", "https://example.com/api")
+///                         ))))
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:agentidentity:AuthProvider
+///     properties:
+///       location: us-central1
+///       authProviderId: connref-provider
+///       description: Connector reference auth provider
+///       authProviderTypeParams:
+///         connectorReferenceAuthProvider:
+///           connector: salesforce-connector-prod
+///           authorizationDetails:
+///             fn::toJSON:
+///               - type: oauth_authorization
+///                 resource: https://example.com/api
+/// ```
+///
+///
+/// ### Agent Identity Auth Provider Xaa
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.agentidentity.AuthProvider("default", {
+///     location: "us-central1",
+///     authProviderId: "xaa-provider",
+///     description: "Cross-App Access auth provider",
+///     authProviderTypeParams: {
+///         xaaAuthProvider: {
+///             additionalParameters: {
+///                 prompt: "consent",
+///             },
+///             clientSecretAuth: {
+///                 clientId: "test-client-id",
+///                 clientSecret: "test-client-secret",
+///             },
+///             customIssuer: {
+///                 tokenUrl: "https://auth.example.com/token",
+///                 issuer: "https://auth.example.com",
+///             },
+///             idTokenInput: {
+///                 idJagAuthProvider: "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+///                 idJagAdditionalClaims: JSON.stringify({
+///                     env: "test",
+///                 }),
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.agentidentity.AuthProvider("default",
+///     location="us-central1",
+///     auth_provider_id="xaa-provider",
+///     description="Cross-App Access auth provider",
+///     auth_provider_type_params={
+///         "xaa_auth_provider": {
+///             "additional_parameters": {
+///                 "prompt": "consent",
+///             },
+///             "client_secret_auth": {
+///                 "client_id": "test-client-id",
+///                 "client_secret": "test-client-secret",
+///             },
+///             "custom_issuer": {
+///                 "token_url": "https://auth.example.com/token",
+///                 "issuer": "https://auth.example.com",
+///             },
+///             "id_token_input": {
+///                 "id_jag_auth_provider": "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+///                 "id_jag_additional_claims": json.dumps({
+///                     "env": "test",
+///                 }),
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.AgentIdentity.AuthProvider("default", new()
+///     {
+///         Location = "us-central1",
+///         AuthProviderId = "xaa-provider",
+///         Description = "Cross-App Access auth provider",
+///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+///         {
+///             XaaAuthProvider = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs
+///             {
+///                 AdditionalParameters =
+///                 {
+///                     { "prompt", "consent" },
+///                 },
+///                 ClientSecretAuth = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs
+///                 {
+///                     ClientId = "test-client-id",
+///                     ClientSecret = "test-client-secret",
+///                 },
+///                 CustomIssuer = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs
+///                 {
+///                     TokenUrl = "https://auth.example.com/token",
+///                     Issuer = "https://auth.example.com",
+///                 },
+///                 IdTokenInput = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs
+///                 {
+///                     IdJagAuthProvider = "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+///                     IdJagAdditionalClaims = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                     {
+///                         ["env"] = "test",
+///                     }),
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
+/// 			"env": "test",
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			AuthProviderId: pulumi.String("xaa-provider"),
+/// 			Description:    pulumi.String("Cross-App Access auth provider"),
+/// 			AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+/// 				XaaAuthProvider: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{
+/// 					AdditionalParameters: pulumi.StringMap{
+/// 						"prompt": pulumi.String("consent"),
+/// 					},
+/// 					ClientSecretAuth: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs{
+/// 						ClientId:     pulumi.String("test-client-id"),
+/// 						ClientSecret: pulumi.String("test-client-secret"),
+/// 					},
+/// 					CustomIssuer: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{
+/// 						TokenUrl: pulumi.String("https://auth.example.com/token"),
+/// 						Issuer:   pulumi.String("https://auth.example.com"),
+/// 					},
+/// 					IdTokenInput: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{
+/// 						IdJagAuthProvider:     pulumi.String("projects/my-project-name/locations/us-central1/authProviders/idp-provider"),
+/// 						IdJagAdditionalClaims: pulumi.String(json0),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_agentidentity_auth_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "us-central1"
+///   auth_provider_id = "xaa-provider"
+///   description      = "Cross-App Access auth provider"
+///   auth_provider_type_params = {
+///     xaa_auth_provider = {
+///       additional_parameters = {
+///         "prompt" = "consent"
+///       }
+///       client_secret_auth = {
+///         client_id     = "test-client-id"
+///         client_secret = "test-client-secret"
+///       }
+///       custom_issuer = {
+///         token_url = "https://auth.example.com/token"
+///         issuer    = "https://auth.example.com"
+///       }
+///       id_token_input = {
+///         id_jag_auth_provider = "projects/my-project-name/locations/us-central1/authProviders/idp-provider"
+///         id_jag_additional_claims = jsonencode({
+///           "env" = "test"
+///         })
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agentidentity.AuthProvider;
+/// import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new AuthProvider("default", AuthProviderArgs.builder()
+///             .location("us-central1")
+///             .authProviderId("xaa-provider")
+///             .description("Cross-App Access auth provider")
+///             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+///                 .xaaAuthProvider(AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs.builder()
+///                     .additionalParameters(Map.of("prompt", "consent"))
+///                     .clientSecretAuth(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs.builder()
+///                         .clientId("test-client-id")
+///                         .clientSecret("test-client-secret")
+///                         .build())
+///                     .customIssuer(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs.builder()
+///                         .tokenUrl("https://auth.example.com/token")
+///                         .issuer("https://auth.example.com")
+///                         .build())
+///                     .idTokenInput(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs.builder()
+///                         .idJagAuthProvider("projects/my-project-name/locations/us-central1/authProviders/idp-provider")
+///                         .idJagAdditionalClaims(serializeJson(
+///                             jsonObject(
+///                                 jsonProperty("env", "test")
+///                             )))
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:agentidentity:AuthProvider
+///     properties:
+///       location: us-central1
+///       authProviderId: xaa-provider
+///       description: Cross-App Access auth provider
+///       authProviderTypeParams:
+///         xaaAuthProvider:
+///           additionalParameters:
+///             prompt: consent
+///           clientSecretAuth:
+///             clientId: test-client-id
+///             clientSecret: test-client-secret
+///           customIssuer:
+///             tokenUrl: https://auth.example.com/token
+///             issuer: https://auth.example.com
+///           idTokenInput:
+///             idJagAuthProvider: projects/my-project-name/locations/us-central1/authProviders/idp-provider
+///             idJagAdditionalClaims:
+///               fn::toJSON:
+///                 env: test
+/// ```
+///
+///
+/// ### Agent Identity Auth Provider Xaa Jwt
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.agentidentity.AuthProvider("default", {
+///     location: "us-central1",
+///     authProviderId: "xaa-jwt-provider",
+///     description: "Cross-App Access with Client Assertion JWT",
+///     authProviderTypeParams: {
+///         xaaAuthProvider: {
+///             clientAssertionJwtAuth: {
+///                 clientId: "test-jwt-client-id",
+///             },
+///             customIssuer: {
+///                 tokenUrl: "https://auth.example.com/token",
+///             },
+///             idTokenInput: {
+///                 idJagAuthProvider: "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+///                 idJagAdditionalClaims: JSON.stringify({
+///                     env: "test",
+///                 }),
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.agentidentity.AuthProvider("default",
+///     location="us-central1",
+///     auth_provider_id="xaa-jwt-provider",
+///     description="Cross-App Access with Client Assertion JWT",
+///     auth_provider_type_params={
+///         "xaa_auth_provider": {
+///             "client_assertion_jwt_auth": {
+///                 "client_id": "test-jwt-client-id",
+///             },
+///             "custom_issuer": {
+///                 "token_url": "https://auth.example.com/token",
+///             },
+///             "id_token_input": {
+///                 "id_jag_auth_provider": "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+///                 "id_jag_additional_claims": json.dumps({
+///                     "env": "test",
+///                 }),
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.AgentIdentity.AuthProvider("default", new()
+///     {
+///         Location = "us-central1",
+///         AuthProviderId = "xaa-jwt-provider",
+///         Description = "Cross-App Access with Client Assertion JWT",
+///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+///         {
+///             XaaAuthProvider = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs
+///             {
+///                 ClientAssertionJwtAuth = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs
+///                 {
+///                     ClientId = "test-jwt-client-id",
+///                 },
+///                 CustomIssuer = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs
+///                 {
+///                     TokenUrl = "https://auth.example.com/token",
+///                 },
+///                 IdTokenInput = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs
+///                 {
+///                     IdJagAuthProvider = "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+///                     IdJagAdditionalClaims = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                     {
+///                         ["env"] = "test",
+///                     }),
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
+/// 			"env": "test",
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			AuthProviderId: pulumi.String("xaa-jwt-provider"),
+/// 			Description:    pulumi.String("Cross-App Access with Client Assertion JWT"),
+/// 			AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+/// 				XaaAuthProvider: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{
+/// 					ClientAssertionJwtAuth: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs{
+/// 						ClientId: pulumi.String("test-jwt-client-id"),
+/// 					},
+/// 					CustomIssuer: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{
+/// 						TokenUrl: pulumi.String("https://auth.example.com/token"),
+/// 					},
+/// 					IdTokenInput: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{
+/// 						IdJagAuthProvider:     pulumi.String("projects/my-project-name/locations/us-central1/authProviders/idp-provider"),
+/// 						IdJagAdditionalClaims: pulumi.String(json0),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_agentidentity_auth_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "us-central1"
+///   auth_provider_id = "xaa-jwt-provider"
+///   description      = "Cross-App Access with Client Assertion JWT"
+///   auth_provider_type_params = {
+///     xaa_auth_provider = {
+///       client_assertion_jwt_auth = {
+///         client_id = "test-jwt-client-id"
+///       }
+///       custom_issuer = {
+///         token_url = "https://auth.example.com/token"
+///       }
+///       id_token_input = {
+///         id_jag_auth_provider = "projects/my-project-name/locations/us-central1/authProviders/idp-provider"
+///         id_jag_additional_claims = jsonencode({
+///           "env" = "test"
+///         })
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agentidentity.AuthProvider;
+/// import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new AuthProvider("default", AuthProviderArgs.builder()
+///             .location("us-central1")
+///             .authProviderId("xaa-jwt-provider")
+///             .description("Cross-App Access with Client Assertion JWT")
+///             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+///                 .xaaAuthProvider(AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs.builder()
+///                     .clientAssertionJwtAuth(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs.builder()
+///                         .clientId("test-jwt-client-id")
+///                         .build())
+///                     .customIssuer(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs.builder()
+///                         .tokenUrl("https://auth.example.com/token")
+///                         .build())
+///                     .idTokenInput(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs.builder()
+///                         .idJagAuthProvider("projects/my-project-name/locations/us-central1/authProviders/idp-provider")
+///                         .idJagAdditionalClaims(serializeJson(
+///                             jsonObject(
+///                                 jsonProperty("env", "test")
+///                             )))
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:agentidentity:AuthProvider
+///     properties:
+///       location: us-central1
+///       authProviderId: xaa-jwt-provider
+///       description: Cross-App Access with Client Assertion JWT
+///       authProviderTypeParams:
+///         xaaAuthProvider:
+///           clientAssertionJwtAuth:
+///             clientId: test-jwt-client-id
+///           customIssuer:
+///             tokenUrl: https://auth.example.com/token
+///           idTokenInput:
+///             idJagAuthProvider: projects/my-project-name/locations/us-central1/authProviders/idp-provider
+///             idJagAdditionalClaims:
+///               fn::toJSON:
+///                 env: test
+/// ```
+///
+///
+/// ## Regional Endpoint Policies
+///
+/// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 ///
 /// ## Import
 ///
@@ -259,7 +1003,7 @@ class AuthProvider extends pulumi.CustomResource {
           'gcp:agentidentity/authProvider:AuthProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowedScopes = registerOutput<List<String>?>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

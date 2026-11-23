@@ -15,9 +15,11 @@ class SQuotaPreferenceArgs {
   /// NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
   /// Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
   final pulumi.Input<Map<String, String>?>? dimensions;
-  /// The list of quota safety checks to be ignored.
-  /// Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-  /// Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+  /// A comma-separated list of quota safety checks to be ignored, for example
+  /// `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+  /// values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+  /// `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+  /// be combined with other values.
   final pulumi.Input<String?>? ignoreSafetyChecks;
   /// The reason / justification for this quota preference.
   final pulumi.Input<String?>? justification;
@@ -37,7 +39,7 @@ class SQuotaPreferenceArgs {
   /// Creates a new [SQuotaPreferenceArgs].
   /// [contactEmail] An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
   /// [dimensions] The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "networkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-  /// [ignoreSafetyChecks] The list of quota safety checks to be ignored.
+  /// [ignoreSafetyChecks] A comma-separated list of quota safety checks to be ignored, for example
   /// [justification] The reason / justification for this quota preference.
   /// [name] The resource name of the quota preference. Required except in the CREATE requests.
   /// [parent] The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".

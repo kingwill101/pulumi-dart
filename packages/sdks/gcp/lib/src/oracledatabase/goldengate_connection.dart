@@ -7,6 +7,7 @@ import 'goldengate_connection_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Oracledatabase Goldengate Connection Basic
@@ -32,6 +33,9 @@ import 'goldengate_connection_state.dart';
 ///             password: "GenerateWallet@123",
 ///         },
 ///     },
+///     labels: {
+///         "label-one": "value-one",
+///     },
 ///     deletionProtection: true,
 /// });
 /// ```
@@ -53,6 +57,9 @@ import 'goldengate_connection_state.dart';
 ///             "username": "admin",
 ///             "password": "GenerateWallet@123",
 ///         },
+///     },
+///     labels={
+///         "label-one": "value-one",
 ///     },
 ///     deletion_protection=True)
 /// ```
@@ -82,6 +89,10 @@ import 'goldengate_connection_state.dart';
 ///                 Password = "GenerateWallet@123",
 ///             },
 ///         },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
 ///         DeletionProtection = true,
 ///     });
 ///
@@ -91,7 +102,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,6 +123,9 @@ import 'goldengate_connection_state.dart';
 /// 					Password:         pulumi.String("GenerateWallet@123"),
 /// 				},
 /// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
 /// 			DeletionProtection: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -122,7 +136,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,7 +144,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "asia-south1"
 ///   project                  = "my-project"
@@ -144,6 +161,9 @@ import 'goldengate_connection_state.dart';
 ///       username          = "admin"
 ///       password          = "GenerateWallet@123"
 ///     }
+///   }
+///   labels = {
+///     "label-one" = "value-one"
 ///   }
 ///   deletion_protection = "true"
 /// }
@@ -186,6 +206,7 @@ import 'goldengate_connection_state.dart';
 ///                     .password("GenerateWallet@123")
 ///                     .build())
 ///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
 ///             .deletionProtection(true)
 ///             .build());
 ///
@@ -209,8 +230,11 @@ import 'goldengate_connection_state.dart';
 ///           connectionString: jdbc:oracle:thin:@//10.0.0.5:1521/ORCL
 ///           username: admin
 ///           password: GenerateWallet@123
+///       labels:
+///         label-one: value-one
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Connection Full
 ///
@@ -316,7 +340,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -354,7 +378,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -362,7 +386,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "us-east4"
 ///   project                  = "my-project"
@@ -461,6 +488,7 @@ import 'goldengate_connection_state.dart';
 ///           gcpOracleDatabaseId: projects/my-project/locations/us-east4/autonomousDatabases/my-autonomous-database
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Connection Mysql
 ///
@@ -578,7 +606,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -621,7 +649,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -629,7 +657,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "northamerica-northeast1"
 ///   project                  = "my-project"
@@ -649,8 +680,8 @@ import 'goldengate_connection_state.dart';
 ///       ssl_cert_file     = "YmFzZTY0LWNsaWVudC1jZXJ0LWZpbGUtY29udGVudC1kZW1vLWdnb25u"
 ///       ssl_key_file      = "YmFzZTY0LWNsaWVudC1rZXktZmlsZS1jb250ZW50LWRlbW8tZ2dvbm4="
 ///       additional_attributes = [{
-///         "key"   = "attr1"
-///         "value" = "value1"
+///         key   = "attr1"
+///         value = "value1"
 ///       }]
 ///     }
 ///   }
@@ -740,6 +771,7 @@ import 'goldengate_connection_state.dart';
 ///               value: value1
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Connection Postgresql
 ///
@@ -832,7 +864,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -866,7 +898,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -874,7 +906,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "southamerica-east1"
 ///   project                  = "my-project"
@@ -965,6 +1000,7 @@ import 'goldengate_connection_state.dart';
 ///       deletionProtection: 'true'
 /// ```
 ///
+///
 /// ### Oracledatabase Goldengate Connection Redis
 ///
 ///
@@ -1053,7 +1089,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1086,7 +1122,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1094,7 +1130,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "asia-northeast2"
 ///   project                  = "my-project"
@@ -1181,6 +1220,7 @@ import 'goldengate_connection_state.dart';
 ///           password: RedisSecureCacheP@ssword123!
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Connection Kafka
 ///
@@ -1292,7 +1332,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1333,7 +1373,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1341,7 +1381,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "europe-west8"
 ///   project                  = "my-project"
@@ -1354,9 +1397,9 @@ import 'goldengate_connection_state.dart';
 ///       stream_pool_id  = "ocid1.streampool.oc1..example"
 ///       cluster_id      = "ocid1.kafkacluster.oc1..example"
 ///       bootstrap_servers = [{
-///         "host"             = "kafka.example.com"
-///         "port"             = 9092
-///         "privateIpAddress" = "10.0.0.1"
+///         host               = "kafka.example.com"
+///         port               = 9092
+///         private_ip_address = "10.0.0.1"
 ///       }]
 ///       security_protocol        = "SSL"
 ///       consumer_properties_file = "Y29uc3VtZXIucHJvcGVydGllcz1kZW1v"
@@ -1446,6 +1489,7 @@ import 'goldengate_connection_state.dart';
 ///           useResourcePrincipal: false
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Connection Iceberg
 ///
@@ -1575,7 +1619,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1620,7 +1664,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1628,7 +1672,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "australia-southeast1"
 ///   project                  = "my-project"
@@ -1752,6 +1799,7 @@ import 'goldengate_connection_state.dart';
 ///       deletionProtection: 'true'
 /// ```
 ///
+///
 /// ### Oracledatabase Goldengate Connection Snowflake
 ///
 ///
@@ -1837,7 +1885,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1869,7 +1917,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1877,7 +1925,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "europe-west3"
 ///   project                  = "my-project"
@@ -1961,6 +2012,7 @@ import 'goldengate_connection_state.dart';
 ///           password: SnowflakeBasicP@ssword123!
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Connection Jms
 ///
@@ -2080,7 +2132,7 @@ import 'goldengate_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2123,7 +2175,7 @@ import 'goldengate_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2131,7 +2183,10 @@ import 'goldengate_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnection" "connection" {
+/// resource "gcp_oracledatabase_goldengate_connection" "connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_id = "my-connection"
 ///   location                 = "asia-northeast1"
 ///   project                  = "my-project"
@@ -2336,7 +2391,7 @@ class GoldengateConnection extends pulumi.CustomResource {
           'gcp:oracledatabase/goldengateConnection:GoldengateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

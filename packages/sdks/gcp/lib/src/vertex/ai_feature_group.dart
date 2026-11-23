@@ -12,6 +12,7 @@ import 'ai_feature_group_state.dart';
 /// * How-to Guides
 /// * [Creating a Feature Group](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-featuregroup)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Feature Group
@@ -178,8 +179,8 @@ import 'ai_feature_group_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -244,7 +245,7 @@ import 'ai_feature_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -252,7 +253,10 @@ import 'ai_feature_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturegroup" "feature_group" {
+/// resource "gcp_vertex_ai_feature_group" "feature_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example_feature_group"
 ///   description = "A sample feature group"
 ///   region      = "us-central1"
@@ -267,16 +271,36 @@ import 'ai_feature_group_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "sample_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_load_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "sample_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.sample_dataset.dataset_id
 ///   table_id            = "job_load_table"
-///   schema              = "[\n    {\n        \\\"name\\\": \\\"feature_id\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"feature_timestamp\\\",\n        \\\"type\\\": \\\"TIMESTAMP\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    }\n]\n"
+///   schema              = <<EOF
+/// [
+///     {
+///         \"name\": \"feature_id\",
+///         \"type\": \"STRING\",
+///         \"mode\": \"NULLABLE\"
+///     },
+///     {
+///         \"name\": \"feature_timestamp\",
+///         \"type\": \"TIMESTAMP\",
+///         \"mode\": \"NULLABLE\"
+///     }
+/// ]
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -467,7 +491,7 @@ class AiFeatureGroup extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureGroup:AiFeatureGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigQuery = registerOutput<AiFeatureGroupBigQuery?>('bigQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureGroupBigQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });

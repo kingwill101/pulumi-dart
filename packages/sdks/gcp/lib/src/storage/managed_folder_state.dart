@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'managed_folder_rapid_cache_config.dart';
 
 /// Input properties used for looking up and filtering ManagedFolder resources.
 class ManagedFolderState {
@@ -25,6 +26,9 @@ class ManagedFolderState {
   /// The name of the managed folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`.
   final pulumi.Input<String?>? name;
+  /// Configuration options for the rapid cache of a managed folder.
+  /// Structure is documented below.
+  final pulumi.Input<ManagedFolderRapidCacheConfig?>? rapidCacheConfig;
   /// The URI of the created resource.
   final pulumi.Input<String?>? selfLink;
   /// The timestamp at which this managed folder was most recently updated.
@@ -37,6 +41,7 @@ class ManagedFolderState {
   /// [forceDestroy] Allows the deletion of a managed folder even if contains
   /// [metageneration] The metadata generation of the managed folder.
   /// [name] The name of the managed folder expressed as a path. Must include
+  /// [rapidCacheConfig] Configuration options for the rapid cache of a managed folder.
   /// [selfLink] The URI of the created resource.
   /// [updateTime] The timestamp at which this managed folder was most recently updated.
   const ManagedFolderState({
@@ -46,6 +51,7 @@ class ManagedFolderState {
     this.forceDestroy,
     this.metageneration,
     this.name,
+    this.rapidCacheConfig,
     this.selfLink,
     this.updateTime,
   });
@@ -58,6 +64,7 @@ class ManagedFolderState {
       'forceDestroy': ?forceDestroy,
       'metageneration': ?metageneration,
       'name': ?name,
+      'rapidCacheConfig': ?pulumi.Input.mapOptionalInputValue<ManagedFolderRapidCacheConfig, Map<String, dynamic>>(rapidCacheConfig, (value) => value.toMap()),
       'selfLink': ?selfLink,
       'updateTime': ?updateTime,
     };
@@ -71,6 +78,7 @@ class ManagedFolderState {
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       metageneration: (() { final guardedValue = map['metageneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rapidCacheConfig: (() { final guardedValue = map['rapidCacheConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedFolderRapidCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

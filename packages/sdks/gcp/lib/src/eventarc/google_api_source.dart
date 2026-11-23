@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_api_source_args.dart';
 import 'google_api_source_logging_config.dart';
+import 'google_api_source_organization_subscription.dart';
+import 'google_api_source_project_subscriptions.dart';
 import 'google_api_source_state.dart';
 
 /// The Eventarc GoogleApiSource resource
@@ -11,6 +13,7 @@ import 'google_api_source_state.dart';
 /// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.googleApiSources)
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/eventarc/advanced/docs/publish-events/publish-events-google-sources)
+///
 ///
 /// ## Example Usage
 ///
@@ -132,9 +135,9 @@ import 'google_api_source_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -178,7 +181,7 @@ import 'google_api_source_state.dart';
 /// 		_, err = eventarc.NewGoogleApiSource(ctx, "primary", &eventarc.GoogleApiSourceArgs{
 /// 			Location:          pulumi.String("us-central1"),
 /// 			GoogleApiSourceId: pulumi.String("some-google-api-source"),
-/// 			Destination:       messageBus.ID().ToIDOutput().ToStringOutput(),
+/// 			Destination:       messageBus.ID(),
 /// 			CryptoKeyName:     pulumi.String(key.Id),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			keyMember,
@@ -191,7 +194,7 @@ import 'google_api_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -199,33 +202,42 @@ import 'google_api_source_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 ///   project_id = "my-project-name"
 /// }
-/// data "gcp_kms_getkmskeyring" "testKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "testKeyRing" {
 ///   name     = "keyring"
 ///   location = "us-central1"
 /// }
-/// data "gcp_kms_getkmscryptokey" "key" {
+/// data "gcp_kms_k_m_s_crypto_key" "key" {
 ///   name     = "key"
-///   key_ring = data.gcp_kms_getkmskeyring.testKeyRing.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.testKeyRing.id
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "key_member" {
-///   crypto_key_id = data.gcp_kms_getkmscryptokey.key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "key_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = data.gcp_kms_k_m_s_crypto_key.key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_eventarc_messagebus" "message_bus" {
+/// resource "gcp_eventarc_message_bus" "message_bus" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   message_bus_id = "some-message-bus"
 /// }
-/// resource "gcp_eventarc_googleapisource" "primary" {
-///   depends_on           = [gcp_kms_cryptokeyiammember.key_member]
+/// resource "gcp_eventarc_google_api_source" "primary" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.key_member]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   google_api_source_id = "some-google-api-source"
-///   destination          = gcp_eventarc_messagebus.message_bus.id
-///   crypto_key_name      = data.gcp_kms_getkmscryptokey.key.id
+///   destination          = gcp_eventarc_message_bus.message_bus.id
+///   crypto_key_name      = data.gcp_kms_k_m_s_crypto_key.key.id
 /// }
 /// ```
 /// ```java
@@ -407,9 +419,17 @@ class GoogleApiSource extends pulumi.CustomResource {
   /// Resource name of the form
   /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
   late final pulumi.Output<String> name;
+  /// Config to enable subscribing to events from all projects in the
+  /// GoogleApiSource's org.
+  /// Structure is documented below.
+  late final pulumi.Output<GoogleApiSourceOrganizationSubscription?> organizationSubscription;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// Config to enable subscribing to all events from a list of projects.
+  /// All the projects must be in the same org as the GoogleApiSource.
+  /// Structure is documented below.
+  late final pulumi.Output<GoogleApiSourceProjectSubscriptions?> projectSubscriptions;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -431,7 +451,7 @@ class GoogleApiSource extends pulumi.CustomResource {
           'gcp:eventarc/googleApiSource:GoogleApiSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -448,7 +468,9 @@ class GoogleApiSource extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<GoogleApiSourceLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    organizationSubscription = registerOutput<GoogleApiSourceOrganizationSubscription?>('organizationSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceOrganizationSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
+    projectSubscriptions = registerOutput<GoogleApiSourceProjectSubscriptions?>('projectSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceProjectSubscriptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -492,7 +514,9 @@ class GoogleApiSource extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<GoogleApiSourceLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    organizationSubscription = registerOutput<GoogleApiSourceOrganizationSubscription?>('organizationSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceOrganizationSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
+    projectSubscriptions = registerOutput<GoogleApiSourceProjectSubscriptions?>('projectSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceProjectSubscriptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -522,7 +546,9 @@ class GoogleApiSource extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<GoogleApiSourceLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    organizationSubscription = registerOutput<GoogleApiSourceOrganizationSubscription?>('organizationSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceOrganizationSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
+    projectSubscriptions = registerOutput<GoogleApiSourceProjectSubscriptions?>('projectSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleApiSourceProjectSubscriptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

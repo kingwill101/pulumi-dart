@@ -15,6 +15,7 @@ import 'crypto_key_version_state.dart';
 /// * How-to Guides
 /// * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Kms Crypto Key Version Basic
@@ -81,7 +82,7 @@ import 'crypto_key_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -96,14 +97,14 @@ import 'crypto_key_version_state.dart';
 /// 		}
 /// 		cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing:        keyring.ID(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewCryptoKeyVersion(ctx, "example-key", &kms.CryptoKeyVersionArgs{
-/// 			CryptoKey: cryptokey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKey: cryptokey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,7 +114,7 @@ import 'crypto_key_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -121,17 +122,26 @@ import 'crypto_key_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_cryptokey" "cryptokey" {
+/// resource "gcp_kms_crypto_key" "cryptokey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "crypto-key-example"
-///   key_ring        = gcp_kms_keyring.keyring.id
+///   key_ring        = gcp_kms_key_ring.keyring.id
 ///   rotation_period = "7776000s"
 /// }
-/// resource "gcp_kms_cryptokeyversion" "example-key" {
-///   crypto_key = gcp_kms_cryptokey.cryptokey.id
+/// resource "gcp_kms_crypto_key_version" "example-key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key = gcp_kms_crypto_key.cryptokey.id
 /// }
 /// ```
 /// ```java
@@ -252,7 +262,7 @@ class CryptoKeyVersion extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     algorithm = registerOutput<String>('algorithm');
     attestations = registerOutput<List<CryptoKeyVersionAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CryptoKeyVersionAttestation>(guardedValue, (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>())); });

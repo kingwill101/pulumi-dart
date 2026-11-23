@@ -12,6 +12,7 @@ import 'snapshot_state.dart';
 /// * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
 /// * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Filestore Snapshot Basic
@@ -106,7 +107,7 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -145,7 +146,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -154,11 +155,17 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-snapshot"
 ///   instance = gcp_filestore_instance.instance.name
 ///   location = "us-east1"
 /// }
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance-for-snapshot"
 ///   location = "us-east1"
 ///   tier     = "ENTERPRISE"
@@ -242,6 +249,7 @@ import 'snapshot_state.dart';
 ///           modes:
 ///             - MODE_IPV4
 /// ```
+///
 ///
 /// ### Filestore Snapshot Full
 ///
@@ -348,7 +356,7 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -391,7 +399,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -400,6 +408,9 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-snapshot"
 ///   instance    = gcp_filestore_instance.instance.name
 ///   location    = "us-west1"
@@ -409,6 +420,9 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance-for-snapshot"
 ///   location = "us-west1"
 ///   tier     = "ENTERPRISE"
@@ -569,7 +583,7 @@ class Snapshot extends pulumi.CustomResource {
           'gcp:filestore/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

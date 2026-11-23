@@ -35,10 +35,10 @@ class TransferJobScheduleStartTimeOfDay {
 
   factory TransferJobScheduleStartTimeOfDay.fromMap(Map<String, dynamic> map) {
     return TransferJobScheduleStartTimeOfDay(
-      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
-      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
-      nanos: pulumi.Input.fromValue((map['nanos'] as num).toInt()),
-      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
+      hours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hours'])),
+      minutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutes'])),
+      nanos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nanos'])),
+      seconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['seconds'])),
     );
   }
 }

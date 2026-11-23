@@ -33,8 +33,8 @@ class PreventionInspectTemplateInspectConfigLimits {
   factory PreventionInspectTemplateInspectConfigLimits.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigLimits(
       maxFindingsPerInfoTypes: (() { final guardedValue = map['maxFindingsPerInfoTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType>(guardedValue, (value) => PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxFindingsPerItem: pulumi.Input.fromValue((map['maxFindingsPerItem'] as num).toInt()),
-      maxFindingsPerRequest: pulumi.Input.fromValue((map['maxFindingsPerRequest'] as num).toInt()),
+      maxFindingsPerItem: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFindingsPerItem'])),
+      maxFindingsPerRequest: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFindingsPerRequest'])),
     );
   }
 }

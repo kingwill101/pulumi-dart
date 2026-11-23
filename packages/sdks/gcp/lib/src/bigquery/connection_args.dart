@@ -7,6 +7,7 @@ import 'connection_cloud_resource.dart';
 import 'connection_cloud_spanner.dart';
 import 'connection_cloud_sql.dart';
 import 'connection_configuration.dart';
+import 'connection_salesforce_data_cloud.dart';
 import 'connection_spark.dart';
 
 /// {@template pulumi_bigquery_connection_connection_args_doc}
@@ -61,6 +62,10 @@ class ConnectionArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Connection properties specific to Salesforce Data Cloud.
+  /// This connection type is intended for use only by Salesforce partner projects.
+  /// Structure is documented below.
+  final pulumi.Input<ConnectionSalesforceDataCloud?>? salesforceDataCloud;
   /// Container for connection properties to execute stored procedures for Apache Spark. resources.
   /// Structure is documented below.
   final pulumi.Input<ConnectionSpark?>? spark;
@@ -79,6 +84,7 @@ class ConnectionArgs {
   /// [kmsKeyName] Optional. The Cloud KMS key that is used for encryption.
   /// [location] The geographic location where the connection should reside.
   /// [project] The ID of the project in which the resource belongs.
+  /// [salesforceDataCloud] Connection properties specific to Salesforce Data Cloud.
   /// [spark] Container for connection properties to execute stored procedures for Apache Spark. resources.
   const ConnectionArgs({
     this.aws,
@@ -94,6 +100,7 @@ class ConnectionArgs {
     this.kmsKeyName,
     this.location,
     this.project,
+    this.salesforceDataCloud,
     this.spark,
   });
 
@@ -112,6 +119,7 @@ class ConnectionArgs {
       'kmsKeyName': ?kmsKeyName,
       'location': ?location,
       'project': ?project,
+      'salesforceDataCloud': ?pulumi.Input.mapOptionalInputValue<ConnectionSalesforceDataCloud, Map<String, dynamic>>(salesforceDataCloud, (value) => value.toMap()),
       'spark': ?pulumi.Input.mapOptionalInputValue<ConnectionSpark, Map<String, dynamic>>(spark, (value) => value.toMap()),
     };
   }
@@ -131,6 +139,7 @@ class ConnectionArgs {
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      salesforceDataCloud: (() { final guardedValue = map['salesforceDataCloud']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionSalesforceDataCloud.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spark: (() { final guardedValue = map['spark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionSpark.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

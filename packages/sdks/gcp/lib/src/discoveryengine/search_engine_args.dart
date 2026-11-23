@@ -50,6 +50,18 @@ class SearchEngineArgs {
   final pulumi.Input<SearchEngineKnowledgeGraphConfig?>? knowledgeGraphConfig;
   /// Location.
   final pulumi.Input<String> location;
+  /// Maps a model name to its specific configuration for this engine. This
+  /// allows admin users to turn on/off individual models. This only stores
+  /// models whose states are overridden by the admin. When the state is
+  /// unspecified, or `modelConfigs` is empty for this model, the system
+  /// decides if this model is available based on the default configuration.
+  /// For example, a preview model is disabled by default if the admin has not
+  /// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+  /// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+  /// for details.
+  final pulumi.Input<Map<String, String>?>? modelConfigs;
+  /// The emails of the procurement contacts.
+  final pulumi.Input<List<String>?>? procurementContactEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -71,6 +83,8 @@ class SearchEngineArgs {
   /// [kmsKeyName] The KMS key to be used to protect this Engine at creation time.
   /// [knowledgeGraphConfig] Configurations for the Knowledge Graph.
   /// [location] Location.
+  /// [modelConfigs] Maps a model name to its specific configuration for this engine. This
+  /// [procurementContactEmails] The emails of the procurement contacts.
   /// [project] The ID of the project in which the resource belongs.
   /// [searchEngineConfig] Configurations for a Search Engine.
   const SearchEngineArgs({
@@ -87,6 +101,8 @@ class SearchEngineArgs {
     this.kmsKeyName,
     this.knowledgeGraphConfig,
     required this.location,
+    this.modelConfigs,
+    this.procurementContactEmails,
     this.project,
     required this.searchEngineConfig,
   });
@@ -106,6 +122,8 @@ class SearchEngineArgs {
       'kmsKeyName': ?kmsKeyName,
       'knowledgeGraphConfig': ?pulumi.Input.mapOptionalInputValue<SearchEngineKnowledgeGraphConfig, Map<String, dynamic>>(knowledgeGraphConfig, (value) => value.toMap()),
       'location': location,
+      'modelConfigs': ?modelConfigs,
+      'procurementContactEmails': ?procurementContactEmails,
       'project': ?project,
       'searchEngineConfig': pulumi.Input.mapInputValue<SearchEngineSearchEngineConfig, Map<String, dynamic>>(searchEngineConfig, (value) => value.toMap()),
     };
@@ -126,6 +144,8 @@ class SearchEngineArgs {
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       knowledgeGraphConfig: (() { final guardedValue = map['knowledgeGraphConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      modelConfigs: (() { final guardedValue = map['modelConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      procurementContactEmails: (() { final guardedValue = map['procurementContactEmails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       searchEngineConfig: pulumi.Input.fromValue(SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig']! as Map).cast<String, dynamic>())),
     );

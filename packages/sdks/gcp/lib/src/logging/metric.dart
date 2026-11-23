@@ -15,6 +15,7 @@ import 'metric_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Logging Metric Basic
@@ -155,7 +156,7 @@ import 'metric_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -203,7 +204,7 @@ import 'metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -212,6 +213,9 @@ import 'metric_state.dart';
 /// }
 ///
 /// resource "gcp_logging_metric" "logging_metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-(custom)/metric"
 ///   filter = "resource.type=gae_app AND severity>=ERROR"
 ///   metric_descriptor = {
@@ -219,13 +223,13 @@ import 'metric_state.dart';
 ///     value_type  = "DISTRIBUTION"
 ///     unit        = "1"
 ///     labels = [{
-///       "key"         = "mass"
-///       "valueType"   = "STRING"
-///       "description" = "amount of matter"
+///       key         = "mass"
+///       value_type  = "STRING"
+///       description = "amount of matter"
 ///       }, {
-///       "key"         = "sku"
-///       "valueType"   = "INT64"
-///       "description" = "Identifying number for item"
+///       key         = "sku"
+///       value_type  = "INT64"
+///       description = "Identifying number for item"
 ///     }]
 ///     display_name = "My metric"
 ///   }
@@ -336,6 +340,7 @@ import 'metric_state.dart';
 ///           offset: 1
 /// ```
 ///
+///
 /// ### Logging Metric Counter Basic
 ///
 ///
@@ -390,7 +395,7 @@ import 'metric_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -412,7 +417,7 @@ import 'metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,6 +426,9 @@ import 'metric_state.dart';
 /// }
 ///
 /// resource "gcp_logging_metric" "logging_metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-(custom)/metric"
 ///   filter = "resource.type=gae_app AND severity>=ERROR"
 ///   metric_descriptor = {
@@ -475,6 +483,7 @@ import 'metric_state.dart';
 ///         metricKind: DELTA
 ///         valueType: INT64
 /// ```
+///
 ///
 /// ### Logging Metric Counter Labels
 ///
@@ -559,7 +568,7 @@ import 'metric_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -591,7 +600,7 @@ import 'metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -600,15 +609,18 @@ import 'metric_state.dart';
 /// }
 ///
 /// resource "gcp_logging_metric" "logging_metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-(custom)/metric"
 ///   filter = "resource.type=gae_app AND severity>=ERROR"
 ///   metric_descriptor = {
 ///     metric_kind = "DELTA"
 ///     value_type  = "INT64"
 ///     labels = [{
-///       "key"         = "mass"
-///       "valueType"   = "STRING"
-///       "description" = "amount of matter"
+///       key         = "mass"
+///       value_type  = "STRING"
+///       description = "amount of matter"
 ///     }]
 ///   }
 ///   label_extractors = {
@@ -676,6 +688,7 @@ import 'metric_state.dart';
 ///         mass: EXTRACT(jsonPayload.request)
 /// ```
 ///
+///
 /// ### Logging Metric Logging Bucket
 ///
 ///
@@ -736,7 +749,7 @@ import 'metric_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -763,7 +776,7 @@ import 'metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -771,15 +784,21 @@ import 'metric_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "logging_metric" {
+/// resource "gcp_logging_project_bucket_config" "logging_metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location  = "global"
 ///   project   = "my-project-name"
 ///   bucket_id = "_Default"
 /// }
 /// resource "gcp_logging_metric" "logging_metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-(custom)/metric"
 ///   filter      = "resource.type=gae_app AND severity>=ERROR"
-///   bucket_name = gcp_logging_projectbucketconfig.logging_metric.name
+///   bucket_name = gcp_logging_project_bucket_config.logging_metric.name
 /// }
 /// ```
 /// ```java
@@ -838,6 +857,7 @@ import 'metric_state.dart';
 ///       bucketName: ${loggingMetric.name}
 /// ```
 ///
+///
 /// ### Logging Metric Disabled
 ///
 ///
@@ -895,7 +915,7 @@ import 'metric_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -918,7 +938,7 @@ import 'metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -927,6 +947,9 @@ import 'metric_state.dart';
 /// }
 ///
 /// resource "gcp_logging_metric" "logging_metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-(custom)/metric"
 ///   filter = "resource.type=gae_app AND severity>=ERROR"
 ///   metric_descriptor = {
@@ -1064,7 +1087,7 @@ class Metric extends pulumi.CustomResource {
           'gcp:logging/metric:Metric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     bucketName = registerOutput<String?>('bucketName');
     bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricBucketOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -10,6 +10,7 @@ import 'insights_config_target_projects.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Developer Connect Insights Config Basic
@@ -23,7 +24,7 @@ import 'insights_config_target_projects.dart';
 /// import * as time from "@pulumiverse/time";
 ///
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "dci-tf-_26240",
+///     projectId: "dci-tf-_40798",
 ///     name: "Service Project",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
@@ -104,10 +105,18 @@ import 'insights_config_target_projects.dart';
 ///     dependsOn: [project],
 /// });
 /// // Wait delay after enabling APIs and granting permissions
+/// const devconnectApphubViewer = new gcp.projects.IAMMember("devconnect_apphub_viewer", {
+///     project: project.projectId,
+///     role: "roles/apphub.viewer",
+///     member: pulumi.interpolate`serviceAccount:service-${project.number}@gcp-sa-devconnect.iam.gserviceaccount.com`,
+/// }, {
+///     dependsOn: [devconnectApi],
+/// });
 /// const waitForPropagation = new time.Sleep("wait_for_propagation", {createDuration: "120s"}, {
 ///     dependsOn: [
 ///         apphubPermissions,
 ///         insightsAgent,
+///         devconnectApphubViewer,
 ///         apphubApiService,
 ///         containeranalysisApi,
 ///         containerscanningApi,
@@ -122,7 +131,7 @@ import 'insights_config_target_projects.dart';
 /// });
 /// const myApphubApplication = new gcp.apphub.Application("my_apphub_application", {
 ///     location: "us-central1",
-///     applicationId: "tf-test-example-application_35711",
+///     applicationId: "tf-test-example-application_82591",
 ///     scope: {
 ///         type: "REGIONAL",
 ///     },
@@ -132,7 +141,7 @@ import 'insights_config_target_projects.dart';
 /// });
 /// const insightsConfig = new gcp.developerconnect.InsightsConfig("insights_config", {
 ///     location: "us-central1",
-///     insightsConfigId: "tf-test-ic-apphub-_85072",
+///     insightsConfigId: "tf-test-ic-apphub-_24243",
 ///     project: project.projectId,
 ///     annotations: {},
 ///     labels: {},
@@ -165,7 +174,7 @@ import 'insights_config_target_projects.dart';
 /// import pulumiverse_time as time
 ///
 /// project = gcp.organizations.Project("project",
-///     project_id="dci-tf-_26240",
+///     project_id="dci-tf-_40798",
 ///     name="Service Project",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
@@ -225,10 +234,16 @@ import 'insights_config_target_projects.dart';
 ///     service="developerconnect.googleapis.com",
 ///     opts = pulumi.ResourceOptions(depends_on=[project]))
 /// # Wait delay after enabling APIs and granting permissions
+/// devconnect_apphub_viewer = gcp.projects.IAMMember("devconnect_apphub_viewer",
+///     project=project.project_id,
+///     role="roles/apphub.viewer",
+///     member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-devconnect.iam.gserviceaccount.com"),
+///     opts = pulumi.ResourceOptions(depends_on=[devconnect_api]))
 /// wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
 /// opts = pulumi.ResourceOptions(depends_on=[
 ///         apphub_permissions,
 ///         insights_agent,
+///         devconnect_apphub_viewer,
 ///         apphub_api_service,
 ///         containeranalysis_api,
 ///         containerscanning_api,
@@ -242,7 +257,7 @@ import 'insights_config_target_projects.dart';
 ///     ]))
 /// my_apphub_application = gcp.apphub.Application("my_apphub_application",
 ///     location="us-central1",
-///     application_id="tf-test-example-application_35711",
+///     application_id="tf-test-example-application_82591",
 ///     scope={
 ///         "type": "REGIONAL",
 ///     },
@@ -250,7 +265,7 @@ import 'insights_config_target_projects.dart';
 ///     opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
 /// insights_config = gcp.developerconnect.InsightsConfig("insights_config",
 ///     location="us-central1",
-///     insights_config_id="tf-test-ic-apphub-_85072",
+///     insights_config_id="tf-test-ic-apphub-_24243",
 ///     project=project.project_id,
 ///     annotations={},
 ///     labels={},
@@ -284,7 +299,7 @@ import 'insights_config_target_projects.dart';
 /// {
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "dci-tf-_26240",
+///         ProjectId = "dci-tf-_40798",
 ///         Name = "Service Project",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -424,6 +439,19 @@ import 'insights_config_target_projects.dart';
 ///     });
 ///
 ///     // Wait delay after enabling APIs and granting permissions
+///     var devconnectApphubViewer = new Gcp.Projects.IAMMember("devconnect_apphub_viewer", new()
+///     {
+///         Project = project.ProjectId,
+///         Role = "roles/apphub.viewer",
+///         Member = project.Number.Apply(number => $"serviceAccount:service-{number}@gcp-sa-devconnect.iam.gserviceaccount.com"),
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             devconnectApi,
+///         },
+///     });
+///
 ///     var waitForPropagation = new Time.Sleep("wait_for_propagation", new()
 ///     {
 ///         CreateDuration = "120s",
@@ -433,6 +461,7 @@ import 'insights_config_target_projects.dart';
 ///         {
 ///             apphubPermissions,
 ///             insightsAgent,
+///             devconnectApphubViewer,
 ///             apphubApiService,
 ///             containeranalysisApi,
 ///             containerscanningApi,
@@ -449,7 +478,7 @@ import 'insights_config_target_projects.dart';
 ///     var myApphubApplication = new Gcp.Apphub.Application("my_apphub_application", new()
 ///     {
 ///         Location = "us-central1",
-///         ApplicationId = "tf-test-example-application_35711",
+///         ApplicationId = "tf-test-example-application_82591",
 ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
 ///         {
 ///             Type = "REGIONAL",
@@ -466,7 +495,7 @@ import 'insights_config_target_projects.dart';
 ///     var insightsConfig = new Gcp.DeveloperConnect.InsightsConfig("insights_config", new()
 ///     {
 ///         Location = "us-central1",
-///         InsightsConfigId = "tf-test-ic-apphub-_85072",
+///         InsightsConfigId = "tf-test-ic-apphub-_24243",
 ///         Project = project.ProjectId,
 ///         Annotations = new() { },
 ///         Labels = new() { },
@@ -510,10 +539,12 @@ import 'insights_config_target_projects.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
@@ -522,7 +553,7 @@ import 'insights_config_target_projects.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("dci-tf-_26240"),
+/// 			ProjectId:      pulumi.String("dci-tf-_40798"),
 /// 			Name:           pulumi.String("Service Project"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -639,11 +670,24 @@ import 'insights_config_target_projects.dart';
 /// 			return err
 /// 		}
 /// 		// Wait delay after enabling APIs and granting permissions
+/// 		devconnectApphubViewer, err := projects.NewIAMMember(ctx, "devconnect_apphub_viewer", &projects.IAMMemberArgs{
+/// 			Project: project.ProjectId,
+/// 			Role:    pulumi.String("roles/apphub.viewer"),
+/// 			Member: project.Number.ApplyT(func(number string) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:service-%v@gcp-sa-devconnect.iam.gserviceaccount.com", number), nil
+/// 			}).(pulumi.StringOutput),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			devconnectApi,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		waitForPropagation, err := time.NewSleep(ctx, "wait_for_propagation", &time.SleepArgs{
 /// 			CreateDuration: pulumi.String("120s"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apphubPermissions,
 /// 			insightsAgent,
+/// 			devconnectApphubViewer,
 /// 			apphubApiService,
 /// 			containeranalysisApi,
 /// 			containerscanningApi,
@@ -660,7 +704,7 @@ import 'insights_config_target_projects.dart';
 /// 		}
 /// 		myApphubApplication, err := apphub.NewApplication(ctx, "my_apphub_application", &apphub.ApplicationArgs{
 /// 			Location:      pulumi.String("us-central1"),
-/// 			ApplicationId: pulumi.String("tf-test-example-application_35711"),
+/// 			ApplicationId: pulumi.String("tf-test-example-application_82591"),
 /// 			Scope: &apphub.ApplicationScopeArgs{
 /// 				Type: pulumi.String("REGIONAL"),
 /// 			},
@@ -684,7 +728,7 @@ import 'insights_config_target_projects.dart';
 /// 		}
 /// 		_, err = developerconnect.NewInsightsConfig(ctx, "insights_config", &developerconnect.InsightsConfigArgs{
 /// 			Location:          pulumi.String("us-central1"),
-/// 			InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_85072"),
+/// 			InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_24243"),
 /// 			Project:           project.ProjectId,
 /// 			Annotations:       pulumi.StringMap{},
 /// 			Labels:            pulumi.StringMap{},
@@ -712,7 +756,7 @@ import 'insights_config_target_projects.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -732,95 +776,149 @@ import 'insights_config_target_projects.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "dci-tf-_26240"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project_id      = "dci-tf-_40798"
 ///   name            = "Service Project"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
 /// # Grant Permissions
-/// resource "gcp_projects_iammember" "apphub_permissions" {
+/// resource "gcp_projects_i_a_m_member" "apphub_permissions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   role    = "roles/apphub.admin"
 ///   member  = "serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_projects_iammember" "insights_agent" {
+/// resource "gcp_projects_i_a_m_member" "insights_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   role    = "roles/developerconnect.insightsAgent"
 ///   member  = "serviceAccount:66214305248-compute@developer.gserviceaccount.com"
 /// }
 /// # Enable APIs
 /// resource "gcp_projects_service" "apphub_api_service" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "apphub.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "containeranalysis_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "containeranalysis.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "containerscanning_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "containerscanning.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "container_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "container.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "artifactregistry_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "artifactregistry.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "cloudbuild_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "cloudbuild.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "cloudasset_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "cloudasset.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "compute_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "compute.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "devconnect_api" {
 ///   depends_on = [gcp_organizations_project.project]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "developerconnect.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "developerconnect.googleapis.com"
 /// }
 /// # Wait delay after enabling APIs and granting permissions
+/// resource "gcp_projects_i_a_m_member" "devconnect_apphub_viewer" {
+///   depends_on = [gcp_projects_service.devconnect_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   role    = "roles/apphub.viewer"
+///   member  ="serviceAccount:service-${gcp_organizations_project.project.number}@gcp-sa-devconnect.iam.gserviceaccount.com"
+/// }
 /// resource "time_sleep" "wait_for_propagation" {
-///   depends_on      = [gcp_projects_iammember.apphub_permissions, gcp_projects_iammember.insights_agent, gcp_projects_service.apphub_api_service, gcp_projects_service.containeranalysis_api, gcp_projects_service.containerscanning_api, gcp_projects_service.container_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.cloudbuild_api, gcp_projects_service.cloudasset_api, gcp_projects_service.compute_api, gcp_projects_service.devconnect_api]
+///   depends_on = [gcp_projects_i_a_m_member.apphub_permissions, gcp_projects_i_a_m_member.insights_agent, gcp_projects_i_a_m_member.devconnect_apphub_viewer, gcp_projects_service.apphub_api_service, gcp_projects_service.containeranalysis_api, gcp_projects_service.containerscanning_api, gcp_projects_service.container_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.cloudbuild_api, gcp_projects_service.cloudasset_api, gcp_projects_service.compute_api, gcp_projects_service.devconnect_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_apphub_application" "my_apphub_application" {
-///   depends_on     = [time_sleep.wait_for_propagation]
+///   depends_on = [time_sleep.wait_for_propagation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
-///   application_id = "tf-test-example-application_35711"
+///   application_id = "tf-test-example-application_82591"
 ///   scope = {
 ///     type = "REGIONAL"
 ///   }
 ///   project = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_developerconnect_insightsconfig" "insights_config" {
-///   depends_on          = [time_sleep.wait_for_propagation]
+/// resource "gcp_developerconnect_insights_config" "insights_config" {
+///   depends_on = [time_sleep.wait_for_propagation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "us-central1"
-///   insights_config_id  = "tf-test-ic-apphub-_85072"
+///   insights_config_id  = "tf-test-ic-apphub-_24243"
 ///   project             = gcp_organizations_project.project.project_id
 ///   annotations         = {}
 ///   labels              = {}
@@ -876,7 +974,7 @@ import 'insights_config_target_projects.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("dci-tf-_26240")
+///             .projectId("dci-tf-_40798")
 ///             .name("Service Project")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
@@ -969,12 +1067,21 @@ import 'insights_config_target_projects.dart';
 ///                 .build());
 ///
 ///         // Wait delay after enabling APIs and granting permissions
+///         var devconnectApphubViewer = new IAMMember("devconnectApphubViewer", IAMMemberArgs.builder()
+///             .project(project.projectId())
+///             .role("roles/apphub.viewer")
+///             .member(project.number().applyValue(_number -> String.format("serviceAccount:service-%s@gcp-sa-devconnect.iam.gserviceaccount.com", _number)))
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(devconnectApi)
+///                 .build());
+///
 ///         var waitForPropagation = new Sleep("waitForPropagation", SleepArgs.builder()
 ///             .createDuration("120s")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     apphubPermissions,
 ///                     insightsAgent,
+///                     devconnectApphubViewer,
 ///                     apphubApiService,
 ///                     containeranalysisApi,
 ///                     containerscanningApi,
@@ -989,7 +1096,7 @@ import 'insights_config_target_projects.dart';
 ///
 ///         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
 ///             .location("us-central1")
-///             .applicationId("tf-test-example-application_35711")
+///             .applicationId("tf-test-example-application_82591")
 ///             .scope(ApplicationScopeArgs.builder()
 ///                 .type("REGIONAL")
 ///                 .build())
@@ -1000,7 +1107,7 @@ import 'insights_config_target_projects.dart';
 ///
 ///         var insightsConfig = new InsightsConfig("insightsConfig", InsightsConfigArgs.builder()
 ///             .location("us-central1")
-///             .insightsConfigId("tf-test-ic-apphub-_85072")
+///             .insightsConfigId("tf-test-ic-apphub-_24243")
 ///             .project(project.projectId())
 ///             .annotations(Map.ofEntries(
 ///             ))
@@ -1035,7 +1142,7 @@ import 'insights_config_target_projects.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: dci-tf-_26240
+///       projectId: dci-tf-_40798
 ///       name: Service Project
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
@@ -1146,6 +1253,16 @@ import 'insights_config_target_projects.dart';
 ///       dependsOn:
 ///         - ${project}
 ///   # Wait delay after enabling APIs and granting permissions
+///   devconnectApphubViewer:
+///     type: gcp:projects:IAMMember
+///     name: devconnect_apphub_viewer
+///     properties:
+///       project: ${project.projectId}
+///       role: roles/apphub.viewer
+///       member: serviceAccount:service-${project.number}@gcp-sa-devconnect.iam.gserviceaccount.com
+///     options:
+///       dependsOn:
+///         - ${devconnectApi}
 ///   waitForPropagation:
 ///     type: time:Sleep
 ///     name: wait_for_propagation
@@ -1155,6 +1272,7 @@ import 'insights_config_target_projects.dart';
 ///       dependsOn:
 ///         - ${apphubPermissions}
 ///         - ${insightsAgent}
+///         - ${devconnectApphubViewer}
 ///         - ${apphubApiService}
 ///         - ${containeranalysisApi}
 ///         - ${containerscanningApi}
@@ -1170,7 +1288,7 @@ import 'insights_config_target_projects.dart';
 ///     name: my_apphub_application
 ///     properties:
 ///       location: us-central1
-///       applicationId: tf-test-example-application_35711
+///       applicationId: tf-test-example-application_82591
 ///       scope:
 ///         type: REGIONAL
 ///       project: ${project.projectId}
@@ -1182,7 +1300,7 @@ import 'insights_config_target_projects.dart';
 ///     name: insights_config
 ///     properties:
 ///       location: us-central1
-///       insightsConfigId: tf-test-ic-apphub-_85072
+///       insightsConfigId: tf-test-ic-apphub-_24243
 ///       project: ${project.projectId}
 ///       annotations: {}
 ///       labels: {}
@@ -1208,6 +1326,7 @@ import 'insights_config_target_projects.dart';
 ///         - ${waitForPropagation}
 /// ```
 ///
+///
 /// ### Developer Connect Insights Config Projects
 ///
 ///
@@ -1218,7 +1337,7 @@ import 'insights_config_target_projects.dart';
 /// import * as time from "@pulumiverse/time";
 ///
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "dci-tf-_35762",
+///     projectId: "dci-tf-_7495",
 ///     name: "Service Project",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
@@ -1317,7 +1436,7 @@ import 'insights_config_target_projects.dart';
 /// });
 /// const insightsConfigProjects = new gcp.developerconnect.InsightsConfig("insights_config_projects", {
 ///     location: "us-central1",
-///     insightsConfigId: "tf-test-ic-projects-_24469",
+///     insightsConfigId: "tf-test-ic-projects-_21912",
 ///     project: project.projectId,
 ///     annotations: {},
 ///     labels: {},
@@ -1344,7 +1463,7 @@ import 'insights_config_target_projects.dart';
 /// import pulumiverse_time as time
 ///
 /// project = gcp.organizations.Project("project",
-///     project_id="dci-tf-_35762",
+///     project_id="dci-tf-_7495",
 ///     name="Service Project",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
@@ -1421,7 +1540,7 @@ import 'insights_config_target_projects.dart';
 ///     ]))
 /// insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
 ///     location="us-central1",
-///     insights_config_id="tf-test-ic-projects-_24469",
+///     insights_config_id="tf-test-ic-projects-_21912",
 ///     project=project.project_id,
 ///     annotations={},
 ///     labels={},
@@ -1451,7 +1570,7 @@ import 'insights_config_target_projects.dart';
 /// {
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "dci-tf-_35762",
+///         ProjectId = "dci-tf-_7495",
 ///         Name = "Service Project",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -1616,7 +1735,7 @@ import 'insights_config_target_projects.dart';
 ///     var insightsConfigProjects = new Gcp.DeveloperConnect.InsightsConfig("insights_config_projects", new()
 ///     {
 ///         Location = "us-central1",
-///         InsightsConfigId = "tf-test-ic-projects-_24469",
+///         InsightsConfigId = "tf-test-ic-projects-_21912",
 ///         Project = project.ProjectId,
 ///         Annotations = new() { },
 ///         Labels = new() { },
@@ -1659,9 +1778,9 @@ import 'insights_config_target_projects.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1669,7 +1788,7 @@ import 'insights_config_target_projects.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("dci-tf-_35762"),
+/// 			ProjectId:      pulumi.String("dci-tf-_7495"),
 /// 			Name:           pulumi.String("Service Project"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -1807,7 +1926,7 @@ import 'insights_config_target_projects.dart';
 /// 		}
 /// 		_, err = developerconnect.NewInsightsConfig(ctx, "insights_config_projects", &developerconnect.InsightsConfigArgs{
 /// 			Location:         pulumi.String("us-central1"),
-/// 			InsightsConfigId: pulumi.String("tf-test-ic-projects-_24469"),
+/// 			InsightsConfigId: pulumi.String("tf-test-ic-projects-_21912"),
 /// 			Project:          project.ProjectId,
 /// 			Annotations:      pulumi.StringMap{},
 /// 			Labels:           pulumi.StringMap{},
@@ -1841,7 +1960,7 @@ import 'insights_config_target_projects.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1853,86 +1972,128 @@ import 'insights_config_target_projects.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "dci-tf-_35762"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project_id      = "dci-tf-_7495"
 ///   name            = "Service Project"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
 /// # Grant Permissions
-/// resource "gcp_projects_iammember" "apphub_permissions" {
+/// resource "gcp_projects_i_a_m_member" "apphub_permissions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   role    = "roles/apphub.admin"
 ///   member  = "serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_projects_iammember" "insights_agent" {
+/// resource "gcp_projects_i_a_m_member" "insights_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   role    = "roles/developerconnect.insightsAgent"
 ///   member  = "serviceAccount:66214305248-compute@developer.gserviceaccount.com"
 /// }
 /// # Enable APIs
 /// resource "gcp_projects_service" "apphub_api_service" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "apphub.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "containeranalysis_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "containeranalysis.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "containerscanning_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "containerscanning.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "container_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "container.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "artifactregistry_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "artifactregistry.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "cloudbuild_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "cloudbuild.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "cloudasset_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "cloudasset.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "compute_api" {
-///   depends_on                 = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.project.project_id
 ///   service                    = "compute.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_projects_service" "devconnect_api" {
 ///   depends_on = [gcp_organizations_project.project]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "developerconnect.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "developerconnect.googleapis.com"
 /// }
 /// # Wait delay after enabling APIs and granting permissions
 /// resource "time_sleep" "wait_for_propagation" {
-///   depends_on      = [gcp_projects_iammember.apphub_permissions, gcp_projects_iammember.insights_agent, gcp_projects_service.apphub_api_service, gcp_projects_service.containeranalysis_api, gcp_projects_service.containerscanning_api, gcp_projects_service.container_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.cloudbuild_api, gcp_projects_service.cloudasset_api, gcp_projects_service.compute_api, gcp_projects_service.devconnect_api]
+///   depends_on = [gcp_projects_i_a_m_member.apphub_permissions, gcp_projects_i_a_m_member.insights_agent, gcp_projects_service.apphub_api_service, gcp_projects_service.containeranalysis_api, gcp_projects_service.containerscanning_api, gcp_projects_service.container_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.artifactregistry_api, gcp_projects_service.cloudbuild_api, gcp_projects_service.cloudasset_api, gcp_projects_service.compute_api, gcp_projects_service.devconnect_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
-/// resource "gcp_developerconnect_insightsconfig" "insights_config_projects" {
-///   depends_on         = [time_sleep.wait_for_propagation]
+/// resource "gcp_developerconnect_insights_config" "insights_config_projects" {
+///   depends_on = [time_sleep.wait_for_propagation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us-central1"
-///   insights_config_id = "tf-test-ic-projects-_24469"
+///   insights_config_id = "tf-test-ic-projects-_21912"
 ///   project            = gcp_organizations_project.project.project_id
 ///   annotations        = {}
 ///   labels             = {}
@@ -1986,7 +2147,7 @@ import 'insights_config_target_projects.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("dci-tf-_35762")
+///             .projectId("dci-tf-_7495")
 ///             .name("Service Project")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
@@ -2099,7 +2260,7 @@ import 'insights_config_target_projects.dart';
 ///
 ///         var insightsConfigProjects = new InsightsConfig("insightsConfigProjects", InsightsConfigArgs.builder()
 ///             .location("us-central1")
-///             .insightsConfigId("tf-test-ic-projects-_24469")
+///             .insightsConfigId("tf-test-ic-projects-_21912")
 ///             .project(project.projectId())
 ///             .annotations(Map.ofEntries(
 ///             ))
@@ -2130,7 +2291,7 @@ import 'insights_config_target_projects.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: dci-tf-_35762
+///       projectId: dci-tf-_7495
 ///       name: Service Project
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
@@ -2265,7 +2426,7 @@ import 'insights_config_target_projects.dart';
 ///     name: insights_config_projects
 ///     properties:
 ///       location: us-central1
-///       insightsConfigId: tf-test-ic-projects-_24469
+///       insightsConfigId: tf-test-ic-projects-_21912
 ///       project: ${project.projectId}
 ///       annotations: {}
 ///       labels: {}
@@ -2385,7 +2546,7 @@ class InsightsConfig extends pulumi.CustomResource {
           'gcp:developerconnect/insightsConfig:InsightsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

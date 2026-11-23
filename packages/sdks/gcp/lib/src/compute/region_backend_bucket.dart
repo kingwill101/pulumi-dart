@@ -30,6 +30,7 @@ import 'region_backend_bucket_state.dart';
 /// * How-to Guides
 /// * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Region Backend Bucket Basic
@@ -101,8 +102,8 @@ import 'region_backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -132,7 +133,7 @@ import 'region_backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -140,7 +141,10 @@ import 'region_backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionbackendbucket" "image_backend" {
+/// resource "gcp_compute_region_backend_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "region-image-backend-bucket"
 ///   region                = "us-central1"
 ///   bucket_name           = gcp_storage_bucket.image_backend.name
@@ -148,6 +152,9 @@ import 'region_backend_bucket_state.dart';
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 /// }
 /// resource "gcp_storage_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "region-image-store-bucket"
 ///   location                    = "US-CENTRAL1"
 ///   force_destroy               = true
@@ -215,6 +222,7 @@ import 'region_backend_bucket_state.dart';
 ///       forceDestroy: true
 ///       uniformBucketLevelAccess: true
 /// ```
+///
 ///
 /// ### Region Backend Bucket Internal Lb
 ///
@@ -314,8 +322,8 @@ import 'region_backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -357,7 +365,7 @@ import 'region_backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -365,7 +373,10 @@ import 'region_backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionbackendbucket" "internal_backend" {
+/// resource "gcp_compute_region_backend_bucket" "internal_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "regional-internal-backend"
 ///   region                = "us-central1"
 ///   bucket_name           = gcp_storage_bucket.internal_backend.name
@@ -373,6 +384,9 @@ import 'region_backend_bucket_state.dart';
 ///   description           = "Regional internal backend bucket for static content"
 /// }
 /// resource "gcp_storage_bucket" "internal_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "regional-internal-bucket"
 ///   location                    = "US-CENTRAL1"
 ///   force_destroy               = true
@@ -382,7 +396,10 @@ import 'region_backend_bucket_state.dart';
 ///     not_found_page   = "404.html"
 ///   }
 /// }
-/// resource "gcp_storage_bucketobject" "index" {
+/// resource "gcp_storage_bucket_object" "index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "index.html"
 ///   bucket  = gcp_storage_bucket.internal_backend.name
 ///   content = "<html><body><h1>Regional Internal LB Backend Bucket</h1></body></html>"
@@ -471,6 +488,7 @@ import 'region_backend_bucket_state.dart';
 ///       bucket: ${internalBackendBucket.name}
 ///       content: <html><body><h1>Regional Internal LB Backend Bucket</h1></body></html>
 /// ```
+///
 ///
 /// ### Region Backend Bucket External Lb
 ///
@@ -586,8 +604,8 @@ import 'region_backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -637,7 +655,7 @@ import 'region_backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -645,7 +663,10 @@ import 'region_backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionbackendbucket" "external_backend" {
+/// resource "gcp_compute_region_backend_bucket" "external_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "regional-external-backend"
 ///   region                = "us-east1"
 ///   bucket_name           = gcp_storage_bucket.external_backend.name
@@ -653,6 +674,9 @@ import 'region_backend_bucket_state.dart';
 ///   description           = "Regional external backend bucket for static content"
 /// }
 /// resource "gcp_storage_bucket" "external_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "regional-external-bucket"
 ///   location                    = "US-EAST1"
 ///   force_destroy               = true
@@ -662,12 +686,18 @@ import 'region_backend_bucket_state.dart';
 ///     not_found_page   = "404.html"
 ///   }
 /// }
-/// resource "gcp_storage_bucketobject" "index" {
+/// resource "gcp_storage_bucket_object" "index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "index.html"
 ///   bucket  = gcp_storage_bucket.external_backend.name
 ///   content = "<html><body><h1>Regional External LB Backend Bucket</h1></body></html>"
 /// }
-/// resource "gcp_storage_bucketobject" "static_asset" {
+/// resource "gcp_storage_bucket_object" "static_asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "assets/style.css"
 ///   bucket  = gcp_storage_bucket.external_backend.name
 ///   content = "body { font-family: Arial, sans-serif; }"
@@ -840,7 +870,7 @@ class RegionBackendBucket extends pulumi.CustomResource {
           'gcp:compute/regionBackendBucket:RegionBackendBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     creationTimestamp = registerOutput<String>('creationTimestamp');

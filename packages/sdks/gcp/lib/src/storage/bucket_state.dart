@@ -31,7 +31,7 @@ class BucketState {
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String?>? deletionPolicy;
-  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
   final pulumi.Input<bool?>? enableObjectRetention;
@@ -95,7 +95,7 @@ class BucketState {
   /// [customPlacementConfig] The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
   /// [defaultEventBasedHold] Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
-  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableObjectRetention] Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
   /// [encryption] The bucket's encryption configuration. Structure is documented below.
   /// [forceDestroy] When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
@@ -213,7 +213,7 @@ class BucketState {
       logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      projectNumber: (() { final guardedValue = map['projectNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      projectNumber: (() { final guardedValue = map['projectNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       publicAccessPrevention: (() { final guardedValue = map['publicAccessPrevention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       requesterPays: (() { final guardedValue = map['requesterPays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

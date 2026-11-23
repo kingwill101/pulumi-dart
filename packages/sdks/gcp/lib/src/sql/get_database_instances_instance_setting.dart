@@ -58,7 +58,7 @@ class GetDatabaseInstancesInstanceSetting {
   final pulumi.Input<bool> diskAutoresize;
   /// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
   final pulumi.Input<int> diskAutoresizeLimit;
-  /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+  /// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
   final pulumi.Input<int> diskSize;
   /// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
   final pulumi.Input<String> diskType;
@@ -122,7 +122,7 @@ class GetDatabaseInstancesInstanceSetting {
   /// [denyMaintenancePeriods] Required.
   /// [diskAutoresize] Enables auto-resizing of the storage size. Defaults to true.
   /// [diskAutoresizeLimit] The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-  /// [diskSize] The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+  /// [diskSize] The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
   /// [diskType] The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
   /// [edition] The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
   /// [effectiveAvailabilityType] The availability type of the Cloud SQL instance, high availability
@@ -248,14 +248,14 @@ class GetDatabaseInstancesInstanceSetting {
       connectorEnforcement: pulumi.Input.fromValue(map['connectorEnforcement'] as String),
       dataApiAccess: pulumi.Input.fromValue(map['dataApiAccess'] as String),
       dataCacheConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingDataCacheConfig>(map['dataCacheConfigs']!, (value) => GetDatabaseInstancesInstanceSettingDataCacheConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      dataDiskProvisionedIops: pulumi.Input.fromValue((map['dataDiskProvisionedIops'] as num).toInt()),
-      dataDiskProvisionedThroughput: pulumi.Input.fromValue((map['dataDiskProvisionedThroughput'] as num).toInt()),
+      dataDiskProvisionedIops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataDiskProvisionedIops'])),
+      dataDiskProvisionedThroughput: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataDiskProvisionedThroughput'])),
       databaseFlags: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingDatabaseFlag>(map['databaseFlags']!, (value) => GetDatabaseInstancesInstanceSettingDatabaseFlag.fromMap((value as Map).cast<String, dynamic>()))),
       deletionProtectionEnabled: pulumi.Input.fromValue(map['deletionProtectionEnabled'] as bool),
       denyMaintenancePeriods: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod>(map['denyMaintenancePeriods']!, (value) => GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod.fromMap((value as Map).cast<String, dynamic>()))),
       diskAutoresize: pulumi.Input.fromValue(map['diskAutoresize'] as bool),
-      diskAutoresizeLimit: pulumi.Input.fromValue((map['diskAutoresizeLimit'] as num).toInt()),
-      diskSize: pulumi.Input.fromValue((map['diskSize'] as num).toInt()),
+      diskAutoresizeLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskAutoresizeLimit'])),
+      diskSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSize'])),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       edition: pulumi.Input.fromValue(map['edition'] as String),
       effectiveAvailabilityType: pulumi.Input.fromValue(map['effectiveAvailabilityType'] as String),
@@ -271,13 +271,13 @@ class GetDatabaseInstancesInstanceSetting {
       performanceCaptureConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig>(map['performanceCaptureConfigs']!, (value) => GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig.fromMap((value as Map).cast<String, dynamic>()))),
       pricingPlan: pulumi.Input.fromValue(map['pricingPlan'] as String),
       readPoolAutoScaleConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig>(map['readPoolAutoScaleConfigs']!, (value) => GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      replicationLagMaxSeconds: pulumi.Input.fromValue((map['replicationLagMaxSeconds'] as num).toInt()),
+      replicationLagMaxSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicationLagMaxSeconds'])),
       retainBackupsOnDelete: pulumi.Input.fromValue(map['retainBackupsOnDelete'] as bool),
       sqlServerAuditConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingSqlServerAuditConfig>(map['sqlServerAuditConfigs']!, (value) => GetDatabaseInstancesInstanceSettingSqlServerAuditConfig.fromMap((value as Map).cast<String, dynamic>()))),
       tier: pulumi.Input.fromValue(map['tier'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
       userLabels: pulumi.Input.fromValue((map['userLabels'] as Map).cast<String, String>()),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

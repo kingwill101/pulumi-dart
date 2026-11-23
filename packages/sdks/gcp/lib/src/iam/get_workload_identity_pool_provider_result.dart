@@ -8,6 +8,7 @@ import 'get_workload_identity_pool_provider_x509.dart';
 
 /// Result data returned by getWorkloadIdentityPoolProvider.
 class GetWorkloadIdentityPoolProviderResult {
+  final List<String>? actorProviders;
   final String? attributeCondition;
   final Map<String, String>? attributeMapping;
   final List<GetWorkloadIdentityPoolProviderAw>? aws;
@@ -27,6 +28,7 @@ class GetWorkloadIdentityPoolProviderResult {
   final List<GetWorkloadIdentityPoolProviderX509>? x509s;
 
   /// Creates a new [GetWorkloadIdentityPoolProviderResult].
+  /// [actorProviders] Optional.
   /// [attributeCondition] Optional.
   /// [attributeMapping] Optional.
   /// [aws] Optional.
@@ -44,6 +46,7 @@ class GetWorkloadIdentityPoolProviderResult {
   /// [workloadIdentityPoolProviderId] Optional.
   /// [x509s] Optional.
   const GetWorkloadIdentityPoolProviderResult({
+    this.actorProviders,
     this.attributeCondition,
     this.attributeMapping,
     this.aws,
@@ -64,6 +67,7 @@ class GetWorkloadIdentityPoolProviderResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'actorProviders': ?actorProviders,
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
       'aws': ?(() { final guardedValue = aws; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderAw, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -85,6 +89,7 @@ class GetWorkloadIdentityPoolProviderResult {
 
   factory GetWorkloadIdentityPoolProviderResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderResult(
+      actorProviders: (() { final guardedValue = map['actorProviders']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       attributeCondition: (() { final guardedValue = map['attributeCondition']; if (guardedValue == null) return null; return guardedValue as String; })(),
       attributeMapping: (() { final guardedValue = map['attributeMapping']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       aws: (() { final guardedValue = map['aws']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderAw>(guardedValue, (value) => GetWorkloadIdentityPoolProviderAw.fromMap((value as Map).cast<String, dynamic>())); })(),

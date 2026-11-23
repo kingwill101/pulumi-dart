@@ -17,6 +17,7 @@ import 'node_template_state.dart';
 /// * How-to Guides
 /// * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Node Template Basic
@@ -63,7 +64,7 @@ import 'node_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -82,7 +83,7 @@ import 'node_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -90,7 +91,10 @@ import 'node_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "template" {
+/// resource "gcp_compute_node_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-tmpl"
 ///   region    = "us-central1"
 ///   node_type = "n1-node-96-624"
@@ -135,6 +139,7 @@ import 'node_template_state.dart';
 ///       region: us-central1
 ///       nodeType: n1-node-96-624
 /// ```
+///
 ///
 /// ### Node Template Server Binding
 ///
@@ -209,7 +214,7 @@ import 'node_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -240,7 +245,7 @@ import 'node_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -248,11 +253,14 @@ import 'node_template_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnodetypes" "central1a" {
+/// data "gcp_compute_node_types" "central1a" {
 ///   zone = "us-central1-a"
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "template" {
+/// resource "gcp_compute_node_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-with-licenses"
 ///   region    = "us-central1"
 ///   node_type = "n1-node-96-624"
@@ -325,6 +333,7 @@ import 'node_template_state.dart';
 ///         zone: us-central1-a
 /// ```
 ///
+///
 /// ### Node Template Accelerators
 ///
 ///
@@ -394,7 +403,7 @@ import 'node_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -425,7 +434,7 @@ import 'node_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -433,11 +442,14 @@ import 'node_template_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnodetypes" "central1a" {
+/// data "gcp_compute_node_types" "central1a" {
 ///   zone = "us-central1-a"
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "template" {
+/// resource "gcp_compute_node_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-with-accelerators"
 ///   region    = "us-central1"
 ///   node_type = "n1-node-96-624"
@@ -506,6 +518,7 @@ import 'node_template_state.dart';
 ///       arguments:
 ///         zone: us-central1-a
 /// ```
+///
 ///
 /// ### Node Template Disks
 ///
@@ -579,7 +592,7 @@ import 'node_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -611,7 +624,7 @@ import 'node_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -619,11 +632,14 @@ import 'node_template_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnodetypes" "central1a" {
+/// data "gcp_compute_node_types" "central1a" {
 ///   zone = "us-central1-a"
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "template" {
+/// resource "gcp_compute_node_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "soletenant-with-disks"
 ///   region    = "us-central1"
 ///   node_type = "n2-node-80-640"
@@ -778,7 +794,7 @@ class NodeTemplate extends pulumi.CustomResource {
           'gcp:compute/nodeTemplate:NodeTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     accelerators = registerOutput<List<NodeTemplateAccelerator>?>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateAccelerator>(guardedValue, (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>())); });
     cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');

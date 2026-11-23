@@ -5,6 +5,7 @@ import 'ruleset_source_file.dart';
 
 class RulesetSource {
   /// `File` set constituting the `Source` bundle.
+  /// Structure is documented below.
   final pulumi.Input<List<RulesetSourceFile>> files;
   /// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
   ///

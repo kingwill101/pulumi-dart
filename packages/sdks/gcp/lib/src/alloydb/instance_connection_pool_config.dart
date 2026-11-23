@@ -41,7 +41,7 @@ class InstanceConnectionPoolConfig {
     return InstanceConnectionPoolConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       flags: (() { final guardedValue = map['flags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      poolerCount: (() { final guardedValue = map['poolerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      poolerCount: (() { final guardedValue = map['poolerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

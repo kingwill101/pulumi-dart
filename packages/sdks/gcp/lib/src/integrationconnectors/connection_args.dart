@@ -9,15 +9,20 @@ import 'connection_lock_config.dart';
 import 'connection_log_config.dart';
 import 'connection_node_config.dart';
 import 'connection_ssl_config.dart';
+import 'connection_traffic_shaping_config.dart';
 
 /// {@template pulumi_integrationconnectors_connection_connection_args_doc}
 /// The set of arguments for Connection.
 /// {@endtemplate}
 /// {@macro pulumi_integrationconnectors_connection_connection_args_doc}
 class ConnectionArgs {
+  /// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+  final pulumi.Input<bool?>? asyncOperationsEnabled;
   /// authConfig for the connection.
   /// Structure is documented below.
   final pulumi.Input<ConnectionAuthConfig?>? authConfig;
+  /// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+  final pulumi.Input<bool?>? authOverrideEnabled;
   /// Config Variables for the connection.
   /// Structure is documented below.
   final pulumi.Input<List<ConnectionConfigVariable>?>? configVariables;
@@ -69,9 +74,14 @@ class ConnectionArgs {
   final pulumi.Input<ConnectionSslConfig?>? sslConfig;
   /// Suspended indicates if a user has suspended a connection or not.
   final pulumi.Input<bool?>? suspended;
+  /// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+  /// Structure is documented below.
+  final pulumi.Input<List<ConnectionTrafficShapingConfig>?>? trafficShapingConfigs;
 
   /// Creates a new [ConnectionArgs].
+  /// [asyncOperationsEnabled] Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
   /// [authConfig] authConfig for the connection.
+  /// [authOverrideEnabled] Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
   /// [configVariables] Config Variables for the connection.
   /// [connectorVersion] connectorVersion of the Connector.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -89,8 +99,11 @@ class ConnectionArgs {
   /// [serviceAccount] Service account needed for runtime plane to access Google Cloud resources.
   /// [sslConfig] SSL Configuration of a connection
   /// [suspended] Suspended indicates if a user has suspended a connection or not.
+  /// [trafficShapingConfigs] Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
   const ConnectionArgs({
+    this.asyncOperationsEnabled,
     this.authConfig,
+    this.authOverrideEnabled,
     this.configVariables,
     required this.connectorVersion,
     this.deletionPolicy,
@@ -108,11 +121,14 @@ class ConnectionArgs {
     this.serviceAccount,
     this.sslConfig,
     this.suspended,
+    this.trafficShapingConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'asyncOperationsEnabled': ?asyncOperationsEnabled,
       'authConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'authOverrideEnabled': ?authOverrideEnabled,
       'configVariables': ?pulumi.Input.mapOptionalInputValue<List<ConnectionConfigVariable>, List<Map<String, dynamic>>>(configVariables, (value) => pulumi.Input.encodeList<ConnectionConfigVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectorVersion': connectorVersion,
       'deletionPolicy': ?deletionPolicy,
@@ -130,12 +146,15 @@ class ConnectionArgs {
       'serviceAccount': ?serviceAccount,
       'sslConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionSslConfig, Map<String, dynamic>>(sslConfig, (value) => value.toMap()),
       'suspended': ?suspended,
+      'trafficShapingConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConnectionTrafficShapingConfig>, List<Map<String, dynamic>>>(trafficShapingConfigs, (value) => pulumi.Input.encodeList<ConnectionTrafficShapingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
+      asyncOperationsEnabled: (() { final guardedValue = map['asyncOperationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       authConfig: (() { final guardedValue = map['authConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      authOverrideEnabled: (() { final guardedValue = map['authOverrideEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       configVariables: (() { final guardedValue = map['configVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionConfigVariable>(guardedValue, (value) => ConnectionConfigVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectorVersion: pulumi.Input.fromValue(map['connectorVersion'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -153,6 +172,7 @@ class ConnectionArgs {
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslConfig: (() { final guardedValue = map['sslConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionSslConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       suspended: (() { final guardedValue = map['suspended']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      trafficShapingConfigs: (() { final guardedValue = map['trafficShapingConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionTrafficShapingConfig>(guardedValue, (value) => ConnectionTrafficShapingConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

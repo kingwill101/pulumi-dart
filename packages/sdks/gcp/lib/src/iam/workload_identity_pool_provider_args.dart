@@ -11,6 +11,16 @@ import 'workload_identity_pool_provider_x509.dart';
 /// {@endtemplate}
 /// {@macro pulumi_iam_workload_identity_pool_provider_workload_identity_pool_provider_args_doc}
 class WorkloadIdentityPoolProviderArgs {
+  /// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+  /// that are authorized to issue actor tokens for this provider. An actor token
+  /// represents the identity of the acting party to whom authority is delegated. At
+  /// most 3 actor providers can be specified. Actor providers are only supported for
+  /// OIDC providers.
+  /// Each entry must be formatted as
+  /// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+  /// where `{project}` matches the `project` configured on this resource (for example,
+  /// by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+  final pulumi.Input<List<String>?>? actorProviders;
   /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// plain text, to restrict what otherwise valid authentication credentials issued by the
   /// provider should not be accepted.
@@ -109,6 +119,7 @@ class WorkloadIdentityPoolProviderArgs {
   final pulumi.Input<WorkloadIdentityPoolProviderX509?>? x509;
 
   /// Creates a new [WorkloadIdentityPoolProviderArgs].
+  /// [actorProviders] A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
   /// [attributeCondition] [A Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// [attributeMapping] Maps attributes from authentication credentials issued by an external identity provider
   /// [aws] An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
@@ -123,6 +134,7 @@ class WorkloadIdentityPoolProviderArgs {
   /// [workloadIdentityPoolProviderId] The ID for the provider, which becomes the final component of the resource name. This
   /// [x509] An X.509-type identity provider represents a CA. It is trusted to assert a
   const WorkloadIdentityPoolProviderArgs({
+    this.actorProviders,
     this.attributeCondition,
     this.attributeMapping,
     this.aws,
@@ -140,6 +152,7 @@ class WorkloadIdentityPoolProviderArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'actorProviders': ?actorProviders,
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
       'aws': ?pulumi.Input.mapOptionalInputValue<WorkloadIdentityPoolProviderAws, Map<String, dynamic>>(aws, (value) => value.toMap()),
@@ -158,6 +171,7 @@ class WorkloadIdentityPoolProviderArgs {
 
   factory WorkloadIdentityPoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderArgs(
+      actorProviders: (() { final guardedValue = map['actorProviders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       attributeCondition: (() { final guardedValue = map['attributeCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attributeMapping: (() { final guardedValue = map['attributeMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       aws: (() { final guardedValue = map['aws']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -27,7 +27,7 @@ class SecurityScanConfigSchedule {
 
   factory SecurityScanConfigSchedule.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigSchedule(
-      intervalDurationDays: pulumi.Input.fromValue((map['intervalDurationDays'] as num).toInt()),
+      intervalDurationDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalDurationDays'])),
       scheduleTime: (() { final guardedValue = map['scheduleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

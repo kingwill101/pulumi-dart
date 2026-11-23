@@ -16,6 +16,7 @@ import 'analysis_rule_state.dart';
 /// * How-to Guides
 /// * [Configure analysis rules using the API](https://cloud.google.com/contact-center/insights/docs/analysis-rule)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Contact Center Insights Analysis Rule Basic
@@ -59,7 +60,7 @@ import 'analysis_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/contactcenterinsights"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/contactcenterinsights"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -77,7 +78,7 @@ import 'analysis_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -85,7 +86,10 @@ import 'analysis_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_contactcenterinsights_analysisrule" "analysis_rule_basic" {
+/// resource "gcp_contactcenterinsights_analysis_rule" "analysis_rule_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   display_name = "analysis-rule-display-name"
 /// }
@@ -128,6 +132,7 @@ import 'analysis_rule_state.dart';
 ///       location: us-central1
 ///       displayName: analysis-rule-display-name
 /// ```
+///
 ///
 /// ### Contact Center Insights Analysis Rule Full
 ///
@@ -255,7 +260,7 @@ import 'analysis_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/contactcenterinsights"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/contactcenterinsights"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -303,7 +308,7 @@ import 'analysis_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -311,7 +316,10 @@ import 'analysis_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_contactcenterinsights_analysisrule" "analysis_rule_full" {
+/// resource "gcp_contactcenterinsights_analysis_rule" "analysis_rule_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "us-central1"
 ///   display_name        = "analysis-rule-display-name"
 ///   conversation_filter = "agent_id = \"1\""
@@ -429,6 +437,7 @@ import 'analysis_rule_state.dart';
 ///       analysisPercentage: 0.5
 ///       active: true
 /// ```
+///
 ///
 /// ### Contact Center Insights Analysis Rule Profile
 ///
@@ -556,7 +565,7 @@ import 'analysis_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/contactcenterinsights"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/contactcenterinsights"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -604,7 +613,7 @@ import 'analysis_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -612,7 +621,10 @@ import 'analysis_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_contactcenterinsights_analysisrule" "analysis_rule_profile" {
+/// resource "gcp_contactcenterinsights_analysis_rule" "analysis_rule_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "us-central1"
 ///   display_name        = "analysis-rule-display-name"
 ///   conversation_filter = "agent_id = \"1\""
@@ -799,7 +811,7 @@ class AnalysisRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/analysisRule:AnalysisRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     analysisPercentage = registerOutput<double?>('analysisPercentage');

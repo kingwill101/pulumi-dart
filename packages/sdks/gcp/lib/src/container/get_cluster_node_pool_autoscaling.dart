@@ -41,10 +41,10 @@ class GetClusterNodePoolAutoscaling {
   factory GetClusterNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoscaling(
       locationPolicy: pulumi.Input.fromValue(map['locationPolicy'] as String),
-      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
-      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
-      totalMaxNodeCount: pulumi.Input.fromValue((map['totalMaxNodeCount'] as num).toInt()),
-      totalMinNodeCount: pulumi.Input.fromValue((map['totalMinNodeCount'] as num).toInt()),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      minNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCount'])),
+      totalMaxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalMaxNodeCount'])),
+      totalMinNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalMinNodeCount'])),
     );
   }
 }

@@ -55,7 +55,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -83,7 +83,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudasset_getresourcessearchall" "projects" {
+/// data "gcp_cloudasset_resources_search_all" "projects" {
 ///   scope       = "organizations/0123456789"
 ///   asset_types = ["cloudresourcemanager.googleapis.com/Project"]
 /// }
@@ -174,7 +174,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -195,7 +195,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,7 +203,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudasset_getresourcessearchall" "cloudBuildProjects" {
+/// data "gcp_cloudasset_resources_search_all" "cloudBuildProjects" {
 ///   scope       = "organizations/0123456789"
 ///   asset_types = ["serviceusage.googleapis.com/Service"]
 ///   query       = "displayName:cloudbuild.googleapis.com AND state:ENABLED"
@@ -294,7 +294,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -314,7 +314,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -322,7 +322,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudasset_getresourcessearchall" "projectServiceAccounts" {
+/// data "gcp_cloudasset_resources_search_all" "projectServiceAccounts" {
 ///   scope       = "projects/my-project-id"
 ///   asset_types = ["iam.googleapis.com/ServiceAccount"]
 /// }
@@ -440,7 +440,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -460,7 +460,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -468,7 +468,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 ///   }
 /// }
 ///
-/// data "gcp_cloudasset_getsearchallresources" "projects" {
+/// data "gcp_cloudasset_search_all_resources" "projects" {
 ///   scope       = "organizations/0123456789"
 ///   asset_types = ["cloudresourcemanager.googleapis.com/Project"]
 /// }
@@ -559,7 +559,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -580,7 +580,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -588,7 +588,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 ///   }
 /// }
 ///
-/// data "gcp_cloudasset_getsearchallresources" "cloudBuildProjects" {
+/// data "gcp_cloudasset_search_all_resources" "cloudBuildProjects" {
 ///   scope       = "organizations/0123456789"
 ///   asset_types = ["serviceusage.googleapis.com/Service"]
 ///   query       = "displayName:cloudbuild.googleapis.com AND state:ENABLED"
@@ -679,7 +679,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -699,7 +699,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -707,7 +707,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 ///   }
 /// }
 ///
-/// data "gcp_cloudasset_getsearchallresources" "projectServiceAccounts" {
+/// data "gcp_cloudasset_search_all_resources" "projectServiceAccounts" {
 ///   scope       = "projects/my-project-id"
 ///   asset_types = ["iam.googleapis.com/ServiceAccount"]
 /// }

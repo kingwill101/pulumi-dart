@@ -11,6 +11,7 @@ import 'data_connect_service_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/docs/data-connect)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebasedataconnect Service Basic
@@ -111,8 +112,8 @@ import 'data_connect_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -150,7 +151,7 @@ import 'data_connect_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -160,12 +161,18 @@ import 'data_connect_service_state.dart';
 ///
 /// # Enable Firebase Data Connect API
 /// resource "gcp_projects_service" "fdc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebasedataconnect.googleapis.com"
 /// }
 /// # Create a Firebase Data Connect service
-/// resource "gcp_firebase_dataconnectservice" "default" {
-///   depends_on      = [gcp_projects_service.fdc]
+/// resource "gcp_firebase_data_connect_service" "default" {
+///   depends_on = [gcp_projects_service.fdc]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   location        = "us-central1"
 ///   service_id      = "example-service"
@@ -253,6 +260,7 @@ import 'data_connect_service_state.dart';
 ///         - ${fdc}
 /// ```
 ///
+///
 /// ### Firebasedataconnect Service With Force Deletion
 ///
 ///
@@ -328,8 +336,8 @@ import 'data_connect_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -360,7 +368,7 @@ import 'data_connect_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -370,12 +378,18 @@ import 'data_connect_service_state.dart';
 ///
 /// # Enable Firebase Data Connect API
 /// resource "gcp_projects_service" "fdc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebasedataconnect.googleapis.com"
 /// }
 /// # Create a Firebase Data Connect service
-/// resource "gcp_firebase_dataconnectservice" "default" {
-///   depends_on      = [gcp_projects_service.fdc]
+/// resource "gcp_firebase_data_connect_service" "default" {
+///   depends_on = [gcp_projects_service.fdc]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   location        = "us-central1"
 ///   service_id      = "example-service"
@@ -538,7 +552,7 @@ class DataConnectService extends pulumi.CustomResource {
           'gcp:firebase/dataConnectService:DataConnectService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

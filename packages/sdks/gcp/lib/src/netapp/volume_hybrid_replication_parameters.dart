@@ -81,7 +81,7 @@ class VolumeHybridReplicationParameters {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hybridReplicationType: (() { final guardedValue = map['hybridReplicationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      largeVolumeConstituentCount: (() { final guardedValue = map['largeVolumeConstituentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      largeVolumeConstituentCount: (() { final guardedValue = map['largeVolumeConstituentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       peerClusterName: (() { final guardedValue = map['peerClusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerIpAddresses: (() { final guardedValue = map['peerIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       peerSvmName: (() { final guardedValue = map['peerSvmName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

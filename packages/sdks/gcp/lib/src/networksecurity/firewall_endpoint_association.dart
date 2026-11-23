@@ -21,6 +21,7 @@ import 'firewall_endpoint_association_state.dart';
 /// Your account must have the `serviceusage.services.use` permission on the
 /// `billingProjectId` you defined.
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -93,7 +94,7 @@ class FirewallEndpointAssociation extends pulumi.CustomResource {
           'gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -9,6 +9,7 @@ import 'view_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/contact-center/insights/docs/reference/rest/v1/projects.locations.views)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Contact Center Insights View Basic
@@ -55,7 +56,7 @@ import 'view_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/contactcenterinsights"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/contactcenterinsights"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -74,7 +75,7 @@ import 'view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -83,6 +84,9 @@ import 'view_state.dart';
 /// }
 ///
 /// resource "gcp_contactcenterinsights_view" "basic_view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   display_name = "view-display-name"
 ///   value        = "medium=\"CHAT\""
@@ -129,6 +133,7 @@ import 'view_state.dart';
 ///       value: medium="CHAT"
 /// ```
 ///
+///
 /// ### Contact Center Insights View Full
 ///
 ///
@@ -173,7 +178,7 @@ import 'view_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/contactcenterinsights"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/contactcenterinsights"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -192,7 +197,7 @@ import 'view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -201,6 +206,9 @@ import 'view_state.dart';
 /// }
 ///
 /// resource "gcp_contactcenterinsights_view" "full_view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   display_name = "view-display-name"
 ///   value        = "medium=\"PHONE_CALL\""
@@ -302,7 +310,7 @@ class View extends pulumi.CustomResource {
           'gcp:contactcenterinsights/view:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

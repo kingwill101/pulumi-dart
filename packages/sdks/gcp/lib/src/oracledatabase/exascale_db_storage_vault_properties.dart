@@ -87,7 +87,7 @@ class ExascaleDbStorageVaultProperties {
 
   factory ExascaleDbStorageVaultProperties.fromMap(Map<String, dynamic> map) {
     return ExascaleDbStorageVaultProperties(
-      additionalFlashCachePercent: (() { final guardedValue = map['additionalFlashCachePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      additionalFlashCachePercent: (() { final guardedValue = map['additionalFlashCachePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       attachedShapeAttributes: (() { final guardedValue = map['attachedShapeAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       availableShapeAttributes: (() { final guardedValue = map['availableShapeAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exascaleDbStorageDetails: pulumi.Input.fromValue(ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.fromMap((map['exascaleDbStorageDetails']! as Map).cast<String, dynamic>())),
@@ -95,7 +95,7 @@ class ExascaleDbStorageVaultProperties {
       ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExascaleDbStorageVaultPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vmClusterCount: (() { final guardedValue = map['vmClusterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vmClusterCount: (() { final guardedValue = map['vmClusterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vmClusterIds: (() { final guardedValue = map['vmClusterIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

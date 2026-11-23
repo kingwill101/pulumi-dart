@@ -27,6 +27,11 @@ class InsightsReportConfigArgs {
   /// Options for configuring how inventory reports are generated.
   /// Structure is documented below.
   final pulumi.Input<InsightsReportConfigFrequencyOptions?>? frequencyOptions;
+  /// Labels as key value pairs. Have a character limit of 64 per key and value.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// must be in the same location.
   final pulumi.Input<String> location;
@@ -45,6 +50,7 @@ class InsightsReportConfigArgs {
   /// [displayName] The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   /// [forceDestroy] If set, all the inventory report details associated with this report configuration are deleted.
   /// [frequencyOptions] Options for configuring how inventory reports are generated.
+  /// [labels] Labels as key value pairs. Have a character limit of 64 per key and value.
   /// [location] The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// [objectMetadataReportOptions] Options for including metadata in an inventory report.
   /// [parquetOptions] An option for outputting inventory reports as parquet files.
@@ -55,6 +61,7 @@ class InsightsReportConfigArgs {
     this.displayName,
     this.forceDestroy,
     this.frequencyOptions,
+    this.labels,
     required this.location,
     this.objectMetadataReportOptions,
     this.parquetOptions,
@@ -68,6 +75,7 @@ class InsightsReportConfigArgs {
       'displayName': ?displayName,
       'forceDestroy': ?forceDestroy,
       'frequencyOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigFrequencyOptions, Map<String, dynamic>>(frequencyOptions, (value) => value.toMap()),
+      'labels': ?labels,
       'location': location,
       'objectMetadataReportOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigObjectMetadataReportOptions, Map<String, dynamic>>(objectMetadataReportOptions, (value) => value.toMap()),
       'parquetOptions': ?parquetOptions,
@@ -82,6 +90,7 @@ class InsightsReportConfigArgs {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frequencyOptions: (() { final guardedValue = map['frequencyOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       objectMetadataReportOptions: (() { final guardedValue = map['objectMetadataReportOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parquetOptions: (() { final guardedValue = map['parquetOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),

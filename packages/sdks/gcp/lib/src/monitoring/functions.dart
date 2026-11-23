@@ -166,9 +166,9 @@ import 'get_uptime_check_ips_result.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -222,7 +222,7 @@ import 'get_uptime_check_ips_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -230,11 +230,14 @@ import 'get_uptime_check_ips_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getappengineservice" "srv" {
-///   module_id = gcp_appengine_standardappversion.myapp.service
+/// data "gcp_monitoring_app_engine_service" "srv" {
+///   module_id = gcp_appengine_standard_app_version.myapp.service
 /// }
 ///
-/// resource "gcp_appengine_standardappversion" "myapp" {
+/// resource "gcp_appengine_standard_app_version" "myapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id = "v1"
 ///   service    = "myapp"
 ///   runtime    = "nodejs20"
@@ -243,7 +246,7 @@ import 'get_uptime_check_ips_result.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
@@ -252,13 +255,19 @@ import 'get_uptime_check_ips_result.dart';
 ///   delete_service_on_destroy = false
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "appengine-static-content"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
 /// # Monitors the default AppEngine service
 /// ```
@@ -460,7 +469,7 @@ pulumi.Output<GetAppEngineServiceResult> getAppEngineServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -481,7 +490,7 @@ pulumi.Output<GetAppEngineServiceResult> getAppEngineServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -489,7 +498,7 @@ pulumi.Output<GetAppEngineServiceResult> getAppEngineServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getclusteristioservice" "default" {
+/// data "gcp_monitoring_cluster_istio_service" "default" {
 ///   location          = "us-west2-a"
 ///   cluster_name      = "west"
 ///   service_namespace = "istio-system"
@@ -631,7 +640,7 @@ pulumi.Output<GetClusterIstioServiceResult> getClusterIstioServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -651,7 +660,7 @@ pulumi.Output<GetClusterIstioServiceResult> getClusterIstioServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,7 +668,7 @@ pulumi.Output<GetClusterIstioServiceResult> getClusterIstioServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getistiocanonicalservice" "default" {
+/// data "gcp_monitoring_istio_canonical_service" "default" {
 ///   mesh_uid                    = "proj-573164786102"
 ///   canonical_service_namespace = "istio-system"
 ///   canonical_service           = "prometheus"
@@ -798,7 +807,7 @@ pulumi.Output<GetIstioCanonicalServiceResult> getIstioCanonicalServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -818,7 +827,7 @@ pulumi.Output<GetIstioCanonicalServiceResult> getIstioCanonicalServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -826,7 +835,7 @@ pulumi.Output<GetIstioCanonicalServiceResult> getIstioCanonicalServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getmeshistioservice" "default" {
+/// data "gcp_monitoring_mesh_istio_service" "default" {
 ///   mesh_uid          = "proj-573164786102"
 ///   service_namespace = "istio-system"
 ///   service_name      = "prometheus"
@@ -1019,7 +1028,7 @@ pulumi.Output<GetMeshIstioServiceResult> getMeshIstioServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1062,7 +1071,7 @@ pulumi.Output<GetMeshIstioServiceResult> getMeshIstioServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1070,13 +1079,16 @@ pulumi.Output<GetMeshIstioServiceResult> getMeshIstioServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getnotificationchannel" "basic" {
+/// data "gcp_monitoring_notification_channel" "basic" {
 ///   display_name = "Test Notification Channel"
 /// }
 ///
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "My Alert Policy"
-///   notification_channels = [data.gcp_monitoring_getnotificationchannel.basic.name]
+///   notification_channels = [data.gcp_monitoring_notification_channel.basic.name]
 ///   combiner              = "OR"
 ///   conditions {
 ///     display_name = "test condition"
@@ -1085,8 +1097,8 @@ pulumi.Output<GetMeshIstioServiceResult> getMeshIstioServiceOutput(
 ///       duration   = "60s"
 ///       comparison = "COMPARISON_GT"
 ///       aggregations = [{
-///         "alignmentPeriod"  = "60s"
-///         "perSeriesAligner" = "ALIGN_RATE"
+///         alignment_period   = "60s"
+///         per_series_aligner = "ALIGN_RATE"
 ///       }]
 ///     }
 ///   }
@@ -1233,7 +1245,7 @@ pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1250,7 +1262,7 @@ pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1258,7 +1270,7 @@ pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getsecretversion" "basic" {
+/// data "gcp_secretmanager_secret_version" "basic" {
 ///   secret = "my-secret"
 /// }
 /// ```
@@ -1364,7 +1376,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1380,7 +1392,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1388,11 +1400,11 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getuptimecheckips" "ips" {
+/// data "gcp_monitoring_uptime_check_i_ps" "ips" {
 /// }
 ///
 /// output "ipList" {
-///   value = data.gcp_monitoring_getuptimecheckips.ips.uptime_check_ips
+///   value = data.gcp_monitoring_uptime_check_i_ps.ips.uptime_check_ips
 /// }
 /// ```
 /// ```java

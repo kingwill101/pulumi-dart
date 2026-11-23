@@ -19,6 +19,7 @@ import 'instance_state.dart';
 /// * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
 /// * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Filestore Instance Basic
@@ -97,7 +98,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -128,7 +129,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -137,6 +138,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance"
 ///   location = "us-central1-b"
 ///   tier     = "BASIC_HDD"
@@ -206,6 +210,7 @@ import 'instance_state.dart';
 ///           modes:
 ///             - MODE_IPV4
 /// ```
+///
 ///
 /// ### Filestore Instance Full
 ///
@@ -337,7 +342,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -387,7 +392,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -396,6 +401,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance"
 ///   location = "us-central1-b"
 ///   tier     = "BASIC_SSD"
@@ -403,15 +411,15 @@ import 'instance_state.dart';
 ///     capacity_gb = 2560
 ///     name        = "share1"
 ///     nfs_export_options = [{
-///       "ipRanges"   = ["10.0.0.0/24"]
-///       "accessMode" = "READ_WRITE"
-///       "squashMode" = "NO_ROOT_SQUASH"
+///       ip_ranges   = ["10.0.0.0/24"]
+///       access_mode = "READ_WRITE"
+///       squash_mode = "NO_ROOT_SQUASH"
 ///       }, {
-///       "ipRanges"   = ["10.10.0.0/24"]
-///       "accessMode" = "READ_ONLY"
-///       "squashMode" = "ROOT_SQUASH"
-///       "anonUid"    = 123
-///       "anonGid"    = 456
+///       ip_ranges   = ["10.10.0.0/24"]
+///       access_mode = "READ_ONLY"
+///       squash_mode = "ROOT_SQUASH"
+///       anon_uid    = 123
+///       anon_gid    = 456
 ///     }]
 ///   }
 ///   networks {
@@ -505,6 +513,7 @@ import 'instance_state.dart';
 ///           connectMode: DIRECT_PEERING
 /// ```
 ///
+///
 /// ### Filestore Instance Protocol
 ///
 ///
@@ -584,7 +593,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -616,7 +625,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -625,6 +634,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -697,6 +709,7 @@ import 'instance_state.dart';
 ///           modes:
 ///             - MODE_IPV4
 /// ```
+///
 ///
 /// ### Filestore Instance Enterprise
 ///
@@ -803,8 +816,8 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -819,7 +832,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		filestoreKey, err := kms.NewCryptoKey(ctx, "filestore_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("filestore-key"),
-/// 			KeyRing: filestoreKeyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: filestoreKeyring.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -840,7 +853,7 @@ import 'instance_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			KmsKeyName: filestoreKey.ID().ToIDOutput().ToStringOutput(),
+/// 			KmsKeyName: filestoreKey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -850,7 +863,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -859,6 +872,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -870,15 +886,21 @@ import 'instance_state.dart';
 ///     network = "default"
 ///     modes   = ["MODE_IPV4"]
 ///   }
-///   kms_key_name = gcp_kms_cryptokey.filestore_key.id
+///   kms_key_name = gcp_kms_crypto_key.filestore_key.id
 /// }
-/// resource "gcp_kms_keyring" "filestore_keyring" {
+/// resource "gcp_kms_key_ring" "filestore_keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "filestore-keyring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "filestore_key" {
+/// resource "gcp_kms_crypto_key" "filestore_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "filestore-key"
-///   key_ring = gcp_kms_keyring.filestore_keyring.id
+///   key_ring = gcp_kms_key_ring.filestore_keyring.id
 /// }
 /// ```
 /// ```java
@@ -1084,7 +1106,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:filestore/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

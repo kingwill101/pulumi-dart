@@ -65,7 +65,7 @@ class EvaluationScenario {
   factory EvaluationScenario.fromMap(Map<String, dynamic> map) {
     return EvaluationScenario(
       evaluationExpectations: (() { final guardedValue = map['evaluationExpectations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxTurns: (() { final guardedValue = map['maxTurns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxTurns: (() { final guardedValue = map['maxTurns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rubrics: pulumi.Input.fromValue((map['rubrics'] as List).cast<String>()),
       scenarioExpectations: pulumi.Input.fromValue(pulumi.Input.decodeList<EvaluationScenarioScenarioExpectation>(map['scenarioExpectations']!, (value) => EvaluationScenarioScenarioExpectation.fromMap((value as Map).cast<String, dynamic>()))),
       task: pulumi.Input.fromValue(map['task'] as String),

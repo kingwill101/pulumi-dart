@@ -24,6 +24,7 @@ import 'address_state.dart';
 /// * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
 /// * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Address Basic
@@ -61,7 +62,7 @@ import 'address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +79,7 @@ import 'address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,6 +88,9 @@ import 'address_state.dart';
 /// }
 ///
 /// resource "gcp_compute_address" "ip_address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-address"
 /// }
 /// ```
@@ -126,6 +130,7 @@ import 'address_state.dart';
 ///     properties:
 ///       name: my-address
 /// ```
+///
 ///
 /// ### Address With Subnetwork
 ///
@@ -203,7 +208,7 @@ import 'address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,14 +224,14 @@ import 'address_state.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewAddress(ctx, "internal_with_subnet_and_address", &compute.AddressArgs{
 /// 			Name:        pulumi.String("my-internal-address"),
-/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  defaultSubnetwork.ID(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Address:     pulumi.String("10.0.42.42"),
 /// 			Region:      pulumi.String("us-central1"),
@@ -239,7 +244,7 @@ import 'address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -248,15 +253,24 @@ import 'address_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-network"
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_compute_address" "internal_with_subnet_and_address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-internal-address"
 ///   subnetwork   = gcp_compute_subnetwork.default.id
 ///   address_type = "INTERNAL"
@@ -336,6 +350,7 @@ import 'address_state.dart';
 ///       region: us-central1
 /// ```
 ///
+///
 /// ### Address With Gce Endpoint
 ///
 ///
@@ -380,7 +395,7 @@ import 'address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -399,7 +414,7 @@ import 'address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -408,6 +423,9 @@ import 'address_state.dart';
 /// }
 ///
 /// resource "gcp_compute_address" "internal_with_gce_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-internal-address-"
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
@@ -454,6 +472,7 @@ import 'address_state.dart';
 ///       purpose: GCE_ENDPOINT
 /// ```
 ///
+///
 /// ### Instance With Ip
 ///
 ///
@@ -464,7 +483,7 @@ import 'address_state.dart';
 ///
 /// const static = new gcp.compute.Address("static", {name: "ipv4-address"});
 /// const debianImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const instanceWithIp = new gcp.compute.Instance("instance_with_ip", {
@@ -489,7 +508,7 @@ import 'address_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// static = gcp.compute.Address("static", name="ipv4-address")
-/// debian_image = gcp.compute.get_image(family="debian-11",
+/// debian_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// instance_with_ip = gcp.compute.Instance("instance_with_ip",
 ///     name="vm-instance",
@@ -522,7 +541,7 @@ import 'address_state.dart';
 ///
 ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -560,7 +579,7 @@ import 'address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -573,7 +592,7 @@ import 'address_state.dart';
 /// 			return err
 /// 		}
 /// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -607,7 +626,7 @@ import 'address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -615,21 +634,27 @@ import 'address_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debianImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debianImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_address" "static" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ipv4-address"
 /// }
 /// resource "gcp_compute_instance" "instance_with_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "vm-instance"
 ///   machine_type = "f1-micro"
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.debianImage.self_link
+///       image = data.gcp_compute_image.debianImage.self_link
 ///     }
 ///   }
 ///   network_interfaces {
@@ -674,7 +699,7 @@ import 'address_state.dart';
 ///             .build());
 ///
 ///         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -723,9 +748,10 @@ import 'address_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Compute Address Ipsec Interconnect
 ///
@@ -793,7 +819,7 @@ import 'address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -822,7 +848,7 @@ import 'address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -831,6 +857,9 @@ import 'address_state.dart';
 /// }
 ///
 /// resource "gcp_compute_address" "ipsec-interconnect-address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-address"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "IPSEC_INTERCONNECT"
@@ -839,6 +868,9 @@ import 'address_state.dart';
 ///   network       = gcp_compute_network.network.self_link
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -900,6 +932,7 @@ import 'address_state.dart';
 ///       name: test-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ## Import
 ///
@@ -1006,6 +1039,9 @@ class Address extends pulumi.CustomResource {
   /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
   /// configure Private Service Connect. Only global internal addresses can use
   /// this purpose.
+  /// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+  /// managed internally. It can not be assigned to compute resources such as
+  /// VM and internal load balancer.
   /// This should only be set when using an Internal address.
   late final pulumi.Output<String> purpose;
   /// The Region in which the created address should reside.
@@ -1016,7 +1052,8 @@ class Address extends pulumi.CustomResource {
   /// The URL of the subnetwork in which to reserve the address. If an IP
   /// address is specified, it must be within the subnetwork's IP range.
   /// This field can only be used with INTERNAL type with
-  /// GCE_ENDPOINT/DNS_RESOLVER purposes.
+  /// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+  /// when `ipv6EndpointType` is `VM` or `NETLB`.
   late final pulumi.Output<String> subnetwork;
   /// The URLs of the resources that are using this address.
   late final pulumi.Output<List<String>> users;
@@ -1033,7 +1070,7 @@ class Address extends pulumi.CustomResource {
           'gcp:compute/address:Address',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     address = registerOutput<String>('address');

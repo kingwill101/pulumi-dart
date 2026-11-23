@@ -73,7 +73,7 @@ class ResizeRequestArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestedRunDuration: (() { final guardedValue = map['requestedRunDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      resizeBy: pulumi.Input.fromValue((map['resizeBy'] as num).toInt()),
+      resizeBy: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resizeBy'])),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

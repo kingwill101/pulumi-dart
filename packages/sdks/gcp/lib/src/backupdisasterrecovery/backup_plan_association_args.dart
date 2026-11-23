@@ -13,6 +13,7 @@ class BackupPlanAssociationArgs {
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
   /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
   /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+  /// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
   final pulumi.Input<String> backupPlan;
   /// The id of backupplan association
   final pulumi.Input<String> backupPlanAssociationId;
@@ -31,7 +32,7 @@ class BackupPlanAssociationArgs {
   /// The resource for which BPA needs to be created
   final pulumi.Input<String> resource;
   /// The resource type of workload on which backupplan is applied.
-  /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+  /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [BackupPlanAssociationArgs].

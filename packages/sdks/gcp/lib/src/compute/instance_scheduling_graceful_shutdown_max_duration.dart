@@ -9,7 +9,7 @@ class InstanceSchedulingGracefulShutdownMaxDuration {
   /// 999,999,999 inclusive.
   final pulumi.Input<int?>? nanos;
   /// Span of time at a resolution of a second.
-  /// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+  /// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
   final pulumi.Input<int> seconds;
 
   /// Creates a new [InstanceSchedulingGracefulShutdownMaxDuration].
@@ -29,8 +29,8 @@ class InstanceSchedulingGracefulShutdownMaxDuration {
 
   factory InstanceSchedulingGracefulShutdownMaxDuration.fromMap(Map<String, dynamic> map) {
     return InstanceSchedulingGracefulShutdownMaxDuration(
-      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      seconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['seconds'])),
     );
   }
 }

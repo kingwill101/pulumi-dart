@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'datascan_data_quality_spec_rule_debug_query.dart';
 import 'datascan_data_quality_spec_rule_range_expectation.dart';
 import 'datascan_data_quality_spec_rule_regex_expectation.dart';
 import 'datascan_data_quality_spec_rule_row_condition_expectation.dart';
@@ -15,6 +16,10 @@ class DatascanDataQualitySpecRule {
   final pulumi.Input<Map<String, String>?>? attributes;
   /// The unnested column which this rule is evaluated against.
   final pulumi.Input<String?>? column;
+  /// Specifies the debug queries for this rule.
+  /// Currently, only one query is supported, but this may be expanded in the future.
+  /// Structure is documented below.
+  final pulumi.Input<List<DatascanDataQualitySpecRuleDebugQuery>?>? debugQueries;
   /// Description of the rule.
   /// The maximum length is 1,024 characters.
   final pulumi.Input<String?>? description;
@@ -64,6 +69,7 @@ class DatascanDataQualitySpecRule {
   /// Creates a new [DatascanDataQualitySpecRule].
   /// [attributes] Map of attribute name and value linked to the rule.
   /// [column] The unnested column which this rule is evaluated against.
+  /// [debugQueries] Specifies the debug queries for this rule.
   /// [description] Description of the rule.
   /// [dimension] The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
   /// [ignoreNull] Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
@@ -83,6 +89,7 @@ class DatascanDataQualitySpecRule {
   const DatascanDataQualitySpecRule({
     this.attributes,
     this.column,
+    this.debugQueries,
     this.description,
     required this.dimension,
     this.ignoreNull,
@@ -105,6 +112,7 @@ class DatascanDataQualitySpecRule {
     return <String, dynamic>{
       'attributes': ?attributes,
       'column': ?column,
+      'debugQueries': ?pulumi.Input.mapOptionalInputValue<List<DatascanDataQualitySpecRuleDebugQuery>, List<Map<String, dynamic>>>(debugQueries, (value) => pulumi.Input.encodeList<DatascanDataQualitySpecRuleDebugQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'dimension': dimension,
       'ignoreNull': ?ignoreNull,
@@ -128,6 +136,7 @@ class DatascanDataQualitySpecRule {
     return DatascanDataQualitySpecRule(
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       column: (() { final guardedValue = map['column']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      debugQueries: (() { final guardedValue = map['debugQueries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatascanDataQualitySpecRuleDebugQuery>(guardedValue, (value) => DatascanDataQualitySpecRuleDebugQuery.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dimension: pulumi.Input.fromValue(map['dimension'] as String),
       ignoreNull: (() { final guardedValue = map['ignoreNull']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

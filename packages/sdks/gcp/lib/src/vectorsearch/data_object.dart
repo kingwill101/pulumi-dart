@@ -29,6 +29,7 @@ import 'data_object_vector.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vectorsearch Data Object Basic
@@ -40,16 +41,16 @@ import 'data_object_vector.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// // NOTE: This resource issues one CreateDataObject request per block.
-/// // It does NOT batch across resources. Terraform will parallelize a
+/// // It does NOT batch across resources. Pulumi will parallelize a
 /// // 'for_each' up to '-parallelism', but each item is still a separate
 /// // HTTP call.
 /// //
 /// // For bulk ingestion of many items, prefer one of these out-of-band
-/// // paths instead of Terraform:
+/// // paths instead of Pulumi:
 /// //   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// //     but only available *before* any Index is created on the Collection.
 /// //   * 'batchCreate' (up to ~1000 items per call) -- available at any
-/// //     time, but must be driven from client code, not Terraform.
+/// //     time, but must be driven from client code, not Pulumi.
 /// const parent = new gcp.vectorsearch.Collection("parent", {
 ///     location: "us-central1",
 ///     collectionId: "example-collection",
@@ -99,16 +100,16 @@ import 'data_object_vector.dart';
 /// import pulumi_gcp as gcp
 ///
 /// # NOTE: This resource issues one CreateDataObject request per block.
-/// # It does NOT batch across resources. Terraform will parallelize a
+/// # It does NOT batch across resources. Pulumi will parallelize a
 /// # 'for_each' up to '-parallelism', but each item is still a separate
 /// # HTTP call.
 /// #
 /// # For bulk ingestion of many items, prefer one of these out-of-band
-/// # paths instead of Terraform:
+/// # paths instead of Pulumi:
 /// #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// #     but only available *before* any Index is created on the Collection.
 /// #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-/// #     time, but must be driven from client code, not Terraform.
+/// #     time, but must be driven from client code, not Pulumi.
 /// parent = gcp.vectorsearch.Collection("parent",
 ///     location="us-central1",
 ///     collection_id="example-collection",
@@ -160,16 +161,16 @@ import 'data_object_vector.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     // NOTE: This resource issues one CreateDataObject request per block.
-///     // It does NOT batch across resources. Terraform will parallelize a
+///     // It does NOT batch across resources. Pulumi will parallelize a
 ///     // 'for_each' up to '-parallelism', but each item is still a separate
 ///     // HTTP call.
 ///     //
 ///     // For bulk ingestion of many items, prefer one of these out-of-band
-///     // paths instead of Terraform:
+///     // paths instead of Pulumi:
 ///     //   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 ///     //     but only available *before* any Index is created on the Collection.
 ///     //   * 'batchCreate' (up to ~1000 items per call) -- available at any
-///     //     time, but must be driven from client code, not Terraform.
+///     //     time, but must be driven from client code, not Pulumi.
 ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
 ///     {
 ///         Location = "us-central1",
@@ -231,23 +232,23 @@ import 'data_object_vector.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// NOTE: This resource issues one CreateDataObject request per block.
-/// 		// It does NOT batch across resources. Terraform will parallelize a
+/// 		// It does NOT batch across resources. Pulumi will parallelize a
 /// 		// 'for_each' up to '-parallelism', but each item is still a separate
 /// 		// HTTP call.
 /// 		//
 /// 		// For bulk ingestion of many items, prefer one of these out-of-band
-/// 		// paths instead of Terraform:
-/// 		//   - 'importDataObjects' (from Cloud Storage) -- highest throughput,
+/// 		// paths instead of Pulumi:
+/// 		//   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// 		//     but only available *before* any Index is created on the Collection.
-/// 		//   - 'batchCreate' (up to ~1000 items per call) -- available at any
-/// 		//     time, but must be driven from client code, not Terraform.
+/// 		//   * 'batchCreate' (up to ~1000 items per call) -- available at any
+/// 		//     time, but must be driven from client code, not Pulumi.
 /// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			CollectionId: pulumi.String("example-collection"),
@@ -308,7 +309,7 @@ import 'data_object_vector.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -317,22 +318,38 @@ import 'data_object_vector.dart';
 /// }
 ///
 /// # NOTE: This resource issues one CreateDataObject request per block.
-/// # It does NOT batch across resources. Terraform will parallelize a
+/// # It does NOT batch across resources. Pulumi will parallelize a
 /// # 'for_each' up to '-parallelism', but each item is still a separate
 /// # HTTP call.
 /// #
 /// # For bulk ingestion of many items, prefer one of these out-of-band
-/// # paths instead of Terraform:
+/// # paths instead of Pulumi:
 /// #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// #     but only available *before* any Index is created on the Collection.
 /// #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-/// #     time, but must be driven from client code, not Terraform.
+/// #     time, but must be driven from client code, not Pulumi.
 /// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-collection"
 ///   display_name  = "My Awesome Collection"
 ///   description   = "This collection stores important data."
-///   data_schema   = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"plot\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -349,7 +366,10 @@ import 'data_object_vector.dart';
 /// # with a 'vertex_embedding_config', the server will populate the vector
 /// # automatically from 'data.title' and 'data.plot' -- no explicit
 /// # 'vectors' block is required.
-/// resource "gcp_vectorsearch_dataobject" "example-data-object" {
+/// resource "gcp_vectorsearch_data_object" "example-data-object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   collection_id  = gcp_vectorsearch_collection.parent.collection_id
 ///   data_object_id = "example-data-object"
@@ -387,16 +407,16 @@ import 'data_object_vector.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         // NOTE: This resource issues one CreateDataObject request per block.
-///         // It does NOT batch across resources. Terraform will parallelize a
+///         // It does NOT batch across resources. Pulumi will parallelize a
 ///         // 'for_each' up to '-parallelism', but each item is still a separate
 ///         // HTTP call.
 ///         //
 ///         // For bulk ingestion of many items, prefer one of these out-of-band
-///         // paths instead of Terraform:
+///         // paths instead of Pulumi:
 ///         //   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 ///         //     but only available *before* any Index is created on the Collection.
 ///         //   * 'batchCreate' (up to ~1000 items per call) -- available at any
-///         //     time, but must be driven from client code, not Terraform.
+///         //     time, but must be driven from client code, not Pulumi.
 ///         var parent = new Collection("parent", CollectionArgs.builder()
 ///             .location("us-central1")
 ///             .collectionId("example-collection")
@@ -449,16 +469,16 @@ import 'data_object_vector.dart';
 /// ```yaml
 /// resources:
 ///   # NOTE: This resource issues one CreateDataObject request per block.
-///   # It does NOT batch across resources. Terraform will parallelize a
+///   # It does NOT batch across resources. Pulumi will parallelize a
 ///   # 'for_each' up to '-parallelism', but each item is still a separate
 ///   # HTTP call.
 ///   #
 ///   # For bulk ingestion of many items, prefer one of these out-of-band
-///   # paths instead of Terraform:
+///   # paths instead of Pulumi:
 ///   #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 ///   #     but only available *before* any Index is created on the Collection.
 ///   #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-///   #     time, but must be driven from client code, not Terraform.
+///   #     time, but must be driven from client code, not Pulumi.
 ///   parent:
 ///     type: gcp:vectorsearch:Collection
 ///     properties:
@@ -502,6 +522,7 @@ import 'data_object_vector.dart';
 ///           plot: A computer hacker learns about the true nature of reality.
 /// ```
 ///
+///
 /// ### Vectorsearch Data Object With Vectors
 ///
 ///
@@ -511,16 +532,16 @@ import 'data_object_vector.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// // NOTE: This resource issues one CreateDataObject request per block.
-/// // It does NOT batch across resources. Terraform will parallelize a
+/// // It does NOT batch across resources. Pulumi will parallelize a
 /// // 'for_each' up to '-parallelism', but each item is still a separate
 /// // HTTP call.
 /// //
 /// // For bulk ingestion of many items, prefer one of these out-of-band
-/// // paths instead of Terraform:
+/// // paths instead of Pulumi:
 /// //   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// //     but only available *before* any Index is created on the Collection.
 /// //   * 'batchCreate' (up to ~1000 items per call) -- available at any
-/// //     time, but must be driven from client code, not Terraform.
+/// //     time, but must be driven from client code, not Pulumi.
 /// const parent = new gcp.vectorsearch.Collection("parent", {
 ///     location: "us-central1",
 ///     collectionId: "example-vectors-collection",
@@ -595,16 +616,16 @@ import 'data_object_vector.dart';
 /// import pulumi_gcp as gcp
 ///
 /// # NOTE: This resource issues one CreateDataObject request per block.
-/// # It does NOT batch across resources. Terraform will parallelize a
+/// # It does NOT batch across resources. Pulumi will parallelize a
 /// # 'for_each' up to '-parallelism', but each item is still a separate
 /// # HTTP call.
 /// #
 /// # For bulk ingestion of many items, prefer one of these out-of-band
-/// # paths instead of Terraform:
+/// # paths instead of Pulumi:
 /// #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// #     but only available *before* any Index is created on the Collection.
 /// #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-/// #     time, but must be driven from client code, not Terraform.
+/// #     time, but must be driven from client code, not Pulumi.
 /// parent = gcp.vectorsearch.Collection("parent",
 ///     location="us-central1",
 ///     collection_id="example-vectors-collection",
@@ -681,16 +702,16 @@ import 'data_object_vector.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     // NOTE: This resource issues one CreateDataObject request per block.
-///     // It does NOT batch across resources. Terraform will parallelize a
+///     // It does NOT batch across resources. Pulumi will parallelize a
 ///     // 'for_each' up to '-parallelism', but each item is still a separate
 ///     // HTTP call.
 ///     //
 ///     // For bulk ingestion of many items, prefer one of these out-of-band
-///     // paths instead of Terraform:
+///     // paths instead of Pulumi:
 ///     //   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 ///     //     but only available *before* any Index is created on the Collection.
 ///     //   * 'batchCreate' (up to ~1000 items per call) -- available at any
-///     //     time, but must be driven from client code, not Terraform.
+///     //     time, but must be driven from client code, not Pulumi.
 ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
 ///     {
 ///         Location = "us-central1",
@@ -783,23 +804,23 @@ import 'data_object_vector.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// NOTE: This resource issues one CreateDataObject request per block.
-/// 		// It does NOT batch across resources. Terraform will parallelize a
+/// 		// It does NOT batch across resources. Pulumi will parallelize a
 /// 		// 'for_each' up to '-parallelism', but each item is still a separate
 /// 		// HTTP call.
 /// 		//
 /// 		// For bulk ingestion of many items, prefer one of these out-of-band
-/// 		// paths instead of Terraform:
-/// 		//   - 'importDataObjects' (from Cloud Storage) -- highest throughput,
+/// 		// paths instead of Pulumi:
+/// 		//   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// 		//     but only available *before* any Index is created on the Collection.
-/// 		//   - 'batchCreate' (up to ~1000 items per call) -- available at any
-/// 		//     time, but must be driven from client code, not Terraform.
+/// 		//   * 'batchCreate' (up to ~1000 items per call) -- available at any
+/// 		//     time, but must be driven from client code, not Pulumi.
 /// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			CollectionId: pulumi.String("example-vectors-collection"),
@@ -883,7 +904,7 @@ import 'data_object_vector.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -892,22 +913,38 @@ import 'data_object_vector.dart';
 /// }
 ///
 /// # NOTE: This resource issues one CreateDataObject request per block.
-/// # It does NOT batch across resources. Terraform will parallelize a
+/// # It does NOT batch across resources. Pulumi will parallelize a
 /// # 'for_each' up to '-parallelism', but each item is still a separate
 /// # HTTP call.
 /// #
 /// # For bulk ingestion of many items, prefer one of these out-of-band
-/// # paths instead of Terraform:
+/// # paths instead of Pulumi:
 /// #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 /// #     but only available *before* any Index is created on the Collection.
 /// #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-/// #     time, but must be driven from client code, not Terraform.
+/// #     time, but must be driven from client code, not Pulumi.
 /// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-vectors-collection"
 ///   display_name  = "My BYO-Embedding Collection"
 ///   description   = "Collection whose vectors are supplied by the client."
-///   data_schema   = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"category\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"category\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "dense_embedding"
 ///     dense_vector = {
@@ -919,7 +956,10 @@ import 'data_object_vector.dart';
 ///     sparse_vector = {}
 ///   }
 /// }
-/// resource "gcp_vectorsearch_dataobject" "example-vectors-data-object" {
+/// resource "gcp_vectorsearch_data_object" "example-vectors-data-object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   collection_id  = gcp_vectorsearch_collection.parent.collection_id
 ///   data_object_id = "example-vectors-data-object"
@@ -973,16 +1013,16 @@ import 'data_object_vector.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         // NOTE: This resource issues one CreateDataObject request per block.
-///         // It does NOT batch across resources. Terraform will parallelize a
+///         // It does NOT batch across resources. Pulumi will parallelize a
 ///         // 'for_each' up to '-parallelism', but each item is still a separate
 ///         // HTTP call.
 ///         //
 ///         // For bulk ingestion of many items, prefer one of these out-of-band
-///         // paths instead of Terraform:
+///         // paths instead of Pulumi:
 ///         //   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 ///         //     but only available *before* any Index is created on the Collection.
 ///         //   * 'batchCreate' (up to ~1000 items per call) -- available at any
-///         //     time, but must be driven from client code, not Terraform.
+///         //     time, but must be driven from client code, not Pulumi.
 ///         var parent = new Collection("parent", CollectionArgs.builder()
 ///             .location("us-central1")
 ///             .collectionId("example-vectors-collection")
@@ -1056,16 +1096,16 @@ import 'data_object_vector.dart';
 /// ```yaml
 /// resources:
 ///   # NOTE: This resource issues one CreateDataObject request per block.
-///   # It does NOT batch across resources. Terraform will parallelize a
+///   # It does NOT batch across resources. Pulumi will parallelize a
 ///   # 'for_each' up to '-parallelism', but each item is still a separate
 ///   # HTTP call.
 ///   #
 ///   # For bulk ingestion of many items, prefer one of these out-of-band
-///   # paths instead of Terraform:
+///   # paths instead of Pulumi:
 ///   #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
 ///   #     but only available *before* any Index is created on the Collection.
 ///   #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-///   #     time, but must be driven from client code, not Terraform.
+///   #     time, but must be driven from client code, not Pulumi.
 ///   parent:
 ///     type: gcp:vectorsearch:Collection
 ///     properties:
@@ -1193,7 +1233,7 @@ class DataObject extends pulumi.CustomResource {
           'gcp:vectorsearch/dataObject:DataObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     createTime = registerOutput<String>('createTime');

@@ -30,6 +30,7 @@ export 'firestore/index_field_search_config_geo_spec.dart';
 export 'firestore/index_field_search_config_text_spec.dart';
 export 'firestore/index_field_search_config_text_spec_index_spec.dart';
 export 'firestore/index_field_vector_config.dart';
+export 'firestore/index_search_index_options.dart';
 export 'firestore/index_state.dart';
 export 'firestore/user_creds.dart';
 export 'firestore/user_creds_args.dart';

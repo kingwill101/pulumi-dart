@@ -102,7 +102,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig 
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       realm: (() { final guardedValue = map['realm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootPrincipalPassword: (() { final guardedValue = map['rootPrincipalPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tgtLifetimeHours: (() { final guardedValue = map['tgtLifetimeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tgtLifetimeHours: (() { final guardedValue = map['tgtLifetimeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       truststore: (() { final guardedValue = map['truststore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       truststorePassword: (() { final guardedValue = map['truststorePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

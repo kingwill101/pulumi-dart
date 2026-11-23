@@ -27,7 +27,7 @@ class GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfi
 
   factory GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap(Map<String, dynamic> map) {
     return GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig(
-      chunkSize: pulumi.Input.fromValue((map['chunkSize'] as num).toInt()),
+      chunkSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['chunkSize'])),
       includeAncestorHeadings: pulumi.Input.fromValue(map['includeAncestorHeadings'] as bool),
     );
   }

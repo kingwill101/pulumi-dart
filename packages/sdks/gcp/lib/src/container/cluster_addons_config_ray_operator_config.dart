@@ -5,16 +5,17 @@ import 'cluster_addons_config_ray_operator_config_ray_cluster_logging_config.dar
 import 'cluster_addons_config_ray_operator_config_ray_cluster_monitoring_config.dart';
 
 class ClusterAddonsConfigRayOperatorConfig {
+  /// Whether the Ray Operator addon is enabled.
   final pulumi.Input<bool> enabled;
-  /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+  /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
   final pulumi.Input<ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig?>? rayClusterLoggingConfig;
-  /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+  /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
   final pulumi.Input<ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig?>? rayClusterMonitoringConfig;
 
   /// Creates a new [ClusterAddonsConfigRayOperatorConfig].
-  /// [enabled] Required.
-  /// [rayClusterLoggingConfig] The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
-  /// [rayClusterMonitoringConfig] The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+  /// [enabled] Whether the Ray Operator addon is enabled.
+  /// [rayClusterLoggingConfig] The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
+  /// [rayClusterMonitoringConfig] The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
   const ClusterAddonsConfigRayOperatorConfig({
     required this.enabled,
     this.rayClusterLoggingConfig,

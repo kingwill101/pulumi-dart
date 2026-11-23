@@ -36,7 +36,7 @@ class BackupPlanBackupScheduleRpoConfig {
   factory BackupPlanBackupScheduleRpoConfig.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfig(
       exclusionWindows: (() { final guardedValue = map['exclusionWindows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow>(guardedValue, (value) => BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetRpoMinutes: pulumi.Input.fromValue((map['targetRpoMinutes'] as num).toInt()),
+      targetRpoMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetRpoMinutes'])),
     );
   }
 }

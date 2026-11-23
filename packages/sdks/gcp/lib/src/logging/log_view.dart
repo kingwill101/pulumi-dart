@@ -11,6 +11,7 @@ import 'log_view_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Logging Log View Basic
@@ -79,7 +80,7 @@ import 'log_view_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -96,7 +97,7 @@ import 'log_view_state.dart';
 /// 		}
 /// 		_, err = logging.NewLogView(ctx, "logging_log_view", &logging.LogViewArgs{
 /// 			Name:        pulumi.String("my-view"),
-/// 			Bucket:      loggingLogView.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:      loggingLogView.ID(),
 /// 			Description: pulumi.String("A logging view configured with Terraform"),
 /// 			Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
 /// 		})
@@ -108,7 +109,7 @@ import 'log_view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -116,15 +117,21 @@ import 'log_view_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "logging_log_view" {
+/// resource "gcp_logging_project_bucket_config" "logging_log_view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = "my-project-name"
 ///   location       = "global"
 ///   retention_days = 30
 ///   bucket_id      = "_Default"
 /// }
-/// resource "gcp_logging_logview" "logging_log_view" {
+/// resource "gcp_logging_log_view" "logging_log_view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-view"
-///   bucket      = gcp_logging_projectbucketconfig.logging_log_view.id
+///   bucket      = gcp_logging_project_bucket_config.logging_log_view.id
 ///   description = "A logging view configured with Terraform"
 ///   filter      = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"
 /// }
@@ -239,7 +246,7 @@ class LogView extends pulumi.CustomResource {
           'gcp:logging/logView:LogView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');

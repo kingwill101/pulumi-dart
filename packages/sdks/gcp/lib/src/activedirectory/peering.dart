@@ -13,6 +13,7 @@ import 'peering_state.dart';
 /// * How-to Guides
 /// * [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Active Directory Peering Basic
@@ -155,10 +156,10 @@ import 'peering_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/activedirectory"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/activedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -177,7 +178,7 @@ import 'peering_state.dart';
 /// 			},
 /// 			ReservedIpRange: pulumi.String("192.168.255.0/24"),
 /// 			AuthorizedNetworks: pulumi.StringArray{
-/// 				source_network.ID().ToIDOutput().ToStringOutput(),
+/// 				source_network.ID(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -211,7 +212,7 @@ import 'peering_state.dart';
 /// 		_, err = activedirectory.NewPeering(ctx, "ad-domain-peering", &activedirectory.PeeringArgs{
 /// 			DomainResource:     ad_domain.Name,
 /// 			PeeringId:          pulumi.String("ad-domain-peering"),
-/// 			AuthorizedNetwork:  peered_network.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork:  peered_network.ID(),
 /// 			DeletionProtection: false,
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -225,7 +226,7 @@ import 'peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -234,6 +235,9 @@ import 'peering_state.dart';
 /// }
 ///
 /// resource "gcp_activedirectory_peering" "ad-domain-peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_resource     = gcp_activedirectory_domain.ad-domain.name
 ///   peering_id          = "ad-domain-peering"
 ///   authorized_network  = gcp_compute_network.peered-network.id
@@ -243,6 +247,9 @@ import 'peering_state.dart';
 ///   }
 /// }
 /// resource "gcp_activedirectory_domain" "ad-domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name         = "ad.test.hashicorptest.com"
 ///   locations           = ["us-central1"]
 ///   reserved_ip_range   = "192.168.255.0/24"
@@ -250,17 +257,29 @@ import 'peering_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_compute_network" "peered-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_projects_service.compute.project
 ///   name    = "ad-peered-network"
 /// }
 /// resource "gcp_compute_network" "source-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ad-network"
 /// }
 /// resource "gcp_projects_service" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.peered-project.project_id
 ///   service = "compute.googleapis.com"
 /// }
 /// resource "gcp_organizations_project" "peered-project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-peered-project"
 ///   project_id      = "my-peered-project"
 ///   org_id          = "123456789"
@@ -432,7 +451,7 @@ class Peering extends pulumi.CustomResource {
           'gcp:activedirectory/peering:Peering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');

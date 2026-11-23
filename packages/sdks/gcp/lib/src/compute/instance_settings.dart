@@ -12,6 +12,7 @@ import 'instance_settings_state.dart';
 /// * How-to Guides
 /// * [Update Instance Settings](https://cloud.google.com/compute/docs/metadata/setting-custom-metadata#set-custom-project-zonal-metadata)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Instance Settings Basic
@@ -69,7 +70,7 @@ import 'instance_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -91,7 +92,7 @@ import 'instance_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -99,7 +100,10 @@ import 'instance_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancesettings" "gce_instance_settings" {
+/// resource "gcp_compute_instance_settings" "gce_instance_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone = "us-east7-b"
 ///   metadata = {
 ///     items = {
@@ -201,7 +205,7 @@ class InstanceSettings extends pulumi.CustomResource {
           'gcp:compute/instanceSettings:InstanceSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');

@@ -6,6 +6,7 @@ import 'qa_scorecard_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -76,7 +77,7 @@ class QaScorecard extends pulumi.CustomResource {
           'gcp:contactcenterinsights/qaScorecard:QaScorecard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

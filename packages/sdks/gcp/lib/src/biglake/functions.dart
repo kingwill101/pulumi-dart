@@ -13,8 +13,6 @@ import 'get_iceberg_table_iam_policy_args.dart';
 import 'get_iceberg_table_iam_policy_result.dart';
 
 /// Retrieves the current IAM policy data for hivecatalog
-/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -56,7 +54,7 @@ import 'get_iceberg_table_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -74,7 +72,7 @@ import 'get_iceberg_table_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -82,7 +80,7 @@ import 'get_iceberg_table_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_biglake_gethivecatalogiampolicy" "policy" {
+/// data "gcp_biglake_hive_catalog_iam_policy" "policy" {
 ///   project = myHiveCatalog.project
 ///   name    = myHiveCatalog.name
 /// }
@@ -152,8 +150,6 @@ pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
 }
 
 /// Retrieves the current IAM policy data for hivedatabase
-/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -198,7 +194,7 @@ pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -217,7 +213,7 @@ pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -225,7 +221,7 @@ pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_biglake_gethivedatabaseiampolicy" "policy" {
+/// data "gcp_biglake_hive_database_iam_policy" "policy" {
 ///   project = myHiveDatabase.project
 ///   catalog = myHiveDatabase.catalog
 ///   name    = myHiveDatabase.name
@@ -298,8 +294,6 @@ pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
 }
 
 /// Retrieves the current IAM policy data for hivetable
-/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -347,7 +341,7 @@ pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -367,7 +361,7 @@ pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -375,7 +369,7 @@ pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_biglake_gethivetableiampolicy" "policy" {
+/// data "gcp_biglake_hive_table_iam_policy" "policy" {
 ///   project  = myHiveTable.project
 ///   catalog  = myHiveTable.catalog
 ///   database = myHiveTable.database
@@ -492,7 +486,7 @@ pulumi.Output<GetHiveTableIamPolicyResult> getHiveTableIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -510,7 +504,7 @@ pulumi.Output<GetHiveTableIamPolicyResult> getHiveTableIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -518,7 +512,7 @@ pulumi.Output<GetHiveTableIamPolicyResult> getHiveTableIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_biglake_geticebergcatalogiampolicy" "policy" {
+/// data "gcp_biglake_iceberg_catalog_iam_policy" "policy" {
 ///   project = myIcebergCatalog.project
 ///   name    = myIcebergCatalog.name
 /// }
@@ -632,7 +626,7 @@ pulumi.Output<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -651,7 +645,7 @@ pulumi.Output<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,7 +653,7 @@ pulumi.Output<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicyOutput
 ///   }
 /// }
 ///
-/// data "gcp_biglake_geticebergnamespaceiampolicy" "policy" {
+/// data "gcp_biglake_iceberg_namespace_iam_policy" "policy" {
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
@@ -779,7 +773,7 @@ pulumi.Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -799,7 +793,7 @@ pulumi.Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -807,7 +801,7 @@ pulumi.Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyOu
 ///   }
 /// }
 ///
-/// data "gcp_biglake_geticebergtableiampolicy" "policy" {
+/// data "gcp_biglake_iceberg_table_iam_policy" "policy" {
 ///   project   = myIcebergTable.project
 ///   catalog   = myIcebergTable.catalog
 ///   namespace = myIcebergTable.namespace

@@ -26,6 +26,7 @@ class ServiceLbPoliciesState {
   /// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
   /// Structure is documented below.
   final pulumi.Input<ServiceLbPoliciesFailoverConfig?>? failoverConfig;
+  /// (Optional, Beta)
   /// Configuration to provide isolation support for the associated Backend Service.
   /// Structure is documented below.
   final pulumi.Input<ServiceLbPoliciesIsolationConfig?>? isolationConfig;
@@ -56,7 +57,7 @@ class ServiceLbPoliciesState {
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [failoverConfig] Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
-  /// [isolationConfig] Configuration to provide isolation support for the associated Backend Service.
+  /// [isolationConfig] (Optional, Beta)
   /// [labels] Set of label tags associated with the ServiceLbPolicy resource.
   /// [loadBalancingAlgorithm] The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
   /// [location] The location of the service lb policy.

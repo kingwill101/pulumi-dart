@@ -45,7 +45,7 @@ class FeedFailureDetails {
       errorAction: (() { final guardedValue = map['errorAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorCause: (() { final guardedValue = map['errorCause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      httpErrorCode: (() { final guardedValue = map['httpErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      httpErrorCode: (() { final guardedValue = map['httpErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

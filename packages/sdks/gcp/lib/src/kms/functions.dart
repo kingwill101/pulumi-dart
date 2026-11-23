@@ -75,7 +75,7 @@ import 'get_kmssecret_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'get_kmssecret_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -100,7 +100,7 @@ import 'get_kmssecret_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_kms_getautokeyconfig" "myAutokeyConfig" {
+/// data "gcp_kms_autokey_config" "myAutokeyConfig" {
 ///   folder = "folders/123"
 /// }
 /// ```
@@ -204,7 +204,7 @@ pulumi.Output<GetAutokeyConfigResult> getAutokeyConfigOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -221,7 +221,7 @@ pulumi.Output<GetAutokeyConfigResult> getAutokeyConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -229,7 +229,7 @@ pulumi.Output<GetAutokeyConfigResult> getAutokeyConfigOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getcryptokeyiampolicy" "foo" {
+/// data "gcp_kms_crypto_key_iam_policy" "foo" {
 ///   crypto_key_id = cryptoKey.id
 /// }
 /// ```
@@ -360,7 +360,7 @@ pulumi.Output<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -391,7 +391,7 @@ pulumi.Output<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -399,15 +399,15 @@ pulumi.Output<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "myKeyRing" {
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+/// data "gcp_kms_k_m_s_crypto_key" "myCryptoKey" {
 ///   name     = "my-crypto-key"
-///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.myKeyRing.id
 /// }
-/// data "gcp_kms_getcryptokeylatestversion" "myCryptoKeyLatestVersion" {
+/// data "gcp_kms_crypto_key_latest_version" "myCryptoKeyLatestVersion" {
 ///   crypto_key = myKey.id
 /// }
 /// ```
@@ -563,7 +563,7 @@ pulumi.Output<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -594,7 +594,7 @@ pulumi.Output<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -602,15 +602,15 @@ pulumi.Output<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "myKeyRing" {
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+/// data "gcp_kms_k_m_s_crypto_key" "myCryptoKey" {
 ///   name     = "my-crypto-key"
-///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.myKeyRing.id
 /// }
-/// data "gcp_kms_getcryptokeyversions" "myCryptoKeyVersions" {
+/// data "gcp_kms_crypto_key_versions" "myCryptoKeyVersions" {
 ///   crypto_key = myKey.id
 /// }
 /// ```
@@ -778,7 +778,7 @@ pulumi.Output<GetCryptoKeysResult> getCryptoKeysOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -797,7 +797,7 @@ pulumi.Output<GetCryptoKeysResult> getCryptoKeysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -805,7 +805,7 @@ pulumi.Output<GetCryptoKeysResult> getCryptoKeysOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getekmconnectioniampolicy" "policy" {
+/// data "gcp_kms_ekm_connection_iam_policy" "policy" {
 ///   project  = example-ekmconnection.project
 ///   location = example-ekmconnection.location
 ///   name     = example-ekmconnection.name
@@ -936,7 +936,7 @@ pulumi.Output<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -961,7 +961,7 @@ pulumi.Output<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -969,13 +969,13 @@ pulumi.Output<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "myKeyRing" {
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+/// data "gcp_kms_k_m_s_crypto_key" "myCryptoKey" {
 ///   name     = "my-crypto-key"
-///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.myKeyRing.id
 /// }
 /// ```
 /// ```java
@@ -1121,7 +1121,7 @@ pulumi.Output<GetKMSCryptoKeyResult> getKMSCryptoKeyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1152,7 +1152,7 @@ pulumi.Output<GetKMSCryptoKeyResult> getKMSCryptoKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1160,15 +1160,15 @@ pulumi.Output<GetKMSCryptoKeyResult> getKMSCryptoKeyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "myKeyRing" {
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+/// data "gcp_kms_k_m_s_crypto_key" "myCryptoKey" {
 ///   name     = "my-crypto-key"
-///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.myKeyRing.id
 /// }
-/// data "gcp_kms_getkmscryptokeyversion" "myCryptoKeyVersion" {
+/// data "gcp_kms_k_m_s_crypto_key_version" "myCryptoKeyVersion" {
 ///   crypto_key = myKey.id
 /// }
 /// ```
@@ -1305,7 +1305,7 @@ pulumi.Output<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1323,7 +1323,7 @@ pulumi.Output<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1331,7 +1331,7 @@ pulumi.Output<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "myKeyRing" {
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
@@ -1469,7 +1469,7 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1485,7 +1485,7 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-crypto-key"),
-/// 			KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: myKeyRing.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1495,7 +1495,7 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1503,14 +1503,20 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "my_key_ring" {
+/// resource "gcp_kms_key_ring" "my_key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project"
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "my_crypto_key" {
+/// resource "gcp_kms_crypto_key" "my_crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-crypto-key"
-///   key_ring = gcp_kms_keyring.my_key_ring.id
+///   key_ring = gcp_kms_key_ring.my_key_ring.id
 /// }
 /// ```
 /// ```java
@@ -1674,8 +1680,8 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1719,7 +1725,7 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1730,15 +1736,21 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmssecret" "sqlUserPassword" {
+/// data "gcp_kms_k_m_s_secret" "sqlUserPassword" {
 ///   crypto_key = myCryptoKey.id
 ///   ciphertext = "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU="
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "MYSQL_5_7"
 ///   settings = {
@@ -1746,10 +1758,13 @@ pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
 ///   }
 /// }
 /// resource "gcp_sql_user" "users" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "me"
-///   instance = gcp_sql_databaseinstance.main.name
+///   instance = gcp_sql_database_instance.main.name
 ///   host     = "me.com"
-///   password = data.gcp_kms_getkmssecret.sqlUserPassword.plaintext
+///   password = data.gcp_kms_k_m_s_secret.sqlUserPassword.plaintext
 /// }
 /// ```
 /// ```java
@@ -1956,7 +1971,7 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1972,7 +1987,7 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 /// 		}
 /// 		myCryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-crypto-key"),
-/// 			KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: myKeyRing.ID(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_DECRYPT"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("RSA_DECRYPT_OAEP_4096_SHA256"),
@@ -1982,14 +1997,14 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 /// 			return err
 /// 		}
 /// 		_ = kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-/// 			CryptoKey: myCryptoKeyCryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKey: myCryptoKeyCryptoKey.ID(),
 /// 		}, nil)
 /// 		return nil
 /// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1997,18 +2012,24 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmscryptokeyversion" "myCryptoKey" {
-///   crypto_key = gcp_kms_cryptokey.my_crypto_key.id
+/// data "gcp_kms_k_m_s_crypto_key_version" "myCryptoKey" {
+///   crypto_key = gcp_kms_crypto_key.my_crypto_key.id
 /// }
 ///
-/// resource "gcp_kms_keyring" "my_key_ring" {
+/// resource "gcp_kms_key_ring" "my_key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project"
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "my_crypto_key" {
+/// resource "gcp_kms_crypto_key" "my_crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-crypto-key"
-///   key_ring = gcp_kms_keyring.my_key_ring.id
+///   key_ring = gcp_kms_key_ring.my_key_ring.id
 ///   purpose  = "ASYMMETRIC_DECRYPT"
 ///   version_template = {
 ///     algorithm = "RSA_DECRYPT_OAEP_4096_SHA256"
@@ -2260,8 +2281,8 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2317,7 +2338,7 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2328,16 +2349,35 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmssecretasymmetric" "sqlUserPassword" {
+/// data "gcp_kms_k_m_s_secret_asymmetric" "sqlUserPassword" {
 ///   crypto_key_version = myCryptoKey.id
 ///   crc32              = "12c59e54"
-///   ciphertext         = "    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq\n    ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75\n    4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx\n    eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs\n    wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr\n    LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc\n    yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1\n    J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL\n    IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z\n    mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9\n    A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=\n"
+///   ciphertext         = <<EOT
+///     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+///     ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+///     4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+///     eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+///     wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+///     LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+///     yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+///     J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+///     IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+///     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+///     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// EOT
+///
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "MYSQL_5_7"
 ///   settings = {
@@ -2345,8 +2385,11 @@ pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
 ///   }
 /// }
 /// resource "gcp_sql_user" "users" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "me"
-///   instance = gcp_sql_databaseinstance.main.name
+///   instance = gcp_sql_database_instance.main.name
 ///   host     = "me.com"
 ///   password = sqlUserPasswordGoogleKmsSecret.plaintext
 /// }
@@ -2560,7 +2603,7 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2576,7 +2619,7 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-crypto-key"),
-/// 			KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: myKeyRing.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2586,7 +2629,7 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2594,14 +2637,20 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "my_key_ring" {
+/// resource "gcp_kms_key_ring" "my_key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project"
 ///   name     = "my-key-ring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "my_crypto_key" {
+/// resource "gcp_kms_crypto_key" "my_crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-crypto-key"
-///   key_ring = gcp_kms_keyring.my_key_ring.id
+///   key_ring = gcp_kms_key_ring.my_key_ring.id
 /// }
 /// ```
 /// ```java
@@ -2760,8 +2809,8 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2803,7 +2852,7 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2811,12 +2860,15 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmssecretciphertext" "myPassword" {
+/// data "gcp_kms_k_m_s_secret_ciphertext" "myPassword" {
 ///   crypto_key = myCryptoKey.id
 ///   plaintext  = "my-secret-password"
 /// }
 ///
 /// resource "gcp_compute_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -2831,7 +2883,7 @@ pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
 ///     }
 ///   }
 ///   metadata = {
-///     "password" = data.gcp_kms_getkmssecretciphertext.myPassword.ciphertext
+///     "password" = data.gcp_kms_k_m_s_secret_ciphertext.myPassword.ciphertext
 ///   }
 /// }
 /// ```
@@ -3001,7 +3053,7 @@ pulumi.Output<GetKMSSecretCiphertextResult> getKMSSecretCiphertextOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3019,7 +3071,7 @@ pulumi.Output<GetKMSSecretCiphertextResult> getKMSSecretCiphertextOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3027,7 +3079,7 @@ pulumi.Output<GetKMSSecretCiphertextResult> getKMSSecretCiphertextOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkeyhandle" "myKeyHandle" {
+/// data "gcp_kms_key_handle" "myKeyHandle" {
 ///   name     = "eed58b7b-20ad-4da8-ad85-ba78a0d5ab87"
 ///   location = "us-central1"
 /// }
@@ -3146,7 +3198,7 @@ pulumi.Output<GetKeyHandleResult> getKeyHandleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3165,7 +3217,7 @@ pulumi.Output<GetKeyHandleResult> getKeyHandleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3173,7 +3225,7 @@ pulumi.Output<GetKeyHandleResult> getKeyHandleOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkeyhandles" "myKeyHandles" {
+/// data "gcp_kms_key_handles" "myKeyHandles" {
 ///   project                = "resource-project-id"
 ///   location               = "us-central1"
 ///   resource_type_selector = "storage.googleapis.com/Bucket"
@@ -3283,7 +3335,7 @@ pulumi.Output<GetKeyHandlesResult> getKeyHandlesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3300,7 +3352,7 @@ pulumi.Output<GetKeyHandlesResult> getKeyHandlesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3308,7 +3360,7 @@ pulumi.Output<GetKeyHandlesResult> getKeyHandlesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkeyringiampolicy" "testKeyRingIamPolicy" {
+/// data "gcp_kms_key_ring_iam_policy" "testKeyRingIamPolicy" {
 ///   key_ring_id = "{project_id}/{location_name}/{key_ring_name}"
 /// }
 /// ```

@@ -15,6 +15,7 @@ import 'policy_based_route_warning.dart';
 /// * How-to Guides
 /// * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Connectivity Policy Based Route Basic
@@ -84,8 +85,8 @@ import 'policy_based_route_warning.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -100,7 +101,7 @@ import 'policy_based_route_warning.dart';
 /// 		}
 /// 		_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
 /// 			Name:    pulumi.String("my-pbr"),
-/// 			Network: myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: myNetwork.ID(),
 /// 			Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 /// 				ProtocolVersion: pulumi.String("IPV4"),
 /// 			},
@@ -114,7 +115,7 @@ import 'policy_based_route_warning.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -122,7 +123,10 @@ import 'policy_based_route_warning.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkconnectivity_policybasedroute" "default" {
+/// resource "gcp_networkconnectivity_policy_based_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-pbr"
 ///   network = gcp_compute_network.my_network.id
 ///   filter = {
@@ -131,6 +135,9 @@ import 'policy_based_route_warning.dart';
 ///   next_hop_other_routes = "DEFAULT_ROUTING"
 /// }
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -193,6 +200,7 @@ import 'policy_based_route_warning.dart';
 ///       name: my-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Network Connectivity Policy Based Route Full
 ///
@@ -315,8 +323,8 @@ import 'policy_based_route_warning.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -341,7 +349,7 @@ import 'policy_based_route_warning.dart';
 /// 		_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
 /// 			Name:        pulumi.String("my-pbr"),
 /// 			Description: pulumi.String("My routing policy"),
-/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     myNetwork.ID(),
 /// 			Priority:    pulumi.Int(2302),
 /// 			Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 /// 				ProtocolVersion: pulumi.String("IPV4"),
@@ -367,7 +375,7 @@ import 'policy_based_route_warning.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -375,7 +383,10 @@ import 'policy_based_route_warning.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkconnectivity_policybasedroute" "default" {
+/// resource "gcp_networkconnectivity_policy_based_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-pbr"
 ///   description = "My routing policy"
 ///   network     = gcp_compute_network.my_network.id
@@ -386,7 +397,7 @@ import 'policy_based_route_warning.dart';
 ///     src_range        = "10.0.0.0/24"
 ///     dest_range       = "0.0.0.0/0"
 ///   }
-///   next_hop_ilb_ip = gcp_compute_globaladdress.ilb.address
+///   next_hop_ilb_ip = gcp_compute_global_address.ilb.address
 ///   virtual_machine = {
 ///     tags = ["restricted"]
 ///   }
@@ -395,13 +406,19 @@ import 'policy_based_route_warning.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// # This example substitutes an arbitrary internal IP for an internal network
 /// # load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
 /// # to set one up.
-/// resource "gcp_compute_globaladdress" "ilb" {
+/// resource "gcp_compute_global_address" "ilb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-ilb"
 /// }
 /// ```
@@ -582,7 +599,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
           'gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

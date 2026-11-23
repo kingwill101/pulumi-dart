@@ -17,7 +17,7 @@ class ClusterNodePoolNetworkConfig {
   final pulumi.Input<bool?>? createPodRange;
   /// Whether nodes have internal IP addresses only.
   final pulumi.Input<bool?>? enablePrivateNodes;
-  /// Network bandwidth tier configuration.
+  /// Network bandwidth tier configuration. Structure is documented below.
   final pulumi.Input<ClusterNodePoolNetworkConfigNetworkPerformanceConfig?>? networkPerformanceConfig;
   /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
   final pulumi.Input<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig?>? podCidrOverprovisionConfig;
@@ -35,7 +35,7 @@ class ClusterNodePoolNetworkConfig {
   /// [additionalPodNetworkConfigs] We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
   /// [createPodRange] Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
   /// [enablePrivateNodes] Whether nodes have internal IP addresses only.
-  /// [networkPerformanceConfig] Network bandwidth tier configuration.
+  /// [networkPerformanceConfig] Network bandwidth tier configuration. Structure is documented below.
   /// [podCidrOverprovisionConfig] Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
   /// [podIpv4CidrBlock] The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
   /// [podRange] The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.

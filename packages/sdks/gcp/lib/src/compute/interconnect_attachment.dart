@@ -15,6 +15,7 @@ import 'interconnect_attachment_state.dart';
 /// * How-to Guides
 /// * [Create a Interconnect attachment](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/dedicated/creating-vlan-attachments)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Interconnect Attachment Basic
@@ -113,7 +114,7 @@ import 'interconnect_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -140,7 +141,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Name:                   pulumi.String("on-prem-attachment"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 foobar.ID().ToIDOutput().ToStringOutput(),
+/// 			Router:                 foobar.ID(),
 /// 			Mtu:                    pulumi.String("1500"),
 /// 			Labels: pulumi.StringMap{
 /// 				"mykey": pulumi.String("myvalue"),
@@ -154,7 +155,7 @@ import 'interconnect_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -162,7 +163,10 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_interconnectattachment" "on_prem" {
+/// resource "gcp_compute_interconnect_attachment" "on_prem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "on-prem-attachment"
 ///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
 ///   type                     = "PARTNER"
@@ -173,6 +177,9 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_router" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "router-1"
 ///   network = gcp_compute_network.foobar.name
 ///   bgp = {
@@ -180,6 +187,9 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
@@ -262,6 +272,7 @@ import 'interconnect_attachment_state.dart';
 ///       name: network-1
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Compute Interconnect Attachment Ipsec Encryption
 ///
@@ -383,7 +394,7 @@ import 'interconnect_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -422,7 +433,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Name:                   pulumi.String("test-interconnect-attachment"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 router.ID().ToIDOutput().ToStringOutput(),
+/// 			Router:                 router.ID(),
 /// 			Encryption:             pulumi.String("IPSEC"),
 /// 			IpsecInternalAddresses: pulumi.StringArray{
 /// 				address.SelfLink,
@@ -436,7 +447,7 @@ import 'interconnect_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -444,7 +455,10 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_interconnectattachment" "ipsec-encrypted-interconnect-attachment" {
+/// resource "gcp_compute_interconnect_attachment" "ipsec-encrypted-interconnect-attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "test-interconnect-attachment"
 ///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
 ///   type                     = "PARTNER"
@@ -453,6 +467,9 @@ import 'interconnect_attachment_state.dart';
 ///   ipsec_internal_addresses = [gcp_compute_address.address.self_link]
 /// }
 /// resource "gcp_compute_address" "address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-address"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "IPSEC_INTERCONNECT"
@@ -461,6 +478,9 @@ import 'interconnect_attachment_state.dart';
 ///   network       = gcp_compute_network.network.self_link
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "test-router"
 ///   network                       = gcp_compute_network.network.name
 ///   encrypted_interconnect_router = true
@@ -469,6 +489,9 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -571,6 +594,7 @@ import 'interconnect_attachment_state.dart';
 ///       name: test-network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Compute Interconnect Attachment Custom Ranges
 ///
@@ -683,7 +707,7 @@ import 'interconnect_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -710,7 +734,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Name:                   pulumi.String("test-custom-ranges-interconnect-attachment"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 foobar.ID().ToIDOutput().ToStringOutput(),
+/// 			Router:                 foobar.ID(),
 /// 			Mtu:                    pulumi.String("1500"),
 /// 			StackType:              pulumi.String("IPV4_IPV6"),
 /// 			Labels: pulumi.StringMap{
@@ -729,7 +753,7 @@ import 'interconnect_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -737,7 +761,10 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_interconnectattachment" "custom-ranges-interconnect-attachment" {
+/// resource "gcp_compute_interconnect_attachment" "custom-ranges-interconnect-attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "test-custom-ranges-interconnect-attachment"
 ///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
 ///   type                     = "PARTNER"
@@ -753,6 +780,9 @@ import 'interconnect_attachment_state.dart';
 ///   candidate_customer_router_ipv6_address = "748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125"
 /// }
 /// resource "gcp_compute_router" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "test-router"
 ///   network = gcp_compute_network.foobar.name
 ///   bgp = {
@@ -760,6 +790,9 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1063,7 +1096,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
           'gcp:compute/interconnectAttachment:InterconnectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');

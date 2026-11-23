@@ -24,10 +24,10 @@ class InstanceState {
   /// The name of the ACL policy to attach to the instance.
   /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
   final pulumi.Input<String?>? aclPolicy;
-  /// Optional. Immutable. Authorization mode of the instance. Possible values:
+  /// Optional. Authorization mode of the instance. Possible values:
   /// AUTH_DISABLED
-  /// IAM_AUTH.
-  /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+  /// IAM_AUTH
+  /// TOKEN_AUTH
   final pulumi.Input<String?>? authorizationMode;
   /// The automated backup config for a instance.
   /// Structure is documented below.
@@ -52,8 +52,10 @@ class InstanceState {
   /// Optional. If set to true deletion of the instance will fail.
   final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Immutable. User inputs for the auto-created endpoints connections.
+  /// Structure is documented below.
   final pulumi.Input<List<InstanceDesiredAutoCreatedEndpoint>?>? desiredAutoCreatedEndpoints;
   /// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+  /// Structure is documented below.
   final pulumi.Input<List<InstanceDesiredPscAutoConnection>?>? desiredPscAutoConnections;
   /// (Deprecated)
   /// Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -185,7 +187,7 @@ class InstanceState {
 
   /// Creates a new [InstanceState].
   /// [aclPolicy] The name of the ACL policy to attach to the instance.
-  /// [authorizationMode] Optional. Immutable. Authorization mode of the instance. Possible values:
+  /// [authorizationMode] Optional. Authorization mode of the instance. Possible values:
   /// [automatedBackupConfig] The automated backup config for a instance.
   /// [availableMaintenanceVersions] This field is used to determine the available maintenance versions for the self service update.
   /// [backupCollection] The backup collection full resource name.
@@ -372,10 +374,10 @@ class InstanceState {
       pscAttachmentDetails: (() { final guardedValue = map['pscAttachmentDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstancePscAttachmentDetail>(guardedValue, (value) => InstancePscAttachmentDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pscAutoConnections: (() { final guardedValue = map['pscAutoConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstancePscAutoConnection>(guardedValue, (value) => InstancePscAutoConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serverCaMode: (() { final guardedValue = map['serverCaMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverCaPool: (() { final guardedValue = map['serverCaPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stateInfos: (() { final guardedValue = map['stateInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceStateInfo>(guardedValue, (value) => InstanceStateInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

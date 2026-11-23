@@ -9,6 +9,7 @@ import 'backend_authentication_config_state.dart';
 /// * How-to Guides
 /// * [Backend mTLS](https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#backend-authentication-config)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Security Backend Authentication Config Basic
@@ -65,7 +66,7 @@ import 'backend_authentication_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +88,7 @@ import 'backend_authentication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,7 +96,10 @@ import 'backend_authentication_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+/// resource "gcp_networksecurity_backend_authentication_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-backend-authentication-config"
 ///   labels = {
 ///     "foo" = "bar"
@@ -146,6 +150,7 @@ import 'backend_authentication_config_state.dart';
 ///       description: my description
 ///       wellKnownRoots: PUBLIC_ROOTS
 /// ```
+///
 ///
 /// ### Network Security Backend Authentication Config Full
 ///
@@ -334,8 +339,8 @@ import 'backend_authentication_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -414,8 +419,8 @@ import 'backend_authentication_config_state.dart';
 /// 			Location:          pulumi.String("global"),
 /// 			Description:       pulumi.String("my description"),
 /// 			WellKnownRoots:    pulumi.String("PUBLIC_ROOTS"),
-/// 			ClientCertificate: certificate.ID().ToIDOutput().ToStringOutput(),
-/// 			TrustConfig:       trustConfig.ID().ToIDOutput().ToStringOutput(),
+/// 			ClientCertificate: certificate.ID(),
+/// 			TrustConfig:       trustConfig.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -425,7 +430,7 @@ import 'backend_authentication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -437,6 +442,9 @@ import 'backend_authentication_config_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-certificate"
 ///   labels = {
 ///     "foo" = "bar"
@@ -448,7 +456,10 @@ import 'backend_authentication_config_state.dart';
 ///   }
 ///   scope = "CLIENT_AUTH"
 /// }
-/// resource "gcp_certificatemanager_trustconfig" "trust_config" {
+/// resource "gcp_certificatemanager_trust_config" "trust_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-trust-config"
 ///   description = "sample description for the trust config"
 ///   location    = "global"
@@ -464,7 +475,10 @@ import 'backend_authentication_config_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+/// resource "gcp_networksecurity_backend_authentication_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-backend-authentication-config"
 ///   labels = {
 ///     "bar" = "foo"
@@ -473,7 +487,7 @@ import 'backend_authentication_config_state.dart';
 ///   description        = "my description"
 ///   well_known_roots   = "PUBLIC_ROOTS"
 ///   client_certificate = gcp_certificatemanager_certificate.certificate.id
-///   trust_config       = gcp_certificatemanager_trustconfig.trust_config.id
+///   trust_config       = gcp_certificatemanager_trust_config.trust_config.id
 /// }
 /// ```
 /// ```java
@@ -614,6 +628,7 @@ import 'backend_authentication_config_state.dart';
 ///       trustConfig: ${trustConfig.id}
 /// ```
 ///
+///
 /// ### Backend Service Tls Settings
 ///
 ///
@@ -736,8 +751,8 @@ import 'backend_authentication_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -761,7 +776,7 @@ import 'backend_authentication_config_state.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTPS"),
 /// 			TlsSettings: &compute.BackendServiceTlsSettingsArgs{
@@ -787,7 +802,7 @@ import 'backend_authentication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -795,28 +810,37 @@ import 'backend_authentication_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   protocol              = "HTTPS"
 ///   tls_settings = {
 ///     sni = "example.com"
 ///     subject_alt_names = [{
-///       "dnsName" = "example.com"
+///       dns_name = "example.com"
 ///       }, {
-///       "uniformResourceIdentifier" = "https://example.com"
+///       uniform_resource_identifier = "https://example.com"
 ///     }]
-///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backendauthenticationconfig.default.id}"
+///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backend_authentication_config.default.id}"
 ///   }
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+/// resource "gcp_networksecurity_backend_authentication_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "authentication"
 ///   well_known_roots = "PUBLIC_ROOTS"
 /// }
@@ -984,7 +1008,7 @@ class BackendAuthenticationConfig extends pulumi.CustomResource {
           'gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clientCertificate = registerOutput<String?>('clientCertificate');

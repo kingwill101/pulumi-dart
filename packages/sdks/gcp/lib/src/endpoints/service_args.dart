@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_endpoints_service_service_args_doc}
 class ServiceArgs {
-  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
@@ -30,7 +30,7 @@ class ServiceArgs {
   final pulumi.Input<String> serviceName;
 
   /// Creates a new [ServiceArgs].
-  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [grpcConfig] The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
   /// [openapiConfig] The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
   /// [project] The project ID that the service belongs to.  If not provided, provider project is used.

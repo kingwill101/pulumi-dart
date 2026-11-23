@@ -36,7 +36,7 @@ class TableTableReplicationInfo {
 
   factory TableTableReplicationInfo.fromMap(Map<String, dynamic> map) {
     return TableTableReplicationInfo(
-      replicationIntervalMs: (() { final guardedValue = map['replicationIntervalMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicationIntervalMs: (() { final guardedValue = map['replicationIntervalMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceDatasetId: pulumi.Input.fromValue(map['sourceDatasetId'] as String),
       sourceProjectId: pulumi.Input.fromValue(map['sourceProjectId'] as String),
       sourceTableId: pulumi.Input.fromValue(map['sourceTableId'] as String),

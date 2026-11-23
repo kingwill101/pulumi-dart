@@ -27,7 +27,7 @@ class ImportJobValidationReportFileValidationRowErrorXlsxError {
 
   factory ImportJobValidationReportFileValidationRowErrorXlsxError.fromMap(Map<String, dynamic> map) {
     return ImportJobValidationReportFileValidationRowErrorXlsxError(
-      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sheet: (() { final guardedValue = map['sheet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

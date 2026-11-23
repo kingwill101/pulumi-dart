@@ -32,6 +32,8 @@ export 'integrationconnectors/connection_eventing_config_auth_config_additional_
 export 'integrationconnectors/connection_eventing_config_auth_config_additional_variable_secret_value.dart';
 export 'integrationconnectors/connection_eventing_config_auth_config_user_password.dart';
 export 'integrationconnectors/connection_eventing_config_auth_config_user_password_password.dart';
+export 'integrationconnectors/connection_eventing_config_dead_letter_config.dart';
+export 'integrationconnectors/connection_eventing_config_enrichment_config.dart';
 export 'integrationconnectors/connection_eventing_config_registration_destination_config.dart';
 export 'integrationconnectors/connection_eventing_config_registration_destination_config_destination.dart';
 export 'integrationconnectors/connection_eventing_runtime_data.dart';
@@ -49,6 +51,7 @@ export 'integrationconnectors/connection_ssl_config_client_private_key_pass.dart
 export 'integrationconnectors/connection_ssl_config_private_server_certificate.dart';
 export 'integrationconnectors/connection_state.dart';
 export 'integrationconnectors/connection_status.dart';
+export 'integrationconnectors/connection_traffic_shaping_config.dart';
 export 'integrationconnectors/endpoint_attachment.dart';
 export 'integrationconnectors/endpoint_attachment_args.dart';
 export 'integrationconnectors/endpoint_attachment_state.dart';

@@ -44,6 +44,7 @@ import 'cluster_rbac_binding_config.dart';
 import 'cluster_release_channel.dart';
 import 'cluster_resource_usage_export_config.dart';
 import 'cluster_rollback_safe_upgrade.dart';
+import 'cluster_schedule_upgrade_config.dart';
 import 'cluster_secret_manager_config.dart';
 import 'cluster_secret_sync_config.dart';
 import 'cluster_security_posture_config.dart';
@@ -86,8 +87,6 @@ import 'cluster_workload_identity_config.dart';
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "my-gke-cluster",
 ///     location: "us-central1",
-///     removeDefaultNodePool: true,
-///     initialNodeCount: 1,
 /// });
 /// const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
 ///     name: "my-node-pool",
@@ -111,9 +110,7 @@ import 'cluster_workload_identity_config.dart';
 ///     display_name="Service Account")
 /// primary = gcp.container.Cluster("primary",
 ///     name="my-gke-cluster",
-///     location="us-central1",
-///     remove_default_node_pool=True,
-///     initial_node_count=1)
+///     location="us-central1")
 /// primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
 ///     name="my-node-pool",
 ///     location="us-central1",
@@ -144,8 +141,6 @@ import 'cluster_workload_identity_config.dart';
 ///     {
 ///         Name = "my-gke-cluster",
 ///         Location = "us-central1",
-///         RemoveDefaultNodePool = true,
-///         InitialNodeCount = 1,
 ///     });
 ///
 ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()
@@ -172,8 +167,8 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -187,10 +182,8 @@ import 'cluster_workload_identity_config.dart';
 /// 			return err
 /// 		}
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:                  pulumi.String("my-gke-cluster"),
-/// 			Location:              pulumi.String("us-central1"),
-/// 			RemoveDefaultNodePool: pulumi.Bool(true),
-/// 			InitialNodeCount:      pulumi.Int(1),
+/// 			Name:     pulumi.String("my-gke-cluster"),
+/// 			Location: pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -217,7 +210,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -226,16 +219,23 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
-///   name                     = "my-gke-cluster"
-///   location                 = "us-central1"
-///   remove_default_node_pool = true
-///   initial_node_count       = 1
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "my-gke-cluster"
+///   location = "us-central1"
 /// }
-/// resource "gcp_container_nodepool" "primary_preemptible_nodes" {
+/// resource "gcp_container_node_pool" "primary_preemptible_nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-node-pool"
 ///   location   = "us-central1"
 ///   cluster    = gcp_container_cluster.primary.name
@@ -282,8 +282,6 @@ import 'cluster_workload_identity_config.dart';
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("my-gke-cluster")
 ///             .location("us-central1")
-///             .removeDefaultNodePool(true)
-///             .initialNodeCount(1)
 ///             .build());
 ///
 ///         var primaryPreemptibleNodes = new NodePool("primaryPreemptibleNodes", NodePoolArgs.builder()
@@ -314,8 +312,6 @@ import 'cluster_workload_identity_config.dart';
 ///     properties:
 ///       name: my-gke-cluster
 ///       location: us-central1
-///       removeDefaultNodePool: true
-///       initialNodeCount: 1
 ///   primaryPreemptibleNodes:
 ///     type: gcp:container:NodePool
 ///     name: primary_preemptible_nodes
@@ -432,8 +428,8 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -472,7 +468,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -481,10 +477,16 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "marcellus-wallace"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 3
@@ -627,7 +629,7 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -650,7 +652,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,6 +661,9 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-gke-cluster"
 ///   location           = "us-central1"
 ///   initial_node_count = 1
@@ -776,7 +781,7 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -800,7 +805,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -809,6 +814,9 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-gke-cluster"
 ///   location           = "us-central1"
 ///   initial_node_count = 1
@@ -872,6 +880,166 @@ import 'cluster_workload_identity_config.dart';
 ///
 /// &gt; **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
 ///
+/// ### GKE Cluster With KCP_HPA Logging
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.container.Cluster("primary", {
+///     name: "gke-logging-cluster",
+///     location: "us-central1-a",
+///     initialNodeCount: 1,
+///     loggingConfig: {
+///         enableComponents: [
+///             "SYSTEM_COMPONENTS",
+///             "KCP_HPA",
+///         ],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.container.Cluster("primary",
+///     name="gke-logging-cluster",
+///     location="us-central1-a",
+///     initial_node_count=1,
+///     logging_config={
+///         "enable_components": [
+///             "SYSTEM_COMPONENTS",
+///             "KCP_HPA",
+///         ],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Container.Cluster("primary", new()
+///     {
+///         Name = "gke-logging-cluster",
+///         Location = "us-central1-a",
+///         InitialNodeCount = 1,
+///         LoggingConfig = new Gcp.Container.Inputs.ClusterLoggingConfigArgs
+///         {
+///             EnableComponents = new[]
+///             {
+///                 "SYSTEM_COMPONENTS",
+///                 "KCP_HPA",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+/// 			Name:             pulumi.String("gke-logging-cluster"),
+/// 			Location:         pulumi.String("us-central1-a"),
+/// 			InitialNodeCount: pulumi.Int(1),
+/// 			LoggingConfig: &container.ClusterLoggingConfigArgs{
+/// 				EnableComponents: pulumi.StringArray{
+/// 					pulumi.String("SYSTEM_COMPONENTS"),
+/// 					pulumi.String("KCP_HPA"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name               = "gke-logging-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+///   # Enable KCP_HPA logging along with system components
+///   logging_config = {
+///     enable_components = ["SYSTEM_COMPONENTS", "KCP_HPA"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.container.Cluster;
+/// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new Cluster("primary", ClusterArgs.builder()
+///             .name("gke-logging-cluster")
+///             .location("us-central1-a")
+///             .initialNodeCount(1)
+///             .loggingConfig(ClusterLoggingConfigArgs.builder()
+///                 .enableComponents(
+///                     "SYSTEM_COMPONENTS",
+///                     "KCP_HPA")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:container:Cluster
+///     properties:
+///       name: gke-logging-cluster
+///       location: us-central1-a
+///       initialNodeCount: 1 # Enable KCP_HPA logging along with system components
+///       loggingConfig:
+///         enableComponents:
+///           - SYSTEM_COMPONENTS
+///           - KCP_HPA
+/// ```
+///
+///
 /// ### Autopilot
 ///
 ///
@@ -928,8 +1096,8 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -955,7 +1123,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -964,10 +1132,16 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "marcellus-wallace"
 ///   location         = "us-central1-a"
 ///   enable_autopilot = true
@@ -1192,7 +1366,10 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> inTransitEncryptionConfig;
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-  /// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+  /// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+  /// `nodePool` blocks defined, the cluster is created without a default node pool.
+  /// This requires a GKE version that supports clusters without a default node pool
+  /// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
   /// `gcp.container.NodePool` objects with no default node pool, you'll need to
   /// set this to a value of at least `1`, alongside setting
   /// `removeDefaultNodePool` to `true`.
@@ -1222,7 +1399,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterMaintenancePolicy?> maintenancePolicy;
   /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
   late final pulumi.Output<ClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfig;
-  /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+  /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
   late final pulumi.Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig;
   /// The authentication information for accessing the
   /// Kubernetes master. Some values in this block are only returned by the API if
@@ -1277,7 +1454,7 @@ class Cluster extends pulumi.CustomResource {
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
   late final pulumi.Output<String?> network;
-  /// Network bandwidth tier configuration.
+  /// Network bandwidth tier configuration. Structure is documented below.
   late final pulumi.Output<ClusterNetworkPerformanceConfig?> networkPerformanceConfig;
   /// Configuration options for the
   /// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -1363,9 +1540,13 @@ class Cluster extends pulumi.CustomResource {
   /// channel. Structure is documented below.
   late final pulumi.Output<ClusterReleaseChannel> releaseChannel;
   /// If `true`, deletes the default node
-  /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-  /// resources with no default node pool, this should be set to `true`, alongside
-  /// setting `initialNodeCount` to at least `1`.
+  /// pool upon cluster creation. On GKE versions that support clusters without a
+  /// default node pool, you can instead omit `initialNodeCount` and
+  /// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+  /// default node pool without setting this field. For older GKE versions, if
+  /// you're using `gcp.container.NodePool` resources with no default node
+  /// pool, this should be set to `true`, alongside setting `initialNodeCount`
+  /// to at least `1`.
   late final pulumi.Output<bool?> removeDefaultNodePool;
   /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
   ///
@@ -1378,6 +1559,8 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterResourceUsageExportConfig?> resourceUsageExportConfig;
   /// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
   late final pulumi.Output<ClusterRollbackSafeUpgrade?> rollbackSafeUpgrade;
+  /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+  late final pulumi.Output<ClusterScheduleUpgradeConfig> scheduleUpgradeConfig;
   /// Configuration for the
   /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
   /// Structure is documented below.
@@ -1402,13 +1585,14 @@ class Cluster extends pulumi.CustomResource {
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   late final pulumi.Output<String> subnetwork;
-  /// TPU configuration for the cluster.
+  /// ) Configuration for Cloud TPU in this cluster.
+  /// Structure is documented below.
   late final pulumi.Output<ClusterTpuConfig> tpuConfig;
   /// The IP address range of the Cloud TPUs in this cluster, in
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `1.2.3.4/29`).
   late final pulumi.Output<String> tpuIpv4CidrBlock;
-  /// The custom keys configuration of the cluster Structure is documented below.
+  /// The custom keys configuration of the cluster. Structure is documented below.
   late final pulumi.Output<ClusterUserManagedKeysConfig?> userManagedKeysConfig;
   /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// Structure is documented below.
@@ -1433,7 +1617,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:container/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     addonsConfig = registerOutput<ClusterAddonsConfig>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1524,6 +1708,7 @@ class Cluster extends pulumi.CustomResource {
     resourceLabels = registerOutput<Map<String, String>?>('resourceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduleUpgradeConfig = registerOutput<ClusterScheduleUpgradeConfig>('scheduleUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterScheduleUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretSyncConfig = registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPostureConfig = registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1652,6 +1837,7 @@ class Cluster extends pulumi.CustomResource {
     resourceLabels = registerOutput<Map<String, String>?>('resourceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduleUpgradeConfig = registerOutput<ClusterScheduleUpgradeConfig>('scheduleUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterScheduleUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretSyncConfig = registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPostureConfig = registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1766,6 +1952,7 @@ class Cluster extends pulumi.CustomResource {
     resourceLabels = registerOutput<Map<String, String>?>('resourceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduleUpgradeConfig = registerOutput<ClusterScheduleUpgradeConfig>('scheduleUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterScheduleUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretSyncConfig = registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPostureConfig = registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

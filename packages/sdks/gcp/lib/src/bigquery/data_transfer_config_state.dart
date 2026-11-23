@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_transfer_config_email_preferences.dart';
 import 'data_transfer_config_encryption_configuration.dart';
 import 'data_transfer_config_schedule_options.dart';
+import 'data_transfer_config_schedule_options_v2.dart';
 import 'data_transfer_config_sensitive_params.dart';
 
 /// Input properties used for looking up and filtering DataTransferConfig resources.
@@ -69,6 +70,13 @@ class DataTransferConfigState {
   /// Options customizing the data transfer schedule.
   /// Structure is documented below.
   final pulumi.Input<DataTransferConfigScheduleOptions?>? scheduleOptions;
+  /// Options customizing the type of data transfer schedule.
+  /// Only the event-driven schedule is exposed here; time-based and manual
+  /// schedules are configured through the `schedule` and `scheduleOptions`
+  /// fields instead. This field cannot be used together with `schedule` or
+  /// `scheduleOptions`.
+  /// Structure is documented below.
+  final pulumi.Input<DataTransferConfigScheduleOptionsV2?>? scheduleOptionsV2;
   /// Different parameters are configured primarily using the the `params` field on this
   /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
   /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -98,6 +106,7 @@ class DataTransferConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [schedule] Data transfer schedule. If the data source does not support a custom
   /// [scheduleOptions] Options customizing the data transfer schedule.
+  /// [scheduleOptionsV2] Options customizing the type of data transfer schedule.
   /// [sensitiveParams] Different parameters are configured primarily using the the `params` field on this
   /// [serviceAccountName] Service account email. If this field is set, transfer config will
   const DataTransferConfigState({
@@ -116,6 +125,7 @@ class DataTransferConfigState {
     this.project,
     this.schedule,
     this.scheduleOptions,
+    this.scheduleOptionsV2,
     this.sensitiveParams,
     this.serviceAccountName,
   });
@@ -137,6 +147,7 @@ class DataTransferConfigState {
       'project': ?project,
       'schedule': ?schedule,
       'scheduleOptions': ?pulumi.Input.mapOptionalInputValue<DataTransferConfigScheduleOptions, Map<String, dynamic>>(scheduleOptions, (value) => value.toMap()),
+      'scheduleOptionsV2': ?pulumi.Input.mapOptionalInputValue<DataTransferConfigScheduleOptionsV2, Map<String, dynamic>>(scheduleOptionsV2, (value) => value.toMap()),
       'sensitiveParams': ?pulumi.Input.mapOptionalInputValue<DataTransferConfigSensitiveParams, Map<String, dynamic>>(sensitiveParams, (value) => value.toMap()),
       'serviceAccountName': ?serviceAccountName,
     };
@@ -144,7 +155,7 @@ class DataTransferConfigState {
 
   factory DataTransferConfigState.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigState(
-      dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dataSourceId: (() { final guardedValue = map['dataSourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDatasetId: (() { final guardedValue = map['destinationDatasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -159,6 +170,7 @@ class DataTransferConfigState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleOptions: (() { final guardedValue = map['scheduleOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataTransferConfigScheduleOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      scheduleOptionsV2: (() { final guardedValue = map['scheduleOptionsV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataTransferConfigScheduleOptionsV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sensitiveParams: (() { final guardedValue = map['sensitiveParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataTransferConfigSensitiveParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccountName: (() { final guardedValue = map['serviceAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

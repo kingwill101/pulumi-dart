@@ -18,6 +18,7 @@ import 'notification_config_streaming_config.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Scc Notification Config Basic
@@ -84,8 +85,8 @@ import 'notification_config_streaming_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +102,7 @@ import 'notification_config_streaming_config.dart';
 /// 			ConfigId:     pulumi.String("my-config"),
 /// 			Organization: pulumi.String("123456789"),
 /// 			Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic:  sccNotification.ID().ToIDOutput().ToStringOutput(),
+/// 			PubsubTopic:  sccNotification.ID(),
 /// 			StreamingConfig: &securitycenter.NotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -114,7 +115,7 @@ import 'notification_config_streaming_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,9 +124,15 @@ import 'notification_config_streaming_config.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "scc_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
-/// resource "gcp_securitycenter_notificationconfig" "custom_notification_config" {
+/// resource "gcp_securitycenter_notification_config" "custom_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id    = "my-config"
 ///   organization = "123456789"
 ///   description  = "My custom Cloud Security Command Center Finding Notification Configuration"
@@ -211,6 +218,8 @@ import 'notification_config_streaming_config.dart';
 class NotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  late final pulumi.Output<bool?> deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -248,9 +257,10 @@ class NotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/notificationConfig:NotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     configId = registerOutput<String>('configId');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -285,6 +295,7 @@ class NotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -304,6 +315,7 @@ class NotificationConfig extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     configId = registerOutput<String>('configId');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

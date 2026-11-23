@@ -31,7 +31,7 @@ class AlertPolicyConditionConditionSqlDaily {
   factory AlertPolicyConditionConditionSqlDaily.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlDaily(
       executionTime: (() { final guardedValue = map['executionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyConditionConditionSqlDailyExecutionTime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      periodicity: pulumi.Input.fromValue((map['periodicity'] as num).toInt()),
+      periodicity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodicity'])),
     );
   }
 }

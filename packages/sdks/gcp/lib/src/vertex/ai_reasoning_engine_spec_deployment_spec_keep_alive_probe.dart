@@ -28,7 +28,7 @@ class AiReasoningEngineSpecDeploymentSpecKeepAliveProbe {
   factory AiReasoningEngineSpecDeploymentSpecKeepAliveProbe.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecKeepAliveProbe(
       httpGet: (() { final guardedValue = map['httpGet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxSeconds: (() { final guardedValue = map['maxSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSeconds: (() { final guardedValue = map['maxSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

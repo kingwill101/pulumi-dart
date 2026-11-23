@@ -21,7 +21,7 @@ class InstancePerformanceConfigFixedIops {
 
   factory InstancePerformanceConfigFixedIops.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigFixedIops(
-      maxIops: (() { final guardedValue = map['maxIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxIops: (() { final guardedValue = map['maxIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

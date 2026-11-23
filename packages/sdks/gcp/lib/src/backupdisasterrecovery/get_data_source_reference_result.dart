@@ -65,7 +65,7 @@ class GetDataSourceReferenceResult {
   factory GetDataSourceReferenceResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferenceResult(
       backupConfigState: (() { final guardedValue = map['backupConfigState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      backupCount: (() { final guardedValue = map['backupCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      backupCount: (() { final guardedValue = map['backupCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       dataSource: (() { final guardedValue = map['dataSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataSourceReferenceId: (() { final guardedValue = map['dataSourceReferenceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gcpResourceName: (() { final guardedValue = map['gcpResourceName']; if (guardedValue == null) return null; return guardedValue as String; })(),

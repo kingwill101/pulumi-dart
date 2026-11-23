@@ -11,6 +11,7 @@ import 'url_list_state.dart';
 /// * How-to Guides
 /// * Use UrlLists
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Security Url Lists Basic
@@ -60,7 +61,7 @@ import 'url_list_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +82,7 @@ import 'url_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,7 +90,10 @@ import 'url_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_urllist" "default" {
+/// resource "gcp_networksecurity_url_list" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-url-lists"
 ///   location = "us-central1"
 ///   values   = ["www.example.com"]
@@ -135,6 +139,7 @@ import 'url_list_state.dart';
 ///       values:
 ///         - www.example.com
 /// ```
+///
 ///
 /// ### Network Security Url Lists Advanced
 ///
@@ -196,7 +201,7 @@ import 'url_list_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -220,7 +225,7 @@ import 'url_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -228,7 +233,10 @@ import 'url_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_urllist" "default" {
+/// resource "gcp_networksecurity_url_list" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-url-lists"
 ///   location    = "us-central1"
 ///   description = "my description"
@@ -341,7 +349,7 @@ class UrlList extends pulumi.CustomResource {
           'gcp:networksecurity/urlList:UrlList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

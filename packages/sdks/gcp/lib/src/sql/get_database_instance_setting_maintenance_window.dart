@@ -30,8 +30,8 @@ class GetDatabaseInstanceSettingMaintenanceWindow {
 
   factory GetDatabaseInstanceSettingMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingMaintenanceWindow(
-      day: pulumi.Input.fromValue((map['day'] as num).toInt()),
-      hour: pulumi.Input.fromValue((map['hour'] as num).toInt()),
+      day: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['day'])),
+      hour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hour'])),
       updateTrack: pulumi.Input.fromValue(map['updateTrack'] as String),
     );
   }

@@ -18,9 +18,9 @@ class ApplicationArgs {
   /// `gcp.firestore.Database`
   /// resource instead.
   final pulumi.Input<String?>? databaseType;
-  /// A block of optional settings to configure specific App Engine features:
+  /// A block of optional settings to configure specific App Engine features. Structure is documented below.
   final pulumi.Input<ApplicationFeatureSettings?>? featureSettings;
-  /// Settings for enabling Cloud Identity Aware Proxy
+  /// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
   final pulumi.Input<ApplicationIap?>? iap;
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
@@ -37,8 +37,8 @@ class ApplicationArgs {
   /// Creates a new [ApplicationArgs].
   /// [authDomain] The domain to authenticate users with when using App Engine's User API.
   /// [databaseType] The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-  /// [featureSettings] A block of optional settings to configure specific App Engine features:
-  /// [iap] Settings for enabling Cloud Identity Aware Proxy
+  /// [featureSettings] A block of optional settings to configure specific App Engine features. Structure is documented below.
+  /// [iap] Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
   /// [locationId] The [location](https://cloud.google.com/appengine/docs/locations)
   /// [project] The project ID to create the application under.
   /// [servingStatus] The serving status of the app.

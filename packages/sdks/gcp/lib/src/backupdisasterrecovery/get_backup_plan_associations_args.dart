@@ -12,25 +12,19 @@ class GetBackupPlanAssociationsArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
-  /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-  /// - - -
-  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [GetBackupPlanAssociationsArgs].
   /// [location] The location where the Backup Plan Association resources reside.
   /// [project] The project in which the resource belongs. If it
-  /// [resourceType] The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
   const GetBackupPlanAssociationsArgs({
     required this.location,
     this.project,
-    this.resourceType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
       'project': ?project,
-      'resourceType': ?resourceType,
     };
   }
 
@@ -38,7 +32,6 @@ class GetBackupPlanAssociationsArgs {
     return GetBackupPlanAssociationsArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

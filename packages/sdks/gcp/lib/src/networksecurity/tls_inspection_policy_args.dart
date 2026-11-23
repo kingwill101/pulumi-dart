@@ -9,6 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsInspectionPolicyArgs {
   /// A CA pool resource used to issue interception certificates.
   final pulumi.Input<String> caPool;
+  /// The mode used to issue certificates (local CA signing vs direct leaf).
+  /// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+  final pulumi.Input<String?>? certificateIssuanceMode;
   /// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
   final pulumi.Input<List<String>?>? customTlsFeatures;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -42,6 +45,7 @@ class TlsInspectionPolicyArgs {
 
   /// Creates a new [TlsInspectionPolicyArgs].
   /// [caPool] A CA pool resource used to issue interception certificates.
+  /// [certificateIssuanceMode] The mode used to issue certificates (local CA signing vs direct leaf).
   /// [customTlsFeatures] List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Free-text description of the resource.
@@ -54,6 +58,7 @@ class TlsInspectionPolicyArgs {
   /// [trustConfig] A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
   const TlsInspectionPolicyArgs({
     required this.caPool,
+    this.certificateIssuanceMode,
     this.customTlsFeatures,
     this.deletionPolicy,
     this.description,
@@ -69,6 +74,7 @@ class TlsInspectionPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caPool': caPool,
+      'certificateIssuanceMode': ?certificateIssuanceMode,
       'customTlsFeatures': ?customTlsFeatures,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
@@ -85,6 +91,7 @@ class TlsInspectionPolicyArgs {
   factory TlsInspectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TlsInspectionPolicyArgs(
       caPool: pulumi.Input.fromValue(map['caPool'] as String),
+      certificateIssuanceMode: (() { final guardedValue = map['certificateIssuanceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customTlsFeatures: (() { final guardedValue = map['customTlsFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

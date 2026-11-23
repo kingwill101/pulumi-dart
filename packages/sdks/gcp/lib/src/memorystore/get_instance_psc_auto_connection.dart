@@ -15,6 +15,8 @@ class GetInstancePscAutoConnection {
   final pulumi.Input<String> forwardingRule;
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   final pulumi.Input<String> ipAddress;
+  /// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+  final pulumi.Input<String> ipVersion;
   /// Output only. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
@@ -37,6 +39,7 @@ class GetInstancePscAutoConnection {
   /// [connectionType] Output Only. Type of a PSC Connection.
   /// [forwardingRule] Output only. The URI of the consumer side forwarding rule.
   /// [ipAddress] Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+  /// [ipVersion] The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
   /// [network] Output only. The consumer network where the IP address resides, in the form of
   /// [port] Output only. Ports of the exposed endpoint.
   /// [projectId] Output only. The consumer projectId where the forwarding rule is created from.
@@ -47,6 +50,7 @@ class GetInstancePscAutoConnection {
     required this.connectionType,
     required this.forwardingRule,
     required this.ipAddress,
+    required this.ipVersion,
     required this.network,
     required this.port,
     required this.projectId,
@@ -60,6 +64,7 @@ class GetInstancePscAutoConnection {
       'connectionType': connectionType,
       'forwardingRule': forwardingRule,
       'ipAddress': ipAddress,
+      'ipVersion': ipVersion,
       'network': network,
       'port': port,
       'projectId': projectId,
@@ -74,8 +79,9 @@ class GetInstancePscAutoConnection {
       connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
       forwardingRule: pulumi.Input.fromValue(map['forwardingRule'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipVersion: pulumi.Input.fromValue(map['ipVersion'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
       pscConnectionId: pulumi.Input.fromValue(map['pscConnectionId'] as String),
       pscConnectionStatus: pulumi.Input.fromValue(map['pscConnectionStatus'] as String),

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_instance_args.dart';
+import 'database_instance_blue_green_deployment.dart';
 import 'database_instance_clone.dart';
 import 'database_instance_dns_name.dart';
 import 'database_instance_ip_address.dart';
@@ -78,7 +79,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -100,7 +101,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -108,7 +109,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "POSTGRES_15"
 ///   region           = "us-central1"
@@ -268,16 +272,14 @@ import 'database_instance_state.dart';
 ///             Tier = "db-f1-micro",
 ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
 ///             {
-///                 AuthorizedNetworks = .Apply(entries => entries.Select(entry =>
-///                 {
+///                 AuthorizedNetworks = .Apply(entries => entries.Select(entry => {
 ///                     return
 ///                     {
 ///                         { "name", entry.Value.Name },
 ///                         { "value", entry.Value.NetworkInterface[0].AccessConfig[0].NatIp },
 ///                     };
 ///                 }).ToList()),
-///                 AuthorizedNetworks = onprem.Select((v, k) => new { Key = k, Value = v }).Select(entry2 =>
-///                 {
+///                 AuthorizedNetworks = onprem.Select((v, k) => new { Key = k, Value = v }).Select(entry2 => {
 ///                     return new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
 ///                     {
 ///                         Name = $"onprem-{entry2.Key}",
@@ -291,7 +293,7 @@ import 'database_instance_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -304,6 +306,12 @@ import 'database_instance_state.dart';
 ///
 /// resource "gcp_compute_instance" "apps" {
 ///   count = 8
+///   pulumi {
+///     name ="apps-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -318,9 +326,15 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "postgres" {
+/// resource "gcp_sql_database_instance" "postgres" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="postgres-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -480,9 +494,9 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -500,13 +514,13 @@ import 'database_instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      privateNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      privateNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateVpcConnection, err := servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: privateNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: privateNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAddress.Name,
@@ -544,7 +558,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -556,9 +570,15 @@ import 'database_instance_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "private_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "private-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_address" {
+/// resource "gcp_compute_global_address" "private_ip_address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "private-ip-address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -566,15 +586,24 @@ import 'database_instance_state.dart';
 ///   network       = gcp_compute_network.private_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "private_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.private_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_address.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_address.name]
 /// }
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
-///   depends_on       = [gcp_servicenetworking_connection.private_vpc_connection]
+/// resource "gcp_sql_database_instance" "instance" {
+///   depends_on = [gcp_servicenetworking_connection.private_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="private-instance-${random_id.db_name_suffix.hex}"
 ///   region           = "us-central1"
 ///   database_version = "MYSQL_5_7"
@@ -771,7 +800,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -796,7 +825,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -804,7 +833,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "enterprise-plus-main-instance"
 ///   database_version = "MYSQL_8_0_31"
 ///   settings = {
@@ -953,7 +985,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -987,7 +1019,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -995,7 +1027,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "mcp-enabled-main-instance"
 ///   region           = "us-central1"
 ///   database_version = "POSTGRES_16"
@@ -1003,10 +1038,10 @@ import 'database_instance_state.dart';
 ///     tier    = "db-perf-optimized-N-2"
 ///     edition = "ENTERPRISE_PLUS"
 ///     connection_pool_configs = [{
-///       "connectionPoolingEnabled" = true
-///       "flags" = [{
-///         "name"  = "max_client_connections"
-///         "value" = "1980"
+///       connection_pooling_enabled = true
+///       flags = [{
+///         name  = "max_client_connections"
+///         value = "1980"
 ///       }]
 ///     }]
 ///   }
@@ -1088,10 +1123,10 @@ import 'database_instance_state.dart';
 ///     settings: {
 ///         tier: "db-f1-micro",
 ///         ipConfiguration: {
-///             pscConfigs: [{
+///             pscConfig: {
 ///                 pscEnabled: true,
 ///                 allowedConsumerProjects: ["allowed-consumer-project-name"],
-///             }],
+///             },
 ///             ipv4Enabled: false,
 ///         },
 ///         backupConfiguration: {
@@ -1112,10 +1147,10 @@ import 'database_instance_state.dart';
 ///     settings={
 ///         "tier": "db-f1-micro",
 ///         "ip_configuration": {
-///             "psc_configs": [{
-///                 "psc_enabled": True,
-///                 "allowed_consumer_projects": ["allowed-consumer-project-name"],
-///             }],
+///             "psc_config": {
+///                 "pscEnabled": True,
+///                 "allowedConsumerProjects": ["allowed-consumer-project-name"],
+///             },
 ///             "ipv4_enabled": False,
 ///         },
 ///         "backup_configuration": {
@@ -1142,16 +1177,13 @@ import 'database_instance_state.dart';
 ///             Tier = "db-f1-micro",
 ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
 ///             {
-///                 PscConfigs = new[]
+///                 PscConfig =
 ///                 {
-///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+///                     { "pscEnabled", true },
+///                     { "allowedConsumerProjects", new[]
 ///                     {
-///                         PscEnabled = true,
-///                         AllowedConsumerProjects = new[]
-///                         {
-///                             "allowed-consumer-project-name",
-///                         },
-///                     },
+///                         "allowed-consumer-project-name",
+///                     } },
 ///                 },
 ///                 Ipv4Enabled = false,
 ///             },
@@ -1170,7 +1202,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1182,12 +1214,10 @@ import 'database_instance_state.dart';
 /// 			Settings: &sql.DatabaseInstanceSettingsArgs{
 /// 				Tier: pulumi.String("db-f1-micro"),
 /// 				IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
-/// 					PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
-/// 						&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
-/// 							PscEnabled: pulumi.Bool(true),
-/// 							AllowedConsumerProjects: pulumi.StringArray{
-/// 								pulumi.String("allowed-consumer-project-name"),
-/// 							},
+/// 					PscConfig: map[string]interface{}{
+/// 						"pscEnabled": true,
+/// 						"allowedConsumerProjects": []string{
+/// 							"allowed-consumer-project-name",
 /// 						},
 /// 					},
 /// 					Ipv4Enabled: pulumi.Bool(false),
@@ -1207,7 +1237,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1215,16 +1245,19 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-enabled-main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
-///       psc_configs = [{
+///       psc_config = {
 ///         "pscEnabled"              = true
 ///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
-///       }]
+///       }
 ///       ipv4_enabled = false
 ///     }
 ///     backup_configuration = {
@@ -1245,7 +1278,6 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
-/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1266,10 +1298,10 @@ import 'database_instance_state.dart';
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
 ///                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
-///                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
-///                         .pscEnabled(true)
-///                         .allowedConsumerProjects("allowed-consumer-project-name")
-///                         .build())
+///                     .pscConfig(Map.ofEntries(
+///                         Map.entry("pscEnabled", true),
+///                         Map.entry("allowedConsumerProjects", Arrays.asList("allowed-consumer-project-name"))
+///                     ))
 ///                     .ipv4Enabled(false)
 ///                     .build())
 ///                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
@@ -1293,10 +1325,10 @@ import 'database_instance_state.dart';
 ///       settings:
 ///         tier: db-f1-micro
 ///         ipConfiguration:
-///           pscConfigs:
-///             - pscEnabled: true
-///               allowedConsumerProjects:
-///                 - allowed-consumer-project-name
+///           pscConfig:
+///             pscEnabled: true
+///             allowedConsumerProjects:
+///               - allowed-consumer-project-name
 ///           ipv4Enabled: false
 ///         backupConfiguration:
 ///           enabled: true
@@ -1318,14 +1350,14 @@ import 'database_instance_state.dart';
 ///     settings: {
 ///         tier: "db-f1-micro",
 ///         ipConfiguration: {
-///             pscConfigs: [{
+///             pscConfig: {
 ///                 pscEnabled: true,
 ///                 allowedConsumerProjects: ["allowed-consumer-project-name"],
 ///                 pscAutoConnections: [{
 ///                     consumerNetwork: "network-name",
 ///                     consumerServiceProjectId: "project-id",
 ///                 }],
-///             }],
+///             },
 ///             ipv4Enabled: false,
 ///         },
 ///         backupConfiguration: {
@@ -1346,14 +1378,14 @@ import 'database_instance_state.dart';
 ///     settings={
 ///         "tier": "db-f1-micro",
 ///         "ip_configuration": {
-///             "psc_configs": [{
-///                 "psc_enabled": True,
-///                 "allowed_consumer_projects": ["allowed-consumer-project-name"],
-///                 "psc_auto_connections": [{
-///                     "consumer_network": "network-name",
-///                     "consumer_service_project_id": "project-id",
+///             "psc_config": {
+///                 "pscEnabled": True,
+///                 "allowedConsumerProjects": ["allowed-consumer-project-name"],
+///                 "pscAutoConnections": [{
+///                     "consumerNetwork": "network-name",
+///                     "consumerServiceProjectId": "project-id",
 ///                 }],
-///             }],
+///             },
 ///             "ipv4_enabled": False,
 ///         },
 ///         "backup_configuration": {
@@ -1380,24 +1412,21 @@ import 'database_instance_state.dart';
 ///             Tier = "db-f1-micro",
 ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
 ///             {
-///                 PscConfigs = new[]
+///                 PscConfig =
 ///                 {
-///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+///                     { "pscEnabled", true },
+///                     { "allowedConsumerProjects", new[]
 ///                     {
-///                         PscEnabled = true,
-///                         AllowedConsumerProjects = new[]
+///                         "allowed-consumer-project-name",
+///                     } },
+///                     { "pscAutoConnections", new[]
+///                     {
+///
 ///                         {
-///                             "allowed-consumer-project-name",
+///                             { "consumerNetwork", "network-name" },
+///                             { "consumerServiceProjectId", "project-id" },
 ///                         },
-///                         PscAutoConnections = new[]
-///                         {
-///                             new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs
-///                             {
-///                                 ConsumerNetwork = "network-name",
-///                                 ConsumerServiceProjectId = "project-id",
-///                             },
-///                         },
-///                     },
+///                     } },
 ///                 },
 ///                 Ipv4Enabled = false,
 ///             },
@@ -1416,7 +1445,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1428,17 +1457,15 @@ import 'database_instance_state.dart';
 /// 			Settings: &sql.DatabaseInstanceSettingsArgs{
 /// 				Tier: pulumi.String("db-f1-micro"),
 /// 				IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
-/// 					PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
-/// 						&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
-/// 							PscEnabled: pulumi.Bool(true),
-/// 							AllowedConsumerProjects: pulumi.StringArray{
-/// 								pulumi.String("allowed-consumer-project-name"),
-/// 							},
-/// 							PscAutoConnections: sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray{
-/// 								&sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs{
-/// 									ConsumerNetwork:          pulumi.String("network-name"),
-/// 									ConsumerServiceProjectId: pulumi.String("project-id"),
-/// 								},
+/// 					PscConfig: map[string]interface{}{
+/// 						"pscEnabled": true,
+/// 						"allowedConsumerProjects": []string{
+/// 							"allowed-consumer-project-name",
+/// 						},
+/// 						"pscAutoConnections": []map[string]string{
+/// 							{
+/// 								"consumerNetwork":          "network-name",
+/// 								"consumerServiceProjectId": "project-id",
 /// 							},
 /// 						},
 /// 					},
@@ -1459,7 +1486,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1467,20 +1494,23 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-enabled-main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
-///       psc_configs = [{
+///       psc_config = {
 ///         "pscEnabled"              = true
 ///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
 ///         "pscAutoConnections" = [{
 ///           "consumerNetwork"          = "network-name"
 ///           "consumerServiceProjectId" = "project-id"
 ///         }]
-///       }]
+///       }
 ///       ipv4_enabled = false
 ///     }
 ///     backup_configuration = {
@@ -1501,8 +1531,6 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
-/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
-/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1523,14 +1551,14 @@ import 'database_instance_state.dart';
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
 ///                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
-///                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
-///                         .pscEnabled(true)
-///                         .allowedConsumerProjects("allowed-consumer-project-name")
-///                         .pscAutoConnections(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs.builder()
-///                             .consumerNetwork("network-name")
-///                             .consumerServiceProjectId("project-id")
-///                             .build())
-///                         .build())
+///                     .pscConfig(Map.ofEntries(
+///                         Map.entry("pscEnabled", true),
+///                         Map.entry("allowedConsumerProjects", Arrays.asList("allowed-consumer-project-name")),
+///                         Map.entry("pscAutoConnections", Arrays.asList(Map.ofEntries(
+///                             Map.entry("consumerNetwork", "network-name"),
+///                             Map.entry("consumerServiceProjectId", "project-id")
+///                         )))
+///                     ))
 ///                     .ipv4Enabled(false)
 ///                     .build())
 ///                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
@@ -1554,13 +1582,13 @@ import 'database_instance_state.dart';
 ///       settings:
 ///         tier: db-f1-micro
 ///         ipConfiguration:
-///           pscConfigs:
-///             - pscEnabled: true
-///               allowedConsumerProjects:
-///                 - allowed-consumer-project-name
-///               pscAutoConnections:
-///                 - consumerNetwork: network-name
-///                   consumerServiceProjectId: project-id
+///           pscConfig:
+///             pscEnabled: true
+///             allowedConsumerProjects:
+///               - allowed-consumer-project-name
+///             pscAutoConnections:
+///               - consumerNetwork: network-name
+///                 consumerServiceProjectId: project-id
 ///           ipv4Enabled: false
 ///         backupConfiguration:
 ///           enabled: true
@@ -1582,11 +1610,11 @@ import 'database_instance_state.dart';
 ///     settings: {
 ///         tier: "db-f1-micro",
 ///         ipConfiguration: {
-///             pscConfigs: [{
+///             pscConfig: {
 ///                 pscEnabled: true,
 ///                 allowedConsumerProjects: ["allowed-consumer-project-name"],
 ///                 networkAttachmentUri: "network-attachment-uri",
-///             }],
+///             },
 ///             ipv4Enabled: false,
 ///         },
 ///         backupConfiguration: {
@@ -1607,11 +1635,11 @@ import 'database_instance_state.dart';
 ///     settings={
 ///         "tier": "db-f1-micro",
 ///         "ip_configuration": {
-///             "psc_configs": [{
-///                 "psc_enabled": True,
-///                 "allowed_consumer_projects": ["allowed-consumer-project-name"],
-///                 "network_attachment_uri": "network-attachment-uri",
-///             }],
+///             "psc_config": {
+///                 "pscEnabled": True,
+///                 "allowedConsumerProjects": ["allowed-consumer-project-name"],
+///                 "networkAttachmentUri": "network-attachment-uri",
+///             },
 ///             "ipv4_enabled": False,
 ///         },
 ///         "backup_configuration": {
@@ -1638,17 +1666,14 @@ import 'database_instance_state.dart';
 ///             Tier = "db-f1-micro",
 ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
 ///             {
-///                 PscConfigs = new[]
+///                 PscConfig =
 ///                 {
-///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+///                     { "pscEnabled", true },
+///                     { "allowedConsumerProjects", new[]
 ///                     {
-///                         PscEnabled = true,
-///                         AllowedConsumerProjects = new[]
-///                         {
-///                             "allowed-consumer-project-name",
-///                         },
-///                         NetworkAttachmentUri = "network-attachment-uri",
-///                     },
+///                         "allowed-consumer-project-name",
+///                     } },
+///                     { "networkAttachmentUri", "network-attachment-uri" },
 ///                 },
 ///                 Ipv4Enabled = false,
 ///             },
@@ -1667,7 +1692,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1679,14 +1704,12 @@ import 'database_instance_state.dart';
 /// 			Settings: &sql.DatabaseInstanceSettingsArgs{
 /// 				Tier: pulumi.String("db-f1-micro"),
 /// 				IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
-/// 					PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
-/// 						&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
-/// 							PscEnabled: pulumi.Bool(true),
-/// 							AllowedConsumerProjects: pulumi.StringArray{
-/// 								pulumi.String("allowed-consumer-project-name"),
-/// 							},
-/// 							NetworkAttachmentUri: pulumi.String("network-attachment-uri"),
+/// 					PscConfig: map[string]interface{}{
+/// 						"pscEnabled": true,
+/// 						"allowedConsumerProjects": []string{
+/// 							"allowed-consumer-project-name",
 /// 						},
+/// 						"networkAttachmentUri": "network-attachment-uri",
 /// 					},
 /// 					Ipv4Enabled: pulumi.Bool(false),
 /// 				},
@@ -1705,7 +1728,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1713,17 +1736,20 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-enabled-main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
-///       psc_configs = [{
+///       psc_config = {
 ///         "pscEnabled"              = true
 ///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
 ///         "networkAttachmentUri"    = "network-attachment-uri"
-///       }]
+///       }
 ///       ipv4_enabled = false
 ///     }
 ///     backup_configuration = {
@@ -1744,7 +1770,6 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
-/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1765,11 +1790,11 @@ import 'database_instance_state.dart';
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
 ///                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
-///                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
-///                         .pscEnabled(true)
-///                         .allowedConsumerProjects("allowed-consumer-project-name")
-///                         .networkAttachmentUri("network-attachment-uri")
-///                         .build())
+///                     .pscConfig(Map.ofEntries(
+///                         Map.entry("pscEnabled", true),
+///                         Map.entry("allowedConsumerProjects", Arrays.asList("allowed-consumer-project-name")),
+///                         Map.entry("networkAttachmentUri", "network-attachment-uri")
+///                     ))
 ///                     .ipv4Enabled(false)
 ///                     .build())
 ///                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
@@ -1793,11 +1818,11 @@ import 'database_instance_state.dart';
 ///       settings:
 ///         tier: db-f1-micro
 ///         ipConfiguration:
-///           pscConfigs:
-///             - pscEnabled: true
-///               allowedConsumerProjects:
-///                 - allowed-consumer-project-name
-///               networkAttachmentUri: network-attachment-uri
+///           pscConfig:
+///             pscEnabled: true
+///             allowedConsumerProjects:
+///               - allowed-consumer-project-name
+///             networkAttachmentUri: network-attachment-uri
 ///           ipv4Enabled: false
 ///         backupConfiguration:
 ///           enabled: true
@@ -1873,7 +1898,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1899,7 +1924,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1907,7 +1932,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
@@ -2055,7 +2083,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2085,7 +2113,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2093,7 +2121,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
@@ -2256,7 +2287,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2287,7 +2318,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2295,7 +2326,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
@@ -2415,6 +2449,447 @@ import 'database_instance_state.dart';
 /// - Only the 2 instances involved in switchover have planned changes
 /// - (Recommended) Use `deletionProtection` on instances as a safety measure
 ///
+/// ## Blue-Green Deployment
+///
+/// You can manage the full lifecycle of a Cloud SQL Blue-Green Deployment using the `blueGreenDeployment` block on the primary `gcp.sql.DatabaseInstance` resource across a 4-step workflow:
+///
+/// &gt; **WARNING:** `blueGreenDeployment` is authoritatively managed on the primary instance resource. If a Blue-Green Deployment is created on the instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not included in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+///
+/// ### 4-Step Workflow
+///
+/// 1. **Create the Blue-Green Deployment (`activeEnvironment = "SOURCE"`)**:
+/// Add the `blueGreenDeployment` block to your primary instance with `activeEnvironment = "SOURCE"` (the default) and an optional `targetDatabaseVersion`, then run `pulumi up`. Cloud SQL provisions and synchronizes the green (target) environment.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.sql.DatabaseInstance("primary", {
+///     name: "my-primary-instance",
+///     databaseVersion: "MYSQL_5_7",
+///     region: "us-central1",
+///     settings: {
+///         tier: "db-n1-standard-2",
+///         backupConfiguration: {
+///             enabled: true,
+///             binaryLogEnabled: true,
+///         },
+///     },
+///     blueGreenDeployment: {
+///         deploymentName: "my-bgd-upgrade",
+///         targetDatabaseVersion: "MYSQL_8_0",
+///         activeEnvironment: "SOURCE",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.sql.DatabaseInstance("primary",
+///     name="my-primary-instance",
+///     database_version="MYSQL_5_7",
+///     region="us-central1",
+///     settings={
+///         "tier": "db-n1-standard-2",
+///         "backup_configuration": {
+///             "enabled": True,
+///             "binary_log_enabled": True,
+///         },
+///     },
+///     blue_green_deployment={
+///         "deployment_name": "my-bgd-upgrade",
+///         "target_database_version": "MYSQL_8_0",
+///         "active_environment": "SOURCE",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Sql.DatabaseInstance("primary", new()
+///     {
+///         Name = "my-primary-instance",
+///         DatabaseVersion = "MYSQL_5_7",
+///         Region = "us-central1",
+///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+///         {
+///             Tier = "db-n1-standard-2",
+///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+///             {
+///                 Enabled = true,
+///                 BinaryLogEnabled = true,
+///             },
+///         },
+///         BlueGreenDeployment = new Gcp.Sql.Inputs.DatabaseInstanceBlueGreenDeploymentArgs
+///         {
+///             DeploymentName = "my-bgd-upgrade",
+///             TargetDatabaseVersion = "MYSQL_8_0",
+///             ActiveEnvironment = "SOURCE",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := sql.NewDatabaseInstance(ctx, "primary", &sql.DatabaseInstanceArgs{
+/// 			Name:            pulumi.String("my-primary-instance"),
+/// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
+/// 			Region:          pulumi.String("us-central1"),
+/// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+/// 				Tier: pulumi.String("db-n1-standard-2"),
+/// 				BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+/// 					Enabled:          pulumi.Bool(true),
+/// 					BinaryLogEnabled: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 			BlueGreenDeployment: &sql.DatabaseInstanceBlueGreenDeploymentArgs{
+/// 				DeploymentName:        pulumi.String("my-bgd-upgrade"),
+/// 				TargetDatabaseVersion: pulumi.String("MYSQL_8_0"),
+/// 				ActiveEnvironment:     pulumi.String("SOURCE"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_database_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name             = "my-primary-instance"
+///   database_version = "MYSQL_5_7"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-n1-standard-2"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///   }
+///   blue_green_deployment = {
+///     deployment_name         = "my-bgd-upgrade"
+///     target_database_version = "MYSQL_8_0"
+///     active_environment      = "SOURCE"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.sql.DatabaseInstance;
+/// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceBlueGreenDeploymentArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new DatabaseInstance("primary", DatabaseInstanceArgs.builder()
+///             .name("my-primary-instance")
+///             .databaseVersion("MYSQL_5_7")
+///             .region("us-central1")
+///             .settings(DatabaseInstanceSettingsArgs.builder()
+///                 .tier("db-n1-standard-2")
+///                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+///                     .enabled(true)
+///                     .binaryLogEnabled(true)
+///                     .build())
+///                 .build())
+///             .blueGreenDeployment(DatabaseInstanceBlueGreenDeploymentArgs.builder()
+///                 .deploymentName("my-bgd-upgrade")
+///                 .targetDatabaseVersion("MYSQL_8_0")
+///                 .activeEnvironment("SOURCE")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:sql:DatabaseInstance
+///     properties:
+///       name: my-primary-instance
+///       databaseVersion: MYSQL_5_7
+///       region: us-central1
+///       settings:
+///         tier: db-n1-standard-2
+///         backupConfiguration:
+///           enabled: true
+///           binaryLogEnabled: true
+///       blueGreenDeployment:
+///         deploymentName: my-bgd-upgrade
+///         targetDatabaseVersion: MYSQL_8_0
+///         activeEnvironment: SOURCE
+/// ```
+///
+///
+/// 2. **Verify the Green Target Instance**:
+/// After creation completes, inspect the computed attributes `blue_green_deployment.0.target_instance_name`, `blue_green_deployment.0.target_instance_connection_name`, and `blue_green_deployment.0.target_instance_ip_addresses` to connect to and validate the green instance before switching traffic.
+///
+/// 3. **Switchover (`activeEnvironment = "TARGET"`)**:
+/// Update `activeEnvironment` from `"SOURCE"` to `"TARGET"`. If `targetDatabaseVersion` differs from the source `databaseVersion`, also update the top-level `databaseVersion` to match `targetDatabaseVersion` in the same configuration change, then run `pulumi up`.
+///
+/// &gt; **NOTE:** If a switchover fails or times out, Terraform refreshes the state (`activeEnvironment` remains `"SOURCE"` if the switchover did not complete) and you can retry the switchover simply by running `pulumi up` again.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.sql.DatabaseInstance("primary", {
+///     name: "my-primary-instance",
+///     databaseVersion: "MYSQL_8_0",
+///     region: "us-central1",
+///     settings: {
+///         tier: "db-n1-standard-2",
+///         backupConfiguration: {
+///             enabled: true,
+///             binaryLogEnabled: true,
+///         },
+///     },
+///     blueGreenDeployment: {
+///         deploymentName: "my-bgd-upgrade",
+///         targetDatabaseVersion: "MYSQL_8_0",
+///         activeEnvironment: "TARGET",
+///         deleteOldSourceOnDestroy: true,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.sql.DatabaseInstance("primary",
+///     name="my-primary-instance",
+///     database_version="MYSQL_8_0",
+///     region="us-central1",
+///     settings={
+///         "tier": "db-n1-standard-2",
+///         "backup_configuration": {
+///             "enabled": True,
+///             "binary_log_enabled": True,
+///         },
+///     },
+///     blue_green_deployment={
+///         "deployment_name": "my-bgd-upgrade",
+///         "target_database_version": "MYSQL_8_0",
+///         "active_environment": "TARGET",
+///         "delete_old_source_on_destroy": True,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Sql.DatabaseInstance("primary", new()
+///     {
+///         Name = "my-primary-instance",
+///         DatabaseVersion = "MYSQL_8_0",
+///         Region = "us-central1",
+///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+///         {
+///             Tier = "db-n1-standard-2",
+///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+///             {
+///                 Enabled = true,
+///                 BinaryLogEnabled = true,
+///             },
+///         },
+///         BlueGreenDeployment = new Gcp.Sql.Inputs.DatabaseInstanceBlueGreenDeploymentArgs
+///         {
+///             DeploymentName = "my-bgd-upgrade",
+///             TargetDatabaseVersion = "MYSQL_8_0",
+///             ActiveEnvironment = "TARGET",
+///             DeleteOldSourceOnDestroy = true,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := sql.NewDatabaseInstance(ctx, "primary", &sql.DatabaseInstanceArgs{
+/// 			Name:            pulumi.String("my-primary-instance"),
+/// 			DatabaseVersion: pulumi.String("MYSQL_8_0"),
+/// 			Region:          pulumi.String("us-central1"),
+/// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+/// 				Tier: pulumi.String("db-n1-standard-2"),
+/// 				BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+/// 					Enabled:          pulumi.Bool(true),
+/// 					BinaryLogEnabled: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 			BlueGreenDeployment: &sql.DatabaseInstanceBlueGreenDeploymentArgs{
+/// 				DeploymentName:           pulumi.String("my-bgd-upgrade"),
+/// 				TargetDatabaseVersion:    pulumi.String("MYSQL_8_0"),
+/// 				ActiveEnvironment:        pulumi.String("TARGET"),
+/// 				DeleteOldSourceOnDestroy: pulumi.Bool(true),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_database_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name             = "my-primary-instance"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-n1-standard-2"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///   }
+///   blue_green_deployment = {
+///     deployment_name              = "my-bgd-upgrade"
+///     target_database_version      = "MYSQL_8_0"
+///     active_environment           = "TARGET"
+///     delete_old_source_on_destroy = true
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.sql.DatabaseInstance;
+/// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceBlueGreenDeploymentArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new DatabaseInstance("primary", DatabaseInstanceArgs.builder()
+///             .name("my-primary-instance")
+///             .databaseVersion("MYSQL_8_0")
+///             .region("us-central1")
+///             .settings(DatabaseInstanceSettingsArgs.builder()
+///                 .tier("db-n1-standard-2")
+///                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+///                     .enabled(true)
+///                     .binaryLogEnabled(true)
+///                     .build())
+///                 .build())
+///             .blueGreenDeployment(DatabaseInstanceBlueGreenDeploymentArgs.builder()
+///                 .deploymentName("my-bgd-upgrade")
+///                 .targetDatabaseVersion("MYSQL_8_0")
+///                 .activeEnvironment("TARGET")
+///                 .deleteOldSourceOnDestroy(true)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:sql:DatabaseInstance
+///     properties:
+///       name: my-primary-instance
+///       databaseVersion: MYSQL_8_0
+///       region: us-central1
+///       settings:
+///         tier: db-n1-standard-2
+///         backupConfiguration:
+///           enabled: true
+///           binaryLogEnabled: true
+///       blueGreenDeployment:
+///         deploymentName: my-bgd-upgrade
+///         targetDatabaseVersion: MYSQL_8_0
+///         activeEnvironment: TARGET
+///         deleteOldSourceOnDestroy: true
+/// ```
+///
+///
+/// 4. **Clean Up / Delete the Blue-Green Deployment**:
+/// Once you have verified the new primary after switchover (or if you wish to abort a deployment before switchover while `activeEnvironment = "SOURCE"`), remove the `blueGreenDeployment` block from your configuration and run `pulumi up`.
+/// * If removed before switchover (`activeEnvironment = "SOURCE"`), the Blue-Green Deployment is aborted and the green target instance is deleted.
+/// * If removed after switchover (`activeEnvironment = "TARGET"`), the Blue-Green Deployment is deleted; if `deleteOldSourceOnDestroy = true` was previously applied in state, the old source (blue) instance is also deleted.
+///
 /// ## Import
 ///
 /// Database instances can be imported using one of any of these accepted formats:
@@ -2444,6 +2919,9 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
   /// block during resource creation/update will trigger the restore action after the resource is created/updated.
   late final pulumi.Output<String?> backupdrBackup;
+  /// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+  /// &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+  late final pulumi.Output<DatabaseInstanceBlueGreenDeployment?> blueGreenDeployment;
   /// The context needed to create this instance as a clone of another instance. When this field is set during
   /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
   /// configuration is detailed below.
@@ -2451,6 +2929,8 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// The connection name of the instance to be used in
   /// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
   late final pulumi.Output<String> connectionName;
+  /// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+  late final pulumi.Output<String?> databaseCenterIntegration;
   /// The MySQL, PostgreSQL or
   /// SQL Server version to use. Supported values include `MYSQL_5_6`,
   /// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -2477,6 +2957,8 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   late final pulumi.Output<List<DatabaseInstanceDnsName>> dnsNames;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+  late final pulumi.Output<bool> encryptionConfidentialMode;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -2577,18 +3059,21 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:sql/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['replicaConfiguration', 'rootPassword', 'rootPasswordWo', 'serverCaCerts'],
         ) {
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupdrBackup = registerOutput<String?>('backupdrBackup');
+    blueGreenDeployment = registerOutput<DatabaseInstanceBlueGreenDeployment?>('blueGreenDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceBlueGreenDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
+    databaseCenterIntegration = registerOutput<String?>('databaseCenterIntegration');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
@@ -2646,13 +3131,16 @@ class DatabaseInstance extends pulumi.CustomResource {
         ) {
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupdrBackup = registerOutput<String?>('backupdrBackup');
+    blueGreenDeployment = registerOutput<DatabaseInstanceBlueGreenDeployment?>('blueGreenDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceBlueGreenDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
+    databaseCenterIntegration = registerOutput<String?>('databaseCenterIntegration');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
@@ -2696,13 +3184,16 @@ class DatabaseInstance extends pulumi.CustomResource {
       ) {
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupdrBackup = registerOutput<String?>('backupdrBackup');
+    blueGreenDeployment = registerOutput<DatabaseInstanceBlueGreenDeployment?>('blueGreenDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceBlueGreenDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
+    databaseCenterIntegration = registerOutput<String?>('databaseCenterIntegration');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');

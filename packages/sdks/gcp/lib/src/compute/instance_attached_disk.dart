@@ -19,7 +19,9 @@ class InstanceAttachedDisk {
   final pulumi.Input<String?>? diskEncryptionKeySha256;
   /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
   final pulumi.Input<String?>? diskEncryptionServiceAccount;
-  /// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+  /// boolean field that determines whether to force attach the regional
+  /// disk even if it's currently attached to another instance. If you try to force attach a zonal
+  /// disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
   final pulumi.Input<bool?>? forceAttach;
   /// The selfLink of the encryption key that is
   /// stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
@@ -39,7 +41,7 @@ class InstanceAttachedDisk {
   /// [diskEncryptionKeyRsa] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
   /// [diskEncryptionKeySha256] The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
   /// [diskEncryptionServiceAccount] The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-  /// [forceAttach] Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+  /// [forceAttach] boolean field that determines whether to force attach the regional
   /// [kmsKeySelfLink] The selfLink of the encryption key that is
   /// [mode] Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
   /// [source] The name or selfLink of the disk to attach to this instance.

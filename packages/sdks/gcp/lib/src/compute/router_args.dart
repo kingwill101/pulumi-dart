@@ -25,8 +25,11 @@ class RouterArgs {
   /// Indicates if a router is dedicated for use with encrypted VLAN
   /// attachments (interconnectAttachments).
   final pulumi.Input<bool?>? encryptedInterconnectRouter;
+  /// (Optional, Deprecated)
   /// Keys used for MD5 authentication.
   /// Structure is documented below.
+  ///
+  /// &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
   final pulumi.Input<RouterMd5AuthenticationKeys?>? md5AuthenticationKeys;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -53,7 +56,7 @@ class RouterArgs {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [encryptedInterconnectRouter] Indicates if a router is dedicated for use with encrypted VLAN
-  /// [md5AuthenticationKeys] Keys used for MD5 authentication.
+  /// [md5AuthenticationKeys] (Optional, Deprecated)
   /// [name] Name of the resource. The name must be 1-63 characters long, and
   /// [nccGateway] A URI of an NCC Gateway spoke
   /// [network] A reference to the network to which this router belongs.

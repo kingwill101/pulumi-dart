@@ -11,6 +11,7 @@ import 'managed_zone_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/integration-connectors/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Integration Connectors Managed Zone
@@ -22,8 +23,8 @@ import 'managed_zone_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const targetProject = new gcp.organizations.Project("target_project", {
-///     projectId: "tf-test_87829",
-///     name: "tf-test_44023",
+///     projectId: "tf-test_31660",
+///     name: "tf-test_97962",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -44,14 +45,14 @@ import 'managed_zone_state.dart';
 /// });
 /// const network = new gcp.compute.Network("network", {
 ///     project: targetProject.projectId,
-///     name: "test",
+///     name: "test-vpc",
 ///     autoCreateSubnetworks: false,
 /// }, {
 ///     dependsOn: [compute],
 /// });
 /// const zone = new gcp.dns.ManagedZone("zone", {
-///     name: "tf-test-dns_50206",
-///     dnsName: "private_9873.example.com.",
+///     name: "tf-test-dns_34534",
+///     dnsName: "private_87829.example.com.",
 ///     visibility: "private",
 ///     privateVisibilityConfig: {
 ///         networks: [{
@@ -68,7 +69,7 @@ import 'managed_zone_state.dart';
 ///         intent: "example",
 ///     },
 ///     targetProject: targetProject.projectId,
-///     targetVpc: "test",
+///     targetVpc: "test-vpc",
 ///     dns: zone.dnsName,
 /// }, {
 ///     dependsOn: [
@@ -82,8 +83,8 @@ import 'managed_zone_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// target_project = gcp.organizations.Project("target_project",
-///     project_id="tf-test_87829",
-///     name="tf-test_44023",
+///     project_id="tf-test_31660",
+///     name="tf-test_97962",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -100,12 +101,12 @@ import 'managed_zone_state.dart';
 ///     service="compute.googleapis.com")
 /// network = gcp.compute.Network("network",
 ///     project=target_project.project_id,
-///     name="test",
+///     name="test-vpc",
 ///     auto_create_subnetworks=False,
 ///     opts = pulumi.ResourceOptions(depends_on=[compute]))
 /// zone = gcp.dns.ManagedZone("zone",
-///     name="tf-test-dns_50206",
-///     dns_name="private_9873.example.com.",
+///     name="tf-test-dns_34534",
+///     dns_name="private_87829.example.com.",
 ///     visibility="private",
 ///     private_visibility_config={
 ///         "networks": [{
@@ -120,7 +121,7 @@ import 'managed_zone_state.dart';
 ///         "intent": "example",
 ///     },
 ///     target_project=target_project.project_id,
-///     target_vpc="test",
+///     target_vpc="test-vpc",
 ///     dns=zone.dns_name,
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             dns_peer_binding,
@@ -137,8 +138,8 @@ import 'managed_zone_state.dart';
 /// {
 ///     var targetProject = new Gcp.Organizations.Project("target_project", new()
 ///     {
-///         ProjectId = "tf-test_87829",
-///         Name = "tf-test_44023",
+///         ProjectId = "tf-test_31660",
+///         Name = "tf-test_97962",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -168,7 +169,7 @@ import 'managed_zone_state.dart';
 ///     var network = new Gcp.Compute.Network("network", new()
 ///     {
 ///         Project = targetProject.ProjectId,
-///         Name = "test",
+///         Name = "test-vpc",
 ///         AutoCreateSubnetworks = false,
 ///     }, new CustomResourceOptions
 ///     {
@@ -180,8 +181,8 @@ import 'managed_zone_state.dart';
 ///
 ///     var zone = new Gcp.Dns.ManagedZone("zone", new()
 ///     {
-///         Name = "tf-test-dns_50206",
-///         DnsName = "private_9873.example.com.",
+///         Name = "tf-test-dns_34534",
+///         DnsName = "private_87829.example.com.",
 ///         Visibility = "private",
 ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
 ///         {
@@ -210,7 +211,7 @@ import 'managed_zone_state.dart';
 ///             { "intent", "example" },
 ///         },
 ///         TargetProject = targetProject.ProjectId,
-///         TargetVpc = "test",
+///         TargetVpc = "test-vpc",
 ///         Dns = zone.DnsName,
 ///     }, new CustomResourceOptions
 ///     {
@@ -227,19 +228,19 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/integrationconnectors"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		targetProject, err := organizations.NewProject(ctx, "target_project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_87829"),
-/// 			Name:           pulumi.String("tf-test_44023"),
+/// 			ProjectId:      pulumi.String("tf-test_31660"),
+/// 			Name:           pulumi.String("tf-test_97962"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -275,7 +276,7 @@ import 'managed_zone_state.dart';
 /// 		}
 /// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 /// 			Project:               targetProject.ProjectId,
-/// 			Name:                  pulumi.String("test"),
+/// 			Name:                  pulumi.String("test-vpc"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			compute2,
@@ -284,13 +285,13 @@ import 'managed_zone_state.dart';
 /// 			return err
 /// 		}
 /// 		zone, err := dns.NewManagedZone(ctx, "zone", &dns.ManagedZoneArgs{
-/// 			Name:       pulumi.String("tf-test-dns_50206"),
-/// 			DnsName:    pulumi.String("private_9873.example.com."),
+/// 			Name:       pulumi.String("tf-test-dns_34534"),
+/// 			DnsName:    pulumi.String("private_87829.example.com."),
 /// 			Visibility: pulumi.String("private"),
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -307,7 +308,7 @@ import 'managed_zone_state.dart';
 /// 				"intent": pulumi.String("example"),
 /// 			},
 /// 			TargetProject: targetProject.ProjectId,
-/// 			TargetVpc:     pulumi.String("test"),
+/// 			TargetVpc:     pulumi.String("test-vpc"),
 /// 			Dns:           zone.DnsName,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			dnsPeerBinding,
@@ -321,7 +322,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -329,56 +330,77 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 /// }
 ///
 /// resource "gcp_organizations_project" "target_project" {
-///   project_id      = "tf-test_87829"
-///   name            = "tf-test_44023"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project_id      = "tf-test_31660"
+///   name            = "tf-test_97962"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_projects_iammember" "dns_peer_binding" {
+/// resource "gcp_projects_i_a_m_member" "dns_peer_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.target_project.project_id
 ///   role    = "roles/dns.peer"
-///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.testProject.number}@gcp-sa-connectors.iam.gserviceaccount.com"
+///   member  ="serviceAccount:service-${data.gcp_organizations_project.testProject.number}@gcp-sa-connectors.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_projects_service" "dns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.target_project.project_id
 ///   service = "dns.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.target_project.project_id
 ///   service = "compute.googleapis.com"
 /// }
 /// resource "gcp_compute_network" "network" {
-///   depends_on              = [gcp_projects_service.compute]
+///   depends_on = [gcp_projects_service.compute]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = gcp_organizations_project.target_project.project_id
-///   name                    = "test"
+///   name                    = "test-vpc"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_dns_managedzone" "zone" {
+/// resource "gcp_dns_managed_zone" "zone" {
 ///   depends_on = [gcp_projects_service.dns]
-///   name       = "tf-test-dns_50206"
-///   dns_name   = "private_9873.example.com."
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name       = "tf-test-dns_34534"
+///   dns_name   = "private_87829.example.com."
 ///   visibility = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network.id
+///       network_url = gcp_compute_network.network.id
 ///     }]
 ///   }
 /// }
-/// resource "gcp_integrationconnectors_managedzone" "testmanagedzone" {
-///   depends_on  = [gcp_projects_iammember.dns_peer_binding, gcp_dns_managedzone.zone]
+/// resource "gcp_integrationconnectors_managed_zone" "testmanagedzone" {
+///   depends_on = [gcp_projects_i_a_m_member.dns_peer_binding, gcp_dns_managed_zone.zone]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test"
 ///   description = "tf created description"
 ///   labels = {
 ///     "intent" = "example"
 ///   }
 ///   target_project = gcp_organizations_project.target_project.project_id
-///   target_vpc     = "test"
-///   dns            = gcp_dns_managedzone.zone.dns_name
+///   target_vpc     = "test-vpc"
+///   dns            = gcp_dns_managed_zone.zone.dns_name
 /// }
 /// ```
 /// ```java
@@ -414,8 +436,8 @@ import 'managed_zone_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var targetProject = new Project("targetProject", ProjectArgs.builder()
-///             .projectId("tf-test_87829")
-///             .name("tf-test_44023")
+///             .projectId("tf-test_31660")
+///             .name("tf-test_97962")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -442,15 +464,15 @@ import 'managed_zone_state.dart';
 ///
 ///         var network = new Network("network", NetworkArgs.builder()
 ///             .project(targetProject.projectId())
-///             .name("test")
+///             .name("test-vpc")
 ///             .autoCreateSubnetworks(false)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(compute)
 ///                 .build());
 ///
 ///         var zone = new com.pulumi.gcp.dns.ManagedZone("zone", com.pulumi.gcp.dns.ManagedZoneArgs.builder()
-///             .name("tf-test-dns_50206")
-///             .dnsName("private_9873.example.com.")
+///             .name("tf-test-dns_34534")
+///             .dnsName("private_87829.example.com.")
 ///             .visibility("private")
 ///             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
 ///                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
@@ -466,7 +488,7 @@ import 'managed_zone_state.dart';
 ///             .description("tf created description")
 ///             .labels(Map.of("intent", "example"))
 ///             .targetProject(targetProject.projectId())
-///             .targetVpc("test")
+///             .targetVpc("test-vpc")
 ///             .dns(zone.dnsName())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
@@ -483,8 +505,8 @@ import 'managed_zone_state.dart';
 ///     type: gcp:organizations:Project
 ///     name: target_project
 ///     properties:
-///       projectId: tf-test_87829
-///       name: tf-test_44023
+///       projectId: tf-test_31660
+///       name: tf-test_97962
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -509,7 +531,7 @@ import 'managed_zone_state.dart';
 ///     type: gcp:compute:Network
 ///     properties:
 ///       project: ${targetProject.projectId}
-///       name: test
+///       name: test-vpc
 ///       autoCreateSubnetworks: false
 ///     options:
 ///       dependsOn:
@@ -517,8 +539,8 @@ import 'managed_zone_state.dart';
 ///   zone:
 ///     type: gcp:dns:ManagedZone
 ///     properties:
-///       name: tf-test-dns_50206
-///       dnsName: private_9873.example.com.
+///       name: tf-test-dns_34534
+///       dnsName: private_87829.example.com.
 ///       visibility: private
 ///       privateVisibilityConfig:
 ///         networks:
@@ -534,7 +556,7 @@ import 'managed_zone_state.dart';
 ///       labels:
 ///         intent: example
 ///       targetProject: ${targetProject.projectId}
-///       targetVpc: test
+///       targetVpc: test-vpc
 ///       dns: ${zone.dnsName}
 ///     options:
 ///       dependsOn:
@@ -612,7 +634,7 @@ class ManagedZone extends pulumi.CustomResource {
           'gcp:integrationconnectors/managedZone:ManagedZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

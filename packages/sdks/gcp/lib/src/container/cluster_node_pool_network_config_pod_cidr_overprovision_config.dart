@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
-  /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+  /// Whether Pod CIDR overprovisioning is disabled.
   ///
-  /// &lt;a name="nestedClusterTelemetry"&gt;&lt;/a&gt;The `clusterTelemetry` block supports
+  /// &lt;a name="nestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
   final pulumi.Input<bool> disabled;
 
   /// Creates a new [ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig].
-  /// [disabled] Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+  /// [disabled] Whether Pod CIDR overprovisioning is disabled.
   const ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig({
     required this.disabled,
   });

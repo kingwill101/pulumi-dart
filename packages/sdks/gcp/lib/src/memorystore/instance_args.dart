@@ -19,10 +19,10 @@ class InstanceArgs {
   /// The name of the ACL policy to attach to the instance.
   /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
   final pulumi.Input<String?>? aclPolicy;
-  /// Optional. Immutable. Authorization mode of the instance. Possible values:
+  /// Optional. Authorization mode of the instance. Possible values:
   /// AUTH_DISABLED
-  /// IAM_AUTH.
-  /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+  /// IAM_AUTH
+  /// TOKEN_AUTH
   final pulumi.Input<String?>? authorizationMode;
   /// The automated backup config for a instance.
   /// Structure is documented below.
@@ -40,8 +40,10 @@ class InstanceArgs {
   /// Optional. If set to true deletion of the instance will fail.
   final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Immutable. User inputs for the auto-created endpoints connections.
+  /// Structure is documented below.
   final pulumi.Input<List<InstanceDesiredAutoCreatedEndpoint>?>? desiredAutoCreatedEndpoints;
   /// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+  /// Structure is documented below.
   final pulumi.Input<List<InstanceDesiredPscAutoConnection>?>? desiredPscAutoConnections;
   /// Optional. User-provided engine configurations for the instance.
   final pulumi.Input<Map<String, String>?>? engineConfigs;
@@ -124,7 +126,7 @@ class InstanceArgs {
 
   /// Creates a new [InstanceArgs].
   /// [aclPolicy] The name of the ACL policy to attach to the instance.
-  /// [authorizationMode] Optional. Immutable. Authorization mode of the instance. Possible values:
+  /// [authorizationMode] Optional. Authorization mode of the instance. Possible values:
   /// [automatedBackupConfig] The automated backup config for a instance.
   /// [crossInstanceReplicationConfig] Cross instance replication config
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -239,10 +241,10 @@ class InstanceArgs {
       nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       persistenceConfig: (() { final guardedValue = map['persistenceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePersistenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serverCaMode: (() { final guardedValue = map['serverCaMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverCaPool: (() { final guardedValue = map['serverCaPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shardCount: pulumi.Input.fromValue((map['shardCount'] as num).toInt()),
+      shardCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['shardCount'])),
       transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneDistributionConfig: (() { final guardedValue = map['zoneDistributionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceZoneDistributionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

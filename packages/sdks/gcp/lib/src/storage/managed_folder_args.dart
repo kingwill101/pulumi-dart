@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'managed_folder_rapid_cache_config.dart';
 
 /// {@template pulumi_storage_managed_folder_managed_folder_args_doc}
 /// The set of arguments for ManagedFolder.
@@ -24,17 +25,22 @@ class ManagedFolderArgs {
   /// The name of the managed folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`.
   final pulumi.Input<String?>? name;
+  /// Configuration options for the rapid cache of a managed folder.
+  /// Structure is documented below.
+  final pulumi.Input<ManagedFolderRapidCacheConfig?>? rapidCacheConfig;
 
   /// Creates a new [ManagedFolderArgs].
   /// [bucket] The name of the bucket that contains the managed folder.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [forceDestroy] Allows the deletion of a managed folder even if contains
   /// [name] The name of the managed folder expressed as a path. Must include
+  /// [rapidCacheConfig] Configuration options for the rapid cache of a managed folder.
   const ManagedFolderArgs({
     required this.bucket,
     this.deletionPolicy,
     this.forceDestroy,
     this.name,
+    this.rapidCacheConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -43,6 +49,7 @@ class ManagedFolderArgs {
       'deletionPolicy': ?deletionPolicy,
       'forceDestroy': ?forceDestroy,
       'name': ?name,
+      'rapidCacheConfig': ?pulumi.Input.mapOptionalInputValue<ManagedFolderRapidCacheConfig, Map<String, dynamic>>(rapidCacheConfig, (value) => value.toMap()),
     };
   }
 
@@ -52,6 +59,7 @@ class ManagedFolderArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rapidCacheConfig: (() { final guardedValue = map['rapidCacheConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedFolderRapidCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

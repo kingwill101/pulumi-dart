@@ -197,7 +197,7 @@ class GetFunctionResult {
   factory GetFunctionResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionResult(
       automaticUpdatePolicies: (() { final guardedValue = map['automaticUpdatePolicies']; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); })(),
-      availableMemoryMb: (() { final guardedValue = map['availableMemoryMb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      availableMemoryMb: (() { final guardedValue = map['availableMemoryMb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       buildEnvironmentVariables: (() { final guardedValue = map['buildEnvironmentVariables']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       buildServiceAccount: (() { final guardedValue = map['buildServiceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       buildWorkerPool: (() { final guardedValue = map['buildWorkerPool']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -215,8 +215,8 @@ class GetFunctionResult {
       ingressSettings: (() { final guardedValue = map['ingressSettings']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       onDeployUpdatePolicies: (() { final guardedValue = map['onDeployUpdatePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFunctionOnDeployUpdatePolicy>(guardedValue, (value) => GetFunctionOnDeployUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -230,7 +230,7 @@ class GetFunctionResult {
       sourceArchiveObject: (() { final guardedValue = map['sourceArchiveObject']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceRepositories: (() { final guardedValue = map['sourceRepositories']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFunctionSourceRepository>(guardedValue, (value) => GetFunctionSourceRepository.fromMap((value as Map).cast<String, dynamic>())); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       triggerHttp: (() { final guardedValue = map['triggerHttp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vpcConnector: (() { final guardedValue = map['vpcConnector']; if (guardedValue == null) return null; return guardedValue as String; })(),

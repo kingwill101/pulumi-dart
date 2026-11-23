@@ -7,6 +7,7 @@ import 'dns_authorization_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Certificate Manager Dns Authorization Basic
@@ -68,7 +69,7 @@ import 'dns_authorization_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +98,7 @@ import 'dns_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,20 +106,23 @@ import 'dns_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificatemanager_dnsauthorization" "default" {
+/// resource "gcp_certificatemanager_dns_authorization" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth"
 ///   location    = "global"
 ///   description = "The default dns"
 ///   domain      = "subdomain.hashicorptest.com"
 /// }
 /// output "recordNameToInsert" {
-///   value = gcp_certificatemanager_dnsauthorization.default.dns_resource_records[0].name
+///   value = gcp_certificatemanager_dns_authorization.default.dns_resource_records[0].name
 /// }
 /// output "recordTypeToInsert" {
-///   value = gcp_certificatemanager_dnsauthorization.default.dns_resource_records[0].type
+///   value = gcp_certificatemanager_dns_authorization.default.dns_resource_records[0].type
 /// }
 /// output "recordDataToInsert" {
-///   value = gcp_certificatemanager_dnsauthorization.default.dns_resource_records[0].data
+///   value = gcp_certificatemanager_dns_authorization.default.dns_resource_records[0].data
 /// }
 /// ```
 /// ```java
@@ -170,6 +174,7 @@ import 'dns_authorization_state.dart';
 ///   recordDataToInsert: ${default.dnsResourceRecords[0].data}
 /// ```
 ///
+///
 /// ### Certificate Manager Dns Authorization Regional
 ///
 ///
@@ -220,7 +225,7 @@ import 'dns_authorization_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +246,7 @@ import 'dns_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,7 +254,10 @@ import 'dns_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificatemanager_dnsauthorization" "default" {
+/// resource "gcp_certificatemanager_dns_authorization" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth"
 ///   location    = "us-central1"
 ///   description = "reginal dns"
@@ -376,7 +384,7 @@ class DnsAuthorization extends pulumi.CustomResource {
           'gcp:certificatemanager/dnsAuthorization:DnsAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

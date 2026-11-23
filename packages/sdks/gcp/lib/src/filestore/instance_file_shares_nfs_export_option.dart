@@ -59,8 +59,8 @@ class InstanceFileSharesNfsExportOption {
   factory InstanceFileSharesNfsExportOption.fromMap(Map<String, dynamic> map) {
     return InstanceFileSharesNfsExportOption(
       accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      anonGid: (() { final guardedValue = map['anonGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      anonUid: (() { final guardedValue = map['anonUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      anonGid: (() { final guardedValue = map['anonGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      anonUid: (() { final guardedValue = map['anonUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipRanges: (() { final guardedValue = map['ipRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       squashMode: (() { final guardedValue = map['squashMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

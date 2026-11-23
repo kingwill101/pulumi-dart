@@ -12,6 +12,9 @@ class NetworkEndpointListNetworkEndpoint {
   /// range).
   /// **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
   final pulumi.Input<String?>? ipAddress;
+  /// IPv6 address of network endpoint. The result of parsing the endpoint config,
+  /// or empty if IPv6 is not used.
+  final pulumi.Input<String?>? ipv6Address;
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
@@ -20,10 +23,12 @@ class NetworkEndpointListNetworkEndpoint {
   /// Creates a new [NetworkEndpointListNetworkEndpoint].
   /// [instance] The name for a specific VM instance that the IP address belongs to.
   /// [ipAddress] IPv4 address of network endpoint. The IP address must belong
+  /// [ipv6Address] IPv6 address of network endpoint. The result of parsing the endpoint config,
   /// [port] Port number of network endpoint.
   const NetworkEndpointListNetworkEndpoint({
     this.instance,
     this.ipAddress,
+    this.ipv6Address,
     this.port,
   });
 
@@ -31,6 +36,7 @@ class NetworkEndpointListNetworkEndpoint {
     return <String, dynamic>{
       'instance': ?instance,
       'ipAddress': ?ipAddress,
+      'ipv6Address': ?ipv6Address,
       'port': ?port,
     };
   }
@@ -39,7 +45,8 @@ class NetworkEndpointListNetworkEndpoint {
     return NetworkEndpointListNetworkEndpoint(
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

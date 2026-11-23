@@ -36,7 +36,7 @@ class WireGroupWireProperties {
   factory WireGroupWireProperties.fromMap(Map<String, dynamic> map) {
     return WireGroupWireProperties(
       bandwidthAllocation: pulumi.Input.fromValue(map['bandwidthAllocation'] as String),
-      bandwidthUnmetered: (() { final guardedValue = map['bandwidthUnmetered']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bandwidthUnmetered: (() { final guardedValue = map['bandwidthUnmetered']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       faultResponse: (() { final guardedValue = map['faultResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

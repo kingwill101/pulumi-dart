@@ -21,7 +21,7 @@ class BareMetalAdminClusterNodeConfig {
 
   factory BareMetalAdminClusterNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterNodeConfig(
-      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -34,7 +34,7 @@ class ReferenceListArgs {
   final pulumi.Input<String> referenceListId;
   /// ScopeInfo specifies the scope info of the reference list.
   /// Structure is documented below.
-  final pulumi.Input<List<ReferenceListScopeInfo>?>? scopeInfos;
+  final pulumi.Input<ReferenceListScopeInfo?>? scopeInfo;
   /// Possible values:
   /// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
   /// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -48,7 +48,7 @@ class ReferenceListArgs {
   /// [location] The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   /// [project] The ID of the project in which the resource belongs.
   /// [referenceListId] Required. The ID to use for the reference list. This is also the display name for
-  /// [scopeInfos] ScopeInfo specifies the scope info of the reference list.
+  /// [scopeInfo] ScopeInfo specifies the scope info of the reference list.
   /// [syntaxType] Possible values:
   const ReferenceListArgs({
     required this.description,
@@ -57,7 +57,7 @@ class ReferenceListArgs {
     required this.location,
     this.project,
     required this.referenceListId,
-    this.scopeInfos,
+    this.scopeInfo,
     required this.syntaxType,
   });
 
@@ -69,7 +69,7 @@ class ReferenceListArgs {
       'location': location,
       'project': ?project,
       'referenceListId': referenceListId,
-      'scopeInfos': ?pulumi.Input.mapOptionalInputValue<List<ReferenceListScopeInfo>, List<Map<String, dynamic>>>(scopeInfos, (value) => pulumi.Input.encodeList<ReferenceListScopeInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scopeInfo': ?pulumi.Input.mapOptionalInputValue<ReferenceListScopeInfo, Map<String, dynamic>>(scopeInfo, (value) => value.toMap()),
       'syntaxType': syntaxType,
     };
   }
@@ -82,7 +82,7 @@ class ReferenceListArgs {
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       referenceListId: pulumi.Input.fromValue(map['referenceListId'] as String),
-      scopeInfos: (() { final guardedValue = map['scopeInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      scopeInfo: (() { final guardedValue = map['scopeInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReferenceListScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       syntaxType: pulumi.Input.fromValue(map['syntaxType'] as String),
     );
   }

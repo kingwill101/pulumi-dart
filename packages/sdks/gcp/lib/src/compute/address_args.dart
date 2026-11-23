@@ -81,6 +81,9 @@ class AddressArgs {
   /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
   /// configure Private Service Connect. Only global internal addresses can use
   /// this purpose.
+  /// * SYSTEM_MANAGED for regional internal IP address that is reserved and
+  /// managed internally. It can not be assigned to compute resources such as
+  /// VM and internal load balancer.
   /// This should only be set when using an Internal address.
   final pulumi.Input<String?>? purpose;
   /// The Region in which the created address should reside.
@@ -89,7 +92,8 @@ class AddressArgs {
   /// The URL of the subnetwork in which to reserve the address. If an IP
   /// address is specified, it must be within the subnetwork's IP range.
   /// This field can only be used with INTERNAL type with
-  /// GCE_ENDPOINT/DNS_RESOLVER purposes.
+  /// GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+  /// when `ipv6EndpointType` is `VM` or `NETLB`.
   final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [AddressArgs].
@@ -162,7 +166,7 @@ class AddressArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkTier: (() { final guardedValue = map['networkTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

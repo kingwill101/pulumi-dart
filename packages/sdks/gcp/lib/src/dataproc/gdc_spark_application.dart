@@ -15,6 +15,7 @@ import 'gdc_spark_application_state.dart';
 /// * How-to Guides
 /// * [Dataproc Intro](https://cloud.google.com/dataproc/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dataprocgdc Sparkapplication Basic
@@ -89,7 +90,7 @@ import 'gdc_spark_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +120,7 @@ import 'gdc_spark_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,7 +128,10 @@ import 'gdc_spark_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+/// resource "gcp_dataproc_gdc_spark_application" "spark-application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spark_application_id = "tf-e2e-spark-app-basic"
 ///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
 ///   project              = "my-project"
@@ -195,6 +199,7 @@ import 'gdc_spark_application_state.dart';
 ///         args:
 ///           - '10000'
 /// ```
+///
 ///
 /// ### Dataprocgdc Sparkapplication
 ///
@@ -332,7 +337,7 @@ import 'gdc_spark_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -386,7 +391,7 @@ import 'gdc_spark_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -394,14 +399,20 @@ import 'gdc_spark_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcapplicationenvironment" "app_env" {
+/// resource "gcp_dataproc_gdc_application_environment" "app_env" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_environment_id = "tf-e2e-spark-app-env"
 ///   serviceinstance            = "do-not-delete-dataproc-gdc-instance"
 ///   project                    = "my-project"
 ///   location                   = "us-west2"
 ///   namespace                  = "default"
 /// }
-/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+/// resource "gcp_dataproc_gdc_spark_application" "spark-application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spark_application_id = "tf-e2e-spark-app"
 ///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
 ///   project              = "my-project"
@@ -416,7 +427,7 @@ import 'gdc_spark_application_state.dart';
 ///   properties = {
 ///     "spark.executor.instances" = "2"
 ///   }
-///   application_environment = gcp_dataproc_gdcapplicationenvironment.app_env.name
+///   application_environment = gcp_dataproc_gdc_application_environment.app_env.name
 ///   version                 = "1.2"
 ///   spark_application_config = {
 ///     main_jar_file_uri = "file:///usr/lib/spark/examples/jars/spark-examples.jar"
@@ -517,6 +528,7 @@ import 'gdc_spark_application_state.dart';
 ///           - file:///usr/lib/spark/examples/jars/spark-examples.jar
 /// ```
 ///
+///
 /// ### Dataprocgdc Sparkapplication Pyspark
 ///
 ///
@@ -616,7 +628,7 @@ import 'gdc_spark_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -659,7 +671,7 @@ import 'gdc_spark_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -667,7 +679,10 @@ import 'gdc_spark_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+/// resource "gcp_dataproc_gdc_spark_application" "spark-application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spark_application_id = "tf-e2e-pyspark-app"
 ///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
 ///   project              = "my-project"
@@ -755,6 +770,7 @@ import 'gdc_spark_application_state.dart';
 ///           - '10'
 /// ```
 ///
+///
 /// ### Dataprocgdc Sparkapplication Sparkr
 ///
 ///
@@ -836,7 +852,7 @@ import 'gdc_spark_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -870,7 +886,7 @@ import 'gdc_spark_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -878,7 +894,10 @@ import 'gdc_spark_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+/// resource "gcp_dataproc_gdc_spark_application" "spark-application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spark_application_id = "tf-e2e-sparkr-app"
 ///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
 ///   project              = "my-project"
@@ -953,6 +972,7 @@ import 'gdc_spark_application_state.dart';
 ///         args:
 ///           - '10'
 /// ```
+///
 ///
 /// ### Dataprocgdc Sparkapplication Sparksql
 ///
@@ -1043,7 +1063,7 @@ import 'gdc_spark_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1078,7 +1098,7 @@ import 'gdc_spark_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1086,7 +1106,10 @@ import 'gdc_spark_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+/// resource "gcp_dataproc_gdc_spark_application" "spark-application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spark_application_id = "tf-e2e-sparksql-app"
 ///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
 ///   project              = "my-project"
@@ -1167,6 +1190,7 @@ import 'gdc_spark_application_state.dart';
 ///           MY_VAR: '1'
 /// ```
 ///
+///
 /// ### Dataprocgdc Sparkapplication Sparksql Query File
 ///
 ///
@@ -1246,7 +1270,7 @@ import 'gdc_spark_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1277,7 +1301,7 @@ import 'gdc_spark_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1285,7 +1309,10 @@ import 'gdc_spark_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+/// resource "gcp_dataproc_gdc_spark_application" "spark-application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spark_application_id = "tf-e2e-sparksql-app"
 ///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
 ///   project              = "my-project"
@@ -1471,7 +1498,7 @@ class GdcSparkApplication extends pulumi.CustomResource {
           'gcp:dataproc/gdcSparkApplication:GdcSparkApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

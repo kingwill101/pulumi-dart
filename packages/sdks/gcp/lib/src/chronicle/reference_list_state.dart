@@ -45,7 +45,7 @@ class ReferenceListState {
   final pulumi.Input<List<String>?>? rules;
   /// ScopeInfo specifies the scope info of the reference list.
   /// Structure is documented below.
-  final pulumi.Input<List<ReferenceListScopeInfo>?>? scopeInfos;
+  final pulumi.Input<ReferenceListScopeInfo?>? scopeInfo;
   /// Possible values:
   /// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
   /// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -64,7 +64,7 @@ class ReferenceListState {
   /// [revisionCreateTime] Output only. The timestamp when the reference list was last updated.
   /// [ruleAssociationsCount] Output only. The count of self-authored rules using the reference list.
   /// [rules] Output only. The resource names for the associated self-authored Rules that use this
-  /// [scopeInfos] ScopeInfo specifies the scope info of the reference list.
+  /// [scopeInfo] ScopeInfo specifies the scope info of the reference list.
   /// [syntaxType] Possible values:
   const ReferenceListState({
     this.description,
@@ -78,7 +78,7 @@ class ReferenceListState {
     this.revisionCreateTime,
     this.ruleAssociationsCount,
     this.rules,
-    this.scopeInfos,
+    this.scopeInfo,
     this.syntaxType,
   });
 
@@ -95,7 +95,7 @@ class ReferenceListState {
       'revisionCreateTime': ?revisionCreateTime,
       'ruleAssociationsCount': ?ruleAssociationsCount,
       'rules': ?rules,
-      'scopeInfos': ?pulumi.Input.mapOptionalInputValue<List<ReferenceListScopeInfo>, List<Map<String, dynamic>>>(scopeInfos, (value) => pulumi.Input.encodeList<ReferenceListScopeInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scopeInfo': ?pulumi.Input.mapOptionalInputValue<ReferenceListScopeInfo, Map<String, dynamic>>(scopeInfo, (value) => value.toMap()),
       'syntaxType': ?syntaxType,
     };
   }
@@ -111,9 +111,9 @@ class ReferenceListState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       referenceListId: (() { final guardedValue = map['referenceListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ruleAssociationsCount: (() { final guardedValue = map['ruleAssociationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ruleAssociationsCount: (() { final guardedValue = map['ruleAssociationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      scopeInfos: (() { final guardedValue = map['scopeInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      scopeInfo: (() { final guardedValue = map['scopeInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReferenceListScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       syntaxType: (() { final guardedValue = map['syntaxType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

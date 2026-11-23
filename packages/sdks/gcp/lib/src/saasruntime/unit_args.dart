@@ -15,6 +15,12 @@ class UnitArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>?>? annotations;
+  /// Reference to the App Hub Application this Unit belongs to, in the format
+  /// `projects/{project}/locations/{location}/applications/{application}`.
+  /// All resources deployed in this Unit are associated with the specified
+  /// Application. If empty, the service sets it during any UnitOperation
+  /// when the UnitKind has `app_params.group` and App Hub is enabled.
+  final pulumi.Input<String?>? application;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -56,6 +62,7 @@ class UnitArgs {
 
   /// Creates a new [UnitArgs].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
+  /// [application] Reference to the App Hub Application this Unit belongs to, in the format
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [labels] The labels on the resource, which can be used for categorization.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -67,6 +74,7 @@ class UnitArgs {
   /// [unitKind] Reference to the UnitKind this Unit belongs to. Immutable once set.
   const UnitArgs({
     this.annotations,
+    this.application,
     this.deletionPolicy,
     this.labels,
     required this.location,
@@ -81,6 +89,7 @@ class UnitArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'application': ?application,
       'deletionPolicy': ?deletionPolicy,
       'labels': ?labels,
       'location': location,
@@ -96,6 +105,7 @@ class UnitArgs {
   factory UnitArgs.fromMap(Map<String, dynamic> map) {
     return UnitArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      application: (() { final guardedValue = map['application']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),

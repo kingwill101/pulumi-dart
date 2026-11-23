@@ -13,6 +13,7 @@ import 'active_directory_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Netapp Active Directory Full
@@ -147,7 +148,7 @@ import 'active_directory_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +195,7 @@ import 'active_directory_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -202,7 +203,10 @@ import 'active_directory_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_netapp_activedirectory" "test_active_directory_full" {
+/// resource "gcp_netapp_active_directory" "test_active_directory_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "test-active-directory-full"
 ///   location               = "us-central1"
 ///   domain                 = "ad.internal"
@@ -416,7 +420,7 @@ class ActiveDirectory extends pulumi.CustomResource {
           'gcp:netapp/activeDirectory:ActiveDirectory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'password', 'pulumiLabels'],
         ) {
     administrators = registerOutput<List<String>?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

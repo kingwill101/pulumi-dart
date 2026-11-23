@@ -13,6 +13,7 @@ import 'rule_state.dart';
 /// * How-to Guides
 /// * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Chronicle Rule Basic
@@ -63,7 +64,7 @@ import 'rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -83,7 +84,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -92,10 +93,16 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "gcp_chronicle_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us"
 ///   instance        = "00000000-0000-0000-0000-000000000000"
 ///   deletion_policy = "DEFAULT"
-///   text            = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+///   text            = <<-EOT
+/// rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -142,6 +149,7 @@ import 'rule_state.dart';
 ///       text: |
 ///         rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
 /// ```
+///
 ///
 /// ### Chronicle Rule With Force Deletion
 ///
@@ -191,7 +199,7 @@ import 'rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -211,7 +219,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -220,10 +228,16 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "gcp_chronicle_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us"
 ///   instance        = "00000000-0000-0000-0000-000000000000"
 ///   deletion_policy = "FORCE"
-///   text            = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+///   text            = <<-EOT
+/// rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -270,6 +284,7 @@ import 'rule_state.dart';
 ///       text: |
 ///         rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
 /// ```
+///
 ///
 /// ### Chronicle Rule With Data Access Scope
 ///
@@ -351,7 +366,7 @@ import 'rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -385,7 +400,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -393,7 +408,10 @@ import 'rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccessscope" "data_access_scope_test" {
+/// resource "gcp_chronicle_data_access_scope" "data_access_scope_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-name"
@@ -403,10 +421,16 @@ import 'rule_state.dart';
 ///   }
 /// }
 /// resource "gcp_chronicle_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us"
 ///   instance = "00000000-0000-0000-0000-000000000000"
 ///   scope    = googleChronicleDataAccessScope.dataAccessScopeTest.name
-///   text     = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+///   text     = <<-EOT
+/// rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -609,7 +633,7 @@ class Rule extends pulumi.CustomResource {
           'gcp:chronicle/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     author = registerOutput<String>('author');

@@ -39,7 +39,7 @@ class ServiceAttachmentConsumerAcceptList {
 
   factory ServiceAttachmentConsumerAcceptList.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerAcceptList(
-      connectionLimit: pulumi.Input.fromValue((map['connectionLimit'] as num).toInt()),
+      connectionLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['connectionLimit'])),
       endpointUrl: (() { final guardedValue = map['endpointUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkUrl: (() { final guardedValue = map['networkUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectIdOrNum: (() { final guardedValue = map['projectIdOrNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -62,6 +62,10 @@ class GetCloudVmClustersCloudVmCluster {
   /// The name of the VPC network.
   /// Format: projects/{project}/global/networks/{network}
   final pulumi.Input<String> network;
+  /// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+  final pulumi.Input<String> odbDnsZone;
   /// The name of the OdbNetwork associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -99,6 +103,7 @@ class GetCloudVmClustersCloudVmCluster {
   /// [location] The location of the resource.
   /// [name] Identifier. The name of the VM Cluster resource with the format:
   /// [network] The name of the VPC network.
+  /// [odbDnsZone] The name of the OdbDnsZone for using custom domain name for the VM Cluster.
   /// [odbNetwork] The name of the OdbNetwork associated with the VM Cluster.
   /// [odbSubnet] The name of the OdbSubnet associated with the VM Cluster for
   /// [project] The project to which the resource belongs. If it
@@ -122,6 +127,7 @@ class GetCloudVmClustersCloudVmCluster {
     required this.location,
     required this.name,
     required this.network,
+    required this.odbDnsZone,
     required this.odbNetwork,
     required this.odbSubnet,
     required this.project,
@@ -148,6 +154,7 @@ class GetCloudVmClustersCloudVmCluster {
       'location': location,
       'name': name,
       'network': network,
+      'odbDnsZone': odbDnsZone,
       'odbNetwork': odbNetwork,
       'odbSubnet': odbSubnet,
       'project': project,
@@ -175,6 +182,7 @@ class GetCloudVmClustersCloudVmCluster {
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
+      odbDnsZone: pulumi.Input.fromValue(map['odbDnsZone'] as String),
       odbNetwork: pulumi.Input.fromValue(map['odbNetwork'] as String),
       odbSubnet: pulumi.Input.fromValue(map['odbSubnet'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),

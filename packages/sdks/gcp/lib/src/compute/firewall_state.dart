@@ -46,6 +46,8 @@ class FirewallState {
   /// This field denotes whether to enable logging for a particular firewall rule.
   /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
   final pulumi.Input<bool?>? enableLogging;
+  /// The unique identifier number for the resource. This identifier is defined by the server.
+  final pulumi.Input<int?>? firewallId;
   /// This field denotes the logging options for a particular firewall rule.
   /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
   /// Structure is documented below.
@@ -132,6 +134,7 @@ class FirewallState {
   /// [direction] Direction of traffic to which this firewall applies; default is
   /// [disabled] Denotes whether the firewall rule is disabled, i.e not applied to the
   /// [enableLogging] This field denotes whether to enable logging for a particular firewall rule.
+  /// [firewallId] The unique identifier number for the resource. This identifier is defined by the server.
   /// [logConfig] This field denotes the logging options for a particular firewall rule.
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [network] The name or selfLink of the network to attach this firewall to.
@@ -154,6 +157,7 @@ class FirewallState {
     this.direction,
     this.disabled,
     this.enableLogging,
+    this.firewallId,
     this.logConfig,
     this.name,
     this.network,
@@ -179,6 +183,7 @@ class FirewallState {
       'direction': ?direction,
       'disabled': ?disabled,
       'enableLogging': ?enableLogging,
+      'firewallId': ?firewallId,
       'logConfig': ?pulumi.Input.mapOptionalInputValue<FirewallLogConfig, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
       'name': ?name,
       'network': ?network,
@@ -205,11 +210,12 @@ class FirewallState {
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableLogging: (() { final guardedValue = map['enableLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      firewallId: (() { final guardedValue = map['firewallId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logConfig: (() { final guardedValue = map['logConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceRanges: (() { final guardedValue = map['sourceRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

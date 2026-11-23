@@ -85,20 +85,20 @@ class GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig {
 
   factory GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig(
-      cpuUtilizationThresholdPercent: pulumi.Input.fromValue((map['cpuUtilizationThresholdPercent'] as num).toInt()),
+      cpuUtilizationThresholdPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuUtilizationThresholdPercent'])),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      historyListLengthThresholdCount: pulumi.Input.fromValue((map['historyListLengthThresholdCount'] as num).toInt()),
-      memoryUsageThresholdPercent: pulumi.Input.fromValue((map['memoryUsageThresholdPercent'] as num).toInt()),
-      probeThreshold: pulumi.Input.fromValue((map['probeThreshold'] as num).toInt()),
-      probingIntervalSeconds: pulumi.Input.fromValue((map['probingIntervalSeconds'] as num).toInt()),
-      runningThreadsThreshold: pulumi.Input.fromValue((map['runningThreadsThreshold'] as num).toInt()),
-      secondsBehindSourceThreshold: pulumi.Input.fromValue((map['secondsBehindSourceThreshold'] as num).toInt()),
-      semaphoreWaitThresholdCount: pulumi.Input.fromValue((map['semaphoreWaitThresholdCount'] as num).toInt()),
-      transactionDurationThreshold: pulumi.Input.fromValue((map['transactionDurationThreshold'] as num).toInt()),
+      historyListLengthThresholdCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['historyListLengthThresholdCount'])),
+      memoryUsageThresholdPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryUsageThresholdPercent'])),
+      probeThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['probeThreshold'])),
+      probingIntervalSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['probingIntervalSeconds'])),
+      runningThreadsThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runningThreadsThreshold'])),
+      secondsBehindSourceThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['secondsBehindSourceThreshold'])),
+      semaphoreWaitThresholdCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['semaphoreWaitThresholdCount'])),
+      transactionDurationThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionDurationThreshold'])),
       transactionKillExcludedUserHosts: pulumi.Input.fromValue((map['transactionKillExcludedUserHosts'] as List).cast<String>()),
-      transactionKillThresholdSeconds: pulumi.Input.fromValue((map['transactionKillThresholdSeconds'] as num).toInt()),
+      transactionKillThresholdSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionKillThresholdSeconds'])),
       transactionKillType: pulumi.Input.fromValue(map['transactionKillType'] as String),
-      transactionLockWaitThresholdCount: pulumi.Input.fromValue((map['transactionLockWaitThresholdCount'] as num).toInt()),
+      transactionLockWaitThresholdCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionLockWaitThresholdCount'])),
     );
   }
 }

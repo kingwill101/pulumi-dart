@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workstation_config_host_gce_instance_accelerator.dart';
 import 'workstation_config_host_gce_instance_boost_config.dart';
 import 'workstation_config_host_gce_instance_confidential_instance_config.dart';
+import 'workstation_config_host_gce_instance_reservation_affinity.dart';
 import 'workstation_config_host_gce_instance_shielded_instance_config.dart';
 
 class WorkstationConfigHostGceInstance {
@@ -31,6 +32,10 @@ class WorkstationConfigHostGceInstance {
   final pulumi.Input<String?>? machineType;
   /// Number of instances to pool for faster workstation startup.
   final pulumi.Input<int?>? poolSize;
+  /// (Optional, Beta)
+  /// Reservation affinity to setup a GCE instance.
+  /// Structure is documented below.
+  final pulumi.Input<WorkstationConfigHostGceInstanceReservationAffinity?>? reservationAffinity;
   /// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
   final pulumi.Input<String?>? serviceAccount;
   /// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
@@ -58,6 +63,7 @@ class WorkstationConfigHostGceInstance {
   /// [instanceMetadata] Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
   /// [machineType] The name of a Compute Engine machine type.
   /// [poolSize] Number of instances to pool for faster workstation startup.
+  /// [reservationAffinity] (Optional, Beta)
   /// [serviceAccount] Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
   /// [serviceAccountScopes] Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
   /// [shieldedInstanceConfig] A set of Compute Engine Shielded instance options.
@@ -74,6 +80,7 @@ class WorkstationConfigHostGceInstance {
     this.instanceMetadata,
     this.machineType,
     this.poolSize,
+    this.reservationAffinity,
     this.serviceAccount,
     this.serviceAccountScopes,
     this.shieldedInstanceConfig,
@@ -93,6 +100,7 @@ class WorkstationConfigHostGceInstance {
       'instanceMetadata': ?instanceMetadata,
       'machineType': ?machineType,
       'poolSize': ?poolSize,
+      'reservationAffinity': ?pulumi.Input.mapOptionalInputValue<WorkstationConfigHostGceInstanceReservationAffinity, Map<String, dynamic>>(reservationAffinity, (value) => value.toMap()),
       'serviceAccount': ?serviceAccount,
       'serviceAccountScopes': ?serviceAccountScopes,
       'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<WorkstationConfigHostGceInstanceShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
@@ -105,14 +113,15 @@ class WorkstationConfigHostGceInstance {
     return WorkstationConfigHostGceInstance(
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(guardedValue, (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       boostConfigs: (() { final guardedValue = map['boostConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(guardedValue, (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       confidentialInstanceConfig: (() { final guardedValue = map['confidentialInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disablePublicIpAddresses: (() { final guardedValue = map['disablePublicIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableSsh: (() { final guardedValue = map['disableSsh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceMetadata: (() { final guardedValue = map['instanceMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      reservationAffinity: (() { final guardedValue = map['reservationAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHostGceInstanceReservationAffinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccountScopes: (() { final guardedValue = map['serviceAccountScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       shieldedInstanceConfig: (() { final guardedValue = map['shieldedInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHostGceInstanceShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -40,7 +40,7 @@ class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal {
   factory ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal.fromMap(Map<String, dynamic> map) {
     return ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal(
       currencyCode: (() { final guardedValue = map['currencyCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       units: (() { final guardedValue = map['units']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

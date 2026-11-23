@@ -3,6 +3,7 @@ import 'repository_args.dart';
 import 'repository_cleanup_policy.dart';
 import 'repository_docker_config.dart';
 import 'repository_maven_config.dart';
+import 'repository_platform_logs_config.dart';
 import 'repository_remote_repository_config.dart';
 import 'repository_state.dart';
 import 'repository_virtual_repository_config.dart';
@@ -16,6 +17,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+///
 ///
 /// ## Example Usage
 ///
@@ -66,7 +68,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +88,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,6 +97,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository"
@@ -143,6 +148,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       format: DOCKER
 /// ```
 ///
+///
 /// ### Artifact Registry Repository Multi Region
 ///
 ///
@@ -190,7 +196,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -210,7 +216,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -219,6 +225,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository"
 ///   location      = "us"
@@ -266,6 +275,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       location: us
 ///       format: DOCKER
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Docker
 ///
@@ -324,7 +334,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -347,7 +357,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -356,6 +366,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository"
@@ -412,6 +425,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       dockerConfig:
 ///         immutableTags: true
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Cmek
 ///
@@ -492,9 +506,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -529,7 +543,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -537,21 +551,27 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
-///   depends_on    = [gcp_kms_cryptokeyiammember.crypto_key]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository with cmek"
 ///   format        = "DOCKER"
 ///   kms_key_name  = "kms-key"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -628,6 +648,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Virtual
 ///
@@ -763,7 +784,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -797,12 +818,12 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 				UpstreamPolicies: artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArray{
 /// 					&artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{
 /// 						Id:         pulumi.String("my-repository-upstream-1"),
-/// 						Repository: my_repo_upstream_1.ID().ToIDOutput().ToStringOutput(),
+/// 						Repository: my_repo_upstream_1.ID(),
 /// 						Priority:   pulumi.Int(20),
 /// 					},
 /// 					&artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{
 /// 						Id:         pulumi.String("my-repository-upstream-2"),
-/// 						Repository: my_repo_upstream_2.ID().ToIDOutput().ToStringOutput(),
+/// 						Repository: my_repo_upstream_2.ID(),
 /// 						Priority:   pulumi.Int(10),
 /// 					},
 /// 				},
@@ -816,7 +837,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -825,18 +846,27 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo-upstream-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository-upstream-1"
 ///   description   = "example docker repository (upstream source) 1"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo-upstream-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository-upstream-2"
 ///   description   = "example docker repository (upstream source) 2"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example virtual docker repository"
@@ -844,13 +874,13 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   mode          = "VIRTUAL_REPOSITORY"
 ///   virtual_repository_config = {
 ///     upstream_policies = [{
-///       "id"         = "my-repository-upstream-1"
-///       "repository" = gcp_artifactregistry_repository.my-repo-upstream-1.id
-///       "priority"   = 20
+///       id         = "my-repository-upstream-1"
+///       repository = gcp_artifactregistry_repository.my-repo-upstream-1.id
+///       priority   = 20
 ///       }, {
-///       "id"         = "my-repository-upstream-2"
-///       "repository" = gcp_artifactregistry_repository.my-repo-upstream-2.id
-///       "priority"   = 10
+///       id         = "my-repository-upstream-2"
+///       repository = gcp_artifactregistry_repository.my-repo-upstream-2.id
+///       priority   = 10
 ///     }]
 ///   }
 /// }
@@ -950,6 +980,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///             priority: 10
 /// ```
 ///
+///
 /// ### Artifact Registry Repository Remote
 ///
 ///
@@ -1020,7 +1051,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1047,7 +1078,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1056,6 +1087,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example remote docker repository"
@@ -1124,6 +1158,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///         dockerRepository:
 ///           publicRepository: DOCKER_HUB
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Connector
 ///
@@ -1274,9 +1309,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1296,14 +1331,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -1339,7 +1374,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1347,25 +1382,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example remote docker repository with no cache (connector mode)"
@@ -1380,7 +1427,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///     no_cache = {}
@@ -1516,6 +1563,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Artifact Registry Repository Remote Apt
 ///
 ///
@@ -1596,7 +1644,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1626,7 +1674,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1635,6 +1683,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "debian-stable"
 ///   description   = "example remote apt repository"
@@ -1712,6 +1763,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///             repositoryBase: DEBIAN
 ///             repositoryPath: debian/dists/stable
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Yum
 ///
@@ -1793,7 +1845,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1823,7 +1875,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1832,6 +1884,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "rocky-9"
 ///   description   = "example remote yum repository"
@@ -1909,6 +1964,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///             repositoryBase: ROCKY
 ///             repositoryPath: pub/rocky/9/BaseOS/x86_64/os
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Cleanup
 ///
@@ -2136,7 +2192,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2212,7 +2268,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2221,6 +2277,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location               = "us-central1"
 ///   repository_id          = "my-repository"
 ///   description            = "example docker repository with cleanup policies"
@@ -2400,6 +2459,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///             keepCount: 5
 /// ```
 ///
+///
 /// ### Artifact Registry Repository Remote Dockerhub Auth
 ///
 ///
@@ -2546,9 +2606,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2568,14 +2628,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -2610,7 +2670,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2618,25 +2678,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-dockerhub-remote"
 ///   description   = "example remote dockerhub repository with credentials"
@@ -2651,7 +2723,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///   }
@@ -2781,6 +2853,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Docker Custom With Auth
 ///
@@ -2935,9 +3008,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2957,14 +3030,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -3001,7 +3074,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3009,25 +3082,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-docker-custom-remote"
 ///   description   = "example remote custom docker repository with credentials"
@@ -3044,7 +3129,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///   }
@@ -3178,6 +3263,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Maven Custom With Auth
 ///
@@ -3332,9 +3418,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3354,14 +3440,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -3398,7 +3484,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3406,25 +3492,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-maven-custom-remote"
 ///   description   = "example remote custom maven repository with credentials"
@@ -3441,7 +3539,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///   }
@@ -3575,6 +3673,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Npm Custom With Auth
 ///
@@ -3729,9 +3828,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3751,14 +3850,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -3795,7 +3894,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3803,25 +3902,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-npm-custom-remote"
 ///   description   = "example remote custom npm repository with credentials"
@@ -3838,7 +3949,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///   }
@@ -3972,6 +4083,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Python Custom With Auth
 ///
@@ -4126,9 +4238,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4148,14 +4260,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -4192,7 +4304,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4200,25 +4312,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-python-custom-remote"
 ///   description   = "example remote custom python repository with credentials"
@@ -4235,7 +4359,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///   }
@@ -4370,6 +4494,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Artifact Registry Repository Remote Common Repository With Docker
 ///
 ///
@@ -4459,7 +4584,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4483,7 +4608,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 /// 				Description: pulumi.String("pull-through cache of another Artifact Registry repository"),
 /// 				CommonRepository: &artifactregistry.RepositoryRemoteRepositoryConfigCommonRepositoryArgs{
-/// 					Uri: upstreamRepo.ID().ToIDOutput().ToStringOutput(),
+/// 					Uri: upstreamRepo.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -4495,7 +4620,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4504,12 +4629,18 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "upstream_repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-upstream-repo"
 ///   description   = "example upstream repository"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-common-remote"
 ///   description   = "example remote common repository with docker upstream"
@@ -4593,6 +4724,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///         commonRepository:
 ///           uri: ${upstreamRepo.id}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
 ///
@@ -4696,8 +4828,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4739,7 +4871,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4747,17 +4879,23 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "upstream_repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-upstream-repo"
 ///   description   = "example upstream repository"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
-///   depends_on    = [gcp_artifactregistry_repository.upstream_repo]
+///   depends_on = [gcp_artifactregistry_repository.upstream_repo]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-common-remote"
 ///   description   = "example remote common repository with docker upstream"
@@ -4766,7 +4904,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   remote_repository_config = {
 ///     description = "pull-through cache of another Artifact Registry repository by URL"
 ///     common_repository = {
-///       uri ="https://us-central1-docker.pkg.dev/${data.gcp_organizations_getproject.project.project_id}/example-upstream-repo"
+///       uri ="https://us-central1-docker.pkg.dev/${data.gcp_organizations_project.project.project_id}/example-upstream-repo"
 ///     }
 ///   }
 /// }
@@ -4857,6 +4995,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Artifact Registry Repository Remote Common Repository With Custom Upstream
 ///
@@ -5004,9 +5143,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5026,14 +5165,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     example_remote_secret.ID(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: example_remote_secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -5068,7 +5207,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5076,25 +5215,37 @@ import 'repository_vulnerability_scanning_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "example-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+/// resource "gcp_secretmanager_secret_version" "example-remote-secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.example-remote-secret.id
 ///   secret_data = "remote-password"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "example-docker-custom-remote"
 ///   description   = "example remote custom docker repository with credentials"
@@ -5109,7 +5260,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///     upstream_credentials = {
 ///       username_password_credentials = {
 ///         username                = "remote-username"
-///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///         password_secret_version = gcp_secretmanager_secret_version.example-remote-secret_version.name
 ///       }
 ///     }
 ///   }
@@ -5240,6 +5391,7 @@ import 'repository_vulnerability_scanning_config.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Artifact Registry Repository Vulnerability Scanning
 ///
 ///
@@ -5297,7 +5449,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5320,7 +5472,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5329,6 +5481,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   description   = "example docker repository with vulnerability scanning config"
@@ -5428,6 +5583,9 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// The user-provided description of the repository.
   late final pulumi.Output<String?> description;
+  /// If this is true, an unspecified repo type will be treated as error rather
+  /// than defaulting to standard.
+  late final pulumi.Output<bool?> disallowUnspecifiedMode;
   /// Docker repository config contains repository level configuration for the repositories of docker type.
   /// Structure is documented below.
   late final pulumi.Output<RepositoryDockerConfig?> dockerConfig;
@@ -5471,6 +5629,9 @@ class Repository extends pulumi.CustomResource {
   /// The name of the repository, for example:
   /// "repo1"
   late final pulumi.Output<String> name;
+  /// Configuration for platform logs.
+  /// Structure is documented below.
+  late final pulumi.Output<RepositoryPlatformLogsConfig?> platformLogsConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -5506,7 +5667,7 @@ class Repository extends pulumi.CustomResource {
           'gcp:artifactregistry/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cleanupPolicies = registerOutput<List<RepositoryCleanupPolicy>?>('cleanupPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCleanupPolicy>(guardedValue, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>())); });
@@ -5514,6 +5675,7 @@ class Repository extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    disallowUnspecifiedMode = registerOutput<bool?>('disallowUnspecifiedMode');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String>('format');
@@ -5523,6 +5685,7 @@ class Repository extends pulumi.CustomResource {
     mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
+    platformLogsConfig = registerOutput<RepositoryPlatformLogsConfig?>('platformLogsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryPlatformLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registryUri = registerOutput<String>('registryUri');
@@ -5562,6 +5725,7 @@ class Repository extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    disallowUnspecifiedMode = registerOutput<bool?>('disallowUnspecifiedMode');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String>('format');
@@ -5571,6 +5735,7 @@ class Repository extends pulumi.CustomResource {
     mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
+    platformLogsConfig = registerOutput<RepositoryPlatformLogsConfig?>('platformLogsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryPlatformLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registryUri = registerOutput<String>('registryUri');
@@ -5596,6 +5761,7 @@ class Repository extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    disallowUnspecifiedMode = registerOutput<bool?>('disallowUnspecifiedMode');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String>('format');
@@ -5605,6 +5771,7 @@ class Repository extends pulumi.CustomResource {
     mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
+    platformLogsConfig = registerOutput<RepositoryPlatformLogsConfig?>('platformLogsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryPlatformLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registryUri = registerOutput<String>('registryUri');

@@ -13,6 +13,7 @@ export 'colab/notebook_execution_direct_notebook_source.dart';
 export 'colab/notebook_execution_gcs_notebook_source.dart';
 export 'colab/notebook_execution_state.dart';
 export 'colab/notebook_execution_workbench_runtime.dart';
+export 'colab/notebook_execution_workbench_runtime_custom_container_image.dart';
 export 'colab/notebook_execution_workbench_runtime_vm_image.dart';
 export 'colab/runtime.dart';
 export 'colab/runtime_args.dart';

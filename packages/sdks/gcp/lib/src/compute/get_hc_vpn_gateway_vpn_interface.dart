@@ -36,7 +36,7 @@ class GetHcVpnGatewayVpnInterface {
 
   factory GetHcVpnGatewayVpnInterface.fromMap(Map<String, dynamic> map) {
     return GetHcVpnGatewayVpnInterface(
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       interconnectAttachment: pulumi.Input.fromValue(map['interconnectAttachment'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );

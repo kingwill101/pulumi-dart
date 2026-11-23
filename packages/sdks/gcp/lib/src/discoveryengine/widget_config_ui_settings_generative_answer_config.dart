@@ -79,10 +79,10 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig {
       ignoreNonAnswerSeekingQuery: (() { final guardedValue = map['ignoreNonAnswerSeekingQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       imageSource: (() { final guardedValue = map['imageSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxRephraseSteps: (() { final guardedValue = map['maxRephraseSteps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRephraseSteps: (() { final guardedValue = map['maxRephraseSteps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       modelPromptPreamble: (() { final guardedValue = map['modelPromptPreamble']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelVersion: (() { final guardedValue = map['modelVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resultCount: (() { final guardedValue = map['resultCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      resultCount: (() { final guardedValue = map['resultCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

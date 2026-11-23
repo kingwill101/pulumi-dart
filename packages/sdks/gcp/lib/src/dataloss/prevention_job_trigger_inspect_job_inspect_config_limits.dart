@@ -33,8 +33,8 @@ class PreventionJobTriggerInspectJobInspectConfigLimits {
   factory PreventionJobTriggerInspectJobInspectConfigLimits.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimits(
       maxFindingsPerInfoTypes: (() { final guardedValue = map['maxFindingsPerInfoTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>(guardedValue, (value) => PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxFindingsPerItem: (() { final guardedValue = map['maxFindingsPerItem']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxFindingsPerRequest: (() { final guardedValue = map['maxFindingsPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxFindingsPerItem: (() { final guardedValue = map['maxFindingsPerItem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxFindingsPerRequest: (() { final guardedValue = map['maxFindingsPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

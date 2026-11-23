@@ -11,7 +11,10 @@ class IcebergTableSchemaField {
   final pulumi.Input<String> name;
   /// Whether the field is required.
   final pulumi.Input<bool> required;
-  /// The type of the field.
+  /// The type of the field. Primitive types are plain names such as `long`. List, map and
+  /// struct types are JSON objects as defined by the
+  /// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+  /// typically written with `jsonencode`.
   final pulumi.Input<String> type;
 
   /// Creates a new [IcebergTableSchemaField].
@@ -19,7 +22,7 @@ class IcebergTableSchemaField {
   /// [id] The unique identifier of the field.
   /// [name] The name of the partition field.
   /// [required] Whether the field is required.
-  /// [type] The type of the field.
+  /// [type] The type of the field. Primitive types are plain names such as `long`. List, map and
   const IcebergTableSchemaField({
     this.doc,
     required this.id,
@@ -41,7 +44,7 @@ class IcebergTableSchemaField {
   factory IcebergTableSchemaField.fromMap(Map<String, dynamic> map) {
     return IcebergTableSchemaField(
       doc: (() { final guardedValue = map['doc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       required: pulumi.Input.fromValue(map['required'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),

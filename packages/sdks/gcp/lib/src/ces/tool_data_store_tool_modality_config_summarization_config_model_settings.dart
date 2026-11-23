@@ -11,19 +11,30 @@ class ToolDataStoreToolModalityConfigSummarizationConfigModelSettings {
   /// produce responses that are more predictable. Higher temperatures produce
   /// responses that are more creative.
   final pulumi.Input<double?>? temperature;
+  /// The thinking level of the model.
+  /// Possible values:
+  /// DEFAULT
+  /// LOW
+  /// MEDIUM
+  /// HIGH
+  /// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+  final pulumi.Input<String?>? thinkingLevel;
 
   /// Creates a new [ToolDataStoreToolModalityConfigSummarizationConfigModelSettings].
   /// [model] The LLM model that the agent should use.
   /// [temperature] If set, this temperature will be used for the LLM model. Temperature
+  /// [thinkingLevel] The thinking level of the model.
   const ToolDataStoreToolModalityConfigSummarizationConfigModelSettings({
     this.model,
     this.temperature,
+    this.thinkingLevel,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'model': ?model,
       'temperature': ?temperature,
+      'thinkingLevel': ?thinkingLevel,
     };
   }
 
@@ -31,6 +42,7 @@ class ToolDataStoreToolModalityConfigSummarizationConfigModelSettings {
     return ToolDataStoreToolModalityConfigSummarizationConfigModelSettings(
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      thinkingLevel: (() { final guardedValue = map['thinkingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

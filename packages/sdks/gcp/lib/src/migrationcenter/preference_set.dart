@@ -12,6 +12,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// * How-to Guides
 /// * [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Preference Set Basic
@@ -84,7 +85,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +112,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +120,10 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_migrationcenter_preferenceset" "default" {
+/// resource "gcp_migrationcenter_preference_set" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   preference_set_id = "preference-set-test"
 ///   description       = "Terraform integration test description"
@@ -188,6 +192,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///         sizingOptimizationStrategy: SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
 ///         targetProduct: COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
 /// ```
+///
 ///
 /// ### Preference Set Full
 ///
@@ -340,7 +345,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -395,7 +400,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -403,7 +408,10 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_migrationcenter_preferenceset" "default" {
+/// resource "gcp_migrationcenter_preference_set" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   preference_set_id = "preference-set-test"
 ///   description       = "Terraform integration test description"
@@ -425,14 +433,14 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///       cpu_overcommit_ratio    = 1.2
 ///       host_maintenance_policy = "HOST_MAINTENANCE_POLICY_DEFAULT"
 ///       node_types = [{
-///         "nodeName" = "tf-test"
+///         node_name = "tf-test"
 ///       }]
 ///     }
 ///     compute_engine_preferences = {
 ///       license_type = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"
 ///       machine_preferences = {
 ///         allowed_machine_series = [{
-///           "code" = "C3"
+///           code = "C3"
 ///         }]
 ///       }
 ///     }
@@ -540,6 +548,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///               - code: C3
 /// ```
 ///
+///
 /// ### Preference Set Compute Engine Preferences Disk Type
 ///
 ///
@@ -633,7 +642,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -668,7 +677,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -676,7 +685,10 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_migrationcenter_preferenceset" "default" {
+/// resource "gcp_migrationcenter_preference_set" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   preference_set_id = "preference-set-test"
 ///   description       = "Terraform integration test description"
@@ -688,7 +700,7 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///       license_type = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"
 ///       machine_preferences = {
 ///         allowed_machine_series = [{
-///           "code" = "C3"
+///           code = "C3"
 ///         }]
 ///       }
 ///       persistent_disk_type = "PERSISTENT_DISK_TYPE_SSD"
@@ -822,7 +834,7 @@ class PreferenceSet extends pulumi.CustomResource {
           'gcp:migrationcenter/preferenceSet:PreferenceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

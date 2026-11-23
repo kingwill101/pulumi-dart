@@ -20,6 +20,11 @@ class ApiArgs {
   final pulumi.Input<String?>? deletionPolicy;
   /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
   final pulumi.Input<String?>? detectMd5hash;
+  /// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The ID of the API proxy.
   final pulumi.Input<String?>? name;
   /// The Apigee Organization name associated with the Apigee instance.
@@ -29,12 +34,14 @@ class ApiArgs {
   /// [configBundle] Path to the config zip bundle.
   /// [deletionPolicy] (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [detectMd5hash] (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+  /// [labels] User labels applied to this API proxy. Changing only the labels does not create a new revision.
   /// [name] The ID of the API proxy.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
   const ApiArgs({
     required this.configBundle,
     this.deletionPolicy,
     this.detectMd5hash,
+    this.labels,
     this.name,
     required this.orgId,
   });
@@ -44,6 +51,7 @@ class ApiArgs {
       'configBundle': configBundle,
       'deletionPolicy': ?deletionPolicy,
       'detectMd5hash': ?detectMd5hash,
+      'labels': ?labels,
       'name': ?name,
       'orgId': orgId,
     };
@@ -54,6 +62,7 @@ class ApiArgs {
       configBundle: pulumi.Input.fromValue(map['configBundle'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       detectMd5hash: (() { final guardedValue = map['detectMd5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
     );

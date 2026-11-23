@@ -13,6 +13,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Datapolicyv2 Datapolicy Basic
@@ -59,7 +60,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +79,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +87,10 @@ import 'datapolicyv2_data_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datapolicyv2datapolicy" "basic_data_policy" {
+/// resource "gcp_bigquery_datapolicyv2_data_policy" "basic_data_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   data_policy_type = "RAW_DATA_ACCESS_POLICY"
 ///   data_policy_id   = "basic_data_policy"
@@ -132,6 +136,7 @@ import 'datapolicyv2_data_policy_state.dart';
 ///       dataPolicyType: RAW_DATA_ACCESS_POLICY
 ///       dataPolicyId: basic_data_policy
 /// ```
+///
 ///
 /// ### Bigquery Datapolicyv2 Datapolicy Predefined Masking
 ///
@@ -187,7 +192,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -209,7 +214,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -217,7 +222,10 @@ import 'datapolicyv2_data_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datapolicyv2datapolicy" "predefined_masking_data_policy" {
+/// resource "gcp_bigquery_datapolicyv2_data_policy" "predefined_masking_data_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   data_policy_type = "DATA_MASKING_POLICY"
 ///   data_masking_policy = {
@@ -272,6 +280,7 @@ import 'datapolicyv2_data_policy_state.dart';
 ///         predefinedExpression: SHA256
 ///       dataPolicyId: predefined_masking_data_policy
 /// ```
+///
 ///
 /// ### Bigquery Datapolicyv2 Datapolicy Routine
 ///
@@ -384,7 +393,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -420,7 +429,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// 			DataPolicyId:   pulumi.String("routine_data_policy"),
 /// 			DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
 /// 			DataMaskingPolicy: &bigquery.Datapolicyv2DataPolicyDataMaskingPolicyArgs{
-/// 				Routine: customMaskingRoutine.ID().ToIDOutput().ToStringOutput(),
+/// 				Routine: customMaskingRoutine.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -431,7 +440,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -439,7 +448,10 @@ import 'datapolicyv2_data_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datapolicyv2datapolicy" "routine_data_policy" {
+/// resource "gcp_bigquery_datapolicyv2_data_policy" "routine_data_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   data_policy_id   = "routine_data_policy"
 ///   data_policy_type = "DATA_MASKING_POLICY"
@@ -448,10 +460,16 @@ import 'datapolicyv2_data_policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 ///   location   = "us-central1"
 /// }
 /// resource "gcp_bigquery_routine" "custom_masking_routine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id           = "custom_masking_routine"
 ///   routine_type         = "SCALAR_FUNCTION"
@@ -555,6 +573,7 @@ import 'datapolicyv2_data_policy_state.dart';
 ///           dataType: '{"typeKind" :  "STRING"}'
 /// ```
 ///
+///
 /// ### Bigquery Datapolicyv2 Datapolicy Withgrantees
 ///
 ///
@@ -605,7 +624,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -627,7 +646,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -635,7 +654,10 @@ import 'datapolicyv2_data_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datapolicyv2datapolicy" "data_policy_with_grantees" {
+/// resource "gcp_bigquery_datapolicyv2_data_policy" "data_policy_with_grantees" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   data_policy_type = "RAW_DATA_ACCESS_POLICY"
 ///   grantees         = ["principal://goog/subject/jane@example.com"]
@@ -771,7 +793,7 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
           'gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     dataGovernanceTag = registerOutput<Datapolicyv2DataPolicyDataGovernanceTag?>('dataGovernanceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataGovernanceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataMaskingPolicy = registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -27,7 +27,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd {
 
   factory ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservationInstancePropertiesLocalSsd(
-      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

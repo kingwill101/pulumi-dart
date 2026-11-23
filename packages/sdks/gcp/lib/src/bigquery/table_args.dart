@@ -33,22 +33,6 @@ class TableArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  ///
-  /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-  ///
-  /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-  /// string will create a diff, even if the JSON itself hasn't changed.
-  /// If the API returns a different value for the same schema, e.g. it
-  /// switched the order of values or replaced a field data type (`STRUCT` with
-  /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-  /// the recurring diff this causes. As a workaround, we recommend using the
-  /// schema as returned by the API.
-  ///
-  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
-  /// documented below and do **not** set
-  /// `external_data_configuration.connection_id`, schemas must be specified
-  /// with `external_data_configuration.schema`. Otherwise, schemas must be
-  /// specified with this top-level field.
   final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -113,6 +97,20 @@ class TableArgs {
   /// for more details.
   final pulumi.Input<Map<String, String>?>? resourceTags;
   /// A JSON schema for the table.
+  ///
+  /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+  /// string will create a diff, even if the JSON itself hasn't changed.
+  /// If the API returns a different value for the same schema, e.g. it
+  /// switched the order of values or replaced a field data type (`STRUCT` with
+  /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+  /// the recurring diff this causes. As a workaround, we recommend using the
+  /// schema as returned by the API.
+  ///
+  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+  /// documented below and do **not** set
+  /// `external_data_configuration.connection_id`, schemas must be specified
+  /// with `external_data_configuration.schema`. Otherwise, schemas must be
+  /// specified with this top-level field.
   final pulumi.Input<String?>? schema;
   /// Specifies metadata of the foreign data
   /// type definition in field schema. Structure is documented below.
@@ -123,7 +121,10 @@ class TableArgs {
   /// A unique ID for the resource.
   /// Changing this forces a new resource to be created.
   final pulumi.Input<String> tableId;
-  /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+  /// Specifies the view that determines which
+  /// table information is returned. By default, basic table information and
+  /// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+  /// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
   final pulumi.Input<String?>? tableMetadataView;
   /// Replication info of a table created
   /// using "AS REPLICA" DDL like:
@@ -162,7 +163,7 @@ class TableArgs {
   /// [schemaForeignTypeInfo] Specifies metadata of the foreign data
   /// [tableConstraints] Defines the primary key and foreign keys.
   /// [tableId] A unique ID for the resource.
-  /// [tableMetadataView] View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+  /// [tableMetadataView] Specifies the view that determines which
   /// [tableReplicationInfo] Replication info of a table created
   /// [timePartitioning] If specified, configures time-based
   /// [view] If specified, configures this table as a view.
@@ -239,7 +240,7 @@ class TableArgs {
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionConfiguration: (() { final guardedValue = map['encryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       externalCatalogTableOptions: (() { final guardedValue = map['externalCatalogTableOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExternalCatalogTableOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       externalDataConfiguration: (() { final guardedValue = map['externalDataConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExternalDataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

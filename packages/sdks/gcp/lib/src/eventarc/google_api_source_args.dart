@@ -2,6 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_api_source_logging_config.dart';
+import 'google_api_source_organization_subscription.dart';
+import 'google_api_source_project_subscriptions.dart';
 
 /// {@template pulumi_eventarc_google_api_source_google_api_source_args_doc}
 /// The set of arguments for GoogleApiSource.
@@ -43,9 +45,17 @@ class GoogleApiSourceArgs {
   /// resources.
   /// Structure is documented below.
   final pulumi.Input<GoogleApiSourceLoggingConfig?>? loggingConfig;
+  /// Config to enable subscribing to events from all projects in the
+  /// GoogleApiSource's org.
+  /// Structure is documented below.
+  final pulumi.Input<GoogleApiSourceOrganizationSubscription?>? organizationSubscription;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Config to enable subscribing to all events from a list of projects.
+  /// All the projects must be in the same org as the GoogleApiSource.
+  /// Structure is documented below.
+  final pulumi.Input<GoogleApiSourceProjectSubscriptions?>? projectSubscriptions;
 
   /// Creates a new [GoogleApiSourceArgs].
   /// [annotations] Resource annotations.
@@ -57,7 +67,9 @@ class GoogleApiSourceArgs {
   /// [labels] Resource labels.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [loggingConfig] The configuration for Platform Telemetry logging for Eventarc Advanced
+  /// [organizationSubscription] Config to enable subscribing to events from all projects in the
   /// [project] The ID of the project in which the resource belongs.
+  /// [projectSubscriptions] Config to enable subscribing to all events from a list of projects.
   const GoogleApiSourceArgs({
     this.annotations,
     this.cryptoKeyName,
@@ -68,7 +80,9 @@ class GoogleApiSourceArgs {
     this.labels,
     required this.location,
     this.loggingConfig,
+    this.organizationSubscription,
     this.project,
+    this.projectSubscriptions,
   });
 
   Map<String, dynamic> toMap() {
@@ -82,7 +96,9 @@ class GoogleApiSourceArgs {
       'labels': ?labels,
       'location': location,
       'loggingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleApiSourceLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'organizationSubscription': ?pulumi.Input.mapOptionalInputValue<GoogleApiSourceOrganizationSubscription, Map<String, dynamic>>(organizationSubscription, (value) => value.toMap()),
       'project': ?project,
+      'projectSubscriptions': ?pulumi.Input.mapOptionalInputValue<GoogleApiSourceProjectSubscriptions, Map<String, dynamic>>(projectSubscriptions, (value) => value.toMap()),
     };
   }
 
@@ -97,7 +113,9 @@ class GoogleApiSourceArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleApiSourceLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      organizationSubscription: (() { final guardedValue = map['organizationSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleApiSourceOrganizationSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectSubscriptions: (() { final guardedValue = map['projectSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleApiSourceProjectSubscriptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

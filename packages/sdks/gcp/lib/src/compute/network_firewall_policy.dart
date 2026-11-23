@@ -6,6 +6,7 @@ import 'network_firewall_policy_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Firewall Policy Full
@@ -49,7 +50,7 @@ import 'network_firewall_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -67,7 +68,7 @@ import 'network_firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -75,7 +76,10 @@ import 'network_firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicy" "policy" {
+/// resource "gcp_compute_network_firewall_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-test-policy"
 ///   description = "Terraform test"
 /// }
@@ -180,7 +184,7 @@ class NetworkFirewallPolicy extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

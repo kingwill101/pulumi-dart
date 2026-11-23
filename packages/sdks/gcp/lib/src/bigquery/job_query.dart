@@ -165,7 +165,7 @@ class JobQuery {
       destinationEncryptionConfiguration: (() { final guardedValue = map['destinationEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobQueryDestinationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destinationTable: (() { final guardedValue = map['destinationTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobQueryDestinationTable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       flattenResults: (() { final guardedValue = map['flattenResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maximumBillingTier: (() { final guardedValue = map['maximumBillingTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumBillingTier: (() { final guardedValue = map['maximumBillingTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maximumBytesBilled: (() { final guardedValue = map['maximumBytesBilled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterMode: (() { final guardedValue = map['parameterMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

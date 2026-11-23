@@ -26,18 +26,17 @@ class InstanceBootDiskInitializeParams {
   /// Indicates how many IOPS to provision for the disk.
   /// This sets the number of I/O operations per second that the disk can handle.
   /// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-  /// Note: Updating currently is only supported for hyperdisk skus via disk update
-  /// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-  /// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
-  /// you'll need to manually delete and recreate it.
+  /// Note: Updating in place is only supported for hyperdisk skus; changing this
+  /// value on other disk types (e.g. pd-extreme) will force recreation of the instance.
+  /// Hyperdisk allows for an update of IOPS every 4 hours; to update more
+  /// frequently than that, you'll need to manually delete and recreate the disk.
   final pulumi.Input<int?>? provisionedIops;
   /// Indicates how much throughput to provision for the disk.
   /// This sets the number of throughput mb per second that the disk can handle.
   /// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
-  /// Note: Updating currently is only supported for hyperdisk skus via disk update
-  /// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
-  /// for an update of throughput every 4 hours. To update your hyperdisk more
-  /// frequently, you'll need to manually delete and recreate it.
+  /// Note: This is only supported for hyperdisk skus, and can be updated in place.
+  /// Hyperdisk allows for an update of throughput every 4 hours; to update more
+  /// frequently than that, you'll need to manually delete and recreate the disk.
   final pulumi.Input<int?>? provisionedThroughput;
   /// A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
   final pulumi.Input<List<String>?>? replicaZones;
@@ -124,12 +123,12 @@ class InstanceBootDiskInitializeParams {
       enableConfidentialCompute: (() { final guardedValue = map['enableConfidentialCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       replicaZones: (() { final guardedValue = map['replicaZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       snapshot: (() { final guardedValue = map['snapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceImageEncryptionKey: (() { final guardedValue = map['sourceImageEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceBootDiskInitializeParamsSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceSnapshotEncryptionKey: (() { final guardedValue = map['sourceSnapshotEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

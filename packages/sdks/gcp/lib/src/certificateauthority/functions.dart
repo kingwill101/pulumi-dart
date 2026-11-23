@@ -56,7 +56,7 @@ import 'get_certificate_template_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'get_certificate_template_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,14 +84,14 @@ import 'get_certificate_template_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_certificateauthority_getauthority" "default" {
+/// data "gcp_certificateauthority_authority" "default" {
 ///   location                 = "us-west1"
 ///   pool                     = "pool-name"
 ///   certificate_authority_id = "ca-id"
 /// }
 ///
 /// output "csr" {
-///   value = data.gcp_certificateauthority_getauthority.default.pem_csr
+///   value = data.gcp_certificateauthority_authority.default.pem_csr
 /// }
 /// ```
 /// ```java
@@ -202,7 +202,7 @@ pulumi.Output<GetAuthorityResult> getAuthorityOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +219,7 @@ pulumi.Output<GetAuthorityResult> getAuthorityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -227,7 +227,7 @@ pulumi.Output<GetAuthorityResult> getAuthorityOutput(
 ///   }
 /// }
 ///
-/// data "gcp_certificateauthority_getcapooliampolicy" "policy" {
+/// data "gcp_certificateauthority_ca_pool_iam_policy" "policy" {
 ///   ca_pool = default.id
 /// }
 /// ```
@@ -332,7 +332,7 @@ pulumi.Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -349,7 +349,7 @@ pulumi.Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -357,7 +357,7 @@ pulumi.Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_certificateauthority_getcertificatetemplateiampolicy" "policy" {
+/// data "gcp_certificateauthority_certificate_template_iam_policy" "policy" {
 ///   certificate_template = default.id
 /// }
 /// ```

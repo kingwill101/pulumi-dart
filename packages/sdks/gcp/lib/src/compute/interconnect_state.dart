@@ -9,14 +9,12 @@ import 'interconnect_params.dart';
 
 /// Input properties used for looking up and filtering Interconnect resources.
 class InterconnectState {
-  /// (Optional, Beta)
   /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
   final pulumi.Input<bool?>? aaiEnabled;
   /// Administrative status of the interconnect. When this is set to true, the Interconnect is
   /// functional and can carry traffic. When set to false, no packets can be carried over the
   /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
   final pulumi.Input<bool?>? adminEnabled;
-  /// (Optional, Beta)
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// Interconnect connection between Google and your on-premises router.
   /// Structure is documented below.
@@ -26,7 +24,6 @@ class InterconnectState {
   /// - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
   /// - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
   /// - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-  /// Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
   final pulumi.Input<List<String>?>? availableFeatures;
   /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
   /// Structure is documented below.
@@ -143,7 +140,7 @@ class InterconnectState {
   /// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
   /// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
   /// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-  /// Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+  /// Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
   /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
   final pulumi.Input<List<String>?>? requestedFeatures;
   /// Target number of physical links in the link bundle, as requested by the customer.
@@ -163,9 +160,9 @@ class InterconnectState {
   final pulumi.Input<List<String>?>? wireGroups;
 
   /// Creates a new [InterconnectState].
-  /// [aaiEnabled] (Optional, Beta)
+  /// [aaiEnabled] Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
   /// [adminEnabled] Administrative status of the interconnect. When this is set to true, the Interconnect is
-  /// [applicationAwareInterconnect] (Optional, Beta)
+  /// [applicationAwareInterconnect] Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// [availableFeatures] [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
   /// [circuitInfos] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
@@ -313,11 +310,11 @@ class InterconnectState {
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InterconnectParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       peerIpAddress: (() { final guardedValue = map['peerIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisionedLinkCount: (() { final guardedValue = map['provisionedLinkCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      provisionedLinkCount: (() { final guardedValue = map['provisionedLinkCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       remoteLocation: (() { final guardedValue = map['remoteLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestedFeatures: (() { final guardedValue = map['requestedFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      requestedLinkCount: (() { final guardedValue = map['requestedLinkCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      requestedLinkCount: (() { final guardedValue = map['requestedLinkCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       wireGroups: (() { final guardedValue = map['wireGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

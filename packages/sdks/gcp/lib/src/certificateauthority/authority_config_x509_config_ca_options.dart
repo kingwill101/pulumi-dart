@@ -41,7 +41,7 @@ class AuthorityConfigX509ConfigCaOptions {
   factory AuthorityConfigX509ConfigCaOptions.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigX509ConfigCaOptions(
       isCa: pulumi.Input.fromValue(map['isCa'] as bool),
-      maxIssuerPathLength: (() { final guardedValue = map['maxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxIssuerPathLength: (() { final guardedValue = map['maxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nonCa: (() { final guardedValue = map['nonCa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       zeroMaxIssuerPathLength: (() { final guardedValue = map['zeroMaxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

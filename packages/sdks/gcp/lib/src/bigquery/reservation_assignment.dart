@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_assignment_args.dart';
+import 'reservation_assignment_scheduling_policy.dart';
 import 'reservation_assignment_state.dart';
 
 /// The BigqueryReservation Assignment resource.
@@ -10,6 +11,7 @@ import 'reservation_assignment_state.dart';
 /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
 /// * How-to Guides
 /// * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
+///
 ///
 /// ## Example Usage
 ///
@@ -79,7 +81,7 @@ import 'reservation_assignment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -98,7 +100,7 @@ import 'reservation_assignment_state.dart';
 /// 		_, err = bigquery.NewReservationAssignment(ctx, "assignment", &bigquery.ReservationAssignmentArgs{
 /// 			Assignee:    pulumi.String("projects/my-project-name"),
 /// 			JobType:     pulumi.String("PIPELINE"),
-/// 			Reservation: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Reservation: basic.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -108,7 +110,7 @@ import 'reservation_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,13 +119,19 @@ import 'reservation_assignment_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_reservation" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-reservation"
 ///   project           = "my-project-name"
 ///   location          = "us-central1"
 ///   slot_capacity     = 0
 ///   ignore_idle_slots = false
 /// }
-/// resource "gcp_bigquery_reservationassignment" "assignment" {
+/// resource "gcp_bigquery_reservation_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignee    = "projects/my-project-name"
 ///   job_type    = "PIPELINE"
 ///   reservation = gcp_bigquery_reservation.basic.id
@@ -215,7 +223,7 @@ class ReservationAssignment extends pulumi.CustomResource {
   /// When set to "DELETE", deleting the resource is allowed.
   late final pulumi.Output<String> deletionPolicy;
   /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-  late final pulumi.Output<String> jobType;
+  late final pulumi.Output<String?> jobType;
   /// The location for the resource
   late final pulumi.Output<String> location;
   /// Output only. The resource name of the assignment.
@@ -231,6 +239,12 @@ class ReservationAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// The reservation for the resource
   late final pulumi.Output<String> reservation;
+  /// The scheduling policy to use for jobs and queries of this assignee when
+  /// running under the associated reservation. The scheduling policy controls
+  /// how the reservation's resources are distributed. This overrides the default
+  /// scheduling policy specified on the reservation.
+  /// Structure is documented below.
+  late final pulumi.Output<ReservationAssignmentSchedulingPolicy?> schedulingPolicy;
   /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
   /// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
   late final pulumi.Output<String> state;
@@ -247,16 +261,17 @@ class ReservationAssignment extends pulumi.CustomResource {
           'gcp:bigquery/reservationAssignment:ReservationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    jobType = registerOutput<String>('jobType');
+    jobType = registerOutput<String?>('jobType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     principal = registerOutput<String?>('principal');
     project = registerOutput<String>('project');
     reservation = registerOutput<String>('reservation');
+    schedulingPolicy = registerOutput<ReservationAssignmentSchedulingPolicy?>('schedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAssignmentSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
   }
 
@@ -286,12 +301,13 @@ class ReservationAssignment extends pulumi.CustomResource {
         ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    jobType = registerOutput<String>('jobType');
+    jobType = registerOutput<String?>('jobType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     principal = registerOutput<String?>('principal');
     project = registerOutput<String>('project');
     reservation = registerOutput<String>('reservation');
+    schedulingPolicy = registerOutput<ReservationAssignmentSchedulingPolicy?>('schedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAssignmentSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
   }
 
@@ -306,12 +322,13 @@ class ReservationAssignment extends pulumi.CustomResource {
       ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    jobType = registerOutput<String>('jobType');
+    jobType = registerOutput<String?>('jobType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     principal = registerOutput<String?>('principal');
     project = registerOutput<String>('project');
     reservation = registerOutput<String>('reservation');
+    schedulingPolicy = registerOutput<ReservationAssignmentSchedulingPolicy?>('schedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAssignmentSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
   }
 }

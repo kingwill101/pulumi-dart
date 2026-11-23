@@ -31,6 +31,13 @@ class LbTrafficExtensionExtensionChainExtension {
   /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
   /// and the last a letter or a number.
   final pulumi.Input<String> name;
+  /// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+  /// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+  /// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+  /// This field is helpful when you want to try out the extension in async log-only mode.
+  /// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+  /// Only `STREAMED` (default) body processing mode is supported.
+  final pulumi.Input<bool?>? observabilityMode;
   /// The reference to the service that runs the extension.
   /// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
   /// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -51,6 +58,7 @@ class LbTrafficExtensionExtensionChainExtension {
   /// [forwardHeaders] List of the HTTP headers to forward to the extension (from the client or backend).
   /// [metadata] Metadata associated with the extension. This field is used to pass metadata to the extension service.
   /// [name] The name for this extension. The name is logged as part of the HTTP request logs.
+  /// [observabilityMode] When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
   /// [service] The reference to the service that runs the extension.
   /// [supportedEvents] A set of events during request or response processing for which this extension is called.
   /// [timeout] Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
@@ -61,6 +69,7 @@ class LbTrafficExtensionExtensionChainExtension {
     this.forwardHeaders,
     this.metadata,
     required this.name,
+    this.observabilityMode,
     required this.service,
     this.supportedEvents,
     this.timeout,
@@ -74,6 +83,7 @@ class LbTrafficExtensionExtensionChainExtension {
       'forwardHeaders': ?forwardHeaders,
       'metadata': ?metadata,
       'name': name,
+      'observabilityMode': ?observabilityMode,
       'service': service,
       'supportedEvents': ?supportedEvents,
       'timeout': ?timeout,
@@ -88,6 +98,7 @@ class LbTrafficExtensionExtensionChainExtension {
       forwardHeaders: (() { final guardedValue = map['forwardHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
+      observabilityMode: (() { final guardedValue = map['observabilityMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       service: pulumi.Input.fromValue(map['service'] as String),
       supportedEvents: (() { final guardedValue = map['supportedEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

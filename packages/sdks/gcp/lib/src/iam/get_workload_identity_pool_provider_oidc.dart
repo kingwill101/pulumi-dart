@@ -16,6 +16,25 @@ class GetWorkloadIdentityPoolProviderOidc {
   /// https://iam.googleapis.com/projects/&lt;project-number&gt;/locations/&lt;location&gt;/workloadIdentityPools/&lt;pool-id&gt;/providers/&lt;provider-id&gt;
   /// '''
   final pulumi.Input<List<String>> allowedAudiences;
+  /// The URL to fetch the OIDC discovery document from, overriding the default URL
+  /// derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+  /// with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+  /// Discovery 1.0 specification.
+  ///
+  /// If set, 'discovery_uri' must meet the following requirements:
+  /// * Must start with 'https://'.
+  /// * Must not exceed 2000 characters.
+  /// * The scheme, host, and port must match 'issuer_uri'.
+  /// * The path must contain '/.well-known/&lt;suffix&gt;' (where '&lt;suffix&gt;' is not
+  /// empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+  /// topology:
+  /// * The well-known path segment is inserted before the issuer path (for
+  /// example, 'https://example.com/.well-known/openid-configuration/tenant1'
+  /// for issuer 'https://example.com/tenant1'), or
+  /// * The well-known path segment is appended under the issuer path (for
+  /// example, 'https://example.com/tenant1/.well-known/openid-configuration'
+  /// for issuer 'https://example.com/tenant1').
+  final pulumi.Input<String> discoveryUri;
   /// The OIDC issuer URL.
   final pulumi.Input<String> issuerUri;
   /// OIDC JWKs in JSON String format. For details on definition of a
@@ -45,10 +64,12 @@ class GetWorkloadIdentityPoolProviderOidc {
 
   /// Creates a new [GetWorkloadIdentityPoolProviderOidc].
   /// [allowedAudiences] Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+  /// [discoveryUri] The URL to fetch the OIDC discovery document from, overriding the default URL
   /// [issuerUri] The OIDC issuer URL.
   /// [jwksJson] OIDC JWKs in JSON String format. For details on definition of a
   const GetWorkloadIdentityPoolProviderOidc({
     required this.allowedAudiences,
+    required this.discoveryUri,
     required this.issuerUri,
     required this.jwksJson,
   });
@@ -56,6 +77,7 @@ class GetWorkloadIdentityPoolProviderOidc {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedAudiences': allowedAudiences,
+      'discoveryUri': discoveryUri,
       'issuerUri': issuerUri,
       'jwksJson': jwksJson,
     };
@@ -64,6 +86,7 @@ class GetWorkloadIdentityPoolProviderOidc {
   factory GetWorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderOidc(
       allowedAudiences: pulumi.Input.fromValue((map['allowedAudiences'] as List).cast<String>()),
+      discoveryUri: pulumi.Input.fromValue(map['discoveryUri'] as String),
       issuerUri: pulumi.Input.fromValue(map['issuerUri'] as String),
       jwksJson: pulumi.Input.fromValue(map['jwksJson'] as String),
     );

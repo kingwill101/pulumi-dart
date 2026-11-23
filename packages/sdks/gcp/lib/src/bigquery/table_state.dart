@@ -32,22 +32,6 @@ class TableState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  ///
-  /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-  ///
-  /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-  /// string will create a diff, even if the JSON itself hasn't changed.
-  /// If the API returns a different value for the same schema, e.g. it
-  /// switched the order of values or replaced a field data type (`STRUCT` with
-  /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-  /// the recurring diff this causes. As a workaround, we recommend using the
-  /// schema as returned by the API.
-  ///
-  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
-  /// documented below and do **not** set
-  /// `external_data_configuration.connection_id`, schemas must be specified
-  /// with `external_data_configuration.schema`. Otherwise, schemas must be
-  /// specified with this top-level field.
   final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -130,6 +114,20 @@ class TableState {
   /// for more details.
   final pulumi.Input<Map<String, String>?>? resourceTags;
   /// A JSON schema for the table.
+  ///
+  /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+  /// string will create a diff, even if the JSON itself hasn't changed.
+  /// If the API returns a different value for the same schema, e.g. it
+  /// switched the order of values or replaced a field data type (`STRUCT` with
+  /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+  /// the recurring diff this causes. As a workaround, we recommend using the
+  /// schema as returned by the API.
+  ///
+  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+  /// documented below and do **not** set
+  /// `external_data_configuration.connection_id`, schemas must be specified
+  /// with `external_data_configuration.schema`. Otherwise, schemas must be
+  /// specified with this top-level field.
   final pulumi.Input<String?>? schema;
   /// Specifies metadata of the foreign data
   /// type definition in field schema. Structure is documented below.
@@ -142,7 +140,10 @@ class TableState {
   /// A unique ID for the resource.
   /// Changing this forces a new resource to be created.
   final pulumi.Input<String?>? tableId;
-  /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+  /// Specifies the view that determines which
+  /// table information is returned. By default, basic table information and
+  /// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+  /// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
   final pulumi.Input<String?>? tableMetadataView;
   /// Replication info of a table created
   /// using "AS REPLICA" DDL like:
@@ -194,7 +195,7 @@ class TableState {
   /// [selfLink] The URI of the created resource.
   /// [tableConstraints] Defines the primary key and foreign keys.
   /// [tableId] A unique ID for the resource.
-  /// [tableMetadataView] View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+  /// [tableMetadataView] Specifies the view that determines which
   /// [tableReplicationInfo] Replication info of a table created
   /// [timePartitioning] If specified, configures time-based
   /// [type] Describes the table type.
@@ -291,7 +292,7 @@ class TableState {
     return TableState(
       biglakeConfiguration: (() { final guardedValue = map['biglakeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableBiglakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterings: (() { final guardedValue = map['clusterings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -299,7 +300,7 @@ class TableState {
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       encryptionConfiguration: (() { final guardedValue = map['encryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       externalCatalogTableOptions: (() { final guardedValue = map['externalCatalogTableOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExternalCatalogTableOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       externalDataConfiguration: (() { final guardedValue = map['externalDataConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExternalDataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -307,13 +308,13 @@ class TableState {
       ignoreAutoGeneratedSchema: (() { final guardedValue = map['ignoreAutoGeneratedSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ignoreSchemaChanges: (() { final guardedValue = map['ignoreSchemaChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       materializedView: (() { final guardedValue = map['materializedView']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableMaterializedView.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxStaleness: (() { final guardedValue = map['maxStaleness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numBytes: (() { final guardedValue = map['numBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      numLongTermBytes: (() { final guardedValue = map['numLongTermBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      numRows: (() { final guardedValue = map['numRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numBytes: (() { final guardedValue = map['numBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      numLongTermBytes: (() { final guardedValue = map['numLongTermBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      numRows: (() { final guardedValue = map['numRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       rangePartitioning: (() { final guardedValue = map['rangePartitioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableRangePartitioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

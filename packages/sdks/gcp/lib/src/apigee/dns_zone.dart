@@ -12,6 +12,7 @@ import 'dns_zone_state.dart';
 /// * How-to Guides
 /// * [Creating a DnsZone](https://cloud.google.com/apigee/docs/api-platform/get-started/create-dns)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Apigee Dns Zone Basic
@@ -104,9 +105,9 @@ import 'dns_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -138,7 +139,7 @@ import 'dns_zone_state.dart';
 /// 			Description: pulumi.String("test"),
 /// 			PeeringConfig: &apigee.DnsZonePeeringConfigArgs{
 /// 				TargetProjectId: pulumi.String(current.Project),
-/// 				TargetNetworkId: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				TargetNetworkId: apigeeNetwork.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -149,7 +150,7 @@ import 'dns_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,25 +158,34 @@ import 'dns_zone_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
 /// resource "gcp_apigee_organization" "org" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Terraform-provisioned basic Apigee Org without VPC Peering."
 ///   analytics_region    = "us-central1"
-///   project_id          = data.gcp_organizations_getclientconfig.current.project
+///   project_id          = data.gcp_organizations_client_config.current.project
 ///   disable_vpc_peering = true
 /// }
-/// resource "gcp_apigee_dnszone" "apigee_dns_zone" {
+/// resource "gcp_apigee_dns_zone" "apigee_dns_zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id      = apigeeOrg.id
 ///   dns_zone_id = "test1"
 ///   domain      = "foo.com"
 ///   description = "test"
 ///   peering_config = {
-///     target_project_id = data.gcp_organizations_getclientconfig.current.project
+///     target_project_id = data.gcp_organizations_client_config.current.project
 ///     target_network_id = gcp_compute_network.apigee_network.id
 ///   }
 /// }
@@ -317,7 +327,7 @@ class DnsZone extends pulumi.CustomResource {
           'gcp:apigee/dnsZone:DnsZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');

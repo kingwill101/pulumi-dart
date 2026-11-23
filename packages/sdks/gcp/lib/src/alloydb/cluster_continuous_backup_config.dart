@@ -35,7 +35,7 @@ class ClusterContinuousBackupConfig {
     return ClusterContinuousBackupConfig(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterContinuousBackupConfigEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      recoveryWindowDays: (() { final guardedValue = map['recoveryWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      recoveryWindowDays: (() { final guardedValue = map['recoveryWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

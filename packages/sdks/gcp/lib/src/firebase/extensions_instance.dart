@@ -14,6 +14,7 @@ import 'extensions_instance_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/products/extensions)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase Extensions Instance Resize Image
@@ -36,17 +37,15 @@ import 'extensions_instance_state.dart';
 ///     instanceId: "storage-resize-images",
 ///     config: {
 ///         extensionRef: "firebase/storage-resize-images",
-///         extensionVersion: "0.2.10",
+///         extensionVersion: "0.3.6",
 ///         params: {
 ///             DELETE_ORIGINAL_FILE: "false",
 ///             MAKE_PUBLIC: "false",
 ///             IMAGE_TYPE: "false",
 ///             IS_ANIMATED: "true",
 ///             FUNCTION_MEMORY: "1024",
-///             DO_BACKFILL: "false",
 ///             IMG_SIZES: "200x200",
 ///             IMG_BUCKET: images.name,
-///             BACKFILL_BATCH_SIZE: "3",
 ///             CONTENT_FILTER_LEVEL: "OFF",
 ///             REGENERATE_TOKEN: "true",
 ///         },
@@ -76,17 +75,15 @@ import 'extensions_instance_state.dart';
 ///     instance_id="storage-resize-images",
 ///     config={
 ///         "extension_ref": "firebase/storage-resize-images",
-///         "extension_version": "0.2.10",
+///         "extension_version": "0.3.6",
 ///         "params": {
 ///             "DELETE_ORIGINAL_FILE": "false",
 ///             "MAKE_PUBLIC": "false",
 ///             "IMAGE_TYPE": "false",
 ///             "IS_ANIMATED": "true",
 ///             "FUNCTION_MEMORY": "1024",
-///             "DO_BACKFILL": "false",
 ///             "IMG_SIZES": "200x200",
 ///             "IMG_BUCKET": images.name,
-///             "BACKFILL_BATCH_SIZE": "3",
 ///             "CONTENT_FILTER_LEVEL": "OFF",
 ///             "REGENERATE_TOKEN": "true",
 ///         },
@@ -124,7 +121,7 @@ import 'extensions_instance_state.dart';
 ///         Config = new Gcp.Firebase.Inputs.ExtensionsInstanceConfigArgs
 ///         {
 ///             ExtensionRef = "firebase/storage-resize-images",
-///             ExtensionVersion = "0.2.10",
+///             ExtensionVersion = "0.3.6",
 ///             Params =
 ///             {
 ///                 { "DELETE_ORIGINAL_FILE", "false" },
@@ -132,10 +129,8 @@ import 'extensions_instance_state.dart';
 ///                 { "IMAGE_TYPE", "false" },
 ///                 { "IS_ANIMATED", "true" },
 ///                 { "FUNCTION_MEMORY", "1024" },
-///                 { "DO_BACKFILL", "false" },
 ///                 { "IMG_SIZES", "200x200" },
 ///                 { "IMG_BUCKET", images.Name },
-///                 { "BACKFILL_BATCH_SIZE", "3" },
 ///                 { "CONTENT_FILTER_LEVEL", "OFF" },
 ///                 { "REGENERATE_TOKEN", "true" },
 ///             },
@@ -160,8 +155,8 @@ import 'extensions_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -182,17 +177,15 @@ import 'extensions_instance_state.dart';
 /// 			InstanceId: pulumi.String("storage-resize-images"),
 /// 			Config: &firebase.ExtensionsInstanceConfigArgs{
 /// 				ExtensionRef:     pulumi.String("firebase/storage-resize-images"),
-/// 				ExtensionVersion: pulumi.String("0.2.10"),
+/// 				ExtensionVersion: pulumi.String("0.3.6"),
 /// 				Params: pulumi.StringMap{
 /// 					"DELETE_ORIGINAL_FILE": pulumi.String("false"),
 /// 					"MAKE_PUBLIC":          pulumi.String("false"),
 /// 					"IMAGE_TYPE":           pulumi.String("false"),
 /// 					"IS_ANIMATED":          pulumi.String("true"),
 /// 					"FUNCTION_MEMORY":      pulumi.String("1024"),
-/// 					"DO_BACKFILL":          pulumi.String("false"),
 /// 					"IMG_SIZES":            pulumi.String("200x200"),
 /// 					"IMG_BUCKET":           images.Name,
-/// 					"BACKFILL_BATCH_SIZE":  pulumi.String("3"),
 /// 					"CONTENT_FILTER_LEVEL": pulumi.String("OFF"),
 /// 					"REGENERATE_TOKEN":     pulumi.String("true"),
 /// 				},
@@ -216,7 +209,7 @@ import 'extensions_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -225,6 +218,9 @@ import 'extensions_instance_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "images" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                     = "my-project-name"
 ///   name                        = "bucket-id"
 ///   location                    = "US"
@@ -232,22 +228,23 @@ import 'extensions_instance_state.dart';
 ///   # Delete all objects when the bucket is deleted
 ///   force_destroy = true
 /// }
-/// resource "gcp_firebase_extensionsinstance" "resize_image" {
+/// resource "gcp_firebase_extensions_instance" "resize_image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   instance_id = "storage-resize-images"
 ///   config = {
 ///     extension_ref     = "firebase/storage-resize-images"
-///     extension_version = "0.2.10"
+///     extension_version = "0.3.6"
 ///     params = {
 ///       "DELETE_ORIGINAL_FILE" = false
 ///       "MAKE_PUBLIC"          = false
 ///       "IMAGE_TYPE"           = false
 ///       "IS_ANIMATED"          = true
 ///       "FUNCTION_MEMORY"      = 1024
-///       "DO_BACKFILL"          = false
 ///       "IMG_SIZES"            = "200x200"
 ///       "IMG_BUCKET"           = gcp_storage_bucket.images.name
-///       "BACKFILL_BATCH_SIZE"  = 3
 ///       "CONTENT_FILTER_LEVEL" = "OFF"
 ///       "REGENERATE_TOKEN"     = "true"
 ///     }
@@ -299,17 +296,15 @@ import 'extensions_instance_state.dart';
 ///             .instanceId("storage-resize-images")
 ///             .config(ExtensionsInstanceConfigArgs.builder()
 ///                 .extensionRef("firebase/storage-resize-images")
-///                 .extensionVersion("0.2.10")
+///                 .extensionVersion("0.3.6")
 ///                 .params(Map.ofEntries(
 ///                     Map.entry("DELETE_ORIGINAL_FILE", "false"),
 ///                     Map.entry("MAKE_PUBLIC", "false"),
 ///                     Map.entry("IMAGE_TYPE", "false"),
 ///                     Map.entry("IS_ANIMATED", "true"),
 ///                     Map.entry("FUNCTION_MEMORY", "1024"),
-///                     Map.entry("DO_BACKFILL", "false"),
 ///                     Map.entry("IMG_SIZES", "200x200"),
 ///                     Map.entry("IMG_BUCKET", images.name()),
-///                     Map.entry("BACKFILL_BATCH_SIZE", "3"),
 ///                     Map.entry("CONTENT_FILTER_LEVEL", "OFF"),
 ///                     Map.entry("REGENERATE_TOKEN", "true")
 ///                 ))
@@ -345,17 +340,15 @@ import 'extensions_instance_state.dart';
 ///       instanceId: storage-resize-images
 ///       config:
 ///         extensionRef: firebase/storage-resize-images
-///         extensionVersion: 0.2.10
+///         extensionVersion: 0.3.6
 ///         params:
 ///           DELETE_ORIGINAL_FILE: false
 ///           MAKE_PUBLIC: false
 ///           IMAGE_TYPE: false
 ///           IS_ANIMATED: true
 ///           FUNCTION_MEMORY: 1024
-///           DO_BACKFILL: false
 ///           IMG_SIZES: 200x200
 ///           IMG_BUCKET: ${images.name}
-///           BACKFILL_BATCH_SIZE: 3
 ///           CONTENT_FILTER_LEVEL: OFF
 ///           REGENERATE_TOKEN: 'true'
 ///         systemParams:
@@ -442,7 +435,7 @@ class ExtensionsInstance extends pulumi.CustomResource {
           'gcp:firebase/extensionsInstance:ExtensionsInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

@@ -188,7 +188,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -257,7 +257,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -266,11 +266,17 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_dataproc_cluster" "mycluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dproc-cluster-unique-name"
 ///   region = "us-central1"
 /// }
 /// # Submit an example spark job to a dataproc cluster
 /// resource "gcp_dataproc_job" "spark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = gcp_dataproc_cluster.mycluster.region
 ///   force_delete = true
 ///   placement = {
@@ -292,6 +298,9 @@ import 'job_status.dart';
 /// }
 /// # Submit an example pyspark job to a dataproc cluster
 /// resource "gcp_dataproc_job" "pyspark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = gcp_dataproc_cluster.mycluster.region
 ///   force_delete = true
 ///   placement = {
@@ -450,26 +459,28 @@ class Job extends pulumi.CustomResource {
   /// Dataproc. Setting this to true, and calling destroy, will ensure that the
   /// job is first cancelled before issuing the delete.
   late final pulumi.Output<bool?> forceDelete;
-  /// The config of Hadoop job
+  /// Submits a Hadoop job to the cluster. Structure is documented below.
   late final pulumi.Output<JobHadoopConfig?> hadoopConfig;
-  /// The config of hive job
+  /// Submits a Hive job to the cluster. Structure is documented below.
   late final pulumi.Output<JobHiveConfig?> hiveConfig;
   /// The list of labels (key/value pairs) to add to the job.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-  /// The config of pag job.
+  /// Submits a Pig job to the cluster. Structure is documented below.
   late final pulumi.Output<JobPigConfig?> pigConfig;
   /// The config of job placement.
   late final pulumi.Output<JobPlacement> placement;
-  /// The config of presto job
+  /// Submits a Presto job to the cluster. Structure is documented below.
+  ///
+  /// - - -
   late final pulumi.Output<JobPrestoConfig?> prestoConfig;
   /// The project in which the `cluster` can be found and jobs
   /// subsequently run against. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-  /// The config of pySpark job.
+  /// Submits a PySpark job to the cluster. Structure is documented below.
   late final pulumi.Output<JobPysparkConfig?> pysparkConfig;
   /// The reference of the job
   late final pulumi.Output<JobReference> reference;
@@ -478,9 +489,9 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String?> region;
   /// Optional. Job scheduling configuration.
   late final pulumi.Output<JobScheduling?> scheduling;
-  /// The config of the Spark job.
+  /// Submits a Spark job to the cluster. Structure is documented below.
   late final pulumi.Output<JobSparkConfig?> sparkConfig;
-  /// The config of SparkSql job
+  /// Submits a Spark SQL job to the cluster. Structure is documented below.
   late final pulumi.Output<JobSparksqlConfig?> sparksqlConfig;
   /// The status of the job.
   late final pulumi.Output<List<JobStatus>> statuses;
@@ -499,7 +510,7 @@ class Job extends pulumi.CustomResource {
           'gcp:dataproc/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

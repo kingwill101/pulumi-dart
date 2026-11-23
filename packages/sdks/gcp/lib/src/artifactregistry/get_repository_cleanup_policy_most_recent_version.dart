@@ -25,7 +25,7 @@ class GetRepositoryCleanupPolicyMostRecentVersion {
 
   factory GetRepositoryCleanupPolicyMostRecentVersion.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCleanupPolicyMostRecentVersion(
-      keepCount: pulumi.Input.fromValue((map['keepCount'] as num).toInt()),
+      keepCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keepCount'])),
       packageNamePrefixes: pulumi.Input.fromValue((map['packageNamePrefixes'] as List).cast<String>()),
     );
   }

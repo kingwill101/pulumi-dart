@@ -3,6 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionInstanceGroupManagerUpdatePolicy {
+  /// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+  final pulumi.Input<List<String>> allowedActions;
   /// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
   final pulumi.Input<String> instanceRedistributionType;
   /// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
@@ -25,6 +27,7 @@ class GetRegionInstanceGroupManagerUpdatePolicy {
   final pulumi.Input<String> type;
 
   /// Creates a new [GetRegionInstanceGroupManagerUpdatePolicy].
+  /// [allowedActions] Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
   /// [instanceRedistributionType] The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
   /// [maxSurgeFixed] Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
   /// [maxSurgePercent] Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
@@ -36,6 +39,7 @@ class GetRegionInstanceGroupManagerUpdatePolicy {
   /// [replacementMethod] The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
   /// [type] The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
   const GetRegionInstanceGroupManagerUpdatePolicy({
+    required this.allowedActions,
     required this.instanceRedistributionType,
     required this.maxSurgeFixed,
     required this.maxSurgePercent,
@@ -50,6 +54,7 @@ class GetRegionInstanceGroupManagerUpdatePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'allowedActions': allowedActions,
       'instanceRedistributionType': instanceRedistributionType,
       'maxSurgeFixed': maxSurgeFixed,
       'maxSurgePercent': maxSurgePercent,
@@ -65,12 +70,13 @@ class GetRegionInstanceGroupManagerUpdatePolicy {
 
   factory GetRegionInstanceGroupManagerUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerUpdatePolicy(
+      allowedActions: pulumi.Input.fromValue((map['allowedActions'] as List).cast<String>()),
       instanceRedistributionType: pulumi.Input.fromValue(map['instanceRedistributionType'] as String),
-      maxSurgeFixed: pulumi.Input.fromValue((map['maxSurgeFixed'] as num).toInt()),
-      maxSurgePercent: pulumi.Input.fromValue((map['maxSurgePercent'] as num).toInt()),
-      maxUnavailableFixed: pulumi.Input.fromValue((map['maxUnavailableFixed'] as num).toInt()),
-      maxUnavailablePercent: pulumi.Input.fromValue((map['maxUnavailablePercent'] as num).toInt()),
-      minReadySec: pulumi.Input.fromValue((map['minReadySec'] as num).toInt()),
+      maxSurgeFixed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSurgeFixed'])),
+      maxSurgePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSurgePercent'])),
+      maxUnavailableFixed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnavailableFixed'])),
+      maxUnavailablePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnavailablePercent'])),
+      minReadySec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReadySec'])),
       minimalAction: pulumi.Input.fromValue(map['minimalAction'] as String),
       mostDisruptiveAllowedAction: pulumi.Input.fromValue(map['mostDisruptiveAllowedAction'] as String),
       replacementMethod: pulumi.Input.fromValue(map['replacementMethod'] as String),

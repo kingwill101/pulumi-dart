@@ -121,10 +121,10 @@ class GetImageResult {
 
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
     return GetImageResult(
-      archiveSizeBytes: (() { final guardedValue = map['archiveSizeBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      archiveSizeBytes: (() { final guardedValue = map['archiveSizeBytes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),

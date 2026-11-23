@@ -19,6 +19,7 @@ import 'guest_policies_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Os Config Guest Policies Basic
@@ -30,7 +31,7 @@ import 'guest_policies_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const foobar = new gcp.compute.Instance("foobar", {
@@ -69,7 +70,7 @@ import 'guest_policies_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// foobar = gcp.compute.Instance("foobar",
 ///     name="guest-policy-inst",
@@ -111,7 +112,7 @@ import 'guest_policies_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -172,15 +173,15 @@ import 'guest_policies_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -216,7 +217,7 @@ import 'guest_policies_state.dart';
 /// 			GuestPolicyId: pulumi.String("guest-policy"),
 /// 			Assignment: &osconfig.GuestPoliciesAssignmentArgs{
 /// 				Instances: pulumi.StringArray{
-/// 					foobar.ID().ToIDOutput().ToStringOutput(),
+/// 					foobar.ID(),
 /// 				},
 /// 			},
 /// 			Packages: osconfig.GuestPoliciesPackageArray{
@@ -234,7 +235,7 @@ import 'guest_policies_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -242,12 +243,15 @@ import 'guest_policies_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_instance" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "guest-policy-inst"
 ///   machine_type   = "e2-medium"
 ///   zone           = "us-central1-a"
@@ -255,7 +259,7 @@ import 'guest_policies_state.dart';
 ///   tags           = ["foo", "bar"]
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 ///   network_interfaces {
@@ -265,7 +269,10 @@ import 'guest_policies_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_osconfig_guestpolicies" "guest_policies" {
+/// resource "gcp_osconfig_guest_policies" "guest_policies" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guest_policy_id = "guest-policy"
 ///   assignment = {
 ///     instances = [gcp_compute_instance.foobar.id]
@@ -307,7 +314,7 @@ import 'guest_policies_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -379,9 +386,10 @@ import 'guest_policies_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Os Config Guest Policies Packages
 ///
@@ -596,7 +604,7 @@ import 'guest_policies_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -667,7 +675,7 @@ import 'guest_policies_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -675,16 +683,19 @@ import 'guest_policies_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_guestpolicies" "guest_policies" {
+/// resource "gcp_osconfig_guest_policies" "guest_policies" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guest_policy_id = "guest-policy"
 ///   assignment = {
 ///     group_labels = [{
-///       "labels" = {
+///       labels = {
 ///         "color" = "red"
 ///         "env"   = "test"
 ///       }
 ///       }, {
-///       "labels" = {
+///       labels = {
 ///         "color" = "blue"
 ///         "env"   = "test"
 ///       }
@@ -842,6 +853,7 @@ import 'guest_policies_state.dart';
 ///               - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 /// ```
 ///
+///
 /// ### Os Config Guest Policies Recipes
 ///
 ///
@@ -965,7 +977,7 @@ import 'guest_policies_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1011,7 +1023,7 @@ import 'guest_policies_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1019,7 +1031,10 @@ import 'guest_policies_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_guestpolicies" "guest_policies" {
+/// resource "gcp_osconfig_guest_policies" "guest_policies" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guest_policy_id = "guest-policy"
 ///   assignment = {
 ///     zones = ["us-east1-b", "us-east1-d"]
@@ -1204,7 +1219,7 @@ class GuestPolicies extends pulumi.CustomResource {
           'gcp:osconfig/guestPolicies:GuestPolicies',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     assignment = registerOutput<GuestPoliciesAssignment>('assignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestPoliciesAssignment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

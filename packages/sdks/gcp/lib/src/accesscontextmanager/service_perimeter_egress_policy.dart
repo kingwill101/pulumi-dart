@@ -9,7 +9,7 @@ import 'service_perimeter_egress_policy_state.dart';
 /// For an EgressPolicy to match, both egressFrom and egressTo stanzas must be matched.
 /// If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter
 /// boundary. For example, an EgressPolicy can be used to allow VMs on networks
-/// within the ServicePerimeter to access a defined set of projects outside the
+/// within the ServicePerimeter to access a defined set of resources (projects, folders, or organizations) outside the
 /// perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
 /// or query against a BigQuery dataset).
 ///
@@ -59,7 +59,7 @@ class ServicePerimeterEgressPolicy extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

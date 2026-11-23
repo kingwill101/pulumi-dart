@@ -18,6 +18,7 @@ import 'iceberg_catalog_state.dart';
 /// Your account must have the `serviceusage.services.use` permission on the
 /// `billingProject` you defined.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Biglake Iceberg Catalog
@@ -92,8 +93,8 @@ import 'iceberg_catalog_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +124,7 @@ import 'iceberg_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -132,13 +133,19 @@ import 'iceberg_catalog_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket_for_my_iceberg_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_iceberg_catalog"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "my_iceberg_catalog" {
-///   depends_on      = [gcp_storage_bucket.bucket_for_my_iceberg_catalog]
+/// resource "gcp_biglake_iceberg_catalog" "my_iceberg_catalog" {
+///   depends_on = [gcp_storage_bucket.bucket_for_my_iceberg_catalog]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = gcp_storage_bucket.bucket_for_my_iceberg_catalog.name
 ///   catalog_type    = "CATALOG_TYPE_GCS_BUCKET"
 ///   credential_mode = "CREDENTIAL_MODE_VENDED_CREDENTIALS"
@@ -207,6 +214,7 @@ import 'iceberg_catalog_state.dart';
 ///       dependsOn:
 ///         - ${bucketForMyIcebergCatalog}
 /// ```
+///
 ///
 /// ### Biglake Iceberg Catalog Primary Location
 ///
@@ -283,8 +291,8 @@ import 'iceberg_catalog_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -315,7 +323,7 @@ import 'iceberg_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -324,13 +332,19 @@ import 'iceberg_catalog_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket_for_my_iceberg_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_iceberg_catalog"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "my_iceberg_catalog" {
-///   depends_on       = [gcp_storage_bucket.bucket_for_my_iceberg_catalog]
+/// resource "gcp_biglake_iceberg_catalog" "my_iceberg_catalog" {
+///   depends_on = [gcp_storage_bucket.bucket_for_my_iceberg_catalog]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = gcp_storage_bucket.bucket_for_my_iceberg_catalog.name
 ///   catalog_type     = "CATALOG_TYPE_GCS_BUCKET"
 ///   credential_mode  = "CREDENTIAL_MODE_VENDED_CREDENTIALS"
@@ -402,6 +416,7 @@ import 'iceberg_catalog_state.dart';
 ///       dependsOn:
 ///         - ${bucketForMyIcebergCatalog}
 /// ```
+///
 ///
 /// ### Biglake Iceberg Catalog Biglake
 ///
@@ -510,8 +525,8 @@ import 'iceberg_catalog_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -561,7 +576,7 @@ import 'iceberg_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -570,18 +585,27 @@ import 'iceberg_catalog_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "default_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_iceberg_catalog-default"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_storage_bucket" "restricted_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_iceberg_catalog-restricted"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "my_iceberg_catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "my_iceberg_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my_iceberg_catalog"
 ///   catalog_type     = "CATALOG_TYPE_BIGLAKE"
 ///   credential_mode  = "CREDENTIAL_MODE_VENDED_CREDENTIALS"
@@ -676,6 +700,7 @@ import 'iceberg_catalog_state.dart';
 ///           - gs://${restrictedBucket.name}
 /// ```
 ///
+///
 /// ### Biglake Iceberg Catalog Federated Unity
 ///
 ///
@@ -760,7 +785,7 @@ import 'iceberg_catalog_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -791,7 +816,7 @@ import 'iceberg_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -799,7 +824,10 @@ import 'iceberg_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergcatalog" "my_iceberg_catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "my_iceberg_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   catalog_type     = "CATALOG_TYPE_FEDERATED"
 ///   name             = "my_iceberg_catalog"
 ///   primary_location = "us-central1"
@@ -881,6 +909,7 @@ import 'iceberg_catalog_state.dart';
 ///           refreshSchedule:
 ///             refreshInterval: 300s
 /// ```
+///
 ///
 /// ### Biglake Iceberg Catalog Federated Glue
 ///
@@ -966,7 +995,7 @@ import 'iceberg_catalog_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -997,7 +1026,7 @@ import 'iceberg_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1005,7 +1034,10 @@ import 'iceberg_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergcatalog" "my_iceberg_catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "my_iceberg_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   catalog_type     = "CATALOG_TYPE_FEDERATED"
 ///   name             = "my_iceberg_catalog"
 ///   primary_location = "us-central1"
@@ -1174,7 +1206,7 @@ class IcebergCatalog extends pulumi.CustomResource {
           'gcp:biglake/icebergCatalog:IcebergCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     biglakeServiceAccount = registerOutput<String>('biglakeServiceAccount');
     biglakeServiceAccountId = registerOutput<String>('biglakeServiceAccountId');

@@ -12,6 +12,7 @@ import 'prevention_inspect_template_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dlp Inspect Template Basic
@@ -423,7 +424,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -557,7 +558,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -565,73 +566,76 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "basic" {
+/// resource "gcp_dataloss_prevention_inspect_template" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "My description"
 ///   display_name = "display_name"
 ///   inspect_config = {
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///       }, {
-///       "name" = "PERSON_NAME"
+///       name = "PERSON_NAME"
 ///       }, {
-///       "name" = "LAST_NAME"
+///       name = "LAST_NAME"
 ///       }, {
-///       "name" = "DOMAIN_NAME"
+///       name = "DOMAIN_NAME"
 ///       }, {
-///       "name" = "PHONE_NUMBER"
+///       name = "PHONE_NUMBER"
 ///       }, {
-///       "name" = "FIRST_NAME"
+///       name = "FIRST_NAME"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     rule_sets = [{
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "regex" = {
-///             "pattern" = ".+@example.com"
+///       rules = [{
+///         exclusion_rule = {
+///           regex = {
+///             pattern = ".+@example.com"
 ///           }
-///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///         }, {
-///         "name" = "DOMAIN_NAME"
+///         name = "DOMAIN_NAME"
 ///         }, {
-///         "name" = "PHONE_NUMBER"
+///         name = "PHONE_NUMBER"
 ///         }, {
-///         "name" = "PERSON_NAME"
+///         name = "PERSON_NAME"
 ///         }, {
-///         "name" = "FIRST_NAME"
+///         name = "FIRST_NAME"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "dictionary" = {
-///             "wordList" = {
-///               "words" = ["TEST"]
+///       rules = [{
+///         exclusion_rule = {
+///           dictionary = {
+///             word_list = {
+///               words = ["TEST"]
 ///             }
 ///           }
-///           "matchingType" = "MATCHING_TYPE_PARTIAL_MATCH"
+///           matching_type = "MATCHING_TYPE_PARTIAL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "PERSON_NAME"
+///       info_types = [{
+///         name = "PERSON_NAME"
 ///       }]
-///       "rules" = [{
-///         "hotwordRule" = {
-///           "hotwordRegex" = {
-///             "pattern" = "patient"
+///       rules = [{
+///         hotword_rule = {
+///           hotword_regex = {
+///             pattern = "patient"
 ///           }
-///           "proximity" = {
-///             "windowBefore" = 50
+///           proximity = {
+///             window_before = 50
 ///           }
-///           "likelihoodAdjustment" = {
-///             "fixedLikelihood" = "VERY_LIKELY"
+///           likelihood_adjustment = {
+///             fixed_likelihood = "VERY_LIKELY"
 ///           }
 ///         }
 ///       }]
@@ -640,14 +644,14 @@ import 'prevention_inspect_template_state.dart';
 ///       max_findings_per_item    = 10
 ///       max_findings_per_request = 50
 ///       max_findings_per_info_types = [{
-///         "maxFindings" = "75"
-///         "infoType" = {
-///           "name" = "PERSON_NAME"
+///         max_findings = "75"
+///         info_type = {
+///           name = "PERSON_NAME"
 ///         }
 ///         }, {
-///         "maxFindings" = "80"
-///         "infoType" = {
-///           "name" = "LAST_NAME"
+///         max_findings = "80"
+///         info_type = {
+///           name = "LAST_NAME"
 ///         }
 ///       }]
 ///     }
@@ -859,6 +863,7 @@ import 'prevention_inspect_template_state.dart';
 ///                 name: LAST_NAME
 /// ```
 ///
+///
 /// ### Dlp Inspect Template Custom Type
 ///
 ///
@@ -872,18 +877,38 @@ import 'prevention_inspect_template_state.dart';
 ///     description: "My description",
 ///     displayName: "display_name",
 ///     inspectConfig: {
-///         customInfoTypes: [{
-///             infoType: {
-///                 name: "MY_CUSTOM_TYPE",
+///         customInfoTypes: [
+///             {
+///                 infoType: {
+///                     name: "MY_CUSTOM_TYPE",
+///                 },
+///                 likelihood: "UNLIKELY",
+///                 regex: {
+///                     pattern: "test*",
+///                 },
 ///             },
-///             likelihood: "UNLIKELY",
-///             regex: {
-///                 pattern: "test*",
+///             {
+///                 infoType: {
+///                     name: "MY_METADATA_KV_TYPE",
+///                 },
+///                 likelihood: "POSSIBLE",
+///                 metadataKeyValueExpression: {
+///                     keyRegex: "key.*",
+///                     valueRegex: "val.*",
+///                 },
 ///             },
-///         }],
-///         infoTypes: [{
-///             name: "EMAIL_ADDRESS",
-///         }],
+///         ],
+///         infoTypes: [
+///             {
+///                 name: "EMAIL_ADDRESS",
+///             },
+///             {
+///                 name: "OBJECT_TYPE/PERSON",
+///             },
+///             {
+///                 name: "OBJECT_TYPE/PERSON/PASSPORT",
+///             },
+///         ],
 ///         minLikelihood: "UNLIKELY",
 ///         ruleSets: [
 ///             {
@@ -896,6 +921,28 @@ import 'prevention_inspect_template_state.dart';
 ///                             pattern: ".+@example.com",
 ///                         },
 ///                         matchingType: "MATCHING_TYPE_FULL_MATCH",
+///                     },
+///                 }],
+///             },
+///             {
+///                 infoTypes: [{
+///                     name: "OBJECT_TYPE/PERSON",
+///                 }],
+///                 rules: [{
+///                     exclusionRule: {
+///                         matchingType: "MATCHING_TYPE_RULE_SPECIFIC",
+///                         excludeByImageFindings: {
+///                             infoTypes: [{
+///                                 name: "OBJECT_TYPE/PERSON/PASSPORT",
+///                                 version: "latest",
+///                                 sensitivityScore: {
+///                                     score: "SENSITIVITY_LOW",
+///                                 },
+///                             }],
+///                             imageContainmentType: {
+///                                 fullyInside: {},
+///                             },
+///                         },
 ///                     },
 ///                 }],
 ///             },
@@ -934,18 +981,38 @@ import 'prevention_inspect_template_state.dart';
 ///     description="My description",
 ///     display_name="display_name",
 ///     inspect_config={
-///         "custom_info_types": [{
-///             "info_type": {
-///                 "name": "MY_CUSTOM_TYPE",
+///         "custom_info_types": [
+///             {
+///                 "info_type": {
+///                     "name": "MY_CUSTOM_TYPE",
+///                 },
+///                 "likelihood": "UNLIKELY",
+///                 "regex": {
+///                     "pattern": "test*",
+///                 },
 ///             },
-///             "likelihood": "UNLIKELY",
-///             "regex": {
-///                 "pattern": "test*",
+///             {
+///                 "info_type": {
+///                     "name": "MY_METADATA_KV_TYPE",
+///                 },
+///                 "likelihood": "POSSIBLE",
+///                 "metadata_key_value_expression": {
+///                     "key_regex": "key.*",
+///                     "value_regex": "val.*",
+///                 },
 ///             },
-///         }],
-///         "info_types": [{
-///             "name": "EMAIL_ADDRESS",
-///         }],
+///         ],
+///         "info_types": [
+///             {
+///                 "name": "EMAIL_ADDRESS",
+///             },
+///             {
+///                 "name": "OBJECT_TYPE/PERSON",
+///             },
+///             {
+///                 "name": "OBJECT_TYPE/PERSON/PASSPORT",
+///             },
+///         ],
 ///         "min_likelihood": "UNLIKELY",
 ///         "rule_sets": [
 ///             {
@@ -958,6 +1025,28 @@ import 'prevention_inspect_template_state.dart';
 ///                             "pattern": ".+@example.com",
 ///                         },
 ///                         "matching_type": "MATCHING_TYPE_FULL_MATCH",
+///                     },
+///                 }],
+///             },
+///             {
+///                 "info_types": [{
+///                     "name": "OBJECT_TYPE/PERSON",
+///                 }],
+///                 "rules": [{
+///                     "exclusion_rule": {
+///                         "matching_type": "MATCHING_TYPE_RULE_SPECIFIC",
+///                         "exclude_by_image_findings": {
+///                             "info_types": [{
+///                                 "name": "OBJECT_TYPE/PERSON/PASSPORT",
+///                                 "version": "latest",
+///                                 "sensitivity_score": {
+///                                     "score": "SENSITIVITY_LOW",
+///                                 },
+///                             }],
+///                             "image_containment_type": {
+///                                 "fully_inside": {},
+///                             },
+///                         },
 ///                     },
 ///                 }],
 ///             },
@@ -1015,12 +1104,33 @@ import 'prevention_inspect_template_state.dart';
 ///                         Pattern = "test*",
 ///                     },
 ///                 },
+///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs
+///                 {
+///                     InfoType = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs
+///                     {
+///                         Name = "MY_METADATA_KV_TYPE",
+///                     },
+///                     Likelihood = "POSSIBLE",
+///                     MetadataKeyValueExpression = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs
+///                     {
+///                         KeyRegex = "key.*",
+///                         ValueRegex = "val.*",
+///                     },
+///                 },
 ///             },
 ///             InfoTypes = new[]
 ///             {
 ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
 ///                 {
 ///                     Name = "EMAIL_ADDRESS",
+///                 },
+///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+///                 {
+///                     Name = "OBJECT_TYPE/PERSON",
+///                 },
+///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+///                 {
+///                     Name = "OBJECT_TYPE/PERSON/PASSPORT",
 ///                 },
 ///             },
 ///             MinLikelihood = "UNLIKELY",
@@ -1046,6 +1156,45 @@ import 'prevention_inspect_template_state.dart';
 ///                                     Pattern = ".+@example.com",
 ///                                 },
 ///                                 MatchingType = "MATCHING_TYPE_FULL_MATCH",
+///                             },
+///                         },
+///                     },
+///                 },
+///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetArgs
+///                 {
+///                     InfoTypes = new[]
+///                     {
+///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs
+///                         {
+///                             Name = "OBJECT_TYPE/PERSON",
+///                         },
+///                     },
+///                     Rules = new[]
+///                     {
+///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs
+///                         {
+///                             ExclusionRule = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs
+///                             {
+///                                 MatchingType = "MATCHING_TYPE_RULE_SPECIFIC",
+///                                 ExcludeByImageFindings = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs
+///                                 {
+///                                     InfoTypes = new[]
+///                                     {
+///                                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs
+///                                         {
+///                                             Name = "OBJECT_TYPE/PERSON/PASSPORT",
+///                                             Version = "latest",
+///                                             SensitivityScore = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs
+///                                             {
+///                                                 Score = "SENSITIVITY_LOW",
+///                                             },
+///                                         },
+///                                     },
+///                                     ImageContainmentType = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs
+///                                     {
+///                                         FullyInside = null,
+///                                     },
+///                                 },
 ///                             },
 ///                         },
 ///                     },
@@ -1096,7 +1245,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1117,10 +1266,26 @@ import 'prevention_inspect_template_state.dart';
 /// 							Pattern: pulumi.String("test*"),
 /// 						},
 /// 					},
+/// 					&dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{
+/// 						InfoType: &dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs{
+/// 							Name: pulumi.String("MY_METADATA_KV_TYPE"),
+/// 						},
+/// 						Likelihood: pulumi.String("POSSIBLE"),
+/// 						MetadataKeyValueExpression: &dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs{
+/// 							KeyRegex:   pulumi.String("key.*"),
+/// 							ValueRegex: pulumi.String("val.*"),
+/// 						},
+/// 					},
 /// 				},
 /// 				InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{
 /// 					&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
 /// 						Name: pulumi.String("EMAIL_ADDRESS"),
+/// 					},
+/// 					&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+/// 						Name: pulumi.String("OBJECT_TYPE/PERSON"),
+/// 					},
+/// 					&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+/// 						Name: pulumi.String("OBJECT_TYPE/PERSON/PASSPORT"),
 /// 					},
 /// 				},
 /// 				MinLikelihood: pulumi.String("UNLIKELY"),
@@ -1138,6 +1303,34 @@ import 'prevention_inspect_template_state.dart';
 /// 										Pattern: pulumi.String(".+@example.com"),
 /// 									},
 /// 									MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 					&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
+/// 						InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{
+/// 							&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+/// 								Name: pulumi.String("OBJECT_TYPE/PERSON"),
+/// 							},
+/// 						},
+/// 						Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
+/// 							&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
+/// 								ExclusionRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{
+/// 									MatchingType: pulumi.String("MATCHING_TYPE_RULE_SPECIFIC"),
+/// 									ExcludeByImageFindings: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs{
+/// 										InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArray{
+/// 											&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs{
+/// 												Name:    pulumi.String("OBJECT_TYPE/PERSON/PASSPORT"),
+/// 												Version: pulumi.String("latest"),
+/// 												SensitivityScore: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs{
+/// 													Score: pulumi.String("SENSITIVITY_LOW"),
+/// 												},
+/// 											},
+/// 										},
+/// 										ImageContainmentType: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs{
+/// 											FullyInside: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs{},
+/// 										},
+/// 									},
 /// 								},
 /// 							},
 /// 						},
@@ -1179,7 +1372,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1187,50 +1380,87 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "custom" {
+/// resource "gcp_dataloss_prevention_inspect_template" "custom" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "My description"
 ///   display_name = "display_name"
 ///   inspect_config = {
 ///     custom_info_types = [{
-///       "infoType" = {
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_type = {
+///         name = "MY_CUSTOM_TYPE"
 ///       }
-///       "likelihood" = "UNLIKELY"
-///       "regex" = {
-///         "pattern" = "test*"
+///       likelihood = "UNLIKELY"
+///       regex = {
+///         pattern = "test*"
+///       }
+///       }, {
+///       info_type = {
+///         name = "MY_METADATA_KV_TYPE"
+///       }
+///       likelihood = "POSSIBLE"
+///       metadata_key_value_expression = {
+///         key_regex   = "key.*"
+///         value_regex = "val.*"
 ///       }
 ///     }]
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
+///       }, {
+///       name = "OBJECT_TYPE/PERSON"
+///       }, {
+///       name = "OBJECT_TYPE/PERSON/PASSPORT"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     rule_sets = [{
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "regex" = {
-///             "pattern" = ".+@example.com"
+///       rules = [{
+///         exclusion_rule = {
+///           regex = {
+///             pattern = ".+@example.com"
 ///           }
-///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_types = [{
+///         name = "OBJECT_TYPE/PERSON"
 ///       }]
-///       "rules" = [{
-///         "hotwordRule" = {
-///           "hotwordRegex" = {
-///             "pattern" = "example*"
+///       rules = [{
+///         exclusion_rule = {
+///           matching_type = "MATCHING_TYPE_RULE_SPECIFIC"
+///           exclude_by_image_findings = {
+///             info_types = [{
+///               name    = "OBJECT_TYPE/PERSON/PASSPORT"
+///               version = "latest"
+///               sensitivity_score = {
+///                 score = "SENSITIVITY_LOW"
+///               }
+///             }]
+///             image_containment_type = {
+///               fully_inside = {}
+///             }
 ///           }
-///           "proximity" = {
-///             "windowBefore" = 50
+///         }
+///       }]
+///       }, {
+///       info_types = [{
+///         name = "MY_CUSTOM_TYPE"
+///       }]
+///       rules = [{
+///         hotword_rule = {
+///           hotword_regex = {
+///             pattern = "example*"
 ///           }
-///           "likelihoodAdjustment" = {
-///             "fixedLikelihood" = "VERY_LIKELY"
+///           proximity = {
+///             window_before = 50
+///           }
+///           likelihood_adjustment = {
+///             fixed_likelihood = "VERY_LIKELY"
 ///           }
 ///         }
 ///       }]
@@ -1254,12 +1484,18 @@ import 'prevention_inspect_template_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs;
@@ -1283,18 +1519,36 @@ import 'prevention_inspect_template_state.dart';
 ///             .description("My description")
 ///             .displayName("display_name")
 ///             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
-///                 .customInfoTypes(PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
-///                     .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
-///                         .name("MY_CUSTOM_TYPE")
+///                 .customInfoTypes(
+///                     PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
+///                         .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
+///                             .name("MY_CUSTOM_TYPE")
+///                             .build())
+///                         .likelihood("UNLIKELY")
+///                         .regex(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs.builder()
+///                             .pattern("test*")
+///                             .build())
+///                         .build(),
+///                     PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
+///                         .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
+///                             .name("MY_METADATA_KV_TYPE")
+///                             .build())
+///                         .likelihood("POSSIBLE")
+///                         .metadataKeyValueExpression(PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs.builder()
+///                             .keyRegex("key.*")
+///                             .valueRegex("val.*")
+///                             .build())
 ///                         .build())
-///                     .likelihood("UNLIKELY")
-///                     .regex(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs.builder()
-///                         .pattern("test*")
+///                 .infoTypes(
+///                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+///                         .name("EMAIL_ADDRESS")
+///                         .build(),
+///                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+///                         .name("OBJECT_TYPE/PERSON")
+///                         .build(),
+///                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+///                         .name("OBJECT_TYPE/PERSON/PASSPORT")
 ///                         .build())
-///                     .build())
-///                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
-///                     .name("EMAIL_ADDRESS")
-///                     .build())
 ///                 .minLikelihood("UNLIKELY")
 ///                 .ruleSets(
 ///                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
@@ -1307,6 +1561,29 @@ import 'prevention_inspect_template_state.dart';
 ///                                     .pattern(".+@example.com")
 ///                                     .build())
 ///                                 .matchingType("MATCHING_TYPE_FULL_MATCH")
+///                                 .build())
+///                             .build())
+///                         .build(),
+///                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
+///                         .infoTypes(PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs.builder()
+///                             .name("OBJECT_TYPE/PERSON")
+///                             .build())
+///                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
+///                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
+///                                 .matchingType("MATCHING_TYPE_RULE_SPECIFIC")
+///                                 .excludeByImageFindings(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs.builder()
+///                                     .infoTypes(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs.builder()
+///                                         .name("OBJECT_TYPE/PERSON/PASSPORT")
+///                                         .version("latest")
+///                                         .sensitivityScore(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs.builder()
+///                                             .score("SENSITIVITY_LOW")
+///                                             .build())
+///                                         .build())
+///                                     .imageContainmentType(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs.builder()
+///                                         .fullyInside(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs.builder()
+///                                             .build())
+///                                         .build())
+///                                     .build())
 ///                                 .build())
 ///                             .build())
 ///                         .build(),
@@ -1353,8 +1630,16 @@ import 'prevention_inspect_template_state.dart';
 ///             likelihood: UNLIKELY
 ///             regex:
 ///               pattern: test*
+///           - infoType:
+///               name: MY_METADATA_KV_TYPE
+///             likelihood: POSSIBLE
+///             metadataKeyValueExpression:
+///               keyRegex: key.*
+///               valueRegex: val.*
 ///         infoTypes:
 ///           - name: EMAIL_ADDRESS
+///           - name: OBJECT_TYPE/PERSON
+///           - name: OBJECT_TYPE/PERSON/PASSPORT
 ///         minLikelihood: UNLIKELY
 ///         ruleSets:
 ///           - infoTypes:
@@ -1364,6 +1649,19 @@ import 'prevention_inspect_template_state.dart';
 ///                   regex:
 ///                     pattern: .+@example.com
 ///                   matchingType: MATCHING_TYPE_FULL_MATCH
+///           - infoTypes:
+///               - name: OBJECT_TYPE/PERSON
+///             rules:
+///               - exclusionRule:
+///                   matchingType: MATCHING_TYPE_RULE_SPECIFIC
+///                   excludeByImageFindings:
+///                     infoTypes:
+///                       - name: OBJECT_TYPE/PERSON/PASSPORT
+///                         version: latest
+///                         sensitivityScore:
+///                           score: SENSITIVITY_LOW
+///                     imageContainmentType:
+///                       fullyInside: {}
 ///           - infoTypes:
 ///               - name: MY_CUSTOM_TYPE
 ///             rules:
@@ -1378,6 +1676,7 @@ import 'prevention_inspect_template_state.dart';
 ///           maxFindingsPerItem: 10
 ///           maxFindingsPerRequest: 50
 /// ```
+///
 ///
 /// ### Dlp Inspect Template Custom Type Surrogate
 ///
@@ -1609,7 +1908,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1690,7 +1989,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1698,48 +1997,51 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "custom_type_surrogate" {
+/// resource "gcp_dataloss_prevention_inspect_template" "custom_type_surrogate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "My description"
 ///   display_name = "display_name"
 ///   inspect_config = {
 ///     custom_info_types = [{
-///       "infoType" = {
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_type = {
+///         name = "MY_CUSTOM_TYPE"
 ///       }
-///       "likelihood"    = "UNLIKELY"
-///       "surrogateType" = {}
+///       likelihood     = "UNLIKELY"
+///       surrogate_type = {}
 ///     }]
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     rule_sets = [{
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "regex" = {
-///             "pattern" = ".+@example.com"
+///       rules = [{
+///         exclusion_rule = {
+///           regex = {
+///             pattern = ".+@example.com"
 ///           }
-///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_types = [{
+///         name = "MY_CUSTOM_TYPE"
 ///       }]
-///       "rules" = [{
-///         "hotwordRule" = {
-///           "hotwordRegex" = {
-///             "pattern" = "example*"
+///       rules = [{
+///         hotword_rule = {
+///           hotword_regex = {
+///             pattern = "example*"
 ///           }
-///           "proximity" = {
-///             "windowBefore" = 50
+///           proximity = {
+///             window_before = 50
 ///           }
-///           "likelihoodAdjustment" = {
-///             "fixedLikelihood" = "VERY_LIKELY"
+///           likelihood_adjustment = {
+///             fixed_likelihood = "VERY_LIKELY"
 ///           }
 ///         }
 ///       }]
@@ -1887,6 +2189,7 @@ import 'prevention_inspect_template_state.dart';
 ///           maxFindingsPerRequest: 50
 /// ```
 ///
+///
 /// ### Dlp Inspect Template Max Infotype Per Finding Default
 ///
 ///
@@ -1988,7 +2291,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2025,7 +2328,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2033,20 +2336,23 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "max_infotype_per_finding_default" {
+/// resource "gcp_dataloss_prevention_inspect_template" "max_infotype_per_finding_default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "projects/my-project-name"
 ///   inspect_config = {
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///       }, {
-///       "name" = "PERSON_NAME"
+///       name = "PERSON_NAME"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     limits = {
 ///       max_findings_per_request = 333
 ///       max_findings_per_item    = 222
 ///       max_findings_per_info_types = [{
-///         "maxFindings" = 111
+///         max_findings = 111
 ///       }]
 ///     }
 ///   }
@@ -2178,7 +2484,7 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
     deletionPolicy = registerOutput<String>('deletionPolicy');

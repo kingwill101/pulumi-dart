@@ -25,7 +25,7 @@ class IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus {
 
   factory IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

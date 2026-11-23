@@ -16,6 +16,7 @@ import 'assessment_rule_state.dart';
 /// * How-to Guides
 /// * [Configure assessment rules using the API](https://cloud.google.com/contact-center/insights/docs/assessment-rule)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -85,7 +86,7 @@ class AssessmentRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/assessmentRule:AssessmentRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     assessmentRuleId = registerOutput<String?>('assessmentRuleId');

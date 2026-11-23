@@ -16,6 +16,7 @@ import 'user_state.dart';
 /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `passwordWo`.
 /// Read more about Write-only Arguments.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Alloydb User Builtin
@@ -28,7 +29,7 @@ import 'user_state.dart';
 ///
 /// const defaultCluster = new gcp.alloydb.Cluster("default", {
 ///     clusterId: "alloydb-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     networkConfig: {
 ///         network: defaultGoogleComputeNetwork.id,
 ///     },
@@ -74,7 +75,7 @@ import 'user_state.dart';
 ///
 /// default_cluster = gcp.alloydb.Cluster("default",
 ///     cluster_id="alloydb-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     network_config={
 ///         "network": default_google_compute_network["id"],
 ///     },
@@ -118,7 +119,7 @@ import 'user_state.dart';
 ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
 ///     {
 ///         ClusterId = "alloydb-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
 ///         {
 ///             Network = defaultGoogleComputeNetwork.Id,
@@ -193,10 +194,10 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -204,7 +205,7 @@ import 'user_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
-/// 			Location:  pulumi.String("us-central1"),
+/// 			Location:  pulumi.String("us-east1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 /// 				Network: pulumi.Any(defaultGoogleComputeNetwork.Id),
 /// 			},
@@ -227,13 +228,13 @@ import 'user_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      defaultNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: defaultNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -275,7 +276,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -283,18 +284,24 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_alloydb_instance" "default" {
-///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster       = gcp_alloydb_cluster.default.name
 ///   instance_id   = "alloydb-instance"
 ///   instance_type = "PRIMARY"
 /// }
 /// resource "gcp_alloydb_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "alloydb-cluster"
-///   location   = "us-central1"
+///   location   = "us-east1"
 ///   network_config = {
 ///     network = defaultGoogleComputeNetwork.id
 ///   }
@@ -304,9 +311,15 @@ import 'user_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "alloydb-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "alloydb-cluster"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "VPC_PEERING"
@@ -314,12 +327,18 @@ import 'user_state.dart';
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// resource "gcp_alloydb_user" "user1" {
-///   depends_on     = [gcp_alloydb_instance.default]
+///   depends_on = [gcp_alloydb_instance.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster        = gcp_alloydb_cluster.default.name
 ///   user_id        = "user1"
 ///   user_type      = "ALLOYDB_BUILT_IN"
@@ -365,7 +384,7 @@ import 'user_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
 ///             .clusterId("alloydb-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .networkConfig(ClusterNetworkConfigArgs.builder()
 ///                 .network(defaultGoogleComputeNetwork.get("id"))
 ///                 .build())
@@ -433,7 +452,7 @@ import 'user_state.dart';
 ///     name: default
 ///     properties:
 ///       clusterId: alloydb-cluster
-///       location: us-central1
+///       location: us-east1
 ///       networkConfig:
 ///         network: ${defaultGoogleComputeNetwork.id}
 ///       initialUser:
@@ -480,6 +499,7 @@ import 'user_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Alloydb User Iam
 ///
 ///
@@ -491,7 +511,7 @@ import 'user_state.dart';
 /// const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
 /// const defaultCluster = new gcp.alloydb.Cluster("default", {
 ///     clusterId: "alloydb-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     networkConfig: {
 ///         network: defaultNetwork.id,
 ///     },
@@ -536,7 +556,7 @@ import 'user_state.dart';
 /// default_network = gcp.compute.Network("default", name="alloydb-network")
 /// default_cluster = gcp.alloydb.Cluster("default",
 ///     cluster_id="alloydb-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     network_config={
 ///         "network": default_network.id,
 ///     },
@@ -583,7 +603,7 @@ import 'user_state.dart';
 ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
 ///     {
 ///         ClusterId = "alloydb-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
 ///         {
 ///             Network = defaultNetwork.Id,
@@ -652,10 +672,10 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -669,9 +689,9 @@ import 'user_state.dart';
 /// 		}
 /// 		defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
-/// 			Location:  pulumi.String("us-central1"),
+/// 			Location:  pulumi.String("us-east1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				Network: defaultNetwork.ID(),
 /// 			},
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
 /// 				Password: pulumi.String("cluster_secret"),
@@ -686,13 +706,13 @@ import 'user_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      defaultNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: defaultNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -733,7 +753,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -741,18 +761,24 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_alloydb_instance" "default" {
-///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster       = gcp_alloydb_cluster.default.name
 ///   instance_id   = "alloydb-instance"
 ///   instance_type = "PRIMARY"
 /// }
 /// resource "gcp_alloydb_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "alloydb-cluster"
-///   location   = "us-central1"
+///   location   = "us-east1"
 ///   network_config = {
 ///     network = gcp_compute_network.default.id
 ///   }
@@ -762,9 +788,15 @@ import 'user_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "alloydb-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "alloydb-cluster"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "VPC_PEERING"
@@ -772,12 +804,18 @@ import 'user_state.dart';
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// resource "gcp_alloydb_user" "user2" {
-///   depends_on     = [gcp_alloydb_instance.default]
+///   depends_on = [gcp_alloydb_instance.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster        = gcp_alloydb_cluster.default.name
 ///   user_id        = "user2@foo.com"
 ///   user_type      = "ALLOYDB_IAM_USER"
@@ -826,7 +864,7 @@ import 'user_state.dart';
 ///
 ///         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
 ///             .clusterId("alloydb-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .networkConfig(ClusterNetworkConfigArgs.builder()
 ///                 .network(defaultNetwork.id())
 ///                 .build())
@@ -889,7 +927,7 @@ import 'user_state.dart';
 ///     name: default
 ///     properties:
 ///       clusterId: alloydb-cluster
-///       location: us-central1
+///       location: us-east1
 ///       networkConfig:
 ///         network: ${defaultNetwork.id}
 ///       initialUser:
@@ -981,8 +1019,11 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String?> passwordWoVersion;
   /// The database role name of the user.
   late final pulumi.Output<String> userId;
-  /// The type of this user.
-  /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+  /// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+  /// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+  /// AlloyDB clusters support IAM group authentication. See
+  /// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+  /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
   late final pulumi.Output<String> userType;
 
   /// Creates a new [User].
@@ -997,7 +1038,7 @@ class User extends pulumi.CustomResource {
           'gcp:alloydb/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     cluster = registerOutput<String>('cluster');

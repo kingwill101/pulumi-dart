@@ -10,6 +10,8 @@ import 'v2_folder_notification_config_streaming_config.dart';
 class V2FolderNotificationConfigArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> configId;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  final pulumi.Input<bool?>? deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -32,6 +34,7 @@ class V2FolderNotificationConfigArgs {
 
   /// Creates a new [V2FolderNotificationConfigArgs].
   /// [configId] This must be unique within the organization.
+  /// [deletionNotificationsEnabled] Indicates whether the notifications will be sent for deleted findings.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the notification config (max of 1024 characters).
   /// [folder] Numerical ID of the parent folder.
@@ -40,6 +43,7 @@ class V2FolderNotificationConfigArgs {
   /// [streamingConfig] The config for triggering streaming-based notifications.
   const V2FolderNotificationConfigArgs({
     required this.configId,
+    this.deletionNotificationsEnabled,
     this.deletionPolicy,
     this.description,
     required this.folder,
@@ -51,6 +55,7 @@ class V2FolderNotificationConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configId': configId,
+      'deletionNotificationsEnabled': ?deletionNotificationsEnabled,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'folder': folder,
@@ -63,6 +68,7 @@ class V2FolderNotificationConfigArgs {
   factory V2FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderNotificationConfigArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
+      deletionNotificationsEnabled: (() { final guardedValue = map['deletionNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: pulumi.Input.fromValue(map['folder'] as String),

@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_instance_iam_policy_args.dart';
+import 'get_instance_iam_policy_result.dart';
 import 'get_job_args.dart';
 import 'get_job_iam_policy_args.dart';
 import 'get_job_iam_policy_result.dart';
@@ -11,6 +13,150 @@ import 'get_worker_pool_args.dart';
 import 'get_worker_pool_iam_policy_args.dart';
 import 'get_worker_pool_iam_policy_result.dart';
 import 'get_worker_pool_result.dart';
+
+/// Retrieves the current IAM policy data for instance
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.cloudrunv2.getInstanceIamPolicy({
+///     project: _default.project,
+///     location: _default.location,
+///     name: _default.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.cloudrunv2.get_instance_iam_policy(project=default["project"],
+///     location=default["location"],
+///     name=default["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.CloudRunV2.GetInstanceIamPolicy.Invoke(new()
+///     {
+///         Project = @default.Project,
+///         Location = @default.Location,
+///         Name = @default.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.LookupInstanceIamPolicy(ctx, &cloudrunv2.LookupInstanceIamPolicyArgs{
+/// 			Project:  pulumi.StringRef(_default.Project),
+/// 			Location: pulumi.StringRef(_default.Location),
+/// 			Name:     _default.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_instance_iam_policy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+/// import com.pulumi.gcp.cloudrunv2.inputs.GetInstanceIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = Cloudrunv2Functions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:cloudrunv2:getInstanceIamPolicy
+///       arguments:
+///         project: ${default.project}
+///         location: ${default.location}
+///         name: ${default.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_cloudrunv2_get_instance_iam_policy_get_instance_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getInstanceIamPolicy:getInstanceIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getInstanceIamPolicy:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
+}
 
 /// Get information about a Google Cloud Run v2 Job. For more information see
 /// the [official documentation](https://cloud.google.com/run/docs/)
@@ -55,7 +201,7 @@ import 'get_worker_pool_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -73,7 +219,7 @@ import 'get_worker_pool_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -81,7 +227,7 @@ import 'get_worker_pool_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getjob" "myJob" {
+/// data "gcp_cloudrunv2_job" "myJob" {
 ///   name     = "my-job"
 ///   location = "us-central1"
 /// }
@@ -195,7 +341,7 @@ pulumi.Output<GetJobResult> getJobOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -214,7 +360,7 @@ pulumi.Output<GetJobResult> getJobOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -222,7 +368,7 @@ pulumi.Output<GetJobResult> getJobOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getjobiampolicy" "policy" {
+/// data "gcp_cloudrunv2_job_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name
@@ -337,7 +483,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -355,7 +501,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,7 +509,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getservice" "myService" {
+/// data "gcp_cloudrunv2_service" "myService" {
 ///   name     = "my-service"
 ///   location = "us-central1"
 /// }
@@ -477,7 +623,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -496,7 +642,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -504,7 +650,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getserviceiampolicy" "policy" {
+/// data "gcp_cloudrunv2_service_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name
@@ -619,7 +765,7 @@ pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -637,7 +783,7 @@ pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -645,7 +791,7 @@ pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getworkerpool" "myWorkerPool" {
+/// data "gcp_cloudrunv2_worker_pool" "myWorkerPool" {
 ///   name     = "my-worker-pool"
 ///   location = "us-central1"
 /// }
@@ -759,7 +905,7 @@ pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -778,7 +924,7 @@ pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -786,7 +932,7 @@ pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getworkerpooliampolicy" "policy" {
+/// data "gcp_cloudrunv2_worker_pool_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name

@@ -40,7 +40,8 @@ class RegionInstanceGroupManagerArgs {
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
-  /// When set to "DELETE", deleting the resource is allowed.
+  /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
+  /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
   ///
   /// - - -
   final pulumi.Input<String?>? deletionPolicy;
@@ -79,9 +80,11 @@ class RegionInstanceGroupManagerArgs {
   /// The region where the managed instance group resides. If not provided, the provider region is used.
   final pulumi.Input<String?>? region;
   /// Resource policies for this managed instance group. Structure is documented below.
+  final pulumi.Input<RegionInstanceGroupManagerResourcePolicies?>? resourcePolicies;
+  /// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
   ///
   /// - - -
-  final pulumi.Input<RegionInstanceGroupManagerResourcePolicies?>? resourcePolicies;
+  final pulumi.Input<String?>? serviceAccount;
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   final pulumi.Input<RegionInstanceGroupManagerStandbyPolicy?>? standbyPolicy;
   /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -138,6 +141,7 @@ class RegionInstanceGroupManagerArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region where the managed instance group resides. If not provided, the provider region is used.
   /// [resourcePolicies] Resource policies for this managed instance group. Structure is documented below.
+  /// [serviceAccount] ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
   /// [standbyPolicy] The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   /// [statefulDisks] Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
   /// [statefulExternalIps] External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -168,6 +172,7 @@ class RegionInstanceGroupManagerArgs {
     this.project,
     this.region,
     this.resourcePolicies,
+    this.serviceAccount,
     this.standbyPolicy,
     this.statefulDisks,
     this.statefulExternalIps,
@@ -201,6 +206,7 @@ class RegionInstanceGroupManagerArgs {
       'project': ?project,
       'region': ?region,
       'resourcePolicies': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerResourcePolicies, Map<String, dynamic>>(resourcePolicies, (value) => value.toMap()),
+      'serviceAccount': ?serviceAccount,
       'standbyPolicy': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerStandbyPolicy, Map<String, dynamic>>(standbyPolicy, (value) => value.toMap()),
       'statefulDisks': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatefulDisk>, List<Map<String, dynamic>>>(statefulDisks, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatefulDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulExternalIps': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatefulExternalIp>, List<Map<String, dynamic>>>(statefulExternalIps, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatefulExternalIp, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -235,15 +241,16 @@ class RegionInstanceGroupManagerArgs {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       standbyPolicy: (() { final guardedValue = map['standbyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statefulDisks: (() { final guardedValue = map['statefulDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulDisk>(guardedValue, (value) => RegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulExternalIps: (() { final guardedValue = map['statefulExternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulInternalIps: (() { final guardedValue = map['statefulInternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetPools: (() { final guardedValue = map['targetPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetSizePolicies: (() { final guardedValue = map['targetSizePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => RegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       versions: pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerVersion>(map['versions']!, (value) => RegionInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>()))),
       waitForInstances: (() { final guardedValue = map['waitForInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

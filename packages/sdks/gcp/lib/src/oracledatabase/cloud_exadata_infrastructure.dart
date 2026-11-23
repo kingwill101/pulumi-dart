@@ -12,6 +12,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// * How-to Guides
 /// * [Create Exadata Infrastructure instances](https://cloud.google.com/oracle/database/docs/create-instances)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Oracledatabase Cloud Exadata Infrastructure Basic
@@ -32,6 +33,9 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///         computeCount: 2,
 ///         storageCount: 3,
 ///     },
+///     labels: {
+///         "label-one": "value-one",
+///     },
 ///     deletionProtection: true,
 /// });
 /// ```
@@ -48,6 +52,9 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///         "shape": "Exadata.X9M",
 ///         "compute_count": 2,
 ///         "storage_count": 3,
+///     },
+///     labels={
+///         "label-one": "value-one",
 ///     },
 ///     deletion_protection=True)
 /// ```
@@ -71,6 +78,10 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///             ComputeCount = 2,
 ///             StorageCount = 3,
 ///         },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
 ///         DeletionProtection = true,
 ///     });
 ///
@@ -80,7 +91,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -96,6 +107,9 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// 				ComputeCount: pulumi.Int(2),
 /// 				StorageCount: pulumi.Int(3),
 /// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
 /// 			DeletionProtection: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -106,7 +120,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -114,7 +128,10 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "my-cloud-exadata" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "my-cloud-exadata" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-instance"
 ///   display_name                    = "my-instance displayname"
 ///   location                        = "us-east4"
@@ -123,6 +140,9 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///     shape         = "Exadata.X9M"
 ///     compute_count = "2"
 ///     storage_count = "3"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
 ///   }
 ///   deletion_protection = "true"
 /// }
@@ -159,6 +179,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///                 .computeCount(2)
 ///                 .storageCount(3)
 ///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
 ///             .deletionProtection(true)
 ///             .build());
 ///
@@ -178,8 +199,11 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///         shape: Exadata.X9M
 ///         computeCount: '2'
 ///         storageCount: '3'
+///       labels:
+///         label-one: value-one
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Cloud Exadata Infrastructure Full
 ///
@@ -335,7 +359,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -393,7 +417,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -401,7 +425,10 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "my-cloud-exadata" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "my-cloud-exadata" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-instance"
 ///   display_name                    = "my-instance displayname"
 ///   location                        = "us-east4"
@@ -412,7 +439,7 @@ import 'cloud_exadata_infrastructure_state.dart';
 ///     compute_count = "2"
 ///     storage_count = "3"
 ///     customer_contacts = [{
-///       "email" = "xyz@example.com"
+///       email = "xyz@example.com"
 ///     }]
 ///     maintenance_window = {
 ///       custom_action_timeout_mins       = "20"
@@ -607,7 +634,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
           'gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');

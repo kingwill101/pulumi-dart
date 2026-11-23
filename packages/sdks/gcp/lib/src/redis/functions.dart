@@ -3,6 +3,8 @@ import 'get_cluster_acl_policy_args.dart';
 import 'get_cluster_acl_policy_result.dart';
 import 'get_cluster_args.dart';
 import 'get_cluster_result.dart';
+import 'get_cluster_token_auth_user_args.dart';
+import 'get_cluster_token_auth_user_result.dart';
 import 'get_instance_args.dart';
 import 'get_instance_result.dart';
 
@@ -47,7 +49,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -65,7 +67,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -73,7 +75,7 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_redis_getcluster" "default" {
+/// data "gcp_redis_cluster" "default" {
 ///   name   = "my-redis-cluster"
 ///   region = "us-central1"
 /// }
@@ -183,7 +185,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +203,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,7 +211,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_redis_getclusteraclpolicy" "qa" {
+/// data "gcp_redis_cluster_acl_policy" "qa" {
 ///   acl_policy_id = "my-acl-policy"
 ///   location      = "us-central1"
 /// }
@@ -278,6 +280,142 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
   ).apply(GetClusterAclPolicyResult.fromMap);
 }
 
+/// Get information about a Google Cloud Redis Cluster Token Auth User. For more details refer to the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const qa = gcp.redis.getClusterTokenAuthUser({
+///     cluster: cluster.name,
+///     userId: "my-user",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// qa = gcp.redis.get_cluster_token_auth_user(cluster=cluster["name"],
+///     user_id="my-user")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var qa = Gcp.Redis.GetClusterTokenAuthUser.Invoke(new()
+///     {
+///         Cluster = cluster.Name,
+///         UserId = "my-user",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := redis.LookupClusterTokenAuthUser(ctx, &redis.LookupClusterTokenAuthUserArgs{
+/// 			Cluster: cluster.Name,
+/// 			UserId:  "my-user",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_redis_cluster_token_auth_user" "qa" {
+///   cluster = cluster.name
+///   user_id = "my-user"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.redis.RedisFunctions;
+/// import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var qa = RedisFunctions.getClusterTokenAuthUser(GetClusterTokenAuthUserArgs.builder()
+///             .cluster(cluster.get("name"))
+///             .userId("my-user")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   qa:
+///     fn::invoke:
+///       function: gcp:redis:getClusterTokenAuthUser
+///       arguments:
+///         cluster: ${cluster.name}
+///         userId: my-user
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_redis_get_cluster_token_auth_user_get_cluster_token_auth_user_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetClusterTokenAuthUserResult> getClusterTokenAuthUser(
+  GetClusterTokenAuthUserArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:redis/getClusterTokenAuthUser:getClusterTokenAuthUser',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetClusterTokenAuthUserResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterTokenAuthUserResult> getClusterTokenAuthUserOutput(
+  GetClusterTokenAuthUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:redis/getClusterTokenAuthUser:getClusterTokenAuthUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterTokenAuthUserResult.fromMap);
+}
+
 /// Get info about a Google Cloud Redis instance.
 ///
 /// ## Example Usage
@@ -328,7 +466,7 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -348,7 +486,7 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -356,18 +494,18 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_redis_getinstance" "myInstance" {
+/// data "gcp_redis_instance" "myInstance" {
 ///   name = "my-redis-instance"
 /// }
 ///
 /// output "instanceMemorySizeGb" {
-///   value = data.gcp_redis_getinstance.myInstance.memory_size_gb
+///   value = data.gcp_redis_instance.myInstance.memory_size_gb
 /// }
 /// output "instanceConnectMode" {
-///   value = data.gcp_redis_getinstance.myInstance.connect_mode
+///   value = data.gcp_redis_instance.myInstance.connect_mode
 /// }
 /// output "instanceAuthorizedNetwork" {
-///   value = data.gcp_redis_getinstance.myInstance.authorized_network
+///   value = data.gcp_redis_instance.myInstance.authorized_network
 /// }
 /// ```
 /// ```java

@@ -3,12 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterLoggingConfig {
-  /// The GKE components exposing logs. Supported values include:
-  /// `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+  /// The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
   final pulumi.Input<List<String>> enableComponents;
 
   /// Creates a new [ClusterLoggingConfig].
-  /// [enableComponents] The GKE components exposing logs. Supported values include:
+  /// [enableComponents] The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
   const ClusterLoggingConfig({
     required this.enableComponents,
   });

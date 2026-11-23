@@ -1,12 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'template_filter_config_filter_rule_settings.dart';
 import 'template_filter_config_malicious_uri_filter_settings.dart';
 import 'template_filter_config_pi_and_jailbreak_filter_settings.dart';
 import 'template_filter_config_rai_settings.dart';
 import 'template_filter_config_sdp_settings.dart';
 
 class TemplateFilterConfig {
+  /// Settings for customizing filter rules. Note: This field is not supported in
+  /// FloorSetting and Streaming Sanitization APIs.
+  /// Structure is documented below.
+  final pulumi.Input<TemplateFilterConfigFilterRuleSettings?>? filterRuleSettings;
   /// Malicious URI filter settings.
   /// Structure is documented below.
   final pulumi.Input<TemplateFilterConfigMaliciousUriFilterSettings?>? maliciousUriFilterSettings;
@@ -21,11 +26,13 @@ class TemplateFilterConfig {
   final pulumi.Input<TemplateFilterConfigSdpSettings?>? sdpSettings;
 
   /// Creates a new [TemplateFilterConfig].
+  /// [filterRuleSettings] Settings for customizing filter rules. Note: This field is not supported in
   /// [maliciousUriFilterSettings] Malicious URI filter settings.
   /// [piAndJailbreakFilterSettings] Prompt injection and Jailbreak Filter settings.
   /// [raiSettings] Responsible AI Filter settings.
   /// [sdpSettings] Sensitive Data Protection settings.
   const TemplateFilterConfig({
+    this.filterRuleSettings,
     this.maliciousUriFilterSettings,
     this.piAndJailbreakFilterSettings,
     this.raiSettings,
@@ -34,6 +41,7 @@ class TemplateFilterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'filterRuleSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigFilterRuleSettings, Map<String, dynamic>>(filterRuleSettings, (value) => value.toMap()),
       'maliciousUriFilterSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigMaliciousUriFilterSettings, Map<String, dynamic>>(maliciousUriFilterSettings, (value) => value.toMap()),
       'piAndJailbreakFilterSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigPiAndJailbreakFilterSettings, Map<String, dynamic>>(piAndJailbreakFilterSettings, (value) => value.toMap()),
       'raiSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigRaiSettings, Map<String, dynamic>>(raiSettings, (value) => value.toMap()),
@@ -43,6 +51,7 @@ class TemplateFilterConfig {
 
   factory TemplateFilterConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfig(
+      filterRuleSettings: (() { final guardedValue = map['filterRuleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateFilterConfigFilterRuleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maliciousUriFilterSettings: (() { final guardedValue = map['maliciousUriFilterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateFilterConfigMaliciousUriFilterSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       piAndJailbreakFilterSettings: (() { final guardedValue = map['piAndJailbreakFilterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       raiSettings: (() { final guardedValue = map['raiSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateFilterConfigRaiSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

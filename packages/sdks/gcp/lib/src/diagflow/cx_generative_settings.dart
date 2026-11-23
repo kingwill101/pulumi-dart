@@ -15,6 +15,7 @@ import 'cx_generative_settings_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dialogflowcx Generative Settings Full
@@ -59,7 +60,7 @@ import 'cx_generative_settings_state.dart';
 ///     },
 ///     languageCode: "en",
 ///     llmModelSettings: {
-///         model: "gemini-2.0-flash-001",
+///         model: "gemini-2.5-flash",
 ///         promptText: "example prompt text",
 ///     },
 /// });
@@ -101,7 +102,7 @@ import 'cx_generative_settings_state.dart';
 ///     },
 ///     language_code="en",
 ///     llm_model_settings={
-///         "model": "gemini-2.0-flash-001",
+///         "model": "gemini-2.5-flash",
 ///         "prompt_text": "example prompt text",
 ///     })
 /// ```
@@ -162,7 +163,7 @@ import 'cx_generative_settings_state.dart';
 ///         LanguageCode = "en",
 ///         LlmModelSettings = new Gcp.Diagflow.Inputs.CxGenerativeSettingsLlmModelSettingsArgs
 ///         {
-///             Model = "gemini-2.0-flash-001",
+///             Model = "gemini-2.5-flash",
 ///             PromptText = "example prompt text",
 ///         },
 ///     });
@@ -173,7 +174,7 @@ import 'cx_generative_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -190,7 +191,7 @@ import 'cx_generative_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxGenerativeSettings(ctx, "full_generative_settings", &diagflow.CxGenerativeSettingsArgs{
-/// 			Parent: agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent: agent.ID(),
 /// 			FallbackSettings: &diagflow.CxGenerativeSettingsFallbackSettingsArgs{
 /// 				SelectedPrompt: pulumi.String("example prompt"),
 /// 				PromptTemplates: diagflow.CxGenerativeSettingsFallbackSettingsPromptTemplateArray{
@@ -220,7 +221,7 @@ import 'cx_generative_settings_state.dart';
 /// 			},
 /// 			LanguageCode: pulumi.String("en"),
 /// 			LlmModelSettings: &diagflow.CxGenerativeSettingsLlmModelSettingsArgs{
-/// 				Model:      pulumi.String("gemini-2.0-flash-001"),
+/// 				Model:      pulumi.String("gemini-2.5-flash"),
 /// 				PromptText: pulumi.String("example prompt text"),
 /// 			},
 /// 		})
@@ -232,7 +233,7 @@ import 'cx_generative_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -240,28 +241,34 @@ import 'cx_generative_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-agent"
 ///   location              = "global"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 ///   description           = "Example description."
 /// }
-/// resource "gcp_diagflow_cxgenerativesettings" "full_generative_settings" {
-///   parent = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_generative_settings" "full_generative_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent = gcp_diagflow_cx_agent.agent.id
 ///   fallback_settings = {
 ///     selected_prompt = "example prompt"
 ///     prompt_templates = [{
-///       "displayName" = "example prompt"
-///       "promptText"  = "example prompt text"
-///       "frozen"      = false
+///       display_name = "example prompt"
+///       prompt_text  = "example prompt text"
+///       frozen       = false
 ///     }]
 ///   }
 ///   generative_safety_settings = {
 ///     default_banned_phrase_match_strategy = "PARTIAL_MATCH"
 ///     banned_phrases = [{
-///       "text"         = "example text"
-///       "languageCode" = "en"
+///       text          = "example text"
+///       language_code = "en"
 ///     }]
 ///   }
 ///   knowledge_connector_settings = {
@@ -274,7 +281,7 @@ import 'cx_generative_settings_state.dart';
 ///   }
 ///   language_code = "en"
 ///   llm_model_settings = {
-///     model       = "gemini-2.0-flash-001"
+///     model       = "gemini-2.5-flash"
 ///     prompt_text = "example prompt text"
 ///   }
 /// }
@@ -343,7 +350,7 @@ import 'cx_generative_settings_state.dart';
 ///                 .build())
 ///             .languageCode("en")
 ///             .llmModelSettings(CxGenerativeSettingsLlmModelSettingsArgs.builder()
-///                 .model("gemini-2.0-flash-001")
+///                 .model("gemini-2.5-flash")
 ///                 .promptText("example prompt text")
 ///                 .build())
 ///             .build());
@@ -386,7 +393,7 @@ import 'cx_generative_settings_state.dart';
 ///         disableDataStoreFallback: false
 ///       languageCode: en
 ///       llmModelSettings:
-///         model: gemini-2.0-flash-001
+///         model: gemini-2.5-flash
 ///         promptText: example prompt text
 /// ```
 ///
@@ -439,7 +446,7 @@ class CxGenerativeSettings extends pulumi.CustomResource {
           'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsFallbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsGenerativeSafetySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

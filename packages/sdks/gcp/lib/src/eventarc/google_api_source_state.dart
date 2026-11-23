@@ -2,6 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_api_source_logging_config.dart';
+import 'google_api_source_organization_subscription.dart';
+import 'google_api_source_project_subscriptions.dart';
 
 /// Input properties used for looking up and filtering GoogleApiSource resources.
 class GoogleApiSourceState {
@@ -53,9 +55,17 @@ class GoogleApiSourceState {
   /// Resource name of the form
   /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
   final pulumi.Input<String?>? name;
+  /// Config to enable subscribing to events from all projects in the
+  /// GoogleApiSource's org.
+  /// Structure is documented below.
+  final pulumi.Input<GoogleApiSourceOrganizationSubscription?>? organizationSubscription;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Config to enable subscribing to all events from a list of projects.
+  /// All the projects must be in the same org as the GoogleApiSource.
+  /// Structure is documented below.
+  final pulumi.Input<GoogleApiSourceProjectSubscriptions?>? projectSubscriptions;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
@@ -80,7 +90,9 @@ class GoogleApiSourceState {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [loggingConfig] The configuration for Platform Telemetry logging for Eventarc Advanced
   /// [name] Resource name of the form
+  /// [organizationSubscription] Config to enable subscribing to events from all projects in the
   /// [project] The ID of the project in which the resource belongs.
+  /// [projectSubscriptions] Config to enable subscribing to all events from a list of projects.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Server assigned unique identifier for the channel. The value is a UUID4
   /// [updateTime] The last-modified time.
@@ -99,7 +111,9 @@ class GoogleApiSourceState {
     this.location,
     this.loggingConfig,
     this.name,
+    this.organizationSubscription,
     this.project,
+    this.projectSubscriptions,
     this.pulumiLabels,
     this.uid,
     this.updateTime,
@@ -121,7 +135,9 @@ class GoogleApiSourceState {
       'location': ?location,
       'loggingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleApiSourceLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'name': ?name,
+      'organizationSubscription': ?pulumi.Input.mapOptionalInputValue<GoogleApiSourceOrganizationSubscription, Map<String, dynamic>>(organizationSubscription, (value) => value.toMap()),
       'project': ?project,
+      'projectSubscriptions': ?pulumi.Input.mapOptionalInputValue<GoogleApiSourceProjectSubscriptions, Map<String, dynamic>>(projectSubscriptions, (value) => value.toMap()),
       'pulumiLabels': ?pulumiLabels,
       'uid': ?uid,
       'updateTime': ?updateTime,
@@ -144,7 +160,9 @@ class GoogleApiSourceState {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleApiSourceLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      organizationSubscription: (() { final guardedValue = map['organizationSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleApiSourceOrganizationSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectSubscriptions: (() { final guardedValue = map['projectSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleApiSourceProjectSubscriptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

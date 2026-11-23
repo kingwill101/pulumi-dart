@@ -17,6 +17,7 @@ import 'ai_persistent_resource_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.persistentResources)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Persistent Resource
@@ -33,10 +34,15 @@ import 'ai_persistent_resource_state.dart';
 ///     displayName: "Example persistent resource",
 ///     resourcePools: [{
 ///         machineSpec: {
-///             machineType: "n1-standard-4",
+///             machineType: "n1-standard-8",
 ///         },
-///         replicaCount: "1",
+///         replicaCount: "2",
 ///     }],
+///     resourceRuntimeSpec: {
+///         raySpec: {
+///             imageUri: "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
+///         },
+///     },
 /// });
 /// ```
 /// ```python
@@ -49,10 +55,15 @@ import 'ai_persistent_resource_state.dart';
 ///     display_name="Example persistent resource",
 ///     resource_pools=[{
 ///         "machine_spec": {
-///             "machine_type": "n1-standard-4",
+///             "machine_type": "n1-standard-8",
 ///         },
-///         "replica_count": "1",
-///     }])
+///         "replica_count": "2",
+///     }],
+///     resource_runtime_spec={
+///         "ray_spec": {
+///             "image_uri": "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
+///         },
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -73,9 +84,16 @@ import 'ai_persistent_resource_state.dart';
 ///             {
 ///                 MachineSpec = new Gcp.Vertex.Inputs.AiPersistentResourceResourcePoolMachineSpecArgs
 ///                 {
-///                     MachineType = "n1-standard-4",
+///                     MachineType = "n1-standard-8",
 ///                 },
-///                 ReplicaCount = "1",
+///                 ReplicaCount = "2",
+///             },
+///         },
+///         ResourceRuntimeSpec = new Gcp.Vertex.Inputs.AiPersistentResourceResourceRuntimeSpecArgs
+///         {
+///             RaySpec = new Gcp.Vertex.Inputs.AiPersistentResourceResourceRuntimeSpecRaySpecArgs
+///             {
+///                 ImageUri = "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest",
 ///             },
 ///         },
 ///     });
@@ -86,7 +104,7 @@ import 'ai_persistent_resource_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -99,9 +117,14 @@ import 'ai_persistent_resource_state.dart';
 /// 			ResourcePools: vertex.AiPersistentResourceResourcePoolArray{
 /// 				&vertex.AiPersistentResourceResourcePoolArgs{
 /// 					MachineSpec: &vertex.AiPersistentResourceResourcePoolMachineSpecArgs{
-/// 						MachineType: pulumi.String("n1-standard-4"),
+/// 						MachineType: pulumi.String("n1-standard-8"),
 /// 					},
-/// 					ReplicaCount: pulumi.String("1"),
+/// 					ReplicaCount: pulumi.String("2"),
+/// 				},
+/// 			},
+/// 			ResourceRuntimeSpec: &vertex.AiPersistentResourceResourceRuntimeSpecArgs{
+/// 				RaySpec: &vertex.AiPersistentResourceResourceRuntimeSpecRaySpecArgs{
+/// 					ImageUri: pulumi.String("us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest"),
 /// 				},
 /// 			},
 /// 		})
@@ -113,7 +136,7 @@ import 'ai_persistent_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -121,15 +144,23 @@ import 'ai_persistent_resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aipersistentresource" "persistent_resource" {
+/// resource "gcp_vertex_ai_persistent_resource" "persistent_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-persistent-resource"
 ///   location     = "us-central1"
 ///   display_name = "Example persistent resource"
 ///   resource_pools {
 ///     machine_spec = {
-///       machine_type = "n1-standard-4"
+///       machine_type = "n1-standard-8"
 ///     }
-///     replica_count = 1
+///     replica_count = 2
+///   }
+///   resource_runtime_spec = {
+///     ray_spec = {
+///       image_uri = "us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest"
+///     }
 ///   }
 /// }
 /// ```
@@ -143,6 +174,8 @@ import 'ai_persistent_resource_state.dart';
 /// import com.pulumi.gcp.vertex.AiPersistentResourceArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourcePoolArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourcePoolMachineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourceRuntimeSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiPersistentResourceResourceRuntimeSpecRaySpecArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -162,9 +195,14 @@ import 'ai_persistent_resource_state.dart';
 ///             .displayName("Example persistent resource")
 ///             .resourcePools(AiPersistentResourceResourcePoolArgs.builder()
 ///                 .machineSpec(AiPersistentResourceResourcePoolMachineSpecArgs.builder()
-///                     .machineType("n1-standard-4")
+///                     .machineType("n1-standard-8")
 ///                     .build())
-///                 .replicaCount("1")
+///                 .replicaCount("2")
+///                 .build())
+///             .resourceRuntimeSpec(AiPersistentResourceResourceRuntimeSpecArgs.builder()
+///                 .raySpec(AiPersistentResourceResourceRuntimeSpecRaySpecArgs.builder()
+///                     .imageUri("us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -182,9 +220,13 @@ import 'ai_persistent_resource_state.dart';
 ///       displayName: Example persistent resource
 ///       resourcePools:
 ///         - machineSpec:
-///             machineType: n1-standard-4
-///           replicaCount: 1
+///             machineType: n1-standard-8
+///           replicaCount: 2
+///       resourceRuntimeSpec:
+///         raySpec:
+///           imageUri: us-docker.pkg.dev/vertex-ai/training/ray-cpu.2-33.py310:latest
 /// ```
+///
 ///
 /// ### Vertex Ai Persistent Resource Autoscaling
 ///
@@ -266,7 +308,7 @@ import 'ai_persistent_resource_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -297,7 +339,7 @@ import 'ai_persistent_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -305,7 +347,10 @@ import 'ai_persistent_resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aipersistentresource" "persistent_resource" {
+/// resource "gcp_vertex_ai_persistent_resource" "persistent_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-persistent-resource"
 ///   location     = "us-central1"
 ///   display_name = "Example persistent resource"
@@ -381,6 +426,7 @@ import 'ai_persistent_resource_state.dart';
 ///             minReplicaCount: 1
 ///             maxReplicaCount: 2
 /// ```
+///
 ///
 /// ### Vertex Ai Persistent Resource Machine Spec
 ///
@@ -465,7 +511,7 @@ import 'ai_persistent_resource_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -497,7 +543,7 @@ import 'ai_persistent_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -505,7 +551,10 @@ import 'ai_persistent_resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aipersistentresource" "persistent_resource" {
+/// resource "gcp_vertex_ai_persistent_resource" "persistent_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-persistent-resource"
 ///   location = "us-central1"
 ///   resource_pools {
@@ -584,6 +633,7 @@ import 'ai_persistent_resource_state.dart';
 ///             bootDiskSizeGb: 200
 ///             bootDiskType: pd-ssd
 /// ```
+///
 ///
 /// ### Vertex Ai Persistent Resource Network
 ///
@@ -928,11 +978,11 @@ import 'ai_persistent_resource_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -953,14 +1003,14 @@ import 'ai_persistent_resource_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(24),
-/// 			Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      vertexNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Service networking connection for Vertex AI
 /// 		vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: vertexNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				vertexRange.Name,
@@ -974,7 +1024,7 @@ import 'ai_persistent_resource_state.dart';
 /// 			Name:        pulumi.String("psc-subnetwork"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
-/// 			Network:     vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     vertexNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -985,7 +1035,7 @@ import 'ai_persistent_resource_state.dart';
 /// 			Region:               pulumi.String("us-central1"),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 /// 			Subnetworks: pulumi.StringArray{
-/// 				pscSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				pscSubnetwork.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1030,7 +1080,7 @@ import 'ai_persistent_resource_state.dart';
 /// 				KmsKeyName: pulumi.String("example-key"),
 /// 			},
 /// 			PscInterfaceConfig: &vertex.AiPersistentResourcePscInterfaceConfigArgs{
-/// 				NetworkAttachment: pscAttachment.ID().ToIDOutput().ToStringOutput(),
+/// 				NetworkAttachment: pscAttachment.ID(),
 /// 				DnsPeeringConfigs: vertex.AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray{
 /// 					&vertex.AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs{
 /// 						Domain:        pulumi.String("example.com."),
@@ -1070,7 +1120,7 @@ import 'ai_persistent_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1081,28 +1131,31 @@ import 'ai_persistent_resource_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aipersistentresource" "persistent_resource" {
-///   depends_on   = [gcp_servicenetworking_connection.vertex_vpc_connection, gcp_kms_cryptokeyiammember.crypto_key, time_sleep.wait_for_deletion]
+/// resource "gcp_vertex_ai_persistent_resource" "persistent_resource" {
+///   depends_on = [gcp_servicenetworking_connection.vertex_vpc_connection, gcp_kms_crypto_key_i_a_m_member.crypto_key, time_sleep.wait_for_deletion]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-persistent-resource"
 ///   location     = "us-central1"
 ///   display_name = "test-persistent-resource-full"
 ///   labels = {
 ///     "env" = "test"
 ///   }
-///   network            ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
-///   reserved_ip_ranges = [gcp_compute_globaladdress.vertex_range.name]
+///   network            ="projects/${data.gcp_organizations_project.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
+///   reserved_ip_ranges = [gcp_compute_global_address.vertex_range.name]
 ///   encryption_spec = {
 ///     kms_key_name = "example-key"
 ///   }
 ///   psc_interface_config = {
-///     network_attachment = gcp_compute_networkattachment.psc_attachment.id
+///     network_attachment = gcp_compute_network_attachment.psc_attachment.id
 ///     dns_peering_configs = [{
-///       "domain"        = "example.com."
-///       "targetProject" = data.gcp_organizations_getproject.project.project_id
-///       "targetNetwork" = gcp_compute_network.vertex_network.name
+///       domain         = "example.com."
+///       target_project = data.gcp_organizations_project.project.project_id
+///       target_network = gcp_compute_network.vertex_network.name
 ///     }]
 ///   }
 ///   resource_pools {
@@ -1124,17 +1177,26 @@ import 'ai_persistent_resource_state.dart';
 /// }
 /// # VPC network for Vertex AI peering
 /// resource "gcp_compute_network" "vertex_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "vertex-network"
 ///   auto_create_subnetworks = false
 /// }
 /// # Service networking connection for Vertex AI
 /// resource "gcp_servicenetworking_connection" "vertex_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.vertex_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.vertex_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.vertex_range.name]
 /// }
 /// # Reserved IP range for Vertex AI peering
-/// resource "gcp_compute_globaladdress" "vertex_range" {
+/// resource "gcp_compute_global_address" "vertex_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "vertex-ip-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -1142,11 +1204,17 @@ import 'ai_persistent_resource_state.dart';
 ///   network       = gcp_compute_network.vertex_network.id
 /// }
 /// resource "time_sleep" "wait_for_deletion" {
-///   depends_on       = [gcp_compute_networkattachment.psc_attachment, gcp_servicenetworking_connection.vertex_vpc_connection]
+///   depends_on = [gcp_compute_network_attachment.psc_attachment, gcp_servicenetworking_connection.vertex_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destroy_duration = "300s"
 /// }
 /// # Network attachment for PSC-I
-/// resource "gcp_compute_networkattachment" "psc_attachment" {
+/// resource "gcp_compute_network_attachment" "psc_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "psc-attachment"
 ///   region                = "us-central1"
 ///   connection_preference = "ACCEPT_MANUAL"
@@ -1154,16 +1222,22 @@ import 'ai_persistent_resource_state.dart';
 /// }
 /// # Subnetwork for the network attachment
 /// resource "gcp_compute_subnetwork" "psc_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "psc-subnetwork"
 ///   region        = "us-central1"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   network       = gcp_compute_network.vertex_network.id
 /// }
 /// # Grant Vertex AI service agent access to the KMS key
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "example-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -1549,7 +1623,7 @@ class AiPersistentResource extends pulumi.CustomResource {
           'gcp:vertex/aiPersistentResource:AiPersistentResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

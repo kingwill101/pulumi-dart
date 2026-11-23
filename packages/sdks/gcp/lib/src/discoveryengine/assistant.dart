@@ -11,6 +11,7 @@ import 'assistant_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rpc/google.cloud.discoveryengine.v1#assistantservice)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Discoveryengine Assistant Basic
@@ -174,7 +175,7 @@ import 'assistant_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -239,7 +240,7 @@ import 'assistant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -247,7 +248,10 @@ import 'assistant_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "example-data-store-id"
 ///   display_name                = "tf-test-structured-datastore"
@@ -256,18 +260,24 @@ import 'assistant_state.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "basic" {
+/// resource "gcp_discoveryengine_search_engine" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "global"
 ///   collection_id        = "default_collection"
 ///   engine_id            = "example-engine-id"
 ///   display_name         = "Example Display Name"
-///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   data_store_ids       = [gcp_discoveryengine_data_store.basic.data_store_id]
 ///   search_engine_config = {}
 /// }
 /// resource "gcp_discoveryengine_assistant" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "global"
 ///   collection_id = "default_collection"
-///   engine_id     = gcp_discoveryengine_searchengine.basic.engine_id
+///   engine_id     = gcp_discoveryengine_search_engine.basic.engine_id
 ///   assistant_id  = "default_assistant"
 ///   display_name  = "updated-tf-test-Assistant"
 ///   description   = "Assistant Description"
@@ -279,9 +289,9 @@ import 'assistant_state.dart';
 ///   }
 ///   customer_policy = {
 ///     banned_phrases = [{
-///       "phrase"           = "foo"
-///       "matchType"        = "SIMPLE_STRING_MATCH"
-///       "ignoreDiacritics" = false
+///       phrase            = "foo"
+///       match_type        = "SIMPLE_STRING_MATCH"
+///       ignore_diacritics = false
 ///     }]
 ///   }
 ///   web_grounding_type = "WEB_GROUNDING_TYPE_GOOGLE_SEARCH"
@@ -434,6 +444,16 @@ class Assistant extends pulumi.CustomResource {
   /// Customer policy for the assistant.
   /// Structure is documented below.
   late final pulumi.Output<AssistantCustomerPolicy?> customerPolicy;
+  /// This field controls the default web grounding toggle for end users if
+  /// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+  /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+  /// By default, this field is set to false. If `webGroundingType` is
+  /// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+  /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+  /// grounding enabled by default on UI. If true, grounding toggle will be
+  /// disabled by default on UI. End users can still enable web grounding in
+  /// the UI if web grounding is enabled.
+  late final pulumi.Output<bool?> defaultWebGroundingToggleOff;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -479,11 +499,12 @@ class Assistant extends pulumi.CustomResource {
           'gcp:discoveryengine/assistant:Assistant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
     customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultWebGroundingToggleOff = registerOutput<bool?>('defaultWebGroundingToggleOff');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -522,6 +543,7 @@ class Assistant extends pulumi.CustomResource {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
     customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultWebGroundingToggleOff = registerOutput<bool?>('defaultWebGroundingToggleOff');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -545,6 +567,7 @@ class Assistant extends pulumi.CustomResource {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
     customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultWebGroundingToggleOff = registerOutput<bool?>('defaultWebGroundingToggleOff');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

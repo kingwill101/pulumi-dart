@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_inspect_template_inspect_config_custom_info_type_dictionary.dart';
 import 'prevention_inspect_template_inspect_config_custom_info_type_info_type.dart';
+import 'prevention_inspect_template_inspect_config_custom_info_type_metadata_key_value_expression.dart';
 import 'prevention_inspect_template_inspect_config_custom_info_type_regex.dart';
 import 'prevention_inspect_template_inspect_config_custom_info_type_sensitivity_score.dart';
 import 'prevention_inspect_template_inspect_config_custom_info_type_stored_type.dart';
@@ -25,6 +26,9 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
   /// Default value is `VERY_LIKELY`.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final pulumi.Input<String?>? likelihood;
+  /// Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+  /// Structure is documented below.
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression?>? metadataKeyValueExpression;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
   final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeRegex?>? regex;
@@ -42,6 +46,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
   /// [exclusionType] If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
   /// [infoType] CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
   /// [likelihood] Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+  /// [metadataKeyValueExpression] Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
   /// [regex] Regular expression which defines the rule.
   /// [sensitivityScore] Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// [storedType] A reference to a StoredInfoType to use with scanning.
@@ -51,6 +56,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
     this.exclusionType,
     required this.infoType,
     this.likelihood,
+    this.metadataKeyValueExpression,
     this.regex,
     this.sensitivityScore,
     this.storedType,
@@ -63,6 +69,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
       'exclusionType': ?exclusionType,
       'infoType': pulumi.Input.mapInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType, Map<String, dynamic>>(infoType, (value) => value.toMap()),
       'likelihood': ?likelihood,
+      'metadataKeyValueExpression': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression, Map<String, dynamic>>(metadataKeyValueExpression, (value) => value.toMap()),
       'regex': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeRegex, Map<String, dynamic>>(regex, (value) => value.toMap()),
       'sensitivityScore': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore, Map<String, dynamic>>(sensitivityScore, (value) => value.toMap()),
       'storedType': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType, Map<String, dynamic>>(storedType, (value) => value.toMap()),
@@ -76,6 +83,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
       exclusionType: (() { final guardedValue = map['exclusionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       infoType: pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())),
       likelihood: (() { final guardedValue = map['likelihood']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadataKeyValueExpression: (() { final guardedValue = map['metadataKeyValueExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       regex: (() { final guardedValue = map['regex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeRegex.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sensitivityScore: (() { final guardedValue = map['sensitivityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storedType: (() { final guardedValue = map['storedType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

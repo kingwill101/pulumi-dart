@@ -11,6 +11,7 @@ import 'ai_index_endpoint_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Index Endpoint
@@ -138,10 +139,10 @@ import 'ai_index_endpoint_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -158,13 +159,13 @@ import 'ai_index_endpoint_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(24),
-/// 			Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      vertexNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: vertexNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				vertexRange.Name,
@@ -198,7 +199,7 @@ import 'ai_index_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -206,25 +207,34 @@ import 'ai_index_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiindexendpoint" "index_endpoint" {
-///   depends_on   = [gcp_servicenetworking_connection.vertex_vpc_connection]
+/// resource "gcp_vertex_ai_index_endpoint" "index_endpoint" {
+///   depends_on = [gcp_servicenetworking_connection.vertex_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   region       = "us-central1"
 ///   labels = {
 ///     "label-one" = "value-one"
 ///   }
-///   network ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
+///   network ="projects/${data.gcp_organizations_project.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
 /// }
 /// resource "gcp_servicenetworking_connection" "vertex_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.vertex_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.vertex_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.vertex_range.name]
 /// }
-/// resource "gcp_compute_globaladdress" "vertex_range" {
+/// resource "gcp_compute_global_address" "vertex_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address-name"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -232,6 +242,9 @@ import 'ai_index_endpoint_state.dart';
 ///   network       = gcp_compute_network.vertex_network.id
 /// }
 /// resource "gcp_compute_network" "vertex_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network-name"
 /// }
 /// ```
@@ -343,6 +356,7 @@ import 'ai_index_endpoint_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Vertex Ai Index Endpoint With Psc
 ///
 ///
@@ -417,8 +431,8 @@ import 'ai_index_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -450,7 +464,7 @@ import 'ai_index_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -458,10 +472,13 @@ import 'ai_index_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiindexendpoint" "index_endpoint" {
+/// resource "gcp_vertex_ai_index_endpoint" "index_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   region       = "us-central1"
@@ -470,7 +487,7 @@ import 'ai_index_endpoint_state.dart';
 ///   }
 ///   private_service_connect_config = {
 ///     enable_private_service_connect = true
-///     project_allowlists             = [data.gcp_organizations_getproject.project.name]
+///     project_allowlists             = [data.gcp_organizations_project.project.name]
 ///   }
 /// }
 /// ```
@@ -537,6 +554,7 @@ import 'ai_index_endpoint_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Vertex Ai Index Endpoint With Public Endpoint
 ///
 ///
@@ -594,7 +612,7 @@ import 'ai_index_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -617,7 +635,7 @@ import 'ai_index_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -625,7 +643,10 @@ import 'ai_index_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiindexendpoint" "index_endpoint" {
+/// resource "gcp_vertex_ai_index_endpoint" "index_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint with an public endpoint"
 ///   region       = "us-central1"
@@ -762,7 +783,7 @@ class AiIndexEndpoint extends pulumi.CustomResource {
           'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

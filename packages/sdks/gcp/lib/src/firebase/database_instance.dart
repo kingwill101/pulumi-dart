@@ -13,6 +13,7 @@ import 'database_instance_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/products/realtime-database)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase Database Instance Basic
@@ -59,7 +60,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +79,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +87,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_databaseinstance" "basic" {
+/// resource "gcp_firebase_database_instance" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   region      = "us-central1"
 ///   instance_id = "active-db"
@@ -131,6 +135,7 @@ import 'database_instance_state.dart';
 ///       region: us-central1
 ///       instanceId: active-db
 /// ```
+///
 ///
 /// ### Firebase Database Instance Full
 ///
@@ -182,7 +187,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -203,7 +208,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -211,7 +216,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_databaseinstance" "full" {
+/// resource "gcp_firebase_database_instance" "full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "my-project-name"
 ///   region        = "europe-west1"
 ///   instance_id   = "disabled-db"
@@ -262,6 +270,7 @@ import 'database_instance_state.dart';
 ///       type: USER_DATABASE
 ///       desiredState: DISABLED
 /// ```
+///
 ///
 /// ### Firebase Database Instance Default Database
 ///
@@ -409,9 +418,9 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -476,7 +485,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -488,6 +497,9 @@ import 'database_instance_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "rtdb-project"
 ///   name            = "rtdb-project"
 ///   org_id          = "123456789"
@@ -497,23 +509,38 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 /// resource "gcp_projects_service" "firebase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.default.project_id
 ///   service = "firebase.googleapis.com"
 /// }
 /// resource "gcp_firebase_project" "default" {
 ///   depends_on = [gcp_projects_service.firebase]
-///   project    = gcp_organizations_project.default.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.default.project_id
 /// }
 /// resource "gcp_projects_service" "firebase_database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_firebase_project.default.project
 ///   service = "firebasedatabase.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_projects_service.firebase_database]
+///   depends_on = [gcp_projects_service.firebase_database]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
-/// resource "gcp_firebase_databaseinstance" "default" {
-///   depends_on  = [time_sleep.wait_60_seconds]
+/// resource "gcp_firebase_database_instance" "default" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_firebase_project.default.project
 ///   region      = "us-central1"
 ///   instance_id = "rtdb-project-default-rtdb"
@@ -707,7 +734,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:firebase/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     databaseUrl = registerOutput<String>('databaseUrl');
     deletionPolicy = registerOutput<String>('deletionPolicy');

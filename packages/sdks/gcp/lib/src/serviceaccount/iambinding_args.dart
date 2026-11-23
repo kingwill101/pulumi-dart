@@ -24,14 +24,16 @@ class IAMBindingArgs {
   /// `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String> role;
-  /// The fully-qualified name of the service account to apply policy to.
+  /// The fully-qualified name of the service account to apply policy to,
+  /// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+  /// Unlike an email, a unique ID never refers to a later account recreated with the same email.
   final pulumi.Input<String> serviceAccountId;
 
   /// Creates a new [IAMBindingArgs].
   /// [condition] An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
+  /// [serviceAccountId] The fully-qualified name of the service account to apply policy to,
   const IAMBindingArgs({
     this.condition,
     required this.members,

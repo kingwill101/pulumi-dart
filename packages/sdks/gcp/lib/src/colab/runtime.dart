@@ -12,6 +12,7 @@ import 'runtime_state.dart';
 /// * How-to Guides
 /// * [Create a runtime](https://cloud.google.com/colab/docs/create-runtime)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Colab Runtime Basic
@@ -116,7 +117,7 @@ import 'runtime_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -140,7 +141,7 @@ import 'runtime_state.dart';
 /// 			Name:     pulumi.String("colab-runtime"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-/// 				NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 				NotebookRuntimeTemplate: myTemplate.ID(),
 /// 			},
 /// 			DisplayName: pulumi.String("Runtime basic"),
 /// 			RuntimeUser: pulumi.String("gterraformtestuser@gmail.com"),
@@ -155,7 +156,7 @@ import 'runtime_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -163,7 +164,10 @@ import 'runtime_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_template" {
+/// resource "gcp_colab_runtime_template" "my_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "colab-runtime"
 ///   display_name = "Runtime template basic"
 ///   location     = "us-central1"
@@ -175,11 +179,14 @@ import 'runtime_state.dart';
 ///   }
 /// }
 /// resource "gcp_colab_runtime" "runtime" {
-///   depends_on = [gcp_colab_runtimetemplate.my_template]
-///   name       = "colab-runtime"
-///   location   = "us-central1"
+///   depends_on = [gcp_colab_runtime_template.my_template]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "colab-runtime"
+///   location = "us-central1"
 ///   notebook_runtime_template_ref = {
-///     notebook_runtime_template = gcp_colab_runtimetemplate.my_template.id
+///     notebook_runtime_template = gcp_colab_runtime_template.my_template.id
 ///   }
 ///   display_name = "Runtime basic"
 ///   runtime_user = "gterraformtestuser@gmail.com"
@@ -265,6 +272,7 @@ import 'runtime_state.dart';
 ///       dependsOn:
 ///         - ${myTemplate}
 /// ```
+///
 ///
 /// ### Colab Runtime Stopped
 ///
@@ -371,7 +379,7 @@ import 'runtime_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -395,7 +403,7 @@ import 'runtime_state.dart';
 /// 			Name:     pulumi.String("colab-runtime"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-/// 				NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 				NotebookRuntimeTemplate: myTemplate.ID(),
 /// 			},
 /// 			DesiredState: pulumi.String("STOPPED"),
 /// 			DisplayName:  pulumi.String("Runtime stopped"),
@@ -411,7 +419,7 @@ import 'runtime_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,7 +427,10 @@ import 'runtime_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_template" {
+/// resource "gcp_colab_runtime_template" "my_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "colab-runtime"
 ///   display_name = "Runtime template basic"
 ///   location     = "us-central1"
@@ -431,11 +442,14 @@ import 'runtime_state.dart';
 ///   }
 /// }
 /// resource "gcp_colab_runtime" "runtime" {
-///   depends_on = [gcp_colab_runtimetemplate.my_template]
-///   name       = "colab-runtime"
-///   location   = "us-central1"
+///   depends_on = [gcp_colab_runtime_template.my_template]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "colab-runtime"
+///   location = "us-central1"
 ///   notebook_runtime_template_ref = {
-///     notebook_runtime_template = gcp_colab_runtimetemplate.my_template.id
+///     notebook_runtime_template = gcp_colab_runtime_template.my_template.id
 ///   }
 ///   desired_state = "STOPPED"
 ///   display_name  = "Runtime stopped"
@@ -524,6 +538,7 @@ import 'runtime_state.dart';
 ///       dependsOn:
 ///         - ${myTemplate}
 /// ```
+///
 ///
 /// ### Colab Runtime Full
 ///
@@ -721,7 +736,7 @@ import 'runtime_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -771,7 +786,7 @@ import 'runtime_state.dart';
 /// 			Name:     pulumi.String("colab-runtime"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-/// 				NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 				NotebookRuntimeTemplate: myTemplate.ID(),
 /// 			},
 /// 			DisplayName:  pulumi.String("Runtime full"),
 /// 			RuntimeUser:  pulumi.String("gterraformtestuser@gmail.com"),
@@ -789,7 +804,7 @@ import 'runtime_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -797,7 +812,10 @@ import 'runtime_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_template" {
+/// resource "gcp_colab_runtime_template" "my_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "colab-runtime"
 ///   display_name = "Runtime template full"
 ///   location     = "us-central1"
@@ -832,11 +850,14 @@ import 'runtime_state.dart';
 ///   }
 /// }
 /// resource "gcp_colab_runtime" "runtime" {
-///   depends_on = [gcp_colab_runtimetemplate.my_template]
-///   name       = "colab-runtime"
-///   location   = "us-central1"
+///   depends_on = [gcp_colab_runtime_template.my_template]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "colab-runtime"
+///   location = "us-central1"
 ///   notebook_runtime_template_ref = {
-///     notebook_runtime_template = gcp_colab_runtimetemplate.my_template.id
+///     notebook_runtime_template = gcp_colab_runtime_template.my_template.id
 ///   }
 ///   display_name  = "Runtime full"
 ///   runtime_user  = "gterraformtestuser@gmail.com"
@@ -1045,7 +1066,7 @@ class Runtime extends pulumi.CustomResource {
           'gcp:colab/runtime:Runtime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     deletionPolicy = registerOutput<String>('deletionPolicy');

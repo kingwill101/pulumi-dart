@@ -13,6 +13,7 @@ import 'gateway_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -81,7 +82,7 @@ class Gateway extends pulumi.CustomResource {
           'gcp:apigateway/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     apiConfig = registerOutput<String>('apiConfig');

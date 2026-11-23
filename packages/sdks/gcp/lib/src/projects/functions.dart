@@ -53,7 +53,7 @@ import 'get_project_service_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -70,7 +70,7 @@ import 'get_project_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -78,7 +78,7 @@ import 'get_project_service_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_projects_getancestry" "example" {
+/// data "gcp_projects_ancestry" "example" {
 ///   project = "example-project"
 /// }
 /// ```
@@ -199,7 +199,7 @@ pulumi.Output<GetAncestryResult> getAncestryOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -225,7 +225,7 @@ pulumi.Output<GetAncestryResult> getAncestryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -233,14 +233,17 @@ pulumi.Output<GetAncestryResult> getAncestryOutput(
 ///   }
 /// }
 ///
-/// data "gcp_projects_getiamcustomrole" "example" {
+/// data "gcp_projects_iam_custom_role" "example" {
 ///   project = "your-project-id"
 ///   role_id = "your-role-id"
 /// }
 ///
-/// resource "gcp_projects_iammember" "project" {
+/// resource "gcp_projects_i_a_m_member" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "your-project-id"
-///   role    = data.gcp_projects_getiamcustomrole.example.name
+///   role    = data.gcp_projects_iam_custom_role.example.name
 ///   member  = "user:jane@example.com"
 /// }
 /// ```
@@ -368,7 +371,7 @@ pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -387,7 +390,7 @@ pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -395,7 +398,7 @@ pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
 ///   }
 /// }
 ///
-/// data "gcp_projects_getiamcustomroles" "example" {
+/// data "gcp_projects_iam_custom_roles" "example" {
 ///   project      = "your-project-id"
 ///   show_deleted = true
 ///   view         = "FULL"
@@ -505,7 +508,7 @@ pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -522,7 +525,7 @@ pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -530,7 +533,7 @@ pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_projects_getiampolicy" "policy" {
+/// data "gcp_projects_iam_policy" "policy" {
 ///   project = "myproject"
 /// }
 /// ```
@@ -645,7 +648,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -664,7 +667,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -672,13 +675,13 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_projects_getorganizationpolicy" "policy" {
+/// data "gcp_projects_organization_policy" "policy" {
 ///   project    = "project-id"
 ///   constraint = "constraints/serviceuser.services"
 /// }
 ///
 /// output "version" {
-///   value = data.gcp_projects_getorganizationpolicy.policy.version
+///   value = data.gcp_projects_organization_policy.policy.version
 /// }
 /// ```
 /// ```java
@@ -799,8 +802,8 @@ pulumi.Output<GetOrganizationPolicyResult> getOrganizationPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -823,7 +826,7 @@ pulumi.Output<GetOrganizationPolicyResult> getOrganizationPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -831,11 +834,11 @@ pulumi.Output<GetOrganizationPolicyResult> getOrganizationPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_projects_getproject" "my-org-projects" {
+/// data "gcp_projects_project" "my-org-projects" {
 ///   filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED"
 /// }
-/// data "gcp_organizations_getproject" "deletion-candidate" {
-///   project_id = data.gcp_projects_getproject.my-org-projects.projects[0].project_id
+/// data "gcp_organizations_project" "deletion-candidate" {
+///   project_id = data.gcp_projects_project.my-org-projects.projects[0].project_id
 /// }
 /// ```
 /// ```java
@@ -960,7 +963,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -977,7 +980,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -985,7 +988,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 ///   }
 /// }
 ///
-/// data "gcp_projects_getprojectservice" "my-project-service" {
+/// data "gcp_projects_project_service" "my-project-service" {
 ///   service = "my-project-service"
 /// }
 /// ```

@@ -15,6 +15,7 @@ import 'saved_query_state.dart';
 /// * [Save and share SQL queries](https://docs.cloud.google.com/logging/docs/analyze/save-share-query)
 /// * [Save and share queries](https://docs.cloud.google.com/logging/docs/view/building-queries#saved-queries)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Logging Saved Query Basic
@@ -80,7 +81,7 @@ import 'saved_query_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,7 +106,7 @@ import 'saved_query_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,7 +114,10 @@ import 'saved_query_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_savedquery" "saved_query" {
+/// resource "gcp_logging_saved_query" "saved_query" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-saved-query"
 ///   display_name = "My Saved Query"
 ///   parent       = "projects/my-project-name"
@@ -178,6 +182,7 @@ import 'saved_query_state.dart';
 ///       visibility: SHARED
 /// ```
 ///
+///
 /// ### Logging Saved Query Private
 ///
 ///
@@ -241,7 +246,7 @@ import 'saved_query_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -266,7 +271,7 @@ import 'saved_query_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -274,7 +279,10 @@ import 'saved_query_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_savedquery" "saved_query" {
+/// resource "gcp_logging_saved_query" "saved_query" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-saved-query-private"
 ///   display_name = "My Saved Query"
 ///   parent       = "projects/my-project-name"
@@ -338,6 +346,7 @@ import 'saved_query_state.dart';
 ///         filter: resource.type=gce_instance
 ///       visibility: PRIVATE
 /// ```
+///
 ///
 /// ### Logging Saved Query Summary Fields
 ///
@@ -432,7 +441,7 @@ import 'saved_query_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -466,7 +475,7 @@ import 'saved_query_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -474,7 +483,10 @@ import 'saved_query_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_savedquery" "saved_query" {
+/// resource "gcp_logging_saved_query" "saved_query" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-saved-query-summary-fields"
 ///   display_name = "My Saved Query"
 ///   parent       = "projects/my-project-name"
@@ -483,9 +495,9 @@ import 'saved_query_state.dart';
 ///   logging_query = {
 ///     filter = "resource.type=gce_instance"
 ///     summary_fields = [{
-///       "field" = "jsonPayload.paymentId"
+///       field = "jsonPayload.paymentId"
 ///       }, {
-///       "field" = "jsonPayload.errorMessage"
+///       field = "jsonPayload.errorMessage"
 ///     }]
 ///     summary_field_start = 100
 ///   }
@@ -558,6 +570,7 @@ import 'saved_query_state.dart';
 ///         summaryFieldStart: 100
 ///       visibility: SHARED
 /// ```
+///
 ///
 /// ### Logging Saved Query Sql Basic
 ///
@@ -646,7 +659,7 @@ import 'saved_query_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -679,7 +692,7 @@ import 'saved_query_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -687,14 +700,27 @@ import 'saved_query_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_savedquery" "saved_query" {
+/// resource "gcp_logging_saved_query" "saved_query" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-saved-query-sql"
 ///   display_name = "My Saved Query"
 ///   parent       = "projects/my-project-name"
 ///   location     = "global"
 ///   description  = "A saved query"
 ///   ops_analytics_query = {
-///     sql_query_text = "SELECT\n  timestamp, log_name, severity, json_payload, resource, labels\nFROM\n  VIEW\nWHERE\n  timestamp > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR)\nORDER BY timestamp ASC\nLIMIT 100\n"
+///     sql_query_text = <<-EOT
+/// SELECT
+///   timestamp, log_name, severity, json_payload, resource, labels
+/// FROM
+///   VIEW
+/// WHERE
+///   timestamp > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR)
+/// ORDER BY timestamp ASC
+/// LIMIT 100
+/// EOT
+///
 ///   }
 ///   visibility = "SHARED"
 /// }
@@ -827,7 +853,7 @@ class SavedQuery extends pulumi.CustomResource {
           'gcp:logging/savedQuery:SavedQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -16,6 +16,7 @@ import 'parser_version_info.dart';
 /// * How-to Guides
 /// * [Custom parsers overview](https://cloud.google.com/chronicle/docs/detection/custom-parsers-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Chronicle Parser Basic
@@ -68,7 +69,7 @@ import 'parser_version_info.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -89,7 +90,7 @@ import 'parser_version_info.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -98,6 +99,9 @@ import 'parser_version_info.dart';
 /// }
 ///
 /// resource "gcp_chronicle_parser" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us"
 ///   instance           = "00000000-0000-0000-0000-000000000000"
 ///   logtype            = "WINDOWS_DHCP"
@@ -148,6 +152,7 @@ import 'parser_version_info.dart';
 ///       validationSkipped: true
 ///       cbn: ZHVtbXkgcGFyc2VyIGNvbmZpZw==
 /// ```
+///
 ///
 /// ### Chronicle Parser Full
 ///
@@ -287,7 +292,7 @@ import 'parser_version_info.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -335,7 +340,7 @@ import 'parser_version_info.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -344,6 +349,9 @@ import 'parser_version_info.dart';
 /// }
 ///
 /// resource "gcp_chronicle_parser" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                = "us"
 ///   instance                = "00000000-0000-0000-0000-000000000000"
 ///   logtype                 = "LINUX_DHCP"
@@ -359,14 +367,14 @@ import 'parser_version_info.dart';
 ///         target     = "message"
 ///       }
 ///       extractors = [{
-///         "fieldPath"         = "$.ip"
-///         "destinationPath"   = "udm.principal.ip"
-///         "preconditionOp"    = "EQUALS"
-///         "preconditionPath"  = "$.event"
-///         "preconditionValue" = "login"
+///         field_path         = "$.ip"
+///         destination_path   = "udm.principal.ip"
+///         precondition_op    = "EQUALS"
+///         precondition_path  = "$.event"
+///         precondition_value = "login"
 ///         }, {
-///         "destinationPath" = "udm.metadata.product_name"
-///         "value"           = "Google"
+///         destination_path = "udm.metadata.product_name"
+///         value            = "Google"
 ///       }]
 ///     }
 ///   }
@@ -603,7 +611,7 @@ class Parser extends pulumi.CustomResource {
           'gcp:chronicle/parser:Parser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     cbn = registerOutput<String?>('cbn');
     changelogs = registerOutput<List<ParserChangelog>>('changelogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserChangelog>(guardedValue, (value) => ParserChangelog.fromMap((value as Map).cast<String, dynamic>())); });

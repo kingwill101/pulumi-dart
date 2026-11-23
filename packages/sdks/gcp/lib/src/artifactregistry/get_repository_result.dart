@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_repository_cleanup_policy.dart';
 import 'get_repository_docker_config.dart';
 import 'get_repository_maven_config.dart';
+import 'get_repository_platform_logs_config.dart';
 import 'get_repository_remote_repository_config.dart';
 import 'get_repository_virtual_repository_config.dart';
 import 'get_repository_vulnerability_scanning_config.dart';
@@ -15,6 +16,7 @@ class GetRepositoryResult {
   final String? createTime;
   final String? deletionPolicy;
   final String? description;
+  final bool? disallowUnspecifiedMode;
   final List<GetRepositoryDockerConfig>? dockerConfigs;
   final Map<String, String>? effectiveLabels;
   final String? format;
@@ -26,6 +28,7 @@ class GetRepositoryResult {
   final List<GetRepositoryMavenConfig>? mavenConfigs;
   final String? mode;
   final String? name;
+  final List<GetRepositoryPlatformLogsConfig>? platformLogsConfigs;
   final String? project;
   final Map<String, String>? pulumiLabels;
   final String? registryUri;
@@ -41,6 +44,7 @@ class GetRepositoryResult {
   /// [createTime] Optional.
   /// [deletionPolicy] Optional.
   /// [description] Optional.
+  /// [disallowUnspecifiedMode] Optional.
   /// [dockerConfigs] Optional.
   /// [effectiveLabels] Optional.
   /// [format] Optional.
@@ -51,6 +55,7 @@ class GetRepositoryResult {
   /// [mavenConfigs] Optional.
   /// [mode] Optional.
   /// [name] Optional.
+  /// [platformLogsConfigs] Optional.
   /// [project] Optional.
   /// [pulumiLabels] Optional.
   /// [registryUri] Optional.
@@ -65,6 +70,7 @@ class GetRepositoryResult {
     this.createTime,
     this.deletionPolicy,
     this.description,
+    this.disallowUnspecifiedMode,
     this.dockerConfigs,
     this.effectiveLabels,
     this.format,
@@ -75,6 +81,7 @@ class GetRepositoryResult {
     this.mavenConfigs,
     this.mode,
     this.name,
+    this.platformLogsConfigs,
     this.project,
     this.pulumiLabels,
     this.registryUri,
@@ -92,6 +99,7 @@ class GetRepositoryResult {
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'disallowUnspecifiedMode': ?disallowUnspecifiedMode,
       'dockerConfigs': ?(() { final guardedValue = dockerConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRepositoryDockerConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'effectiveLabels': ?effectiveLabels,
       'format': ?format,
@@ -102,6 +110,7 @@ class GetRepositoryResult {
       'mavenConfigs': ?(() { final guardedValue = mavenConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRepositoryMavenConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'mode': ?mode,
       'name': ?name,
+      'platformLogsConfigs': ?(() { final guardedValue = platformLogsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRepositoryPlatformLogsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'registryUri': ?registryUri,
@@ -120,6 +129,7 @@ class GetRepositoryResult {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      disallowUnspecifiedMode: (() { final guardedValue = map['disallowUnspecifiedMode']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dockerConfigs: (() { final guardedValue = map['dockerConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRepositoryDockerConfig>(guardedValue, (value) => GetRepositoryDockerConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -130,6 +140,7 @@ class GetRepositoryResult {
       mavenConfigs: (() { final guardedValue = map['mavenConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRepositoryMavenConfig>(guardedValue, (value) => GetRepositoryMavenConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      platformLogsConfigs: (() { final guardedValue = map['platformLogsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRepositoryPlatformLogsConfig>(guardedValue, (value) => GetRepositoryPlatformLogsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       registryUri: (() { final guardedValue = map['registryUri']; if (guardedValue == null) return null; return guardedValue as String; })(),

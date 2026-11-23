@@ -18,6 +18,7 @@ import 'database_state.dart';
 /// On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
 /// on databases in order to prevent accidental data loss.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Spanner Database Basic
@@ -102,7 +103,7 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -136,7 +137,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,12 +146,18 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-instance"
 ///   config       = "regional-europe-west1"
 ///   display_name = "main-instance"
 ///   num_nodes    = 1
 /// }
 /// resource "gcp_spanner_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance                 = gcp_spanner_instance.main.name
 ///   name                     = "my-database"
 ///   version_retention_period = "3d"
@@ -311,7 +318,7 @@ class Database extends pulumi.CustomResource {
           'gcp:spanner/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     databaseDialect = registerOutput<String>('databaseDialect');
     ddls = registerOutput<List<String>?>('ddls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

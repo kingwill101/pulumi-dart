@@ -51,7 +51,7 @@ import 'get_discovered_workload_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -70,7 +70,7 @@ import 'get_discovered_workload_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -78,7 +78,7 @@ import 'get_discovered_workload_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_apphub_getapplication" "application" {
+/// data "gcp_apphub_application" "application" {
 ///   project        = "project-id"
 ///   application_id = "application"
 ///   location       = "location"
@@ -192,7 +192,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -210,7 +210,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -218,7 +218,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "gcp_apphub_getdiscoveredservice" "my-service" {
+/// data "gcp_apphub_discovered_service" "my-service" {
 ///   location    = "my-location"
 ///   service_uri = "my-service-uri"
 /// }
@@ -329,7 +329,7 @@ pulumi.Output<GetDiscoveredServiceResult> getDiscoveredServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -347,7 +347,7 @@ pulumi.Output<GetDiscoveredServiceResult> getDiscoveredServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -355,7 +355,7 @@ pulumi.Output<GetDiscoveredServiceResult> getDiscoveredServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_apphub_getdiscoveredworkload" "my-workload" {
+/// data "gcp_apphub_discovered_workload" "my-workload" {
 ///   location     = "us-central1"
 ///   workload_uri = "my-workload-uri"
 /// }

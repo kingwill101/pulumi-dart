@@ -11,6 +11,7 @@ import 'cross_site_network_state.dart';
 /// * How-to Guides
 /// * [Create a Cross-Site Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/create-network)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Compute Cross Site Network Basic
@@ -58,8 +59,8 @@ import 'cross_site_network_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +82,7 @@ import 'cross_site_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,10 +90,13 @@ import 'cross_site_network_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_crosssitenetwork" "example-cross-site-network" {
+/// resource "gcp_compute_cross_site_network" "example-cross-site-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-cross-site-network"
 ///   description = "Example cross site network"
 /// }
@@ -194,7 +198,7 @@ class CrossSiteNetwork extends pulumi.CustomResource {
           'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

@@ -10,6 +10,10 @@ class ClusterComputeResourceConfigNewFlexStartInstances {
   /// Specifies the time limit for created instances. Instances will be
   /// terminated at the end of this duration.
   final pulumi.Input<String> maxDuration;
+  /// (Optional, Beta)
+  /// A list of network tags to attach to the VM instances.
+  /// A maximum of 64 network tags are allowed.
+  final pulumi.Input<List<String>?>? networkTags;
   /// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
   /// Must be in the same region as the cluster, and must match the zone of any
   /// other resources specified in the cluster.
@@ -18,10 +22,12 @@ class ClusterComputeResourceConfigNewFlexStartInstances {
   /// Creates a new [ClusterComputeResourceConfigNewFlexStartInstances].
   /// [machineType] Name of the Compute Engine [machine
   /// [maxDuration] Specifies the time limit for created instances. Instances will be
+  /// [networkTags] (Optional, Beta)
   /// [zone] Name of the zone in which VM instances should run, e.g., `us-central1-a`.
   const ClusterComputeResourceConfigNewFlexStartInstances({
     required this.machineType,
     required this.maxDuration,
+    this.networkTags,
     required this.zone,
   });
 
@@ -29,6 +35,7 @@ class ClusterComputeResourceConfigNewFlexStartInstances {
     return <String, dynamic>{
       'machineType': machineType,
       'maxDuration': maxDuration,
+      'networkTags': ?networkTags,
       'zone': zone,
     };
   }
@@ -37,6 +44,7 @@ class ClusterComputeResourceConfigNewFlexStartInstances {
     return ClusterComputeResourceConfigNewFlexStartInstances(
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
       maxDuration: pulumi.Input.fromValue(map['maxDuration'] as String),
+      networkTags: (() { final guardedValue = map['networkTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }

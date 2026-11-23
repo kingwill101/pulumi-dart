@@ -11,6 +11,7 @@ import 'transport_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/network-connectivity/transports)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Connectivity Transport Basic
@@ -23,11 +24,11 @@ import 'transport_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const primary_network = new gcp.compute.Network("primary-network", {
-///     name: "tf-test-my-vpc-network_14939",
+///     name: "tf-test-my-vpc-network_29506",
 ///     autoCreateSubnetworks: false,
 /// });
 /// const primary = new gcp.networkconnectivity.Transport("primary", {
-///     name: "tf-test-basic-transport_59865",
+///     name: "tf-test-basic-transport_86474",
 ///     region: "us-east4",
 ///     description: "A sample transport",
 ///     remoteProfile: project.then(project => `https://networkconnectivity.googleapis.com/v1/${project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1`),
@@ -45,10 +46,10 @@ import 'transport_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// primary_network = gcp.compute.Network("primary-network",
-///     name="tf-test-my-vpc-network_14939",
+///     name="tf-test-my-vpc-network_29506",
 ///     auto_create_subnetworks=False)
 /// primary = gcp.networkconnectivity.Transport("primary",
-///     name="tf-test-basic-transport_59865",
+///     name="tf-test-basic-transport_86474",
 ///     region="us-east4",
 ///     description="A sample transport",
 ///     remote_profile=f"https://networkconnectivity.googleapis.com/v1/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -71,13 +72,13 @@ import 'transport_state.dart';
 ///
 ///     var primary_network = new Gcp.Compute.Network("primary-network", new()
 ///     {
-///         Name = "tf-test-my-vpc-network_14939",
+///         Name = "tf-test-my-vpc-network_29506",
 ///         AutoCreateSubnetworks = false,
 ///     });
 ///
 ///     var primary = new Gcp.NetworkConnectivity.Transport("primary", new()
 ///     {
-///         Name = "tf-test-basic-transport_59865",
+///         Name = "tf-test-basic-transport_86474",
 ///         Region = "us-east4",
 ///         Description = "A sample transport",
 ///         RemoteProfile = $"https://networkconnectivity.googleapis.com/v1/{project.Apply(getProjectResult => getProjectResult.Id)}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -96,9 +97,9 @@ import 'transport_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,14 +110,14 @@ import 'transport_state.dart';
 /// 			return err
 /// 		}
 /// 		primary_network, err := compute.NewNetwork(ctx, "primary-network", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("tf-test-my-vpc-network_14939"),
+/// 			Name:                  pulumi.String("tf-test-my-vpc-network_29506"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = networkconnectivity.NewTransport(ctx, "primary", &networkconnectivity.TransportArgs{
-/// 			Name:            pulumi.String("tf-test-basic-transport_59865"),
+/// 			Name:            pulumi.String("tf-test-basic-transport_86474"),
 /// 			Region:          pulumi.String("us-east4"),
 /// 			Description:     pulumi.String("A sample transport"),
 /// 			RemoteProfile:   pulumi.Sprintf("https://networkconnectivity.googleapis.com/v1/%v/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.Id),
@@ -135,7 +136,7 @@ import 'transport_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -143,18 +144,24 @@ import 'transport_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_network" "primary-network" {
-///   name                    = "tf-test-my-vpc-network_14939"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                    = "tf-test-my-vpc-network_29506"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_networkconnectivity_transport" "primary" {
-///   name              = "tf-test-basic-transport_59865"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name              = "tf-test-basic-transport_86474"
 ///   region            = "us-east4"
 ///   description       = "A sample transport"
-///   remote_profile    ="https://networkconnectivity.googleapis.com/v1/${data.gcp_organizations_getproject.project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1"
+///   remote_profile    ="https://networkconnectivity.googleapis.com/v1/${data.gcp_organizations_project.project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1"
 ///   network           = gcp_compute_network.primary-network.name
 ///   bandwidth         = "BPS_1G"
 ///   remote_account_id = "123"
@@ -192,12 +199,12 @@ import 'transport_state.dart';
 ///             .build());
 ///
 ///         var primary_network = new Network("primary-network", NetworkArgs.builder()
-///             .name("tf-test-my-vpc-network_14939")
+///             .name("tf-test-my-vpc-network_29506")
 ///             .autoCreateSubnetworks(false)
 ///             .build());
 ///
 ///         var primary = new Transport("primary", TransportArgs.builder()
-///             .name("tf-test-basic-transport_59865")
+///             .name("tf-test-basic-transport_86474")
 ///             .region("us-east4")
 ///             .description("A sample transport")
 ///             .remoteProfile(String.format("https://networkconnectivity.googleapis.com/v1/%s/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.id()))
@@ -215,12 +222,12 @@ import 'transport_state.dart';
 ///   primary-network:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: tf-test-my-vpc-network_14939
+///       name: tf-test-my-vpc-network_29506
 ///       autoCreateSubnetworks: false
 ///   primary:
 ///     type: gcp:networkconnectivity:Transport
 ///     properties:
-///       name: tf-test-basic-transport_59865
+///       name: tf-test-basic-transport_86474
 ///       region: us-east4
 ///       description: A sample transport
 ///       remoteProfile: https://networkconnectivity.googleapis.com/v1/${project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1
@@ -261,7 +268,6 @@ class Transport extends pulumi.CustomResource {
   late final pulumi.Output<bool?> adminEnabled;
   /// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
   late final pulumi.Output<List<String>?> advertisedRoutes;
-  /// (Optional, Beta)
   /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
   late final pulumi.Output<bool?> autoAccept;
   /// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -279,7 +285,6 @@ class Transport extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
   late final pulumi.Output<String> generatedActivationKey;
-  /// (Optional, Beta)
   /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
   late final pulumi.Output<String?> hub;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -299,7 +304,6 @@ class Transport extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
   late final pulumi.Output<String?> providedActivationKey;
-  /// (Optional, Beta)
   /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
   late final pulumi.Output<bool?> pscRoutingEnabled;
   /// The combination of labels configured directly on the resource
@@ -330,7 +334,7 @@ class Transport extends pulumi.CustomResource {
           'gcp:networkconnectivity/transport:Transport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');

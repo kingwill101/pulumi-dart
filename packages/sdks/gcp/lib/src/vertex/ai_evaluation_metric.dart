@@ -15,6 +15,7 @@ import 'ai_evaluation_metric_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/evaluation/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Evaluation Metric
@@ -85,7 +86,7 @@ import 'ai_evaluation_metric_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +116,7 @@ import 'ai_evaluation_metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,7 +124,10 @@ import 'ai_evaluation_metric_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aievaluationmetric" "example" {
+/// resource "gcp_vertex_ai_evaluation_metric" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_metric_id = "example-metric"
 ///   region               = "us-central1"
 ///   display_name         = "Test Evaluation Metric"
@@ -187,6 +191,7 @@ import 'ai_evaluation_metric_state.dart';
 ///           llmBasedMetricSpec:
 ///             metricPromptTemplate: 'Rate the quality of the following response on a scale of 1 to 5. Response: {response}'
 /// ```
+///
 ///
 /// ### Vertex Ai Evaluation Metric Full
 ///
@@ -301,8 +306,8 @@ import 'ai_evaluation_metric_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -349,7 +354,7 @@ import 'ai_evaluation_metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -357,7 +362,10 @@ import 'ai_evaluation_metric_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aievaluationmetric" "example" {
+/// resource "gcp_vertex_ai_evaluation_metric" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_metric_id = "example-metric-full"
 ///   region               = "us-central1"
 ///   display_name         = "Full Test Evaluation Metric"
@@ -377,6 +385,9 @@ import 'ai_evaluation_metric_state.dart';
 ///   gcs_uri = "gs://eval-metric-test-bucket/metric-spec.json"
 /// }
 /// resource "gcp_storage_bucket" "metric_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "eval-metric-test-bucket"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
@@ -553,7 +564,7 @@ class AiEvaluationMetric extends pulumi.CustomResource {
           'gcp:vertex/aiEvaluationMetric:AiEvaluationMetric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

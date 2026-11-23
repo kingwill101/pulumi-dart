@@ -92,6 +92,9 @@ class VolumeArgs {
   /// Settings for volumes with SMB access.
   /// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
   final pulumi.Input<List<String>?>? smbSettings;
+  /// Optional. Snap_reserve specifies percentage of volume storage reserved for
+  /// snapshot storage. Default is 0 percent.
+  final pulumi.Input<double?>? snapReserve;
   /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
   final pulumi.Input<bool?>? snapshotDirectory;
   /// Snapshot policy defines the schedule for automatic snapshot creation.
@@ -131,6 +134,7 @@ class VolumeArgs {
   /// [securityStyle] Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
   /// [shareName] Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
   /// [smbSettings] Settings for volumes with SMB access.
+  /// [snapReserve] Optional. Snap_reserve specifies percentage of volume storage reserved for
   /// [snapshotDirectory] If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
   /// [snapshotPolicy] Snapshot policy defines the schedule for automatic snapshot creation.
   /// [storagePool] Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
@@ -160,6 +164,7 @@ class VolumeArgs {
     this.securityStyle,
     this.shareName,
     this.smbSettings,
+    this.snapReserve,
     this.snapshotDirectory,
     this.snapshotPolicy,
     required this.storagePool,
@@ -192,6 +197,7 @@ class VolumeArgs {
       'securityStyle': ?securityStyle,
       'shareName': ?shareName,
       'smbSettings': ?smbSettings,
+      'snapReserve': ?snapReserve,
       'snapshotDirectory': ?snapshotDirectory,
       'snapshotPolicy': ?pulumi.Input.mapOptionalInputValue<VolumeSnapshotPolicy, Map<String, dynamic>>(snapshotPolicy, (value) => value.toMap()),
       'storagePool': storagePool,
@@ -225,6 +231,7 @@ class VolumeArgs {
       securityStyle: (() { final guardedValue = map['securityStyle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shareName: (() { final guardedValue = map['shareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       smbSettings: (() { final guardedValue = map['smbSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      snapReserve: (() { final guardedValue = map['snapReserve']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       snapshotDirectory: (() { final guardedValue = map['snapshotDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       snapshotPolicy: (() { final guardedValue = map['snapshotPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storagePool: pulumi.Input.fromValue(map['storagePool'] as String),

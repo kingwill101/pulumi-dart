@@ -31,7 +31,7 @@ class DashboardChartDashboardChartVisualizationSeriesItemStyle {
   factory DashboardChartDashboardChartVisualizationSeriesItemStyle.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationSeriesItemStyle(
       borderColor: (() { final guardedValue = map['borderColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      borderWidth: (() { final guardedValue = map['borderWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      borderWidth: (() { final guardedValue = map['borderWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

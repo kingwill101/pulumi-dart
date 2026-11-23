@@ -30,9 +30,9 @@ class InstanceUserMetadata {
 
   factory InstanceUserMetadata.fromMap(Map<String, dynamic> map) {
     return InstanceUserMetadata(
-      additionalDeveloperUserCount: (() { final guardedValue = map['additionalDeveloperUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      additionalStandardUserCount: (() { final guardedValue = map['additionalStandardUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      additionalViewerUserCount: (() { final guardedValue = map['additionalViewerUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      additionalDeveloperUserCount: (() { final guardedValue = map['additionalDeveloperUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      additionalStandardUserCount: (() { final guardedValue = map['additionalStandardUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      additionalViewerUserCount: (() { final guardedValue = map['additionalViewerUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

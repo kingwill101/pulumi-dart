@@ -26,6 +26,7 @@ import 'firewall_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firewall Basic
@@ -125,7 +126,7 @@ import 'firewall_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -165,7 +166,7 @@ import 'firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,6 +175,9 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "gcp_compute_firewall" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "test-firewall"
 ///   network = gcp_compute_network.default.name
 ///   allows {
@@ -186,6 +190,9 @@ import 'firewall_state.dart';
 ///   source_tags = ["web"]
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-network"
 /// }
 /// ```
@@ -259,6 +266,7 @@ import 'firewall_state.dart';
 ///     properties:
 ///       name: test-network
 /// ```
+///
 ///
 /// ### Firewall With Target Tags
 ///
@@ -348,7 +356,7 @@ import 'firewall_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -384,7 +392,7 @@ import 'firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -393,6 +401,9 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "gcp_compute_firewall" "rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   name        = "my-firewall-rule"
 ///   network     = "default"
@@ -523,6 +534,8 @@ class Firewall extends pulumi.CustomResource {
   /// This field denotes whether to enable logging for a particular firewall rule.
   /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
   late final pulumi.Output<bool> enableLogging;
+  /// The unique identifier number for the resource. This identifier is defined by the server.
+  late final pulumi.Output<int> firewallId;
   /// This field denotes the logging options for a particular firewall rule.
   /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
   /// Structure is documented below.
@@ -611,7 +624,7 @@ class Firewall extends pulumi.CustomResource {
           'gcp:compute/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     allows = registerOutput<List<FirewallAllow>?>('allows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllow>(guardedValue, (value) => FirewallAllow.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -622,6 +635,7 @@ class Firewall extends pulumi.CustomResource {
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
+    firewallId = registerOutput<int>('firewallId');
     logConfig = registerOutput<FirewallLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
@@ -669,6 +683,7 @@ class Firewall extends pulumi.CustomResource {
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
+    firewallId = registerOutput<int>('firewallId');
     logConfig = registerOutput<FirewallLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
@@ -701,6 +716,7 @@ class Firewall extends pulumi.CustomResource {
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
+    firewallId = registerOutput<int>('firewallId');
     logConfig = registerOutput<FirewallLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

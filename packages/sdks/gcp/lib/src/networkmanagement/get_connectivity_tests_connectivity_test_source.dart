@@ -85,7 +85,7 @@ class GetConnectivityTestsConnectivityTestSource {
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
       networkType: pulumi.Input.fromValue(map['networkType'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }

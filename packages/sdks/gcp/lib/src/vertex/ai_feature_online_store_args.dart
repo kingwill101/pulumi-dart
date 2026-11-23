@@ -41,7 +41,10 @@ class AiFeatureOnlineStoreArgs {
   final pulumi.Input<Map<String, String>?>? labels;
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String?>? name;
+  /// (Optional, Deprecated)
   /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+  ///
+  /// &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
   final pulumi.Input<Map<String, dynamic>?>? optimized;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -58,7 +61,7 @@ class AiFeatureOnlineStoreArgs {
   /// [forceDestroy] If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
   /// [labels] The labels with user-defined metadata to organize your feature online stores.
   /// [name] The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  /// [optimized] Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+  /// [optimized] (Optional, Deprecated)
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature online store. eg us-central1
   const AiFeatureOnlineStoreArgs({

@@ -93,7 +93,7 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -130,7 +130,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,9 +142,15 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "MYSQL_5_7"
 ///   settings = {
@@ -152,8 +158,11 @@ import 'user_state.dart';
 ///   }
 /// }
 /// resource "gcp_sql_user" "users" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "me"
-///   instance = gcp_sql_databaseinstance.main.name
+///   instance = gcp_sql_database_instance.main.name
 ///   host     = "me.com"
 ///   password = "changeme"
 /// }
@@ -316,7 +325,7 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -356,7 +365,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -368,9 +377,15 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -378,8 +393,11 @@ import 'user_state.dart';
 ///   }
 /// }
 /// resource "gcp_sql_user" "users" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "me"
-///   instance       = gcp_sql_databaseinstance.main.name
+///   instance       = gcp_sql_database_instance.main.name
 ///   host           = "me.com"
 ///   password       = "changeme"
 ///   database_roles = ["cloudsqlsuperuser"]
@@ -579,7 +597,7 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -637,7 +655,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -652,27 +670,39 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     database_flags = [{
-///       "name"  = "cloudsql.iam_authentication"
-///       "value" = "on"
+///       name  = "cloudsql.iam_authentication"
+///       value = "on"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_sql_user" "iam_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "me@example.com"
-///   instance = gcp_sql_databaseinstance.main.name
+///   instance = gcp_sql_database_instance.main.name
 ///   type     = "CLOUD_IAM_USER"
 /// }
 /// resource "gcp_sql_user" "iam_service_account_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = trimsuffix(serviceAccount.email, ".gserviceaccount.com")
-///   instance = gcp_sql_databaseinstance.main.name
+///   instance = gcp_sql_database_instance.main.name
 ///   type     = "CLOUD_IAM_SERVICE_ACCOUNT"
 /// }
 /// ```
@@ -871,7 +901,7 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -913,7 +943,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -925,22 +955,31 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     database_flags = [{
-///       "name"  = "cloudsql_iam_authentication"
-///       "value" = "on"
+///       name  = "cloudsql_iam_authentication"
+///       value = "on"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_sql_user" "iam_group_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "iam_group@example.com"
-///   instance = gcp_sql_databaseinstance.main.name
+///   instance = gcp_sql_database_instance.main.name
 ///   type     = "CLOUD_IAM_GROUP"
 /// }
 /// ```
@@ -1085,6 +1124,7 @@ class User extends pulumi.CustomResource {
   /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
   /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
   late final pulumi.Output<String?> password;
+  /// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
   late final pulumi.Output<UserPasswordPolicy?> passwordPolicy;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password for the user. Can be updated. For Postgres
@@ -1099,13 +1139,15 @@ class User extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// (read only) SQL Server specific user details. Structure is documented below.
   late final pulumi.Output<List<UserSqlServerUserDetail>> sqlServerUserDetails;
   /// The user type. It determines the method to authenticate the
   /// user during login. The default is the database's built-in user type. Flags
   /// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
   /// "CLOUD_IAM_GROUP_USER" and "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" for
   /// [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
-  /// and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+  /// and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype),
+  /// and "BUILT_IN" and "ENTRAID_USER" for [SQL Server](https://cloud.google.com/sql/docs/sqlserver/admin-api/rest/v1beta4/users#sqlusertype).
   late final pulumi.Output<String?> type;
 
   /// Creates a new [User].
@@ -1120,7 +1162,7 @@ class User extends pulumi.CustomResource {
           'gcp:sql/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

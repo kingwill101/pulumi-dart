@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_cleanup_policy.dart';
 import 'repository_docker_config.dart';
 import 'repository_maven_config.dart';
+import 'repository_platform_logs_config.dart';
 import 'repository_remote_repository_config.dart';
 import 'repository_virtual_repository_config.dart';
 import 'repository_vulnerability_scanning_config.dart';
@@ -31,6 +32,9 @@ class RepositoryArgs {
   final pulumi.Input<String?>? deletionPolicy;
   /// The user-provided description of the repository.
   final pulumi.Input<String?>? description;
+  /// If this is true, an unspecified repo type will be treated as error rather
+  /// than defaulting to standard.
+  final pulumi.Input<bool?>? disallowUnspecifiedMode;
   /// Docker repository config contains repository level configuration for the repositories of docker type.
   /// Structure is documented below.
   final pulumi.Input<RepositoryDockerConfig?>? dockerConfig;
@@ -69,6 +73,9 @@ class RepositoryArgs {
   /// Default value is `STANDARD_REPOSITORY`.
   /// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
   final pulumi.Input<String?>? mode;
+  /// Configuration for platform logs.
+  /// Structure is documented below.
+  final pulumi.Input<RepositoryPlatformLogsConfig?>? platformLogsConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -90,6 +97,7 @@ class RepositoryArgs {
   /// [cleanupPolicyDryRun] If true, the cleanup pipeline is prevented from deleting versions in this
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The user-provided description of the repository.
+  /// [disallowUnspecifiedMode] If this is true, an unspecified repo type will be treated as error rather
   /// [dockerConfig] Docker repository config contains repository level configuration for the repositories of docker type.
   /// [format] The format of packages that are stored in the repository. Supported formats
   /// [kmsKeyName] The Cloud KMS resource name of the customer managed encryption key that’s
@@ -97,6 +105,7 @@ class RepositoryArgs {
   /// [location] The name of the repository's location. In addition to specific regions,
   /// [mavenConfig] MavenRepositoryConfig is maven related repository details.
   /// [mode] The mode configures the repository to serve artifacts from different sources.
+  /// [platformLogsConfig] Configuration for platform logs.
   /// [project] The ID of the project in which the resource belongs.
   /// [remoteRepositoryConfig] Configuration specific for a Remote Repository.
   /// [repositoryId] The last part of the repository name, for example:
@@ -107,6 +116,7 @@ class RepositoryArgs {
     this.cleanupPolicyDryRun,
     this.deletionPolicy,
     this.description,
+    this.disallowUnspecifiedMode,
     this.dockerConfig,
     required this.format,
     this.kmsKeyName,
@@ -114,6 +124,7 @@ class RepositoryArgs {
     this.location,
     this.mavenConfig,
     this.mode,
+    this.platformLogsConfig,
     this.project,
     this.remoteRepositoryConfig,
     required this.repositoryId,
@@ -127,6 +138,7 @@ class RepositoryArgs {
       'cleanupPolicyDryRun': ?cleanupPolicyDryRun,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'disallowUnspecifiedMode': ?disallowUnspecifiedMode,
       'dockerConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryDockerConfig, Map<String, dynamic>>(dockerConfig, (value) => value.toMap()),
       'format': format,
       'kmsKeyName': ?kmsKeyName,
@@ -134,6 +146,7 @@ class RepositoryArgs {
       'location': ?location,
       'mavenConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryMavenConfig, Map<String, dynamic>>(mavenConfig, (value) => value.toMap()),
       'mode': ?mode,
+      'platformLogsConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryPlatformLogsConfig, Map<String, dynamic>>(platformLogsConfig, (value) => value.toMap()),
       'project': ?project,
       'remoteRepositoryConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfig, Map<String, dynamic>>(remoteRepositoryConfig, (value) => value.toMap()),
       'repositoryId': repositoryId,
@@ -148,6 +161,7 @@ class RepositoryArgs {
       cleanupPolicyDryRun: (() { final guardedValue = map['cleanupPolicyDryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disallowUnspecifiedMode: (() { final guardedValue = map['disallowUnspecifiedMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dockerConfig: (() { final guardedValue = map['dockerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       format: pulumi.Input.fromValue(map['format'] as String),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -155,6 +169,7 @@ class RepositoryArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mavenConfig: (() { final guardedValue = map['mavenConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      platformLogsConfig: (() { final guardedValue = map['platformLogsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryPlatformLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteRepositoryConfig: (() { final guardedValue = map['remoteRepositoryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRemoteRepositoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),

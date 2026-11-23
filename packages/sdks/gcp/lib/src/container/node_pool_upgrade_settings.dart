@@ -17,14 +17,14 @@ class NodePoolUpgradeSettings {
   ///
   /// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
   final pulumi.Input<int?>? maxUnavailable;
-  /// The upgrade strategy to be used for upgrading the nodes.
+  /// The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
   final pulumi.Input<String?>? strategy;
 
   /// Creates a new [NodePoolUpgradeSettings].
   /// [blueGreenSettings] The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
   /// [maxSurge] The number of additional nodes that can be added to the node pool during
   /// [maxUnavailable] The number of nodes that can be simultaneously unavailable during
-  /// [strategy] The upgrade strategy to be used for upgrading the nodes.
+  /// [strategy] The upgrade strategy to be used for upgrading the nodes. Strategy can only be one of BLUE_GREEN, SURGE, or SHORT_LIVED.
   const NodePoolUpgradeSettings({
     this.blueGreenSettings,
     this.maxSurge,
@@ -44,8 +44,8 @@ class NodePoolUpgradeSettings {
   factory NodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettings(
       blueGreenSettings: (() { final guardedValue = map['blueGreenSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolUpgradeSettingsBlueGreenSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxSurge: (() { final guardedValue = map['maxSurge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSurge: (() { final guardedValue = map['maxSurge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

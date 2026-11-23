@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_folder_args.dart';
+import 'managed_folder_rapid_cache_config.dart';
 import 'managed_folder_state.dart';
 
 /// A Google Cloud Storage Managed Folder.
@@ -20,6 +21,7 @@ import 'managed_folder_state.dart';
 /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/managedFolder)
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
+///
 ///
 /// ## Example Usage
 ///
@@ -83,7 +85,7 @@ import 'managed_folder_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +112,7 @@ import 'managed_folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,11 +121,17 @@ import 'managed_folder_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "EU"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_managedfolder" "folder" {
+/// resource "gcp_storage_managed_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = gcp_storage_bucket.bucket.name
 ///   name          = "managed/folder/name/"
 ///   force_destroy = true
@@ -220,6 +228,9 @@ class ManagedFolder extends pulumi.CustomResource {
   /// The name of the managed folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`.
   late final pulumi.Output<String> name;
+  /// Configuration options for the rapid cache of a managed folder.
+  /// Structure is documented below.
+  late final pulumi.Output<ManagedFolderRapidCacheConfig?> rapidCacheConfig;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// The timestamp at which this managed folder was most recently updated.
@@ -237,7 +248,7 @@ class ManagedFolder extends pulumi.CustomResource {
           'gcp:storage/managedFolder:ManagedFolder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
@@ -245,6 +256,7 @@ class ManagedFolder extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
+    rapidCacheConfig = registerOutput<ManagedFolderRapidCacheConfig?>('rapidCacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderRapidCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -279,6 +291,7 @@ class ManagedFolder extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
+    rapidCacheConfig = registerOutput<ManagedFolderRapidCacheConfig?>('rapidCacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderRapidCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -298,6 +311,7 @@ class ManagedFolder extends pulumi.CustomResource {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
+    rapidCacheConfig = registerOutput<ManagedFolderRapidCacheConfig?>('rapidCacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderRapidCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     updateTime = registerOutput<String>('updateTime');
   }

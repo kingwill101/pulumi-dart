@@ -7,6 +7,7 @@ import 'qa_scorecard_revision_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -74,7 +75,7 @@ class QaScorecardRevision extends pulumi.CustomResource {
           'gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     alternateIds = registerOutput<List<String>>('alternateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');

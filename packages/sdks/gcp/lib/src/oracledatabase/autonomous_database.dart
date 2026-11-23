@@ -13,6 +13,7 @@ import 'autonomous_database_state.dart';
 /// * How-to Guides
 /// * [Create Autonomous databases](https://cloud.google.com/oracle/database/docs/create-databases)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Oracledatabase Autonomous Database Basic
@@ -42,6 +43,9 @@ import 'autonomous_database_state.dart';
 ///         dbWorkload: "OLTP",
 ///         licenseType: "LICENSE_INCLUDED",
 ///     },
+///     labels: {
+///         "label-one": "value-one",
+///     },
 ///     deletionProtection: true,
 /// });
 /// ```
@@ -65,6 +69,9 @@ import 'autonomous_database_state.dart';
 ///         "db_version": "19c",
 ///         "db_workload": "OLTP",
 ///         "license_type": "LICENSE_INCLUDED",
+///     },
+///     labels={
+///         "label-one": "value-one",
 ///     },
 ///     deletion_protection=True)
 /// ```
@@ -99,6 +106,10 @@ import 'autonomous_database_state.dart';
 ///             DbWorkload = "OLTP",
 ///             LicenseType = "LICENSE_INCLUDED",
 ///         },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
 ///         DeletionProtection = true,
 ///     });
 ///
@@ -108,8 +119,8 @@ import 'autonomous_database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,6 +148,9 @@ import 'autonomous_database_state.dart';
 /// 				DbWorkload:        pulumi.String("OLTP"),
 /// 				LicenseType:       pulumi.String("LICENSE_INCLUDED"),
 /// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
 /// 			DeletionProtection: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -147,7 +161,7 @@ import 'autonomous_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -155,18 +169,21 @@ import 'autonomous_database_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
 ///
-/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+/// resource "gcp_oracledatabase_autonomous_database" "myADB" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autonomous_database_id = "my-instance"
 ///   location               = "us-east4"
 ///   project                = "my-project"
 ///   database               = "mydatabase"
 ///   admin_password         = "123Abpassword"
-///   network                = data.gcp_compute_getnetwork.default.id
+///   network                = data.gcp_compute_network.default.id
 ///   cidr                   = "10.5.0.0/24"
 ///   properties = {
 ///     compute_count        = "2"
@@ -174,6 +191,9 @@ import 'autonomous_database_state.dart';
 ///     db_version           = "19c"
 ///     db_workload          = "OLTP"
 ///     license_type         = "LICENSE_INCLUDED"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
 ///   }
 ///   deletion_protection = "true"
 /// }
@@ -222,6 +242,7 @@ import 'autonomous_database_state.dart';
 ///                 .dbWorkload("OLTP")
 ///                 .licenseType("LICENSE_INCLUDED")
 ///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
 ///             .deletionProtection(true)
 ///             .build());
 ///
@@ -246,6 +267,8 @@ import 'autonomous_database_state.dart';
 ///         dbVersion: 19c
 ///         dbWorkload: OLTP
 ///         licenseType: LICENSE_INCLUDED
+///       labels:
+///         label-one: value-one
 ///       deletionProtection: 'true'
 /// variables:
 ///   default:
@@ -255,6 +278,7 @@ import 'autonomous_database_state.dart';
 ///         name: new
 ///         project: my-project
 /// ```
+///
 ///
 /// ### Oracledatabase Autonomous Database Full
 ///
@@ -408,8 +432,8 @@ import 'autonomous_database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -467,7 +491,7 @@ import 'autonomous_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -475,12 +499,15 @@ import 'autonomous_database_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
 ///
-/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+/// resource "gcp_oracledatabase_autonomous_database" "myADB" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autonomous_database_id = "my-instance"
 ///   location               = "us-east4"
 ///   project                = "my-project"
@@ -508,7 +535,7 @@ import 'autonomous_database_state.dart';
 ///     n_character_set                 = "AL16UTF16"
 ///     operations_insights_state       = "NOT_ENABLED"
 ///     customer_contacts = [{
-///       "email" = "xyz@example.com"
+///       email = "xyz@example.com"
 ///     }]
 ///     private_endpoint_ip    = "10.5.0.11"
 ///     private_endpoint_label = "myendpoint"
@@ -627,6 +654,7 @@ import 'autonomous_database_state.dart';
 ///         project: my-project
 /// ```
 ///
+///
 /// ### Oracledatabase Autonomous Database Odbnetwork
 ///
 ///
@@ -708,7 +736,7 @@ import 'autonomous_database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -739,7 +767,7 @@ import 'autonomous_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -747,7 +775,10 @@ import 'autonomous_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+/// resource "gcp_oracledatabase_autonomous_database" "myADB" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autonomous_database_id = "my-instance"
 ///   location               = "europe-west2"
 ///   project                = "my-project"
@@ -829,6 +860,7 @@ import 'autonomous_database_state.dart';
 ///       deletionProtection: 'true'
 /// ```
 ///
+///
 /// ### Oracledatabase Autonomous Database Publicip
 ///
 ///
@@ -907,7 +939,7 @@ import 'autonomous_database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -937,7 +969,7 @@ import 'autonomous_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -945,7 +977,10 @@ import 'autonomous_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+/// resource "gcp_oracledatabase_autonomous_database" "myADB" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autonomous_database_id = "my-instance"
 ///   location               = "europe-west2"
 ///   project                = "my-project"
@@ -1023,6 +1058,7 @@ import 'autonomous_database_state.dart';
 ///         mtlsConnectionRequired: 'true'
 ///       deletionProtection: 'true'
 /// ```
+///
 ///
 /// ### Oracledatabase Autonomous Database Disaster Recovery
 ///
@@ -1134,7 +1170,7 @@ import 'autonomous_database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1177,7 +1213,7 @@ import 'autonomous_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1185,7 +1221,10 @@ import 'autonomous_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_autonomousdatabase" "adb-dr" {
+/// resource "gcp_oracledatabase_autonomous_database" "adb-dr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autonomous_database_id = "my-instance"
 ///   location               = "us-east4"
 ///   project                = "my-project"
@@ -1201,12 +1240,15 @@ import 'autonomous_database_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+/// resource "gcp_oracledatabase_autonomous_database" "myADB" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autonomous_database_id = "my-instance"
 ///   location               = "my-location"
 ///   project                = "my-project"
 ///   source_config = {
-///     autonomous_database                   = gcp_oracledatabase_autonomousdatabase.adb-dr.name
+///     autonomous_database                   = gcp_oracledatabase_autonomous_database.adb-dr.name
 ///     automatic_backups_replication_enabled = "false"
 ///   }
 ///   deletion_protection = "true"
@@ -1397,7 +1439,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
           'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminPassword = registerOutput<String?>('adminPassword');

@@ -17,6 +17,7 @@ import 'job_status.dart';
 /// * How-to Guides
 /// * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Job Query
@@ -144,7 +145,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +195,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,17 +204,26 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_bigquery_table" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
 ///   table_id            = "job_query_table"
 /// }
 /// resource "gcp_bigquery_dataset" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_query_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "job_query"
 ///   labels = {
 ///     "example-label" = "example-value"
@@ -327,6 +337,7 @@ import 'job_status.dart';
 ///         scriptOptions:
 ///           keyResultStatement: LAST
 /// ```
+///
 ///
 /// ### Bigquery Job Query Table Reference
 ///
@@ -457,7 +468,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -488,10 +499,10 @@ import 'job_status.dart';
 /// 			Query: &bigquery.JobQueryArgs{
 /// 				Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
 /// 				DestinationTable: &bigquery.JobQueryDestinationTableArgs{
-/// 					TableId: foo.ID().ToIDOutput().ToStringOutput(),
+/// 					TableId: foo.ID(),
 /// 				},
 /// 				DefaultDataset: &bigquery.JobQueryDefaultDatasetArgs{
-/// 					DatasetId: bar.ID().ToIDOutput().ToStringOutput(),
+/// 					DatasetId: bar.ID(),
 /// 				},
 /// 				AllowLargeResults: pulumi.Bool(true),
 /// 				FlattenResults:    pulumi.Bool(true),
@@ -508,7 +519,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -517,17 +528,26 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_bigquery_table" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
 ///   table_id            = "job_query_table"
 /// }
 /// resource "gcp_bigquery_dataset" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_query_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "job_query"
 ///   labels = {
 ///     "example-label" = "example-value"
@@ -644,6 +664,7 @@ import 'job_status.dart';
 ///         scriptOptions:
 ///           keyResultStatement: LAST
 /// ```
+///
 ///
 /// ### Bigquery Job Load
 ///
@@ -779,7 +800,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -833,7 +854,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -842,17 +863,26 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_bigquery_table" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
 ///   table_id            = "job_load_table"
 /// }
 /// resource "gcp_bigquery_dataset" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_load_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "job_load"
 ///   labels = {
 ///     "my_job" = "load"
@@ -969,6 +999,7 @@ import 'job_status.dart';
 ///         autodetect: true
 /// ```
 ///
+///
 /// ### Bigquery Job Load Geojson
 ///
 ///
@@ -979,7 +1010,7 @@ import 'job_status.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-bq-geojson`,
+///     name: `bq-geojson-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -1028,7 +1059,7 @@ import 'job_status.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-bq-geojson",
+///     name=f"bq-geojson-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -1081,7 +1112,7 @@ import 'job_status.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-bq-geojson",
+///         Name = $"bq-geojson-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -1155,8 +1186,8 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1164,7 +1195,7 @@ import 'job_status.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-bq-geojson", project),
+/// 			Name:                     pulumi.Sprintf("bq-geojson-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -1230,7 +1261,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1239,34 +1270,53 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-bq-geojson"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="bq-geojson-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "geojson-data.jsonl"
 ///   bucket  = gcp_storage_bucket.bucket.name
-///   content = "{\\\"type\\\":\\\"Feature\\\",\\\"properties\\\":{\\\"continent\\\":\\\"Europe\\\",\\\"region\\\":\\\"Scandinavia\\\"},\\\"geometry\\\":{\\\"type\\\":\\\"Polygon\\\",\\\"coordinates\\\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}\n{\\\"type\\\":\\\"Feature\\\",\\\"properties\\\":{\\\"continent\\\":\\\"Africa\\\",\\\"region\\\":\\\"West Africa\\\"},\\\"geometry\\\":{\\\"type\\\":\\\"Polygon\\\",\\\"coordinates\\\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}\n"
+///   content = <<EOF
+/// {\"type\":\"Feature\",\"properties\":{\"continent\":\"Europe\",\"region\":\"Scandinavia\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+/// {\"type\":\"Feature\",\"properties\":{\"continent\":\"Africa\",\"region\":\"West Africa\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+/// EOF
+///
 /// }
 /// resource "gcp_bigquery_table" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
 ///   table_id            = "job_load_table"
 /// }
 /// resource "gcp_bigquery_dataset" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_load_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_job" "job" {
-///   depends_on = [gcp_storage_bucketobject.object]
-///   job_id     = "job_load"
+///   depends_on = [gcp_storage_bucket_object.object]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   job_id = "job_load"
 ///   labels = {
 ///     "my_job" = "load"
 ///   }
 ///   load = {
-///     source_uris = ["gs://${gcp_storage_bucketobject.object.bucket}/${gcp_storage_bucketobject.object.name}"]
+///     source_uris = ["gs://${gcp_storage_bucket_object.object.bucket}/${gcp_storage_bucket_object.object.name}"]
 ///     destination_table = {
 ///       project_id = gcp_bigquery_table.foo.project
 ///       dataset_id = gcp_bigquery_table.foo.dataset_id
@@ -1317,7 +1367,7 @@ import 'job_status.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-bq-geojson", project))
+///             .name(String.format("bq-geojson-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -1375,7 +1425,7 @@ import 'job_status.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-bq-geojson
+///       name: bq-geojson-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -1422,6 +1472,7 @@ import 'job_status.dart';
 /// variables:
 ///   project: my-project-name
 /// ```
+///
 ///
 /// ### Bigquery Job Load Parquet
 ///
@@ -1613,8 +1664,8 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1692,7 +1743,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1701,33 +1752,48 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "job_load_bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "test" {
+/// resource "gcp_storage_bucket_object" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "job_load_bucket_object"
-///   source = fileAsset("./test-fixtures/test.parquet.gzip")
+///   source = fileasset("./test-fixtures/test.parquet.gzip")
 ///   bucket = gcp_storage_bucket.test.name
 /// }
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_load_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   table_id            = "job_load_table"
 ///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
 /// }
 /// resource "gcp_bigquery_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "job_load"
 ///   labels = {
 ///     "my_job" = "load"
 ///   }
 ///   load = {
-///     source_uris = ["gs://${gcp_storage_bucketobject.test.bucket}/${gcp_storage_bucketobject.test.name}"]
+///     source_uris = ["gs://${gcp_storage_bucket_object.test.bucket}/${gcp_storage_bucket_object.test.name}"]
 ///     destination_table = {
 ///       project_id = gcp_bigquery_table.test.project
 ///       dataset_id = gcp_bigquery_table.test.dataset_id
@@ -1886,6 +1952,7 @@ import 'job_status.dart';
 ///           enumAsString: true
 ///           enableListInference: true
 /// ```
+///
 ///
 /// ### Bigquery Job Copy
 ///
@@ -2253,9 +2320,9 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2398,7 +2465,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2406,57 +2473,119 @@ import 'job_status.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 ///   project_id = "my-project-name"
 /// }
 ///
 /// resource "gcp_bigquery_table" "source" {
-///   count               = local.count
+///   count = local.count
+///   pulumi {
+///     name ="source-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id          = gcp_bigquery_dataset.source[count.index].dataset_id
 ///   table_id            ="job_copy_${count.index}_table"
 ///   deletion_protection = false
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"name\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"post_abbr\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"date\",
+///     \"type\": \"DATE\",
+///     \"mode\": \"NULLABLE\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// resource "gcp_bigquery_dataset" "source" {
-///   count         = local.count
+///   count = local.count
+///   pulumi {
+///     name ="source-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    ="job_copy_${count.index}_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "dest" {
-///   depends_on          = [gcp_kms_cryptokeyiammember.encrypt_role]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.encrypt_role]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.dest.dataset_id
 ///   table_id            = "job_copy_dest_table"
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"name\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"post_abbr\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"date\",
+///     \"type\": \"DATE\",
+///     \"mode\": \"NULLABLE\"
+///   }
+/// ]
+/// EOF
+///
 ///   encryption_configuration = {
 ///     kms_key_name = "example-key"
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "dest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_copy_dest_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "encrypt_role" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "encrypt_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "example-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:bq-${data.gcp_organizations_getproject.project.number}@bigquery-encryption.iam.gserviceaccount.com"
+///   member        ="serviceAccount:bq-${data.gcp_organizations_project.project.number}@bigquery-encryption.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_bigquery_job" "job" {
-///   depends_on = [gcp_kms_cryptokeyiammember.encrypt_role]
-///   job_id     = "job_copy"
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.encrypt_role]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   job_id = "job_copy"
 ///   copy = {
 ///     source_tables = [{
-///       "projectId" = gcp_bigquery_table.source[0].project
-///       "datasetId" = gcp_bigquery_table.source[0].datasetId
-///       "tableId"   = gcp_bigquery_table.source[0].tableId
+///       project_id = gcp_bigquery_table.source[0].project
+///       dataset_id = gcp_bigquery_table.source[0].datasetId
+///       table_id   = gcp_bigquery_table.source[0].tableId
 ///       }, {
-///       "projectId" = gcp_bigquery_table.source[1].project
-///       "datasetId" = gcp_bigquery_table.source[1].datasetId
-///       "tableId"   = gcp_bigquery_table.source[1].tableId
+///       project_id = gcp_bigquery_table.source[1].project
+///       dataset_id = gcp_bigquery_table.source[1].datasetId
+///       table_id   = gcp_bigquery_table.source[1].tableId
 ///     }]
 ///     destination_table = {
 ///       project_id = gcp_bigquery_table.dest.project
@@ -2625,6 +2754,7 @@ import 'job_status.dart';
 ///     }
 /// }
 /// ```
+///
 ///
 /// ### Bigquery Job Extract
 ///
@@ -2806,8 +2936,8 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2881,7 +3011,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2890,23 +3020,54 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_bigquery_table" "source-one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.source-one.dataset_id
 ///   table_id            = "job_extract_table"
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"name\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"post_abbr\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"date\",
+///     \"type\": \"DATE\",
+///     \"mode\": \"NULLABLE\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// resource "gcp_bigquery_dataset" "source-one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "job_extract_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_storage_bucket" "dest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "job_extract_bucket"
 ///   location      = "US"
 ///   force_destroy = true
 /// }
 /// resource "gcp_bigquery_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "job_extract"
 ///   extract = {
 ///     destination_uris = ["${gcp_storage_bucket.dest.url}/extract"]
@@ -3140,7 +3301,7 @@ class Job extends pulumi.CustomResource {
           'gcp:bigquery/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     copy = registerOutput<JobCopy?>('copy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

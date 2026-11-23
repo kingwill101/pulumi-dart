@@ -41,6 +41,7 @@ export 'dataplex/data_asset_state.dart';
 export 'dataplex/data_product.dart';
 export 'dataplex/data_product_access_approval_config.dart';
 export 'dataplex/data_product_access_group.dart';
+export 'dataplex/data_product_access_group_default_iam_role_config.dart';
 export 'dataplex/data_product_access_group_principal.dart';
 export 'dataplex/data_product_args.dart';
 export 'dataplex/data_product_data_asset.dart';
@@ -80,6 +81,7 @@ export 'dataplex/datascan_data_quality_spec_post_scan_actions_notification_repor
 export 'dataplex/datascan_data_quality_spec_post_scan_actions_notification_report_recipients.dart';
 export 'dataplex/datascan_data_quality_spec_post_scan_actions_notification_report_score_threshold_trigger.dart';
 export 'dataplex/datascan_data_quality_spec_rule.dart';
+export 'dataplex/datascan_data_quality_spec_rule_debug_query.dart';
 export 'dataplex/datascan_data_quality_spec_rule_range_expectation.dart';
 export 'dataplex/datascan_data_quality_spec_rule_regex_expectation.dart';
 export 'dataplex/datascan_data_quality_spec_rule_row_condition_expectation.dart';

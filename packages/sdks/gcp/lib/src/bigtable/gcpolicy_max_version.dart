@@ -23,7 +23,7 @@ class GCPolicyMaxVersion {
 
   factory GCPolicyMaxVersion.fromMap(Map<String, dynamic> map) {
     return GCPolicyMaxVersion(
-      number: pulumi.Input.fromValue((map['number'] as num).toInt()),
+      number: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['number'])),
     );
   }
 }

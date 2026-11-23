@@ -30,8 +30,8 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(
-      registryBurst: (() { final guardedValue = map['registryBurst']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      registryPullQps: (() { final guardedValue = map['registryPullQps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      registryBurst: (() { final guardedValue = map['registryBurst']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      registryPullQps: (() { final guardedValue = map['registryPullQps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serializeImagePullsDisabled: (() { final guardedValue = map['serializeImagePullsDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

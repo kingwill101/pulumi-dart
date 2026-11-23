@@ -47,8 +47,8 @@ class GetClusterDatastoreMountConfigDatastoreNetwork {
 
   factory GetClusterDatastoreMountConfigDatastoreNetwork.fromMap(Map<String, dynamic> map) {
     return GetClusterDatastoreMountConfigDatastoreNetwork(
-      connectionCount: pulumi.Input.fromValue((map['connectionCount'] as num).toInt()),
-      mtu: pulumi.Input.fromValue((map['mtu'] as num).toInt()),
+      connectionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['connectionCount'])),
+      mtu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mtu'])),
       networkPeering: pulumi.Input.fromValue(map['networkPeering'] as String),
       subnet: pulumi.Input.fromValue(map['subnet'] as String),
     );

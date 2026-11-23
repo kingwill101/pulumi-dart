@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_regional_secrets_secret_customer_managed_encryption.dart';
+import 'get_regional_secrets_secret_policy_member.dart';
 import 'get_regional_secrets_secret_rotation.dart';
 import 'get_regional_secrets_secret_topic.dart';
 
@@ -36,6 +37,9 @@ class GetRegionalSecretsSecret {
   final pulumi.Input<String> location;
   /// The resource name of the Pub/Sub topic that will be published to.
   final pulumi.Input<String> name;
+  /// An object containing a unique resource identity tied to the regional secret. This identity can be
+  /// granted the permissions required by features such as managed rotation.
+  final pulumi.Input<List<GetRegionalSecretsSecretPolicyMember>> policyMembers;
   /// The ID of the project.
   final pulumi.Input<String> project;
   /// The combination of labels configured directly on the resource
@@ -46,6 +50,18 @@ class GetRegionalSecretsSecret {
   final pulumi.Input<List<GetRegionalSecretsSecretRotation>> rotations;
   /// The unique name of the resource.
   final pulumi.Input<String> secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  /// Supported values are:
+  /// * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+  /// credentials. Managed rotation can be enabled on these secrets using the
+  /// 'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+  /// be added manually to secrets of this type.
+  /// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+  /// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+  /// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+  /// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
+  final pulumi.Input<String> secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -73,10 +89,12 @@ class GetRegionalSecretsSecret {
   /// [labels] The labels assigned to this regional secret.
   /// [location] The location of the regional secret.
   /// [name] The resource name of the Pub/Sub topic that will be published to.
+  /// [policyMembers] An object containing a unique resource identity tied to the regional secret. This identity can be
   /// [project] The ID of the project.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rotations] The rotation time and period for a regional secret.
   /// [secretId] The unique name of the resource.
+  /// [secretType] This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
@@ -94,10 +112,12 @@ class GetRegionalSecretsSecret {
     required this.labels,
     required this.location,
     required this.name,
+    required this.policyMembers,
     required this.project,
     required this.pulumiLabels,
     required this.rotations,
     required this.secretId,
+    required this.secretType,
     required this.tags,
     required this.topics,
     required this.ttl,
@@ -118,10 +138,12 @@ class GetRegionalSecretsSecret {
       'labels': labels,
       'location': location,
       'name': name,
+      'policyMembers': pulumi.Input.mapInputValue<List<GetRegionalSecretsSecretPolicyMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<GetRegionalSecretsSecretPolicyMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': project,
       'pulumiLabels': pulumiLabels,
       'rotations': pulumi.Input.mapInputValue<List<GetRegionalSecretsSecretRotation>, List<Map<String, dynamic>>>(rotations, (value) => pulumi.Input.encodeList<GetRegionalSecretsSecretRotation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secretId': secretId,
+      'secretType': secretType,
       'tags': tags,
       'topics': pulumi.Input.mapInputValue<List<GetRegionalSecretsSecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<GetRegionalSecretsSecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ttl': ttl,
@@ -143,10 +165,12 @@ class GetRegionalSecretsSecret {
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
+      policyMembers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalSecretsSecretPolicyMember>(map['policyMembers']!, (value) => GetRegionalSecretsSecretPolicyMember.fromMap((value as Map).cast<String, dynamic>()))),
       project: pulumi.Input.fromValue(map['project'] as String),
       pulumiLabels: pulumi.Input.fromValue((map['pulumiLabels'] as Map).cast<String, String>()),
       rotations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalSecretsSecretRotation>(map['rotations']!, (value) => GetRegionalSecretsSecretRotation.fromMap((value as Map).cast<String, dynamic>()))),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
+      secretType: pulumi.Input.fromValue(map['secretType'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       topics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalSecretsSecretTopic>(map['topics']!, (value) => GetRegionalSecretsSecretTopic.fromMap((value as Map).cast<String, dynamic>()))),
       ttl: pulumi.Input.fromValue(map['ttl'] as String),

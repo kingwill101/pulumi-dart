@@ -25,8 +25,8 @@ class WorkflowTemplateJobScheduling {
 
   factory WorkflowTemplateJobScheduling.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobScheduling(
-      maxFailuresPerHour: (() { final guardedValue = map['maxFailuresPerHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxFailuresTotal: (() { final guardedValue = map['maxFailuresTotal']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxFailuresPerHour: (() { final guardedValue = map['maxFailuresPerHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxFailuresTotal: (() { final guardedValue = map['maxFailuresTotal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

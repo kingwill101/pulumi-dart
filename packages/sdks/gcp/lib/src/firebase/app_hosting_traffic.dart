@@ -9,6 +9,7 @@ import 'app_hosting_traffic_target.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase App Hosting Traffic Target
@@ -199,15 +200,15 @@ import 'app_hosting_traffic_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// ## Include these blocks only once per project if you are starting from scratch ###
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
 /// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 /// 			Project:                   pulumi.String("my-project-name"),
 /// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -280,7 +281,7 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -288,21 +289,27 @@ import 'app_hosting_traffic_target.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingtraffic" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   target = {
 ///     splits = [{
-///       "build"   = gcp_firebase_apphostingbuild.example.name
-///       "percent" = 100
+///       build   = gcp_firebase_app_hosting_build.example.name
+///       percent = 100
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbuild" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_build" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   build_id = "target-build"
 ///   source = {
 ///     container = {
@@ -310,8 +317,11 @@ import 'app_hosting_traffic_target.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "asia-east1"
 ///   backend_id       = "traffic-tg"
@@ -321,17 +331,26 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -488,6 +507,7 @@ import 'app_hosting_traffic_target.dart';
 ///       service: firebaseapphosting.googleapis.com
 /// ```
 ///
+///
 /// ### Firebase App Hosting Traffic Rollout Policy
 ///
 ///
@@ -627,15 +647,15 @@ import 'app_hosting_traffic_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// ## Include these blocks only once per project if you are starting from scratch ###
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
 /// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 /// 			Project:                   pulumi.String("my-project-name"),
 /// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -689,7 +709,7 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -697,16 +717,22 @@ import 'app_hosting_traffic_target.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingtraffic" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   rollout_policy = {
 ///     codebase_branch = "main"
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "asia-east1"
 ///   backend_id       = "traffic-rp"
@@ -716,17 +742,26 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -849,6 +884,464 @@ import 'app_hosting_traffic_target.dart';
 ///       project: my-project-name
 ///       service: firebaseapphosting.googleapis.com
 /// ```
+///
+///
+/// ### Firebase App Hosting Traffic Rollout Policy With Paths
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// //## Include these blocks only once per project if you are starting from scratch ###
+/// const serviceAccount = new gcp.serviceaccount.Account("service_account", {
+///     project: "my-project-name",
+///     accountId: "firebase-app-hosting-compute",
+///     displayName: "Firebase App Hosting compute service account",
+///     createIgnoreAlreadyExists: true,
+/// });
+/// const appHostingSaRunner = new gcp.projects.IAMMember("app_hosting_sa_runner", {
+///     project: "my-project-name",
+///     role: "roles/firebaseapphosting.computeRunner",
+///     member: serviceAccount.member,
+/// });
+/// const fah = new gcp.projects.Service("fah", {
+///     project: "my-project-name",
+///     service: "firebaseapphosting.googleapis.com",
+/// });
+/// const exampleAppHostingBackend = new gcp.firebase.AppHostingBackend("example", {
+///     project: "my-project-name",
+///     location: "us-central1",
+///     backendId: "traffic-rpwp",
+///     appId: "1:0000000000:web:674cde32020e16fbce9dbd",
+///     servingLocality: "GLOBAL_ACCESS",
+///     serviceAccount: serviceAccount.email,
+/// }, {
+///     dependsOn: [
+///         fah,
+///         appHostingSaRunner,
+///     ],
+/// });
+/// const example = new gcp.firebase.AppHostingTraffic("example", {
+///     project: exampleAppHostingBackend.project,
+///     location: exampleAppHostingBackend.location,
+///     backend: exampleAppHostingBackend.backendId,
+///     rolloutPolicy: {
+///         codebaseBranch: "main",
+///         requiredPaths: [{
+///             pattern: "foo/bar/*",
+///             type: "GLOB",
+///         }],
+///         ignoredPaths: [{
+///             pattern: "foo/bar/excluded/*",
+///             type: "GLOB",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// service_account = gcp.serviceaccount.Account("service_account",
+///     project="my-project-name",
+///     account_id="firebase-app-hosting-compute",
+///     display_name="Firebase App Hosting compute service account",
+///     create_ignore_already_exists=True)
+/// app_hosting_sa_runner = gcp.projects.IAMMember("app_hosting_sa_runner",
+///     project="my-project-name",
+///     role="roles/firebaseapphosting.computeRunner",
+///     member=service_account.member)
+/// fah = gcp.projects.Service("fah",
+///     project="my-project-name",
+///     service="firebaseapphosting.googleapis.com")
+/// example_app_hosting_backend = gcp.firebase.AppHostingBackend("example",
+///     project="my-project-name",
+///     location="us-central1",
+///     backend_id="traffic-rpwp",
+///     app_id="1:0000000000:web:674cde32020e16fbce9dbd",
+///     serving_locality="GLOBAL_ACCESS",
+///     service_account=service_account.email,
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             fah,
+///             app_hosting_sa_runner,
+///         ]))
+/// example = gcp.firebase.AppHostingTraffic("example",
+///     project=example_app_hosting_backend.project,
+///     location=example_app_hosting_backend.location,
+///     backend=example_app_hosting_backend.backend_id,
+///     rollout_policy={
+///         "codebase_branch": "main",
+///         "required_paths": [{
+///             "pattern": "foo/bar/*",
+///             "type": "GLOB",
+///         }],
+///         "ignored_paths": [{
+///             "pattern": "foo/bar/excluded/*",
+///             "type": "GLOB",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     //## Include these blocks only once per project if you are starting from scratch ###
+///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
+///     {
+///         Project = "my-project-name",
+///         AccountId = "firebase-app-hosting-compute",
+///         DisplayName = "Firebase App Hosting compute service account",
+///         CreateIgnoreAlreadyExists = true,
+///     });
+///
+///     var appHostingSaRunner = new Gcp.Projects.IAMMember("app_hosting_sa_runner", new()
+///     {
+///         Project = "my-project-name",
+///         Role = "roles/firebaseapphosting.computeRunner",
+///         Member = serviceAccount.Member,
+///     });
+///
+///     var fah = new Gcp.Projects.Service("fah", new()
+///     {
+///         Project = "my-project-name",
+///         ServiceName = "firebaseapphosting.googleapis.com",
+///     });
+///
+///     var exampleAppHostingBackend = new Gcp.Firebase.AppHostingBackend("example", new()
+///     {
+///         Project = "my-project-name",
+///         Location = "us-central1",
+///         BackendId = "traffic-rpwp",
+///         AppId = "1:0000000000:web:674cde32020e16fbce9dbd",
+///         ServingLocality = "GLOBAL_ACCESS",
+///         ServiceAccount = serviceAccount.Email,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             fah,
+///             appHostingSaRunner,
+///         },
+///     });
+///
+///     var example = new Gcp.Firebase.AppHostingTraffic("example", new()
+///     {
+///         Project = exampleAppHostingBackend.Project,
+///         Location = exampleAppHostingBackend.Location,
+///         Backend = exampleAppHostingBackend.BackendId,
+///         RolloutPolicy = new Gcp.Firebase.Inputs.AppHostingTrafficRolloutPolicyArgs
+///         {
+///             CodebaseBranch = "main",
+///             RequiredPaths = new[]
+///             {
+///                 new Gcp.Firebase.Inputs.AppHostingTrafficRolloutPolicyRequiredPathArgs
+///                 {
+///                     Pattern = "foo/bar/*",
+///                     Type = "GLOB",
+///                 },
+///             },
+///             IgnoredPaths = new[]
+///             {
+///                 new Gcp.Firebase.Inputs.AppHostingTrafficRolloutPolicyIgnoredPathArgs
+///                 {
+///                     Pattern = "foo/bar/excluded/*",
+///                     Type = "GLOB",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
+/// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
+/// 			Project:                   pulumi.String("my-project-name"),
+/// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
+/// 			DisplayName:               pulumi.String("Firebase App Hosting compute service account"),
+/// 			CreateIgnoreAlreadyExists: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		appHostingSaRunner, err := projects.NewIAMMember(ctx, "app_hosting_sa_runner", &projects.IAMMemberArgs{
+/// 			Project: pulumi.String("my-project-name"),
+/// 			Role:    pulumi.String("roles/firebaseapphosting.computeRunner"),
+/// 			Member:  serviceAccount.Member,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		fah, err := projects.NewService(ctx, "fah", &projects.ServiceArgs{
+/// 			Project: pulumi.String("my-project-name"),
+/// 			Service: pulumi.String("firebaseapphosting.googleapis.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleAppHostingBackend, err := firebase.NewAppHostingBackend(ctx, "example", &firebase.AppHostingBackendArgs{
+/// 			Project:         pulumi.String("my-project-name"),
+/// 			Location:        pulumi.String("us-central1"),
+/// 			BackendId:       pulumi.String("traffic-rpwp"),
+/// 			AppId:           pulumi.String("1:0000000000:web:674cde32020e16fbce9dbd"),
+/// 			ServingLocality: pulumi.String("GLOBAL_ACCESS"),
+/// 			ServiceAccount:  serviceAccount.Email,
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			fah,
+/// 			appHostingSaRunner,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = firebase.NewAppHostingTraffic(ctx, "example", &firebase.AppHostingTrafficArgs{
+/// 			Project:  exampleAppHostingBackend.Project,
+/// 			Location: exampleAppHostingBackend.Location,
+/// 			Backend:  exampleAppHostingBackend.BackendId,
+/// 			RolloutPolicy: &firebase.AppHostingTrafficRolloutPolicyArgs{
+/// 				CodebaseBranch: pulumi.String("main"),
+/// 				RequiredPaths: firebase.AppHostingTrafficRolloutPolicyRequiredPathArray{
+/// 					&firebase.AppHostingTrafficRolloutPolicyRequiredPathArgs{
+/// 						Pattern: pulumi.String("foo/bar/*"),
+/// 						Type:    pulumi.String("GLOB"),
+/// 					},
+/// 				},
+/// 				IgnoredPaths: firebase.AppHostingTrafficRolloutPolicyIgnoredPathArray{
+/// 					&firebase.AppHostingTrafficRolloutPolicyIgnoredPathArgs{
+/// 						Pattern: pulumi.String("foo/bar/excluded/*"),
+/// 						Type:    pulumi.String("GLOB"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
+///   rollout_policy = {
+///     codebase_branch = "main"
+///     required_paths = [{
+///       pattern = "foo/bar/*"
+///       type    = "GLOB"
+///     }]
+///     ignored_paths = [{
+///       pattern = "foo/bar/excluded/*"
+///       type    = "GLOB"
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah, gcp_projects_i_a_m_member.app_hosting_sa_runner]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "traffic-rpwp"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project                      = "my-project-name"
+///   account_id                   = "firebase-app-hosting-compute"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/firebaseapphosting.computeRunner"
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   service = "firebaseapphosting.googleapis.com"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.projects.IAMMember;
+/// import com.pulumi.gcp.projects.IAMMemberArgs;
+/// import com.pulumi.gcp.projects.Service;
+/// import com.pulumi.gcp.projects.ServiceArgs;
+/// import com.pulumi.gcp.firebase.AppHostingBackend;
+/// import com.pulumi.gcp.firebase.AppHostingBackendArgs;
+/// import com.pulumi.gcp.firebase.AppHostingTraffic;
+/// import com.pulumi.gcp.firebase.AppHostingTrafficArgs;
+/// import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyArgs;
+/// import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyRequiredPathArgs;
+/// import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyIgnoredPathArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         //## Include these blocks only once per project if you are starting from scratch ###
+///         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
+///             .project("my-project-name")
+///             .accountId("firebase-app-hosting-compute")
+///             .displayName("Firebase App Hosting compute service account")
+///             .createIgnoreAlreadyExists(true)
+///             .build());
+///
+///         var appHostingSaRunner = new IAMMember("appHostingSaRunner", IAMMemberArgs.builder()
+///             .project("my-project-name")
+///             .role("roles/firebaseapphosting.computeRunner")
+///             .member(serviceAccount.member())
+///             .build());
+///
+///         var fah = new Service("fah", ServiceArgs.builder()
+///             .project("my-project-name")
+///             .service("firebaseapphosting.googleapis.com")
+///             .build());
+///
+///         var exampleAppHostingBackend = new AppHostingBackend("exampleAppHostingBackend", AppHostingBackendArgs.builder()
+///             .project("my-project-name")
+///             .location("us-central1")
+///             .backendId("traffic-rpwp")
+///             .appId("1:0000000000:web:674cde32020e16fbce9dbd")
+///             .servingLocality("GLOBAL_ACCESS")
+///             .serviceAccount(serviceAccount.email())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     fah,
+///                     appHostingSaRunner)
+///                 .build());
+///
+///         var example = new AppHostingTraffic("example", AppHostingTrafficArgs.builder()
+///             .project(exampleAppHostingBackend.project())
+///             .location(exampleAppHostingBackend.location())
+///             .backend(exampleAppHostingBackend.backendId())
+///             .rolloutPolicy(AppHostingTrafficRolloutPolicyArgs.builder()
+///                 .codebaseBranch("main")
+///                 .requiredPaths(AppHostingTrafficRolloutPolicyRequiredPathArgs.builder()
+///                     .pattern("foo/bar/*")
+///                     .type("GLOB")
+///                     .build())
+///                 .ignoredPaths(AppHostingTrafficRolloutPolicyIgnoredPathArgs.builder()
+///                     .pattern("foo/bar/excluded/*")
+///                     .type("GLOB")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:firebase:AppHostingTraffic
+///     properties:
+///       project: ${exampleAppHostingBackend.project}
+///       location: ${exampleAppHostingBackend.location}
+///       backend: ${exampleAppHostingBackend.backendId}
+///       rolloutPolicy:
+///         codebaseBranch: main
+///         requiredPaths:
+///           - pattern: foo/bar/*
+///             type: GLOB
+///         ignoredPaths:
+///           - pattern: foo/bar/excluded/*
+///             type: GLOB
+///   exampleAppHostingBackend:
+///     type: gcp:firebase:AppHostingBackend
+///     name: example
+///     properties:
+///       project: my-project-name
+///       location: us-central1
+///       backendId: traffic-rpwp
+///       appId: 1:0000000000:web:674cde32020e16fbce9dbd
+///       servingLocality: GLOBAL_ACCESS
+///       serviceAccount: ${serviceAccount.email}
+///     options:
+///       dependsOn:
+///         - ${fah}
+///         - ${appHostingSaRunner}
+///   ### Include these blocks only once per project if you are starting from scratch ###
+///   serviceAccount:
+///     type: gcp:serviceaccount:Account
+///     name: service_account
+///     properties:
+///       project: my-project-name
+///       accountId: firebase-app-hosting-compute
+///       displayName: Firebase App Hosting compute service account
+///       createIgnoreAlreadyExists: true
+///   appHostingSaRunner:
+///     type: gcp:projects:IAMMember
+///     name: app_hosting_sa_runner
+///     properties:
+///       project: my-project-name
+///       role: roles/firebaseapphosting.computeRunner
+///       member: ${serviceAccount.member}
+///   fah:
+///     type: gcp:projects:Service
+///     properties:
+///       project: my-project-name
+///       service: firebaseapphosting.googleapis.com
+/// ```
+///
 ///
 /// ### Firebase App Hosting Traffic Rollout Policy Disabled
 ///
@@ -992,15 +1485,15 @@ import 'app_hosting_traffic_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// ## Include these blocks only once per project if you are starting from scratch ###
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
 /// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 /// 			Project:                   pulumi.String("my-project-name"),
 /// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -1055,7 +1548,7 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1063,17 +1556,23 @@ import 'app_hosting_traffic_target.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingtraffic" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   rollout_policy = {
 ///     disabled        = true
 ///     codebase_branch = "main"
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "asia-east1"
 ///   backend_id       = "traffic-rpd"
@@ -1083,17 +1582,26 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -1284,7 +1792,7 @@ class AppHostingTraffic extends pulumi.CustomResource {
           'gcp:firebase/appHostingTraffic:AppHostingTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');

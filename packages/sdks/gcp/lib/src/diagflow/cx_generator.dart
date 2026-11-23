@@ -15,6 +15,7 @@ import 'cx_generator_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dialogflowcx Generator Basic
@@ -42,7 +43,7 @@ import 'cx_generator_state.dart';
 ///     languageCode: "fr",
 ///     displayName: "TF Prompt generator",
 ///     llmModelSettings: {
-///         model: "gemini-2.0-flash-001",
+///         model: "gemini-2.5-flash",
 ///         promptText: "Return me some great results",
 ///     },
 ///     promptText: {
@@ -73,7 +74,7 @@ import 'cx_generator_state.dart';
 ///     language_code="fr",
 ///     display_name="TF Prompt generator",
 ///     llm_model_settings={
-///         "model": "gemini-2.0-flash-001",
+///         "model": "gemini-2.5-flash",
 ///         "prompt_text": "Return me some great results",
 ///     },
 ///     prompt_text={
@@ -113,7 +114,7 @@ import 'cx_generator_state.dart';
 ///         DisplayName = "TF Prompt generator",
 ///         LlmModelSettings = new Gcp.Diagflow.Inputs.CxGeneratorLlmModelSettingsArgs
 ///         {
-///             Model = "gemini-2.0-flash-001",
+///             Model = "gemini-2.5-flash",
 ///             PromptText = "Return me some great results",
 ///         },
 ///         PromptText = new Gcp.Diagflow.Inputs.CxGeneratorPromptTextArgs
@@ -132,7 +133,7 @@ import 'cx_generator_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -154,11 +155,11 @@ import 'cx_generator_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxGenerator(ctx, "generator", &diagflow.CxGeneratorArgs{
-/// 			Parent:       agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:       agent.ID(),
 /// 			LanguageCode: pulumi.String("fr"),
 /// 			DisplayName:  pulumi.String("TF Prompt generator"),
 /// 			LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{
-/// 				Model:      pulumi.String("gemini-2.0-flash-001"),
+/// 				Model:      pulumi.String("gemini-2.5-flash"),
 /// 				PromptText: pulumi.String("Return me some great results"),
 /// 			},
 /// 			PromptText: &diagflow.CxGeneratorPromptTextArgs{
@@ -176,7 +177,7 @@ import 'cx_generator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -184,7 +185,10 @@ import 'cx_generator_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name             = "dialogflowcx-agent-fucntion"
 ///   location                 = "global"
 ///   default_language_code    = "en"
@@ -192,12 +196,15 @@ import 'cx_generator_state.dart';
 ///   time_zone                = "America/New_York"
 ///   description              = "Example description."
 /// }
-/// resource "gcp_diagflow_cxgenerator" "generator" {
-///   parent        = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_generator" "generator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent        = gcp_diagflow_cx_agent.agent.id
 ///   language_code = "fr"
 ///   display_name  = "TF Prompt generator"
 ///   llm_model_settings = {
-///     model       = "gemini-2.0-flash-001"
+///     model       = "gemini-2.5-flash"
 ///     prompt_text = "Return me some great results"
 ///   }
 ///   prompt_text = {
@@ -251,7 +258,7 @@ import 'cx_generator_state.dart';
 ///             .languageCode("fr")
 ///             .displayName("TF Prompt generator")
 ///             .llmModelSettings(CxGeneratorLlmModelSettingsArgs.builder()
-///                 .model("gemini-2.0-flash-001")
+///                 .model("gemini-2.5-flash")
 ///                 .promptText("Return me some great results")
 ///                 .build())
 ///             .promptText(CxGeneratorPromptTextArgs.builder()
@@ -286,7 +293,7 @@ import 'cx_generator_state.dart';
 ///       languageCode: fr
 ///       displayName: TF Prompt generator
 ///       llmModelSettings:
-///         model: gemini-2.0-flash-001
+///         model: gemini-2.5-flash
 ///         promptText: Return me some great results
 ///       promptText:
 ///         text: Send me great results in french
@@ -354,7 +361,7 @@ class CxGenerator extends pulumi.CustomResource {
           'gcp:diagflow/cxGenerator:CxGenerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

@@ -31,9 +31,9 @@ class GCPolicyArgs {
   final pulumi.Input<bool?>? ignoreWarnings;
   /// The name of the Bigtable instance.
   final pulumi.Input<String> instanceName;
-  /// GC policy that applies to all cells older than the given age.
+  /// GC policy that applies to all cells older than the given age. Structure is documented below.
   final pulumi.Input<GCPolicyMaxAge?>? maxAge;
-  /// GC policy that applies to all versions of a cell except for the most recent.
+  /// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
   final pulumi.Input<List<GCPolicyMaxVersion>?>? maxVersions;
   /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
   final pulumi.Input<String?>? mode;
@@ -48,8 +48,8 @@ class GCPolicyArgs {
   /// [gcRules] Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
   /// [ignoreWarnings] Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// [instanceName] The name of the Bigtable instance.
-  /// [maxAge] GC policy that applies to all cells older than the given age.
-  /// [maxVersions] GC policy that applies to all versions of a cell except for the most recent.
+  /// [maxAge] GC policy that applies to all cells older than the given age. Structure is documented below.
+  /// [maxVersions] GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
   /// [mode] If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [table] The name of the table.

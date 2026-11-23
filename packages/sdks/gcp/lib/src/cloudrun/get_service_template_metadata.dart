@@ -111,7 +111,7 @@ class GetServiceTemplateMetadata {
   factory GetServiceTemplateMetadata.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateMetadata(
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
-      generation: pulumi.Input.fromValue((map['generation'] as num).toInt()),
+      generation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['generation'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),

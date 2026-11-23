@@ -54,8 +54,8 @@ class ClusterAutoscalingSettings {
     return ClusterAutoscalingSettings(
       autoscalingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterAutoscalingSettingsAutoscalingPolicy>(map['autoscalingPolicies']!, (value) => ClusterAutoscalingSettingsAutoscalingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       coolDownPeriod: (() { final guardedValue = map['coolDownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxClusterNodeCount: (() { final guardedValue = map['maxClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minClusterNodeCount: (() { final guardedValue = map['minClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxClusterNodeCount: (() { final guardedValue = map['maxClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minClusterNodeCount: (() { final guardedValue = map['minClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

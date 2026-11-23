@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'index_field.dart';
+import 'index_search_index_options.dart';
 
 /// Input properties used for looking up and filtering Index resources.
 class IndexState {
@@ -44,6 +45,9 @@ class IndexState {
   /// Default value is `COLLECTION`.
   /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
   final pulumi.Input<String?>? queryScope;
+  /// Optional. Options to configure the search index.
+  /// Structure is documented below.
+  final pulumi.Input<IndexSearchIndexOptions?>? searchIndexOptions;
   /// Whether to skip waiting for the index to be created.
   final pulumi.Input<bool?>? skipWait;
   /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -60,6 +64,7 @@ class IndexState {
   /// [name] A server defined name for this index. Format:
   /// [project] The ID of the project in which the resource belongs.
   /// [queryScope] The scope at which a query is run.
+  /// [searchIndexOptions] Optional. Options to configure the search index.
   /// [skipWait] Whether to skip waiting for the index to be created.
   /// [unique] Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
   const IndexState({
@@ -73,6 +78,7 @@ class IndexState {
     this.name,
     this.project,
     this.queryScope,
+    this.searchIndexOptions,
     this.skipWait,
     this.unique,
   });
@@ -89,6 +95,7 @@ class IndexState {
       'name': ?name,
       'project': ?project,
       'queryScope': ?queryScope,
+      'searchIndexOptions': ?pulumi.Input.mapOptionalInputValue<IndexSearchIndexOptions, Map<String, dynamic>>(searchIndexOptions, (value) => value.toMap()),
       'skipWait': ?skipWait,
       'unique': ?unique,
     };
@@ -106,6 +113,7 @@ class IndexState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queryScope: (() { final guardedValue = map['queryScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      searchIndexOptions: (() { final guardedValue = map['searchIndexOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexSearchIndexOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       skipWait: (() { final guardedValue = map['skipWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       unique: (() { final guardedValue = map['unique']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

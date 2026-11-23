@@ -7,6 +7,7 @@ import 'metastore_federation_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dataproc Metastore Federation Basic
@@ -104,7 +105,7 @@ import 'metastore_federation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -130,7 +131,7 @@ import 'metastore_federation_state.dart';
 /// 			BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
 /// 				&dataproc.MetastoreFederationBackendMetastoreArgs{
 /// 					Rank:          pulumi.String("1"),
-/// 					Name:          defaultMetastoreService.ID().ToIDOutput().ToStringOutput(),
+/// 					Name:          defaultMetastoreService.ID(),
 /// 					MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 /// 				},
 /// 			},
@@ -143,7 +144,7 @@ import 'metastore_federation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -151,17 +152,23 @@ import 'metastore_federation_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastorefederation" "default" {
+/// resource "gcp_dataproc_metastore_federation" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   federation_id = "metastore-fed"
 ///   version       = "3.1.2"
 ///   backend_metastores {
 ///     rank           = "1"
-///     name           = gcp_dataproc_metastoreservice.default.id
+///     name           = gcp_dataproc_metastore_service.default.id
 ///     metastore_type = "DATAPROC_METASTORE"
 ///   }
 /// }
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "metastore-service"
 ///   location   = "us-central1"
 ///   tier       = "DEVELOPER"
@@ -246,6 +253,7 @@ import 'metastore_federation_state.dart';
 ///         endpointProtocol: GRPC
 ///       deletionProtection: false
 /// ```
+///
 ///
 /// ### Dataproc Metastore Federation Bigquery
 ///
@@ -363,8 +371,8 @@ import 'metastore_federation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -398,7 +406,7 @@ import 'metastore_federation_state.dart';
 /// 				},
 /// 				&dataproc.MetastoreFederationBackendMetastoreArgs{
 /// 					Rank:          pulumi.String("1"),
-/// 					Name:          defaultMetastoreService.ID().ToIDOutput().ToStringOutput(),
+/// 					Name:          defaultMetastoreService.ID(),
 /// 					MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 /// 				},
 /// 			},
@@ -411,7 +419,7 @@ import 'metastore_federation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,25 +427,31 @@ import 'metastore_federation_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_dataproc_metastorefederation" "default" {
+/// resource "gcp_dataproc_metastore_federation" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   federation_id = "metastore-fed"
 ///   version       = "3.1.2"
 ///   backend_metastores {
 ///     rank           = "2"
-///     name           = data.gcp_organizations_getproject.project.id
+///     name           = data.gcp_organizations_project.project.id
 ///     metastore_type = "BIGQUERY"
 ///   }
 ///   backend_metastores {
 ///     rank           = "1"
-///     name           = gcp_dataproc_metastoreservice.default.id
+///     name           = gcp_dataproc_metastore_service.default.id
 ///     metastore_type = "DATAPROC_METASTORE"
 ///   }
 /// }
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "metastore-service"
 ///   location   = "us-central1"
 ///   tier       = "DEVELOPER"
@@ -622,7 +636,7 @@ class MetastoreFederation extends pulumi.CustomResource {
           'gcp:dataproc/metastoreFederation:MetastoreFederation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backendMetastores = registerOutput<List<MetastoreFederationBackendMetastore>>('backendMetastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetastoreFederationBackendMetastore>(guardedValue, (value) => MetastoreFederationBackendMetastore.fromMap((value as Map).cast<String, dynamic>())); });

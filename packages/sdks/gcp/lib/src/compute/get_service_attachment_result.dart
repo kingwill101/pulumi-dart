@@ -20,6 +20,7 @@ class GetServiceAttachmentResult {
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? name;
+  final int? natIpsPerEndpoint;
   final List<String>? natSubnets;
   final String? project;
   final int? propagatedConnectionLimit;
@@ -28,6 +29,7 @@ class GetServiceAttachmentResult {
   final String? region;
   final String? selfLink;
   final bool? sendPropagatedConnectionLimitIfZero;
+  final int? serviceAttachmentId;
   final bool? showNatIps;
   final String? targetService;
   final List<GetServiceAttachmentTunnelingConfig>? tunnelingConfigs;
@@ -44,6 +46,7 @@ class GetServiceAttachmentResult {
   /// [fingerprint] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
+  /// [natIpsPerEndpoint] Optional.
   /// [natSubnets] Optional.
   /// [project] Optional.
   /// [propagatedConnectionLimit] Optional.
@@ -52,6 +55,7 @@ class GetServiceAttachmentResult {
   /// [region] Optional.
   /// [selfLink] Optional.
   /// [sendPropagatedConnectionLimitIfZero] Optional.
+  /// [serviceAttachmentId] Optional.
   /// [showNatIps] Optional.
   /// [targetService] Optional.
   /// [tunnelingConfigs] Optional.
@@ -67,6 +71,7 @@ class GetServiceAttachmentResult {
     this.fingerprint,
     this.id,
     this.name,
+    this.natIpsPerEndpoint,
     this.natSubnets,
     this.project,
     this.propagatedConnectionLimit,
@@ -75,6 +80,7 @@ class GetServiceAttachmentResult {
     this.region,
     this.selfLink,
     this.sendPropagatedConnectionLimitIfZero,
+    this.serviceAttachmentId,
     this.showNatIps,
     this.targetService,
     this.tunnelingConfigs,
@@ -93,6 +99,7 @@ class GetServiceAttachmentResult {
       'fingerprint': ?fingerprint,
       'id': ?id,
       'name': ?name,
+      'natIpsPerEndpoint': ?natIpsPerEndpoint,
       'natSubnets': ?natSubnets,
       'project': ?project,
       'propagatedConnectionLimit': ?propagatedConnectionLimit,
@@ -101,6 +108,7 @@ class GetServiceAttachmentResult {
       'region': ?region,
       'selfLink': ?selfLink,
       'sendPropagatedConnectionLimitIfZero': ?sendPropagatedConnectionLimitIfZero,
+      'serviceAttachmentId': ?serviceAttachmentId,
       'showNatIps': ?showNatIps,
       'targetService': ?targetService,
       'tunnelingConfigs': ?(() { final guardedValue = tunnelingConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceAttachmentTunnelingConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -120,14 +128,16 @@ class GetServiceAttachmentResult {
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      natIpsPerEndpoint: (() { final guardedValue = map['natIpsPerEndpoint']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       natSubnets: (() { final guardedValue = map['natSubnets']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      propagatedConnectionLimit: (() { final guardedValue = map['propagatedConnectionLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      propagatedConnectionLimit: (() { final guardedValue = map['propagatedConnectionLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       pscServiceAttachmentIds: (() { final guardedValue = map['pscServiceAttachmentIds']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceAttachmentPscServiceAttachmentId>(guardedValue, (value) => GetServiceAttachmentPscServiceAttachmentId.fromMap((value as Map).cast<String, dynamic>())); })(),
       reconcileConnections: (() { final guardedValue = map['reconcileConnections']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sendPropagatedConnectionLimitIfZero: (() { final guardedValue = map['sendPropagatedConnectionLimitIfZero']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      serviceAttachmentId: (() { final guardedValue = map['serviceAttachmentId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       showNatIps: (() { final guardedValue = map['showNatIps']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       targetService: (() { final guardedValue = map['targetService']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tunnelingConfigs: (() { final guardedValue = map['tunnelingConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceAttachmentTunnelingConfig>(guardedValue, (value) => GetServiceAttachmentTunnelingConfig.fromMap((value as Map).cast<String, dynamic>())); })(),

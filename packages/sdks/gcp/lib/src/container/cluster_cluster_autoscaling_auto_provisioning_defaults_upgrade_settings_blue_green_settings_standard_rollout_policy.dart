@@ -30,7 +30,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
   factory ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(
-      batchNodeCount: (() { final guardedValue = map['batchNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchNodeCount: (() { final guardedValue = map['batchNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       batchPercentage: (() { final guardedValue = map['batchPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       batchSoakDuration: (() { final guardedValue = map['batchSoakDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

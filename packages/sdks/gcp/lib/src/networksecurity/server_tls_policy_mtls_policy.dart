@@ -10,8 +10,13 @@ class ServerTlsPolicyMtlsPolicy {
   final pulumi.Input<List<ServerTlsPolicyMtlsPolicyClientValidationCa>?>? clientValidationCas;
   /// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
   /// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-  /// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+  /// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
   final pulumi.Input<String?>? clientValidationMode;
+  /// List of validation relaxations to apply when validating client certificates.
+  /// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+  /// and must be empty for all other clientValidationMode values.
+  /// Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+  final pulumi.Input<List<String>?>? clientValidationRelaxations;
   /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
   /// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
   /// Allowed only if the policy is to be used with external HTTPS load balancers.
@@ -20,10 +25,12 @@ class ServerTlsPolicyMtlsPolicy {
   /// Creates a new [ServerTlsPolicyMtlsPolicy].
   /// [clientValidationCas] Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
   /// [clientValidationMode] When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+  /// [clientValidationRelaxations] List of validation relaxations to apply when validating client certificates.
   /// [clientValidationTrustConfig] Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
   const ServerTlsPolicyMtlsPolicy({
     this.clientValidationCas,
     this.clientValidationMode,
+    this.clientValidationRelaxations,
     this.clientValidationTrustConfig,
   });
 
@@ -31,6 +38,7 @@ class ServerTlsPolicyMtlsPolicy {
     return <String, dynamic>{
       'clientValidationCas': ?pulumi.Input.mapOptionalInputValue<List<ServerTlsPolicyMtlsPolicyClientValidationCa>, List<Map<String, dynamic>>>(clientValidationCas, (value) => pulumi.Input.encodeList<ServerTlsPolicyMtlsPolicyClientValidationCa, Map<String, dynamic>>(value, (value) => value.toMap())),
       'clientValidationMode': ?clientValidationMode,
+      'clientValidationRelaxations': ?clientValidationRelaxations,
       'clientValidationTrustConfig': ?clientValidationTrustConfig,
     };
   }
@@ -39,6 +47,7 @@ class ServerTlsPolicyMtlsPolicy {
     return ServerTlsPolicyMtlsPolicy(
       clientValidationCas: (() { final guardedValue = map['clientValidationCas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServerTlsPolicyMtlsPolicyClientValidationCa>(guardedValue, (value) => ServerTlsPolicyMtlsPolicyClientValidationCa.fromMap((value as Map).cast<String, dynamic>()))); })(),
       clientValidationMode: (() { final guardedValue = map['clientValidationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientValidationRelaxations: (() { final guardedValue = map['clientValidationRelaxations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       clientValidationTrustConfig: (() { final guardedValue = map['clientValidationTrustConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -37,7 +37,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSe
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings(
-      endpointerSensitivity: (() { final guardedValue = map['endpointerSensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      endpointerSensitivity: (() { final guardedValue = map['endpointerSensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       models: (() { final guardedValue = map['models']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       noSpeechTimeout: (() { final guardedValue = map['noSpeechTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       useTimeoutBasedEndpointing: (() { final guardedValue = map['useTimeoutBasedEndpointing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

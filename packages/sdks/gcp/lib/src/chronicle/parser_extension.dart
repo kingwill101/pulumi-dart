@@ -14,6 +14,7 @@ import 'parser_extension_state.dart';
 /// * How-to Guides
 /// * [Custom parsers overview](https://cloud.google.com/chronicle/docs/detection/custom-parsers-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Chronicle Parserextension Basic
@@ -66,7 +67,7 @@ import 'parser_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +88,7 @@ import 'parser_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,7 +96,10 @@ import 'parser_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_parserextension" "example" {
+/// resource "gcp_chronicle_parser_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us"
 ///   instance           = "00000000-0000-0000-0000-000000000000"
 ///   log_type           = "CISCO_DHCP"
@@ -146,6 +150,7 @@ import 'parser_extension_state.dart';
 ///       validationSkipped: true
 ///       cbnSnippet: ZHVtbXkgZXh0ZW5zaW9uIHNuaXBwZXQ=
 /// ```
+///
 ///
 /// ### Chronicle Parserextension Full
 ///
@@ -268,7 +273,7 @@ import 'parser_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -311,7 +316,7 @@ import 'parser_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -319,7 +324,10 @@ import 'parser_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_parserextension" "example" {
+/// resource "gcp_chronicle_parser_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us"
 ///   instance           = "00000000-0000-0000-0000-000000000000"
 ///   log_type           = "AKAMAI_DHCP"
@@ -333,15 +341,15 @@ import 'parser_extension_state.dart';
 ///       target     = "message"
 ///     }
 ///     extractors = [{
-///       "fieldPath"       = "$.user"
-///       "destinationPath" = "udm.principal.user.userid"
-///       "value"           = "static-override"
+///       field_path       = "$.user"
+///       destination_path = "udm.principal.user.userid"
+///       value            = "static-override"
 ///       }, {
-///       "fieldPath"         = "$.event"
-///       "destinationPath"   = "udm.metadata.event_type"
-///       "preconditionOp"    = "EQUALS"
-///       "preconditionPath"  = "$.event"
-///       "preconditionValue" = "login"
+///       field_path         = "$.event"
+///       destination_path   = "udm.metadata.event_type"
+///       precondition_op    = "EQUALS"
+///       precondition_path  = "$.event"
+///       precondition_value = "login"
 ///     }]
 ///   }
 /// }
@@ -429,6 +437,7 @@ import 'parser_extension_state.dart';
 ///             preconditionValue: login
 /// ```
 ///
+///
 /// ### Chronicle Parserextension Dynamic
 ///
 ///
@@ -502,7 +511,7 @@ import 'parser_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -531,7 +540,7 @@ import 'parser_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -539,7 +548,10 @@ import 'parser_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_parserextension" "example" {
+/// resource "gcp_chronicle_parser_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us"
 ///   instance           = "00000000-0000-0000-0000-000000000000"
 ///   log_type           = "AKAMAI_DHCP"
@@ -547,8 +559,8 @@ import 'parser_extension_state.dart';
 ///   log                = "ZHVtbXkgbG9n"
 ///   dynamic_parsing = {
 ///     opted_fields = [{
-///       "path"        = "$.ip"
-///       "sampleValue" = "1.1.1.1"
+///       path         = "$.ip"
+///       sample_value = "1.1.1.1"
 ///     }]
 ///   }
 /// }
@@ -697,7 +709,7 @@ class ParserExtension extends pulumi.CustomResource {
           'gcp:chronicle/parserExtension:ParserExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     cbnSnippet = registerOutput<String?>('cbnSnippet');
     createTime = registerOutput<String>('createTime');

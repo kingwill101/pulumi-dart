@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'workflow_template_placement_managed_cluster_config_gce_cluster_config_multi_zone_config.dart';
 import 'workflow_template_placement_managed_cluster_config_gce_cluster_config_node_group_affinity.dart';
 import 'workflow_template_placement_managed_cluster_config_gce_cluster_config_reservation_affinity.dart';
 import 'workflow_template_placement_managed_cluster_config_gce_cluster_config_shielded_instance_config.dart';
@@ -10,6 +11,8 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
   final pulumi.Input<bool?>? internalIpOnly;
   /// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
   final pulumi.Input<Map<String, String>?>? metadata;
+  /// Multi-zone configuration for cluster instances. Structure is documented below.
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig?>? multiZoneConfig;
   /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
   final pulumi.Input<String?>? network;
   /// Node Group Affinity for sole-tenant clusters.
@@ -34,6 +37,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig].
   /// [internalIpOnly] If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
   /// [metadata] The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
+  /// [multiZoneConfig] Multi-zone configuration for cluster instances. Structure is documented below.
   /// [network] The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
   /// [nodeGroupAffinity] Node Group Affinity for sole-tenant clusters.
   /// [privateIpv6GoogleAccess] The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
@@ -47,6 +51,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
   const WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig({
     this.internalIpOnly,
     this.metadata,
+    this.multiZoneConfig,
     this.network,
     this.nodeGroupAffinity,
     this.privateIpv6GoogleAccess,
@@ -63,6 +68,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
     return <String, dynamic>{
       'internalIpOnly': ?internalIpOnly,
       'metadata': ?metadata,
+      'multiZoneConfig': ?pulumi.Input.mapOptionalInputValue<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig, Map<String, dynamic>>(multiZoneConfig, (value) => value.toMap()),
       'network': ?network,
       'nodeGroupAffinity': ?pulumi.Input.mapOptionalInputValue<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity, Map<String, dynamic>>(nodeGroupAffinity, (value) => value.toMap()),
       'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess,
@@ -80,6 +86,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
     return WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(
       internalIpOnly: (() { final guardedValue = map['internalIpOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      multiZoneConfig: (() { final guardedValue = map['multiZoneConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeGroupAffinity: (() { final guardedValue = map['nodeGroupAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateIpv6GoogleAccess: (() { final guardedValue = map['privateIpv6GoogleAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

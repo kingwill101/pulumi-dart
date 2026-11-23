@@ -15,6 +15,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// * [Product documentation for Firebase AI Logic](https://firebase.google.com/docs/ai-logic)
 /// * [Specification for Dotprompt format](https://google.github.io/dotprompt/getting-started)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebaseailogic Prompt Template File
@@ -69,7 +70,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -95,7 +96,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -106,7 +107,10 @@ import 'ai_logic_prompt_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_ailogicprompttemplate" "file" {
+/// resource "gcp_firebase_ai_logic_prompt_template" "file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "global"
 ///   template_id     = "file-template"
 ///   template_string = file("test-fixtures/hello_world.prompt")
@@ -160,6 +164,7 @@ import 'ai_logic_prompt_template_state.dart';
 ///             input: test-fixtures/hello_world.prompt
 ///           return: result
 /// ```
+///
 ///
 /// ### Firebaseailogic Prompt Template Global Only
 ///
@@ -216,7 +221,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -243,7 +248,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -254,7 +259,10 @@ import 'ai_logic_prompt_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_ailogicprompttemplate" "global_only" {
+/// resource "gcp_firebase_ai_logic_prompt_template" "global_only" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                      = "global"
 ///   template_id                   = "global-only-template"
 ///   regional_propagation_disabled = true
@@ -313,6 +321,7 @@ import 'ai_logic_prompt_template_state.dart';
 ///           return: result
 /// ```
 ///
+///
 /// ### Firebaseailogic Prompt Template Basic
 ///
 ///
@@ -369,7 +378,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -388,7 +397,7 @@ import 'ai_logic_prompt_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -396,10 +405,19 @@ import 'ai_logic_prompt_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_ailogicprompttemplate" "basic" {
+/// resource "gcp_firebase_ai_logic_prompt_template" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "global"
 ///   template_id     = "basic-template"
-///   template_string = "---\nmodel: gemini-2.5-flash\n---\nHello world!\n"
+///   template_string = <<EOF
+/// ---
+/// model: gemini-2.5-flash
+/// ---
+/// Hello world!
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -523,7 +541,7 @@ class AiLogicPromptTemplate extends pulumi.CustomResource {
           'gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

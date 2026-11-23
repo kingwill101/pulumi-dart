@@ -24,8 +24,11 @@ class RouterState {
   /// Indicates if a router is dedicated for use with encrypted VLAN
   /// attachments (interconnectAttachments).
   final pulumi.Input<bool?>? encryptedInterconnectRouter;
+  /// (Optional, Deprecated)
   /// Keys used for MD5 authentication.
   /// Structure is documented below.
+  ///
+  /// &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
   final pulumi.Input<RouterMd5AuthenticationKeys?>? md5AuthenticationKeys;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -46,6 +49,8 @@ class RouterState {
   final pulumi.Input<String?>? project;
   /// Region where the router resides.
   final pulumi.Input<String?>? region;
+  /// The unique identifier number for the resource. This identifier is defined by the server.
+  final pulumi.Input<int?>? routerId;
   /// The URI of the created resource.
   final pulumi.Input<String?>? selfLink;
 
@@ -55,13 +60,14 @@ class RouterState {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [encryptedInterconnectRouter] Indicates if a router is dedicated for use with encrypted VLAN
-  /// [md5AuthenticationKeys] Keys used for MD5 authentication.
+  /// [md5AuthenticationKeys] (Optional, Deprecated)
   /// [name] Name of the resource. The name must be 1-63 characters long, and
   /// [nccGateway] A URI of an NCC Gateway spoke
   /// [network] A reference to the network to which this router belongs.
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the router resides.
+  /// [routerId] The unique identifier number for the resource. This identifier is defined by the server.
   /// [selfLink] The URI of the created resource.
   const RouterState({
     this.bgp,
@@ -76,6 +82,7 @@ class RouterState {
     this.params,
     this.project,
     this.region,
+    this.routerId,
     this.selfLink,
   });
 
@@ -93,6 +100,7 @@ class RouterState {
       'params': ?pulumi.Input.mapOptionalInputValue<RouterParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
+      'routerId': ?routerId,
       'selfLink': ?selfLink,
     };
   }
@@ -111,6 +119,7 @@ class RouterState {
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routerId: (() { final guardedValue = map['routerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

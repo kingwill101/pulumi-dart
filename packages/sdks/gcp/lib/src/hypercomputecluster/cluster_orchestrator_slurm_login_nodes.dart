@@ -30,6 +30,10 @@ class ClusterOrchestratorSlurmLoginNodes {
   /// type](https://cloud.google.com/compute/docs/machine-resource) to use for
   /// login nodes, e.g. `n2-standard-2`.
   final pulumi.Input<String> machineType;
+  /// (Optional, Beta)
+  /// A list of network tags to attach to the VM instances.
+  /// A maximum of 64 network tags are allowed.
+  final pulumi.Input<List<String>?>? networkTags;
   /// [Startup
   /// script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
   /// to be run on each login node instance. Max 256KB.
@@ -54,6 +58,7 @@ class ClusterOrchestratorSlurmLoginNodes {
   /// [instances] (Output)
   /// [labels] [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
   /// [machineType] Name of the Compute Engine [machine
+  /// [networkTags] (Optional, Beta)
   /// [startupScript] [Startup
   /// [storageConfigs] How storage resources should be mounted on each login
   /// [zone] Name of the zone in which login nodes should run, e.g., `us-central1-a`.
@@ -65,6 +70,7 @@ class ClusterOrchestratorSlurmLoginNodes {
     this.instances,
     this.labels,
     required this.machineType,
+    this.networkTags,
     this.startupScript,
     this.storageConfigs,
     required this.zone,
@@ -79,6 +85,7 @@ class ClusterOrchestratorSlurmLoginNodes {
       'instances': ?pulumi.Input.mapOptionalInputValue<List<ClusterOrchestratorSlurmLoginNodesInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<ClusterOrchestratorSlurmLoginNodesInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'labels': ?labels,
       'machineType': machineType,
+      'networkTags': ?networkTags,
       'startupScript': ?startupScript,
       'storageConfigs': ?pulumi.Input.mapOptionalInputValue<List<ClusterOrchestratorSlurmLoginNodesStorageConfig>, List<Map<String, dynamic>>>(storageConfigs, (value) => pulumi.Input.encodeList<ClusterOrchestratorSlurmLoginNodesStorageConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'zone': zone,
@@ -94,6 +101,7 @@ class ClusterOrchestratorSlurmLoginNodes {
       instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterOrchestratorSlurmLoginNodesInstance>(guardedValue, (value) => ClusterOrchestratorSlurmLoginNodesInstance.fromMap((value as Map).cast<String, dynamic>()))); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
+      networkTags: (() { final guardedValue = map['networkTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       startupScript: (() { final guardedValue = map['startupScript']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageConfigs: (() { final guardedValue = map['storageConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterOrchestratorSlurmLoginNodesStorageConfig>(guardedValue, (value) => ClusterOrchestratorSlurmLoginNodesStorageConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),

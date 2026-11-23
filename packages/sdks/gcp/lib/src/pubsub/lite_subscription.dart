@@ -15,6 +15,7 @@ import 'lite_subscription_state.dart';
 /// * How-to Guides
 /// * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Pubsub Lite Subscription Basic
@@ -118,8 +119,8 @@ import 'lite_subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -161,7 +162,7 @@ import 'lite_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -169,12 +170,15 @@ import 'lite_subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_pubsub_litetopic" "example" {
+/// resource "gcp_pubsub_lite_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-topic"
-///   project = data.gcp_organizations_getproject.project.number
+///   project = data.gcp_organizations_project.project.number
 ///   partition_config = {
 ///     count = 1
 ///     capacity = {
@@ -186,9 +190,12 @@ import 'lite_subscription_state.dart';
 ///     per_partition_bytes = 32212254720
 ///   }
 /// }
-/// resource "gcp_pubsub_litesubscription" "example" {
+/// resource "gcp_pubsub_lite_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
-///   topic = gcp_pubsub_litetopic.example.name
+///   topic = gcp_pubsub_lite_topic.example.name
 ///   delivery_config = {
 ///     delivery_requirement = "DELIVER_AFTER_STORED"
 ///   }
@@ -321,7 +328,7 @@ class LiteSubscription extends pulumi.CustomResource {
   /// A reference to a Topic resource.
   late final pulumi.Output<String> topic;
   /// The zone of the pubsub lite topic.
-  late final pulumi.Output<String?> zone;
+  late final pulumi.Output<String> zone;
 
   /// Creates a new [LiteSubscription].
   /// [name] The Pulumi resource name.
@@ -335,7 +342,7 @@ class LiteSubscription extends pulumi.CustomResource {
           'gcp:pubsub/liteSubscription:LiteSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.5.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -343,7 +350,7 @@ class LiteSubscription extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     topic = registerOutput<String>('topic');
-    zone = registerOutput<String?>('zone');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [LiteSubscription] resource's state with the given [name] and [id].
@@ -376,7 +383,7 @@ class LiteSubscription extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     topic = registerOutput<String>('topic');
-    zone = registerOutput<String?>('zone');
+    zone = registerOutput<String>('zone');
   }
 
   /// Creates a typed reference to an existing [LiteSubscription] resource.
@@ -394,6 +401,6 @@ class LiteSubscription extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     topic = registerOutput<String>('topic');
-    zone = registerOutput<String?>('zone');
+    zone = registerOutput<String>('zone');
   }
 }

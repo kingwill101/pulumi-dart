@@ -1,6 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'unit_kind_app_params.dart';
+import 'unit_kind_application_template_component.dart';
 import 'unit_kind_dependency.dart';
 import 'unit_kind_input_variable_mapping.dart';
 import 'unit_kind_output_variable_mapping.dart';
@@ -17,6 +19,14 @@ class UnitKindArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>?>? annotations;
+  /// Parameters for creating an App Hub Application for the Units of this
+  /// UnitKind.
+  /// Structure is documented below.
+  final pulumi.Input<UnitKindAppParams?>? appParams;
+  /// Reference to a component and revision in a composite Application Design
+  /// Center ApplicationTemplate.
+  /// Structure is documented below.
+  final pulumi.Input<UnitKindApplicationTemplateComponent?>? applicationTemplateComponent;
   /// A reference to the Release object to use as default for creating new units
   /// of this UnitKind.
   /// If not specified, a new unit must explicitly reference which release to use
@@ -61,6 +71,8 @@ class UnitKindArgs {
 
   /// Creates a new [UnitKindArgs].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
+  /// [appParams] Parameters for creating an App Hub Application for the Units of this
+  /// [applicationTemplateComponent] Reference to a component and revision in a composite Application Design
   /// [defaultRelease] A reference to the Release object to use as default for creating new units
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [dependencies] List of other unit kinds that this release will depend on. Dependencies
@@ -73,6 +85,8 @@ class UnitKindArgs {
   /// [unitKindId] The ID value for the new unit kind.
   const UnitKindArgs({
     this.annotations,
+    this.appParams,
+    this.applicationTemplateComponent,
     this.defaultRelease,
     this.deletionPolicy,
     this.dependencies,
@@ -88,6 +102,8 @@ class UnitKindArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'appParams': ?pulumi.Input.mapOptionalInputValue<UnitKindAppParams, Map<String, dynamic>>(appParams, (value) => value.toMap()),
+      'applicationTemplateComponent': ?pulumi.Input.mapOptionalInputValue<UnitKindApplicationTemplateComponent, Map<String, dynamic>>(applicationTemplateComponent, (value) => value.toMap()),
       'defaultRelease': ?defaultRelease,
       'deletionPolicy': ?deletionPolicy,
       'dependencies': ?pulumi.Input.mapOptionalInputValue<List<UnitKindDependency>, List<Map<String, dynamic>>>(dependencies, (value) => pulumi.Input.encodeList<UnitKindDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -104,6 +120,8 @@ class UnitKindArgs {
   factory UnitKindArgs.fromMap(Map<String, dynamic> map) {
     return UnitKindArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      appParams: (() { final guardedValue = map['appParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UnitKindAppParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      applicationTemplateComponent: (() { final guardedValue = map['applicationTemplateComponent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UnitKindApplicationTemplateComponent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultRelease: (() { final guardedValue = map['defaultRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dependencies: (() { final guardedValue = map['dependencies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UnitKindDependency>(guardedValue, (value) => UnitKindDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),

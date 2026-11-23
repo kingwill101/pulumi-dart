@@ -27,8 +27,8 @@ class RolloutKindErrorBudget {
 
   factory RolloutKindErrorBudget.fromMap(Map<String, dynamic> map) {
     return RolloutKindErrorBudget(
-      allowedCount: (() { final guardedValue = map['allowedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      allowedPercentage: (() { final guardedValue = map['allowedPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allowedCount: (() { final guardedValue = map['allowedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      allowedPercentage: (() { final guardedValue = map['allowedPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

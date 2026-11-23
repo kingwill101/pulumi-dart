@@ -72,15 +72,15 @@ class GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment {
     return GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment(
       autoScalingEnabled: pulumi.Input.fromValue(map['autoScalingEnabled'] as bool),
       category: pulumi.Input.fromValue(map['category'] as String),
-      defaultCpuCoreCount: pulumi.Input.fromValue((map['defaultCpuCoreCount'] as num).toInt()),
+      defaultCpuCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultCpuCoreCount'])),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      maxCpuCoreCount: pulumi.Input.fromValue((map['maxCpuCoreCount'] as num).toInt()),
-      memoryGbPerCpuCore: pulumi.Input.fromValue((map['memoryGbPerCpuCore'] as num).toInt()),
-      minCpuCoreCount: pulumi.Input.fromValue((map['minCpuCoreCount'] as num).toInt()),
+      maxCpuCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxCpuCoreCount'])),
+      memoryGbPerCpuCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryGbPerCpuCore'])),
+      minCpuCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minCpuCoreCount'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      networkBandwidthGbpsPerCpuCore: pulumi.Input.fromValue((map['networkBandwidthGbpsPerCpuCore'] as num).toInt()),
-      storageUsageLimitGbPerCpuCore: pulumi.Input.fromValue((map['storageUsageLimitGbPerCpuCore'] as num).toInt()),
+      networkBandwidthGbpsPerCpuCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkBandwidthGbpsPerCpuCore'])),
+      storageUsageLimitGbPerCpuCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageUsageLimitGbPerCpuCore'])),
     );
   }
 }

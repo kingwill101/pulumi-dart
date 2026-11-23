@@ -102,7 +102,7 @@ class GetReservationSubBlockResult {
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       healthInfos: (() { final guardedValue = map['healthInfos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationSubBlockHealthInfo>(guardedValue, (value) => GetReservationSubBlockHealthInfo.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      inUseCount: (() { final guardedValue = map['inUseCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      inUseCount: (() { final guardedValue = map['inUseCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       physicalTopologies: (() { final guardedValue = map['physicalTopologies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationSubBlockPhysicalTopology>(guardedValue, (value) => GetReservationSubBlockPhysicalTopology.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -114,7 +114,7 @@ class GetReservationSubBlockResult {
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLinkWithId: (() { final guardedValue = map['selfLinkWithId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      subBlockCount: (() { final guardedValue = map['subBlockCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      subBlockCount: (() { final guardedValue = map['subBlockCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
