@@ -16,8 +16,8 @@ class ApprovalRuleArgs {
   final pulumi.Input<bool> enabled;
   /// The environment this rule applies to.
   final pulumi.Input<EnvironmentIdentifier> environmentIdentifier;
-  /// The name of the approval rule.
-  final pulumi.Input<String> name;
+  /// The name of the approval rule, up to 255 bytes. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming).
+  final pulumi.Input<String?>? name;
   /// The type of action this rule applies to.
   final pulumi.Input<List<TargetActionType>> targetActionTypes;
 
@@ -25,13 +25,13 @@ class ApprovalRuleArgs {
   /// [approvalRuleConfig] The approval rule configuration.
   /// [enabled] Whether the approval rule is enabled.
   /// [environmentIdentifier] The environment this rule applies to.
-  /// [name] The name of the approval rule.
+  /// [name] The name of the approval rule, up to 255 bytes. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming).
   /// [targetActionTypes] The type of action this rule applies to.
   const ApprovalRuleArgs({
     required this.approvalRuleConfig,
     required this.enabled,
     required this.environmentIdentifier,
-    required this.name,
+    this.name,
     required this.targetActionTypes,
   });
 
@@ -40,7 +40,7 @@ class ApprovalRuleArgs {
       'approvalRuleConfig': pulumi.Input.mapInputValue<ApprovalRuleConfig, Map<String, dynamic>>(approvalRuleConfig, (value) => value.toMap()),
       'enabled': enabled,
       'environmentIdentifier': pulumi.Input.mapInputValue<EnvironmentIdentifier, Map<String, dynamic>>(environmentIdentifier, (value) => value.toMap()),
-      'name': name,
+      'name': ?name,
       'targetActionTypes': pulumi.Input.mapInputValue<List<TargetActionType>, List<String>>(targetActionTypes, (value) => pulumi.Input.encodeList<TargetActionType, String>(value, (value) => value.wireValue)),
     };
   }
@@ -50,7 +50,7 @@ class ApprovalRuleArgs {
       approvalRuleConfig: pulumi.Input.fromValue(ApprovalRuleConfig.fromMap((map['approvalRuleConfig']! as Map).cast<String, dynamic>())),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       environmentIdentifier: pulumi.Input.fromValue(EnvironmentIdentifier.fromMap((map['environmentIdentifier']! as Map).cast<String, dynamic>())),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetActionTypes: pulumi.Input.fromValue(pulumi.Input.decodeList<TargetActionType>(map['targetActionTypes']!, (value) => TargetActionType.fromValue(value as String))),
     );
   }

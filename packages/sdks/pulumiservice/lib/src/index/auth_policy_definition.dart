@@ -7,23 +7,26 @@ import 'auth_policy_token_type.dart';
 
 class AuthPolicyDefinition {
   /// The permission level for organization tokens.
-  final pulumi.Input<List<AuthPolicyPermissionLevel>>? authorizedPermissions;
+  final pulumi.Input<List<AuthPolicyPermissionLevel>?>? authorizedPermissions;
   /// The rule type of this policy definition.
   final pulumi.Input<AuthPolicyDecision> decision;
+  /// The role ID for organization tokens.
+  final pulumi.Input<String?>? roleID;
   /// OIDC rules to set for this policy.
   final pulumi.Input<Map<String, String>> rules;
   /// The runner ID for deployment runner tokens.
-  final pulumi.Input<String>? runnerID;
+  final pulumi.Input<String?>? runnerID;
   /// The team name for team tokens.
-  final pulumi.Input<String>? teamName;
+  final pulumi.Input<String?>? teamName;
   /// The token type for this policy definition.
   final pulumi.Input<AuthPolicyTokenType> tokenType;
   /// The user login for personal tokens.
-  final pulumi.Input<String>? userLogin;
+  final pulumi.Input<String?>? userLogin;
 
   /// Creates a new [AuthPolicyDefinition].
   /// [authorizedPermissions] The permission level for organization tokens.
   /// [decision] The rule type of this policy definition.
+  /// [roleID] The role ID for organization tokens.
   /// [rules] OIDC rules to set for this policy.
   /// [runnerID] The runner ID for deployment runner tokens.
   /// [teamName] The team name for team tokens.
@@ -32,6 +35,7 @@ class AuthPolicyDefinition {
   const AuthPolicyDefinition({
     this.authorizedPermissions,
     required this.decision,
+    this.roleID,
     required this.rules,
     this.runnerID,
     this.teamName,
@@ -43,6 +47,7 @@ class AuthPolicyDefinition {
     return <String, dynamic>{
       'authorizedPermissions': ?pulumi.Input.mapOptionalInputValue<List<AuthPolicyPermissionLevel>, List<String>>(authorizedPermissions, (value) => pulumi.Input.encodeList<AuthPolicyPermissionLevel, String>(value, (value) => value.wireValue)),
       'decision': pulumi.Input.mapInputValue<AuthPolicyDecision, String>(decision, (value) => value.wireValue),
+      'roleID': ?roleID,
       'rules': rules,
       'runnerID': ?runnerID,
       'teamName': ?teamName,
@@ -55,6 +60,7 @@ class AuthPolicyDefinition {
     return AuthPolicyDefinition(
       authorizedPermissions: (() { final guardedValue = map['authorizedPermissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuthPolicyPermissionLevel>(guardedValue, (value) => AuthPolicyPermissionLevel.fromValue(value as String))); })(),
       decision: pulumi.Input.fromValue(AuthPolicyDecision.fromValue(map['decision']! as String)),
+      roleID: (() { final guardedValue = map['roleID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rules: pulumi.Input.fromValue((map['rules'] as Map).cast<String, String>()),
       runnerID: (() { final guardedValue = map['runnerID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       teamName: (() { final guardedValue = map['teamName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

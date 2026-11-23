@@ -14,11 +14,11 @@ class ScheduledDeploymentArgs {
   /// Deployment request payload to execute when the schedule fires. This has the same shape and semantics as CreateDeploymentRequest used for immediate deployments.
   final pulumi.Input<dynamic>? request;
   /// Cron expression defining a recurring schedule for this deployment. When set, scheduleOnce must be null. Uses standard 5-field cron syntax (MIN HOUR DOM MON DOW) and is evaluated in UTC.
-  final pulumi.Input<String>? scheduleCron;
+  final pulumi.Input<String?>? scheduleCron;
   /// The schedule identifier
-  final pulumi.Input<String>? scheduleID;
+  final pulumi.Input<String?>? scheduleID;
   /// Single point-in-time schedule for this deployment. When set, scheduleCron must be null. The value must be an ISO 8601 timestamp with timezone.
-  final pulumi.Input<String>? scheduleOnce;
+  final pulumi.Input<String?>? scheduleOnce;
   /// The stack name
   final pulumi.Input<String> stackName;
 

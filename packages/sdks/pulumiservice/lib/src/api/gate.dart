@@ -34,4 +34,20 @@ class Gate extends pulumi.CustomResource {
     rule = registerOutput<dynamic>('rule');
     target = registerOutput<dynamic>('target');
   }
+
+  /// Creates a typed reference to an existing [Gate] resource.
+  Gate.reference(String urn)
+    : super(
+        'pulumiservice:api:Gate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool>('enabled');
+    gateID = registerOutput<String>('gateID');
+    this.name = registerOutput<String>('name');
+    rule = registerOutput<dynamic>('rule');
+    target = registerOutput<dynamic>('target');
+  }
 }

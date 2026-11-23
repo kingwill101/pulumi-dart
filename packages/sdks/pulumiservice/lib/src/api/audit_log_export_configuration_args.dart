@@ -9,6 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuditLogExportConfigurationArgs {
   /// Whether the audit log export is enabled.
   final pulumi.Input<bool> newEnabled;
+  /// The new S3-compatible configuration for audit log export. Mutually exclusive with newS3Configuration.
+  final pulumi.Input<dynamic>? newS3CompatibleConfiguration;
   /// The new S3 configuration for audit log export.
   final pulumi.Input<dynamic> newS3Configuration;
   /// The organization name
@@ -16,10 +18,12 @@ class AuditLogExportConfigurationArgs {
 
   /// Creates a new [AuditLogExportConfigurationArgs].
   /// [newEnabled] Whether the audit log export is enabled.
+  /// [newS3CompatibleConfiguration] The new S3-compatible configuration for audit log export. Mutually exclusive with newS3Configuration.
   /// [newS3Configuration] The new S3 configuration for audit log export.
   /// [orgName] The organization name
   const AuditLogExportConfigurationArgs({
     required this.newEnabled,
+    this.newS3CompatibleConfiguration,
     required this.newS3Configuration,
     required this.orgName,
   });
@@ -27,6 +31,7 @@ class AuditLogExportConfigurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'newEnabled': newEnabled,
+      'newS3CompatibleConfiguration': ?newS3CompatibleConfiguration,
       'newS3Configuration': newS3Configuration,
       'orgName': orgName,
     };
@@ -35,6 +40,7 @@ class AuditLogExportConfigurationArgs {
   factory AuditLogExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AuditLogExportConfigurationArgs(
       newEnabled: pulumi.Input.fromValue(map['newEnabled'] as bool),
+      newS3CompatibleConfiguration: (() { final guardedValue = map['newS3CompatibleConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newS3Configuration: pulumi.Input.fromValue(map['newS3Configuration']),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
     );

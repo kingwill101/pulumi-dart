@@ -10,44 +10,44 @@ import 'policy_group_stack_reference.dart';
 /// {@macro pulumi_index_policy_group_args_doc}
 class PolicyGroupArgs {
   /// List of accounts that belong to this policy group.
-  final pulumi.Input<List<String>>? accounts;
+  final pulumi.Input<List<String>?>? accounts;
   /// The entity type for the policy group. Valid values are 'stacks' or 'accounts'. Defaults to 'stacks'.
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<String?>? entityType;
   /// The mode for the policy group. Valid values are 'audit' (reports violations) or 'preventative' (blocks operations). Defaults to 'audit'.
-  final pulumi.Input<String>? mode;
-  /// The name of the policy group.
-  final pulumi.Input<String> name;
+  final pulumi.Input<String?>? mode;
+  /// The name of the policy group, up to 100 characters. Only letters, digits, hyphens, underscores, spaces and periods are allowed, and the name can't begin or end with a space. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming). Characters that aren't allowed in the logical name are replaced with hyphens.
+  final pulumi.Input<String?>? name;
   /// The name of the Pulumi organization the policy group belongs to.
   final pulumi.Input<String> organizationName;
   /// List of policy packs applied to this policy group.
-  final pulumi.Input<List<PolicyGroupPolicyPackReferenceInput>>? policyPacks;
+  final pulumi.Input<List<PolicyGroupPolicyPackReferenceInput>?>? policyPacks;
   /// List of stack references that belong to this policy group.
-  final pulumi.Input<List<PolicyGroupStackReference>>? stacks;
+  final pulumi.Input<List<PolicyGroupStackReference>?>? stacks;
 
   /// Creates a new [PolicyGroupArgs].
   /// [accounts] List of accounts that belong to this policy group.
   /// [entityType] The entity type for the policy group. Valid values are 'stacks' or 'accounts'. Defaults to 'stacks'.
   /// [mode] The mode for the policy group. Valid values are 'audit' (reports violations) or 'preventative' (blocks operations). Defaults to 'audit'.
-  /// [name] The name of the policy group.
+  /// [name] The name of the policy group, up to 100 characters. Only letters, digits, hyphens, underscores, spaces and periods are allowed, and the name can't begin or end with a space. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming). Characters that aren't allowed in the logical name are replaced with hyphens.
   /// [organizationName] The name of the Pulumi organization the policy group belongs to.
   /// [policyPacks] List of policy packs applied to this policy group.
   /// [stacks] List of stack references that belong to this policy group.
-  const PolicyGroupArgs({
+  PolicyGroupArgs({
     this.accounts,
-    this.entityType,
-    this.mode,
-    required this.name,
+    pulumi.Input<String?>? entityType,
+    pulumi.Input<String?>? mode,
+    this.name,
     required this.organizationName,
     this.policyPacks,
     this.stacks,
-  });
+  }) : entityType = entityType ?? pulumi.Input.fromValue('stacks'), mode = mode ?? pulumi.Input.fromValue('audit');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accounts': ?accounts,
       'entityType': ?entityType,
       'mode': ?mode,
-      'name': name,
+      'name': ?name,
       'organizationName': organizationName,
       'policyPacks': ?pulumi.Input.mapOptionalInputValue<List<PolicyGroupPolicyPackReferenceInput>, List<Map<String, dynamic>>>(policyPacks, (value) => pulumi.Input.encodeList<PolicyGroupPolicyPackReferenceInput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'stacks': ?pulumi.Input.mapOptionalInputValue<List<PolicyGroupStackReference>, List<Map<String, dynamic>>>(stacks, (value) => pulumi.Input.encodeList<PolicyGroupStackReference, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -59,7 +59,7 @@ class PolicyGroupArgs {
       accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
       policyPacks: (() { final guardedValue = map['policyPacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyGroupPolicyPackReferenceInput>(guardedValue, (value) => PolicyGroupPolicyPackReferenceInput.fromMap((value as Map).cast<String, dynamic>()))); })(),
       stacks: (() { final guardedValue = map['stacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyGroupStackReference>(guardedValue, (value) => PolicyGroupStackReference.fromMap((value as Map).cast<String, dynamic>()))); })(),

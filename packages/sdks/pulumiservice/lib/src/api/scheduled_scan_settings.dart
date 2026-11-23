@@ -37,4 +37,21 @@ class ScheduledScanSettings extends pulumi.CustomResource {
     readTimeout = registerOutput<String?>('readTimeout');
     scheduleCron = registerOutput<String>('scheduleCron');
   }
+
+  /// Creates a typed reference to an existing [ScheduledScanSettings] resource.
+  ScheduledScanSettings.reference(String urn)
+    : super(
+        'pulumiservice:api/insights:ScheduledScanSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    batchSize = registerOutput<int?>('batchSize');
+    listConcurrency = registerOutput<int?>('listConcurrency');
+    paused = registerOutput<bool>('paused');
+    readConcurrency = registerOutput<int?>('readConcurrency');
+    readTimeout = registerOutput<String?>('readTimeout');
+    scheduleCron = registerOutput<String>('scheduleCron');
+  }
 }

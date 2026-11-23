@@ -7,17 +7,17 @@ import 'operation_context_options.dart';
 /// Settings related to the Pulumi operation environment during the deployment.
 class DeploymentSettingsOperationContext {
   /// Environment variables to set for the deployment.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
-  /// OIDC configuration to use during the deployment.
-  final pulumi.Input<OperationContextOIDC>? oidc;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
+  /// Deployments OIDC configuration for obtaining cloud credentials during the deployment. Pulumi ESC is the recommended way to supply cloud credentials to Pulumi Deployments. Deployments OIDC still fits when a customer-managed runner can't reach Pulumi Cloud to use ESC, or when pre-run commands need credentials and aren't wrapped in `pulumi env run`. See [Supplying Cloud Credentials to Pulumi Deployments](https://www.pulumi.com/docs/deployments/guides/cloud-credentials/).
+  final pulumi.Input<OperationContextOIDC?>? oidc;
   /// Options to override default behavior during the deployment.
-  final pulumi.Input<OperationContextOptions>? options;
+  final pulumi.Input<OperationContextOptions?>? options;
   /// Shell commands to run before the Pulumi operation executes.
-  final pulumi.Input<List<String>>? preRunCommands;
+  final pulumi.Input<List<String>?>? preRunCommands;
 
   /// Creates a new [DeploymentSettingsOperationContext].
   /// [environmentVariables] Environment variables to set for the deployment.
-  /// [oidc] OIDC configuration to use during the deployment.
+  /// [oidc] Deployments OIDC configuration for obtaining cloud credentials during the deployment. Pulumi ESC is the recommended way to supply cloud credentials to Pulumi Deployments. Deployments OIDC still fits when a customer-managed runner can't reach Pulumi Cloud to use ESC, or when pre-run commands need credentials and aren't wrapped in `pulumi env run`. See [Supplying Cloud Credentials to Pulumi Deployments](https://www.pulumi.com/docs/deployments/guides/cloud-credentials/).
   /// [options] Options to override default behavior during the deployment.
   /// [preRunCommands] Shell commands to run before the Pulumi operation executes.
   const DeploymentSettingsOperationContext({

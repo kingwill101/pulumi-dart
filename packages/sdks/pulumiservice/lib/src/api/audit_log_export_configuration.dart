@@ -7,7 +7,9 @@ class AuditLogExportConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<bool> enabled;
   /// The result of the last audit log export attempt.
   late final pulumi.Output<dynamic> lastResult;
-  /// The S3 configuration for exporting audit logs.
+  /// The S3-compatible configuration for exporting audit logs. Set when audit logs export to an S3-compatible service.
+  late final pulumi.Output<dynamic> s3CompatibleConfig;
+  /// The S3 configuration for exporting audit logs. Set when audit logs export to Amazon S3.
   late final pulumi.Output<dynamic> s3Config;
 
   /// Creates a new [AuditLogExportConfiguration].
@@ -26,6 +28,22 @@ class AuditLogExportConfiguration extends pulumi.CustomResource {
         ) {
     enabled = registerOutput<bool>('enabled');
     lastResult = registerOutput<dynamic>('lastResult');
+    s3CompatibleConfig = registerOutput<dynamic>('s3CompatibleConfig');
+    s3Config = registerOutput<dynamic>('s3Config');
+  }
+
+  /// Creates a typed reference to an existing [AuditLogExportConfiguration] resource.
+  AuditLogExportConfiguration.reference(String urn)
+    : super(
+        'pulumiservice:api:AuditLogExportConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool>('enabled');
+    lastResult = registerOutput<dynamic>('lastResult');
+    s3CompatibleConfig = registerOutput<dynamic>('s3CompatibleConfig');
     s3Config = registerOutput<dynamic>('s3Config');
   }
 }

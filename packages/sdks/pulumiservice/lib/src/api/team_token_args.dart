@@ -11,19 +11,19 @@ class TeamTokenArgs {
   final pulumi.Input<String> description;
   /// The expiration time
   final pulumi.Input<int> expires;
-  /// The name
+  /// The display name of the token. Must be between 1 and 40 characters.
   final pulumi.Input<String> name;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// Audit log reason for creating this token
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// The team name
   final pulumi.Input<String> teamName;
 
   /// Creates a new [TeamTokenArgs].
   /// [description] The description
   /// [expires] The expiration time
-  /// [name] The name
+  /// [name] The display name of the token. Must be between 1 and 40 characters.
   /// [orgName] The organization name
   /// [reason] Audit log reason for creating this token
   /// [teamName] The team name
@@ -50,7 +50,7 @@ class TeamTokenArgs {
   factory TeamTokenArgs.fromMap(Map<String, dynamic> map) {
     return TeamTokenArgs(
       description: pulumi.Input.fromValue(map['description'] as String),
-      expires: pulumi.Input.fromValue(map['expires'] as int),
+      expires: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expires'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

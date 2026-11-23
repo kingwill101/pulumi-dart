@@ -12,7 +12,7 @@ class EnvironmentVersionTagArgs {
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Project name.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Revision number.
   final pulumi.Input<int> revision;
   /// Tag name.
@@ -24,13 +24,13 @@ class EnvironmentVersionTagArgs {
   /// [project] Project name.
   /// [revision] Revision number.
   /// [tagName] Tag name.
-  const EnvironmentVersionTagArgs({
+  EnvironmentVersionTagArgs({
     required this.environment,
     required this.organization,
-    this.project,
+    pulumi.Input<String?>? project,
     required this.revision,
     required this.tagName,
-  });
+  }) : project = project ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +47,7 @@ class EnvironmentVersionTagArgs {
       environment: pulumi.Input.fromValue(map['environment'] as String),
       organization: pulumi.Input.fromValue(map['organization'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
       tagName: pulumi.Input.fromValue(map['tagName'] as String),
     );
   }

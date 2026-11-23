@@ -21,7 +21,7 @@ class Policy extends pulumi.CustomResource {
   /// The last modification timestamp
   late final pulumi.Output<String?> modified;
   /// List of policies
-  late final pulumi.Output<List<Map<String, dynamic>>> policies;
+  late final pulumi.Output<List<dynamic>> policies;
   /// The version number
   late final pulumi.Output<int> version;
 
@@ -42,7 +42,23 @@ class Policy extends pulumi.CustomResource {
     created = registerOutput<String?>('created');
     issuerId = registerOutput<String>('issuerId');
     modified = registerOutput<String?>('modified');
-    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    policies = registerOutput<List<dynamic>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'pulumiservice:api/auth:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String?>('created');
+    issuerId = registerOutput<String>('issuerId');
+    modified = registerOutput<String?>('modified');
+    policies = registerOutput<List<dynamic>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     version = registerOutput<int>('version');
   }
 }

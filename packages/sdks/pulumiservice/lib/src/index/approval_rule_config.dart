@@ -38,7 +38,7 @@ class ApprovalRuleConfig {
     return ApprovalRuleConfig(
       allowSelfApproval: pulumi.Input.fromValue(map['allowSelfApproval'] as bool),
       eligibleApprovers: pulumi.Input.fromValue(pulumi.Input.decodeList<EligibleApprover>(map['eligibleApprovers']!, (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>()))),
-      numApprovalsRequired: pulumi.Input.fromValue(map['numApprovalsRequired'] as int),
+      numApprovalsRequired: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numApprovalsRequired'])),
       requireReapprovalOnChange: pulumi.Input.fromValue(map['requireReapprovalOnChange'] as bool),
     );
   }

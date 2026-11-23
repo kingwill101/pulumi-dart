@@ -8,15 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_team_args_doc}
 class TeamArgs {
   /// Optional. Team description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Team display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The GitHub ID of the team to mirror. Must be in the same GitHub organization that the Pulumi org is backed by. Required for "github" teams.
-  final pulumi.Input<double>? githubTeamId;
-  /// List of Pulumi Cloud usernames of team members.
-  final pulumi.Input<List<String>>? members;
-  /// The team's name. Required for "pulumi" teams.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<double?>? githubTeamId;
+  /// The Pulumi Cloud usernames of the team's members.
+  /// Pulumi Cloud adds the user who creates the team as a member, usually the owner of the access token that runs `pulumi up`.
+  /// List that user here to keep them on the team: otherwise `pulumi refresh` shows them as a change, and the next update to `members` removes them.
+  final pulumi.Input<List<String>?>? members;
+  /// The team's name, up to 100 characters. Only letters, digits, hyphens, underscores and periods are allowed. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming). Characters that aren't allowed in the logical name are replaced with hyphens. Only "pulumi" teams are auto-named.
+  final pulumi.Input<String?>? name;
   /// The name of the Pulumi organization the team belongs to.
   final pulumi.Input<String> organizationName;
   /// The type of team. Must be either `pulumi` or `github`.
@@ -26,8 +28,8 @@ class TeamArgs {
   /// [description] Optional. Team description.
   /// [displayName] Optional. Team display name.
   /// [githubTeamId] The GitHub ID of the team to mirror. Must be in the same GitHub organization that the Pulumi org is backed by. Required for "github" teams.
-  /// [members] List of Pulumi Cloud usernames of team members.
-  /// [name] The team's name. Required for "pulumi" teams.
+  /// [members] The Pulumi Cloud usernames of the team's members.
+  /// [name] The team's name, up to 100 characters. Only letters, digits, hyphens, underscores and periods are allowed. If omitted, Pulumi generates a name from the resource's logical name plus a random suffix, or follows the stack's [autonaming configuration](https://www.pulumi.com/docs/iac/concepts/resources/names/#autonaming). Characters that aren't allowed in the logical name are replaced with hyphens. Only "pulumi" teams are auto-named.
   /// [organizationName] The name of the Pulumi organization the team belongs to.
   /// [teamType] The type of team. Must be either `pulumi` or `github`.
   const TeamArgs({
@@ -56,7 +58,7 @@ class TeamArgs {
     return TeamArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      githubTeamId: (() { final guardedValue = map['githubTeamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      githubTeamId: (() { final guardedValue = map['githubTeamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationName: pulumi.Input.fromValue(map['organizationName'] as String),

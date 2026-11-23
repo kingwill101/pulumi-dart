@@ -14,9 +14,9 @@ class EnvironmentRotationScheduleArgs {
   /// Project name.
   final pulumi.Input<String> project;
   /// Cron expression for recurring scheduled rotations. If you are supplying this, do not supply timestamp.
-  final pulumi.Input<String>? scheduleCron;
+  final pulumi.Input<String?>? scheduleCron;
   /// The time at which the rotation should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [EnvironmentRotationScheduleArgs].
   /// [environment] Environment name.

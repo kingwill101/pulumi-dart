@@ -16,13 +16,13 @@ class InsightsAccountState {
   /// The cloud provider for scanning.
   final pulumi.Input<CloudProvider> provider;
   /// Provider-specific configuration as a JSON object. For AWS, specify regions to scan: {"regions": ["us-west-1", "us-west-2"]}.
-  final pulumi.Input<Map<String, dynamic>>? providerConfig;
+  final pulumi.Input<Map<String, dynamic>?>? providerConfig;
   /// Schedule for automated scanning. Use 'daily' for daily scans, '12h' for scans every twelve hours, or 'none' to disable scheduled scanning. Defaults to 'none'.
   final pulumi.Input<ScanSchedule> scanSchedule;
   /// Whether scheduled scanning is enabled.
   final pulumi.Input<bool> scheduledScanEnabled;
   /// Key-value tags to associate with the insights account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InsightsAccountState].
   /// [accountName] Name of the insights account.
@@ -34,17 +34,17 @@ class InsightsAccountState {
   /// [scanSchedule] Schedule for automated scanning. Use 'daily' for daily scans, '12h' for scans every twelve hours, or 'none' to disable scheduled scanning. Defaults to 'none'.
   /// [scheduledScanEnabled] Whether scheduled scanning is enabled.
   /// [tags] Key-value tags to associate with the insights account.
-  const InsightsAccountState({
+  InsightsAccountState({
     required this.accountName,
     required this.environment,
     required this.insightsAccountId,
     required this.organizationName,
     required this.provider,
     this.providerConfig,
-    required this.scanSchedule,
+    pulumi.Input<ScanSchedule>? scanSchedule,
     required this.scheduledScanEnabled,
     this.tags,
-  });
+  }) : scanSchedule = scanSchedule ?? pulumi.Input.fromValue(ScanSchedule.fromValue('none'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -12,7 +12,7 @@ class PersonalTokenArgs {
   /// The expiration time
   final pulumi.Input<int> expires;
   /// Tracks the context that triggered token creation (e.g., redirect URL or referral source)
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [PersonalTokenArgs].
   /// [description] The description
@@ -35,7 +35,7 @@ class PersonalTokenArgs {
   factory PersonalTokenArgs.fromMap(Map<String, dynamic> map) {
     return PersonalTokenArgs(
       description: pulumi.Input.fromValue(map['description'] as String),
-      expires: pulumi.Input.fromValue(map['expires'] as int),
+      expires: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expires'])),
       reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

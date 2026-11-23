@@ -2,6 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stack_tag_args.dart';
 
 /// Stacks have associated metadata in the form of tags. Each tag consists of a name and value.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{project}/{stack}/{tagName}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:StackTag my-stack-tag my-org/my-project/my-stack/my-tag
+/// ```
 class StackTag extends pulumi.CustomResource {
   /// Name of the tag. The 'key' part of the key=value pair
   late final pulumi.Output<String> name;
@@ -26,8 +34,24 @@ class StackTag extends pulumi.CustomResource {
           'pulumiservice:index:StackTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['name', 'organization', 'project', 'stack', 'value']).merge(options),
         ) {
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    stack = registerOutput<String>('stack');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [StackTag] resource.
+  StackTag.reference(String urn)
+    : super(
+        'pulumiservice:index:StackTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

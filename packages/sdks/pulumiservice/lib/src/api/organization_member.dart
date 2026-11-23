@@ -11,12 +11,19 @@ class OrganizationMember extends pulumi.CustomResource {
   late final pulumi.Output<String> created;
   /// The role currently assigned to this member — either a built-in role (member, admin, billingManager) or a custom role. Falls back to the organization's default role if no role is assigned directly.
   late final pulumi.Output<dynamic> fgaRole;
+  /// FollowsDefaultRole is true when the member has no role of their own and gets the
+  /// organization's default role. A member assigned the default role directly is false.
+  late final pulumi.Output<bool?> followsDefaultRole;
   /// KnownToPulumi returns if the organization member has a Pulumi account.
   late final pulumi.Output<bool> knownToPulumi;
   /// Links to the member in the Pulumi Console
   late final pulumi.Output<dynamic> links;
   /// **Deprecated:** Use `fgaRole` instead. The member's built-in role within the organization. For members assigned a custom role, this is the closest built-in projection (`member`, `admin`, or `billingManager`) and may lose detail; `fgaRole` is authoritative.
   late final pulumi.Output<String> role;
+  /// Suspended indicates that the membership is suspended: the member keeps their
+  /// place in the organization but has no access until an administrator restores them.
+  /// Suspended members are only included in responses when explicitly requested.
+  late final pulumi.Output<bool?> suspended;
   /// Deprecated. Use GetOrganizationMemberTeams to list teams.
   late final pulumi.Output<List<String>?> teams;
   /// The user information for this organization member.
@@ -41,10 +48,33 @@ class OrganizationMember extends pulumi.CustomResource {
         ) {
     created = registerOutput<String>('created');
     fgaRole = registerOutput<dynamic>('fgaRole');
+    followsDefaultRole = registerOutput<bool?>('followsDefaultRole');
     knownToPulumi = registerOutput<bool>('knownToPulumi');
     links = registerOutput<dynamic>('links');
     role = registerOutput<String>('role');
-    teams = registerOutput<List<String>?>('teams');
+    suspended = registerOutput<bool?>('suspended');
+    teams = registerOutput<List<String>?>('teams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    user = registerOutput<dynamic>('user');
+    virtualAdmin = registerOutput<bool>('virtualAdmin');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationMember] resource.
+  OrganizationMember.reference(String urn)
+    : super(
+        'pulumiservice:api:OrganizationMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String>('created');
+    fgaRole = registerOutput<dynamic>('fgaRole');
+    followsDefaultRole = registerOutput<bool?>('followsDefaultRole');
+    knownToPulumi = registerOutput<bool>('knownToPulumi');
+    links = registerOutput<dynamic>('links');
+    role = registerOutput<String>('role');
+    suspended = registerOutput<bool?>('suspended');
+    teams = registerOutput<List<String>?>('teams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     user = registerOutput<dynamic>('user');
     virtualAdmin = registerOutput<bool>('virtualAdmin');
   }

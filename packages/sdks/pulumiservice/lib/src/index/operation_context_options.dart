@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OperationContextOptions {
   /// Whether the stack should be deleted after it is destroyed.
-  final pulumi.Input<bool>? deleteAfterDestroy;
+  final pulumi.Input<bool?>? deleteAfterDestroy;
   /// The shell to use to run commands during the deployment. Defaults to 'bash'.
-  final pulumi.Input<String>? shell;
+  final pulumi.Input<String?>? shell;
   /// Skip the default dependency installation step - use this to customize the dependency installation (e.g. if using yarn or poetry)
-  final pulumi.Input<bool>? skipInstallDependencies;
+  final pulumi.Input<bool?>? skipInstallDependencies;
   /// Skip intermediate deployments (Consolidate multiple deployments of the same type into one deployment)
-  final pulumi.Input<bool>? skipIntermediateDeployments;
+  final pulumi.Input<bool?>? skipIntermediateDeployments;
 
   /// Creates a new [OperationContextOptions].
   /// [deleteAfterDestroy] Whether the stack should be deleted after it is destroyed.
